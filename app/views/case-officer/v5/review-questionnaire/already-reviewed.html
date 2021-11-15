@@ -1,0 +1,47 @@
+{% extends "layouts/case-officer/v5.html" %}
+
+{% block pageTitle %}
+  Questionnaire already reviewed
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    collapseOnMobile: true,
+    items: [
+      {
+        text: "Questionnaires for review",
+        href: "/case-officer/"+version+"/list-questionnaires"
+      },
+      {
+        text: "APP/B3030/D/21/327772"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Questionnaire already reviewed
+      </h1>
+
+      <p class="govuk-body">
+        Sally Smith confirmed this questionnaire is complete.
+      <p>
+      <p class="govuk-body">
+        <a href="list">Return to questionnaires for review</a>
+      <p>
+      
+    </div>
+  </div>
+
+{% endblock %}

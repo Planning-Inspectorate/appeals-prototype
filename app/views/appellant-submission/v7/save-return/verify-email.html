@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>About you</span>
+        <h1 class="govuk-heading-l">
+          Confirm your email
+        </h1>
+
+        <p>We have sent  link to confirm your email  to: <strong>{{ data['appellant-email'] }}</strong>.</p> 
+        <p>You can continue your appeal without confirming your email. </p>
+        <p>If you want to save and come back later, you need to confirm your email address to get a link to return to your appeal.</p>
+
+        <p><a class="govuk-button" href="/appellant-submission/task-list">Contine to your appeal</a></p>
+
+        </div>
+  </div>
+
+{% endblock %}
