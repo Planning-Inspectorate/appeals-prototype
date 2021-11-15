@@ -1,0 +1,36 @@
+.pins-width-container {
+	@include govuk-width-container(1200px);
+}
+
+.govuk-related-items,
+.pins-related-items,
+.pins-card {
+	border: 1px solid $govuk-border-colour;
+	border-top: 4px solid $govuk-link-colour;
+	margin-bottom: 30px;
+	padding: 20px;
+}
+
+.pins-align-right {
+	text-align: right;
+}
+
+.pins-checkbox-cell {
+	padding-top: 2px;
+	.govuk-checkboxes__input {
+		margin: 0 auto;
+	}
+}
+
+.pins-table-questionnaires--ref {
+	width: 25%
+}
+.pins-table-questionnaires--date {
+	width: 12.5%
+}
+.pins-table-questionnaires--address {
+	width: 52.5%
+}
+.pins-table-questionnaires--status {
+	width: 10%
+}

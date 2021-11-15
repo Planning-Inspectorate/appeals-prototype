@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/verify-email-post" method="post" novalidate>
+        <span class="govuk-caption-l"><span class="govuk-visually-hidden">Section. </span>Save and return</span>
+        <h1 class="govuk-heading-l">Continue your appeal later</h1>
+        <p>We'll send you an email to confirm your email address. ​</p>
+        <p>Once you've confirmed, we'll email you again with a link to get back into your appeal.</p>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="appellant-email">
+            Your email
+          </label>
+          <input class="govuk-input" id="appellant-email" name="appellant-email" value="{{ data['appellant-email'] }}" type="text">
+        </div>
+
+
+        
+        <button class="govuk-button" data-module="govuk-button">
+          Send email
+        </button>
+        <input type="hidden" name="application-number-completed" value="govuk-tag app-task-list__task-completed">
+        <input type="hidden" name="application-number-completedText" value="Completed">
+        
+      </form>
+      <p class="govuk-body-s"><a href="/appellant-submission/task-list">Go back to my appeal</a></p>
+    </div>
+  </div>
+
+{% endblock %}

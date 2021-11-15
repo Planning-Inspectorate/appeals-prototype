@@ -1,0 +1,148 @@
+{% extends "layouts/cst/v5a.html" %}
+
+{% block pageTitle %}
+  Appeal details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "../"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Change supplementary planning document
+      </h1>
+      
+      <form action="" method="post">
+
+        <h2 class="govuk-heading-m">
+          Uploaded file
+        </h2>
+        <p class="govuk-body">
+          <a class="govuk-link" href="#">{{ data['cst-'+version+'-files-supplementary'][data['row']-1]['file'] }}</a>
+        <p>
+            
+        {{ govukInput({
+          id: "cst-"+version+"-supplementary-name",
+          name: "cst-"+version+"-supplementary-name",
+          label: {
+            classes: "govuk-label--m govuk-!-margin-top-7",
+            text: "Document name"
+          },
+          value: data['cst-'+version+'-files-supplementary'][data['row']-1]['name']
+        }) }}
+
+        {% if data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted'] == "yes" %}
+          {% set adoptedHtml = true %}
+        {% else %}
+          {% set adoptedHtml = false %}
+        {% endif %}
+
+        {% if data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted'] == "no" %}
+          {% set notadoptedHtml = true %}
+        {% else %}
+          {% set notadoptedHtml = false %}
+        {% endif %}
+        
+        {% set dateHtml %}
+          {{ govukDateInput({
+            id: "cst-"+version+"-supplementary-adopted-date",
+            namePrefix: "cst-"+version+"-supplementary-adopted-date",
+            fieldset: {
+              legend: {
+                text: "Tell us the date of adoption"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_day']
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_month']
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_year']
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {% set stageHtml %}
+          {{ govukInput({
+            label: {
+              text: "Tell us what stage this has reached"
+            },
+            id: "cst-"+version+"-supplementary-adopted-stage",
+            name: "cst-"+version+"-supplementary-adopted-stage",
+                value: data['cst-'+version+'-files-supplementary'][data['row']-1]['adopted_stage']
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "cst-"+version+"-supplementary-adopted",
+          name: "cst-"+version+"-supplementary-adopted",
+          fieldset: {
+            classes: "govuk-!-margin-top-8",
+            legend: {
+              text: "Is it formally adopted?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
+            }
+          },  
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: dateHtml
+              },
+              checked: adoptedHtml
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: stageHtml
+              },
+              checked: notadoptedHtml
+            }
+          ]
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+          {{ govukButton({
+            href: "supplementary-planning-documents",
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
