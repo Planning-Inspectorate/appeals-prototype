@@ -1,7 +1,7 @@
 {% extends "layouts/appellant-submission/v11.html" %}
 
 {% block pageTitle %}
-  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+  Do you own some of the land involved in the appeal? - Tell us about the appeal site - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,33 +27,34 @@
         <span class="govuk-caption-l">
           Tell us about the appeal site
         </span>
-        
+
         {{ govukRadios({
-          idPrefix: "appealsub-"+version+"-appealsite-knowotherowners",
-          name: "appealsub-"+version+"-appealsite-knowotherowners",
+          idPrefix: "appealsub-"+version+"-appealsite-ownsome",
+          name: "appealsub-"+version+"-appealsite-ownsome",
           fieldset: {
             legend: {
-              text: "Do you know who owns the site?",
+              text: "Do you own some of the land involved in the appeal?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "Yes, I know some of the owners",
-              text: "Yes, I know some of the owners",
-              checked: checked("appealsub-"+version+"-appealsite-knowotherowners", "Yes, I know some of the owners")
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-ownsome", "Yes")
             },
             {
-              value: "No, I do not know any of the owners",
-              text: "No, I do not know any of the owners",
-              checked: checked("appealsub-"+version+"-appealsite-knowotherowners", "No, I do not know any of the owners")
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-ownsome", "No")
             }
           ]
         }) }}
 
+
         {{ govukButton({
-          text: "Save and continue"
+          text: "Continue"
         }) }}
 
       </form>
