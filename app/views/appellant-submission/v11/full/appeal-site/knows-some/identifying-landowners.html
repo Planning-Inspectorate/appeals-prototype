@@ -17,7 +17,7 @@
   }) }}
 {% endblock %}
 
-{% block content %}
+{% block content %} 
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -31,30 +31,24 @@
         {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}
 
           <h1 class="govuk-heading-l">Identifying the other landowners</h1>
-          <p class="govuk-body">You must have told all the other landowners about your appeal.</p>
-          <p class="govuk-body">You must have done this within the last 21 days using a copy of <a href="javascript:preventDefault();">the form in annexe 2A or 2B of the 'making your appeal' guidance</a>.</p>
+          <p class="govuk-body">You must have attempted to identify all the other landowners.</p>
+          <p class="govuk-body">This includes:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>searching the land registry</li>
+            <li>putting up a site notice at the appeal site</li>
+          </ul>
 
-          <h2 class="govuk-heading-m">Confirm that you've told the other landowners</h2>
+          <h2 class="govuk-heading-m">Confirm that you have attempted to identify the other landowners</h2>
           <p class="govuk-body">I confirm that:</p>
 
           {{ govukCheckboxes({
-            idPrefix: "appealsub-"+version+"-appealsite-toldlandowners",
-            name: "appealsub-"+version+"-appealsite-toldlandowners",
+            idPrefix: "appealsub-"+version+"-appealsite-knowsome-identifying",
+            name: "appealsub-"+version+"-appealsite-knowsome-identifying",
             items: [
               {
-                value: "I've told all the other landowners about my appeal",
-                text: "I've told all the other landowners about my appeal",
-                checked: checked("appealsub-"+version+"-appealsite-toldlandowners", "I've told all the other landowners about my appeal")
-              },
-              {
-                value: "I've done this within the last 21 days",
-                text: "I've done this within the last 21 days",
-                checked: checked("appealsub-"+version+"-appealsite-toldlandowners", "I've done this within the last 21 days")
-              },
-              {
-                value: "I used a copy of the form in annexe 2A or 2B",
-                text: "I used a copy of the form in annexe 2A or 2B",
-                checked: checked("appealsub-"+version+"-appealsite-toldlandowners", "I used a copy of the form in annexe 2A or 2B")
+                value: "Yes, I confirm that I've attempted to identify all the other landowners, but have not been successful.",
+                text: "Yes, I confirm that I've attempted to identify all the other landowners, but have not been successful.",
+                checked: checked("appealsub-"+version+"-appealsite-knowsome-identifying", "Yes, I confirm that I've attempted to identify all the other landowners, but have not been successful.")
               }
             ]
           }) }}
@@ -62,30 +56,24 @@
         {% else %}
 
           <h1 class="govuk-heading-l">Identifying the landowners</h1>
-          <p class="govuk-body">You must have told all the landowners about your appeal.</p>
-          <p class="govuk-body">You must have done this within the last 21 days using a copy of <a href="javascript:preventDefault();">the form in annexe 2A or 2B of the 'making your appeal' guidance</a>.</p>
+          <p class="govuk-body">You must have attempted to identify all the other landowners.</p>
+          <p class="govuk-body">This includes:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>searching the land registry</li>
+            <li>putting up a site notice at the appeal site</li>
+          </ul>
 
-          <h2 class="govuk-heading-m">Confirm that you've told the landowners</h2>
+          <h2 class="govuk-heading-m">Confirm that you have attempted to identify the landowners</h2>
           <p class="govuk-body">I confirm that:</p>
 
           {{ govukCheckboxes({
-            idPrefix: "appealsub-"+version+"-appealsite-toldlandowners",
-            name: "appealsub-"+version+"-appealsite-toldlandowners",
+            idPrefix: "appealsub-"+version+"-appealsite-knowsome-identifying",
+            name: "appealsub-"+version+"-appealsite-knowsome-identifying",
             items: [
               {
-                value: "I've told all the landowners about my appeal",
-                text: "I've told all the landowners about my appeal",
-                checked: checked("appealsub-"+version+"-appealsite-toldlandowners", "I've told all the landowners about my appeal")
-              },
-              {
-                value: "I've done this within the last 21 days",
-                text: "I've done this within the last 21 days",
-                checked: checked("appealsub-"+version+"-appealsite-toldlandowners", "I've done this within the last 21 days")
-              },
-              {
-                value: "I used a copy of the form in annexe 2A or 2B",
-                text: "I used a copy of the form in annexe 2A or 2B",
-                checked: checked("appealsub-"+version+"-appealsite-toldlandowners", "I used a copy of the form in annexe 2A or 2B")
+                value: "Yes, I confirm that I've attempted to identify all the landowners, but have not been successful.",
+                text: "Yes, I confirm that I've attempted to identify all the landowners, but have not been successful.",
+                checked: checked("appealsub-"+version+"-appealsite-knowsome-identifying", "Yes, I confirm that I've attempted to identify all the landowners, but have not been successful.")
               }
             ]
           }) }}
