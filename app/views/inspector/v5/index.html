@@ -106,7 +106,7 @@
                 </td>
                 <td class="govuk-table__cell" nowrap>
                   {% if item.siteVisitType != "Unaccompanied" %}
-                    {{ item.siteVisitTime }}
+                    {{ item.siteVisitTime | capitalize }}
                   {% endif %}
                 </td>
               </tr>
