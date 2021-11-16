@@ -40,6 +40,7 @@
         </h1>
 
         <dl class="govuk-summary-list">
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Local planning department
@@ -57,6 +58,7 @@
               </a>
             </dd>
           </div>
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Type of application
@@ -70,6 +72,57 @@
               </a>
             </dd>
           </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Your appeal is not about
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                <li>A listed building</li>
+                <li>Major dwellings</li>
+                <li>Major general industry, storage or warehousing</li>
+                <li>Major retail and services</li>
+                <li>Major travelling and caravan pitches</li>
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appeal-about">
+                Change<span class="govuk-visually-hidden"> what your appeal is not about</span>
+              </a>
+            </dd>
+          </div>
+          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Have you received an enforcement notice?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-beforeyoustart-enforcementnotice"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="enforcement-notice">
+                Change<span class="govuk-visually-hidden"> have you received an enforcement notice</span>
+              </a>
+            </dd>
+          </div>
+          
+          {% if data["appealsub-"+version+"-beforeyoustart-enforcementnotice"] == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is your enforcement notice about?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-beforeyoustart-enforcementnoticeabout"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="enforcement-notice-about">
+                  Change<span class="govuk-visually-hidden"> what is your enforcement notice about</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What you're appealing
@@ -89,40 +142,56 @@
               </a>
             </dd>
           </div>
-          {% if (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision") %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Date decision due
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-day"] }}
-              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-month"] | formatMonth }}
-              {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-year"] }}
 
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="decision-date-due">
-                Change<span class="govuk-visually-hidden"> date decision due</span>
-              </a>
-            </dd>
-          </div>
+          {% if (data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision") %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Date decision due
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-day"] }}
+                {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-month"] | formatMonth }}
+                {{ data["appealsub-"+version+"-beforeyoustart-decisiondatedue-year"] }}
+
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="decision-date-due">
+                  Change<span class="govuk-visually-hidden"> date decision due</span>
+                </a>
+              </dd>
+            </div>
           {% else %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Date of decision
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-day"] }}
+                {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-month"] | formatMonth }}
+                {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-year"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="notice-decision-date">
+                  Change<span class="govuk-visually-hidden"> date of decision</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Date of decision
+              Claiming costs
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-day"] }}
-              {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-month"] | formatMonth }}
-              {{ data["appealsub-"+version+"-beforeyoustart-decisiondate-year"] }}
+              {{ data["appealsub-"+version+"-beforeyoustart-claimingcosts"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="notice-decision-date">
-                Change<span class="govuk-visually-hidden"> date of decision</span>
+              <a class="govuk-link" href="claiming-costs">
+                Change<span class="govuk-visually-hidden"> claiming costs</span>
               </a>
             </dd>
           </div>
-          {% endif %}
+          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Appeal to be decided by
