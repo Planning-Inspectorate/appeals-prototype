@@ -19,10 +19,11 @@
     "status": "decisiondue",
     "viewed": "yes",
     "siteVisitDateDay": "2",
-    "siteVisitDateMonth": "12",
+    "siteVisitDateMonth": "11",
     "siteVisitDateYear": "2021",
     "siteVisitType": "Accompanied",
-    "siteVisitTime": "1pm to 3pm"
+    "siteVisitTime": "1pm to 3pm",
+    "markedValidDaysAgo": "32"
   },
   {
     "ref": "3256412",
@@ -43,11 +44,12 @@
     "provisionalSiteVisitYear": "",
     "status": "decisiondue",
     "viewed": "yes",
-    "siteVisitDateDay": "4",
-    "siteVisitDateMonth": "12",
+    "siteVisitDateDay": "2",
+    "siteVisitDateMonth": "11",
     "siteVisitDateYear": "2021",
     "siteVisitType": "Unaccompanied",
-    "siteVisitTime": "10am to midday"
+    "siteVisitTime": "10am to midday",
+    "markedValidDaysAgo": "29"
   },
   {
     "ref": "3884215",
@@ -69,10 +71,11 @@
     "status": "decisiondue",
     "viewed": "yes",
     "siteVisitDateDay": "3",
-    "siteVisitDateMonth": "12",
+    "siteVisitDateMonth": "11",
     "siteVisitDateYear": "2021",
     "siteVisitType": "Access required",
-    "siteVisitTime": "11am to 1pm"
+    "siteVisitTime": "11am to 1pm",
+    "markedValidDaysAgo": "25"
   },
   {
     "ref": "3975512",
@@ -93,11 +96,12 @@
     "provisionalSiteVisitYear": "",
     "status": "decisiondue",
     "viewed": "yes",
-    "siteVisitDateDay": "4",
-    "siteVisitDateMonth": "12",
+    "siteVisitDateDay": "3",
+    "siteVisitDateMonth": "11",
     "siteVisitDateYear": "2021",
     "siteVisitType": "Access required",
-    "siteVisitTime": "11am to 1pm"
+    "siteVisitTime": "11am to 1pm",
+    "markedValidDaysAgo": "19"
   },
   {
     "ref": "3556481",
