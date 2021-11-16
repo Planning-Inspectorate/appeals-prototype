@@ -37,19 +37,9 @@
 
     <div class="govuk-grid-column-one-half">
 
-      <h2 class="govuk-heading-l">
+      <!--h2 class="govuk-heading-l">
         {{ data["inspector-"+version+"-schedule-type"] }} site visit details
-      </h2>
-      
-      {% if data["inspector-"+version+"-schedule-type"] == "Access required" %}
-        <p class="govuk-body">
-          [tell inspector that these details will be used to go into the letter to the appellant]
-        </p>
-      {% else %}
-        <p class="govuk-body">
-          [tell inspector that these details will only be used internally]
-        </p>
-      {% endif %}
+      </h2-->
 
       <form action="" method="post">
 
@@ -59,18 +49,18 @@
           fieldset: {
             legend: {
               text: "Date of site visit",
-              classes: "govuk-fieldset__legend--m"
+              classes: "govuk-fieldset__legend--l"
             }
           }
         }) }}
 
-        {% if data["inspector-"+version+"-schedule-type"] == "Access required" %}
+        {% if data["inspector-"+version+"-schedule-type"] != "Unaccompanied" %}
           {{ govukSelect({
             id: "inspector-"+version+"-schedule-time",
             name: "inspector-"+version+"-schedule-time",
             label: {
               text: "Time slot",
-              classes: "govuk-label--m"
+              classes: "govuk-label--l"
             },
             items: [
               {
@@ -121,56 +111,6 @@
           }) }}
 
         {% endif %}
-        
-        {% set detailsHtml %}
-          <table class="govuk-table">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header app-custom-class"></th>
-                <th scope="col" class="govuk-table__header app-custom-class">Local planning department&apos;s answer</th>
-                <th scope="col" class="govuk-table__header app-custom-class">Appellant&apos;s answer</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Can the site been seen from public land?</th>
-                <td class="govuk-table__cell">No<br>The extension is to the rear of the property, and the garden has high hedges.</td>
-                <td class="govuk-table__cell">No<br>I&apos;ve got big hedges.</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Does the inspector need to enter the site?</th>
-                <td class="govuk-table__cell">Yes<br>The proposed development can only be viewed from the appellant&apos;s garden.</td>
-                <td class="govuk-table__cell">(not asked)</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Does the inspector need to access aneighbour&apos;s land?</th>
-                <td class="govuk-table__cell">Yes<br>54 Butcher Street</td>
-                <td class="govuk-table__cell">(not asked)</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Does the appellant own the whole site?</th>
-                <td class="govuk-table__cell">(not asked)</td>
-                <td class="govuk-table__cell">Yes</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Are there any health and safety issues?</th>
-                <td class="govuk-table__cell">Yes<br>A defensive dog</td>
-                <td class="govuk-table__cell">No</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header remove-bottom-border">Appeals in the immediate area still being considered</th>
-                <td class="govuk-table__cell remove-bottom-border">893482, 372839</td>
-                <td class="govuk-table__cell remove-bottom-border">(not asked)</td>
-              </tr>
-            </tbody>
-          </table>
-        {% endset -%}
-
-        {{ govukDetails({
-          classes: "govuk-!-margin-bottom-5",
-          summaryText: "Site visit details",
-          html: detailsHtml
-        }) }}
 
         {{ govukButton({
           text: "Continue"
