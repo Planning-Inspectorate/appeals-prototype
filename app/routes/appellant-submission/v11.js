@@ -301,7 +301,7 @@ module.exports = function (router) {
       res.redirect(base+'before-you-start/shutter/appeal-procedure');
     }
   })
-  
+  /*
   router.post(base+'before-you-start/check-answers', function (req, res) {
     if (req.session.data['appealsub-'+v+'-route'] == "full"){
       res.redirect(base+'full/task-list');
@@ -309,7 +309,7 @@ module.exports = function (router) {
       res.redirect(base+'householder/task-list');
     }
 })
-
+*/
   
 /************************************
  *** Provide your contact details ***
