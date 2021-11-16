@@ -60,6 +60,7 @@
             {{ data["inspector-"+version+"-schedule-date-year"] }}
           </dd>
         </div>
+        {% if data["inspector-"+version+"-schedule-type"] != "Unaccompanied" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Time slot
@@ -68,6 +69,7 @@
             {{ data["inspector-"+version+"-schedule-time"] | capitalize }}
           </dd>
         </div>
+        {% endif %}
       </dl> 
 <!--
       {{ govukWarningText({

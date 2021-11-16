@@ -115,6 +115,11 @@ module.exports = function (router) {
 
 
   router.post(base+'book-visit', function (req, res) {
+    res.redirect(base+'book-visit/date-time');
+  })
+
+  
+  router.post(base+'book-visit/date-time', function (req, res) {
     res.redirect(base+'book-visit/check-confirm');
   })
 
