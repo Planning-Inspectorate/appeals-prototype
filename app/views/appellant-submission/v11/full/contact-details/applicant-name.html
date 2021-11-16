@@ -27,24 +27,32 @@
         <span class="govuk-caption-l">
           Provide your contact details
         </span>
+        <h1 class="govuk-heading-l">
+          What is the applicant's name?
+        </h1>
         
         {{ govukInput({
           id: "appealsub-"+version+"-aboutyou-applicantname",
           name: "appealsub-"+version+"-aboutyou-applicantname",
           label: {
-            text: "What is the applicant's name?",
-            classes: "govuk-label--l",
-            isPageHeading: true
+            text: "Applicant's name"
           },
           hint: {
-            text: "Enter their name as it's written on the planning application form."
+            text: "Enter this as it's written on the planning application form."
           },
+          classes: "govuk-!-width-two-thirds",
           value: data["appealsub-"+version+"-aboutyou-applicantname"]
         }) }}
-
-        <p class="govuk-body">
-          In the questions that follow, 'you' and 'your' refer to the person you're appealing on behalf of.
-        </p>
+        
+        {{ govukInput({
+          id: "appealsub-"+version+"-aboutyou-applicantcompany",
+          name: "appealsub-"+version+"-aboutyou-applicantcompany",
+          label: {
+            text: "Company name (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: data["appealsub-"+version+"-aboutyou-applicantcompany"]
+        }) }}
 
         {{ govukButton({
           text: "Continue"
