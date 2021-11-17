@@ -99,6 +99,13 @@ module.exports = function (env) {
     else return ''
   }
 
+  filters.earliestDecisionDate = function(num) {
+    // Calculate 4 weeks from when appeal was marked as valid by VO
+    var d = moment().subtract(num,"days").add((4*7),"days").format("D MMM YYYY")
+    if (d !== 'Invalid date') return d
+    else return ''
+  }
+
   filters.filesByFieldName = function(files, fieldname){
     if(!files || !fieldname){
       return "";

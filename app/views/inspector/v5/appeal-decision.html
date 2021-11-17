@@ -112,11 +112,24 @@
         <h3 class="govuk-heading-m">
           Decision
         </h3>
-        {{ govukButton({
-          href: "/inspector/"+version+"/issue-decision",
-          text: "Issue decision",
-          classes: "govuk-!-margin-bottom-0"
-        }) }}
+        {% for item in data['availableAppeals'] %}
+          {% if item.ref == data["inspector-"+version+"-currentappeal"] %}
+            {% if ((item.markedValidDaysAgo- (7*4)) < 0) %}
+              <h4 class="govuk-heading-s govuk-!-margin-bottom-0">
+                Earliest decision date
+              </h4>
+              <p class="govuk-body">
+                {{ item.markedValidDaysAgo | earliestDecisionDate }}
+              <p>
+            {% else %}
+              {{ govukButton({
+                href: "/inspector/"+version+"/issue-decision",
+                text: "Issue decision",
+                classes: "govuk-!-margin-bottom-0"
+              }) }}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
       </div>
       
       <!-- display data driven site visit details -->
