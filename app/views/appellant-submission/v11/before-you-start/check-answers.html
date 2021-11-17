@@ -95,36 +95,6 @@
           
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Have you received an enforcement notice?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-beforeyoustart-enforcementnotice"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="enforcement-notice">
-                Change<span class="govuk-visually-hidden"> have you received an enforcement notice</span>
-              </a>
-            </dd>
-          </div>
-          
-          {% if data["appealsub-"+version+"-beforeyoustart-enforcementnotice"] == "Yes" %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                What is your enforcement notice about?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data["appealsub-"+version+"-beforeyoustart-enforcementnoticeabout"] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="enforcement-notice-about">
-                  Change<span class="govuk-visually-hidden"> what is your enforcement notice about</span>
-                </a>
-              </dd>
-            </div>
-          {% endif %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
               What you're appealing
             </dt>
             <dd class="govuk-summary-list__value">
@@ -173,6 +143,36 @@
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="notice-decision-date">
                   Change<span class="govuk-visually-hidden"> date of decision</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Have you received an enforcement notice?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-beforeyoustart-enforcementnotice"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="enforcement-notice">
+                Change<span class="govuk-visually-hidden"> have you received an enforcement notice</span>
+              </a>
+            </dd>
+          </div>
+          
+          {% if data["appealsub-"+version+"-beforeyoustart-enforcementnotice"] == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is your enforcement notice about?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-beforeyoustart-enforcementnoticeabout"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="enforcement-notice-about">
+                  Change<span class="govuk-visually-hidden"> what is your enforcement notice about</span>
                 </a>
               </dd>
             </div>
