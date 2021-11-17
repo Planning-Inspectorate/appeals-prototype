@@ -31,18 +31,23 @@
         {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}
 
           <h1 class="govuk-heading-l">Identifying the other landowners</h1>
-          <p class="govuk-body">You must have taken all reasonable steps to identify the other landowners.</p>
+          <p class="govuk-body">You must have attempted to identify all the other landowners.</p>
+          <p class="govuk-body">This includes:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>searching the land registry</li>
+            <li>putting up a site notice at the appeal site</li>
+          </ul>
 
-          <h2 class="govuk-heading-m">Have you taken all reasonable steps to identify the other landowners?</h2>
+          <h2 class="govuk-heading-m">Confirm that you have attempted to identify the other landowners</h2>
 
           {{ govukCheckboxes({
             idPrefix: "appealsub-"+version+"-appealsite-knowsome-identifying",
             name: "appealsub-"+version+"-appealsite-knowsome-identifying",
             items: [
               {
-                value: "I confirm that I've taken all reasonable steps to identify the landowners.",
-                text: "I confirm that I've taken all reasonable steps to identify the landowners.",
-                checked: checked("appealsub-"+version+"-appealsite-knowsome-identifying", "I confirm that I've taken all reasonable steps to identify the landowners.")
+                value: "I confirm that I've attempted to identify all the other landowners, but have not been successful.",
+                text: "I confirm that I've attempted to identify all the other landowners, but have not been successful.",
+                checked: checked("appealsub-"+version+"-appealsite-knowsome-identifying", "I confirm that I've attempted to identify all the other landowners, but have not been successful.")
               }
             ]
           }) }}
