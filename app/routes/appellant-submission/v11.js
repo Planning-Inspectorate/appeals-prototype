@@ -177,19 +177,11 @@ module.exports = function (router) {
     }
   })
 
-  router.post(base+'before-you-start/enforcement-notice', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] == "No"){
+  router.post(base+'before-you-start/appeal-about', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"].includes("None of these") ){
       res.redirect(base+'before-you-start/permission-granted-refused');
     } else {
-      res.redirect(base+'before-you-start/enforcement-notice-about');
-    }
-  })
-
-  router.post(base+'before-you-start/enforcement-notice-about', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnoticeabout"] == "A different development to my appeal"){
-      res.redirect(base+'before-you-start/permission-granted-refused');
-    } else {
-      res.redirect(base+'before-you-start/shutter/enforcement-notice');
+      res.redirect(base+'before-you-start/shutter/appeal-about');
     }
   })
 
@@ -243,34 +235,10 @@ module.exports = function (router) {
         res.redirect(base+'before-you-start/shutter/out-of-time-householder')
       }
     } else {
-      res.redirect(base+'before-you-start/claiming-costs');
-    }
-  })
-
-  router.post(base+'before-you-start/claiming-costs', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] == "No"){
-      if (req.session.data['appealsub-'+v+'-beforeyoustart-whatareyouappealing'] == "Full planning"){
-        res.redirect(base+'before-you-start/appeal-procedure');
-      } else if (req.session.data['appealsub-'+v+'-beforeyoustart-whatareyouappealing'] == "Householder planning") {
-        if (req.session.data['appealsub-'+v+'-beforeyoustart-permissiongrantedrefused'] != "Refused"){
-          res.redirect(base+'before-you-start/appeal-procedure');
-        } else {
-          req.session.data['appealsub-'+v+'-route'] = "householder"
-          res.redirect(base+'before-you-start/check-answers');
-        }
-      }
-    } else {
-      res.redirect(base+'before-you-start/shutter/claiming-costs');
-    }
-  })
-
-  router.post(base+'before-you-start/appeal-about', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-beforeyoustart-appealabout"].includes("None of these") ){
       res.redirect(base+'before-you-start/enforcement-notice');
-    } else {
-      res.redirect(base+'before-you-start/shutter/appeal-about');
     }
   })
+
 
   router.post(base+'before-you-start/decision-date-due', function (req, res) {
 
@@ -294,9 +262,43 @@ module.exports = function (router) {
     if (todaysDate > deadlineDate) {
       res.redirect(base+'before-you-start/shutter/out-of-time-no-decision')
     } else {
-      res.redirect(base+'before-you-start/claiming-costs')
+      res.redirect(base+'before-you-start/enforcement-notice')
     }
   })
+
+  router.post(base+'before-you-start/enforcement-notice', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] == "No"){
+      res.redirect(base+'before-you-start/claiming-costs');
+    } else {
+      res.redirect(base+'before-you-start/enforcement-notice-about');
+    }
+  })
+
+  router.post(base+'before-you-start/enforcement-notice-about', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnoticeabout"] == "A different development to my planning application"){
+      res.redirect(base+'before-you-start/claiming-costs');
+    } else {
+      res.redirect(base+'before-you-start/shutter/enforcement-notice');
+    }
+  })
+
+  router.post(base+'before-you-start/claiming-costs', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] == "No"){
+      if (req.session.data['appealsub-'+v+'-beforeyoustart-whatareyouappealing'] == "Full planning"){
+        res.redirect(base+'before-you-start/appeal-procedure');
+      } else if (req.session.data['appealsub-'+v+'-beforeyoustart-whatareyouappealing'] == "Householder planning") {
+        if (req.session.data['appealsub-'+v+'-beforeyoustart-permissiongrantedrefused'] != "Refused"){
+          res.redirect(base+'before-you-start/appeal-procedure');
+        } else {
+          req.session.data['appealsub-'+v+'-route'] = "householder"
+          res.redirect(base+'before-you-start/check-answers');
+        }
+      }
+    } else {
+      res.redirect(base+'before-you-start/shutter/claiming-costs');
+    }
+  })
+
 
   router.post(base+'before-you-start/appeal-procedure', function (req, res) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-appealprocedure"] == "Written representations"){
@@ -306,15 +308,7 @@ module.exports = function (router) {
       res.redirect(base+'before-you-start/shutter/appeal-procedure');
     }
   })
-  /*
-  router.post(base+'before-you-start/check-answers', function (req, res) {
-    if (req.session.data['appealsub-'+v+'-route'] == "full"){
-      res.redirect(base+'full/task-list');
-    } else {
-      res.redirect(base+'householder/task-list');
-    }
-})
-*/
+  
   
 /************************************
  *** Provide your contact details ***
