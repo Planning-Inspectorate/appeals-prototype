@@ -241,8 +241,8 @@
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
                   {{ govukTag({
-                    classes: "govuk-tag--green govuk-!-margin-bottom-3",
-                    text: "Ready for UR"
+                    classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                    text: "Done"
                   }) }}
                   <h3 class="govuk-heading-m">
                     Version 3
@@ -253,7 +253,22 @@
                     </li>
                   </ul>
 
-                  <!--details class="govuk-details" data-module="govuk-details">
+                  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        User research (1)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                          <a href="https://miro.com/app/board/o9J_llyHSqU=/?moveToWidget=3074457366993804068&cot=14" target="blank" title="">User research notes (Miro)</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </details>
+
+                  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                       <span class="govuk-details__summary-text">
                         Jira Tickets (4)
@@ -261,13 +276,14 @@
                     </summary>
                     <div class="govuk-details__text">
                       <ul class="govuk-list govuk-list-bulleted">
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2689">AS-2689 Clarify/confirm format of reference number for appeals</a></li>
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2693">AS-2693 Recording an outcome that is not valid nor invalid</a></li>
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2694">AS-2694 Confirming outcome following tasks done outside of service</a></li>
-                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2695">AS-2695 Handling additional data related to outcome as the next step in the journey</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2699">AS-2699 Validation officer - amending errors made by the appellant</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2729">AS-2729 Validation Officer - Displaying status of appeals</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3261">AS-3261 Validation Officer - Unhappy Path - Invalid process</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-3274">AS-3274 Updates to Validation Officer prototype (unhappy paths in-service, and 'Incomplete' status on task list while awaiting info from appellant by email)</a></li>
                       </ul>
                     </div>
-                  </details-->
+                  </details>
+
                 </div>
 
                 <div class="govuk-inset-text govuk-!-margin-top-0">
@@ -424,8 +440,8 @@
                   <h3 class="govuk-heading-m">
                     Case officer journeys v6
                     {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-left-1",
-                      text: "Ready for UR"
+                      classes: "govuk-tag--blue govuk-!-margin-left-1",
+                      text: "Done"
                     }) }}
                   </h3>
                   <!--p class="govuk-body">
@@ -437,25 +453,22 @@
                     </li>
                   </ul>
 
-                  <!--details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                       <span class="govuk-details__summary-text">
-                        User research links (2)
+                        User research (1)
                       </span>
                     </summary>
                     <div class="govuk-details__text">
                       <ul class="govuk-list govuk-list--bullet">
                         <li>
-                          <a href="https://miro.com/app/board/o9J_l_ZA9x0=/?moveToWidget=3074457362130119005&cot=14" target="blank" title="">Findings from co-design session</a>
-                        </li>
-                        <li>
-                          <a href="https://miro.com/app/board/o9J_l_ZA9x0=/?moveToWidget=3074457362289735424&cot=14" target="_blank">Review LPA questionnaire user journey map for v5 prototype</a>
+                          <a href="https://miro.com/app/board/o9J_llyHSqU=/?moveToWidget=3074457367196007929&cot=14" target="blank" title="">User research notes (Miro)</a>
                         </li>
                       </ul>
                     </div>
-                  </details-->
+                  </details>
 
-                  <details class="govuk-details" data-module="govuk-details">
+                  <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                       <span class="govuk-details__summary-text">
                         Jira Tickets (1)
@@ -550,7 +563,7 @@
                   <a href="inspector/v5/">Inspector - My appeals</a>
                 </li>
               </ul>
-              <details class="govuk-details" data-module="govuk-details">
+              <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text">
                     Jira Tickets (8)
@@ -707,26 +720,30 @@
                 </li>
               </ul>
 
-              <details class="govuk-details" data-module="govuk-details">
+              <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text">
-                    Jira Tickets (0)
+                    Jira Tickets (2)
                   </span>
                 </summary>
                 <div class="govuk-details__text">
-                  <p class="govuk-body">
-                    Jira tickets need adding/updating to reflect the work
-                  <p>
-                  <!--ul class="govuk-list govuk-list-bulleted">
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3388">AS-3388 View available appeals</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3390">AS-3390 View my appeals</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3389">AS-3389 Select multiple appeals to schedule</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3391">AS-3391 Provisionally schedule site visits</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3393">AS-3393 Handling appeals already assigned to another inspector</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3327">AS-3327 Booking a site visit</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-2542">AS-2542 Pull appeal improvements - Add more available time slots for ARSV</a></li>
-                    <li><a href="https://pins-ds.atlassian.net/browse/AS-2517">AS-2517 Pull appeal improvements - Ability to change SV type when on the SV screen</a></li>
-                  </ul-->
+                  <ul class="govuk-list govuk-list-bulleted">
+                    <li><a href="https://pins-ds.atlassian.net/browse/AS-2699">AS-2699 Validation officer - amending errors made by the appellant</a></li>
+                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3273">AS-3273 Ability for Validation Officer to edit appeal data and attach/remove documents</a></li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    User research (1)
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list govuk-list-bulleted">
+                    <li><a href="https://pins-ds.atlassian.net/browse/AS-3388">UR session notes (Miro)</a></li>
+                  </ul>
                 </div>
               </details>
             </div>            
