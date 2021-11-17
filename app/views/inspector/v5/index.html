@@ -104,7 +104,11 @@
                   {{ item.siteVisitDateMonth | formatShortMonth }}
                   {{ item.siteVisitDateYear }}
                 </td>
-                <td class="govuk-table__cell" nowrap>{{ item.siteVisitTime }}</td>
+                <td class="govuk-table__cell" nowrap>
+                  {% if item.siteVisitType != "Unaccompanied" %}
+                    {{ item.siteVisitTime | capitalize }}
+                  {% endif %}
+                </td>
               </tr>
             {% endif %}
           {% endfor %}

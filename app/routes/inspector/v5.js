@@ -113,10 +113,57 @@ module.exports = function (router) {
 
   })
 
+  /* BOOK SITE VISIT */
+  
+    router.post(base+'book-visit', function (req, res) {
+      res.redirect(base+'book-visit/date-time');
+    })
+    
+    router.post(base+'book-visit/date-time', function (req, res) {
+      res.redirect(base+'book-visit/check-confirm');
+    })
 
-  router.post(base+'book-visit', function (req, res) {
-    res.redirect(base+'book-visit/check-confirm');
+    router.post(base+'book-visit/check-confirm', function (req, res) {
+  
+      // find matching ref in availableAppeals
+      objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.session.data["inspector-"+v+"-currentappeal"]));
+  
+      // update session with site visit data
+      req.session.data["availableAppeals"][objIndex].status = "booked";
+      req.session.data["availableAppeals"][objIndex].siteVisitDateDay = req.session.data["inspector-"+v+"-schedule-date-day"];
+      req.session.data["availableAppeals"][objIndex].siteVisitDateMonth = req.session.data["inspector-"+v+"-schedule-date-month"];
+      req.session.data["availableAppeals"][objIndex].siteVisitDateYear = req.session.data["inspector-"+v+"-schedule-date-year"];
+      req.session.data["availableAppeals"][objIndex].siteVisitType = req.session.data["inspector-"+v+"-schedule-type"];
+      req.session.data["availableAppeals"][objIndex].siteVisitTime = req.session.data["inspector-"+v+"-schedule-time"];
+  
+      res.redirect(base+'book-visit/confirmation');
+    })
+
+/* AMEND SITE VISIT */
+
+  router.post(base+'amend-visit', function (req, res) {
+    res.redirect(base+'amend-visit/date-time');
   })
+  
+  router.post(base+'amend-visit/date-time', function (req, res) {
+    res.redirect(base+'amend-visit/check-confirm');
+  })
+    
+  router.post(base+'amend-visit/check-confirm', function (req, res) {
+
+    // find matching ref in availableAppeals
+    objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.session.data["inspector-"+v+"-currentappeal"]));
+
+    // update session with site visit data
+    req.session.data["availableAppeals"][objIndex].siteVisitDateDay = req.session.data["inspector-"+v+"-schedule-date-day"];
+    req.session.data["availableAppeals"][objIndex].siteVisitDateMonth = req.session.data["inspector-"+v+"-schedule-date-month"];
+    req.session.data["availableAppeals"][objIndex].siteVisitDateYear = req.session.data["inspector-"+v+"-schedule-date-year"];
+    req.session.data["availableAppeals"][objIndex].siteVisitType = req.session.data["inspector-"+v+"-schedule-type"];
+    req.session.data["availableAppeals"][objIndex].siteVisitTime = req.session.data["inspector-"+v+"-schedule-time"];
+
+    res.redirect(base+'amend-visit/confirmation');
+  })
+
 
 
   router.get(base+'goto-appeal-decision/:ref', function (req, res, next) {
@@ -135,21 +182,6 @@ module.exports = function (router) {
     res.redirect(base+'issue-decision/check-confirm');
   })
 
-  router.post(base+'book-visit/check-confirm', function (req, res) {
-
-    // find matching ref in availableAppeals
-    objIndex = req.session.data["availableAppeals"].findIndex((obj => obj.ref == req.session.data["inspector-"+v+"-currentappeal"]));
-
-    // update session with site visit data
-    req.session.data["availableAppeals"][objIndex].status = "booked";
-    req.session.data["availableAppeals"][objIndex].siteVisitDateDay = req.session.data["inspector-"+v+"-schedule-date-day"];
-    req.session.data["availableAppeals"][objIndex].siteVisitDateMonth = req.session.data["inspector-"+v+"-schedule-date-month"];
-    req.session.data["availableAppeals"][objIndex].siteVisitDateYear = req.session.data["inspector-"+v+"-schedule-date-year"];
-    req.session.data["availableAppeals"][objIndex].siteVisitType = req.session.data["inspector-"+v+"-schedule-type"];
-    req.session.data["availableAppeals"][objIndex].siteVisitTime = req.session.data["inspector-"+v+"-schedule-time"];
-
-    res.redirect(base+'book-visit/confirmation');
-  })
 
   router.post(base+'issue-decision/check-confirm', function (req, res) {
 
