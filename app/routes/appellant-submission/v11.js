@@ -104,13 +104,18 @@ module.exports = function (router) {
     req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"] = "decision_letter.pdf"
 
     req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"] = "appeal_statement.pdf"
+    req.session.data["appealsub-v11-appealdocuments-plansdrawings"] = "Yes",
+    req.session.data["appealsub-v11-appealdocuments-plansdrawingsfileslist"] = [
+      "blank.pdf"
+    ],
+    req.session.data["appealsub-v11-appealdocuments-supportingdocuments"] = "Yes",
+    req.session.data["appealsub-v11-appealdocuments-supportinglist"] = [
+      "supporting_document_one.pdf",
+      "supporting_document_three.pdf",
+      "supporting_document_two.pdf"
+    ],
     req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete"
-    req.session.data["appealsub-"+v+"-aboutapplication-additionaldocs"] = "Yes"
-    req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"] = [
-     "supporting_document_one.pdf",
-     "supporting_document_three.pdf",
-     "supporting_document_two.pdf"
-   ]
+    
     req.session.data["appealsub-"+v+"-appealsite-address-line-1"] = "123 Main Road"
     req.session.data["appealsub-"+v+"-appealsite-address-town"] = "London"
     req.session.data["appealsub-"+v+"-appealsite-address-postcode"] = "N1 1NN"
@@ -446,9 +451,118 @@ module.exports = function (router) {
   
     router.post(base+'full/appeal-documents/appeal-statement', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "In progress";
-      res.redirect(base+'full/appeal-documents/additional-documents');
+      if (req.session.data["appealsub-"+v+"-appealdocuments-plansdrawingsfileslist"]){
+        res.redirect(base+'full/appeal-documents/plans-drawings-list');
+      } else {
+        res.redirect(base+'full/appeal-documents/plans-drawings');
+      }
     })
   
+    router.post(base+'full/appeal-documents/plans-drawings', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings"] == "Yes"){
+        res.redirect(base+'full/appeal-documents/plans-drawings-upload');
+      } else {
+        if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
+          res.redirect(base+'full/appeal-documents/supporting-documents-list');
+        } else {
+          res.redirect(base+'full/appeal-documents/supporting-documents');
+        }
+      }
+    })
+
+    router.post(base+'full/appeal-documents/plans-drawings-upload', function (req, res) {
+      
+      var newPlansDrawings = req.session.data["appealsub-"+v+"-appealdocuments-plansdrawingsfiles"];
+      req.session.data["appealsub-"+v+"-appealdocuments-plansdrawingsfiles"] = null;
+
+      if (!req.session.data['appealsub-'+v+'-appealdocuments-plansdrawingsfileslist']) {
+        req.session.data['appealsub-'+v+'-appealdocuments-plansdrawingsfileslist'] = []
+      }
+
+      if (Array.isArray(newPlansDrawings)){
+        newPlansDrawings.forEach( item => {
+          req.session.data['appealsub-'+v+'-appealdocuments-plansdrawingsfileslist'].push(item);
+        });
+      } else {
+        req.session.data['appealsub-'+v+'-appealdocuments-plansdrawingsfileslist'].push(newPlansDrawings);
+      }
+
+      res.redirect(base+'full/appeal-documents/plans-drawings-list');
+    })
+
+    router.post(base+'full/appeal-documents/plans-drawings-list', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
+        res.redirect(base+'full/appeal-documents/supporting-documents-list');
+      } else {
+        res.redirect(base+'full/appeal-documents/supporting-documents');
+      }
+    })
+
+    
+    router.post(base+'full/appeal-documents/plans-drawings-delete', function (req, res) {
+
+      // remove item from array
+      req.session.data['appealsub-'+v+'-appealdocuments-plansdrawingsfileslist'].splice(req.session.data['deleterow'],1);
+
+      // if all plansdrawingsfileslist removed, mark task list as not started
+      if (req.session.data['appealsub-'+v+'-appealdocuments-plansdrawingsfileslist'].length === 0) {
+        res.redirect(base+'full/appeal-documents/plans-drawings-upload');
+      } else {
+        res.redirect(base+'full/appeal-documents/plans-drawings-list');
+      }
+      
+    })
+
+
+  
+    router.post(base+'full/appeal-documents/supporting-documents', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments"] == "Yes"){
+        res.redirect(base+'full/appeal-documents/supporting-documents-upload');
+      } else {
+        req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
+        res.redirect(base+'full/task-list');
+      }
+    })
+
+    router.post(base+'full/appeal-documents/supporting-documents-upload', function (req, res) {
+      
+      var newSupportingDocs = req.session.data["appealsub-"+v+"-appealdocuments-supporting"];
+      req.session.data["appealsub-"+v+"-appealdocuments-supporting"] = null;
+
+      if (!req.session.data['appealsub-'+v+'-appealdocuments-supportinglist']) {
+        req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'] = []
+      }
+
+      if (Array.isArray(newSupportingDocs)){
+        newSupportingDocs.forEach( item => {
+          req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'].push(item);
+        });
+      } else {
+        req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'].push(newSupportingDocs);
+      }
+
+      res.redirect(base+'full/appeal-documents/supporting-documents-list');
+    })
+
+    router.post(base+'full/appeal-documents/supporting-documents-list', function (req, res) {
+      req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
+      res.redirect(base+'full/task-list');
+    })
+
+    router.post(base+'full/appeal-documents/supporting-documents-delete', function (req, res) {
+
+      // remove item from array
+      req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'].splice(req.session.data['deleterow'],1);
+
+      // if all supportinglist removed, mark task list as not started
+      if (req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'].length === 0) {
+        res.redirect(base+'full/appeal-documents/supporting-documents-upload');
+      } else {
+        res.redirect(base+'full/appeal-documents/supporting-documents-list');
+      }
+      
+    })
+  /*
     router.post(base+'full/appeal-documents/additional-documents', function (req, res) {
       if (req.session.data["appealsub-"+v+"-aboutapplication-additionaldocs"] == "Yes"){
         if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
@@ -461,7 +575,7 @@ module.exports = function (router) {
         res.redirect(base+'full/task-list');
       }
     })
-  
+
     router.post(base+'full/appeal-documents/sensitive-information', function (req, res) {
       if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
         res.redirect(base+'full/appeal-documents/supporting-documents-list');
@@ -494,5 +608,6 @@ module.exports = function (router) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
       res.redirect(base+'full/task-list');
     })
+  */    
 
 }

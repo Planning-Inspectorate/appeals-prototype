@@ -169,34 +169,68 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Any additional documents to support your appeal
+            Any plans or drawings to support your appeal
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-aboutapplication-additionaldocs"] }}
+              {{ data["appealsub-"+version+"-appealdocuments-plansdrawings"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> any additional documents to support appeal</span>
+                Change<span class="govuk-visually-hidden"> any plans or drawings to support your appeal</span>
               </a>
             </dd>
           </div>
-          {% if data["appealsub-"+version+"-aboutapplication-additionaldocs"] == "Yes" %}
+          {% if data["appealsub-"+version+"-appealdocuments-plansdrawings"] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Supporting documents
+                Plans and drawings
               </dt>
               <dd class="govuk-summary-list__value">
                 <ul class="govuk-list">
-                  {% for suppdoc in data["appealsub-"+version+"-appealdocuments-supportinglist"] %}
+                  {% for docs in data["appealsub-"+version+"-appealdocuments-plansdrawingsfileslist"] %}
                     <li>
-                      <a class="govuk-link" href="javascript:preventDefault();">{{ suppdoc }}</a>
+                      <a class="govuk-link" href="javascript:preventDefault();">{{ docs }}</a>
                     </li>
                   {% endfor %}
                 </ul>
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> supporting documents for your appeal</span>
+                  Change<span class="govuk-visually-hidden"> plans and drawings</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Any documents to support your appeal
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-appealdocuments-supportingdocuments"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> any documents to support your appeal</span>
+              </a>
+            </dd>
+          </div>
+          {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments"] == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Supporting documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+                  {% for docs in data["appealsub-"+version+"-appealdocuments-supportinglist"] %}
+                    <li>
+                      <a class="govuk-link" href="javascript:preventDefault();">{{ docs }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> plans and drawings</span>
                 </a>
               </dd>
             </div>
