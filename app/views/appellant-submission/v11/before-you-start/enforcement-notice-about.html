@@ -1,7 +1,7 @@
 {% extends "layouts/appellant-submission/v11.html" %}
 
 {% block pageTitle %}
-  Have you received an enforcement notice? - Before you start - {{serviceName}} - GOV.UK
+  What was your enforcement notice about? - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,21 +33,21 @@
           name: "appealsub-"+version+"-beforeyoustart-enforcementnoticeabout",
           fieldset: {
             legend: {
-              text: "What is your enforcement notice about?",
+              text: "What was your enforcement notice about?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "The same development as my appeal",
-              text: "The same development as my appeal",
-              checked: checked("appealsub-"+version+"-beforeyoustart-enforcementnoticeabout", "The same development as my appeal")
+              value: "The same development as my planning application",
+              text: "The same development as my planning application",
+              checked: checked("appealsub-"+version+"-beforeyoustart-enforcementnoticeabout", "The same development as my planning application")
             },
             {
-              value: "A different development to my appeal",
-              text: "A different development to my appeal",
-              checked: checked("appealsub-"+version+"-beforeyoustart-enforcementnoticeabout", "A different development to my appeal")
+              value: "A different development to my planning application",
+              text: "A different development to my planning application",
+              checked: checked("appealsub-"+version+"-beforeyoustart-enforcementnoticeabout", "A different development to my planning application")
             }
           ]
         }) }}
