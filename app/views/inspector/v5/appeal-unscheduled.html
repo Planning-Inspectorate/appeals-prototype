@@ -90,9 +90,14 @@
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-one-quarter content-list__sticky">
-      <aside class="govuk-!-margin-bottom-8">
+      <aside class="govuk-!-margin-bottom-5">
         {% include "includes/inspector/"+version+"/_appeal-summary.html" %}
       </aside>
+      {{ govukButton({
+        href: "unassign-appeal",
+        text: "Unassign appeal",
+        classes: "govuk-button--secondary govuk-!-margin-top-0"
+      }) }}
     </div>
 
     <div class="govuk-grid-column-one-half">
@@ -109,17 +114,6 @@
       
       <!-- display data driven site visit details -->
       {% include "includes/inspector/"+version+"/_site-visit.html" %}
-
-      <div class="pins-card">
-        <h3 class="govuk-heading-m govuk-!-margin-bottom-0">
-          Actions
-        </h3>
-        {{ govukButton({
-          href: "unassign-appeal",
-          text: "Unassign appeal",
-          classes: "govuk-button--secondary govuk-!-margin-top-3 govuk-!-margin-bottom-0"
-        }) }}
-      </div>
 
     </div>
   </div>
