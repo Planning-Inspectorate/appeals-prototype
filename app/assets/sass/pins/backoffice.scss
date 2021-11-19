@@ -37,16 +37,7 @@
 
 
 // Dashboard cards
-/*
-.pins-card {
-  background-color: #ffffff;
-  border: 1px solid #dee0e2;
-  //border-left: 3px solid $govuk-brand-colour;
-	border-top: 4px solid $govuk-brand-colour;
-  padding: 20px;
-  margin-bottom: 30px;
-}
-*/
+
 .pins-card-number {
   font-size: 4rem;
   font-weight: bold;
@@ -80,14 +71,10 @@
 }
 
 
-@media(max-width: 768px) {
-
-  .pins-card-content {
-    padding: 20px 20px 10px 20px;
-  }
-
-  .pins-card-action {
-    padding: 20px;
+@media(min-width: 768px) {
+  
+  .pins-card #search {
+    width: calc(100% - 90px);
   }
   
 }
@@ -114,6 +101,6 @@
   flex: 1 1 50%; /* additionally, equal width */
 }
 
-.pins-card #search {
-  width: calc(100% - 100px);
+.pins-card:last-child {
+  margin-bottom: 0;
 }

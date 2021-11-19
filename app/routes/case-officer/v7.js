@@ -3,6 +3,14 @@ module.exports = function (router) {
   var v = "v7";
   var base = "/case-officer/"+v+"/";
 
+  /* SEARCH APPEALS */
+
+    router.post(base, function (req, res) {
+      res.redirect(base+'search/');
+    })
+
+  /* QUESTIONNAIRES */
+
   router.get(base+'goto-questionnaire/:ref', function (req, res, next) {
     req.session.data["caseofficer-"+v+"-currentappeal"] = req.params.ref;
     res.redirect(base+'review');
