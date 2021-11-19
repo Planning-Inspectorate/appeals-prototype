@@ -22,16 +22,6 @@
 
 {% block content %}
 
-  <!--div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-      <h1 class="govuk-heading-xl">
-        Case officer dashboard
-      </h1>
-    
-    </div>
-  </div-->
-
   <div class="govuk-grid-row pins-dashboard-row">
     <div class="govuk-grid-column-one-half pins-dashboard-column">
       <div class="pins-card">
@@ -53,33 +43,32 @@
         </form>
       </div>
     </div>
-    <div class="govuk-grid-column-one-quarter pins-dashboard-column">
+    <div class="govuk-grid-column-one-half pins-dashboard-column">
       <div class="pins-card">
-        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Awaiting statements
+        <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
+          Full appeals in progress
         </h3>
-        <p class="govuk-body pins-card-number">4</p>
-        <p class="govuk-body">
-          <a href="#" class="govuk-link">View appeals awaiting statements</a>
-        </p>
-      </div>
-    </div>
-    <div class="govuk-grid-column-one-quarter pins-dashboard-column">
-      <div class="pins-card">
-        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-          Awaiting final comments
-        </h3>
-        <p class="govuk-body pins-card-number">6</p>
-        <p class="govuk-body">
-          <a href="#" class="govuk-link">View appeals awaiting final comments</a>
-        </p>
+        <table class="govuk-table govuk-!-margin-bottom-0 pins-table--questionnaires">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header">Awaiting statements</th>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><a href="#" class="govuk-link">4 appeals</a></td>
+              <td class="govuk-table__cell"></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header">Awaiting final comments</th>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><a href="#" class="govuk-link">6 appeals</a></td>
+              <td class="govuk-table__cell"></td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
 
   {# Size modifiers: xl, l, m #}
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
