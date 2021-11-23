@@ -9,6 +9,11 @@ module.exports = function (router) {
       res.redirect(base+'search/');
     })
 
+    router.get(base+'goto-search-details/:ref', function (req, res, next) {
+      req.session.data["caseofficer-"+v+"-currentappeal"] = req.params.ref;
+      res.redirect(base+'search/details');
+    })
+
   /* QUESTIONNAIRES */
 
   router.get(base+'goto-questionnaire/:ref', function (req, res, next) {
