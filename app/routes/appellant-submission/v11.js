@@ -270,9 +270,13 @@ module.exports = function (router) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnotice"] == "No"){
       res.redirect(base+'before-you-start/claiming-costs');
     } else {
-      res.redirect(base+'before-you-start/enforcement-notice-about');
+      //res.redirect(base+'before-you-start/enforcement-notice-about');
+      res.redirect(base+'before-you-start/shutter/enforcement-notice');
     }
   })
+
+/*
+  Removed following UR: https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3074457367837814066&cot=10
 
   router.post(base+'before-you-start/enforcement-notice-about', function (req, res) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-enforcementnoticeabout"] == "A different development to my planning application"){
@@ -281,7 +285,7 @@ module.exports = function (router) {
       res.redirect(base+'before-you-start/shutter/enforcement-notice');
     }
   })
-
+*/
   router.post(base+'before-you-start/claiming-costs', function (req, res) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-claimingcosts"] == "No"){
       if (req.session.data['appealsub-'+v+'-beforeyoustart-whatareyouappealing'] == "Full planning"){
