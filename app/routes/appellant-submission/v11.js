@@ -348,7 +348,7 @@ module.exports = function (router) {
   
     router.post(base+'full/appeal-site/own-land', function (req, res) {
       if (req.session.data["appealsub-"+v+"-appealsite-ownland"] == "Yes"){
-        res.redirect(base+'full/appeal-site/site-visible');
+        res.redirect(base+'full/appeal-site/agricultural-holdings');
       } else {
         res.redirect(base+'full/appeal-site/own-some');
       }
@@ -370,7 +370,7 @@ module.exports = function (router) {
   
     // If all landowners known
     router.post(base+'full/appeal-site/knows-all/tell-landowners', function (req, res) {
-      res.redirect(base+'full/appeal-site/site-visible');
+      res.redirect(base+'full/appeal-site/agricultural-holdings');
     })
   
     // If some landowners known
@@ -381,7 +381,7 @@ module.exports = function (router) {
       res.redirect(base+'full/appeal-site/knows-some/tell-landowners');
     })
     router.post(base+'full/appeal-site/knows-some/tell-landowners', function (req, res) {
-      res.redirect(base+'full/appeal-site/site-visible');
+      res.redirect(base+'full/appeal-site/agricultural-holdings');
     })
   
     // If none of landowners known
@@ -389,8 +389,39 @@ module.exports = function (router) {
       res.redirect(base+'full/appeal-site/knows-none/advertising-appeal');
     })
     router.post(base+'full/appeal-site/knows-none/advertising-appeal', function (req, res) {
+      res.redirect(base+'full/appeal-site/agricultural-holdings');
+    })
+
+    
+    // Agricultural holdings
+    router.post(base+'full/appeal-site/agricultural-holdings', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings"] == "Yes"){
+        res.redirect(base+'full/appeal-site/agricultural-holdings-tenant');
+      } else {
+        res.redirect(base+'full/appeal-site/site-visible');
+      }
+    })
+  
+    router.post(base+'full/appeal-site/agricultural-holdings-tenant', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-tenant"] == "Yes"){
+        res.redirect(base+'full/appeal-site/agricultural-holdings-other-tenants');
+      } else {
+        res.redirect(base+'full/appeal-site/agricultural-holdings-tell-tenants');
+      }
+    })
+  
+    router.post(base+'full/appeal-site/agricultural-holdings-other-tenants', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-othertenants"] == "Yes"){
+        res.redirect(base+'full/appeal-site/agricultural-holdings-tell-tenants');
+      } else {
+        res.redirect(base+'full/appeal-site/site-visible');
+      }
+    })
+
+    router.post(base+'full/appeal-site/agricultural-holdings-tell-tenants', function (req, res) {
       res.redirect(base+'full/appeal-site/site-visible');
     })
+
   
     router.post(base+'full/appeal-site/site-visible', function (req, res) {
       res.redirect(base+'full/appeal-site/health-safety');
