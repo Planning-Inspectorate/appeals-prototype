@@ -72,26 +72,44 @@
               </a>
             </dd>
           </div>
+          
+          {% if data["appealsub-"+version+"-beforeyoustart-whatareyouappealing"] != "Householder planning" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Your appeal is not about
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <ul class="govuk-list">
+                  <li>A listed building</li>
+                  <li>Major dwellings</li>
+                  <li>Major general industry, storage or warehousing</li>
+                  <li>Major retail and services</li>
+                  <li>Major travelling and caravan pitches</li>
+                </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="appeal-about">
+                  Change<span class="govuk-visually-hidden"> what your appeal is not about</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Your appeal is not about
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list">
-                <li>A listed building</li>
-                <li>Major dwellings</li>
-                <li>Major general industry, storage or warehousing</li>
-                <li>Major retail and services</li>
-                <li>Major travelling and caravan pitches</li>
-              </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appeal-about">
-                Change<span class="govuk-visually-hidden"> what your appeal is not about</span>
-              </a>
-            </dd>
-          </div>
+          {% if data["appealsub-"+version+"-beforeyoustart-whatareyouappealing"] == "Householder planning" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Is your appeal about a listed building?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-beforeyoustart-listedbuilding"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="permission-granted-refused">
+                  Change<span class="govuk-visually-hidden"> if your appeal is about a listed building</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
           
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -192,19 +210,21 @@
             </dd>
           </div>
           
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Appeal to be decided by
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-beforeyoustart-appealprocedure"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appeal-procedure">
-                Change<span class="govuk-visually-hidden"> appeal to be decided by</span>
-              </a>
-            </dd>
-          </div>
+          {% if data["appealsub-"+version+"-route"] != "householder" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Appeal to be decided by
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-beforeyoustart-appealprocedure"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="appeal-procedure">
+                  Change<span class="govuk-visually-hidden"> appeal to be decided by</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
         </dl>
 
         <h2 class="govuk-heading-m">
