@@ -171,7 +171,7 @@ module.exports = function (router) {
 
   router.post(base+'before-you-start/listed-building', function (req, res) {
     if (req.session.data["appealsub-"+v+"-beforeyoustart-listedbuilding"] == "No"){
-      res.redirect(base+'before-you-start/enforcement-notice');
+      res.redirect(base+'before-you-start/permission-granted-refused');
     } else {
       res.redirect(base+'before-you-start/shutter/listed-building');
     }
