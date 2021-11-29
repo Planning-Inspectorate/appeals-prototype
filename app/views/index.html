@@ -380,6 +380,40 @@
                 <div class="govuk-inset-text govuk-!-margin-top-0">
 
                   {{ govukTag({
+                    classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                    text: "WIP"
+                  }) }}
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Full planning LPA questionnaire - Version 1
+                  </h3>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <!--li>
+                      <a href="/lpa-questionnaire/fullv1/email/started" title="">Start journey from 'Full planning appeal started' email</a>
+                    </li-->
+                    <li>
+                      <a href="/lpa-questionnaire/fullv1/task-list" title="">Start journey from task list</a>
+                    </li>
+                    <!--li><a href="/lpa-questionnaire/fullv1/jump/tasks-complete" class="govuk-link">Jump to Check You Answers</a></li-->
+                  </ul>
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (XXX)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <!--li><a href="https://pins-ds.atlassian.net/browse/AS-2636">AS-2636</a> - How the LPA access Questionnaire</li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2858">AS-2858</a> - Add Supplementary planning to Check Your Answers page on LPA Questionnaire</li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-2986">AS-2986</a> - Health and Safety Question to be added</li-->
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                  {{ govukTag({
                     classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                     text: "Done"
                   }) }}
