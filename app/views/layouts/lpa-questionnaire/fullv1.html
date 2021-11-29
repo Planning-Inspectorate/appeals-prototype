@@ -74,6 +74,14 @@
                   }) }}
                 </li>
               {% endif %}
+              {% if fromhas %}
+                <li class="govuk-footer__inline-list-item">
+                  {{ govukTag({
+                    classes: "govuk-tag--purple",
+                    text: fromhas
+                  }) }}
+                </li>
+              {% endif %}
               
               <li class="govuk-footer__inline-list-item">
                 <a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">
