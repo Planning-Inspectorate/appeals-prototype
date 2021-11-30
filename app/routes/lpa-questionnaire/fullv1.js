@@ -313,4 +313,44 @@ module.exports = function (router) {
     })
 
 
+  // Upload representations from interest parties
+
+    router.post(base+'representations/which-parties', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Site owners")){
+        res.redirect(base+'representations/site-owners');
+      } else if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Statutory consultees")){
+        res.redirect(base+'representations/statutory-consultees');
+      } else if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Other parties")){
+        res.redirect(base+'representations/other');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
+        res.redirect(base+'task-list');
+      }
+    })
+
+    router.post(base+'representations/site-owners', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Statutory consultees")){
+        res.redirect(base+'representations/statutory-consultees');
+      } else if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Other parties")){
+        res.redirect(base+'representations/other');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
+        res.redirect(base+'task-list');
+      }
+    })
+
+    router.post(base+'representations/statutory-consultees', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Other parties")){
+        res.redirect(base+'representations/other');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
+        res.redirect(base+'task-list');
+      }
+    })
+
+    router.post(base+'representations/other', function (req, res) {
+      req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
+      res.redirect(base+'task-list');
+    })
+
 } 
