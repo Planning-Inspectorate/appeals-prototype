@@ -1,0 +1,90 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv1.html" %}
+
+{% block pageTitle %}
+  Tree preservation order details - Tell us about the proposed development - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/lpa-questionnaire/"+version+"/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the proposed development
+        </span>
+        <h1 class="govuk-heading-xl">
+          Tree preservation order details
+        </h1>
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-proposeddevelopment-tpo-siteplan">
+            Upload site plan showing the extent of the order
+          </label>
+          <p class="govuk-body">
+            Drag and drop a file or select "choose files"
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-proposeddevelopment-tpo-siteplan" name="lpaq-{{version}}-proposeddevelopment-tpo-siteplan" type="file">
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }} 
+
+        {{ govukTextarea({
+          id: "lpaq-"+version+"-proposeddevelopment-tpo-details",
+          name: "lpaq-"+version+"-proposeddevelopment-tpo-details",
+          label: {
+            text: "Additional details",
+            classes: "govuk-label--m"
+          },
+          value: data["lpaq-"+version+"-proposeddevelopment-tpo-details"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}

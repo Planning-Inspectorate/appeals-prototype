@@ -1,0 +1,84 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv1.html" %}
+
+{% block pageTitle %}
+  Site plan - Tell us about the proposed development - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/lpa-questionnaire/"+version+"/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the proposed development
+        </span>
+        <h1 class="govuk-heading-xl">
+          Site plan
+        </h1>
+
+        <!--p class="govuk-body">
+          Upload a plan that shows the location and boundary of the appeal site. 
+        </p-->
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-proposeddevelopment-siteplan">
+            Upload file
+          </label>
+          <p class="govuk-body">
+            Drag and drop a file or select "choose files"
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-proposeddevelopment-siteplan" name="lpaq-{{version}}-proposeddevelopment-siteplan" type="file">
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }} 
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}

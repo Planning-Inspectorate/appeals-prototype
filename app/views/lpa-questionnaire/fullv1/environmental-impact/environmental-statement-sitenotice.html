@@ -1,0 +1,84 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv1.html" %}
+
+{% block pageTitle %}
+  Site notice and advertisement for the environmental impact assessment development - Tell us about the development's environmental impact - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/lpa-questionnaire/"+version+"/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the development's environmental impact
+        </span>
+        <h1 class="govuk-heading-xl">
+          Site notice and advertisement for the environmental impact assessment development
+        </h1>
+
+        <p class="govuk-body">
+          This is different to the site notice or advertisement required for the application.
+        </p>
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-environmentalimpact-environmentalstatement-sitenotice">
+            Upload files
+          </label>
+          <p class="govuk-body">
+            Drag and drop files or select "choose files"
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-environmentalimpact-environmentalstatement-sitenotice" name="lpaq-{{version}}-environmentalimpact-environmentalstatement-sitenotice" type="file" multiple>
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }} 
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}
