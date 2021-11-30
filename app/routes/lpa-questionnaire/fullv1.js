@@ -2,6 +2,23 @@ module.exports = function (router) {
 
   var v = "fullv1";
   var base = "/lpa-questionnaire/"+v+"/";
+    
+  var months = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May',
+    'Jun', 'Jul', 'Aug', 'Sep',
+    'Oct', 'Nov', 'Dec'
+    ];
+  function monthNumToName(monthnum) {
+    return months[monthnum - 1] || '';
+  }
+  var fullmonths = [
+    'January', 'February', 'March', 'April', 'May',
+    'June', 'July', 'August', 'September',
+    'October', 'November', 'December'
+    ];
+  function monthNumToFullName(monthnum) {
+    return fullmonths[monthnum - 1] || '';
+  }
 
   // Security
   
@@ -352,5 +369,104 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
       res.redirect(base+'task-list');
     })
+
+
+  // Upload your local plans and policies
+
+    router.post(base+'local-plans-policies/statutory-development', function (req, res) {
+      res.redirect(base+'local-plans-policies/neighbourhood-plan');
+    })
+
+    router.post(base+'local-plans-policies/neighbourhood-plan', function (req, res) {
+      res.redirect(base+'local-plans-policies/other');
+    })
+
+    router.post(base+'local-plans-policies/other', function (req, res) {
+      res.redirect(base+'local-plans-policies/supplementary');
+    })
+
+    router.post(base+'local-plans-policies/supplementary', function (req, res) {
+
+      // collate all variables from form
+      var newSupplementary = {
+        'name': req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-name'],
+        'file': req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-file'],
+        'adopted': req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted'],
+        'adopted_day': req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-date-day'],
+        'adopted_month': monthNumToFullName(req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-date-month']),
+        'adopted_year': req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-date-year'],
+        'adopted_stage': req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-stage']
+      }
+    
+      // delete form data so revisiting the upload page doesn't show stored info from last upload
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-name'] = null
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-file'] = null
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted'] = null
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-date-day'] = null
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-date-month'] = null
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-date-year'] = null
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-adopted-stage'] = null
+
+
+      // if array doesn't exist, create it
+      if (!req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-files']) {
+        req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-files'] = []
+      }
+
+      // Add uploaded file info to array
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-files'].push(newSupplementary)
+
+      // redirect to list of uploaded files
+      res.redirect(base+'local-plans-policies/supplementary-list');
+      
+    })
+
+    router.post(base+'local-plans-policies/supplementary-delete', function (req, res) {
+  
+      // remove item from array
+      req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-files'].splice(req.session.data['deleterow'],1);
+  
+      // if all files removed, mark task list as not started
+      if (req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-files'].length === 0) {
+        req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-completed'] = "false"
+      } else {
+        req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-completed'] = "true"
+      }
+      
+      // redirect the user to the relevant page
+      res.redirect(base+'local-plans-policies/supplementary-redirect');
+      
+    })
+
+    router.get(base+'local-plans-policies/supplementary-redirect', function (req, res) {
+      // take the user to the right screen based on previous actions (if any)
+      if (!req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-files'] || req.session.data['lpaq-'+v+'-localplanspolicies-supplementary-files'].length === 0 ) {
+        // if no files uploaded yet, go to upload first file
+        res.redirect(base+'local-plans-policies/supplementary');
+      } else {
+        // show files that have been uploaded
+        res.redirect(base+'local-plans-policies/supplementary-list');
+      }
+    })
+
+    router.post(base+'local-plans-policies/supplementary-list', function (req, res) {
+      res.redirect(base+'local-plans-policies/cil');
+    })
+
+    router.post(base+'local-plans-policies/cil', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-localplanspolicies-cil'] == "Yes"){
+        res.redirect(base+'local-plans-policies/cil-details');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-localplanspolicies"] = "Complete";
+        res.redirect(base+'task-list');
+      }
+    })
+
+    router.post(base+'local-plans-policies/cil-details', function (req, res) {
+      req.session.data["lpaq-"+v+"-taskliststatus-localplanspolicies"] = "Complete";
+      res.redirect(base+'task-list');
+    })
+    
+
 
 } 

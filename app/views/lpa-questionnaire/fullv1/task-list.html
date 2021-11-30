@@ -152,7 +152,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="local-plans-policies/xxx" class="govuk-link">
+                <a href="local-plans-policies/statutory-development" class="govuk-link">
                   Upload relevant local plans and policies
                 </a>
               </span>
@@ -171,9 +171,9 @@
                   Tell us about site access
                 </a>
               </span>
-              {% if data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "Complete" %}
+              {% if data["lpaq-"+version+"-taskliststatus-siteaccess"] == "Complete" %}
                 <strong class="app-task-list__tag govuk-tag">Complete</strong>
-              {% elseif data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "In progress" %}
+              {% elseif data["lpaq-"+version+"-taskliststatus-siteaccess"] == "In progress" %}
                 <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
               {% else %}
                 <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
