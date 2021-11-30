@@ -33,13 +33,13 @@
         </h1>
         
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement">
+          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-proposeddevelopment-tpo-siteplan">
             Upload site plan showing the extent of the order
           </label>
           <p class="govuk-body">
             Drag and drop a file or select "choose files"
           <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement" name="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement" type="file">
+          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-proposeddevelopment-tpo-siteplan" name="lpaq-{{version}}-proposeddevelopment-tpo-siteplan" type="file">
         </div>
 
         {{ govukInsetText({
@@ -66,13 +66,13 @@
         }) }} 
 
         {{ govukTextarea({
-          id: "lpaq-"+version+"-proposeddevelopment-rightofway-details",
-          name: "lpaq-"+version+"-proposeddevelopment-rightofway-details",
+          id: "lpaq-"+version+"-proposeddevelopment-tpo-details",
+          name: "lpaq-"+version+"-proposeddevelopment-tpo-details",
           label: {
             text: "Additional details",
             classes: "govuk-label--m"
           },
-          value: data["lpaq-"+version+"-proposeddevelopment-rightofway-details"]
+          value: data["lpaq-"+version+"-proposeddevelopment-tpo-details"]
         }) }}
 
         {{ govukButton({

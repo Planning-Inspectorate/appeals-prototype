@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv1.html" %}
 
 {% block pageTitle %}
-  Is the applicable threshold or criteria in column 2 met or exceeded? - Tell us about the development's environmental impact - {{serviceName}} - GOV.UK
+  Have you made all notifications or consultations under any Act, Order or Departmental Circular, necessary before granting permission? - Tell us about the development's environmental impact - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,11 +30,11 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-environmentalimpact-scheduletwo-criteria",
-          name: "lpaq-"+version+"-environmentalimpact-scheduletwo-criteria",
+          idPrefix: "lpaq-"+version+"-environmentalimpact-notificationsconsultations",
+          name: "lpaq-"+version+"-environmentalimpact-notificationsconsultations",
           fieldset: {
             legend: {
-              text: "Is the applicable threshold or criteria in column 2 met or exceeded?",
+              text: "Have you made all notifications or consultations under any Act, Order or Departmental Circular, necessary before granting permission?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -43,12 +43,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("lpaq-"+version+"-environmentalimpact-scheduletwo-criteria", "Yes")
+              checked: checked("lpaq-"+version+"-environmentalimpact-notificationsconsultations", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("lpaq-"+version+"-environmentalimpact-scheduletwo-criteria", "No")
+              checked: checked("lpaq-"+version+"-environmentalimpact-notificationsconsultations", "No")
             }
           ]
         }) }}
