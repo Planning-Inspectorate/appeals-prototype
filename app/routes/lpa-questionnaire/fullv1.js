@@ -20,6 +20,88 @@ module.exports = function (router) {
     return fullmonths[monthnum - 1] || '';
   }
 
+  // Skip link to simplest completed questionnaire
+    router.get(base+'skip/simplest-cya', function (req, res) {
+   
+      req.session.data["lpaq-fullv1-proposeddevelopment-siteplan"] = "site_plan.pdf";
+      req.session.data["lpaq-fullv1-taskliststatus-proposeddevelopment"] = "Complete";
+      req.session.data["lpaq-fullv1-proposeddevelopment-listedbuilding"] = "No";
+      req.session.data["lpaq-fullv1-proposeddevelopment-traveller"] = "No";
+      req.session.data["lpaq-fullv1-proposeddevelopment-rightofway"] = "No";
+      req.session.data["lpaq-fullv1-proposeddevelopment-tpo"] = "No";
+      req.session.data["lpaq-fullv1-surroundingarea-appealsimmediatearea"] = "No";
+      req.session.data["lpaq-fullv1-taskliststatus-surroundingarea"] = "Complete";
+      req.session.data["lpaq-fullv1-surroundingarea-greenbelt"] = "No";
+      req.session.data["lpaq-fullv1-surroundingarea-conservationarea"] = "No, it is not in or near a conservation area";
+      req.session.data["lpaq-fullv1-surroundingarea-aonb"] = "No";
+      req.session.data["lpaq-fullv1-surroundingarea-sssi"] = "No";
+      req.session.data["lpaq-fullv1-surroundingarea-affectslistedbuilding"] = "No";
+      req.session.data["lpaq-fullv1-surroundingarea-ancientmonument"] = "No";
+      req.session.data["lpaq-fullv1-surroundingarea-protectedspecies"] = "No";
+      req.session.data["lpaq-fullv1-environmentalimpact-schedule"] = "It is neither a schedule 1 or schedule 2 development";
+      req.session.data["lpaq-fullv1-environmentalimpact-screeningopinion"] = "No";
+      req.session.data["lpaq-fullv1-environmentalimpact-environmentalstatement"] = "No";
+      req.session.data["lpaq-fullv1-taskliststatus-environmentalimpact"] = "Complete";
+      req.session.data["lpaq-fullv1-yourdetails-planningofficersreport"] = "planning_officers_report.pdf";
+      req.session.data["lpaq-fullv1-yourdetails-decisionnotice"] = "decision_letter.pdf";
+      req.session.data["lpaq-fullv1-yourdetails-plansdocumentsdrawings"] = "plans_drawings_documents.pdf";
+      req.session.data["lpaq-fullv1-yourdetails-extraconditions-details"] = "";
+      req.session.data["lpaq-fullv1-yourdetails-extraconditions"] = "No";
+      req.session.data["lpaq-fullv1-taskliststatus-yourdecision"] = "Complete";
+      req.session.data["lpaq-fullv1-interestedparties-publiciseapplication"] = "No";
+      req.session.data["lpaq-fullv1-interestedparties-tellapplication"] = "No";
+      req.session.data["lpaq-fullv1-interestedparties-toldappeal"] = "No";
+      req.session.data["lpaq-fullv1-taskliststatus-interestedparties"] = "Complete";
+      req.session.data["lpaq-fullv1-representations-whichparties"] = [
+        "We did not receive representation from any parties"
+      ],
+      req.session.data["lpaq-fullv1-taskliststatus-representations"] = "Complete";
+      req.session.data["lpaq-fullv1-localplanspolicies-statutorydevelopment"] = "statutory_development_plan.pdf";
+      req.session.data["lpaq-fullv1-localplanspolicies-neighbourhoodplan"] = "No";
+      req.session.data["lpaq-fullv1-localplanspolicies-other"] = "other_relevant.pdf";
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary"] = "supplementary_planning_2.pdf";
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-name"] = null;
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-adopted"] = null;
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-adopted-date-day"] = null;
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-adopted-date-month"] = null;
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-adopted-date-year"] = null;
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-adopted-stage"] = null;
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-file"] = null;
+      req.session.data["lpaq-fullv1-localplanspolicies-supplementary-files"] = [
+        {
+          "name": "Supplementary planning document one",
+          "adopted": "yes",
+          "adopted_day": "01",
+          "adopted_month": "February",
+          "adopted_year": "2003",
+          "adopted_stage": ""
+        },
+        {
+          "name": "Supplementary planning document two",
+          "file": null,
+          "adopted": "no",
+          "adopted_day": "",
+          "adopted_month": "",
+          "adopted_year": "",
+          "adopted_stage": "Final draft"
+        }
+      ],
+      req.session.data["lpaq-fullv1-optionalsupportingdocs-supplementary"] = "uploaded";
+      req.session.data["lpaq-fullv1-localplanspolicies-cil"] = "No";
+      req.session.data["lpaq-fullv1-taskliststatus-localplanspolicies"] = "Complete";
+      req.session.data["lpaq-fullv1-siteaccess-publicland"] = "Yes";
+      req.session.data["lpaq-fullv1-siteaccess-entersite-details"] = "";
+      req.session.data["lpaq-fullv1-siteaccess-entersite"] = "No";
+      req.session.data["lpaq-fullv1-siteaccess-healthsafety-details"] = "";
+      req.session.data["lpaq-fullv1-siteaccess-healthsafety"] = "No";
+      req.session.data["lpaq-fullv1-taskliststatus-siteaccess"] = "Complete";
+      req.session.data["lpaq-fullv1-proceduretype-decidedby"] = "Yes, I agree";
+      req.session.data["lpaq-fullv1-taskliststatus-proceduretype"] = "Complete"
+
+      res.redirect(base+'task-list'); 
+
+    })
+
   // Security
   
     /*router.post(base+'security/email', function (req, res) {
@@ -482,7 +564,22 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-taskliststatus-siteaccess"] = "Complete";
       res.redirect(base+'task-list');
     })
+
+
+  // Review the procedure type
+
+    router.post(base+'procedure-type/decided-by', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-proceduretype-decidedby'] == "No, I recommend an inquiry"){
+        res.redirect(base+'procedure-type/inquiry-witnesses');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
+        res.redirect(base+'task-list');
+      }
+    })
+
+    router.post(base+'procedure-type/inquiry-witnesses', function (req, res) {
+      req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
+      res.redirect(base+'task-list');
+    })
     
-
-
 } 

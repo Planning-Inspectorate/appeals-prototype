@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv1.html" %}
 
 {% block pageTitle %}
-  Sensitive area details - Tell us about the development's environmental impact - {{serviceName}} - GOV.UK
+  How many inquiry witnesses do you plan to call? - Review the procedure type - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,19 +26,21 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Tell us about the development's environmental impact
+          Review the procedure type
         </span>
 
-        {{ govukTextarea({
-          id: "lpaq-"+version+"-environmentalimpact-scheduletwo-sensitive-details",
-          name: "lpaq-"+version+"-environmentalimpact-scheduletwo-sensitive-details",
+        {{ govukInput({
+          id: "lpaq-"+version+"-proceduretype-inquirywitnesses",
+          name: "lpaq-"+version+"-proceduretype-inquirywitnesses",
           label: {
+            text: "How many inquiry witnesses do you plan to call?",
             classes: "govuk-label--xl govuk-!-margin-bottom-7",
-            text: "Sensitive area details"
+            isPageHeading: true
           },
-          value: data["lpaq-"+version+"-environmentalimpact-scheduletwo-sensitive-details"]
+          classes: "govuk-input--width-3",
+          value: data["lpaq-"+version+"-proceduretype-inquirywitnesses"]
         }) }}
-
+        
         {{ govukButton({
           text: "Continue"
         }) }}
