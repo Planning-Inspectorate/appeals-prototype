@@ -466,6 +466,22 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-taskliststatus-localplanspolicies"] = "Complete";
       res.redirect(base+'task-list');
     })
+
+
+  // Tell us about access to the appeal site
+
+    router.post(base+'site-access/public-land', function (req, res) {
+      res.redirect(base+'site-access/enter-site');
+    })
+
+    router.post(base+'site-access/enter-site', function (req, res) {
+      res.redirect(base+'site-access/health-safety');
+    })
+
+    router.post(base+'site-access/health-safety', function (req, res) {
+      req.session.data["lpaq-"+v+"-taskliststatus-siteaccess"] = "Complete";
+      res.redirect(base+'task-list');
+    })
     
 
 

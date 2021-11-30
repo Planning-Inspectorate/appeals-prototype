@@ -1,0 +1,80 @@
+{% set pageref = "" %}
+{% set fromhas = "From HAS" %}
+{% extends "layouts/lpa-questionnaire/fullv1.html" %}
+
+{% block pageTitle %}
+  Will the Inspector need to enter the appeal site? - Tell us about access to the appeal site - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/lpa-questionnaire/"+version+"/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about access to the appeal site
+        </span>
+
+        {% set whyHtml %}
+          {{ govukTextarea({
+            id: "lpaq-"+version+"-siteaccess-entersite-details",
+            name: "lpaq-"+version+"-siteaccess-entersite-details",
+            label: {
+              text: "Tell us why the Inspector will need to enter the appeal site"
+            },
+            value: data["lpaq-"+version+"-siteaccess-entersite-details"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "lpaq-"+version+"-siteaccess-entersite",
+          name: "lpaq-"+version+"-siteaccess-entersite",
+          fieldset: {
+            legend: {
+              text: "Will the Inspector need to enter the appeal site?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaq-"+version+"-siteaccess-entersite", "Yes"),
+              conditional: {
+                html: whyHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaq-"+version+"-siteaccess-entersite", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
