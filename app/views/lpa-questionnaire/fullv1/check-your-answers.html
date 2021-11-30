@@ -20,11 +20,17 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">
         Check your answers
       </h1>
+    
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
       <p class="govuk-body">
         Before you submit your evidence, take a moment to make sure you're happy with the answers you've provided.
@@ -1008,6 +1014,9 @@
         text: "Accept and send"
       }) }}
 
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
     </div>
   </div>
 {% endblock %}

@@ -233,9 +233,13 @@ module.exports = function (router) {
 
   // Security
   
-    /*router.post(base+'security/email', function (req, res) {
+    router.post(base+'security/email', function (req, res) {
       res.redirect(base+'security/sent');
-    })*/
+    })
+  
+    router.post(base+'security/email-link-expired', function (req, res) {
+      res.redirect(base+'security/sent');
+    })
 
 
   // Tell us about the proposed development
