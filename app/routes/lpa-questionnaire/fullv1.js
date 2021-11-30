@@ -111,7 +111,7 @@ module.exports = function (router) {
       if (req.session.data['lpaq-'+v+'-surroundingarea-sssi'] == "Yes"){
         res.redirect(base+'surrounding-area/sssi-designation');
       } else {
-        res.redirect(base+'surrounding-area/affect-listed-building');
+        res.redirect(base+'surrounding-area/affects-listed-building');
       }
     })
 
@@ -173,4 +173,81 @@ module.exports = function (router) {
       res.redirect(base+'task-list'); 
     })
 
+
+  // Tell us about the environmental impact
+
+    router.post(base+'environmental-impact/schedule', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-environmentalimpact-schedule'] == "Schedule 1"){
+        res.redirect(base+'environmental-impact/schedule-one');
+      } else if (req.session.data['lpaq-'+v+'-environmentalimpact-schedule'] == "Schedule 2"){
+        res.redirect(base+'environmental-impact/schedule-two');
+      } else {
+        res.redirect(base+'environmental-impact/screening-opinion');
+      }
+    })
+
+    router.post(base+'environmental-impact/schedule-one', function (req, res) {
+      res.redirect(base+'environmental-impact/screening-opinion');
+    })
+
+    router.post(base+'environmental-impact/schedule-two', function (req, res) {
+      res.redirect(base+'environmental-impact/schedule-two-sensitive');
+    })
+
+    router.post(base+'environmental-impact/schedule-two-sensitive', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-environmentalimpact-scheduletwo-sensitive'] == "Yes"){
+        res.redirect(base+'environmental-impact/schedule-two-sensitive-details');
+      } else {
+        res.redirect(base+'environmental-impact/schedule-two-criteria');
+      }
+    })
+
+    router.post(base+'environmental-impact/schedule-two-sensitive-details', function (req, res) {
+      res.redirect(base+'environmental-impact/schedule-two-criteria');
+    })
+
+    router.post(base+'environmental-impact/schedule-two-criteria', function (req, res) {
+      res.redirect(base+'environmental-impact/screening-opinion');
+    })
+
+    router.post(base+'environmental-impact/screening-opinion', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-environmentalimpact-screeningopinion'] == "Yes"){
+        res.redirect(base+'environmental-impact/screening-opinion-details');
+      } else {
+        res.redirect(base+'environmental-impact/environmental-statement');
+      }
+    })
+
+    router.post(base+'environmental-impact/screening-opinion-details', function (req, res) {
+      res.redirect(base+'environmental-impact/environmental-statement');
+    })
+
+    router.post(base+'environmental-impact/environmental-statement', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-environmentalimpact-environmentalstatement'] == "Yes"){
+        res.redirect(base+'environmental-impact/environmental-statement-details');
+      } else {
+        //res.redirect(base+'environmental-impact/notified-consulted');
+      req.session.data["lpaq-"+v+"-taskliststatus-environmentalimpact"] = "Complete";
+      res.redirect(base+'task-list');
+      }
+    })
+
+    router.post(base+'environmental-impact/environmental-statement-details', function (req, res) {
+      if (
+        req.session.data['lpaq-'+v+'-environmentalimpact-schedule'] == "Schedule 1" ||
+        req.session.data['lpaq-'+v+'-environmentalimpact-schedule'] == "Schedule 2"
+      ){
+        res.redirect(base+'environmental-impact/environmental-statement-sitenotice');
+      } else {
+        //res.redirect(base+'environmental-impact/notified-consulted');
+      req.session.data["lpaq-"+v+"-taskliststatus-environmentalimpact"] = "Complete";
+      res.redirect(base+'task-list');
+      }
+    })
+
+    router.post(base+'environmental-impact/environmental-statement-sitenotice', function (req, res) {
+      //res.redirect(base+'environmental-impact/notified-consulted');
+      req.session.data["lpaq-"+v+"-taskliststatus-environmentalimpact"] = "Complete";
+      res.redirect(base+'task-list');
+    })
 }

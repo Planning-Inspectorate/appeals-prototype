@@ -1,0 +1,122 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv1.html" %}
+
+{% block pageTitle %}
+  Schedule 2 development category - Tell us about the development's environmental impact - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/lpa-questionnaire/"+version+"/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the development's environmental impact
+        </span>
+
+        {{ govukSelect({
+          id: "lpaq-"+version+"-environmentalimpact-scheduletwo",
+          name: "lpaq-"+version+"-environmentalimpact-scheduletwo",
+          label: {
+            text: "Schedule 2 development category",
+            isPageHeading: true,
+            classes: "govuk-label--xl"
+          },
+          items: [
+            {
+              value: "",
+              text: "Select a category"
+            },
+            {
+              value: "1. Agriculture and aquaculture",
+              text: "1. Agriculture and aquaculture",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '1. Agriculture and aquaculture')
+            },
+            {
+              value: "2. Extractive industry",
+              text: "2. Extractive industry",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '2. Extractive industry')
+            },
+            {
+              value: "3. Energy industry",
+              text: "3. Energy industry",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '3. Energy industry')
+            },
+            {
+              value: "4. Production and processing of metals",
+              text: "4. Production and processing of metals",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '4. Production and processing of metals')
+            },
+            {
+              value: "5. Mineral industry",
+              text: "5. Mineral industry",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '5. Mineral industry')
+            },
+            {
+              value: "6. Chemical industry (unless included in Schedule 1)",
+              text: "6. Chemical industry (unless included in Schedule 1)",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '6. Chemical industry (unless included in Schedule 1)')
+            },
+            {
+              value: "7. Food industry",
+              text: "7. Food industry",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '7. Food industry')
+            },
+            {
+              value: "8. Textile, leather, wood and paper industries",
+              text: "8. Textile, leather, wood and paper industries",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '8. Textile, leather, wood and paper industries')
+            },
+            {
+              value: "9. Rubber industry",
+              text: "9. Rubber industry",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '9. Rubber industry')
+            },
+            {
+              value: "10. Infrastructure projects",
+              text: "10. Infrastructure projects",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '10. Infrastructure projects')
+            },
+            {
+              value: "11. Other projects",
+              text: "11. Other projects",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '11. Other projects')
+            },
+            {
+              value: "12. Tourism and leisure",
+              text: "12. Tourism and leisure",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '12. Tourism and leisure')
+            },
+            {
+              value: "13. Changes and extensions",
+              text: "13. Changes and extensions",
+              selected: (data["lpaq-"+version+"-environmentalimpact-scheduletwo"] == '13. Changes and extensions')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
