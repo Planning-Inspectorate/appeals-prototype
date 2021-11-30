@@ -41,6 +41,7 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-environmentalimpact-schedule"] = "It is neither a schedule 1 or schedule 2 development";
       req.session.data["lpaq-"+v+"-environmentalimpact-screeningopinion"] = "No";
       req.session.data["lpaq-"+v+"-environmentalimpact-environmentalstatement"] = "No";
+      req.session.data["lpaq-"+v+"-environmentalimpact-notificationsconsultations"] = "Yes";
       req.session.data["lpaq-"+v+"-taskliststatus-environmentalimpact"] = "Complete";
       req.session.data["lpaq-"+v+"-yourdetails-planningofficersreport"] = "planning_officers_report.pdf";
       req.session.data["lpaq-"+v+"-yourdetails-decisionnotice"] = "decision_letter.pdf";
@@ -140,6 +141,7 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-surroundingarea-ancientmonument"] = "Yes";
       req.session.data["lpaq-"+v+"-surroundingarea-ancientmonument-consultation-upload"] = "ancient_monument_consultation.pdf";
       req.session.data["lpaq-"+v+"-surroundingarea-protectedspecies"] = "Yes";
+      req.session.data["lpaq-"+v+"-surroundingarea-protectedspecies-consultation"] = "protected_species_consultation.pdf"
       req.session.data["lpaq-"+v+"-environmentalimpact-schedule"] = "Schedule 2";
       req.session.data["lpaq-"+v+"-environmentalimpact-scheduletwo"] = "3. Energy industry";
       req.session.data["lpaq-"+v+"-environmentalimpact-scheduletwo-sensitive"] = "Yes";
@@ -150,7 +152,11 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-environmentalimpact-screeningopinion-eia"] = "Yes";
       req.session.data["lpaq-"+v+"-environmentalimpact-environmentalstatement"] = "Yes";
       req.session.data["lpaq-"+v+"-environmentalimpact-environmentalstatement-details"] = "environmental_statement.pdf";
+
+      req.session.data["lpaq-"+v+"-environmentalimpact-environmentalstatement-sitenotice"] = "environmental_site_notice.pdf";
+      req.session.data["lpaq-"+v+"-environmentalimpact-notificationsconsultations"] = "No";
       req.session.data["lpaq-"+v+"-taskliststatus-environmentalimpact"] = "Complete";
+      
       req.session.data["lpaq-"+v+"-yourdetails-planningofficersreport"] = "planning_officers_report.pdf";
       req.session.data["lpaq-"+v+"-yourdetails-decisionnotice"] = "decision_notice.pdf";
       req.session.data["lpaq-"+v+"-yourdetails-plansdocumentsdrawings"] = "plans_drawings_documents.pdf";
@@ -176,7 +182,6 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-localplanspolicies-statutorydevelopment"] = "statutory_development_plan.pdf";
       req.session.data["lpaq-"+v+"-localplanspolicies-neighbourhoodplan"] = "Yes";
       req.session.data["lpaq-"+v+"-localplanspolicies-other"] = "other_relevant.pdf";
-      req.session.data["lpaq-"+v+"-localplanspolicies-supplementary"] = "supplementary_planning_3.pdf";
       req.session.data["lpaq-"+v+"-localplanspolicies-supplementary-name"] = null,
       req.session.data["lpaq-"+v+"-localplanspolicies-supplementary-adopted"] = null,
       req.session.data["lpaq-"+v+"-localplanspolicies-supplementary-adopted-date-day"] = null,
@@ -186,7 +191,7 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-localplanspolicies-supplementary-file"] = null,
       req.session.data["lpaq-"+v+"-localplanspolicies-supplementary-files"] = [
         {
-          "name": "Supplementary planning document one",
+          "name": "Supplementary planning one",
           "adopted": "yes",
           "adopted_day": "01",
           "adopted_month": "February",
@@ -194,7 +199,7 @@ module.exports = function (router) {
           "adopted_stage": ""
         },
         {
-          "name": "Supplementary planning document two",
+          "name": "Supplementary planning two",
           "file": null,
           "adopted": "no",
           "adopted_day": "",
