@@ -250,4 +250,24 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-taskliststatus-environmentalimpact"] = "Complete";
       res.redirect(base+'task-list');
     })
+
+
+  // Provide details about your decision
+
+    router.post(base+'your-decision/planning-officers-report', function (req, res) {
+      res.redirect(base+'your-decision/decision-notice');
+    })
+
+    router.post(base+'your-decision/decision-notice', function (req, res) {
+      res.redirect(base+'your-decision/plans-documents-drawings');
+    })
+
+    router.post(base+'your-decision/plans-documents-drawings', function (req, res) {
+      res.redirect(base+'your-decision/extra-conditions');
+    })
+
+    router.post(base+'your-decision/extra-conditions', function (req, res) {
+      req.session.data["lpaq-"+v+"-taskliststatus-yourdecision"] = "Complete";
+      res.redirect(base+'task-list');
+    })
 }
