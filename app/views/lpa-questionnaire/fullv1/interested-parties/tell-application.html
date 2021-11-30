@@ -1,0 +1,61 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv1.html" %}
+
+{% block pageTitle %}
+  Did you tell any interested parties about the planning application? - Tell us how you've informed interested parties - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back to task list",
+    href: "/lpa-questionnaire/"+version+"/task-list"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us how you've informed interested parties
+        </span>
+        <h1 class="govuk-heading-xl">
+          Did you tell any interested parties about the planning application?
+        </h1>
+
+        {{ govukRadios({
+          idPrefix: "lpaq-"+version+"-interestedparties-tellapplication",
+          name: "lpaq-"+version+"-interestedparties-tellapplication",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaq-"+version+"-interestedparties-tellapplication", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaq-"+version+"-interestedparties-tellapplication", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
