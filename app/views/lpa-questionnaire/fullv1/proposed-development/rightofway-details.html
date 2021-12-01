@@ -75,9 +75,12 @@
           value: data["lpaq-"+version+"-proposeddevelopment-rightofway-details"]
         }) }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="tpo">Skip this question</a>
+        </div>
 
       </form>
 
