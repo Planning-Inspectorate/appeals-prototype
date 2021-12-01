@@ -37,28 +37,25 @@
           Tell us about any health and safety issues on the appeal site that an Inspector would need to know to carry out a site visit.
         </p>
 
-        {% set detailsHtml %}
-          <p class="govuk-body">
-            Examples of health and safety issues could include:
-          <p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>animals (for example pets or livestock) at the site</li>
-            <li>the site is in an area likely to have poor mobile phone signal</li>
-            <li>the site isn't accessible for people with limited mobility</li>
-            <li>there is overgrown vegetation that could restrict access to the site</li>
-            <li>the Inspector will need to wear personal protective equipment (PPE)</li>
-            <li>there are building works or other operations taking place on the site</li>
-            <li>there are site-specific safety arrangements in place</li>
-            <li>there are areas on the site that require specialist equipment or training for access, for example heights or confined spaces</li>
-            <li>it will be necessary to view the site from a height, for example a roof or balcony</li>
-            <li>there is risk of exposure to chemicals, asbestos or radiation</li>
-            <li>there are unmarked changes in level or missing fittings</li>
-          </ul>
-        {% endset %}
-
         {{ govukDetails({
           summaryText: "List of health and safety concerns",
-          html: detailsHtml
+          html: "
+            <p class='govuk-body'>
+              Tell us about:
+            </p>
+            <ul class='govuk-list govuk-list--bullet'>
+              <li>animals at the site, for example pets or livestock</li>
+              <li>poor mobile signal at the site</li>
+              <li>access issues for people with limited mobility</li>
+              <li>overgrown vegetation that could restrict access to the site</li>
+              <li>building works or other operations taking place on the site</li>
+              <li>site-specific safety arrangements that are in place</li>
+              <li>areas of the site that require specialist equipment or training for access, for example heights or confined spaces</li>
+              <li>requirements to view the site from a height, for example from a roof or balcony</li>
+              <li>risk of exposure to chemicals, asbestos or radiation</li>
+              <li>unmarked changes in level or missing fittings</li>
+            </ul>
+          "
         }) }}
 
         {% set whyHtml %}

@@ -495,12 +495,15 @@ module.exports = function (router) {
   // Provide details about your decision
 
     router.post(base+'your-decision/planning-officers-report', function (req, res) {
-      res.redirect(base+'your-decision/decision-notice');
+      //res.redirect(base+'your-decision/decision-notice');
+      res.redirect(base+'your-decision/plans-documents-drawings');
     })
-
+    
+    /* - Removed for UR - not covering non-determination
     router.post(base+'your-decision/decision-notice', function (req, res) {
       res.redirect(base+'your-decision/plans-documents-drawings');
     })
+    */
 
     router.post(base+'your-decision/plans-documents-drawings', function (req, res) {
       res.redirect(base+'your-decision/extra-conditions');

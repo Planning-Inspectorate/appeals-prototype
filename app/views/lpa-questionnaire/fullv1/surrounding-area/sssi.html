@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv1.html" %}
 
 {% block pageTitle %}
-  Is the appeal site in, near or likely to affect a site of special scientific interest or internationally designated site? - Tell us about the surrounding area - {{serviceName}} - GOV.UK
+  Is the appeal site in, near or likely to affect a designated site? - Tell us about the surrounding area - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,10 +34,13 @@
           name: "lpaq-"+version+"-surroundingarea-sssi",
           fieldset: {
             legend: {
-              text: "Is the appeal site in, near or likely to affect a site of special scientific interest or internationally designated site?",
+              text: "Is the appeal site in, near or likely to affect a designated site?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
+          },
+          hint: {
+            text: "For example, an SSSI, cSAC, SAC, pSPA and SPA Ramsar."
           },
           items: [
             {
