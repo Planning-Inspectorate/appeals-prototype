@@ -45,9 +45,12 @@
           value: data["lpaq-"+version+"-surroundingarea-appealsimmediatearea-details"]
         }) }}
         
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="green-belt">Skip this question</a>
+        </div>
 
       </form>
 

@@ -65,9 +65,16 @@
           '
         }) }} 
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          {% if 'Other parties' in data['lpaq-'+version+'-representations-whichparties'] %}
+            <a class="govuk-link" href="other">Skip this question</a>
+          {% else %}
+            <a class="govuk-link" href="../task-list">Skip this question</a>
+          {% endif %}
+        </div>
 
       </form>
 
