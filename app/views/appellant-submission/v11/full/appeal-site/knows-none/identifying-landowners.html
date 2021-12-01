@@ -41,13 +41,13 @@
           <h2 class="govuk-heading-m">Confirm that you have attempted to identify the other landowners</h2>
 
           {{ govukCheckboxes({
-            idPrefix: "appealsub-"+version+"-appealsite-knowsome-identifying",
-            name: "appealsub-"+version+"-appealsite-knowsome-identifying",
+            idPrefix: "appealsub-"+version+"-appealsite-knownone-identifying",
+            name: "appealsub-"+version+"-appealsite-knownone-identifying",
             items: [
               {
                 value: "I confirm that I've attempted to identify all the other landowners, but have not been successful.",
                 text: "I confirm that I've attempted to identify all the other landowners, but have not been successful.",
-                checked: checked("appealsub-"+version+"-appealsite-knowsome-identifying", "I confirm that I've attempted to identify all the other landowners, but have not been successful.")
+                checked: checked("appealsub-"+version+"-appealsite-knownone-identifying", "I confirm that I've attempted to identify all the other landowners, but have not been successful.")
               }
             ]
           }) }}
@@ -56,7 +56,6 @@
 
           <h1 class="govuk-heading-l">Identifying the landowners</h1>
           <p class="govuk-body">You must have taken all reasonable steps to identify the landowners.</p>
-
           <h2 class="govuk-heading-m">Have you taken all reasonable steps to identify the landowners?</h2>
 
           {{ govukCheckboxes({

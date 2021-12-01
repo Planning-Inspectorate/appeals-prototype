@@ -252,7 +252,7 @@
               </a>
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
+          <!--div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Relationship to appeal site
             </dt>
@@ -264,7 +264,200 @@
                 Change<span class="govuk-visually-hidden"> appellant's relationship to the appeal site</span>
               </a>
             </dd>
+          </div-->
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you own the land involved in the appeal?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data["appealsub-"+version+"-appealsite-ownland"] == "Yes" %}
+                You own all the land involved in the appeal
+              {% else %}
+                {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}
+                  You own some of the land involved in the appeal
+                {% else %}
+                  You own none of the land involved in the appeal
+                {% endif %}
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> do you own all the land involved in the appeal?</span>
+              </a>
+            </dd>
           </div>
+
+          <!-- If all landowners known -->
+          {% if data["appealsub-"+version+"-appealsite-ownrest"] == "Yes, I know who owns all the land" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Telling the other landowners
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for item in data["appealsub-"+version+"-appealsite-knowsall-toldlandowners"] %}
+                  {{item}}<br>
+                {% endfor %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> do you own all the land involved in the appeal?</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+          <!-- If some landowners known -->
+          {% if data["appealsub-"+version+"-appealsite-ownrest"] == "I know who owns some of the land" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you know who owns the rest of the land involved in the appeal?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-appealsite-ownrest"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> do you own all the land involved in the appeal?</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Identifying the other landowners
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-appealsite-knowsome-identifying"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> identifying the other landowners</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Advertising your appeal
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for item in data["appealsub-"+version+"-appealsite-knowsome-advertising"] %}
+                  {{item}}<br>
+                {% endfor %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> advertising your appeal</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Telling the other landowners
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for item in data["appealsub-"+version+"-appealsite-knowsome-toldlandowners"] %}
+                  {{item}}<br>
+                {% endfor %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> telling the other landowners</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+          <!-- If no landowners known -->
+          {% if data["appealsub-"+version+"-appealsite-ownrest"] == "No, I do not know who owns any of the land" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you know who owns the land involved in the appeal?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-appealsite-ownrest"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> do you own all the land involved in the appeal?</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Identifying the other landowners
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-appealsite-knownone-identifying"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> do you own all the land involved in the appeal?</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Advertising your appeal
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% for item in data["appealsub-"+version+"-appealsite-knownone-advertising"] %}
+                  {{item}}<br>
+                {% endfor %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> do you own all the land involved in the appeal?</span>
+                </a>
+              </dd>
+            </div>
+            
+          {% endif %}
+
+
+<!--
+    // If none of landowners known
+    router.post(base+'full/appeal-site/knows-none/identifying-landowners', function (req, res) {
+      res.redirect(base+'full/appeal-site/knows-none/advertising-appeal');
+    })
+    router.post(base+'full/appeal-site/knows-none/advertising-appeal', function (req, res) {
+      res.redirect(base+'full/appeal-site/agricultural-holdings');
+    })
+
+
+
+    Do you know who owns the {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}rest of the {% endif %}land involved in the appeal?
+    req.session.data["appealsub-"+v+"-appealsite-ownrest"] = "I know who owns some of the land"
+
+    Identifying the {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}other {% endif %}landowners
+    req.session.data["appealsub-"+v+"-appealsite-knowsome-identifying"] = [
+      "I've advertised my appeal in the press",
+      "I've done this within the last 21 days",
+      "I used a copy of the form in annexe 2A or 2B"
+    ],
+
+    Telling the {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}other {% endif %}landowners
+    req.session.data["appealsub-"+v+"-appealsite-knowsome-toldlandowners"] = [
+      "I've told all the other landowners about my appeal",
+      "I've done this within the last 21 days",
+      "I used a copy of the form in annexe 2A or 2B"
+    ],
+
+    Is the appeal site part of an agricultural holding?
+    req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings"] = "Yes",
+
+    Are you a tenant of the agricultural holding?
+    req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-tenant"] = "Yes",
+
+    Are there any other tenants?
+    "appealsub-v11-appealsite-agriculturalholdings-othertenants": "Yes"
+
+    Telling the tenants
+    req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-toldtenants"] = [
+      "I've told all the tenants about my appeal",
+      "I've done this within the last 21 days",
+      "I used a copy of the form in Annexe 2a"
+    ]
+-->
           {% if data["appealsub-"+version+"-appealsite-otherownerslist"] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">

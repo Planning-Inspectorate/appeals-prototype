@@ -88,28 +88,27 @@ module.exports = function (router) {
 
     
     req.session.data["appealsub-"+v+"-aboutyou-applicationinyourname"] = "No, I'm acting on behalf of the applicant"
-    req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete"
-
     req.session.data["appealsub-"+v+"-aboutyou-applicantname"] = "John Smith"
     req.session.data["appealsub-"+v+"-aboutyou-yourname"] = "David Jones"
     req.session.data["appealsub-"+v+"-aboutyou-company"] = "DJ Planning Ltd"
     req.session.data["appealsub-"+v+"-aboutyou-youremail"] = "djones@djplanning.co.uk"
     req.session.data["appealsub-"+v+"-aboutyou-telephone"] = "01234567890"
+    req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete"
 
     req.session.data["appealsub-"+v+"-aboutapplication-applicationform"] = "planning_application_form.pdf"
-    req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete"
     req.session.data["appealsub-"+v+"-aboutapplication-applicationnumber"] = "987654321"
     req.session.data["appealsub-"+v+"-aboutapplication-designaccess"] = "Yes"
     req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file"] = "design_access_statement.pdf"
     req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"] = "decision_letter.pdf"
+    req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete"
 
     req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"] = "appeal_statement.pdf"
-    req.session.data["appealsub-v11-appealdocuments-plansdrawings"] = "Yes",
-    req.session.data["appealsub-v11-appealdocuments-plansdrawingsfileslist"] = [
+    req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings"] = "Yes",
+    req.session.data["appealsub-"+v+"-appealdocuments-plansdrawingsfileslist"] = [
       "blank.pdf"
     ],
-    req.session.data["appealsub-v11-appealdocuments-supportingdocuments"] = "Yes",
-    req.session.data["appealsub-v11-appealdocuments-supportinglist"] = [
+    req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments"] = "Yes",
+    req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"] = [
       "supporting_document_one.pdf",
       "supporting_document_three.pdf",
       "supporting_document_two.pdf"
@@ -119,10 +118,34 @@ module.exports = function (router) {
     req.session.data["appealsub-"+v+"-appealsite-address-line-1"] = "123 Main Road"
     req.session.data["appealsub-"+v+"-appealsite-address-town"] = "London"
     req.session.data["appealsub-"+v+"-appealsite-address-postcode"] = "N1 1NN"
-    req.session.data["appealsub-"+v+"-taskliststatus-appealsite"] = "Complete"
-    req.session.data["appealsub-"+v+"-appealsite-siterelationship"] = "I own the whole appeal site"
+    //req.session.data["appealsub-"+v+"-appealsite-siterelationship"] = "I own the whole appeal site"
+    req.session.data["appealsub-"+v+"-appealsite-ownland"] = "No"
+    req.session.data["appealsub-"+v+"-appealsite-ownsome"] = "Yes"
+    req.session.data["appealsub-"+v+"-appealsite-ownrest"] = "I know who owns some of the land"
+    req.session.data["appealsub-"+v+"-appealsite-knowsome-identifying"] = [
+      "I confirm that I've attempted to identify all the other landowners, but have not been successful."
+    ]
+    req.session.data["appealsub-"+v+"-appealsite-knowsome-advertising"] = [
+      "I've advertised my appeal in the press",
+      "I've done this within the last 21 days",
+      "I used a copy of the form in annexe 2A or 2B"
+    ]
+    req.session.data["appealsub-"+v+"-appealsite-knowsome-toldlandowners"] = [
+      "I've told all the other landowners about my appeal",
+      "I've done this within the last 21 days",
+      "I used a copy of the form in annexe 2A or 2B"
+    ]
+    req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings"] = "Yes",
+    req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-tenant"] = "No",
+    req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-toldtenants"] = [
+      "I've told all the tenants about my appeal",
+      "I've done this within the last 21 days",
+      "I used a copy of the form in Annexe 2a"
+    ]
     req.session.data["appealsub-"+v+"-appealsite-visible"] = "Yes"
     req.session.data["appealsub-"+v+"-appealsite-healthsafety"] = "No"
+
+    req.session.data["appealsub-"+v+"-taskliststatus-appealsite"] = "Complete"
 
    res.redirect(base+'full/task-list');
  })
