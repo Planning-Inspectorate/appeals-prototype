@@ -131,7 +131,15 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-surroundingarea-conservationarea-upload"] = "conservation_area_map.pdf";
       req.session.data["lpaq-"+v+"-surroundingarea-aonb"] = "Yes";
       req.session.data["lpaq-"+v+"-surroundingarea-sssi"] = "Yes";
-      req.session.data["lpaq-"+v+"-surroundingarea-sssi-designation"] = "Other";
+      req.session.data["lpaq-fullv1-surroundingarea-sssi-designation"] = [
+        "Site of special scientific interest",
+        "Candidate special area of conservation",
+        "Special area of conservation",
+        "Potential special protection area",
+        "Ramsar special protection area",
+        "Other"
+      ];
+      //req.session.data["lpaq-"+v+"-surroundingarea-sssi-designation"] = "Other";
       req.session.data["lpaq-"+v+"-surroundingarea-sssi-designation-other"] = "Lorem ipsum dolor sit amet";
       req.session.data["lpaq-"+v+"-surroundingarea-sssi-consulted"] = "Yes";
       req.session.data["lpaq-"+v+"-surroundingarea-sssi-consultation-upload"] = "sssi_consultation.pdf";
