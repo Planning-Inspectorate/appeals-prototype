@@ -39,10 +39,11 @@
             classes: "govuk-!-width-one-half",
             label: {
               text: "Other designation"
-            }
+            },
+            value: data["lpaq-"+version+"-surroundingarea-sssi-designation-other"]
           }) }}
         {% endset -%}
-        
+
         {{ govukCheckboxes({
           idPrefix: "lpaq-"+version+"-surroundingarea-sssi-designation",
           name: "lpaq-"+version+"-surroundingarea-sssi-designation",
