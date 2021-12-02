@@ -280,8 +280,11 @@
                 Designation
               </dt>
               <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-surroundingarea-sssi-designation"]}} -
-                {{data["lpaq-"+version+"-surroundingarea-sssi-designation-other"]}}
+                <ul class="govuk-list">
+                  {% for item in data["lpaq-"+version+"-surroundingarea-sssi-designation"] %}
+                    <li>{{ item }}{% if item == "Other" %} - {{data["lpaq-"+version+"-surroundingarea-sssi-designation-other"]}}{% endif %}</li>
+                  {% endfor %}
+                </ul>
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -742,7 +745,11 @@
             Parties you received representations from
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-representations-whichparties"]}}
+            <ul class="govuk-list">
+              {% for item in data["lpaq-"+version+"-representations-whichparties"] %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
