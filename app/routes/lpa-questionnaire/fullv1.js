@@ -139,6 +139,7 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-surroundingarea-affectslistedbuilding-description"] = "Nullam fringilla venenatis dolor. Quisque felis nunc, consectetur non ipsum vitae, consectetur sagittis nibh. Nulla facilisi. Vivamus in lacus eu ex luctus ornare. Etiam id mollis neque. In hac habitasse platea dictumst. Maecenas quis justo tellus. Cras vel elit tincidunt, tincidunt risus eget, consequat nisi.";
       req.session.data["lpaq-"+v+"-surroundingarea-affectslistedbuilding-consulted"] = "Yes";
       req.session.data["lpaq-"+v+"-surroundingarea-ancientmonument"] = "Yes";
+      req.session.data["lpaq-"+v+"-surroundingarea-ancientmonument-consultation"] = "Yes";
       req.session.data["lpaq-"+v+"-surroundingarea-ancientmonument-consultation-upload"] = "ancient_monument_consultation.pdf";
       req.session.data["lpaq-"+v+"-surroundingarea-protectedspecies"] = "Yes";
       req.session.data["lpaq-"+v+"-surroundingarea-protectedspecies-consultation"] = "protected_species_consultation.pdf"
@@ -388,6 +389,14 @@ module.exports = function (router) {
     })
 
     router.post(base+'surrounding-area/ancient-monument-consultation', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-surroundingarea-ancientmonument-consultation'] == "Yes"){
+        res.redirect(base+'surrounding-area/ancient-monument-consultation-upload');
+      } else {
+        res.redirect(base+'surrounding-area/protected-species');
+      }
+    })
+
+    router.post(base+'surrounding-area/ancient-monument-consultation-upload', function (req, res) {
       res.redirect(base+'surrounding-area/protected-species');
     })
 

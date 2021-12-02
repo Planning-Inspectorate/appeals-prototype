@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv1.html" %}
 
 {% block pageTitle %}
-  Upload Historic England's consultation response - Tell us about the surrounding area - {{serviceName}} - GOV.UK
+  Has Historic England been consulted about the effect on the ancient monument? - Tell us about the surrounding area - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,42 +28,30 @@
         <span class="govuk-caption-l">
           Tell us about the surrounding area
         </span>
-        <h1 class="govuk-heading-xl">
-          Upload Historic England's consultation response
-        </h1>
-        
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-surroundingarea-ancientmonument-consultation-upload">
-            Upload file
-          </label>
-          <p class="govuk-body">
-            Drag and drop a file or select "choose files"
-          <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-surroundingarea-ancientmonument-consultation-upload" name="lpaq-{{version}}-surroundingarea-ancientmonument-consultation-upload" type="file">
-        </div>
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
+        {{ govukRadios({
+          idPrefix: "lpaq-"+version+"-surroundingarea-ancientmonument-consultation",
+          name: "lpaq-"+version+"-surroundingarea-ancientmonument-consultation",
+          fieldset: {
+            legend: {
+              text: "Has Historic England been consulted about the effect on the ancient monument?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaq-"+version+"-surroundingarea-ancientmonument-consultation", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaq-"+version+"-surroundingarea-ancientmonument-consultation", "No")
+            }
+          ]
         }) }}
-
-        {{ govukDetails({
-          summaryText: "Help with file formats",
-          html: '
-            <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
-            </ul>
-          '
-        }) }} 
 
          <div class="govuk-button-group">
           {{ govukButton({
