@@ -41,7 +41,7 @@
               {{ data["appealsub-"+version+"-aboutyou-applicationinyourname"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> was the planning application made in your name?</span>
               </a>
             </dd>
@@ -55,7 +55,7 @@
                 {{ data["appealsub-"+version+"-aboutyou-applicantname"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> what is the applicant's name?</span>
                 </a>
               </dd>
@@ -74,7 +74,7 @@
               <p class="govuk-body">{{ data["appealsub-"+version+"-aboutyou-telephone"] }}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> contact details</span>
               </a>
             </dd>
@@ -91,7 +91,7 @@
               <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-applicationform"] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> planning application form</span>
               </a>
             </dd>
@@ -104,7 +104,7 @@
               {{ data["appealsub-"+version+"-aboutapplication-applicationnumber"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> planning application number</span>
               </a>
             </dd>
@@ -117,7 +117,7 @@
               {{ data["appealsub-"+version+"-aboutapplication-designaccess"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> planning application number</span>
               </a>
             </dd>
@@ -131,7 +131,7 @@
                 <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-designaccess-file"] }}</a>
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> planning application number</span>
                 </a>
               </dd>
@@ -145,7 +145,7 @@
               <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-decisionletter"] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> decision letter</span>
               </a>
             </dd>
@@ -162,7 +162,7 @@
               <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-appealdocuments-appealstatement"] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> planning application form</span>
               </a>
             </dd>
@@ -175,7 +175,7 @@
               {{ data["appealsub-"+version+"-appealdocuments-plansdrawings"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> any plans or drawings to support your appeal</span>
               </a>
             </dd>
@@ -189,13 +189,13 @@
                 <ul class="govuk-list">
                   {% for docs in data["appealsub-"+version+"-appealdocuments-plansdrawingsfileslist"] %}
                     <li>
-                      <a class="govuk-link" href="javascript:preventDefault();">{{ docs }}</a>
+                      <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{ docs }}</a>
                     </li>
                   {% endfor %}
                 </ul>
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> plans and drawings</span>
                 </a>
               </dd>
@@ -209,7 +209,7 @@
               {{ data["appealsub-"+version+"-appealdocuments-supportingdocuments"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> any documents to support your appeal</span>
               </a>
             </dd>
@@ -223,13 +223,13 @@
                 <ul class="govuk-list">
                   {% for docs in data["appealsub-"+version+"-appealdocuments-supportinglist"] %}
                     <li>
-                      <a class="govuk-link" href="javascript:preventDefault();">{{ docs }}</a>
+                      <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{ docs }}</a>
                     </li>
                   {% endfor %}
                 </ul>
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> plans and drawings</span>
                 </a>
               </dd>
@@ -247,7 +247,7 @@
               {{ data["appealsub-"+version+"-appealsite-address-line-1"] }}{% if data["appealsub-"+version+"-appealsite-address-line-2"] %}<br>{% endif %}{{ data["appealsub-"+version+"-appealsite-address-line-2"] }}{% if data["appealsub-"+version+"-appealsite-address-town"] %}<br>{% endif %}{{ data["appealsub-"+version+"-appealsite-address-town"] }}{% if data["appealsub-"+version+"-appealsite-address-county"] %}<br>{% endif %}{{ data["appealsub-"+version+"-appealsite-address-county"] }}{% if data["appealsub-"+version+"-appealsite-address-postcode"] %}<br>{% endif %}{{ data["appealsub-"+version+"-appealsite-address-postcode"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> address of the appeal site</span>
               </a>
             </dd>
@@ -260,7 +260,7 @@
               {{ data["appealsub-"+version+"-appealsite-siterelationship"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> appellant's relationship to the appeal site</span>
               </a>
             </dd>
@@ -282,7 +282,7 @@
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> do you own the land involved in the appeal?</span>
               </a>
             </dd>
@@ -300,7 +300,7 @@
                 {% endfor %}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> telling the other landowners</span>
                 </a>
               </dd>
@@ -317,7 +317,7 @@
                 {{ data["appealsub-"+version+"-appealsite-ownrest"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> do you know who owns the rest of the land involved in the appeal?</span>
                 </a>
               </dd>
@@ -330,7 +330,7 @@
                 {{ data["appealsub-"+version+"-appealsite-knowsome-identifying"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> identifying the other landowners</span>
                 </a>
               </dd>
@@ -345,7 +345,7 @@
                 {% endfor %}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> advertising your appeal</span>
                 </a>
               </dd>
@@ -360,7 +360,7 @@
                 {% endfor %}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> telling the other landowners</span>
                 </a>
               </dd>
@@ -377,7 +377,7 @@
                 {{ data["appealsub-"+version+"-appealsite-ownrest"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> do you know who owns the land involved in the appeal?</span>
                 </a>
               </dd>
@@ -390,7 +390,7 @@
                 {{ data["appealsub-"+version+"-appealsite-knownone-identifying"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> identifying the other landowners</span>
                 </a>
               </dd>
@@ -405,7 +405,7 @@
                 {% endfor %}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> advertising your appeal</span>
                 </a>
               </dd>
@@ -423,7 +423,7 @@
               </p>            
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> is the appeal site part of an agricultural holding?</span>
               </a>
             </dd>
@@ -440,7 +440,7 @@
                 </p>            
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> are you a tenant of the agricultural holding?</span>
                 </a>
               </dd>
@@ -456,7 +456,7 @@
                   </p>            
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="javascript:preventDefault();">
+                  <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                     Change<span class="govuk-visually-hidden"> are there any other tenants?</span>
                   </a>
                 </dd>
@@ -473,7 +473,7 @@
                   </p>            
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="javascript:preventDefault();">
+                  <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                     Change<span class="govuk-visually-hidden"> telling the tenants</span>
                   </a>
                 </dd>
@@ -490,7 +490,7 @@
                     {% endfor %}
                   </dd>
                   <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="javascript:preventDefault();">
+                    <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                       Change<span class="govuk-visually-hidden"> telling the other tenants</span>
                     </a>
                   </dd>
@@ -514,7 +514,7 @@
               {% endif %}              
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> is the site visible from a public road?</span>
               </a>
             </dd>
@@ -534,7 +534,7 @@
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> are there any health and safety issues on the appeal site?</span>
               </a>
             </dd>
