@@ -1,0 +1,238 @@
+{% extends "layouts/lpa-questionnaire/fullv2.html" %}
+
+{% block pageTitle %}
+  Full planning appeal questionnaire - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    
+      <h1 class="govuk-heading-xl">
+        Full planning appeal questionnaire
+      </h1>
+    
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Count completed tasks -->
+      {% set taskcount = 0 %}
+      {% if data["lpaq-"+version+"-taskliststatus-proposeddevelopment"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-surroundingarea"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-yourdecision"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-interestedparties"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-representations"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-siteaccess"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Questionnaire incomplete</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 9 tasks.</p>
+
+      <ol class="app-task-list app-task-list--fullappeal">
+
+        <li>
+          <!--h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span>Tell us about the proposed development
+          </h2-->
+          <ul class="app-task-list__items">
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="proposed-development/site-plan" class="govuk-link">
+                  Tell us about the proposed development
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-proposeddevelopment"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-proposeddevelopment"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="surrounding-area/appeals-immediate-area" class="govuk-link">
+                  Tell us about the surrounding area
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-surroundingarea"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-surroundingarea"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="environmental-impact/schedule" class="govuk-link">
+                  Tell us about the development's environmental impact
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-environmentalimpact"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-environmentalimpact"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="your-decision/planning-officers-report" class="govuk-link">
+                  Provide details about your decision
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-yourdecision"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-yourdecision"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="interested-parties/publicise-application" class="govuk-link">
+                  Tell us how you've informed interested parties
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-interestedparties"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-interestedparties"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="representations/which-parties" class="govuk-link">
+                  Upload representations from interested parties
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-representations"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-representations"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="local-plans-policies/statutory-development" class="govuk-link">
+                  Upload relevant local plans and policies
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="site-access/public-land" class="govuk-link">
+                  Tell us about site access
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-siteaccess"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-siteaccess"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="procedure-type/decided-by" class="govuk-link">
+                  Review the procedure type
+                </a>
+              </span>
+              {% if data["lpaq-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["lpaq-"+version+"-taskliststatus-proceduretype"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+
+                {%
+                  if data["lpaq-"+version+"-taskliststatus-proposeddevelopment"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-surroundingarea"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-environmentalimpact"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-yourdecision"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-interestedparties"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-representations"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-proceduretype"] == "Complete"
+                %}
+                  <span class="app-task-list__task-name">
+                    <a href="/lpa-questionnaire/{{version}}/check-your-answers" class="govuk-link">
+                      Check your answers and submit
+                    </a>
+                  </span>
+                  <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-checkyouranswers-status">Not started</strong>
+                {% else %}
+                  <span class="app-task-list__task-name">
+                    Check your answers and submit
+                  </span>
+                  <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="list-checkyouranswers-status">Cannot start yet</strong>
+                {% endif %}
+                
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+    </div>
+  </div>
+{% endblock %}

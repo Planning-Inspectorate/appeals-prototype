@@ -1,0 +1,83 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv2.html" %}
+
+{% block pageTitle %}
+  Upload Historic England's consultation response - Tell us about the surrounding area - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the surrounding area
+        </span>
+        <h1 class="govuk-heading-xl">
+          Upload Historic England's consultation response
+        </h1>
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-surroundingarea-ancientmonument-consultation-upload">
+            Upload file
+          </label>
+          <p class="govuk-body">
+            Drag and drop a file or select "choose files"
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-surroundingarea-ancientmonument-consultation-upload" name="lpaq-{{version}}-surroundingarea-ancientmonument-consultation-upload" type="file">
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }} 
+
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="protected-species">Skip this question</a>
+        </div>
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}
