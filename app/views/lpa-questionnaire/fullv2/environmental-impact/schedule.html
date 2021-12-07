@@ -1,0 +1,79 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv2.html" %}
+
+{% block pageTitle %}
+  Is the development a schedule 1 or schedule 2 development? - Tell us about the development's environmental impact - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the development's environmental impact
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "lpaq-"+version+"-environmentalimpact-schedule",
+          name: "lpaq-"+version+"-environmentalimpact-schedule",
+          fieldset: {
+            legend: {
+              text: "Is the development a schedule 1 or schedule 2 development?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Schedule 1",
+              text: "Schedule 1",
+              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "Schedule 1")
+            },
+            {
+              value: "Schedule 2",
+              text: "Schedule 2",
+              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "Schedule 2")
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "It is neither a schedule 1 or schedule 2 development",
+              text: "It is neither a schedule 1 or schedule 2 development",
+              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "It is neither a schedule 1 or schedule 2 development")
+            }
+          ]
+        }) }}
+
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="screening-opinion">Skip this question</a>
+        </div>
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}

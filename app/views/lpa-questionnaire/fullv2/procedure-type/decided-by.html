@@ -1,0 +1,78 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv2.html" %}
+
+{% block pageTitle %}
+  This appeal will be decided by written representations. - Review the procedure type - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Review the procedure type
+        </span>
+        <h1 class="govuk-heading-xl">
+          This appeal will be decided by written representations.
+        </h1>
+
+        {{ govukRadios({
+          idPrefix: "lpaq-"+version+"-proceduretype-decidedby",
+          name: "lpaq-"+version+"-proceduretype-decidedby",
+          fieldset: {
+            legend: {
+              text: "Do you agree with this procedure type?",
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes, I agree",
+              text: "Yes, I agree",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "Yes, I agree")
+            },
+            {
+              value: "No, I recommend a hearing",
+              text: "No, I recommend a hearing",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, I recommend a hearing")
+            },
+            {
+              value: "No, I recommend an inquiry",
+              text: "No, I recommend an inquiry",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, I recommend an inquiry")
+            }
+          ]
+        }) }}
+        
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+          <a class="govuk-link" href="../task-list">Skip this question</a>
+        </div>
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}
