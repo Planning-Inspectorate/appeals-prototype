@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload a single file - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <h1 class="govuk-heading-xl">
+          Upload a single file
+        </h1>
+        
+        <!--div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-proposeddevelopment-siteplan">
+            Upload file
+          </label>
+          <input class="govuk-file-upload pins-upload-multiple" id="lpaq-{{version}}-proposeddevelopment-siteplan" name="lpaq-{{version}}-proposeddevelopment-siteplan" type="file">
+        </div-->
+        
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Uploaded file
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="javascript:preventDefault();" class="govuk-link">example.pdf</a>
+            </dd>
+          </div>
+        </dl>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+  </div>
+</div>
+
+{% endblock %}
