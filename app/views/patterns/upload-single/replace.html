@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Upload a single file - {{serviceName}} - GOV.UK
+  Single file already uploaded - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,40 +17,43 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    
-      <form action="" method="post">
 
-        <h1 class="govuk-heading-xl">
-          Upload a single file
-        </h1>
-        
-        <!--div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-proposeddevelopment-siteplan">
-            Upload file
-          </label>
-          <input class="govuk-file-upload pins-upload-multiple" id="lpaq-{{version}}-proposeddevelopment-siteplan" name="lpaq-{{version}}-proposeddevelopment-siteplan" type="file">
-        </div-->
-        
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Uploaded file
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a href="javascript:preventDefault();" class="govuk-link">example.pdf</a>
-            </dd>
-          </div>
-        </dl>
+      <h1 class="govuk-heading-xl">
+        Upload a single file
+      </h1>
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+      <p class="govuk-body">
+        You have already uploaded a file.
+      </p>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Uploaded file
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="javascript:preventDefault();" class="govuk-link">example.pdf</a>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="delete">
+              Delete<span class="govuk-visually-hidden"> example.pdf</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
 
-      </form>
+      {{ govukButton({
+        text: "Continue"
+      }) }}
 
+    </div>
   </div>
-  <div class="govuk-grid-column-one-third">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      
+      {% include "./_nav.html" %}
+
+    </div>
   </div>
-</div>
 
 {% endblock %}
