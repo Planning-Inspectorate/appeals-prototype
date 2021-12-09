@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload a single file - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Upload a single file
+      </h1>
+  </div>
+</div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="single-upload">
+          Drag and drop or choose a file
+        </label>
+        <input class="govuk-file-upload pins-file-upload" id="single-upload" name="single-upload" type="file">
+      </div>
+
+      {{ govukDetails({
+        summaryText: "Files you can upload",
+        html: '
+          <p class="govuk-body">
+            You can upload the following types of file:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>DOC or DOCX</li>
+            <li>JPG or JPEG</li>
+            <li>PDF</li>
+            <li>PNG</li>
+            <li>TIF or TIFF</li>
+          </ul>
+          <p class="govuk-body">
+            Your file must be smaller than 15MB.
+          </p>
+        '
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      
+      {% include "./_nav.html" %}
+
+    </div>
+  </div>
+
+{% endblock %}

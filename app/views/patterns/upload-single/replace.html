@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Single file already uploaded - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Upload a single file
+      </h1>
+
+      <p class="govuk-body">
+        You have already uploaded a file.
+      </p>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Uploaded file
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="javascript:preventDefault();" class="govuk-link">example.pdf</a>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="delete">
+              Delete<span class="govuk-visually-hidden"> example.pdf</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      
+      {% include "./_nav.html" %}
+
+    </div>
+  </div>
+
+{% endblock %}
