@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Upload a single file - {{serviceName}} - GOV.UK
+  Error - Upload multiple files - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,23 +16,36 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "All files must be a DOC, JPG, PDF, PNG or TIF",
+            href: "#file-upload-1-error"
+          }
+        ]
+      }) }}
 
       <h1 class="govuk-heading-xl">
-        Upload a single file
+        Upload multiple files
       </h1>
-      
+
   </div>
 </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="single-upload">
-          Drag and drop or choose a file
+      <div class="govuk-form-group govuk-form-group--error">
+        <label class="govuk-label" for="upload-multiple">
+          Drag and drop or choose files
         </label>
-        <input class="govuk-file-upload pins-file-upload" id="single-upload" name="single-upload" type="file">
+        <span id="file-upload-1-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> All files must be a DOC, JPG, PDF, PNG or TIF
+        </span>
+        <input class="govuk-file-upload pins-file-upload" id="upload-multiple" name="upload-multiple" type="file" multiple>
       </div>
 
       {{ govukDetails({
