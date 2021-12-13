@@ -349,23 +349,7 @@ module.exports = function (router) {
     })
 
     router.post(base+'surrounding-area/sssi', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-surroundingarea-sssi'] == "Yes"){
-        res.redirect(base+'surrounding-area/sssi-designation');
-      } else {
-        res.redirect(base+'surrounding-area/affects-listed-building');
-      }
-    })
-
-    router.post(base+'surrounding-area/sssi-designation', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-surroundingarea-sssi-consulted'] == "Yes"){
-        res.redirect(base+'surrounding-area/sssi-consultation');
-      } else {
-        res.redirect(base+'surrounding-area/affects-listed-building');
-      }
-    })
-
-    router.post(base+'surrounding-area/sssi-consultation', function (req, res) {
-      res.redirect(base+'surrounding-area/affects-listed-building'); 
+      res.redirect(base+'surrounding-area/affects-listed-building');
     })
 
     router.post(base+'surrounding-area/affects-listed-building', function (req, res) {
