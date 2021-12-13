@@ -1,9 +1,8 @@
 {% set pageref = "" %}
-{% set fromhas = "From HAS" %}
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Upload your press advert - Tell us how you've informed interested parties - {{serviceName}} - GOV.UK
+  Do you have any consultation responses or standing advice from statutory consultees to upload? - Upload representations from interest parties - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,17 +26,17 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Tell us how you've informed interested parties
+          Upload representations from interest parties
         </span>
         <h1 class="govuk-heading-xl">
-          Upload your press advert
+          Upload the consultation responses and standing advice
         </h1>
-      
+        
         <div class="govuk-form-group">
-          <label class="govuk-label" for="lpaq-{{version}}-interestedparties-notifyapplication-pressadvert">
-            Drag and drop or choose a file
+          <label class="govuk-label" for="lpaq-{{version}}-representations-consultationresponses-upload">
+            Drag and drop or choose files
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-interestedparties-notifyapplication-pressadvert" name="lpaq-{{version}}-interestedparties-notifyapplication-pressadvert" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-representations-consultationresponses-upload" name="lpaq-{{version}}-representations-consultationresponses-upload" type="file" multiple>
         </div>
 
         {{ govukDetails({
@@ -63,7 +62,7 @@
           {{ govukButton({
             text: "Save and continue"
           }) }}
-          <a class="govuk-link" href="../task-list">Skip this question</a>
+          <a class="govuk-link" href="other-parties">Skip this question</a>
         </div>
 
       </form>

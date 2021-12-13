@@ -574,41 +574,36 @@ module.exports = function (router) {
 
 
   // Upload representations from interest parties
+    router.post(base+'representations/consult-relevant-consultees', function (req, res) {
+      res.redirect(base+'representations/consultation-responses');
+    })
 
-    router.post(base+'representations/which-parties', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Site owners")){
-        res.redirect(base+'representations/site-owners');
-      } else if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Statutory consultees")){
-        res.redirect(base+'representations/statutory-consultees');
-      } else if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Other parties")){
-        res.redirect(base+'representations/other');
-      } else {
+    router.post(base+'representations/consultation-responses', function (req, res) {
+      if (req.session.data["lpaq-"+v+"-representations-consultationresponses"] == "Yes"){
+        res.redirect(base+'representations/consultation-responses-upload');
+      } else  {
+        res.redirect(base+'representations/other-parties');
+      }
+    })
+
+    router.post(base+'representations/consultation-responses-upload', function (req, res) {
+      res.redirect(base+'representations/other-parties');
+    })
+
+    router.post(base+'representations/other-parties', function (req, res) {
+      if (req.session.data["lpaq-"+v+"-representations-otherparties"] == "Yes"){
+        res.redirect(base+'representations/other-parties-upload');
+      } else  {
         req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
         res.redirect(base+'task-list');
       }
     })
 
-    router.post(base+'representations/site-owners', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Statutory consultees")){
-        res.redirect(base+'representations/statutory-consultees');
-      } else if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Other parties")){
-        res.redirect(base+'representations/other');
-      } else {
-        req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
-        res.redirect(base+'task-list');
-      }
+    router.post(base+'representations/other-parties-upload', function (req, res) {
+      res.redirect(base+'representations/letter-upload');
     })
 
-    router.post(base+'representations/statutory-consultees', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-representations-whichparties'].includes("Other parties")){
-        res.redirect(base+'representations/other');
-      } else {
-        req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
-        res.redirect(base+'task-list');
-      }
-    })
-
-    router.post(base+'representations/other', function (req, res) {
+    router.post(base+'representations/letter-upload', function (req, res) {
       req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
       res.redirect(base+'task-list');
     })
