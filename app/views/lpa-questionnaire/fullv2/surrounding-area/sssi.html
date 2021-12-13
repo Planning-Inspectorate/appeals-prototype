@@ -1,4 +1,4 @@
-{% set pageref = "" %}
+ {% set pageref = "" %}
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
@@ -28,30 +28,71 @@
         <span class="govuk-caption-l">
           Tell us about the surrounding area
         </span>
+        
+        {% set otherHtml %}
+          {{ govukInput({
+            id: "lpaq-"+version+"-surroundingarea-sssi-other",
+            name: "lpaq-"+version+"-surroundingarea-sssi-other",
+            label: {
+              text: "Other designation(s)"
+            }
+          }) }}
+        {% endset -%}
 
-        {{ govukRadios({
+        {{ govukCheckboxes({
           idPrefix: "lpaq-"+version+"-surroundingarea-sssi",
           name: "lpaq-"+version+"-surroundingarea-sssi",
           fieldset: {
             legend: {
-              text: "Is the appeal site in, near or likely to affect a designated site?",
+              text: "Is the development in, near or likely to affect any designated sites?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           hint: {
-            text: "For example, an SSSI, cSAC, SAC, pSPA and SPA Ramsar."
+            text: "Select all designations that apply."
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "Yes")
+              value: "SSSI",
+              text: "SSSI (site of special scientific interest)",
+              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "SSSI")
             },
             {
-              value: "No",
-              text: "No",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "No")
+              value: "cSAC",
+              text: "cSAC (candidate special area of conservation)",
+              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "cSAC")
+            },
+            {
+              value: "SAC",
+              text: "SAC (special area of conservation)",
+              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "SAC")
+            },
+            {
+              value: "pSPA",
+              text: "pSPA (potential special protection area)",
+              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "pSPA")
+            },
+            {
+              value: "SPA Ramsar",
+              text: "SPA Ramsar (Ramsar special protection area)",
+              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "SPA Ramsar")
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: otherHtml
+              },
+              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "Other")
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "No, it is not in, near or likely to affect any designated sites",
+              text: "No, it is not in, near or likely to affect any designated sites",
+              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "No, it is not in, near or likely to affect any designated sites")
             }
           ]
         }) }}
