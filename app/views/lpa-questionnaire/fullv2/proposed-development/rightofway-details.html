@@ -31,51 +31,34 @@
         <h1 class="govuk-heading-xl">
           Public right of way details
         </h1>
-        
+      
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement">
-            Upload definitive map and statement extract
+          <label class="govuk-label" for="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement">
+            Drag and drop or choose files
           </label>
-          <p class="govuk-body">
-            Drag and drop a file or select "choose files"
-          <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement" name="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement" name="lpaq-{{version}}-proposeddevelopment-rightofway-mapstatement" type="file" multiple>
         </div>
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
-
         {{ govukDetails({
-          summaryText: "Help with file formats",
+          summaryText: "Files you can upload",
           html: '
             <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
+              You can upload the following types of file:
+            </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
             </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
           '
-        }) }} 
-
-        {{ govukTextarea({
-          id: "lpaq-"+version+"-proposeddevelopment-rightofway-details",
-          name: "lpaq-"+version+"-proposeddevelopment-rightofway-details",
-          label: {
-            text: "Additional details",
-            classes: "govuk-label--m"
-          },
-          value: data["lpaq-"+version+"-proposeddevelopment-rightofway-details"]
         }) }}
 
-         <div class="govuk-button-group">
+        <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
           }) }}
@@ -84,10 +67,10 @@
 
       </form>
 
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+    </div>
   </div>
-  <div class="govuk-grid-column-one-third">
-    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
-  </div>
-</div>
 
 {% endblock %}

@@ -333,7 +333,7 @@ module.exports = function (router) {
     })
 
     router.post(base+'surrounding-area/conservation-area', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-surroundingarea-conservationarea'] != "No, it is not in or near a conservation area"){
+      if (req.session.data['lpaq-'+v+'-surroundingarea-conservationarea'] != "No, it is not in or next to a conservation area"){
         res.redirect(base+'surrounding-area/conservation-area-upload'); 
       } else {
         res.redirect(base+'surrounding-area/aonb'); 

@@ -31,39 +31,36 @@
         <h1 class="govuk-heading-xl">
           Screening opinion details
         </h1>
-        
+
+        <h2 class="govuk-heading-m">
+          Upload the screening opinion and any other correspondence
+        </h2>
+      
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--l" for="lpaq-{{version}}-environmentalimpact-screeningopinion-details">
-            Upload the screening opinion and any other correspondence
+          <label class="govuk-label" for="lpaq-{{version}}-environmentalimpact-screeningopinion-details">
+            Drag and drop or choose files
           </label>
-          <p class="govuk-body">
-            Drag and drop files or select "choose files"
-          <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-environmentalimpact-screeningopinion-details" name="lpaq-{{version}}-environmentalimpact-screeningopinion-details" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-environmentalimpact-screeningopinion-details" name="lpaq-{{version}}-environmentalimpact-screeningopinion-details" type="file" multiple>
         </div>
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
-
         {{ govukDetails({
-          summaryText: "Help with file formats",
+          summaryText: "Files you can upload",
           html: '
             <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
+              You can upload the following types of file:
+            </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
             </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
           '
-        }) }} 
+        }) }}
 
         {{ govukRadios({
           idPrefix: "lpaq-"+version+"-environmentalimpact-screeningopinion-eia",
@@ -72,7 +69,7 @@
             legend: {
               text: "Did the screening opinion say the development needs an environmental impact assessment?",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              classes: "govuk-fieldset__legend--m"
             }
           },
           items: [

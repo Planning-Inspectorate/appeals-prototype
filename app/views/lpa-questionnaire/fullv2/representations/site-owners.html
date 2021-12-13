@@ -33,39 +33,32 @@
         </h1>
         
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-representations-siteowner">
-            Upload files
+          <label class="govuk-label" for="lpaq-{{version}}-representations-siteowner">
+            Drag and drop or choose files
           </label>
-          <p class="govuk-body">
-            Drag and drop files or select "choose files"
-          <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-representations-siteowner" name="lpaq-{{version}}-representations-siteowner" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-representations-siteowner" name="lpaq-{{version}}-representations-siteowner" type="file" multiple>
         </div>
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
-
         {{ govukDetails({
-          summaryText: "Help with file formats",
+          summaryText: "Files you can upload",
           html: '
             <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
+              You can upload the following types of file:
+            </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
             </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
           '
-        }) }} 
+        }) }}
 
-         <div class="govuk-button-group">
+        <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
           }) }}
@@ -80,10 +73,10 @@
 
       </form>
 
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+    </div>
   </div>
-  <div class="govuk-grid-column-one-third">
-    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
-  </div>
-</div>
 
 {% endblock %}
