@@ -34,10 +34,10 @@
         </h1>
       
         <div class="govuk-form-group">
-          <label class="govuk-label" for="lpaq-{{version}}-localplanspolicies-cil-details">
-            Drag and drop or choose files
+          <label class="govuk-label" for="lpaq-{{version}}-localplanspolicies-cil-upload">
+            Drag and drop or choose a file
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-localplanspolicies-cil-details" name="lpaq-{{version}}-localplanspolicies-cil-details" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-localplanspolicies-cil-upload" name="lpaq-{{version}}-localplanspolicies-cil-upload" type="file">
         </div>
 
         {{ govukDetails({
@@ -59,34 +59,33 @@
           '
         }) }}
 
-        {% set dateHtml %}
+        {% set adoptedHtml %}
           {{ govukDateInput({
-            id: "lpaq-"+version+"-localplanspolicies-cil-details-adopted-date",
-            namePrefix: "lpaq-"+version+"-localplanspolicies-cil-details-adopted-date",
+            id: "lpaq-"+version+"-localplanspolicies-cil-upload-adopteddate",
+            namePrefix: "lpaq-"+version+"-localplanspolicies-cil-upload-adopteddate",
             fieldset: {
               legend: {
-                text: "Tell us the date of adoption"
+                text: "Date of adoption"
               }
-            },
-            hint: {
-              text: "For example, 27 3 2007"
             }
           }) }}
         {% endset -%}
-        {% set stageHtml %}
-          {{ govukInput({
-            label: {
-              text: "Tell us what stage this has reached"
-            },
-            id: "lpaq-"+version+"-localplanspolicies-cil-details-adopted-stage",
-            name: "lpaq-"+version+"-localplanspolicies-cil-details-adopted-stage"
+        {% set notadoptedHtml %}
+          {{ govukDateInput({
+            id: "lpaq-"+version+"-localplanspolicies-cil-upload-futureadopteddate",
+            namePrefix: "lpaq-"+version+"-localplanspolicies-cil-upload-futureadopteddate",
+            fieldset: {
+              legend: {
+                text: "When do you expect to formally adopt it?"
+              }
+            }
           }) }}
         {% endset -%}
         
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          idPrefix: "lpaq-"+version+"-localplanspolicies-cil-details-adopted",
-          name: "lpaq-"+version+"-localplanspolicies-cil-details-adopted",
+          idPrefix: "lpaq-"+version+"-localplanspolicies-cil-upload-adopted",
+          name: "lpaq-"+version+"-localplanspolicies-cil-upload-adopted",
           fieldset: {
             classes: "govuk-!-margin-top-8",
             legend: {
@@ -100,14 +99,14 @@
               value: "Yes",
               text: "Yes",
               conditional: {
-                html: dateHtml
+                html: adoptedHtml
               }
             },
             {
               value: "No",
               text: "No",
               conditional: {
-                html: stageHtml
+                html: notadoptedHtml
               }
             }
           ]
