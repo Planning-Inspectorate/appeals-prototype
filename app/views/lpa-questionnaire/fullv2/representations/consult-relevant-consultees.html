@@ -1,0 +1,85 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv2.html" %}
+
+{% block pageTitle %}
+  Did you consult all the relevant statutory consultees about the development? - Upload representations from interest parties - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload representations from interest parties
+        </span>
+
+        {% set whichbodiesHtml %}
+          {{ govukTextarea({
+            id: "lpaq-"+version+"-representations-consultrelevant-whichbodies",
+            name: "lpaq-"+version+"-representations-consultrelevant-whichbodies",
+            label: {
+              text: "Which bodies did you consult?"
+            },
+            value: data["lpaq-"+version+"-representations-consultrelevant-whichbodies"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "lpaq-"+version+"-representations-consultrelevant",
+          name: "lpaq-"+version+"-representations-consultrelevant",
+          fieldset: {
+            legend: {
+              text: "Did you consult all the relevant statutory consultees about the development?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: whichbodiesHtml
+              },
+              checked: checked("lpaq-"+version+"-representations-consultrelevant", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaq-"+version+"-representations-consultrelevant", "No")
+            }
+          ]
+        }) }}
+
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+          <a class="govuk-link" href="consultation-responses">Skip this question</a>
+        </div>
+
+      </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+  </div>
+</div>
+
+{% endblock %}
