@@ -30,22 +30,30 @@
           Tell us how you've informed interested parties
         </span>
         <h1 class="govuk-heading-xl">
-          Did you publicise the planning application?
+          How did you notify people about the planning application?
         </h1>
 
-        {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-interestedparties-publiciseapplication",
-          name: "lpaq-"+version+"-interestedparties-publiciseapplication",
+        {{ govukCheckboxes({
+          idPrefix: "lpaq-"+version+"-interestedparties-notifyapplication",
+          name: "lpaq-"+version+"-interestedparties-notifyapplication",
+          hint: {
+            text: "Select all that apply."
+          },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("lpaq-"+version+"-interestedparties-publiciseapplication", "Yes")
+              value: "A site notice",
+              text: "A site notice",
+              checked: checked("lpaq-"+version+"-interestedparties-notifyapplication", "A site notice")
             },
             {
-              value: "No",
-              text: "No",
-              checked: checked("lpaq-"+version+"-interestedparties-publiciseapplication", "No")
+              value: "Letters to the neighbours",
+              text: "Letters to the neighbours",
+              checked: checked("lpaq-"+version+"-interestedparties-notifyapplication", "Letters to the neighbours")
+            },
+            {
+              value: "A press advert",
+              text: "A press advert",
+              checked: checked("lpaq-"+version+"-interestedparties-notifyapplication", "A press advert")
             }
           ]
         }) }}

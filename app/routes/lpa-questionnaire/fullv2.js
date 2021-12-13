@@ -534,40 +534,40 @@ module.exports = function (router) {
 
   // Tell us how you've informed interested parties 
 
-    router.post(base+'interested-parties/publicise-application', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-interestedparties-publiciseapplication'] == "Yes"){
-        res.redirect(base+'interested-parties/publicise-application-sitenotice');
-      } else {
-        res.redirect(base+'interested-parties/tell-application');
-      }
-    })
-
-    router.post(base+'interested-parties/publicise-application-sitenotice', function (req, res) {
-      res.redirect(base+'interested-parties/tell-application');
-    })
-
-    router.post(base+'interested-parties/tell-application', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-interestedparties-tellapplication'] == "Yes"){
-        res.redirect(base+'interested-parties/tell-application-letter');
-      } else {
-        res.redirect(base+'interested-parties/told-appeal');
-      }
-    })
-
-    router.post(base+'interested-parties/tell-application-letter', function (req, res) {
-      res.redirect(base+'interested-parties/told-appeal');
-    })
-
-    router.post(base+'interested-parties/told-appeal', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-interestedparties-toldappeal'] == "Yes"){
-        res.redirect(base+'interested-parties/told-appeal-letter');
+    router.post(base+'interested-parties/notify-application', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-interestedparties-notifyapplication'].includes("A site notice")){
+        res.redirect(base+'interested-parties/notify-application-sitenotice');
+      } else if (req.session.data['lpaq-'+v+'-interestedparties-notifyapplication'].includes("Letters to the neighbours")){
+          res.redirect(base+'interested-parties/notify-application-letters');
+      } else if (req.session.data['lpaq-'+v+'-interestedparties-notifyapplication'].includes("A press advert")){
+          res.redirect(base+'interested-parties/notify-application-pressadvert');
       } else {
         req.session.data["lpaq-"+v+"-taskliststatus-interestedparties"] = "Complete";
         res.redirect(base+'task-list');
       }
     })
 
-    router.post(base+'interested-parties/told-appeal-letter', function (req, res) {
+    router.post(base+'interested-parties/notify-application-sitenotice', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-interestedparties-notifyapplication'].includes("Letters to the neighbours")){
+        res.redirect(base+'interested-parties/notify-application-letters');
+      } else if (req.session.data['lpaq-'+v+'-interestedparties-notifyapplication'].includes("A press advert")){
+        res.redirect(base+'interested-parties/notify-application-pressadvert');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-interestedparties"] = "Complete";
+        res.redirect(base+'task-list');
+      } 
+    })
+
+    router.post(base+'interested-parties/notify-application-letters', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-interestedparties-notifyapplication'].includes("A press advert")){
+        res.redirect(base+'interested-parties/notify-application-pressadvert');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-interestedparties"] = "Complete";
+        res.redirect(base+'task-list');
+      } 
+    })
+
+    router.post(base+'interested-parties/notify-application-pressadvert', function (req, res) {
       req.session.data["lpaq-"+v+"-taskliststatus-interestedparties"] = "Complete";
       res.redirect(base+'task-list');
     })
