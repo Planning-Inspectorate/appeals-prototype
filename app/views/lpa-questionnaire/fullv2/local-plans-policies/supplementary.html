@@ -38,104 +38,97 @@
         </p>
         
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-localplanspolicies-supplementary">
-            Upload file
+          <label class="govuk-label" for="lpaq-{{version}}-localplanspolicies-supplementary">
+            Drag and drop or choose files
           </label>
-          <p class="govuk-body">
-            Drag and drop a file or select "choose files"
-          <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-localplanspolicies-supplementary" name="lpaq-{{version}}-localplanspolicies-supplementary" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-localplanspolicies-supplementary" name="lpaq-{{version}}-localplanspolicies-supplementary" type="file" multiple>
         </div>
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
-
         {{ govukDetails({
-          summaryText: "Help with file formats",
+          summaryText: "Files you can upload",
           html: '
             <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
+              You can upload the following types of file:
+            </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
             </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
           '
-        }) }} 
+        }) }}
           
-      {{ govukInput({
-        id: "lpaq-"+version+"-localplanspolicies-supplementary-name",
-        name: "lpaq-"+version+"-localplanspolicies-supplementary-name",
-        classes: "govuk-!-width-two-thirds",
-        label: {
-          classes: "govuk-label--m govuk-!-margin-top-8",
-          text: "Document name"
-        }
-      }) }}
-
-
-      {% set dateHtml %}
-        {{ govukDateInput({
-          id: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-date",
-          namePrefix: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-date",
-          fieldset: {
-            legend: {
-              text: "Tell us the date of adoption"
-            }
-          },
-          hint: {
-            text: "For example, 27 3 2007"
-          }
-        }) }}
-      {% endset -%}
-      {% set stageHtml %}
         {{ govukInput({
+          id: "lpaq-"+version+"-localplanspolicies-supplementary-name",
+          name: "lpaq-"+version+"-localplanspolicies-supplementary-name",
+          classes: "govuk-!-width-two-thirds",
           label: {
-            text: "Tell us what stage this has reached"
-          },
-          id: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-stage",
-          name: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-stage"
+            classes: "govuk-label--m govuk-!-margin-top-8",
+            text: "Document name"
+          }
         }) }}
-      {% endset -%}
-      
-      {{ govukRadios({
-        classes: "govuk-radios--inline",
-        idPrefix: "lpaq-"+version+"-localplanspolicies-supplementary-adopted",
-        name: "lpaq-"+version+"-localplanspolicies-supplementary-adopted",
-        fieldset: {
-          classes: "govuk-!-margin-top-8",
-          legend: {
-            text: "Is it formally adopted?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
-          }
-        },  
-        items: [
-          {
-            value: "yes",
-            text: "Yes",
-            conditional: {
-              html: dateHtml
+
+
+        {% set dateHtml %}
+          {{ govukDateInput({
+            id: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-date",
+            namePrefix: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-date",
+            fieldset: {
+              legend: {
+                text: "Tell us the date of adoption"
+              }
+            },
+            hint: {
+              text: "For example, 27 3 2007"
             }
-          },
-          {
-            value: "no",
-            text: "No",
-            conditional: {
-              html: stageHtml
-            }
-          }
-        ]
-      }) }}
+          }) }}
+        {% endset -%}
+        {% set stageHtml %}
+          {{ govukInput({
+            label: {
+              text: "Tell us what stage this has reached"
+            },
+            id: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-stage",
+            name: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-stage"
+          }) }}
+        {% endset -%}
         
-         <div class="govuk-button-group">
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "lpaq-"+version+"-localplanspolicies-supplementary-adopted",
+          name: "lpaq-"+version+"-localplanspolicies-supplementary-adopted",
+          fieldset: {
+            classes: "govuk-!-margin-top-8",
+            legend: {
+              text: "Is it formally adopted?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
+            }
+          },  
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: dateHtml
+              }
+            },
+            {
+              value: "no",
+              text: "No",
+              conditional: {
+                html: stageHtml
+              }
+            }
+          ]
+        }) }}
+        
+        <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
           }) }}
@@ -144,10 +137,10 @@
 
       </form>
 
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+    </div>
   </div>
-  <div class="govuk-grid-column-one-third">
-    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
-  </div>
-</div>
 
 {% endblock %}

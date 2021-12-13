@@ -31,48 +31,41 @@
         <h1 class="govuk-heading-xl">
           Upload Natural England's consultation response
         </h1>
-        
+      
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-surroundingarea-sssi-consultation-upload">
-            Upload file
+          <label class="govuk-label" for="lpaq-{{version}}-surroundingarea-sssi-consultation-upload">
+            Drag and drop or choose files
           </label>
-          <p class="govuk-body">
-            Drag and drop a file or select "choose files"
-          <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="lpaq-{{version}}-surroundingarea-sssi-consultation-upload" name="lpaq-{{version}}-surroundingarea-sssi-consultation-upload" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-surroundingarea-sssi-consultation-upload" name="lpaq-{{version}}-surroundingarea-sssi-consultation-upload" type="file" multiple>
         </div>
-
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
 
         {{ govukDetails({
-          summaryText: "Help with file formats",
+          summaryText: "Files you can upload",
           html: '
             <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
+              You can upload the following types of file:
+            </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
             </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
           '
-        }) }} 
+        }) }}
 
-         <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Save and continue"
-          }) }}
-          <a class="govuk-link" href="ancient-monument">Skip this question</a>
-        </div>
+        <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+        <a class="govuk-link" href="ancient-monument">Skip this question</a>
+      </div>
 
-      </form>
+    </form>
 
   </div>
   <div class="govuk-grid-column-one-third">
