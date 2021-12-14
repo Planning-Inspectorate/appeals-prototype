@@ -317,11 +317,7 @@ module.exports = function (router) {
       if (req.session.data['lpaq-'+v+'-taskliststatus-surroundingarea'] != "Complete"){
         req.session.data['lpaq-'+v+'-taskliststatus-surroundingarea'] = "In progress";
       }
-      if (req.session.data['lpaq-'+v+'-surroundingarea-appealsimmediatearea'] == "Yes"){
-        res.redirect(base+'surrounding-area/appeals-immediate-area-details');
-      } else {
-        res.redirect(base+'surrounding-area/green-belt');
-      }
+      res.redirect(base+'surrounding-area/green-belt');
     })
 
     router.post(base+'surrounding-area/appeals-immediate-area-details', function (req, res) {
@@ -726,15 +722,6 @@ module.exports = function (router) {
   // Review the procedure type
 
     router.post(base+'procedure-type/decided-by', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-proceduretype-decidedby'] == "No, I recommend an inquiry"){
-        res.redirect(base+'procedure-type/inquiry-witnesses');
-      } else {
-        req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
-        res.redirect(base+'task-list');
-      }
-    })
-
-    router.post(base+'procedure-type/inquiry-witnesses', function (req, res) {
       req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
       res.redirect(base+'task-list');
     })

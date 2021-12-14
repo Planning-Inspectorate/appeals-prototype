@@ -1,4 +1,4 @@
-{% set pageref = "" %}
+        {% set pageref = "" %}
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
@@ -64,47 +64,35 @@
           ]
         }) }}
 
-        {{ govukDateInput({
-          id: "lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date",
-          namePrefix: "lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date",
-          fieldset: {
-            legend: {
-              text: "Date of listing",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              classes: "govuk-input--width-2",
-              name: "day",
-              value: data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date-day"]
-            },
-            {
-              classes: "govuk-input--width-2",
-              name: "month",
-              value: data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date-month"]
-            },
-            {
-              classes: "govuk-input--width-4",
-              name: "year",
-              value: data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date-year"]
-            }
-          ]
-        }) }}
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-upload">
+            Upload the listing description
+          </label>
+          <div id="contact-hint" class="govuk-hint">
+            Drag and drop or choose a file
+          </div>
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-upload" name="lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-upload" type="file">
+        </div>
 
-        {{ govukTextarea({
-          id: "lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-description",
-          name: "lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-description",
-          label: {
-            text: "Listing description",
-            classes: "govuk-label--m"
-          },
-          hint: {
-            text: "Take this from the List of Buildings of Special Architectural or Historic Interest."
-          },
-          value: data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-description"]
+        {{ govukDetails({
+          summaryText: "Files you can upload",
+          html: '
+            <p class="govuk-body">
+              You can upload the following types of file:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
+            </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
+          '
         }) }}
-
+<!--
         {{ govukRadios({
           idPrefix: "lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-historicengland",
           name: "lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-historicengland",
@@ -127,7 +115,7 @@
             }
           ]
         }) }}
-
+-->
          <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"

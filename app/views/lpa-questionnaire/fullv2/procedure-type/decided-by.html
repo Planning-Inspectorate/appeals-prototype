@@ -32,6 +32,18 @@
           This appeal will be decided by written representations.
         </h1>
 
+        {% set witnessesHtml %}
+          {{ govukInput({
+            id: "lpaq-"+version+"-proceduretype-decidedby-witnesses",
+            name: "lpaq-"+version+"-proceduretype-decidedby-witnesses",
+            label: {
+              text: "How many inquiry witnesses would you intend to call?"
+            },
+            classes: "govuk-input--width-3",
+            value: data["lpaq-"+version+"-proceduretype-decidedby-witnesses"]
+          }) }}
+        {% endset -%}
+
         {{ govukRadios({
           idPrefix: "lpaq-"+version+"-proceduretype-decidedby",
           name: "lpaq-"+version+"-proceduretype-decidedby",
@@ -43,19 +55,22 @@
           },
           items: [
             {
-              value: "Yes, I agree",
-              text: "Yes, I agree",
-              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "Yes, I agree")
+              value: "Yes, we agree",
+              text: "Yes, we agree",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "Yes, we agree")
             },
             {
-              value: "No, I recommend a hearing",
-              text: "No, I recommend a hearing",
-              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, I recommend a hearing")
+              value: "No, we recommend a hearing",
+              text: "No, we recommend a hearing",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, we recommend a hearing")
             },
             {
-              value: "No, I recommend an inquiry",
-              text: "No, I recommend an inquiry",
-              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, I recommend an inquiry")
+              value: "No, we recommend an inquiry",
+              text: "No, we recommend an inquiry",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, we recommend an inquiry"),
+              conditional: {
+                html: witnessesHtml
+              }
             }
           ]
         }) }}

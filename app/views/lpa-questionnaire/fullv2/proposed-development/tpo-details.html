@@ -58,17 +58,7 @@
           '
         }) }}
 
-        {{ govukTextarea({
-          id: "lpaq-"+version+"-proposeddevelopment-tpo-details",
-          name: "lpaq-"+version+"-proposeddevelopment-tpo-details",
-          label: {
-            text: "Additional details",
-            classes: "govuk-label--m"
-          },
-          value: data["lpaq-"+version+"-proposeddevelopment-tpo-details"]
-        }) }}
-
-         <div class="govuk-button-group">
+        <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
           }) }}
