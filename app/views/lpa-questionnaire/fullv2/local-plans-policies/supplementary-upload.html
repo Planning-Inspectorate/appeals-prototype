@@ -3,7 +3,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Supplementary planning documents - Upload your local plans and policies - {{serviceName}} - GOV.UK
+  Upload the relevant supplementary planning documents - Upload your local plans and policies - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,12 +30,8 @@
           Upload your local plans and policies
         </span>
         <h1 class="govuk-heading-xl">
-          Supplementary planning documents
+          Upload the relevant supplementary planning documents
         </h1>
-
-        <p class="govuk-body">
-          You can add one supplementary planning document at a time. You will be able to add more later.
-        </p>
         
         <div class="govuk-form-group">
           <label class="govuk-label" for="lpaq-{{version}}-localplanspolicies-supplementary">
@@ -61,70 +57,6 @@
               Your file must be smaller than 15MB.
             </p>
           '
-        }) }}
-          
-        {{ govukInput({
-          id: "lpaq-"+version+"-localplanspolicies-supplementary-name",
-          name: "lpaq-"+version+"-localplanspolicies-supplementary-name",
-          classes: "govuk-!-width-two-thirds",
-          label: {
-            classes: "govuk-label--m govuk-!-margin-top-8",
-            text: "Document name"
-          }
-        }) }}
-
-        {% set dateHtml %}
-          {{ govukDateInput({
-            id: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-date",
-            namePrefix: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-date",
-            fieldset: {
-              legend: {
-                text: "Tell us the date of adoption"
-              }
-            },
-            hint: {
-              text: "For example, 27 3 2007"
-            }
-          }) }}
-        {% endset -%}
-        {% set stageHtml %}
-          {{ govukInput({
-            label: {
-              text: "Tell us what stage this has reached"
-            },
-            id: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-stage",
-            name: "lpaq-"+version+"-localplanspolicies-supplementary-adopted-stage"
-          }) }}
-        {% endset -%}
-        
-        {{ govukRadios({
-          classes: "govuk-radios--inline",
-          idPrefix: "lpaq-"+version+"-localplanspolicies-supplementary-adopted",
-          name: "lpaq-"+version+"-localplanspolicies-supplementary-adopted",
-          fieldset: {
-            classes: "govuk-!-margin-top-8",
-            legend: {
-              text: "Is it formally adopted?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--m govuk-!-margin-top-8"
-            }
-          },  
-          items: [
-            {
-              value: "yes",
-              text: "Yes",
-              conditional: {
-                html: dateHtml
-              }
-            },
-            {
-              value: "no",
-              text: "No",
-              conditional: {
-                html: stageHtml
-              }
-            }
-          ]
         }) }}
         
         <div class="govuk-button-group">
