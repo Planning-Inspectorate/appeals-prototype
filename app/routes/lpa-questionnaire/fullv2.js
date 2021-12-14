@@ -507,7 +507,16 @@ module.exports = function (router) {
     */
 
     router.post(base+'your-decision/plans-documents-drawings', function (req, res) {
-      res.redirect(base+'your-decision/extra-conditions');
+      res.redirect(base+'your-decision/statement-of-case');
+    })
+
+    router.post(base+'your-decision/statement-of-case', function (req, res) {
+      if (req.session.data['lpaq-'+v+'-yourdecision-statementofcase'] == "Yes"){
+        res.redirect(base+'your-decision/extra-conditions');
+      } else {
+        req.session.data["lpaq-"+v+"-taskliststatus-yourdecision"] = "Complete";
+        res.redirect(base+'task-list');
+      }
     })
 
     router.post(base+'your-decision/extra-conditions', function (req, res) {
