@@ -608,6 +608,14 @@ module.exports = function (router) {
     })
 
     router.post(base+'local-plans-policies/supplementary', function (req, res) {
+      if (req.session.data["lpaq-"+v+"-localplanspolicies-supplementary"] == "Yes"){
+        res.redirect(base+'local-plans-policies/supplementary-upload');
+      } else  {
+        res.redirect(base+'local-plans-policies/cil');
+      }
+    })
+
+    router.post(base+'local-plans-policies/supplementary-upload', function (req, res) {
 
       // collate all variables from form
       var newSupplementary = {
