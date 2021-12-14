@@ -3,7 +3,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Do you have any extra conditions? - Provide details about your decision - {{serviceName}} - GOV.UK
+  Do you want to tell us about any extra conditions? - Provide details about your decision - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,11 +30,17 @@
           Provide details about your decision
         </span>
         <h1 class="govuk-heading-xl">
-          Do you have any extra conditions?
+          Do you want to tell us about any extra conditions?
         </h1>
 
         <p class="govuk-body">
-          You do not need to tell us about the standard conditions that will be applied to any successful appeal.
+          You need to tell us about any extra conditions that you'd like the Inspector to apply if they allow the appeal.
+        </p>
+        <p class="govuk-body">
+          If you choose not tell us about them now, you have until {{ 28 | daysInFuture }} to do so. To submit extra conditions after the questionnaire, email <a href="javascript:preventDefault();">CaseOfficers@planninginspectorate.gov.uk</a>.
+        </p>
+        <p class="govuk-body">
+          You do not need to tell us about standard conditions.
         </p>
 
         {{ govukDetails({
@@ -44,23 +50,23 @@
 
         {% set conditionsHtml %}
           {{ govukTextarea({
-            id: "lpaq-"+version+"-yourdetails-extraconditions-details",
-            name: "lpaq-"+version+"-yourdetails-extraconditions-details",
+            id: "lpaq-"+version+"-yourdecision-extraconditions-details",
+            name: "lpaq-"+version+"-yourdecision-extraconditions-details",
             label: {
-              text: "Tell us about the extra conditions"
+              text: "What are your extra conditions?"
             },
-            value: data["lpaq-"+version+"-yourdetails-extraconditions-details"]
+            value: data["lpaq-"+version+"-yourdecision-extraconditions-details"]
           }) }}
         {% endset -%}
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-yourdetails-extraconditions",
-          name: "lpaq-"+version+"-yourdetails-extraconditions",
+          idPrefix: "lpaq-"+version+"-yourdecision-extraconditions",
+          name: "lpaq-"+version+"-yourdecision-extraconditions",
           items: [
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("lpaq-"+version+"-yourdetails-extraconditions", "Yes"),
+              checked: checked("lpaq-"+version+"-yourdecision-extraconditions", "Yes"),
               conditional: {
                 html: conditionsHtml
               }
@@ -68,7 +74,7 @@
             {
               value: "No",
               text: "No",
-              checked: checked("lpaq-"+version+"-yourdetails-extraconditions", "No")
+              checked: checked("lpaq-"+version+"-yourdecision-extraconditions", "No")
             }
           ]
         }) }}
