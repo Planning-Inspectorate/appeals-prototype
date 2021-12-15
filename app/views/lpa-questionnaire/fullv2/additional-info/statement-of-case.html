@@ -1,0 +1,74 @@
+{% set pageref = "" %}
+{% extends "layouts/lpa-questionnaire/fullv2.html" %}
+
+{% block pageTitle %}
+  Are you planning to submit a statement of case for this appeal? - Provide additional information for the inspector - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Provide additional information for the inspector
+        </span>
+        <h1 class="govuk-heading-xl">
+          Are you planning to submit a statement of case for this appeal?
+        </h1>
+
+        <p class="govuk-body">
+          Your deadline to submit a statement of case is {{ 28 | daysInFuture }}.
+        </p>
+        <p class="govuk-body">
+          To submit your statement, email <a href="javascript:preventDefault();">CaseOfficers@planninginspectorate.gov.uk</a>.
+        </p>
+
+        {{ govukRadios({
+          idPrefix: "lpaq-"+version+"-additionalinfo-statementofcase",
+          name: "lpaq-"+version+"-additionalinfo-statementofcase",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaq-"+version+"-additionalinfo-statementofcase", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("lpaq-"+version+"-additionalinfo-statementofcase", "No")
+            }
+          ]
+        }) }}
+
+         <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+          <a class="govuk-link" href="../task-list">Skip this question</a>
+        </div>
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+    </div>
+  </div>
+
+{% endblock %}
