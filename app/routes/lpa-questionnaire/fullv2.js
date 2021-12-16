@@ -112,6 +112,7 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "Yes, we agree";
       req.session.data["lpaq-"+v+"-proceduretype-decidedby-witnesses"] = "";
       req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
+
       req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuilding"] = "Yes";
       req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuildingdetails-grade"] = "Grade II";
       req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding-upload"] = [
@@ -163,6 +164,7 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-notifiedpeople-notifyapplication-letters"] = "letters.pdf";
       req.session.data["lpaq-"+v+"-notifiedpeople-notifyapplication-pressadvert"] = "press_advert.pdf";
       req.session.data["lpaq-"+v+"-taskliststatus-notifiedpeople"] = "Complete";
+
       req.session.data["lpaq-"+v+"-representations-consultrelevant"] = "Yes";
       req.session.data["lpaq-"+v+"-representations-consultrelevant-whichbodies"] = "Morbi augue neque, ullamcorper elementum placerat eu, rhoncus id nisl. Integer non augue ut ligula blandit efficitur.";
       req.session.data["lpaq-"+v+"-representations-consultationresponses"] = "Yes";
@@ -172,7 +174,13 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
       
       req.session.data["lpaq-"+v+"-relevantpolicies-statutorydevelopment"] = "statutory_development_plan.pdf";
-      req.session.data["lpaq-"+v+"-relevantpolicies-developmentplan"] = "Yes";
+      req.session.data["lpaq-"+v+"-relevantpolicies-emergingplan"] = "Yes";
+      req.session.data["lpaq-"+v+"-relevantpolicies-emergingplan-upload"] = [
+        "front_cover.pdf",
+        "relevant_section.pdf",
+        "relevant_policy.pdf",
+        "summary_of_plan_status.pdf"
+      ];
       req.session.data["lpaq-"+v+"-relevantpolicies-other"] = "other_relevant.pdf";
       req.session.data["lpaq-"+v+"-relevantpolicies-supplementary"] = [
         "supplementary_planning_1.pdf",
@@ -484,18 +492,18 @@ module.exports = function (router) {
     })
 
     router.post(base+'relevant-policies/statutory-development', function (req, res) {
-      res.redirect(base+'relevant-policies/development-plan');
+      res.redirect(base+'relevant-policies/emerging-plan');
     })
 
-    router.post(base+'relevant-policies/development-plan', function (req, res) {
-      if (req.session.data["lpaq-"+v+"-relevantpolicies-developmentplan"] == "Yes"){
-        res.redirect(base+'relevant-policies/development-plan-upload');
+    router.post(base+'relevant-policies/emerging-plan', function (req, res) {
+      if (req.session.data["lpaq-"+v+"-relevantpolicies-emergingplan"] == "Yes"){
+        res.redirect(base+'relevant-policies/emerging-plan-upload');
       } else {
         res.redirect(base+'relevant-policies/other');
       }
     })
 
-    router.post(base+'relevant-policies/development-plan-upload', function (req, res) {
+    router.post(base+'relevant-policies/emerging-plan-upload', function (req, res) {
       res.redirect(base+'relevant-policies/other');
     })
 

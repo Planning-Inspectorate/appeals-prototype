@@ -3,7 +3,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Development Plan Document or Neighbourhood Plan - Upload the Planning Officer's report and relevant policies - {{serviceName}} - GOV.UK
+  Do you have an emerging plan that's relevant to this appeal? - Upload the Planning Officer's report and relevant policies - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,25 +30,33 @@
           Upload the Planning Officer's report and relevant policies
         </span>
         <h1 class="govuk-heading-xl">
-          Development Plan Document or Neighbourhood Plan
+          Do you have an emerging plan that's relevant to this appeal?
         </h1>
         <p class="govuk-body">
-          Has any Development Plan Document or Neighbourhood Plan relevant to this appeal been submitted for examination (or in the case of a Neighbourhood Plan, been examined and is awaiting a referendum)?
+          Tell us if you have a:
         </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            development plan document that has been submitted for examination, or has been examined and found sound or met its basic conditions
+          </li>
+          <li>
+            neighbourhood plan that is awaiting or has passed a referendum
+          </li>
+        </ul>
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-relevantpolicies-developmentplan",
-          name: "lpaq-"+version+"-relevantpolicies-developmentplan",
+          idPrefix: "lpaq-"+version+"-relevantpolicies-emergingplan",
+          name: "lpaq-"+version+"-relevantpolicies-emergingplan",
           items: [
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("lpaq-"+version+"-relevantpolicies-developmentplan", "Yes")
+              checked: checked("lpaq-"+version+"-relevantpolicies-emergingplan", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("lpaq-"+version+"-relevantpolicies-developmentplan", "No")
+              checked: checked("lpaq-"+version+"-relevantpolicies-emergingplan", "No")
             }
           ]
         }) }}
