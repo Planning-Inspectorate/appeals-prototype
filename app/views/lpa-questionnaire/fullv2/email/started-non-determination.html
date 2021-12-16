@@ -5,37 +5,59 @@
 {% endblock %}
 
 {% block content %}
-<p><strong>Subject:</strong> 9617 The Avenue, XM26 7YS – full appeal started </p>
-<p><strong>From:</strong> appeals@planninginspectorate.gov.uk</p>
+<p><strong>Subject:</strong> 9617 The Avenue, XM26 7YS - full appeal started </p>
+<p><strong>From:</strong> Appeal a planning decision</p>
 
 <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
 
 <div class="govuk-grid-row govuk-!-margin-top-5">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
 
-    <p class="govuk-body">Planning appeal reference: A/1234567</p>
-    <p class="govuk-body">Dear [Name of local planning department]</p>
-    <p class="govuk-body">We’ve started a full appeal against the non-determination planning application <strong>21/05058/FUL</strong>.</p>
     <p class="govuk-body">
-      <strong>Appeal site:</strong><br>
-      9617 The Avenue <br>
-      Maidstone<br>
-      XM26 7YS
+      Appeal site: 9617 The Avenue, Maidstone, XM26 7YS<br>
+      Planning appeal reference: A/1234567
     </p>
-    <p class="govuk-body">This will be decided by written representations.</p>
+
+    <p class="govuk-body">Dear [name of local planning department]</p>
+
+    <p class="govuk-body">We've started a full appeal against the non-determination planning application <strong>21/05058/FUL</strong>.</p>
+
+    <p class="govuk-body">We'll decide the appeal by written representations.</p>
 
     <h2 class="govuk-heading-m">
-      What you need to do
+      Appeal timeline
     </h2>
-    <p class="govuk-body">You need to submit your questionnaire and documents for the appeal.</p>
+    <p class="govuk-body">
+      Appeal start date:  {{ 0 | daysInFuture }}<br>
+      Questionnaire deadline:  {{ 7 | daysInFuture }}<br>
+      Statement of case deadline:  {{ 35 | daysInFuture }}<br>
+      Final comments deadline: {{ 49 | daysInFuture }}
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Case officer
+    </h2>
+    <p class="govuk-body">
+      <strong>Chris Smith</strong><br>
+      ChrisSmith@planninginspectorate.gov.uk
+    </p>
+
+    <h2 class="govuk-heading-m">What you need to do</h2>
+
+    <h3 class="govuk-heading-s">Submit your questionnaire</h3>
     <p class="govuk-body">Your deadline is {{ 7 | daysInFuture }}.</p>
-    <p class="govuk-body">Complete the questionnaire: <a href="/lpa-questionnaire/fullv2/security/email">[View questionnaire URL]</a></p>
+    <p class="govuk-body">Complete the questionnaire by following this link: <a href="/lpa-questionnaire/fullv2/security/email">https://www.link.com/complete-the-questionnaire</a></p>
     <p class="govuk-body">Once you've submitted your questionnaire, you need to email a copy to the appellant at: appellant@email.com</p>
 
+    <h3 class="govuk-heading-s">Notify interested parties about the appeal</h3>
+    <p class="govuk-body">You must do this as soon as possible. Interested parties have until {{ 35 | daysInFuture }} to submit their comments.</p>
+    <p class="govuk-body">They should email their comments to ChrisSmith@planninginspectorate.gov.uk</a></p>
+
+    <br><br>
     <p class="govuk-body">
       Thank you,​<br>
       The Planning Inspectorate​<br>
-      <a href="javascript:preventDefault();">CaseOfficers@PlanningInspectorate.gov.uk</a>
+      CaseOfficers@PlanningInspectorate.gov.uk
     </p>
 
   </div>
