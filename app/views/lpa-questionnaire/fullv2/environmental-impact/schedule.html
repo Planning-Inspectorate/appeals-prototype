@@ -1,4 +1,4 @@
-{% set pageref = "" %}
+   {% set pageref = "" %}
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
@@ -29,6 +29,30 @@
           Tell us if it's an environmental impact assessment development
         </span>
 
+        {% set scheduleHtml %}
+          {{ govukRadios({
+            idPrefix: "lpaq-"+version+"-environmentalimpact-schedule-type",
+            name: "lpaq-"+version+"-environmentalimpact-schedule-type",
+            fieldset: {
+              legend: {
+                text: "Which schedule is the development?"
+              }
+            },
+            items: [
+              {
+                value: "Schedule 1",
+                text: "Schedule 1",
+                checked: checked("lpaq-"+version+"-environmentalimpact-schedule-type", "Schedule 1")
+              },
+              {
+                value: "Schedule 2",
+                text: "Schedule 2",
+                checked: checked("lpaq-"+version+"-environmentalimpact-schedule-type", "Schedule 2")
+              }
+            ]
+          }) }}
+        {% endset -%}
+
         {{ govukRadios({
           idPrefix: "lpaq-"+version+"-environmentalimpact-schedule",
           name: "lpaq-"+version+"-environmentalimpact-schedule",
@@ -41,22 +65,17 @@
           },
           items: [
             {
-              value: "Schedule 1",
-              text: "Schedule 1",
-              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "Schedule 1")
+              value: "Yes",
+              text: "Yes",
+              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "Yes"),
+              conditional: {
+                html: scheduleHtml
+              }
             },
             {
-              value: "Schedule 2",
-              text: "Schedule 2",
-              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "Schedule 2")
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "It is neither a schedule 1 or schedule 2 development",
-              text: "It is neither a schedule 1 or schedule 2 development",
-              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "It is neither a schedule 1 or schedule 2 development")
+              value: "No",
+              text: "No",
+              checked: checked("lpaq-"+version+"-environmentalimpact-schedule", "No")
             }
           ]
         }) }}

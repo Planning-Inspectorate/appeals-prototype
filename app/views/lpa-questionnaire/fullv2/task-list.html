@@ -221,12 +221,12 @@
                 {%
                   if data["lpaq-"+version+"-taskliststatus-proceduretype"] == "Complete"
                   and data["lpaq-"+version+"-taskliststatus-constraintsdesignations"] == "Complete"
-                  and data["lpaq-"+version+"-taskliststatus-surroundingarea"] == "Complete"
                   and data["lpaq-"+version+"-taskliststatus-environmentalimpact"] == "Complete"
-                  and data["lpaq-"+version+"-taskliststatus-yourdecision"] == "Complete"
                   and data["lpaq-"+version+"-taskliststatus-notifiedpeople"] == "Complete"
                   and data["lpaq-"+version+"-taskliststatus-representations"] == "Complete"
-                  and data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-relevantpolicies"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-siteaccess"] == "Complete"
+                  and data["lpaq-"+version+"-taskliststatus-additionalinfo"] == "Complete"
                 %}
                   <span class="app-task-list__task-name">
                     <a href="/lpa-questionnaire/{{version}}/check-your-answers" class="govuk-link">

@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Development Plan Document or Neighbourhood Plan - Upload the Planning Officer's report and relevant policies - {{serviceName}} - GOV.UK
+  Upload consultation responses about the environmental statement - Tell us if it's an environmental impact assessment development - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,17 +26,20 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Upload the Planning Officer's report and relevant policies
+          Tell us if it's an environmental impact assessment development
         </span>
         <h1 class="govuk-heading-xl">
-          Upload Development Plan Document or Neighbourhood Plan
+          Upload consultation responses about the environmental statement
         </h1>
+        <p class="govuk-body">
+          These can be from both statutory and non-statutory consultees.
+        </p>
       
         <div class="govuk-form-group">
-          <label class="govuk-label" for="lpaq-{{version}}-relevantpolicies-developmentplan-upload">
+          <label class="govuk-label" for="lpaq-{{version}}-environmentalimpact-consultationresponses">
             Drag and drop or choose files
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-relevantpolicies-developmentplan-upload" name="lpaq-{{version}}-relevantpolicies-developmentplan-upload" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-environmentalimpact-consultationresponses" name="lpaq-{{version}}-environmentalimpact-consultationresponses" type="file" multiple>
         </div>
 
         {{ govukDetails({
@@ -57,15 +60,12 @@
             </p>
           '
         }) }}
-
-
-
         
         <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
           }) }}
-          <a class="govuk-link" href="other">Skip this question</a>
+          <a class="govuk-link" href="environmental-statement">Skip this question</a>
         </div>
 
       </form>
