@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Would the development affect a protected species? - Tell us about constraints, designations and other issues - {{serviceName}} - GOV.UK
+  Did your screening opinion say the development needed an environmental statement? - Tell us if it's an environmental impact assessment development - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,15 +26,15 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Tell us about constraints, designations and other issues
+          Tell us if it's an environmental impact assessment development
         </span>
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-constraintsdesignations-protectedspecies",
-          name: "lpaq-"+version+"-constraintsdesignations-protectedspecies",
+          idPrefix: "lpaq-"+version+"-environmentalimpact-screeningopinion-es",
+          name: "lpaq-"+version+"-environmentalimpact-screeningopinion-es",
           fieldset: {
             legend: {
-              text: "Would the development affect a protected species?",
+              text: "Did your screening opinion say the development needed an environmental statement?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -43,29 +43,29 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("lpaq-"+version+"-constraintsdesignations-protectedspecies", "Yes")
+              checked: checked("lpaq-"+version+"-environmentalimpact-screeningopinion-es", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("lpaq-"+version+"-constraintsdesignations-protectedspecies", "No")
+              checked: checked("lpaq-"+version+"-environmentalimpact-screeningopinion-es", "No")
             }
           ]
         }) }}
 
-         <div class="govuk-button-group">
+        <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"
           }) }}
-          <a class="govuk-link" href="../task-list">Skip this question</a>
+          <a class="govuk-link" href="environmental-statement">Skip this question</a>
         </div>
 
       </form>
 
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
+    </div>
   </div>
-  <div class="govuk-grid-column-one-third">
-    {% include "lpa-questionnaire/"+version+"/_appeal-details.html" %} 
-  </div>
-</div>
 
 {% endblock %}

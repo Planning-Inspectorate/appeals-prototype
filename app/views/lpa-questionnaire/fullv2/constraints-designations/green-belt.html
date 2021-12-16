@@ -31,8 +31,8 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-surroundingarea-greenbelt",
-          name: "lpaq-"+version+"-surroundingarea-greenbelt",
+          idPrefix: "lpaq-"+version+"-constraintsdesignations-greenbelt",
+          name: "lpaq-"+version+"-constraintsdesignations-greenbelt",
           fieldset: {
             legend: {
               text: "Is the appeal site in a green belt?",
@@ -44,12 +44,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("lpaq-"+version+"-surroundingarea-greenbelt", "Yes")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-greenbelt", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("lpaq-"+version+"-surroundingarea-greenbelt", "No")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-greenbelt", "No")
             }
           ]
         }) }}

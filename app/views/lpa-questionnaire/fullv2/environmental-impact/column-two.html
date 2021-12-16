@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Would the development affect a protected species? - Tell us about constraints, designations and other issues - {{serviceName}} - GOV.UK
+  Does the development meet or exceed the threshold or criteria in column 2? - Tell us if it's an environmental impact assessment development - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,15 +26,15 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Tell us about constraints, designations and other issues
+          Tell us if it's an environmental impact assessment development
         </span>
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-constraintsdesignations-protectedspecies",
-          name: "lpaq-"+version+"-constraintsdesignations-protectedspecies",
+          idPrefix: "lpaq-"+version+"-environmentalimpact-columntwo",
+          name: "lpaq-"+version+"-environmentalimpact-columntwo",
           fieldset: {
             legend: {
-              text: "Would the development affect a protected species?",
+              text: "Does the development meet or exceed the threshold or criteria in column 2?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -43,12 +43,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("lpaq-"+version+"-constraintsdesignations-protectedspecies", "Yes")
+              checked: checked("lpaq-"+version+"-environmentalimpact-columntwo", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("lpaq-"+version+"-constraintsdesignations-protectedspecies", "No")
+              checked: checked("lpaq-"+version+"-environmentalimpact-columntwo", "No")
             }
           ]
         }) }}
@@ -57,7 +57,7 @@
           {{ govukButton({
             text: "Save and continue"
           }) }}
-          <a class="govuk-link" href="../task-list">Skip this question</a>
+          <a class="govuk-link" href="screening-opinion">Skip this question</a>
         </div>
 
       </form>

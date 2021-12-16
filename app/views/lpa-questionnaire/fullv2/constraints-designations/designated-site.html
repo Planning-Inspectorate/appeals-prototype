@@ -31,8 +31,8 @@
         
         {% set otherHtml %}
           {{ govukInput({
-            id: "lpaq-"+version+"-surroundingarea-sssi-other",
-            name: "lpaq-"+version+"-surroundingarea-sssi-other",
+            id: "lpaq-"+version+"-constraintsdesignations-designatedsite-other",
+            name: "lpaq-"+version+"-constraintsdesignations-designatedsite-other",
             label: {
               text: "Other designation(s)"
             }
@@ -40,8 +40,8 @@
         {% endset -%}
 
         {{ govukCheckboxes({
-          idPrefix: "lpaq-"+version+"-surroundingarea-sssi",
-          name: "lpaq-"+version+"-surroundingarea-sssi",
+          idPrefix: "lpaq-"+version+"-constraintsdesignations-designatedsite",
+          name: "lpaq-"+version+"-constraintsdesignations-designatedsite",
           fieldset: {
             legend: {
               text: "Is the development in, near or likely to affect any designated sites?",
@@ -56,27 +56,27 @@
             {
               value: "SSSI",
               text: "SSSI (site of special scientific interest)",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "SSSI")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-designatedsite", "SSSI")
             },
             {
               value: "cSAC",
               text: "cSAC (candidate special area of conservation)",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "cSAC")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-designatedsite", "cSAC")
             },
             {
               value: "SAC",
               text: "SAC (special area of conservation)",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "SAC")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-designatedsite", "SAC")
             },
             {
               value: "pSPA",
               text: "pSPA (potential special protection area)",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "pSPA")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-designatedsite", "pSPA")
             },
             {
               value: "SPA Ramsar",
               text: "SPA Ramsar (Ramsar special protection area)",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "SPA Ramsar")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-designatedsite", "SPA Ramsar")
             },
             {
               value: "Other",
@@ -84,7 +84,7 @@
               conditional: {
                 html: otherHtml
               },
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "Other")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-designatedsite", "Other")
             },
             {
               divider: "or"
@@ -92,7 +92,7 @@
             {
               value: "No, it is not in, near or likely to affect any designated sites",
               text: "No, it is not in, near or likely to affect any designated sites",
-              checked: checked("lpaq-"+version+"-surroundingarea-sssi", "No, it is not in, near or likely to affect any designated sites")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-designatedsite", "No, it is not in, near or likely to affect any designated sites")
             }
           ]
         }) }}

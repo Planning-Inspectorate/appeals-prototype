@@ -30,8 +30,8 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-surroundingarea-aonb",
-          name: "lpaq-"+version+"-surroundingarea-aonb",
+          idPrefix: "lpaq-"+version+"-constraintsdesignations-aonb",
+          name: "lpaq-"+version+"-constraintsdesignations-aonb",
           fieldset: {
             legend: {
               text: "Is the appeal site in an area of outstanding natural beauty?",
@@ -43,12 +43,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("lpaq-"+version+"-surroundingarea-aonb", "Yes")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-aonb", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("lpaq-"+version+"-surroundingarea-aonb", "No")
+              checked: checked("lpaq-"+version+"-constraintsdesignations-aonb", "No")
             }
           ]
         }) }}

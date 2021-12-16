@@ -61,13 +61,13 @@
         }) }}
 
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload">
+          <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-constraintsdesignations-listedbuildingdetails-upload">
             Upload the listing description
           </label>
           <div id="contact-hint" class="govuk-hint">
             Drag and drop or choose a file
           </div>
-          <input class="govuk-file-upload pins-file-upload" id="lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload" name="lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="lpaq-{{version}}-constraintsdesignations-listedbuildingdetails-upload" name="lpaq{{version}}-constraintsdesignations-listedbuildingdetails-upload" type="file">
         </div>
 
         {{ govukDetails({

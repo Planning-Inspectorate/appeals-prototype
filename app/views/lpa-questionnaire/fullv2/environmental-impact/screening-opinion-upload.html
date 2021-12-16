@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Upload the screening opinion and any other correspondence - Tell us if it's an environmental impact assessment development - {{serviceName}} - GOV.UK
+  Upload your screening opinion and any correspondence - Tell us if it's an environmental impact assessment development - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,7 +29,7 @@
           Tell us if it's an environmental impact assessment development
         </span>
         <h1 class="govuk-heading-xl">
-          Upload the screening opinion and any other correspondence
+          Upload your screening opinion and any correspondence
         </h1>
       
         <div class="govuk-form-group">
@@ -57,31 +57,7 @@
             </p>
           '
         }) }}
-<!--
-        {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-environmentalimpact-screeningopinion-eia",
-          name: "lpaq-"+version+"-environmentalimpact-screeningopinion-eia",
-          fieldset: {
-            legend: {
-              text: "Did the screening opinion say the development needs an environmental impact assessment?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("lpaq-"+version+"-environmentalimpact-screeningopinion-eia", "Yes")
-            },
-            {
-              value: "No",
-              text: "No",
-              checked: checked("lpaq-"+version+"-environmentalimpact-screeningopinion-eia", "No")
-            }
-          ]
-        }) }}
--->
+        
         <div class="govuk-button-group">
           {{ govukButton({
             text: "Save and continue"

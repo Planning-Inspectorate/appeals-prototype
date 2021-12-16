@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Is the applicable threshold or criteria in column 2 met or exceeded? - Tell us if it's an environmental impact assessment development - {{serviceName}} - GOV.UK
+  Did you do the environmental statement? - Tell us if it's an environmental impact assessment development - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,25 +30,25 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "lpaq-"+version+"-environmentalimpact-scheduletwo-criteria",
-          name: "lpaq-"+version+"-environmentalimpact-scheduletwo-criteria",
+          idPrefix: "lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement",
+          name: "lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement",
           fieldset: {
             legend: {
-              text: "Is the applicable threshold or criteria in column 2 met or exceeded?",
+              text: "Did you do the environmental statement?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("lpaq-"+version+"-environmentalimpact-scheduletwo-criteria", "Yes")
+              value: "Yes, we did the environmental statement",
+              text: "Yes, we did the environmental statement",
+              checked: checked("lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement", "Yes, we did the environmental statement")
             },
             {
-              value: "No",
-              text: "No",
-              checked: checked("lpaq-"+version+"-environmentalimpact-scheduletwo-criteria", "No")
+              value: "No, we have a negative screening direction",
+              text: "No, we have a negative screening direction",
+              checked: checked("lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement", "No, we have a negative screening direction")
             }
           ]
         }) }}
@@ -57,7 +57,7 @@
           {{ govukButton({
             text: "Save and continue"
           }) }}
-          <a class="govuk-link" href="screening-opinion">Skip this question</a>
+          <a class="govuk-link" href="notifications-consultations">Skip this question</a>
         </div>
 
       </form>
