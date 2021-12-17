@@ -31,6 +31,30 @@
         <h1 class="govuk-heading-xl">
           Upload your screening opinion and any correspondence
         </h1>
+
+        {% if data["lpaq-"+version+"-environmentalimpact-screeningopinion-details"] %}
+          {% if data["lpaq-"+version+"-environmentalimpact-screeningopinion-details"] != "" %}
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">
+              Uploaded files
+            </h3>
+            {% if data["lpaq-"+version+"-environmentalimpact-screeningopinion-details"]|is_string %}
+              <p class="govuk-body">
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-environmentalimpact-screeningopinion-details"] }}</a>
+              </p>
+            {% else %}
+              <ul class="govuk-list">
+                {% for item in data["lpaq-"+version+"-environmentalimpact-screeningopinion-details"] %}
+                  <li>
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">
+              Upload more files
+            </h3>
+          {% endif %}
+        {% endif %}
       
         <div class="govuk-form-group">
           <label class="govuk-label" for="lpaq-{{version}}-environmentalimpact-screeningopinion-details">
