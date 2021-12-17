@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -36,16 +36,16 @@
         Before you submit your evidence, take a moment to make sure you're happy with the answers you've provided.
       <p>
 
-      <h2 class="govuk-heading-l">The proposed development</h2>
+      <h2 class="govuk-heading-l">Procedure type</h2>
 
-      <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Involves changing a listed building
+            Do you agree that this appeal will be decided by written representations?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-proposeddevelopment-listedbuilding"] }}
+            {{ data["lpaq-"+version+"-proceduretype-decidedby"] }}{% if data["lpaq-"+version+"-proceduretype-decidedby"] == "No, we recommend an inquiry" %}.<br>We plan to call {{ data["lpaq-"+version+"-proceduretype-decidedby-witnesses"] }} witnesses.{% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -56,90 +56,16 @@
       
       </dl>
 
-      {% if data["lpaq-"+version+"-proposeddevelopment-listedbuilding"] == "Yes" %}
-        <div class="govuk-inset-text govuk-!-padding-top-0 govuk-!-margin-top-0 govuk-!-padding-bottom-0 govuk-!-margin-bottom-0 govuk-!-padding-right-0">
-          <h3 class="govuk-heading-m govuk-!-margin-top-5 govuk-!-margin-bottom-1">Listed building details</h3>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-3">
-          
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Grade
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-grade"]}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Listed on
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date-day"]}}
-                {{data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date-month"] | formatMonth }}
-                {{data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-date-year"]}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Description
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-description"]}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Historic England consulted
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-proposeddevelopment-listedbuildingdetails-historicengland"]}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Response from Historic England
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-proposeddevelopment-historicengland-response"]}}</a>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </div>
-      {% endif %}
+      <h2 class="govuk-heading-l">Constraints, designations and other issues</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Relates to someone claiming Gypsy or Traveller status
+            Does the proposed development involve changing a listed building?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-proposeddevelopment-traveller"]}}
+            {{ data["lpaq-"+version+"-constraintsdesignations-listedbuilding"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -147,362 +73,28 @@
             </a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Requires stopping up or diverting a public right of way
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-proposeddevelopment-rightofway"]}}<br>
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-proposeddevelopment-rightofway-mapstatement"]}}</a><br>
-            {{data["lpaq-"+version+"-proposeddevelopment-rightofway-details"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Part of the appeal site is subject to a tree preservation order
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-proposeddevelopment-tpo"]}}<br>
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-proposeddevelopment-tpo-siteplan"]}}</a><br>
-            {{data["lpaq-"+version+"-proposeddevelopment-tpo-details"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-      <h2 class="govuk-heading-l">The surrounding area</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-0">
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Appeal has other appeals nearby
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-appealsimmediatearea"]}}<br>
-            {{data["lpaq-"+version+"-surroundingarea-appealsimmediatearea-details"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Site is in a green belt
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-greenbelt"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Site is in a or near a conservation area
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-conservationarea"]}}<br>
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-surroundingarea-conservationarea-upload"]}}</a>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Site is in an area of outstanding natural beauty
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-aonb"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Site is in, near or likely to affect a designated site
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-sssi"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-      {% if data["lpaq-"+version+"-surroundingarea-sssi"] == "Yes" %}
-        <div class="govuk-inset-text govuk-!-padding-top-0 govuk-!-margin-top-0 govuk-!-padding-bottom-0 govuk-!-margin-bottom-0 govuk-!-padding-right-0">
-          <h3 class="govuk-heading-m govuk-!-margin-top-5 govuk-!-margin-bottom-1">Designation details</h3>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-3">
-          
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Designation
-              </dt>
-              <dd class="govuk-summary-list__value">
+        
+        {% if data["lpaq-"+version+"-constraintsdesignations-listedbuilding"] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Details of the changing listed building
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-grade"] }}
+              </p>
+              {% if data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"]|is_string %}
+                <p class="govuk-body">
+                  <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] }}</a>
+                </p>
+              {% else %}
                 <ul class="govuk-list">
-                  {% for item in data["lpaq-"+version+"-surroundingarea-sssi-designation"] %}
-                    <li>{{ item }}{% if item == "Other" %} - {{data["lpaq-"+version+"-surroundingarea-sssi-designation-other"]}}{% endif %}</li>
+                  {% for item in data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
                   {% endfor %}
                 </ul>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-          
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Natural England consulted
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-surroundingarea-sssi-consulted"]}}<br>
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-surroundingarea-sssi-consultation-upload"]}}</a>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-
-          </dl>
-        </div>
-      {% endif %}
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-0">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Development affects the setting of a listed building
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-affectslistedbuilding"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-      {% if data["lpaq-"+version+"-surroundingarea-affectslistedbuilding"] == "Yes" %}
-        <div class="govuk-inset-text govuk-!-padding-top-0 govuk-!-margin-top-0 govuk-!-padding-bottom-0 govuk-!-margin-bottom-0 govuk-!-padding-right-0">
-          <h3 class="govuk-heading-m govuk-!-margin-top-5 govuk-!-margin-bottom-1">Listed building details</h3>
-          <dl class="govuk-summary-list govuk-!-margin-bottom-3">
-          
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Listing description
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-surroundingarea-affectslistedbuilding-description"]}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-          
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Historic England consulted
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data["lpaq-"+version+"-surroundingarea-affectslistedbuilding-consulted"]}}<br>
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-surroundingarea-sssi-consultation-upload"]}}</a>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> </span>
-                </a>
-              </dd>
-            </div>
-
-          </dl>
-        </div>
-      {% endif %}
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Development affects an ancient monument
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-ancientmonument"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Consulted Historic England about the effect on the ancient monument
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-ancientmonument"]}}<br>
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-surroundingarea-ancientmonument-consultation-upload"]}}</a>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Development affects protected species
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-protectedspecies"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Advice from Natural England
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-surroundingarea-protectedspecies"]}}<br>
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-surroundingarea-protectedspecies-consultation"]}}</a>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-
-      <h2 class="govuk-heading-l">Environmental impact</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Development is a schedule 1 or schedule 2 development
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-environmentalimpact-schedule"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        {% if data["lpaq-"+version+"-environmentalimpact-schedule"] != "It is neither a schedule 1 or schedule 2 development" %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Development category
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data["lpaq-"+version+"-environmentalimpact-schedule"] == "Schedule 1" %}
-                {{data["lpaq-"+version+"-environmentalimpact-scheduleone"]}}
-              {% else %}
-                {{data["lpaq-"+version+"-environmentalimpact-scheduletwo"]}}
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
-        {% if data["lpaq-"+version+"-environmentalimpact-schedule"] == "Schedule 2" %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Development is within a sensitive area
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data["lpaq-"+version+"-environmentalimpact-scheduletwo-sensitive"]}}<br>
-              {{data["lpaq-"+version+"-environmentalimpact-scheduletwo-sensitive-details"]}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Column 2 threshold or criteria met or exceeded
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data["lpaq-"+version+"-environmentalimpact-scheduletwo-criteria"]}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Have you issued a screening opinion?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-environmentalimpact-screeningopinion"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        {% if data["lpaq-"+version+"-environmentalimpact-screeningopinion"] == "Yes" %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Screening opinion details
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-environmentalimpact-screeningopinion-details"]}}</a><br>
-              {% if data["lpaq-"+version+"-environmentalimpact-screeningopinion-eia"] == "Yes" %}
-                Screening opinion said the development needs an environmental impact assessment
-              {% else %}
-                Screening opinion said the development does not need an environmental impact assessment
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -515,11 +107,10 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Did the appellant provide an environmental statement?
+            Would the development affect the setting of a listed building?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-environmentalimpact-environmentalstatement"]}}<br>
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-environmentalimpact-environmentalstatement-details"]}}</a>
+            {{ data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -527,14 +118,27 @@
             </a>
           </dd>
         </div>
-
-        {% if data["lpaq-"+version+"-environmentalimpact-environmentalstatement"] == "Yes" %}
+        
+        {% if data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding"] == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Site notice or advertisment
+              Details of the affected listing building
             </dt>
             <dd class="govuk-summary-list__value">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-environmentalimpact-environmentalstatement-sitenotice"]}}</a>
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding-grade"] }}
+              </p>
+              {% if data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding-upload"]|is_string %}
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding-upload"] }}</a>
+              {% else %}
+                <ul class="govuk-list">
+                  {% for item in data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -546,59 +150,10 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Have you made all notifications or consultations under any Act, Order or Departmental Circular, necessary before granting permission?
+            Would the development affect an ancient monument?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-environmentalimpact-notificationsconsultations"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-      </dl>
-
-
-      <h2 class="govuk-heading-l">Your decision</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Planning Officer's report
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-yourdetails-planningofficersreport"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <!--div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            What your decision notice would have said
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-yourdetails-decisionnotice"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div-->
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Plans, documents and drawings
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-yourdetails-plansdocumentsdrawings"]}}
+            {{ data["lpaq-"+version+"-constraintsdesignations-ancientmonument"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -609,11 +164,10 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Do you have any extra conditions?
+            Is the appeal site in or near a conservation area?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-yourdetails-extraconditions"]}}<br>
-            {{data["lpaq-"+version+"-yourdetails-extraconditions-details"]}}
+            {{ data["lpaq-"+version+"-constraintsdesignations-conservationarea"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -621,35 +175,24 @@
             </a>
           </dd>
         </div>
-
-      </dl>
-
-
-      <h2 class="govuk-heading-l">How you informed interested parties</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Did you publicise the planning application?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-interestedparties-publiciseapplication"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        {% if data["lpaq-"+version+"-interestedparties-publiciseapplication"] == "Yes" %}
+        
+        {% if data["lpaq-"+version+"-constraintsdesignations-conservationarea"] != "No, it is not in or next to a conservation area" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Site notice and local advertisement
+              Conservation area documentation
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data["lpaq-"+version+"-interestedparties-publiciseapplication-sitenotice"]}}
+              <ul class="govuk-list">
+                {% if data["lpaq-"+version+"-constraintsdesignations-conservationarea-upload"]|is_string %}
+                  <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-constraintsdesignations-conservationarea-upload"] }}</a>
+                {% else %}
+                  {% for item in data["lpaq-"+version+"-constraintsdesignations-conservationarea-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -661,10 +204,10 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Did you tell any interested parties about the planning application?
+            Would the development affect a protected species?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-interestedparties-tellapplication"]}}
+            {{ data["lpaq-"+version+"-constraintsdesignations-protectedspecies"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -673,28 +216,12 @@
           </dd>
         </div>
 
-        {% if data["lpaq-"+version+"-interestedparties-tellapplication"] == "Yes" %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Site notice and local advertisement
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data["lpaq-"+version+"-interestedparties-tellapplication-letter"]}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Did you tell any interested parties about the appeal?
+            Is the appeal site in a green belt?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-interestedparties-toldappeal"]}}
+            {{ data["lpaq-"+version+"-constraintsdesignations-greenbelt"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -703,37 +230,33 @@
           </dd>
         </div>
 
-        {% if data["lpaq-"+version+"-interestedparties-toldappeal"] == "Yes" %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Letter sent to interested parties, and their addresses
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data["lpaq-"+version+"-interestedparties-toldappeal-letter"]}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> </span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
-      </dl>
-
-
-      <h2 class="govuk-heading-l">Representations</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is the appeal site in an area of outstanding natural beauty?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-constraintsdesignations-aonb"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Parties you received representations from
+            Is the development in, near or likely to affect any designated sites?
           </dt>
           <dd class="govuk-summary-list__value">
             <ul class="govuk-list">
-              {% for item in data["lpaq-"+version+"-representations-whichparties"] %}
-                <li>{{ item }}</li>
+              {% for item in data["lpaq-"+version+"-constraintsdesignations-designatedsite"] %}
+                <li>
+                  {{ item }}
+                  {% if item == "Other" %}
+                    - {{ data["lpaq-"+version+"-constraintsdesignations-designatedsite-other"] }}
+                  {% endif %}
+                </li>
               {% endfor %}
             </ul>
           </dd>
@@ -744,13 +267,37 @@
           </dd>
         </div>
 
-        {% if "Site owners" in data["lpaq-"+version+"-representations-whichparties"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does a tree preservation order apply to any part of the appeal site?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-constraintsdesignations-tpo"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+        
+        {% if data["lpaq-"+version+"-constraintsdesignations-tpo"] == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Site owner representations
+              Plan showing the extent of the order
             </dt>
             <dd class="govuk-summary-list__value">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-representations-siteowner"]}}</a>
+              <ul class="govuk-list">
+                {% if data["lpaq-"+version+"-constraintsdesignations-tpo-siteplan"]|is_string %}
+                  <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-constraintsdesignations-tpo-siteplan"] }}</a>
+                {% else %}
+                  {% for item in data["lpaq-"+version+"-constraintsdesignations-tpo-siteplan"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -760,13 +307,351 @@
           </div>
         {% endif %}
 
-        {% if "Statutory consultees" in data["lpaq-"+version+"-representations-whichparties"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does the development relate to anyone claiming to be a Gypsy or Traveller?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-constraintsdesignations-traveller"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Would a public right of way need to be removed or diverted?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-constraintsdesignations-rightofway"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+        
+        {% if data["lpaq-"+version+"-constraintsdesignations-rightofway"] == "Yes" %} 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Statutory consultee representations
+              Extract from the definitive map and statement
             </dt>
             <dd class="govuk-summary-list__value">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-representations-statutoryconsultee"]}}</a>
+              <ul class="govuk-list">
+                {% if data["lpaq-"+version+"-constraintsdesignations-rightofway-mapstatement"]|is_string %}
+                  <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-constraintsdesignations-rightofway-mapstatement"] }}</a>
+                {% else %}
+                  {% for item in data["lpaq-"+version+"-constraintsdesignations-rightofway-mapstatement"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+      
+      </dl>
+
+
+      <h2 class="govuk-heading-l">Environmental impact assessment</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is the development a schedule 1 or 2 development?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              {{ data["lpaq-"+version+"-environmentalimpact-schedule"] }}
+            </p>
+            {% if data["lpaq-"+version+"-environmentalimpact-schedule"] == "Yes" %}
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-environmentalimpact-schedule-type"] }}
+              </p>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        {% if (data["lpaq-"+version+"-environmentalimpact-schedule"] == "Yes") and (data["lpaq-"+version+"-environmentalimpact-schedule-type"] == "Schedule 2") %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Description of development
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["lpaq-"+version+"-environmentalimpact-descriptionofdevelopment"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Is the development in, partly in, or likely to affect a sensitive area?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body">
+                  {{ data["lpaq-"+version+"-environmentalimpact-sensitivearea"] }}
+                </p>
+                {% if data["lpaq-"+version+"-environmentalimpact-sensitivearea"] == "Yes" %}
+                  <p class="govuk-body">
+                    {{ data["lpaq-"+version+"-environmentalimpact-sensitivearea-details"] }}
+                  </p>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Does the development meet or exceed the threshold or criteria in column 2?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["lpaq-"+version+"-environmentalimpact-columntwo"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+        {% endif %}
+
+        {% if (
+                (data["lpaq-"+version+"-environmentalimpact-schedule"] == "Yes") and 
+                (data["lpaq-"+version+"-environmentalimpact-schedule-type"] == "Schedule 2")
+              ) or
+              (data["lpaq-"+version+"-environmentalimpact-schedule"] == "No")
+        %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Did you do a screening opinion?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["lpaq-"+version+"-environmentalimpact-screeningopinion"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+          
+          {% if data["lpaq-"+version+"-environmentalimpact-screeningopinion"] == "Yes" %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Screening opinion and correspondence
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["lpaq-"+version+"-environmentalimpact-screeningopinion-details"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Did your screening opinion say the development needed an environmental statement?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["lpaq-"+version+"-environmentalimpact-screeningopinion-es"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+          {% endif %}
+          
+          {% if (data["lpaq-"+version+"-environmentalimpact-screeningopinion"] == "No") or
+                (
+                  (data["lpaq-"+version+"-environmentalimpact-screeningopinion"] == "Yes") and
+                  (data["lpaq-"+version+"-environmentalimpact-screeningopinion-es"] == "No")
+                )
+          %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Did the applicant submit an environmental statement?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["lpaq-"+version+"-environmentalimpact-environmentalstatement"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+          {% endif %}
+
+        {% endif %}
+
+
+        {% if (
+                (data["lpaq-"+version+"-environmentalimpact-schedule"] == "Yes") and 
+                (data["lpaq-"+version+"-environmentalimpact-schedule-type"] == "Schedule 2") 
+              ) or 
+              (
+                (data["lpaq-"+version+"-environmentalimpact-screeningopinion"] == "Yes") and
+                (data["lpaq-"+version+"-environmentalimpact-screeningopinion-es"] == "Yes")
+              )
+        %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Did you do the environmental statement?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+          
+          {% if data["lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement"] == "No" %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Screening direction
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["lpaq-"+version+"-environmentalimpact-screeningdirection"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+          {% endif %}
+          
+          {% if data["lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement"] == "Yes" %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Environmental statement and supporting information
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["lpaq-"+version+"-environmentalimpact-environmentalstatement"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+              </dd>
+            </div>
+
+          {% endif %}
+
+        {% endif %}
+          
+        {% if (data["lpaq-"+version+"-environmentalimpact-lpaenvironmentalstatement"] == "Yes")
+              or 
+              (data["lpaq-"+version+"-environmentalimpact-environmentalstatement"] == "Yes") 
+        %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Consultation responses for the environmental statement
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["lpaq-"+version+"-environmentalimpact-consultationresponses"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Site notice and advertisement for the environmental impact assessment development
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["lpaq-"+version+"-environmentalimpact-sitenoticeadvert"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+        {% endif %}
+
+      </dl>
+
+
+      <h2 class="govuk-heading-l">How you notified people about the application</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How did you notify people about the application?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul class="govuk-list">
+              {% for item in data["lpaq-"+version+"-notifiedpeople-notifyapplication"] %}
+              <li>
+                {{ item }}
+              </li>
+              {% endfor %}
+            </ul>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        {% if 'A site notice' in data["lpaq-"+version+"-notifiedpeople-notifyapplication"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Site notice
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-notifiedpeople-notifyapplication-sitenotice"] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -776,13 +661,29 @@
           </div>
         {% endif %}
 
-        {% if "Other parties" in data["lpaq-"+version+"-representations-whichparties"] %}
+        {% if 'Letters to the neighbours' in data["lpaq-"+version+"-notifiedpeople-notifyapplication"] %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Other representations
+              Letter to the neighbours, and their addresses
             </dt>
             <dd class="govuk-summary-list__value">
-              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-representations-other"]}}</a>
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-notifiedpeople-notifyapplication-letters"] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {% if 'A press advert' in data["lpaq-"+version+"-notifiedpeople-notifyapplication"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Press advert
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-notifiedpeople-notifyapplication-pressadvert"] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -795,72 +696,22 @@
       </dl>
 
 
-      <h2 class="govuk-heading-l">Local plans and policies</h2>
+      <h2 class="govuk-heading-l">Consultation responses and representations</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Statutory development plan policy
+            Did you consult all the relevant statutory consultees about the development?
           </dt>
           <dd class="govuk-summary-list__value">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-localplanspolicies-statutorydevelopment"]}}</a>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Has any Development Plan Document or Neighbourhood Plan relevant to this appeal been submitted for examination or is awaiting a referendum?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-localplanspolicies-neighbourhoodplan"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Other relevant policies
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{data["lpaq-"+version+"-localplanspolicies-other"]}}</a>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
-              Change<span class="govuk-visually-hidden"> </span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Supplementary planning documents
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['lpaq-'+version+'-localplanspolicies-supplementary-files'] %}
-                {% set i = 0 %}
-                {% for file in data['lpaq-'+version+'-localplanspolicies-supplementary-files'] %}
-                  {% set i = i + 1 %}
-                  <p class="govuk-body">
-                    <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">{{ file.name }}</a><br>
-                    {% if file.adopted == "yes" %}
-                      (Adopted on {{file['adopted_day']}} {{file['adopted_month']}} {{file['adopted_year']}})
-                    {% else %}
-                      (Not adopted - {{ file.adopted_stage | capitalize }})
-                    {% endif %}
-                  </p>
-                {% endfor %}
-            {% else %}
-              No files uploaded
+            <p class="govuk-body">
+              {{ data["lpaq-"+version+"-representations-consultrelevant"] }}
+            </p>
+            {% if data["lpaq-"+version+"-representations-consultrelevant"] == "Yes" %}
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-representations-consultrelevant-whichbodies"] }}
+              </p>
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -872,10 +723,10 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Do you have a community infrastructure levy?
+            Do you have any consultation responses or standing advice from statutory consultees to upload?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-localplanspolicies-cil"]}}
+            {{ data["lpaq-"+version+"-representations-consultationresponses"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -884,17 +735,288 @@
           </dd>
         </div>
 
-        {% if data["lpaq-"+version+"-localplanspolicies-cil"] == "Yes" %}
+        {% if data["lpaq-"+version+"-representations-consultationresponses"] == "Yes" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Community infrastructure levy details?
+              Consultation responses and standing advice
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data["lpaq-"+version+"-localplanspolicies-cil-details"]}}<br>
-              {% if data["lpaq-"+version+"-localplanspolicies-cil-details-adopted"] == "Yes" %}
-                (Adopted on {{data["lpaq-"+version+"-localplanspolicies-cil-details-adopted-date-day"]}} {{data["lpaq-"+version+"-localplanspolicies-cil-details-adopted-date-month"] | formatMonth }} {{data["lpaq-"+version+"-localplanspolicies-cil-details-adopted-date-year"]}})
+              {% if data["lpaq-"+version+"-representations-consultationresponses-upload"]|is_string %}
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-representations-consultationresponses-upload"] }}</a>
               {% else %}
-                (Not adopted - {{data["lpaq-"+version+"-localplanspolicies-cil-details-adopted-stage"] | capitalize }})
+                <ul class="govuk-list">
+                  {% for item in data["lpaq-"+version+"-representations-consultationresponses-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Did you receive representations from any other parties?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-representations-otherparties"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data["lpaq-"+version+"-representations-otherparties"] == "Yes" %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Representations from other parties
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data["lpaq-"+version+"-representations-otherparties-upload"]|is_string %}
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-representations-otherparties-upload"] }}</a>
+              {% else %}
+                <ul class="govuk-list">
+                  {% for item in data["lpaq-"+version+"-representations-otherparties-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Letter to the interested parties, and their addresses
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data["lpaq-"+version+"-representations-letter-upload"]|is_string %}
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-representations-letter-upload"] }}</a>
+              {% else %}
+                <ul class="govuk-list">
+                  {% for item in data["lpaq-"+version+"-representations-letter-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+
+        {% endif %}
+
+      </dl>
+
+
+      <h2 class="govuk-heading-l">Planning Officer's report and relevant policies</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning Officers report
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["lpaq-"+version+"-relevantpolicies-planningofficersreport"]|is_string %}
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-planningofficersreport"] }}</a>
+            {% else %}
+              <ul class="govuk-list">
+                {% for item in data["lpaq-"+version+"-relevantpolicies-planningofficersreport"] %}
+                  <li>
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Extracts from the relevant statutory development plan policies
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["lpaq-"+version+"-relevantpolicies-statutorydevelopment"]|is_string %}
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-statutorydevelopment"] }}</a>
+            {% else %}
+              <ul class="govuk-list">
+                {% for item in data["lpaq-"+version+"-relevantpolicies-statutorydevelopment"] %}
+                  <li>
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you have an emerging plan that's relevant to this appeal?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-relevantpolicies-emergingplan"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data["lpaq-"+version+"-relevantpolicies-emergingplan"] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Emerging plan and supporting information
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data["lpaq-"+version+"-relevantpolicies-emergingplan-upload"]|is_string %}
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-emergingplan-upload"] }}</a>
+              {% else %}
+                <ul class="govuk-list">
+                  {% for item in data["lpaq-"+version+"-relevantpolicies-emergingplan-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+      
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other relevant policies
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["lpaq-"+version+"-relevantpolicies-other"]|is_string %}
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-other"] }}</a>
+            {% else %}
+              <ul class="govuk-list">
+                {% for item in data["lpaq-"+version+"-relevantpolicies-other"] %}
+                  <li>
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Did any supplementary planning documents inform the outcome of the application?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-relevantpolicies-supplementary"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data["lpaq-"+version+"-relevantpolicies-supplementary"] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Emerging plan and supporting information
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data["lpaq-"+version+"-relevantpolicies-supplementary-upload"]|is_string %}
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-supplementary-upload"] }}</a>
+              {% else %}
+                <ul class="govuk-list">
+                  {% for item in data["lpaq-"+version+"-relevantpolicies-supplementary-upload"] %}
+                    <li>
+                      <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> </span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you have a community infrastructure levy?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-relevantpolicies-cil"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data["lpaq-"+version+"-relevantpolicies-cil"] == "Yes" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Emerging plan and supporting information
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-cil-upload"] }}</a>
+              </p>
+              {% if data["lpaq-"+version+"-relevantpolicies-cil-upload-adopted"] == "Yes" %}
+                <p class="govuk-body">
+                  Formally adopted on {{ data["lpaq-"+version+"-relevantpolicies-cil-upload-adopteddate-day"] | removeLeadingZero }} {{ data["lpaq-"+version+"-relevantpolicies-cil-upload-adopteddate-month"] | formatMonth }} {{ data["lpaq-"+version+"-relevantpolicies-cil-upload-adopteddate-year"] }}
+                </p>
+              {% else %}
+                <p class="govuk-body">
+                  Anticipated to be adopted on {{ data["lpaq-"+version+"-relevantpolicies-cil-upload-futureadopteddate-day"] | removeLeadingZero }} {{ data["lpaq-"+version+"-relevantpolicies-cil-upload-futureadopteddate-month"] | formatMonth }} {{ data["lpaq-"+version+"-relevantpolicies-cil-upload-futureadopteddate-year"] }}
+                </p>
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -908,7 +1030,7 @@
       </dl>
 
 
-      <h2 class="govuk-heading-l">Local plans and policies</h2>
+      <h2 class="govuk-heading-l">Site access</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
@@ -917,7 +1039,7 @@
             Can the Inspector see the relevant parts of the appeal site from public land?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-siteaccess-publicland"]}}
+            {{ data["lpaq-"+version+"-siteaccess-publicland"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -931,8 +1053,13 @@
             Will the Inspector need to enter the appeal site?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-siteaccess-entersite"]}}
-            {% if data["lpaq-"+version+"-siteaccess-entersite"] == "Yes" %}<br>{{data["lpaq-"+version+"-siteaccess-entersite-details"]}}
+            <p class="govuk-body">
+              {{ data["lpaq-"+version+"-siteaccess-entersite"] }}
+            </p>
+            {% if data["lpaq-"+version+"-siteaccess-entersite"] == "Yes" %}
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-siteaccess-entersite-details"] }}
+              </p>
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -947,8 +1074,13 @@
             Are there any health and safety issues on the appeal site?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-siteaccess-healthsafety"]}}
-            {% if data["lpaq-"+version+"-siteaccess-healthsafety"] == "Yes" %}<br>{{data["lpaq-"+version+"-siteaccess-healthsafety-details"]}}
+            <p class="govuk-body">
+              {{ data["lpaq-"+version+"-siteaccess-healthsafety"] }}
+            </p>
+            {% if data["lpaq-"+version+"-siteaccess-healthsafety"] == "Yes" %}
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-siteaccess-healthsafety-details"] }}
+              </p>
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -961,16 +1093,23 @@
       </dl>
 
 
-      <h2 class="govuk-heading-l">Procedure type</h2>
+      <h2 class="govuk-heading-l">Additional information</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Do you agree with written representations?
+            Are there any other appeals adjacent or close to the site still being considered?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data["lpaq-"+version+"-proceduretype-decidedby"]}}
+            <p class="govuk-body">
+              {{ data["lpaq-"+version+"-additionalinfo-nearbyappeals"] }}
+            </p>
+            {% if data["lpaq-"+version+"-additionalinfo-nearbyappeals"] == "Yes" %}
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-additionalinfo-nearbyappeals-references"] }}
+              </p>
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -979,13 +1118,34 @@
           </dd>
         </div>
 
-        {% if data["lpaq-"+version+"-proceduretype-decidedby"] == "No, I recommend an inquiry" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you planning to submit a statement of case for this appeal?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["lpaq-"+version+"-additionalinfo-statementofcase"] }}    
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+        
+        {% if data["lpaq-"+version+"-additionalinfo-statementofcase"] == "No" %}  
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              How many inquiry witnesses do you plan to call?
+              Do you have any extra conditions?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data["lpaq-"+version+"-proceduretype-inquirywitnesses"]}}
+              <p class="govuk-body">
+                {{ data["lpaq-"+version+"-additionalinfo-extraconditions"] }}
+              </p>
+              {% if data["lpaq-"+version+"-additionalinfo-extraconditions"] == "Yes" %}
+                <p class="govuk-body">
+                  {{ data["lpaq-"+version+"-additionalinfo-extraconditions-details"] }}
+                </p>
+              {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">
@@ -995,7 +1155,7 @@
           </div>
         {% endif %}
 
-      </dl> 
+      </dl>
 
       {{ govukWarningText({
         text: "By submitting this questionnaire, you confirm that all details are correct to the best of your knowledge.",

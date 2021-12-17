@@ -108,19 +108,21 @@ module.exports = function (router) {
 
     router.get(base+'skip/complex-cya', function (req, res) {
     
-      req.session.data["lpaq-"+v+"-proposeddevelopment-siteplan"] = "site_plan.pdf";
-      req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "Yes, we agree";
-      req.session.data["lpaq-"+v+"-proceduretype-decidedby-witnesses"] = "";
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "No, we recommend an inquiry";
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby-witnesses"] = "4";
       req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
 
       req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuilding"] = "Yes";
       req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuildingdetails-grade"] = "Grade II";
-      req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding-upload"] = [
-        "listed_building_1.pdf",
-        "listed_building_2.pdf"
+      req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuildingdetails-upload"] = [
+        "listed_building_1.pdf"
       ],
       req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding"] = "Yes";
-      req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding-grade"] = "Grade II";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding-grade"] = "Grade I";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding-upload"] = [
+        "listed_building_2.pdf",
+        "listed_building_3.pdf"
+      ],
       req.session.data["lpaq-"+v+"-constraintsdesignations-ancientmonument"] = "Yes";
       req.session.data["lpaq-"+v+"-constraintsdesignations-conservationarea"] = "Yes, it is in a conservation area";
       req.session.data["lpaq-"+v+"-constraintsdesignations-conservationarea-upload"] = "conservation_area_map.pdf";
@@ -134,7 +136,7 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-constraintsdesignations-designatedsite-other"] = "Test designation";
 
       req.session.data["lpaq-"+v+"-constraintsdesignations-tpo"] = "Yes";
-      req.session.data["lpaq-"+v+"-constraintsdesignations-tpo-siteplan"] = "";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-tpo-siteplan"] = "tpo_site_plan.pdf";
       req.session.data["lpaq-"+v+"-constraintsdesignations-traveller"] = "No";
       req.session.data["lpaq-"+v+"-constraintsdesignations-rightofway"] = "Yes";
       req.session.data["lpaq-"+v+"-constraintsdesignations-rightofway-mapstatement"] = "right_of_way.pdf";
@@ -171,8 +173,10 @@ module.exports = function (router) {
       req.session.data["lpaq-"+v+"-representations-consultationresponses-upload"] = "consultation_responses.pdf";
       req.session.data["lpaq-"+v+"-representations-otherparties"] = "Yes";
       req.session.data["lpaq-"+v+"-representations-otherparties-upload"] = "other_parties.pdf";
+      req.session.data["lpaq-"+v+"-representations-letter-upload"] = "letter_to_interested_parties.pdf";
       req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
       
+      req.session.data["lpaq-"+v+"-relevantpolicies-planningofficersreport"] = "planning_officers_report.pdf";
       req.session.data["lpaq-"+v+"-relevantpolicies-statutorydevelopment"] = "statutory_development_plan.pdf";
       req.session.data["lpaq-"+v+"-relevantpolicies-emergingplan"] = "Yes";
       req.session.data["lpaq-"+v+"-relevantpolicies-emergingplan-upload"] = [
@@ -182,7 +186,8 @@ module.exports = function (router) {
         "summary_of_plan_status.pdf"
       ];
       req.session.data["lpaq-"+v+"-relevantpolicies-other"] = "other_relevant.pdf";
-      req.session.data["lpaq-"+v+"-relevantpolicies-supplementary"] = [
+      req.session.data["lpaq-"+v+"-relevantpolicies-supplementary"] = "Yes";
+        req.session.data["lpaq-"+v+"-relevantpolicies-supplementary-upload"] = [
         "supplementary_planning_1.pdf",
         "supplementary_planning_2.pdf",
         "supplementary_planning_3.pdf"
@@ -207,7 +212,7 @@ module.exports = function (router) {
 
       req.session.data["lpaq-"+v+"-additionalinfo-nearbyappeals"] = "Yes";
       req.session.data["lpaq-"+v+"-additionalinfo-nearbyappeals-references"] = "654321, 987132";
-      req.session.data["lpaq-"+v+"-additionalinfo-statementofcase"] = "Yes";
+      req.session.data["lpaq-"+v+"-additionalinfo-statementofcase"] = "No";
       req.session.data["lpaq-"+v+"-additionalinfo-extraconditions"] = "Yes";
       req.session.data["lpaq-"+v+"-additionalinfo-extraconditions-details"] = "Nulla facilisi. Pellentesque id aliquam ex, nec placerat mauris. Fusce lacus nulla, ultricies sed arcu quis, rutrum feugiat diam. Aliquam fringilla vestibulum massa sed;sollicitudin. Morbi cursus urna metus, in convallis felis condimentum efficitur.",
       req.session.data["lpaq-"+v+"-taskliststatus-additionalinfo"] = "Complete";
@@ -561,7 +566,7 @@ module.exports = function (router) {
     })
 
     router.post(base+'additional-info/statement-of-case', function (req, res) {
-      if (req.session.data['lpaq-'+v+'-additionalinfo-statementofcase'] == "Yes"){
+      if (req.session.data['lpaq-'+v+'-additionalinfo-statementofcase'] == "No"){
         res.redirect(base+'additional-info/extra-conditions');
       } else {
         req.session.data["lpaq-"+v+"-taskliststatus-additionalinfo"] = "Complete";
