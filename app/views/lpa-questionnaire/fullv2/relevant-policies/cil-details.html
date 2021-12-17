@@ -32,6 +32,30 @@
         <h1 class="govuk-heading-xl">
           Community infrastructure levy details
         </h1>
+
+        {% if data["lpaq-"+version+"-relevantpolicies-cil-upload"] %}
+          {% if data["lpaq-"+version+"-relevantpolicies-cil-upload"] != "" %}
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">
+              Uploaded file
+            </h3>
+            {% if data["lpaq-"+version+"-relevantpolicies-cil-upload"]|is_string %}
+              <p class="govuk-body">
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-cil-upload"] }}</a>
+              </p>
+            {% else %}
+              <ul class="govuk-list">
+                {% for item in data["lpaq-"+version+"-relevantpolicies-cil-upload"] %}
+                  <li>
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">
+              Replace file
+            </h3>
+          {% endif %}
+        {% endif %}
       
         <div class="govuk-form-group">
           <label class="govuk-label" for="lpaq-{{version}}-relevantpolicies-cil-upload">
@@ -67,7 +91,24 @@
               legend: {
                 text: "Date of adoption"
               }
-            }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["lpaq-"+version+"-relevantpolicies-cil-upload-adopteddate-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["lpaq-"+version+"-relevantpolicies-cil-upload-adopteddate-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["lpaq-"+version+"-relevantpolicies-cil-upload-adopteddate-year"]
+              }
+            ]
           }) }}
         {% endset -%}
         {% set notadoptedHtml %}
@@ -78,7 +119,24 @@
               legend: {
                 text: "When do you expect to formally adopt it?"
               }
-            }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["lpaq-"+version+"-relevantpolicies-cil-upload-futureadopteddate-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["lpaq-"+version+"-relevantpolicies-cil-upload-futureadopteddate-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["lpaq-"+version+"-relevantpolicies-cil-upload-futureadopteddate-year"]
+              }
+            ]
           }) }}
         {% endset -%}
         
@@ -98,6 +156,7 @@
             {
               value: "Yes",
               text: "Yes",
+              checked: checked("lpaq-"+version+"-relevantpolicies-cil-upload-adopted", "Yes"),
               conditional: {
                 html: adoptedHtml
               }
@@ -105,6 +164,7 @@
             {
               value: "No",
               text: "No",
+              checked: checked("lpaq-"+version+"-relevantpolicies-cil-upload-adopted", "No"),
               conditional: {
                 html: notadoptedHtml
               }

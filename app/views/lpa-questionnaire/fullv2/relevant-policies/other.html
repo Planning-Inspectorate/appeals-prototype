@@ -32,6 +32,30 @@
         <h1 class="govuk-heading-xl">
           Upload any other relevant policies
         </h1>
+
+        {% if data["lpaq-"+version+"-relevantpolicies-other"] %}
+          {% if data["lpaq-"+version+"-relevantpolicies-other"] != "" %}
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">
+              Uploaded files
+            </h3>
+            {% if data["lpaq-"+version+"-relevantpolicies-other"]|is_string %}
+              <p class="govuk-body">
+                <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-relevantpolicies-other"] }}</a>
+              </p>
+            {% else %}
+              <ul class="govuk-list">
+                {% for item in data["lpaq-"+version+"-relevantpolicies-other"] %}
+                  <li>
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">
+              Upload more files
+            </h3>
+          {% endif %}
+        {% endif %}
       
         <div class="govuk-form-group">
           <label class="govuk-label" for="lpaq-{{version}}-relevantpolicies-other">
