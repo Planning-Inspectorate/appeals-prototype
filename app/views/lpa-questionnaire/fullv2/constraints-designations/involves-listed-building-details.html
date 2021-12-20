@@ -60,20 +60,18 @@
           ]
         }) }}
 
-        {% if data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] %}
-          {% if data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] != "" %}
-            <h3 class="govuk-heading-m govuk-!-margin-top-8">
-              Uploaded listing description
-            </h3>
-            <p class="govuk-body govuk-!-margin-bottom-8">
-              <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] }}</a>
-            </p>
-          {% endif %}
+        {% if data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] and data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] != "" %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-8">
+            Uploaded listing description
+          </h3>
+          <p class="govuk-body govuk-!-margin-bottom-8">
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["lpaq-"+version+"-constraintsdesignations-listedbuildingdetails-upload"] }}</a>
+          </p>
         {% endif %}
 
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-constraintsdesignations-listedbuildingdetails-upload">
-            {% if data["lpaq-{{version}}-constraintsdesignations-listedbuildingdetails-upload"] or data["lpaq-{{version}}-constraintsdesignations-listedbuildingdetails-upload"] != "" %}
+            {% if data["lpaq-{{version}}-constraintsdesignations-listedbuildingdetails-upload"] and data["lpaq-{{version}}-constraintsdesignations-listedbuildingdetails-upload"] != "" %}
               Replace the listing description
             {% else %}
               Upload the listing description
