@@ -2,7 +2,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Does the proposed development involve changing a listed building? - Tell us about constraints, designations and other issues - {{serviceName}} - GOV.UK
+  Does the proposed development involve a listed building? - Tell us about constraints, designations and other issues - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -10,7 +10,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -34,7 +34,7 @@
           name: "lpaq-"+version+"-constraintsdesignations-listedbuilding",
           fieldset: {
             legend: {
-              text: "Does the proposed development involve changing a listed building?",
+              text: "Does the proposed development involve a listed building?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }

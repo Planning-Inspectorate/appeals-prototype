@@ -3,7 +3,7 @@
 {% extends "layouts/lpa-questionnaire/fullv2.html" %}
 
 {% block pageTitle %}
-  Upload extracts from the relevant statutory development plan policies - Upload the Planning Officer's report and relevant policies - {{serviceName}} - GOV.UK
+  Upload relevant policies from your statutory development plan - Upload the Planning Officer's report and relevant policies - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,7 +11,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -30,7 +30,7 @@
           Upload the Planning Officer's report and relevant policies
         </span>
         <h1 class="govuk-heading-xl">
-          Upload extracts from the relevant statutory development plan policies
+          Upload relevant policies from your statutory development plan
         </h1>
 
         {% if data["lpaq-"+version+"-relevantpolicies-statutorydevelopment"] %}
