@@ -830,13 +830,23 @@
       </dl>
 
 
-      <h2 class="govuk-heading-l">Planning Officer's report and relevant policies</h2>
+      <h2 class="govuk-heading-l">
+        {% if data["lpaq-"+version+"-nondetermination"] == "Yes" %}
+          What your decision notice would have said and relevant policies
+        {% else %}
+          Planning Officer's report and relevant policies
+        {% endif %}
+      </h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Planning Officers report
+            {% if data["lpaq-"+version+"-nondetermination"] == "Yes" %}
+              What the decision notice would have said
+            {% else %}
+              Planning Officer's report
+            {% endif %}
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data["lpaq-"+version+"-relevantpolicies-planningofficersreport"]|is_string %}

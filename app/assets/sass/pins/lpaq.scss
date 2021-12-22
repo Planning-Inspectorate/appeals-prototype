@@ -19,3 +19,10 @@ ol.lpaq {
 	}
 
 }
+
+@media (min-width: 28.125em) {
+	// Stop text wrappning above tags in task list
+	.app-task-list__task-name {
+		max-width: calc(100% - 140px);
+	}
+}

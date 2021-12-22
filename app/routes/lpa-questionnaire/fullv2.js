@@ -221,6 +221,74 @@ module.exports = function (router) {
 
     })
 
+    router.get(base+'skip/non-determination', function (req, res) {
+      req.session.data["lpaq-"+v+"-nondetermination"] = "Yes";
+      res.redirect(base+'task-list'); 
+    })
+
+    router.get(base+'skip/non-determination-cya', function (req, res) {
+
+      req.session.data["lpaq-"+v+"-nondetermination"] = "Yes";
+
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "Yes, we agree";
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby-witnesses"] = "";
+      req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuilding"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-ancientmonument"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-conservationarea"] = "No, it is not in or next to a conservation area";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-protectedspecies"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-greenbelt"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-aonb"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-designatedsite"] = [
+        "No, it is not in, near or likely to affect any designated sites"
+      ];
+      req.session.data["lpaq-"+v+"-constraintsdesignations-designatedsite-other"] = "";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-tpo"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-traveller"] = "No";
+      req.session.data["lpaq-"+v+"-constraintsdesignations-rightofway"] = "No";
+      req.session.data["lpaq-"+v+"-taskliststatus-constraintsdesignations"] = "Complete";
+      req.session.data["lpaq-"+v+"-environmentalimpact-schedule"] = "No";
+      req.session.data["lpaq-"+v+"-environmentalimpact-screeningopinion"] = "No";
+      req.session.data["lpaq-"+v+"-environmentalimpact-applicantenvironmentalstatement"] = "No";
+      req.session.data["lpaq-"+v+"-taskliststatus-environmentalimpact"] = "Complete";
+
+      req.session.data["lpaq-"+v+"-notifiedpeople-notifyapplication"] = [
+        "A site notice"
+      ];
+      req.session.data["lpaq-"+v+"-notifiedpeople-notifyapplication-sitenotice"] = "blank.pdf";
+      req.session.data["lpaq-"+v+"-taskliststatus-notifiedpeople"] = "Complete";
+
+      req.session.data["lpaq-"+v+"-representations-consultrelevant-whichbodies"] = "";
+      req.session.data["lpaq-"+v+"-representations-consultrelevant"] = "No";
+      req.session.data["lpaq-"+v+"-representations-consultationresponses"] = "No";
+      req.session.data["lpaq-"+v+"-representations-otherparties"] = "No";
+      req.session.data["lpaq-"+v+"-taskliststatus-representations"] = "Complete";
+
+      req.session.data["lpaq-"+v+"-relevantpolicies-planningofficersreport"] = "decision_letter.pdf";
+      req.session.data["lpaq-"+v+"-relevantpolicies-statutorydevelopment"] = "blank.pdf";
+      req.session.data["lpaq-"+v+"-relevantpolicies-emergingplan"] = "No";
+      req.session.data["lpaq-"+v+"-relevantpolicies-other"] = "blank.pdf";
+      req.session.data["lpaq-"+v+"-relevantpolicies-supplementary"] = "No";
+      req.session.data["lpaq-"+v+"-relevantpolicies-cil"] = "No";
+      req.session.data["lpaq-"+v+"-taskliststatus-relevantpolicies"] = "Complete";
+
+      req.session.data["lpaq-"+v+"-siteaccess-publicland"] = "Yes";
+      req.session.data["lpaq-"+v+"-siteaccess-entersite-details"] = "";
+      req.session.data["lpaq-"+v+"-siteaccess-entersite"] = "No";
+      req.session.data["lpaq-"+v+"-siteaccess-healthsafety-details"] = "";
+      req.session.data["lpaq-"+v+"-siteaccess-healthsafety"] = "No";
+      req.session.data["lpaq-"+v+"-taskliststatus-siteaccess"] = "Complete";
+
+      req.session.data["lpaq-"+v+"-additionalinfo-nearbyappeals-references"] = "";
+      req.session.data["lpaq-"+v+"-additionalinfo-nearbyappeals"] = "No";
+      req.session.data["lpaq-"+v+"-additionalinfo-statementofcase"] = "Yes";
+      req.session.data["lpaq-"+v+"-taskliststatus-additionalinfo"] = "Complete";
+
+      res.redirect(base+'task-list'); 
+      
+    })
+
 
   // Security
   

@@ -30,13 +30,13 @@
 
       <!-- Count completed tasks -->
       {% set taskcount = 0 %}
+      {% if data["lpaq-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
       {% if data["lpaq-"+version+"-taskliststatus-constraintsdesignations"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["lpaq-"+version+"-taskliststatus-surroundingarea"] == "Complete" %}
-        {% set taskcount = taskcount + 1 %}
-      {% endif %}
-      {% if data["lpaq-"+version+"-taskliststatus-yourdecision"] == "Complete" %}
+      {% if data["lpaq-"+version+"-taskliststatus-environmentalimpact"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
       {% if data["lpaq-"+version+"-taskliststatus-notifiedpeople"] == "Complete" %}
@@ -45,13 +45,13 @@
       {% if data["lpaq-"+version+"-taskliststatus-representations"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["lpaq-"+version+"-taskliststatus-localplanspolicies"] == "Complete" %}
+      {% if data["lpaq-"+version+"-taskliststatus-relevantpolicies"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+      {% if data["lpaq-"+version+"-taskliststatus-siteaccess"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
       {% if data["lpaq-"+version+"-taskliststatus-additionalinfo"] == "Complete" %}
-        {% set taskcount = taskcount + 1 %}
-      {% endif %}
-      {% if data["lpaq-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
 
@@ -159,7 +159,11 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="relevant-policies/planning-officers-report" class="govuk-link">
-                  Upload the Planning Officer's report and relevant policies
+                  {% if data["lpaq-"+version+"-nondetermination"] == "Yes" %}
+                    Tell us what your decision notice would have said and provide relevant policies
+                  {% else %}
+                    Upload the Planning Officer's report and relevant policies
+                  {% endif %}
                 </a>
               </span>
               {% if data["lpaq-"+version+"-taskliststatus-relevantpolicies"] == "Complete" %}
