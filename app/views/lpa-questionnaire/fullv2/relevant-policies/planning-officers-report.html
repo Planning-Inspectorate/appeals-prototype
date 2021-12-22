@@ -26,16 +26,33 @@
     
       <form action="" method="post">
 
-        <span class="govuk-caption-l">
-          Upload the Planning Officer's report and relevant policies
-        </span>
-        <h1 class="govuk-heading-xl">
-          Upload the Planning Officer's report
-        </h1>
+        {% if data["lpaq-"+version+"-nondetermination"] == "Yes" %}
 
-        <p class="govuk-body">
-          Upload the Planning Officer's report to committee or delegated report on the application, and any other relevant documents or minutes.
-        </p>
+          <span class="govuk-caption-l">
+            Tell us what your decision notice would have said and provide relevant policies
+          </span>
+          <h1 class="govuk-heading-xl">
+            Upload what your decision notice would have said
+          </h1>   
+
+          <p class="govuk-body">
+            Upload a copy of what your decision notice would have said if you'd decided the application.
+          </p>
+
+        {% else %}
+
+          <span class="govuk-caption-l">
+            Upload the Planning Officer's report and relevant policies
+          </span>
+          <h1 class="govuk-heading-xl">
+            Upload the Planning Officer's report
+          </h1>
+
+          <p class="govuk-body">
+            Upload the Planning Officer's report to committee or delegated report on the application, and any other relevant documents or minutes.
+          </p>
+
+        {% endif %}
 
         {% if data["lpaq-"+version+"-relevantpolicies-planningofficersreport"] %}
           {% if data["lpaq-"+version+"-relevantpolicies-planningofficersreport"] != "" %}
