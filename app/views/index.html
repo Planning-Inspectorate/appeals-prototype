@@ -42,6 +42,46 @@
               
                 <div class="govuk-inset-text govuk-!-margin-top-0">
                   {{ govukTag({
+                    classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                    text: "WIP"
+                  }) }}
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    Version 12 - Full appeal submission
+                  </h3>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                      <a href="/appellant-submission/v12/">Start journey from 'Before you start'</a>
+                    </li>
+                    <li>
+                      <a href="/appellant-submission/v12/skip/full-bys-cya">Start from check your answers in 'Before you start'</a>
+                    </li>
+                    <li>
+                      <a href="/appellant-submission/v12/skip/full-task-list">Start from full appeal task list</a>
+                    </li>
+                    <li>
+                      <a href="/appellant-submission/v12/skip/full-non-determinaton-task-list">Start from full appeal task list (non-determination)</a>
+                    </li>
+                    <li>
+                      <a href="/appellant-submission/v12/skip/full-check-answers">Start from full appeal check your answers</a>
+                    </li>
+                  </ul>
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Jira Tickets (2)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list-bulleted">
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-4053">AS-4053 Addition of procedure questions to Planning Appeal form</a></li>
+                        <li><a href="https://pins-ds.atlassian.net/browse/AS-4057">AS-4057 Addition of Costs question to Planning Appeal form</a></li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+              
+                <div class="govuk-inset-text govuk-!-margin-top-0">
+                  {{ govukTag({
                     classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                     text: "Done"
                   }) }}

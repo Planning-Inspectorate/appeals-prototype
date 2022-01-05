@@ -1,0 +1,74 @@
+{% extends "layouts/appellant-submission/v12.html" %}
+
+{% block pageTitle %}
+  Advertising your appeal - Tell us about the appeal site - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+        <h1 class="govuk-heading-l">Advertising your appeal</h1>
+
+        {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}
+          <p class="govuk-body">Because you do not know all the other landowners, you must have advertised your appeal in the press.</p>
+        {% else %}
+          <p class="govuk-body">Because you do not know the landowners, you must have advertised your appeal in the press.</p>
+        {% endif %}
+
+        <p class="govuk-body">You must have done this within the last 21 days using a copy of the <a href="javascript:preventDefault();">form in annexe 2A or 2B of the 'making your appeal' guidance</a>.</p>
+
+        <h2 class="govuk-heading-m">Confirm that you have advertised your appeal</h2>
+        <p class="govuk-body">I confirm that:</p>
+
+        {{ govukCheckboxes({
+          idPrefix: "appealsub-"+version+"-appealsite-knowsome-advertising",
+          name: "appealsub-"+version+"-appealsite-knowsome-advertising",
+          items: [
+            {
+              value: "I've advertised my appeal in the press",
+              text: "I've advertised my appeal in the press",
+              checked: checked("appealsub-"+version+"-appealsite-knowsome-advertising", "I've advertised my appeal in the press")
+            },
+            {
+              value: "I've done this within the last 21 days",
+              text: "I've done this within the last 21 days",
+              checked: checked("appealsub-"+version+"-appealsite-knowsome-advertising", "I've done this within the last 21 days")
+            },
+            {
+              value: "I used a copy of the form in annexe 2A or 2B",
+              text: "I used a copy of the form in annexe 2A or 2B",
+              checked: checked("appealsub-"+version+"-appealsite-knowsome-advertising", "I used a copy of the form in annexe 2A or 2B")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
