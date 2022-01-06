@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -246,6 +246,7 @@
             </p>
             <ul class="govuk-list govuk-list--bullet">
               <li>your planning application form</li>
+              <li>the plans, drawings and supporting documents you submitted with your application</li>
               {% if data["appealsub-"+version+"-beforeyoustart-permissiongrantedrefused"] != "I have not received a decision" %}
                 <li>the decision letter from your local planning department</li>
               {% endif %}
@@ -262,9 +263,6 @@
               <li>plans or drawings that have been updated or created since your application</li>
               <li>any other documents that you'd like to submit in support of your appeal</li>
             </ul>
-            <p class="govuk-body">
-              You do not need to submit the plans or drawings you submitted with your application. We will get these from the local planning department.
-            </p>
           </div>
         </details>
 
