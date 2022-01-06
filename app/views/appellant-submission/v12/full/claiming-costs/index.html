@@ -25,36 +25,19 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Upload a claim for costs
+          Submit a claim for costs
         </span>
         <h1 class="govuk-heading-l">
-          Claiming planning appeal costs
+          Upload a document with details of your claim
         </h1>
 
         <p class="govuk-body">
-          You can claim costs if someone involved in your planning appeal behaves unreasonably and costs you money. Any costs you claim must be directly related to your appeal.
-        </p>
-        <p class="govuk-body">
-          You can submit a claim now, or by emailing your case officer during your appeal.
-        </p>
-        <p class="govuk-body">
-          Find out more about <a href="javascript:preventDefault();" target="_blank">claiming planning appeal costs (opens in a new window or tab)</a>.
-        </p>
-
-        {% set uploadHtml %}
-          <p class="govuk-body">
-            Your document must explain the unreasonable behaviour and how it cost you money.
-          <p>
-          <p class="govuk-body">
-            You do not need to include a detailed breakdown of the costs or receipts.
-          <p>
-        {% endset -%}
-
-        
+          The document must explain the unreasonable behaviour and how it cost you money. You do not need to include a detailed breakdown of the costs or receipts.
+        </p>        
 
         {% if data["appealsub-"+version+"-claimingcosts"] and data["appealsub-"+version+"-claimingcosts"] != "" %}
           <h3 class="govuk-heading-m govuk-!-margin-top-8">
-            Uploaded document
+            Uploaded file
           </h3>
           <p class="govuk-body govuk-!-margin-bottom-8">
             <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-claimingcosts"] }}</a>
@@ -64,17 +47,11 @@
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-claimingcosts">
             {% if data["appealsub-"+version+"-claimingcosts"] and data["appealsub-"+version+"-claimingcosts"] != "" %}
-              Replace the document with details of your claim
+              Replace the file
             {% else %}
-              Upload a document with details of your claim
+              Upload a file
             {% endif %}
           </label>
-          <p class="govuk-body">
-            Your document must explain the unreasonable behaviour and how it cost you money.
-          </p>
-          <p class="govuk-body">
-            You do not need to include a detailed breakdown of the costs or receipts.
-          </p>
           <div id="contact-hint" class="govuk-hint">
             Drag and drop or choose a file
           </div>
@@ -102,6 +79,23 @@
 
         {{ govukButton({
           text: "Continue"
+        }) }}
+
+        {% set whatHtml %}
+          <p class="govuk-body">
+            You can claim costs if someone involved in your planning appeal behaves unreasonably and costs you money. Any costs you claim must be directly related to your appeal.
+          </p>
+          <p class="govuk-body">
+            You can submit a claim now, or by emailing your case officer during your appeal. Your deadline to submit a claim by email depends on your appeal and reason for claiming costs.
+          </p>
+          <p class="govuk-body">
+            Find out more about how you <a href="">claim planning appeal costs (opens in a new window or tab)</a>.
+          </p>
+        {% endset -%}
+
+        {{ govukDetails({
+          summaryText: "What is a claim for costs?",
+          html: whatHtml
         }) }}
 
       </form>
