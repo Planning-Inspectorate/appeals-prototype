@@ -1,0 +1,61 @@
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Commenting on an appeal" %}
+{% set title = "Guidance for commenting on an appeal" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{ serviceName }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        Use this service to comment on an appeal.
+      </p>
+
+      <p class="govuk-body">
+        To use this service you will need:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a case reference number for the appeal</li>
+        <li>an email address so that we can update you about the appeal</li>
+      </ul>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-5",
+        href: "appeal-search",
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/public/javascripts/autocomplete/accessible-autocomplete.min.js"></script>
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#appealsub-{{version}}-beforeyoustart-planningdepartment')
+    })
+  </script>
+{% endblock %}
