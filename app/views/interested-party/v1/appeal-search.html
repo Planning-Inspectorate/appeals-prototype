@@ -1,0 +1,57 @@
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Commenting on an appeal" %}
+{% set title = "Search for an appeal" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">{{ serviceName }}</span>
+
+        <div class="govuk-form-group">
+
+          <label class="govuk-label govuk-label--l" for="postcode">
+            {{ title }}
+          </label>
+
+          <p class="govuk-body">
+            Search for an appeal using the 6 digit appeal code.
+          </p>
+
+          <p class="govuk-hint">
+            For example, A123456
+          </p>
+
+          <input class="govuk-input govuk-input--width-10" id="appeal-code-input" name="appeal-code" type="number">
+
+        </div>
+
+        {{ govukButton({
+          text: "Continue",
+          href: "appeal-search"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
