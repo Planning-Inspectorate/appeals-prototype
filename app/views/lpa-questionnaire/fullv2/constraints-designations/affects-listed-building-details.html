@@ -72,7 +72,7 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="lpaq-{{version}}-constraintsdesignations-affectslistedbuilding-upload">
-            {% if data["lpaq-{{version}}-constraintsdesignations-affectslistedbuilding-upload"] and data["lpaq-{{version}}-constraintsdesignations-affectslistedbuilding-upload"] != "" %}
+            {% if data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding-upload"] and data["lpaq-"+version+"-constraintsdesignations-affectslistedbuilding-upload"] != "" %}
               Replace the listing description
             {% else %}
               Upload the listing description
