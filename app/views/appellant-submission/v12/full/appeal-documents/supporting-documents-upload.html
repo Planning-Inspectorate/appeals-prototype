@@ -30,39 +30,55 @@
         <h1 class="govuk-heading-l">
           New supporting documents
         </h1>
+
+        {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] and (data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] != "") %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-8">
+            Uploaded files
+          </h3>
+          {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"]|is_string %}
+            <p class="govuk-body">
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] }}</a>
+            </p>
+          {% else %}
+            <ul class="govuk-list">
+              {% for item in data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] %}
+                <li>
+                  <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endif %}
         
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-supporting">
-            Upload files
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-supportingdocuments-files">
+            {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] and (data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] != "") %}
+              Upload more files
+            {% else  %}
+              Drag and drop or choose files
+            {% endif %}
           </label>
-          <p class="govuk-body">
-            Drag and drop files or select "choose files"
-          <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="appealsub-{{version}}-appealdocuments-supporting" name="appealsub-{{version}}-appealdocuments-supporting" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-supportingdocuments-files" name="appealsub-{{version}}-appealdocuments-supportingdocuments-files" type="file" multiple>
         </div>
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
-
         {{ govukDetails({
-          summaryText: "Help with file formats",
+          summaryText: "Files you can upload",
           html: '
             <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
+              You can upload the following types of file:
+            </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
             </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
           '
-        }) }} 
+        }) }}
 
         {{ govukButton({
           text: "Continue"

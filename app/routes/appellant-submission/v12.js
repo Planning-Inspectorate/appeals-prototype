@@ -497,6 +497,8 @@ module.exports = function (router) {
     })
 
     router.post(base+'full/appeal-documents/plans-drawings-upload', function (req, res) {
+      res.redirect(base+'full/appeal-documents/supporting-documents');
+      /*
       
       var newPlansDrawings = req.session.data["appealsub-"+v+"-appealdocuments-plansdrawingsfiles"];
       req.session.data["appealsub-"+v+"-appealdocuments-plansdrawingsfiles"] = null;
@@ -513,9 +515,9 @@ module.exports = function (router) {
         req.session.data['appealsub-'+v+'-appealdocuments-plansdrawingsfileslist'].push(newPlansDrawings);
       }
 
-      res.redirect(base+'full/appeal-documents/plans-drawings-list');
+      res.redirect(base+'full/appeal-documents/plans-drawings-list');*/
     })
-
+/*
     router.post(base+'full/appeal-documents/plans-drawings-list', function (req, res) {
       if (req.session.data["appealsub-"+v+"-appealdocuments-supportinglist"]){
         res.redirect(base+'full/appeal-documents/supporting-documents-list');
@@ -537,7 +539,7 @@ module.exports = function (router) {
       }
       
     })
-  
+  */
     router.post(base+'full/appeal-documents/supporting-documents', function (req, res) {
       if (req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments"] == "Yes"){
         res.redirect(base+'full/appeal-documents/supporting-documents-upload');
@@ -548,6 +550,8 @@ module.exports = function (router) {
     })
 
     router.post(base+'full/appeal-documents/supporting-documents-upload', function (req, res) {
+      req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
+      res.redirect(base+'full/task-list');/*
       
       var newSupportingDocs = req.session.data["appealsub-"+v+"-appealdocuments-supporting"];
       req.session.data["appealsub-"+v+"-appealdocuments-supporting"] = null;
@@ -564,9 +568,9 @@ module.exports = function (router) {
         req.session.data['appealsub-'+v+'-appealdocuments-supportinglist'].push(newSupportingDocs);
       }
 
-      res.redirect(base+'full/appeal-documents/supporting-documents-list');
+      res.redirect(base+'full/appeal-documents/supporting-documents-list');*/
     })
-
+/*
     router.post(base+'full/appeal-documents/supporting-documents-list', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
       res.redirect(base+'full/task-list');
@@ -584,16 +588,61 @@ module.exports = function (router) {
         res.redirect(base+'full/appeal-documents/supporting-documents-list');
       }
       
-    })  
+    })  */
 
-  
-/**********************************************
- *** Upload an application for appeal costs ***
- **********************************************/
-  
-  router.post(base+'full/claiming-costs', function (req, res) {
-    req.session.data["appealsub-"+v+"-taskliststatus-claimingcosts"] = "Complete";
-    res.redirect(base+'full/task-list');
-  })
+
+  /**********************************************
+   *** Upload an application for appeal costs ***
+   **********************************************/
+    
+    router.post(base+'full/claiming-costs', function (req, res) {
+      req.session.data["appealsub-"+v+"-taskliststatus-claimingcosts"] = "Complete";
+      res.redirect(base+'full/task-list');
+    })
+
+
+  /***********************************************************
+   *** Tell us how you would like us to decide your appeal ***
+   ***********************************************************/
+    
+    router.post(base+'full/procedure-type/decide', function (req, res) {
+      if (req.session.data['appealsub-'+v+'-proceduretype-decide'] == "Written representations") {
+        req.session.data["appealsub-"+v+"-taskliststatus-proceduretype"] = "Complete";
+        res.redirect(base+'full/task-list');
+      } else if (req.session.data['appealsub-'+v+'-proceduretype-decide'] == "Hearing") {
+        res.redirect(base+'full/procedure-type/hearing/why');
+      } else if (req.session.data['appealsub-'+v+'-proceduretype-decide'] == "Inquiry") {
+        res.redirect(base+'full/procedure-type/inquiry/why');
+      }
+    })
+    
+    router.post(base+'full/procedure-type/hearing/why', function (req, res) {
+      res.redirect(base+'full/procedure-type/hearing/unable-to-attend');
+    })
+    
+    router.post(base+'full/procedure-type/hearing/unable-to-attend', function (req, res) {
+      res.redirect(base+'full/procedure-type/common-ground');
+    })
+    
+    router.post(base+'full/procedure-type/inquiry/why', function (req, res) {
+      res.redirect(base+'full/procedure-type/inquiry/witnesses');
+    })
+    
+    router.post(base+'full/procedure-type/inquiry/witnesses', function (req, res) {
+      res.redirect(base+'full/procedure-type/inquiry/days');
+    })
+    
+    router.post(base+'full/procedure-type/inquiry/days', function (req, res) {
+      res.redirect(base+'full/procedure-type/inquiry/unable-to-attend');
+    })
+    
+    router.post(base+'full/procedure-type/inquiry/unable-to-attend', function (req, res) {
+      res.redirect(base+'full/procedure-type/common-ground');
+    })
+    
+    router.post(base+'full/procedure-type/common-ground', function (req, res) {
+      req.session.data["appealsub-"+v+"-taskliststatus-proceduretype"] = "Complete";
+      res.redirect(base+'full/task-list');
+    })
 
 }

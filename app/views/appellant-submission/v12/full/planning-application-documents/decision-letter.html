@@ -33,38 +33,45 @@
         <p class="govuk-body">
           This is the letter from the local planning department telling you about the decision on your planning application.
         <p>
+        
+        {% if data["appealsub-"+version+"-aboutapplication-decisionletter"] and data["appealsub-"+version+"-aboutapplication-decisionletter"] != "" %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">
+            Uploaded file
+          </h3>
+          <p class="govuk-body govuk-!-margin-bottom-8">
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-aboutapplication-decisionletter"] }}</a>
+          </p>
+        {% endif %}
 
-        {{ govukFileUpload({
-          id: "appealsub-"+version+"-aboutapplication-decisionletter",
-          name: "appealsub-"+version+"-aboutapplication-decisionletter",
-          label: {
-            classes: "govuk-label--m",
-            text: "Upload a file"
-          }
-        }) }}
-
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-aboutapplication-decisionletter">
+            {% if data["appealsub-"+version+"-aboutapplication-decisionletter"] and data["appealsub-"+version+"-aboutapplication-decisionletter"] != "" %}
+              Replace the file
+            {% else %}
+              Drag and drop or choose a file
+            {% endif %}
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-aboutapplication-decisionletter" name="appealsub-{{version}}-aboutapplication-decisionletter" type="file">
+        </div>
 
         {{ govukDetails({
-          summaryText: "Help with file formats",
+          summaryText: "Files you can upload",
           html: '
             <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
+              You can upload the following types of file:
+            </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
             </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
           '
-        }) }}     
+        }) }}
 
         {{ govukButton({
           text: "Continue"

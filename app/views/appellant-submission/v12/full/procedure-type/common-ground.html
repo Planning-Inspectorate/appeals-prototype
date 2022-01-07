@@ -1,7 +1,7 @@
 {% extends "layouts/appellant-submission/v12.html" %}
 
 {% block pageTitle %}
-  Is your appeal about any of the following? - Before you start - {{serviceName}} - GOV.UK
+  Upload an application for appeal costs - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -25,30 +25,30 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Upload documents from your planning application
+          Tell us how you would like us to decide your appeal
         </span>
         <h1 class="govuk-heading-l">
-          Design and access statement
-        </h1>
-        
-        {% if data["appealsub-"+version+"-aboutapplication-designaccess-file"] and data["appealsub-"+version+"-aboutapplication-designaccess-file"] != "" %}
+          Upload your draft statement of common ground
+        </h1>   
+
+        {% if data["appealsub-"+version+"-proceduretype-commonground"] and data["appealsub-"+version+"-proceduretype-commonground"] != "" %}
           <h3 class="govuk-heading-m govuk-!-margin-top-6">
             Uploaded file
           </h3>
           <p class="govuk-body govuk-!-margin-bottom-8">
-            <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-aboutapplication-designaccess-file"] }}</a>
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-proceduretype-commonground"] }}</a>
           </p>
         {% endif %}
 
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-aboutapplication-designaccess-file">
-            {% if data["appealsub-"+version+"-aboutapplication-designaccess-file"] and data["appealsub-"+version+"-aboutapplication-designaccess-file"] != "" %}
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-proceduretype-commonground">
+            {% if data["appealsub-"+version+"-proceduretype-commonground"] and data["appealsub-"+version+"-proceduretype-commonground"] != "" %}
               Replace the file
             {% else %}
               Drag and drop or choose a file
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-aboutapplication-designaccess-file" name="appealsub-{{version}}-aboutapplication-designaccess-file" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-proceduretype-commonground" name="appealsub-{{version}}-proceduretype-commonground" type="file">
         </div>
 
         {{ govukDetails({

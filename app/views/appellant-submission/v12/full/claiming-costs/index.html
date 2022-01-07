@@ -36,7 +36,7 @@
         </p>        
 
         {% if data["appealsub-"+version+"-claimingcosts"] and data["appealsub-"+version+"-claimingcosts"] != "" %}
-          <h3 class="govuk-heading-m govuk-!-margin-top-8">
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">
             Uploaded file
           </h3>
           <p class="govuk-body govuk-!-margin-bottom-8">
@@ -49,12 +49,9 @@
             {% if data["appealsub-"+version+"-claimingcosts"] and data["appealsub-"+version+"-claimingcosts"] != "" %}
               Replace the file
             {% else %}
-              Upload a file
+              Drag and drop or choose a file
             {% endif %}
           </label>
-          <div id="contact-hint" class="govuk-hint">
-            Drag and drop or choose a file
-          </div>
           <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-claimingcosts" name="appealsub-{{version}}-claimingcosts" type="file">
         </div>
 
