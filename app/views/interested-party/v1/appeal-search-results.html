@@ -1,0 +1,72 @@
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Commenting on an appeal" %}
+{% set title = "Search for an appeal" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ serviceName }}</span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+  </div>
+  <div class="govuk-grid-column-full">
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">
+        We found 3 appeals using that code
+      </caption>
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Case reference</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Planning department</th>
+          <th scope="col" class="govuk-table__header">Appellent</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=AS123456">AS123456</a></th>
+          <td class="govuk-table__cell">Bristol City Council</td>
+          <td class="govuk-table__cell">J. M . Wigstone</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=AP123456">AP123456</a></th>
+          <td class="govuk-table__cell">Leicester City Council</td>
+          <td class="govuk-table__cell">Peabody Estates</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=AX123456">AX123456</a></th>
+          <td class="govuk-table__cell">Oadby And Wigston Borough Council</td>
+          <td class="govuk-table__cell">Sam Myrtle</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="govuk-body">
+      Go back and <a href="appeal-search" class="govuk-link govuk-link--no-visited-state">search for another appeal</a>.
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
