@@ -1,0 +1,51 @@
+{% extends "layouts/appellant-submission/v12.html" %}
+
+{% block pageTitle %}
+  Tell us how you would like us to decide your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us how you would like us to decide your appeal
+        </span>
+
+        {{ govukTextarea({
+          id: "appealsub-"+version+"-proceduretype-inquiry",
+          name: "appealsub-"+version+"-proceduretype-inquiry",
+          label: {
+            text: "Why would you prefer an inquiry?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          value: data["appealsub-"+version+"-proceduretype-inquiry"]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -76,6 +76,20 @@
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+              <a href="procedure-type/decide">
+                Tell us how you would like us to decide your appeal
+              </a>
+            </span>
+            {% if data["appealsub-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
+              <strong class="app-task-list__tag govuk-tag">Complete</strong>
+            {% elseif data["appealsub-"+version+"-taskliststatus-proceduretype"] == "In progress" %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+            {% else %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
               <a href="planning-application-documents/application-upload">
                 Upload documents from your planning application
               </a>
@@ -97,20 +111,6 @@
             {% if data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "Complete" %}
               <strong class="app-task-list__tag govuk-tag">Complete</strong>
             {% elseif data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "In progress" %}
-              <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
-            {% else %}
-              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="claiming-costs">
-                Tell us how you would like us to decide your appeal
-              </a>
-            </span>
-            {% if data["appealsub-"+version+"-taskliststatus-procedure"] == "Complete" %}
-              <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["appealsub-"+version+"-taskliststatus-procedure"] == "In progress" %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
             {% else %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
