@@ -23,6 +23,9 @@
       {% if data["appealsub-"+version+"-taskliststatus-appealsite"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
+      {% if data["appealsub-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
       {% if data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
@@ -34,7 +37,7 @@
       {% endif %}
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 6 tasks.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 7 tasks.</p>
       
       <!--div class="govuk-warning-text">
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -128,8 +131,13 @@
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Optional</strong>
             {% endif %}
           </li>
-          <li class="app-task-list__item">
-            {% if taskcount == 4 %}
+          <li class="app-task-list__item">            
+            {% if (data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete") 
+                and data["appealsub-"+version+"-taskliststatus-appealsite"] == "Complete"
+                and data["appealsub-"+version+"-taskliststatus-proceduretype"] == "Complete"
+                and data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete" 
+                and data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "Complete"
+            %}
               <span class="app-task-list__task-name">
                 <a href="check-your-answers">
                   Check your answers and submit your appeal
