@@ -539,7 +539,7 @@ module.exports = function (router) {
       }
       
     })
-  */
+*/
     router.post(base+'full/appeal-documents/supporting-documents', function (req, res) {
       if (req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments"] == "Yes"){
         res.redirect(base+'full/appeal-documents/supporting-documents-upload');
@@ -551,7 +551,8 @@ module.exports = function (router) {
 
     router.post(base+'full/appeal-documents/supporting-documents-upload', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
-      res.redirect(base+'full/task-list');/*
+      res.redirect(base+'full/task-list');
+/*
       
       var newSupportingDocs = req.session.data["appealsub-"+v+"-appealdocuments-supporting"];
       req.session.data["appealsub-"+v+"-appealdocuments-supporting"] = null;
@@ -617,13 +618,14 @@ module.exports = function (router) {
     })
     
     router.post(base+'full/procedure-type/hearing/why', function (req, res) {
-      res.redirect(base+'full/procedure-type/hearing/unable-to-attend');
+      //res.redirect(base+'full/procedure-type/hearing/unable-to-attend');
+      res.redirect(base+'full/procedure-type/common-ground');
     })
-    
+    /*
     router.post(base+'full/procedure-type/hearing/unable-to-attend', function (req, res) {
       res.redirect(base+'full/procedure-type/common-ground');
     })
-    
+    */
     router.post(base+'full/procedure-type/inquiry/why', function (req, res) {
       res.redirect(base+'full/procedure-type/inquiry/witnesses');
     })
@@ -633,13 +635,14 @@ module.exports = function (router) {
     })
     
     router.post(base+'full/procedure-type/inquiry/days', function (req, res) {
-      res.redirect(base+'full/procedure-type/inquiry/unable-to-attend');
+      res.redirect(base+'full/procedure-type/common-ground');
+      //res.redirect(base+'full/procedure-type/inquiry/unable-to-attend');
     })
-    
+    /*
     router.post(base+'full/procedure-type/inquiry/unable-to-attend', function (req, res) {
       res.redirect(base+'full/procedure-type/common-ground');
     })
-    
+    */
     router.post(base+'full/procedure-type/common-ground', function (req, res) {
       req.session.data["appealsub-"+v+"-taskliststatus-proceduretype"] = "Complete";
       res.redirect(base+'full/task-list');
