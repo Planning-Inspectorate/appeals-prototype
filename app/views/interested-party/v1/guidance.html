@@ -1,7 +1,9 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Commenting on an appeal" %}
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
 {% set title = "Guidance for commenting on an appeal" %}
 
 {% block pageTitle %}
@@ -15,6 +17,11 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -22,7 +29,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{ serviceName }}</span>
+      <span class="govuk-caption-l">{{ subServiceName }}</span>
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
@@ -36,7 +43,7 @@
       </p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>a case reference number for the appeal</li>
+        <li>the appeal reference number</li>
         <li>an email address so that we can update you about the appeal</li>
       </ul>
 

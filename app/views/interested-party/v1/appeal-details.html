@@ -3,12 +3,13 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Commenting on an appeal" %}
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
 
 {% if data['reference'] %}
   {% set title = "Appeal "+data['reference'] %}
 {% else %}
-  {% set title = "Appeal X1234567" %}
+  {% set title = "Appeal number 1234567" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -22,6 +23,11 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -29,23 +35,45 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{ serviceName }}</span>
+      <span class="govuk-caption-l">{{ subServiceName }}</span>
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
 
-      <p class="govuk-body">
+      <h2 class="govuk-heading-m">
+        Appeal details
+      </h2>
+
+      <!-- <p class="govuk-body">
         This appeal is <strong class="govuk-tag govuk-tag--green">
           Open
         </strong>
-      </p>
-
+      </p> -->
 
     </div>
 
     <div class="govuk-grid-column-full govuk-!-margin-bottom-6">
 
       <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal status
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            <!-- open / closed appeal status -->
+            {% if data['status'] %}
+              <strong class="govuk-tag govuk-tag--green">
+                Open
+            {% else %}
+              <strong class="govuk-tag govuk-tag--blue">
+                Completed
+            {% endif %}
+
+            </strong>
+          </dd>
+        </div>
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -57,7 +85,6 @@
               APP/2021/56789/3256412
             </p>
           </dd>
-
         </div>
 
         <div class="govuk-summary-list__row">
@@ -117,18 +144,26 @@
 
     </div>
 
-    <div class="govuk-grid-column-full">
-      <h2 class="govuk-heading-m">
-        You have 8 days to comment on this appeal
-      </h2>
 
-      <p class="govuk-body">
-        <a href="appeal-search" class="govuk-link govuk-link--no-visited-state">
-          Comment on this appeal
-        </a>
-      </p>
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['status'] %}
+        <h2 class="govuk-heading-m">
+          You can comment on this appeal until 11:59pm on 4 May 2022
+        </h2>
+
+        <p class="govuk-body">
+          <a href="appeal-comment-name" class="govuk-link govuk-link--no-visited-state">
+            Comment on this appeal
+          </a>
+        </p>
+      {% else %}
+        <p class="govuk-body">
+          You can not add any comments now as this appeal is closed.
+        </p>
+      {% endif %}
+
     </div>
-
   </div>
 
 {% endblock %}
