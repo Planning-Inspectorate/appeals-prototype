@@ -1,56 +1,71 @@
 {% extends "layout.html" %}
 
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Commenting on an appeal" %}
+
+{% if data['reference'] %}
+  {% set title = "Appeal "+data['reference'] %}
+{% else %}
+  {% set title = "Appeal X1234567" %}
+{% endif %}
+
 {% block pageTitle %}
-  Your details
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{ serviceName }}</span>
       <h1 class="govuk-heading-l">
-        Your appeal details
+        {{ title }}
       </h1>
 
-      <p>You submitted the following information on {{ 0 | daysAgo }}.</p>
+      <p class="govuk-body">
+        This appeal is <strong class="govuk-tag govuk-tag--green">
+          Open
+        </strong>
+      </p>
 
-    <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key ">
-            Your name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data.user.name.first}} {{data.user.name.last}}
-          </dd>
-        </div>
-<!--
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Your email
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data.user.email}}
-          </dd>
-        </div>
--->
+
+    </div>
+
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-6">
+
+      <dl class="govuk-summary-list">
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Planning application number
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">{{ data.user.completeAppeal['application-number'] }}</p>
+            <!-- <p class="govuk-body">{{ data.user.completeAppeal['application-number'] }}</p> -->
+            <p class="govuk-body">
+              APP/2021/56789/3256412
+            </p>
           </dd>
 
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Appeal site
+          <dt class="govuk-summary-list__key ">
+            Appeallants name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{data.user.location.street.number}} {{data.user.location.street.name}}<br>
-            {{data.user.location.city}}<br>
-            {{data.user.location.postcode}}
+            J. M. Wigstone
           </dd>
         </div>
 
@@ -63,158 +78,56 @@
           </dd>
         </div>
 
-      </dl>
-
-
-      {% set planningAppHtml %}
-
-      <dl class="govuk-summary-list">
-
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Planning application form
+            Appeal site
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ multiFileDisplay({
-                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("planning-application")
-              }) }}
+            <p>
+              9617 The Avenue <br>
+              Maidstone <br>
+              XM26 7YS
+            </p>
           </dd>
-
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
-            Decision letter
+
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Linked cases
           </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-            {{ multiFileDisplay({
-                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("decision-letter")
-              }) }}
+          <dd class="govuk-summary-list__value">
+            <p>
+              None
+            </p>
           </dd>
-
         </div>
+
+        <!-- <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Deadline for comments
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>
+              8 days left
+            </p>
+          </dd>
+        </div> -->
+
       </dl>
 
-      {% endset %}
+    </div>
 
-      {% set appealHtml %}
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-m">
+        You have 8 days to comment on this appeal
+      </h2>
 
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Your appeal statement
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ multiFileDisplay({
-                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("appeal-statement")
-              }) }}
-          </dd>
-
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
-            Documents to support your appeal
-          </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__key--no-border">
-            {{ multiFileDisplay({
-                uploadedFiles: data.user.completeAppeal.uploadedFiles | filesByFieldName("supporting-docs")
-              }) }}
-
-          </dd>
-
-        </div>
-        <!--div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
-            Other relevant appeals
-          </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-            {% if data.user.completeAppeal['other-appeals'] === 'yes' %}
-              <div class="user-inout-text">{{ data.user.completeAppeal['other-appealss-detail'] }}</div>
-            {% else %}
-            <p>Yes</p>
-            {% endif %}
-          </dd>
-
-        </div-->
-      </dl>
-
-      {% endset %}
-
-
-      {% set appealSiteHtml %}
-
-      <dl class="govuk-summary-list">
-
-         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Do you own the whole appeal site?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            yes
-          </dd>
-
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Can the Inspector see the whole of the appeal site from a public road?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data.user.completeAppeal['site-access'] === 'no' %}
-              <div class="user-inout-text">{{ data.user.completeAppeal['site-access-more-detail'] }}</div>
-            {% else %}
-            <p>Yes</p>
-            {% endif %}
-          </dd>
-
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
-            Any health and safety issues?
-          </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-            {% if data.user.completeAppeal['safety'] === 'yes' %}
-              <div class="user-inout-text">{{ data.user.completeAppeal['safety-detail'] }}</div>
-            {% else %}
-            <p>No</p>
-            {% endif %}
-          </dd>
-
-        </div>
-      </dl>
-
-      {% endset %}
-
-      {{ govukAccordion({
-        id: "accordion-default",
-        items: [
-          {
-            heading: {
-              text: "About the original planning application"
-            },
-            content: {
-              html: planningAppHtml
-            }
-          },{
-            heading: {
-              text: "About your appeal"
-            },
-            content: {
-              html: appealHtml
-            }
-          },{
-            heading: {
-              text: "Visiting the appeal site"
-            },
-            content: {
-              html: appealSiteHtml
-            }
-          }
-
-
-        ]
-      }) }}
-
-
-
+      <p class="govuk-body">
+        <a href="appeal-search" class="govuk-link govuk-link--no-visited-state">
+          Comment on this appeal
+        </a>
+      </p>
+    </div>
 
   </div>
 

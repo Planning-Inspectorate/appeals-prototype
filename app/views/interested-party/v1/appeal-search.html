@@ -32,9 +32,21 @@
             {{ title }}
           </label>
 
-          <p class="govuk-body">
-            Search for an appeal using the 6 digit appeal code.
-          </p>
+          {% if data['version'] == "split" %}
+
+            <p class="govuk-body">
+              Search for an appeal using the last 7 digits of your case reference number.
+            </p>
+
+          {% else %}
+
+            <p class="govuk-body">You can search for an appeal with:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>the last 7 digits of your case reference number</li>
+              <li>the postcode for the site address</li>
+            </ul>
+
+          {% endif %}
 
           <p class="govuk-hint">
             For example, A123456
@@ -44,9 +56,19 @@
 
         </div>
 
+        {% if data['version'] == "split" %}
+
+          <p class="govuk-body">
+            Or <a href="#">
+              search for an appeal using a postcode
+            </a>
+          </p>
+
+        {% endif %}
+
         {{ govukButton({
           text: "Continue",
-          href: "appeal-search"
+          href: "appeal-details"
         }) }}
 
       </form>
