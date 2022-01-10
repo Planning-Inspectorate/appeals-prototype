@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% if data['reference'] %}
+  {% set title = "Upload a comment to appeal "+data['reference']  %}
+  {% set title = "Upload your comment"  %}
+{% else %}
+  {% set title = "Upload a comment to appeal 1234567" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="check-answers" method="post">
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+        {% if data["appealsub-"+version+"-aboutapplication-applicationform"] and data["appealsub-"+version+"-aboutapplication-applicationform"] != "" %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">
+            Uploaded file
+          </h3>
+          <p class="govuk-body govuk-!-margin-bottom-8">
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-aboutapplication-applicationform"] }}</a>
+          </p>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-aboutapplication-applicationform">
+            {% if data["appealsub-"+version+"-aboutapplication-applicationform"] and data["appealsub-"+version+"-aboutapplication-applicationform"] != "" %}
+              Replace the file
+            {% else %}
+              Drag and drop or choose a file
+            {% endif %}
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-aboutapplication-applicationform" name="appealsub-{{version}}-aboutapplication-applicationform" type="file">
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              You must upload comments in one of these file formats
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>rtf</li>
+              <li>txt</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>pdf</li>
+              <!--
+              <li>pdf</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+              -->
+            </ul>
+          '
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

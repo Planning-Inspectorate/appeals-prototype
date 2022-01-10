@@ -4,7 +4,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% set title = "Search for an appeal" %}
+{% set title = "What is your email address?" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -29,7 +29,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="appeal-details" method="post">
+      <form action="comment-upload" method="post">
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -39,45 +39,31 @@
             {{ title }}
           </label>
 
-          {% if data['version'] == "split" %}
-
-            <p class="govuk-body">
-              Search for an appeal using the appeal reference number.
-            </p>
-
-          {% else %}
-
-            <p class="govuk-body">You can search for an appeal with:</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>your appeal reference number</li>
-              <li>the postcode for the site address</li>
-            </ul>
-
-          {% endif %}
-
-          <p class="govuk-hint">
-            For example, 1234567
-          </p>
-
-          <input class="govuk-input govuk-input--width-10" id="appeal-code-input" name="appeal-code" type="number">
-
-        </div>
-
-        {% if data['version'] == "split" %}
-
           <p class="govuk-body">
-            Or <a href="#">
-              search for an appeal using a postcode
-            </a>
+            We will use your email address to update you about the appeal.
           </p>
 
-        {% endif %}
+          <div class="govuk-form-group">
+
+            <input class="govuk-input" id="full-name" name="full-name" type="text" spellcheck="false" autocomplete="name"></div>
+
+          </div>
 
         {{ govukButton({
           text: "Continue"
         }) }}
 
       </form>
+
+      <!-- <h2 class="govuk-heading-m">
+        Don’t want to do it like this?
+      </h2>
+
+      <p class="govuk-body">
+        You can send your comments for this appeal to <a href="appeal-comment-name" class="govuk-link govuk-link--no-visited-state">
+          appealsmailbox@planninginspectorate.gov.uk
+        </a>
+      </p> -->
 
     </div>
   </div>

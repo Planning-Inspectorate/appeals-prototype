@@ -1,7 +1,9 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Commenting on an appeal" %}
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
 {% set title = "Search for an appeal" %}
 
 {% block pageTitle %}
@@ -15,6 +17,11 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -22,7 +29,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l">{{ serviceName }}</span>
+    <span class="govuk-caption-l">{{ subServiceName }}</span>
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
@@ -32,12 +39,12 @@
 
     <table class="govuk-table">
       <caption class="govuk-table__caption govuk-table__caption--m">
-        We found 3 appeals using that code
+        We found 3 appeals using that address
       </caption>
 
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Case reference</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Appeal reference</th>
           <th scope="col" class="govuk-table__header govuk-!-width-one-half">Planning department</th>
           <th scope="col" class="govuk-table__header">Appellent</th>
         </tr>
@@ -45,17 +52,17 @@
 
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=AS123456">AS123456</a></th>
+          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=1234567">1234567</a></th>
           <td class="govuk-table__cell">Bristol City Council</td>
-          <td class="govuk-table__cell">J. M . Wigstone</td>
+          <td class="govuk-table__cell">J. M. Wigstone</td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=AP123456">AP123456</a></th>
+          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=2345678">2345678</a></th>
           <td class="govuk-table__cell">Leicester City Council</td>
           <td class="govuk-table__cell">Peabody Estates</td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=AX123456">AX123456</a></th>
+          <th scope="row" class="govuk-table__header"><a href="appeal-details?reference=3456789">3456789</a></th>
           <td class="govuk-table__cell">Oadby And Wigston Borough Council</td>
           <td class="govuk-table__cell">Sam Myrtle</td>
         </tr>

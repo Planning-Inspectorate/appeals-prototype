@@ -26,6 +26,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/backoffice";
 @import "pins/task-list";
 @import "pins/uploads";
+@import "pins/tables";
 
 
 .autocomplete__option {
@@ -112,4 +113,3 @@ $govuk-assets-path: '/govuk/assets/';
 .remove-bottom-border {
 	border-bottom: none;
 }
-
