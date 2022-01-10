@@ -52,7 +52,10 @@
                 Appeal made on behalf of
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["appealsub-"+version+"-aboutyou-applicantname"] }}
+                <p class="govuk-body">{{ data["appealsub-"+version+"-aboutyou-applicantname"] }}</p>
+                {% if data["appealsub-"+version+"-aboutyou-applicantcompany"] %}
+                  <p class="govuk-body">{{ data["appealsub-"+version+"-aboutyou-applicantcompany"] }}</p>
+                {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
@@ -351,7 +354,7 @@
               <p class="govuk-body">
                 {{ data["appealsub-"+version+"-appealsite-visible"] }}
               </p>
-              {% if data["appealsub-"+version+"-appealsite-visible"] == "Yes" %}
+              {% if data["appealsub-"+version+"-appealsite-visible"] == "No" %}
                 <p class="govuk-body">
                   {{ data["appealsub-"+version+"-appealsite-visible-info"] }}
                 </p>
@@ -415,26 +418,64 @@
                 </a>
               </dd>
             </div>
+          {% endif %}
+
+          {% if data["appealsub-"+version+"-proceduretype-decide"] == "Inquiry" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Are there any dates you would be unable to attend?
+                Why would you prefer an inquiry?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["appealsub-"+version+"-proceduretype-hearing-unable"] }}
-                {% if data["appealsub-"+version+"-proceduretype-hearing-unable"] == "Yes" %}
-                  <br>
-                  {{ data["appealsub-"+version+"-proceduretype-hearing-unable-dates"] }}
-                {% endif %}
+                {{ data["appealsub-"+version+"-proceduretype-inquiry"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> dates you would be unable to attend</span>
+                  Change<span class="govuk-visually-hidden"> why would you prefer an inquiry</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How many witnesses would you call?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-proceduretype-inquiry-witnesses"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> how many witnesses would you call?</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How many days would you expect the inquiry to last?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-proceduretype-inquiry-days"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> how many days would you expect the inquiry to last</span>
                 </a>
               </dd>
             </div>
           {% endif %}
 
           {% if data["appealsub-"+version+"-proceduretype-decide"] != "Written representations" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Draft statement of common ground
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-proceduretype-commonground"] }}</a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> draft statement of common ground</span>
+                </a>
+              </dd>
+            </div>
           {% endif %}
 
         </dl>
@@ -544,13 +585,19 @@
                 Plans and drawings
               </dt>
               <dd class="govuk-summary-list__value">
-                <ul class="govuk-list">
-                  {% for docs in data["appealsub-"+version+"-appealdocuments-plansdrawingsfileslist"] %}
-                    <li>
-                      <a class="govuk-link" href="javascript:preventDefault();">{{ docs }}</a>
-                    </li>
-                  {% endfor %}
-                </ul>
+                {% if data["appealsub-"+version+"-appealdocuments-plansdrawings-files"]|is_string %}
+                  <p class="govuk-body">
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] }}</a>
+                  </p>
+                {% else %}
+                  <ul class="govuk-list">
+                    {% for item in data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] %}
+                      <li>
+                        <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
@@ -578,17 +625,23 @@
                 Supporting documents
               </dt>
               <dd class="govuk-summary-list__value">
-                <ul class="govuk-list">
-                  {% for docs in data["appealsub-"+version+"-appealdocuments-supportinglist"] %}
-                    <li>
-                      <a class="govuk-link" href="javascript:preventDefault();">{{ docs }}</a>
-                    </li>
-                  {% endfor %}
-                </ul>
+                {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"]|is_string %}
+                  <p class="govuk-body">
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] }}</a>
+                  </p>
+                {% else %}
+                  <ul class="govuk-list">
+                    {% for item in data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] %}
+                      <li>
+                        <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> plans and drawings</span>
+                  Change<span class="govuk-visually-hidden"> supporting documents</span>
                 </a>
               </dd>
             </div>
