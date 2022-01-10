@@ -29,7 +29,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="appeal-comment-email" method="post">
+      <!-- if you are checking your answers -->
+      {% if data['checking'] %}
+        <form action="check-answers" method="post">
+      {% else %}
+        <form action="appeal-comment-email" method="post">
+      {% endif %}
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 
