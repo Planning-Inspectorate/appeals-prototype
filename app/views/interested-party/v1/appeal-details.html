@@ -63,12 +63,15 @@
           <dd class="govuk-summary-list__value">
 
             <!-- open / closed appeal status -->
-            {% if data['status'] %}
+            {% if data['status'] == "open" %}
               <strong class="govuk-tag govuk-tag--green">
-                Open
-            {% else %}
+                Open for comments
+            {% elif data['status'] == "closed" %}
               <strong class="govuk-tag govuk-tag--blue">
-                Completed
+                Closed for comments
+            {% else %}
+              <strong class="govuk-tag govuk-tag--black">
+                Appeal closed
             {% endif %}
 
             </strong>
