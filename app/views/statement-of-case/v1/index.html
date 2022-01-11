@@ -24,24 +24,24 @@
           Upload your statement of case         
         </h1>
 
-        {% if data["finalcomments-"+version+"-lpd-upload"] and data["finalcomments-"+version+"-lpd-upload"] != "" %}
+        {% if data["statementofcase-"+version+"-upload"] and data["statementofcase-"+version+"-upload"] != "" %}
           <h3 class="govuk-heading-m govuk-!-margin-top-8">
             Uploaded statement of case
           </h3>
           <p class="govuk-body govuk-!-margin-bottom-8">
-            <a href="javascript:preventDefault();" class="govuk-link">{{ data["finalcomments-"+version+"-lpd-upload"] }}</a>
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["statementofcase-"+version+"-upload"] }}</a>
           </p>
         {% endif %}
 
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="finalcomments-{{version}}-lpd-upload">
-            {% if data["finalcomments-"+version+"-lpd-upload"] and data["finalcomments-"+version+"-lpd-upload"] != "" %}
+          <label class="govuk-label govuk-label--m" for="statementofcase-{{version}}-upload">
+            {% if data["statementofcase-"+version+"-upload"] and data["statementofcase-"+version+"-upload"] != "" %}
               Replace statement of case
             {% else %}
               Drag and drop or choose a file
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="finalcomments-{{version}}-lpd-upload" name="finalcomments-{{version}}-lpd-upload" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="statementofcase-{{version}}-upload" name="statementofcase-{{version}}-upload" type="file">
         </div>
 
         {{ govukDetails({
@@ -71,7 +71,7 @@
 
     </div>
     <div class="govuk-grid-column-one-third">
-      {% include "statement-of-case/"+version+"/_lpd-details.html" %} 
+      {% include "statement-of-case/"+version+"/_details.html" %} 
 
     </div>
   </div>
