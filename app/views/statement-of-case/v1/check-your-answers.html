@@ -1,7 +1,7 @@
 {% extends "layouts/final-comments/v1.html" %}
 
 {% block pageTitle %}
-  Check your answers - Upload your final comments - {{serviceName}} - GOV.UK
+  Check and submit - Upload your statement of case - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,13 +30,13 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Final comments
+            Statement of case
           </dt>
           <dd class="govuk-summary-list__value">
-            <a href="javascript:preventDefault();">{{ data["finalcomments-"+version+"-agent-upload"] }}</a>
+            <a href="javascript:preventDefault();">{{ data["finalcomments-"+version+"-lpd-upload"] }}</a>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="index">
+            <a class="govuk-link" href="javascript:history.go(-1);">
               Change<span class="govuk-visually-hidden"> final comments</span>
             </a>
           </dd>
@@ -44,18 +44,14 @@
       
       </dl>
 
-      <p class="govuk-body govuk-!-margin-bottom-9">
-        Your deadline to submit any further final comments is Monday 4 January 2022.
-      <p>
-
       {{ govukButton({
         href: "confirmation",
-        text: "Submit final comments"
+        text: "Submit statement of case"
       }) }}
 
     </div>
     <div class="govuk-grid-column-one-third">
-      {% include "final-comments/"+version+"/_agent-details.html" %} 
+      {% include "statement-of-case/"+version+"/_lpd-details.html" %} 
     </div>
   </div>
 {% endblock %}
