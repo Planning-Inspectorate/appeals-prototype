@@ -150,7 +150,7 @@
 
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data['status'] %}
+      {% if data['status'] == "open" %}
         <h2 class="govuk-heading-m">
           You can comment on this appeal until 11:59pm on 4 May 2022
         </h2>
@@ -159,6 +159,10 @@
           <a href="appeal-comment-name?checking=" class="govuk-link govuk-link--no-visited-state">
             Comment on this appeal
           </a>
+        </p>
+      {% elif data['status'] == "closed" %}
+        <p class="govuk-body">
+          You can not add any comments now as this appeal is closed for comments.
         </p>
       {% else %}
         <p class="govuk-body">
