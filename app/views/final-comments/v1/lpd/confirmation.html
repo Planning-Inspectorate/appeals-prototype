@@ -1,0 +1,42 @@
+{% extends "layouts/final-comments/v1.html" %}
+
+{% block pageTitle %} 
+  Confirmation - Upload your final comments - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      {{ govukPanel({
+        titleText: "Final comments submitted"
+      }) }}
+
+      <p class="govuk-body govuk-!-margin-top-7">
+        We've sent a confirmation email to [lpa central email].
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next?
+      </h2>
+
+      <p class="govuk-body">
+        We'll review your comments and forward them to the appellant.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+    </div>
+  </div>
+
+{% endblock %}

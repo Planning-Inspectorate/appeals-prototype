@@ -27,6 +27,8 @@ require('./routes/case-officer/v5.js')(router);
 require('./routes/case-officer/v6.js')(router);
 require('./routes/case-officer/v7.js')(router);
 
+require('./routes/final-comments/v1.js')(router);
+
 require('./routes/inspector/v4.js')(router);
 require('./routes/inspector/v5.js')(router);
 
