@@ -26,6 +26,8 @@
         Check and submit
       </h1>
 
+      <h2 class="govuk-heading-l">Procedure type</h2>
+
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         <div class="govuk-summary-list__row">
@@ -33,7 +35,7 @@
             Final comments
           </dt>
           <dd class="govuk-summary-list__value">
-            <a href="javascript:preventDefault();">{{ data["finalcomments-"+version+"-appellant-upload"] }}</a>
+            <a href="javascript:preventDefault();">{{ data["finalcomments-"+version+"-agent-upload"] }}</a>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="index">
@@ -55,7 +57,7 @@
 
     </div>
     <div class="govuk-grid-column-one-third">
-      {% include "final-comments/"+version+"/_appellant-details.html" %} 
+      {% include "final-comments/"+version+"/_agent-details.html" %} 
     </div>
   </div>
 {% endblock %}

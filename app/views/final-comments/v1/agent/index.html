@@ -24,24 +24,24 @@
           Upload your final comments         
         </h1>
 
-        {% if data["finalcomments-"+version+"-appellant-upload"] and data["finalcomments-"+version+"-appellant-upload"] != "" %}
+        {% if data["finalcomments-"+version+"-agent-upload"] and data["finalcomments-"+version+"-agent-upload"] != "" %}
           <h3 class="govuk-heading-m govuk-!-margin-top-8">
             Uploaded final comments
           </h3>
           <p class="govuk-body govuk-!-margin-bottom-8">
-            <a href="javascript:preventDefault();" class="govuk-link">{{ data["finalcomments-"+version+"-appellant-upload"] }}</a>
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["finalcomments-"+version+"-agent-upload"] }}</a>
           </p>
         {% endif %}
 
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="finalcomments-{{version}}-appellant-upload">
-            {% if data["finalcomments-"+version+"-appellant-upload"] and data["finalcomments-"+version+"-appellant-upload"] != "" %}
+          <label class="govuk-label govuk-label--m" for="finalcomments-{{version}}-agent-upload">
+            {% if data["finalcomments-"+version+"-agent-upload"] and data["finalcomments-"+version+"-agent-upload"] != "" %}
               Replace final comments
             {% else %}
               Drag and drop or choose a file
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="finalcomments-{{version}}-appellant-upload" name="finalcomments-{{version}}-appellant-upload" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="finalcomments-{{version}}-agent-upload" name="finalcomments-{{version}}-agent-upload" type="file">
         </div>
 
         {{ govukDetails({
@@ -113,7 +113,7 @@
 
     </div>
     <div class="govuk-grid-column-one-third">
-      {% include "final-comments/"+version+"/_appellant-details.html" %} 
+      {% include "final-comments/"+version+"/_agent-details.html" %} 
 
     </div>
   </div>
