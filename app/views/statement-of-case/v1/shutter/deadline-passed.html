@@ -1,0 +1,32 @@
+{% extends "layouts/statement-of-case/v1.html" %}
+
+{% block pageTitle %}
+  Your deadline has passed - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your deadline has passed.
+      </h1>
+
+      <p class="govuk-body">
+        Your deadline to submit a statement of case for appeal F/1234567 was Monday 3 January 2022.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
