@@ -4,7 +4,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% set title = "Guidance for commenting on an appeal" %}
+{% set title = "Comment on a planning appeal" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -29,22 +29,28 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{ subServiceName }}</span>
+      <!-- <span class="govuk-caption-l">{{ subServiceName }}</span> -->
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
 
       <p class="govuk-body">
-        Use this service to comment on an appeal.
+        You can use this service to comment on an appeal.
       </p>
 
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
       <p class="govuk-body">
-        To use this service you will need:
+        You will need:
       </p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>the appeal reference number</li>
-        <li>an email address so that we can update you about the appeal</li>
+        <!-- <li>the appeal reference number</li> -->
+        <li>the 7 digit appeal reference number </li>
+        <li>an email address so we can update you about the appeal</li>
+        <li>your comments saved in a document</li>
       </ul>
 
       {{ govukButton({

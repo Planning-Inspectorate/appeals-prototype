@@ -6,11 +6,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% if data['reference'] %}
-  {% set title = "Check your comment for appeal "+data['reference']  %}
-{% else %}
-  {% set title = "Check your comment for appeal 1234567" %}
-{% endif %}
+{% set title = "Check your answers" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -53,7 +49,7 @@
             Name
           </dt>
           <dd class="govuk-summary-list__value">
-            Sam Phipps
+            {{ data['full-name'] or "Sam Phipps"}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="appeal-comment-name?checking=1">
@@ -67,7 +63,7 @@
             Email address
           </dt>
           <dd class="govuk-summary-list__value">
-            samphips@email.com
+            {{ data['email'] or "samphips@email.com" }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="appeal-comment-email?checking=1">
