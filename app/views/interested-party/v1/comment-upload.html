@@ -6,12 +6,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% if data['reference'] %}
-  {% set title = "Upload a comment to appeal "+data['reference']  %}
-  {% set title = "Upload your comment"  %}
-{% else %}
-  {% set title = "Upload a comment to appeal 1234567" %}
-{% endif %}
+{% set title = "Upload your comment"  %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -38,7 +33,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form action="check-answers" method="post">
-      
+
         <span class="govuk-caption-l">{{ subServiceName }}</span>
         <h1 class="govuk-heading-l">
           {{ title }}
