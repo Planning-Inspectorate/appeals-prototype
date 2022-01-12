@@ -64,10 +64,18 @@
           {% endif %}
 
 
+
         {% else %}
           <p class="govuk-body">
-            This appeal is closed. You cannot add comments.
+            This appeal was closed on 4 January 2022. You cannot add comments.
           </p>
+
+          {% if data['status'] == "completed" %}
+            <p class="govuk-body">
+              <a href="#">See the decision for this appeal</a>.
+            </p>
+          {% endif %}
+
         {% endif %}
 
       {% endif %}
