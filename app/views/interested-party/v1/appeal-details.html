@@ -53,6 +53,16 @@
             You can comment on this appeal until 11:59pm on 4 May 2022.
           </p>
 
+          {% if data['status'] == "open" %}
+
+            {{ govukButton({
+              text: "Comment on this appeal",
+              classes: "govuk-!-margin-bottom-9",
+              href: "appeal-comment-name?checking="
+            }) }}
+
+          {% endif %}
+
 
         {% else %}
           <p class="govuk-body">
@@ -71,10 +81,6 @@
           Open
         </strong>
       </p> -->
-
-    </div>
-
-    <div class="govuk-grid-column-full govuk-!-margin-bottom-6">
 
       <dl class="govuk-summary-list">
 
@@ -114,7 +120,7 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key ">
-            Appeallants name
+            Applicant’s name
           </dt>
           <dd class="govuk-summary-list__value">
             J. M. Wigstone
@@ -126,7 +132,7 @@
             Local planning department
           </dt>
           <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-            {{data.user.location.city}} Borough Council
+            Bristol City Council
           </dd>
         </div>
 
@@ -145,7 +151,7 @@
 
         <div class="govuk-summary-list__row govuk-summary-list__row--last">
           <dt class="govuk-summary-list__key">
-            Linked cases
+            Related appeals
           </dt>
           <dd class="govuk-summary-list__value">
             <p>
@@ -194,13 +200,6 @@
             This appeal is closed. You cannot add comments.
           </p>
         {% endif %}
-
-      {% else %}
-
-        {{ govukButton({
-          text: "Comment on this appeal",
-          href: "appeal-comment-name?checking="
-        }) }}
 
       {% endif %}
 

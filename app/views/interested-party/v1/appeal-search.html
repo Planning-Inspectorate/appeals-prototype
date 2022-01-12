@@ -4,7 +4,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% set title = "Search for an appeal" %}
+{% set title = "Enter the appeal reference" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -39,24 +39,9 @@
             {{ title }}
           </label>
 
-          {% if data['version'] == "split" %}
-
-            <p class="govuk-body">
-              Search for an appeal using the appeal reference number.
-            </p>
-
-          {% else %}
-
-            <p class="govuk-body">You can search for an appeal with:</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>your appeal reference number</li>
-              <li>the postcode for the site address</li>
-            </ul>
-
-          {% endif %}
-
           <p class="govuk-hint">
-            For example, 1234567 or BS1 6PN
+            <!-- For example, 1234567 or BS1 6PN -->
+            For example, 1234567
           </p>
 
           <input class="govuk-input govuk-input--width-10" id="appeal-code-input" name="appeal-code" type="number">
