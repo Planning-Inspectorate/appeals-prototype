@@ -231,12 +231,14 @@
             <div id="accordion-default-content-interestedparties" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-interestedparties">
 
               <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                {{ govukTag({
+                  classes: "govuk-tag--green govuk-!-margin-bottom-1",
+                  text: "Ready for research"
+                }) }}
+
                 <h3 class="govuk-heading-m">
-                  Draft - Interested party journey from email notice
-                  {{ govukTag({
-                    classes: "govuk-tag--red govuk-!-margin-left-1",
-                    text: "WIP"
-                  }) }}
+                  Interested party journey from email notice
                 </h3>
 
                 <ul class="govuk-list govuk-list--bullet">
