@@ -39,24 +39,15 @@
           {{ title }}
         </h1>
 
-        {% if data["appealsub-"+version+"-aboutapplication-applicationform"] and data["appealsub-"+version+"-aboutapplication-applicationform"] != "" %}
-          <h3 class="govuk-heading-m govuk-!-margin-top-6">
-            Uploaded file
-          </h3>
-          <p class="govuk-body govuk-!-margin-bottom-8">
-            <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-aboutapplication-applicationform"] }}</a>
-          </p>
-        {% endif %}
-
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-aboutapplication-applicationform">
-            {% if data["appealsub-"+version+"-aboutapplication-applicationform"] and data["appealsub-"+version+"-aboutapplication-applicationform"] != "" %}
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-appealstatement">
+            {% if data["appealsub-"+version+"-appealdocuments-appealstatement"] and data["appealsub-"+version+"-appealdocuments-appealstatement"] != "" %}
               Replace the file
             {% else %}
               Drag and drop or choose a file
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-aboutapplication-applicationform" name="appealsub-{{version}}-aboutapplication-applicationform" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-appealstatement" name="appealsub-{{version}}-appealdocuments-appealstatement" type="file">
         </div>
 
         {{ govukInsetText({
@@ -64,6 +55,29 @@
         }) }}
 
         {{ govukDetails({
+          summaryText: "Files you can upload",
+          html: '
+            <p class="govuk-body">
+              You can upload the following types of file:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>rtf</li>
+              <li>txt</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>pdf</li>
+
+              <!-- <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li> -->
+            </ul>
+
+          '
+        }) }}
+
+        <!-- {{ govukDetails({
           summaryText: "Help with file formats",
           html: '
             <p class="govuk-body">
@@ -75,17 +89,9 @@
               <li>doc</li>
               <li>docx</li>
               <li>pdf</li>
-              <!--
-              <li>pdf</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
-              -->
             </ul>
           '
-        }) }}
+        }) }} -->
 
         {{ govukButton({
           text: "Continue"
