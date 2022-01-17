@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "Upload your comment"  %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="check-answers" method="post">
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-appealstatement">
+            {% if data["appealsub-"+version+"-appealdocuments-appealstatement"] and data["appealsub-"+version+"-appealdocuments-appealstatement"] != "" %}
+              Replace the file
+            {% else %}
+              Drag and drop or choose a file
+            {% endif %}
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-appealstatement" name="appealsub-{{version}}-appealdocuments-appealstatement" type="file">
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Files you can upload",
+          html: '
+            <p class="govuk-body">
+              You can upload the following types of file:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>rtf</li>
+              <li>txt</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>pdf</li>
+
+              <!-- <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li> -->
+            </ul>
+
+          '
+        }) }}
+
+        <!-- {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              You must upload comments in one of these file formats
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>rtf</li>
+              <li>txt</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>pdf</li>
+            </ul>
+          '
+        }) }} -->
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
