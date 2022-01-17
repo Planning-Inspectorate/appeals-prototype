@@ -1,0 +1,153 @@
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "Comment on a planning appeal" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- <span class="govuk-caption-l">{{ subServiceName }}</span> -->
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        You can use this service to comment on an appeal.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p class="govuk-body">
+        You will need:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <!-- <li>the appeal reference number</li> -->
+        <li>the 7 digit appeal reference number </li>
+        <li>an email address so we can update you about the appeal</li>
+        <li>your comments saved in a document</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Your comments must not include:
+      </h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <!-- <li>the appeal reference number</li> -->
+        <li>inflammatory or abusive language</li>
+        <li>sensitive information</li>
+      </ul>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Check what sensitive information includes
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+
+          <p class="govuk-body">
+            Sensitive information refers to:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <!-- <li>the appeal reference number</li> -->
+            <li>
+              comments from children
+            </li>
+            <li>
+              information relating to children
+            </li>
+            <li>
+              information relating to health
+            </li>
+            <li>
+              information relating to crime
+            </li>
+            <li>
+              any information relating to an individual’s:
+
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  comments from children
+                </li>
+                <li>
+                  race
+                </li>
+                <li>
+                  ethnic origin
+                </li>
+                <li>
+                  politics
+                </li>
+                <li>
+                  religion
+                </li>
+                <li>
+                  trade union membership
+                </li>
+                <li>
+                  genetics
+                </li>
+                <li>
+                  physical characteristics
+                </li>
+                <li>
+                  sex life
+                </li>
+                <li>
+                  sexual orientation
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+
+        </div>
+      </details>
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-5",
+        href: "appeal-search",
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/public/javascripts/autocomplete/accessible-autocomplete.min.js"></script>
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#appealsub-{{version}}-beforeyoustart-planningdepartment')
+    })
+  </script>
+{% endblock %}

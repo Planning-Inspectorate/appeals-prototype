@@ -1,0 +1,70 @@
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "Enter the appeal reference" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="appeal-details?status=open" method="post">
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+        <div class="govuk-form-group">
+
+          <label class="govuk-label govuk-label--l" for="postcode">
+            {{ title }}
+          </label>
+
+          <p class="govuk-hint">
+            <!-- For example, 1234567 or BS1 6PN -->
+            For example, 1234567
+          </p>
+
+          <input class="govuk-input govuk-input--width-10" id="appeal-code-input" name="appeal-code" type="number">
+
+        </div>
+
+        {% if data['version'] == "split" %}
+
+          <p class="govuk-body">
+            Or <a href="#">
+              search for an appeal using a postcode
+            </a>
+          </p>
+
+        {% endif %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
