@@ -50,10 +50,6 @@
           <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-appealstatement" name="appealsub-{{version}}-appealdocuments-appealstatement" type="file">
         </div>
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
-
         {{ govukDetails({
           summaryText: "Files you can upload",
           html: '
@@ -61,11 +57,11 @@
               You can upload the following types of file:
             </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>rtf</li>
-              <li>txt</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>pdf</li>
+              <li>RTF</li>
+              <li>TXT</li>
+              <li>DOC</li>
+              <li>DOCX</li>
+              <li>PDF</li>
 
               <!-- <li>DOC or DOCX</li>
               <li>JPG or JPEG</li>
@@ -73,6 +69,10 @@
               <li>PNG</li>
               <li>TIF or TIFF</li> -->
             </ul>
+
+            <p>
+              Your file must be smaller than 15MB.
+            </p>
 
           '
         }) }}

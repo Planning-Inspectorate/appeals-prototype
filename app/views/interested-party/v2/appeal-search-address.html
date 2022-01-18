@@ -29,7 +29,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="appeal-details?status=open" method="post">
+      <form action="appeal-select-address?appeal-number=0218781" method="post">
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -43,7 +43,7 @@
             For example, BS1 6PN
           </p>
 
-          <input class="govuk-input govuk-input--width-10" id="appeal-code-input" name="appeal-code" type="number">
+          <input class="govuk-input govuk-input--width-5" id="appealCode-input" name="appealCode" type="text">
 
         </div>
 
@@ -55,7 +55,7 @@
               House number or name (optional)
             </label>
 
-            <input class="govuk-input govuk-input--width-20" id="appeal-code-input" name="appeal-code" type="number">
+            <input class="govuk-input govuk-input--width-20" id="appealCode-input" name="appealCode" type="text">
 
           {% endif %}
 

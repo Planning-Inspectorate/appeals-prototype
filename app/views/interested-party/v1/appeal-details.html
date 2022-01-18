@@ -6,8 +6,8 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% if data['appeal-code'] %}
-  {% set title = "Appeal "+data['appeal-code'] %}
+{% if data['appealCode'] %}
+  {% set title = "Appeal "+data['appealCode'] %}
 {% else %}
   {% set title = "Appeal number 1234567" %}
 {% endif %}
