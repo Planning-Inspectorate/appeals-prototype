@@ -4,7 +4,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% set title = "Enter the site address postcode" %}
+{% set title = "Select the site address" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -26,18 +26,10 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      {% if data['junior'] %}
-        <form action="licence-by">
-      {% else %}
-        {% if data['licence-length'] == "12 month" %}
-          <form action="licence-option">
-        {% else %}
-          <form action="licence-by">
-        {% endif %}
-      {% endif %}
+    <form action="appeal-details?status=open" method="post">
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
@@ -50,32 +42,32 @@
           </legend>
 
           <p class="govuk-body">
-            4 addresses found for 2a Bailey House and BS2 1PP. <a href="appeal-search-address?version=address-filter" class="govuk-link">Change</a>
+            4 addresses found for BS3 3EX and Aubrey House. <a href="appeal-search-address?version=address-filter" class="govuk-link">Change</a>
           </p>
 
           <div class="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="found-address" name="found-address" type="radio" value="2A BAILEY HOUSE, BAILEY ROAD, BS2 1PP">
-              <label class="govuk-label govuk-radios__label" for="found-address">
-                2A BAILEY HOUSE, BAILEY ROAD, BS2 1PP
+              <input class="govuk-radios__input" id="select-address" name="site-address" type="radio" value="1 Aubrey House, Aubrey Road, BS3 3EX">
+              <label class="govuk-label govuk-radios__label" for="select-address">
+                1 Aubrey House, Aubrey Road, BS3 3EX
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="found-address-2" name="found-address" type="radio" value="1A BAILEY HOUSE, BAILEY ROAD, BS2 1PP">
-              <label class="govuk-label govuk-radios__label" for="found-address-2">
-                1A BAILEY HOUSE, BAILEY ROAD, BS2 1PP
+              <input class="govuk-radios__input" id="select-address-2" name="site-address" type="radio" value="2 Aubrey House, Aubrey Road, BS3 3EX">
+              <label class="govuk-label govuk-radios__label" for="select-address-2">
+                2 Aubrey House, Aubrey Road, BS3 3EX
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="found-address-3" name="found-address" type="radio" value="3A BAILEY HOUSE, BAILEY ROAD, BS2 1PP">
-              <label class="govuk-label govuk-radios__label" for="found-address-3">
-                3A BAILEY HOUSE, BAILEY ROAD, BS2 1PP
+              <input class="govuk-radios__input" id="select-address-3" name="site-address" type="radio" value="3 Aubrey House, Aubrey Road, BS3 3EX">
+              <label class="govuk-label govuk-radios__label" for="select-address-3">
+                3 Aubrey House, Aubrey Road, BS3 3EX
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="found-address-4" name="found-address" type="radio" value="4A BAILEY HOUSE, BAILEY ROAD, BS2 1PP">
-              <label class="govuk-label govuk-radios__label" for="found-address-4">
-                4A BAILEY HOUSE, BAILEY ROAD, BS2 1PP
+              <input class="govuk-radios__input" id="select-address-4" name="site-address" type="radio" value="4 Aubrey House, Aubrey Road, BS3 3EX">
+              <label class="govuk-label govuk-radios__label" for="select-address-4">
+                4 Aubrey House, Aubrey Road, BS3 3EX
               </label>
             </div>
           </div>
