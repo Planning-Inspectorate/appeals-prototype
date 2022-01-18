@@ -40,89 +40,14 @@
         {{ title }}
       </h1>
 
-      <!-- show if 'alt' has any value -->
-      {% if data['alt'] %}
-
-        <!-- alt shows nothing here -->
-
-      {% else %}
-
-        {% if data['status'] == "open" %}
-
-          <p class="govuk-body">
-            You can comment on this appeal until 11:59pm on 4 May 2022.
-          </p>
-
-          {% if data['status'] == "open" %}
-
-            {{ govukButton({
-              text: "Comment on this appeal",
-              classes: "govuk-!-margin-bottom-9",
-              href: "appeal-comment-name?checking="
-            }) }}
-
-          {% endif %}
-
-
-
-        {% else %}
-          <p class="govuk-body">
-            This appeal was closed on 4 January 2022. You cannot add comments.
-          </p>
-
-          {% if data['status'] == "completed" %}
-            <p class="govuk-body">
-              <a href="#">See the decision for this appeal</a>.
-            </p>
-          {% endif %}
-
-        {% endif %}
-
-      {% endif %}
-
-      <h2 class="govuk-heading-m">
-        Appeal details
-      </h2>
-
-      <!-- <p class="govuk-body">
-        This appeal is <strong class="govuk-tag govuk-tag--green">
-          Open
-        </strong>
-      </p> -->
-
       <dl class="govuk-summary-list">
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Appeal status
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-half">
+            Local planning department
           </dt>
-          <dd class="govuk-summary-list__value">
-
-            <!-- open / closed appeal status -->
-            {% if data['status'] == "open" %}
-              <strong class="govuk-tag govuk-tag--green">
-                Open for comments
-            {% elif data['status'] == "closed" %}
-              <strong class="govuk-tag govuk-tag--blue">
-                Closed for comments
-            {% else %}
-              <strong class="govuk-tag govuk-tag--black">
-                Appeal closed
-            {% endif %}
-
-            </strong>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Planning application number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <!-- <p class="govuk-body">{{ data.user.completeAppeal['application-number'] }}</p> -->
-            <p class="govuk-body">
-              APP/2021/56789/3256412
-            </p>
+          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+            Bristol City Council
           </dd>
         </div>
 
@@ -136,15 +61,18 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
-            Local planning department
+          <dt class="govuk-summary-list__key">
+            Application number
           </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-            Bristol City Council
+          <dd class="govuk-summary-list__value">
+            <!-- <p class="govuk-body">{{ data.user.completeAppeal['application-number'] }}</p> -->
+            <p class="govuk-body">
+              APP/2021/56789/3256412
+            </p>
           </dd>
         </div>
 
-        <div class="govuk-summary-list__row">
+        <div class="govuk-summary-list__row govuk-summary-list__row--last">
           <dt class="govuk-summary-list__key">
             Appeal site
           </dt>
@@ -157,7 +85,7 @@
           </dd>
         </div>
 
-        <div class="govuk-summary-list__row govuk-summary-list__row--last">
+        <!-- <div class="govuk-summary-list__row govuk-summary-list__row--last">
           <dt class="govuk-summary-list__key">
             Related appeals
           </dt>
@@ -166,48 +94,51 @@
               None
             </p>
           </dd>
-        </div>
-
-        <!-- <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Deadline for comments
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p>
-              8 days left
-            </p>
-          </dd>
         </div> -->
 
       </dl>
 
-    </div>
+      {% if data['status'] == "open" %}
 
+        <section class="govuk-!-margin-bottom-3">
+          <strong class="govuk-tag govuk-tag--green">
+            Open for comments
+          </strong>
+        </section>
 
-    <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">
+          You can comment on this appeal until 11:59pm on 4 May 2022.
+        </p>
 
-      <!-- show if 'alt' has any value -->
-      {% if data['alt'] %}
+        {{ govukButton({
+          text: "Comment on this appeal",
+          classes: "govuk-!-margin-bottom-9",
+          href: "appeal-comment-name?checking="
+        }) }}
 
-        <!-- appeal open for comments -->
-        {% if data['status'] == "open" %}
-          <h2 class="govuk-heading-m">
-            You can comment on this appeal until 11:59pm on 4 May 2022
-          </h2>
+      {% elseif data['status'] == "closed" %}
 
-          <p class="govuk-body">
-            <a href="appeal-comment-name?checking=" class="govuk-link govuk-link--no-visited-state">
-              Comment on this appeal
-            </a>
-          </p>
+        <section class="govuk-!-margin-bottom-3">
+          <strong class="govuk-tag govuk-tag--blue">
+            Closed for comments
+          </strong>
+        </section>
 
-        {% else %}
+        <p class="govuk-body">
+          This appeal was closed on 4 January 2022. You cannot add comments.
+        </p>
 
-          <!-- appeal closed for comments or closed -->
-          <p class="govuk-body">
-            This appeal is closed. You cannot add comments.
-          </p>
-        {% endif %}
+      {% else %}
+
+        <section class="govuk-!-margin-bottom-3">
+          <strong class="govuk-tag govuk-tag--black">
+            Appeal closed
+          </strong>
+        </section>
+
+        <p class="govuk-body">
+          <a href="#">See the decision for this appeal</a>.
+        </p>
 
       {% endif %}
 
