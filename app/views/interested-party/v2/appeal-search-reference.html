@@ -48,15 +48,12 @@
 
         </div>
 
-        {% if data['version'] == "split" %}
-
-          <p class="govuk-body">
-            Or <a href="#">
-              search for an appeal using a postcode
-            </a>
-          </p>
-
-        {% endif %}
+        <!-- link to go to address lookup -->
+        <p class="govuk-body">
+          Or <a href="appeal-search-address?version=address-filter">
+            search for an appeal using the site address
+          </a>
+        </p>
 
         {{ govukButton({
           text: "Continue"
