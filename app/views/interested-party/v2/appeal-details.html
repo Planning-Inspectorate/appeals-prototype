@@ -82,7 +82,11 @@
           </dt>
           <dd class="govuk-summary-list__value">
             <p>
-              {{ data['site-address'] }}
+              {% if data['site-address'] %}
+                {{ data['site-address'] }}
+              {% else %}
+                2 Aubrey House, Aubrey Road, BS3 3EX
+              {% endif %}
             </p>
           </dd>
         </div>

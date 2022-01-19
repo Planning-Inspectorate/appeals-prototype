@@ -1,0 +1,103 @@
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "Select the appeal" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ subServiceName }}</span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      3 addresses found for BS3 3EX. <a href="appeal-search-address?version=" class="govuk-link">Change</a>
+    </p>
+
+  </div>
+
+  <div class="govuk-grid-column-full">
+
+    {{ govukTable({
+      caption: "Matched appeals",
+      captionClasses: "govuk-table__caption--m",
+
+      head: [
+        {
+          text: "Site address",
+          classes: 'govuk-!-width-one-third'
+        },
+        {
+          text: "Appellant",
+          classes: 'govuk-!-width-one-quarter'
+        },
+        {
+          text: "Application number",
+          classes: 'govuk-!-width-one-quarter'
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+          },
+          {
+            text: "J. M. Wigstone"
+          },
+          {
+            html: '<a class="govuk-link" href="appeal-details?status=open">APP/Q999/D/21/0166327</a>'
+          }
+        ],
+        [
+          {
+            text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+          },
+          {
+            text: "J. M. Wigstone"
+          },
+          {
+            html: '<a class="govuk-link" href="appeal-details?status=open">APP/Q999/D/21/0166328</a>'
+          }
+        ],
+        [
+          {
+            text: "4 Vicarage Court, Aubrey Road, BS3 3EX"
+          },
+          {
+            text: "Sam Bidbod"
+          },
+          {
+            html: '<a class="govuk-link" href="appeal-details?status=open">APP/Q999/D/21/0166451</a>'
+          }
+        ]
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
