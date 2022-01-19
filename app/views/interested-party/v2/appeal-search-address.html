@@ -29,7 +29,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="appeal-select-address?appeal-number=0218781" method="post">
+      <form action="appeal-select-appeal?appeal-number=0218781" method="post">
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -49,7 +49,7 @@
 
         {% if data['version'] == "address-filter" %}
 
-        <div class="govuk-form-group govuk-!-margin-bottom-6">
+          <div class="govuk-form-group govuk-!-margin-bottom-6">
 
             <label class="govuk-label" for="postcode">
               House number or name (optional)
@@ -57,12 +57,14 @@
 
             <input class="govuk-input govuk-input--width-20" id="appealCode-input" name="appealCode" type="text">
 
-          {% endif %}
+          </div>
 
-        </div>
+        {% endif %}
+
+
 
         <p class="govuk-body">
-          Or <a href="appeal-search-reference?version=address-filter">
+          Or <a href="appeal-search-reference?version=">
             search for an appeal using the appeal number
           </a>
         </p>
