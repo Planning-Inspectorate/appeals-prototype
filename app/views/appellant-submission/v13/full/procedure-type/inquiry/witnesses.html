@@ -1,0 +1,52 @@
+{% extends "layouts/appellant-submission/v13.html" %}
+
+{% block pageTitle %}
+  Tell us how you would like us to decide your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us how you would prefer us to decide your appeal
+        </span>
+
+        {{ govukInput({
+          id: "appealsub-"+version+"-proceduretype-inquiry-witnesses",
+          name: "appealsub-"+version+"-proceduretype-inquiry-witnesses",
+          classes: "govuk-input--width-3",
+          label: {
+            text: "How many witnesses would you call?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          value: data["appealsub-"+version+"-proceduretype-inquiry-witnesses"]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
