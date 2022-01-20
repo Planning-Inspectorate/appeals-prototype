@@ -4,7 +4,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% set title = "Enter the site address postcode" %}
+{% set title = "Enter the appeal site postcode" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -29,7 +29,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="appeal-select-appeal?appeal-number=0218781" method="post">
+      <form action="appeal-select-appeal" method="post">
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -43,7 +43,11 @@
             For example, BS1 6PN
           </p>
 
-          <input class="govuk-input govuk-input--width-5" id="appealCode-input" name="appealCode" type="text">
+          {% if data['postcode'] %}
+            <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text" value="{{ data['email'] }}">
+          {% else %}
+            <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text">
+          {% endif %}
 
         </div>
 
@@ -55,7 +59,7 @@
               House number or name (optional)
             </label>
 
-            <input class="govuk-input govuk-input--width-20" id="appealCode-input" name="appealCode" type="text">
+            <input class="govuk-input govuk-input--width-20" id="postcode-input" name="postcode" type="text">
 
           </div>
 
