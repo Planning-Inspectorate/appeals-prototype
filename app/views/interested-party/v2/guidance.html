@@ -4,7 +4,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% set title = "Comment on a planning appeal" %}
+{% set title = "Guidance for submitting comments" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -29,7 +29,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- <span class="govuk-caption-l">{{ subServiceName }}</span> -->
+      <span class="govuk-caption-l">{{ subServiceName }}</span>
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
@@ -39,23 +39,16 @@
       </p>
 
       <h2 class="govuk-heading-m">
-        Before you start
+        Your comments
       </h2>
 
       <p class="govuk-body">
-        You will need:
+        Any previous comments that you submitted as part of an application will be considered by the Inspector. The Local Planning Department shares these with the Planning Inspectorate, so there is no need to submit repeat comments.
       </p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <!-- <li>the appeal reference number</li> -->
-        <li>the 7 digit appeal reference number </li>
-        <li>an email address so we can update you about the appeal</li>
-        <li>your comments saved in a document</li>
-      </ul>
-
-      <h2 class="govuk-heading-m">
+      <p class="govuk-body">
         Your comments must not include:
-      </h2>
+      </p>
 
       <ul class="govuk-list govuk-list--bullet">
         <!-- <li>the appeal reference number</li> -->
@@ -63,10 +56,14 @@
         <li>sensitive information</li>
       </ul>
 
+      <p class="govuk-body">
+        If you include anything you should not, we may ask you to resubmit your final comments. This would delay the appeal.
+      </p>
+
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            Check what sensitive information includes
+            See a full list of what you should not include
           </span>
         </summary>
         <div class="govuk-details__text">
@@ -130,6 +127,21 @@
 
         </div>
       </details>
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p class="govuk-body">
+        You will need:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <!-- <li>the appeal reference number</li> -->
+        <li>the 7 digit appeal reference number </li>
+        <li>an email address so we can update you about the appeal</li>
+        <li>your comments saved in a document</li>
+      </ul>
 
       {{ govukButton({
         classes: "govuk-!-margin-top-5",

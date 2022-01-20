@@ -6,14 +6,14 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% if data['appealCode'] != true %}
+{% if data['appealCode'] != "true" %}
   {% set appealCode = "0172631" %}
 {% endif %}
 
 {% if data['appealCode'] %}
-  {% set title = "Appeal "+data['appealCode'] %}
+  {% set title = "Appeal APP/Q999/D/21/"+data['appealCode'] %}
 {% else %}
-  {% set title = "Appeal number 0172631" %}
+  {% set title = "Appeal number APP/Q999/D/21/0172631" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -44,10 +44,13 @@
         {{ title }}
       </h1>
 
+    </div>
+    <div class="govuk-grid-column-full">
+
       <dl class="govuk-summary-list">
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-half">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
             Local planning department
           </dt>
           <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
@@ -56,27 +59,6 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key ">
-            Applicant’s name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            J. M. Wigstone
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Application number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <!-- <p class="govuk-body">{{ data.user.completeAppeal['application-number'] }}</p> -->
-            <p class="govuk-body">
-              APP/2021/56789/3256412
-            </p>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row govuk-summary-list__row--last">
           <dt class="govuk-summary-list__key">
             Appeal site
           </dt>
@@ -91,16 +73,35 @@
           </dd>
         </div>
 
-        <!-- <div class="govuk-summary-list__row govuk-summary-list__row--last">
-          <dt class="govuk-summary-list__key">
-            Related appeals
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key ">
+            Applicant
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>
-              None
+            {% if data['appellantName'] %}
+              {{ data['appellantName'] }}
+            {% else %}
+              J. M. Wigstone
+            {% endif %}
+          </dd>
+        </div>
+
+        <!--
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Application reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              {% if data['appealCode'] %}
+                {{ data['appealCode'] }}
+              {% else %}
+                APP/2021/56789/3256412
+              {% endif %}
             </p>
           </dd>
-        </div> -->
+        </div>
+        -->
 
       </dl>
 

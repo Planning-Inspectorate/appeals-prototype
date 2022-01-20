@@ -35,69 +35,196 @@
     </h1>
 
     <p class="govuk-body">
-      3 addresses found for BS3 3EX. <a href="appeal-search-address?version=" class="govuk-link">Change</a>
+      {% if data['postcode'] %}
+        3 appeals found for {{ data['postcode'] }}. <a href="appeal-search-address?version=" class="govuk-link">Change</a>
+      {% else %}
+        3 appeals found for BS3 3EX. <a href="appeal-search-address?version=" class="govuk-link">Change</a>
+      {% endif %}
     </p>
 
   </div>
 
-  <div class="govuk-grid-column-full">
+  {% if data['version'] == "full" %}
 
-    {{ govukTable({
-      caption: "Matched appeals",
-      captionClasses: "govuk-table__caption--m",
+    <div class="govuk-grid-column-full">
 
-      head: [
-        {
-          text: "Site address",
-          classes: 'govuk-!-width-one-third'
-        },
-        {
-          text: "Appellant",
-          classes: 'govuk-!-width-one-quarter'
-        },
-        {
-          text: "Application number",
-          classes: 'govuk-!-width-one-quarter'
-        }
-      ],
-      rows: [
-        [
+      {{ govukTable({
+        caption: "Matched appeals",
+        captionClasses: "govuk-table__caption--m",
+
+        head: [
+
           {
-            text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+            text: "Appeal reference",
+            classes: 'govuk-!-width-one-quarter'
           },
           {
-            text: "J. M. Wigstone"
+            text: "Site address",
+            classes: 'govuk-!-width-one-third'
           },
           {
-            html: '<a class="govuk-link" href="appeal-details?status=open">APP/Q999/D/21/0166327</a>'
+            text: "Appellant",
+            classes: 'govuk-!-width-one-quarter'
+          },
+          {
+            text: "Status",
+            classes: 'govuk-!-width-one-quarter'
           }
         ],
-        [
-          {
-            text: "2 Aubrey House, Aubrey Road, BS3 3EX"
-          },
-          {
-            text: "J. M. Wigstone"
-          },
-          {
-            html: '<a class="govuk-link" href="appeal-details?status=open">APP/Q999/D/21/0166328</a>'
-          }
-        ],
-        [
-          {
-            text: "4 Vicarage Court, Aubrey Road, BS3 3EX"
-          },
-          {
-            text: "Sam Bidbod"
-          },
-          {
-            html: '<a class="govuk-link" href="appeal-details?status=open">APP/Q999/D/21/0166451</a>'
-          }
+        rows: [
+          [
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256411">APP/Q999/D/21/0166327</a>'
+            },
+            {
+              text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+            },
+            {
+              text: "J. M. Wigstone"
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--blue">
+                    Closed for comments
+                  </strong>
+                </section>
+              '
+            }
+          ],
+          [
+
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166328&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256412">APP/Q999/D/21/0166328</a>'
+            },
+            {
+              text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+            },
+            {
+              text: "J. M. Wigstone"
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--blue">
+                    Closed for comments
+                  </strong>
+                </section>
+              '
+            }
+          ],
+          [
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166451&site-address=4%20Vicarage%20Court%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Sam%20Bidbod&appealReference=APP%2F2021%2F56789%2F3226514">APP/Q999/D/21/0166451</a>'
+            },
+            {
+              text: "4 Vicarage Court, Aubrey Road, BS3 3EX"
+            },
+            {
+              text: "Sam Bidbod"
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open for comments
+                  </strong>
+                </section>
+              '
+            }
+          ]
         ]
-      ]
-    }) }}
+      }) }}
 
-  </div>
+    </div>
+
+  {% else %}
+
+    <div class="govuk-grid-column-full">
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">
+          Matched appeals
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-half">
+              Appeal site
+            </th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">
+              Applicant
+            </th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">
+              Status
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="appeal-details?status=closed&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256411">
+                {% if data['postcode'] %}
+                  2 Aubrey House, Aubrey Road, {{ data['postcode'] }}
+                {% else %}
+                  2 Aubrey House, Aubrey Road, BS3 3EX
+                {% endif %}
+              </a>
+            </td>
+            <td class="govuk-table__cell">
+              J. M. Wigstone
+            </td>
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">
+                Closed
+              </strong>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="appeal-details?status=closed&appealCode=0166328&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256412">
+                {% if data['postcode'] %}
+                  2 Aubrey House, Aubrey Road, {{ data['postcode'] }}
+                {% else %}
+                  2 Aubrey House, Aubrey Road, BS3 3EX
+                {% endif %}
+              </a>
+            </td>
+            <td class="govuk-table__cell">
+              J. M. Wigstone
+            </td>
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">
+                Closed
+              </strong>
+            </td>
+          </tr>
+          <tr class="govuk-table__row pins-govuk-table__row--last">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="appeal-details?status=open&appealCode=0167022&site-address=4%20Vicarage%20Court%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Sam%20Bidbod&appealReference=APP%2F2021%2F56789%2F3226514">
+                {% if data['postcode'] %}
+                  4 Vicarage Court, Aubrey Road, {{ data['postcode'] }}
+                {% else %}
+                  4 Vicarage Court, Aubrey Road, BS3 3EX
+                {% endif %}
+              </a>
+            </td>
+            <td class="govuk-table__cell">
+              Sam Bidbod
+            </td>
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--green">
+                Open
+              </strong>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+
+  {% endif %}
+
 </div>
 
 {% endblock %}
