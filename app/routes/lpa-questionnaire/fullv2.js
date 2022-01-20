@@ -108,8 +108,8 @@ module.exports = function (router) {
 
     router.get(base+'skip/complex-cya', function (req, res) {
     
-      req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "No, we recommend an inquiry";
-      req.session.data["lpaq-"+v+"-proceduretype-decidedby-witnesses"] = "4";
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "Inquiry";
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby-inquirydays"] = "4";
       req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
 
       req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuilding"] = "Yes";
@@ -230,8 +230,8 @@ module.exports = function (router) {
 
       req.session.data["lpaq-"+v+"-nondetermination"] = "Yes";
 
-      req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "Yes, we agree";
-      req.session.data["lpaq-"+v+"-proceduretype-decidedby-witnesses"] = "";
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby"] = "Written representations";
+      req.session.data["lpaq-"+v+"-proceduretype-decidedby-inquirydays"] = "";
       req.session.data["lpaq-"+v+"-taskliststatus-proceduretype"] = "Complete";
       req.session.data["lpaq-"+v+"-constraintsdesignations-listedbuilding"] = "No";
       req.session.data["lpaq-"+v+"-constraintsdesignations-affectslistedbuilding"] = "No";
