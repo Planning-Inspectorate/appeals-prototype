@@ -1,0 +1,76 @@
+{% extends "layouts/appellant-submission/v13.html" %}
+
+{% block pageTitle %}
+  Do you know who owns the {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}rest of the {% endif %}land involved in the appeal? - Tell us about the appeal site - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}
+    {% set question = "Do you know who owns the rest of the land involved in the appeal?" %}
+  {% else %}
+    {% set question = "Do you know who owns the land involved in the appeal?" %}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealsite-ownrest",
+          name: "appealsub-"+version+"-appealsite-ownrest",
+          fieldset: {
+            legend: {
+              text: question,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes, I know who owns all the land",
+              text: "Yes, I know who owns all the land",
+              checked: checked("appealsub-"+version+"-appealsite-ownrest", "Yes, I know who owns all the land")
+            },
+            {
+              value: "I know who owns some of the land",
+              text: "I know who owns some of the land",
+              checked: checked("appealsub-"+version+"-appealsite-ownrest", "I know who owns some of the land")
+            },
+            {
+              value: "No, I do not know who owns any of the land",
+              text: "No, I do not know who owns any of the land",
+              checked: checked("appealsub-"+version+"-appealsite-ownrest", "No, I do not know who owns any of the land")
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
