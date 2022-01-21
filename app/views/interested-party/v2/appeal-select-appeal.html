@@ -36,27 +36,29 @@
 
     <p class="govuk-body">
       {% if data['postcode'] %}
-        3 appeals found for {{ data['postcode'] }}. <a href="appeal-search-address?version=" class="govuk-link">Change</a>
+        3 open appeals found for {{ data['postcode'] }}. <a href="appeal-search-address?version=" class="govuk-link">Change<span class="govuk-visually-hidden"> search address</span></a>
       {% else %}
-        3 appeals found for BS3 3EX. <a href="appeal-search-address?version=" class="govuk-link">Change</a>
+        3 open appeals found for BS3 3EX. <a href="appeal-search-address?version=" class="govuk-link">Change<span class="govuk-visually-hidden"> search address</span></a>
       {% endif %}
     </p>
 
   </div>
 
-  {% if data['version'] == "full" %}
+  <!-- main table -->
+  <div class="govuk-grid-column-full">
 
-    <div class="govuk-grid-column-full">
+    <!-- includes linked appeal number -->
+    {% if data['version'] == "full" %}
 
       {{ govukTable({
-        caption: "Matched appeals",
-        captionClasses: "govuk-table__caption--m",
+        caption: "Open appeals",
+        captionClasses: "govuk-table__caption--m govuk-visually-hidden",
 
         head: [
 
           {
             text: "Appeal reference",
-            classes: 'govuk-!-width-one-quarter'
+            classes: 'govuk-!-width-one-third'
           },
           {
             text: "Site address",
@@ -67,14 +69,13 @@
             classes: 'govuk-!-width-one-quarter'
           },
           {
-            text: "Status",
-            classes: 'govuk-!-width-one-quarter'
+            text: "Status"
           }
         ],
         rows: [
           [
             {
-              html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256411">APP/Q999/D/21/0166327</a>'
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256411"><span class="govuk-visually-hidden">Appeal reference </span>APP/Q999/D/21/0166327</a>'
             },
             {
               text: "2 Aubrey House, Aubrey Road, BS3 3EX"
@@ -85,8 +86,8 @@
             {
               html: '
                 <section>
-                  <strong class="govuk-tag govuk-tag--blue">
-                    Closed for comments
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
                   </strong>
                 </section>
               '
@@ -95,7 +96,7 @@
           [
 
             {
-              html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166328&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256412">APP/Q999/D/21/0166328</a>'
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166328&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256412">APP/Q999/D/21/0166328</a>'
             },
             {
               text: "2 Aubrey House, Aubrey Road, BS3 3EX"
@@ -106,8 +107,8 @@
             {
               html: '
                 <section>
-                  <strong class="govuk-tag govuk-tag--blue">
-                    Closed for comments
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
                   </strong>
                 </section>
               '
@@ -127,7 +128,7 @@
               html: '
                 <section>
                   <strong class="govuk-tag govuk-tag--green">
-                    Open for comments
+                    Open
                   </strong>
                 </section>
               '
@@ -136,15 +137,192 @@
         ]
       }) }}
 
-    </div>
+    <!-- includes appeal number, address is key data -->
+    {% elseif data['version'] == "full-linked-address-first" %}
 
-  {% else %}
+      {{ govukTable({
+        caption: "Open appeals",
+        captionClasses: "govuk-table__caption--m govuk-visually-hidden",
 
-    <div class="govuk-grid-column-full">
+        head: [
 
+          {
+            text: "Site address",
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            text: "Appellant",
+            classes: 'govuk-!-width-one-quarter'
+          },
+          {
+            text: "Appeal reference",
+            classes: 'govuk-!-width-one-quarter'
+          },
+          {
+            text: "Status",
+            classes: 'govuk-!-width-one-quarter'
+          }
+        ],
+        rows: [
+          [
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256411">2 Aubrey House, Aubrey Road, BS3 3EX</a>'
+            },
+            {
+              text: "J. M. Wigstone"
+            },
+            {
+              text: "APP/Q999/D/21/0166327"
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
+                  </strong>
+                </section>
+              '
+            }
+          ],
+          [
+
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166328&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256412">2 Aubrey House, Aubrey Road, BS3 3EX</a>'
+            },
+            {
+              text: "J. M. Wigstone"
+            },
+            {
+              text: "APP/Q999/D/21/0166328"
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
+                  </strong>
+                </section>
+              '
+            }
+          ],
+          [
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166451&site-address=4%20Vicarage%20Court%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Sam%20Bidbod&appealReference=APP%2F2021%2F56789%2F3226514">4 Vicarage Court, Aubrey Road, BS3 3EX</a>'
+            },
+            {
+              text: "Sam Bidbod"
+            },
+            {
+              text: "APP/Q999/D/21/0166451"
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
+                  </strong>
+                </section>
+              '
+            }
+          ]
+        ]
+      }) }}
+
+    <!-- includes appeal number, address is key data -->
+    {% elseif data['version'] == "linked-appeal" %}
+
+      {{ govukTable({
+        caption: "Open appeals",
+        captionClasses: "govuk-table__caption--m govuk-visually-hidden",
+
+        head: [
+
+          {
+            text: "Site address",
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            text: "Appellant",
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            text: "Appeal reference",
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            text: "Status"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+            },
+            {
+              text: "J. M. Wigstone"
+            },
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F0166327">APP/Q999/D/21/0166327</a>'
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
+                  </strong>
+                </section>
+              '
+            }
+          ],
+          [
+            {
+              text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+            },
+            {
+              text: "J. M. Wigstone"
+            },
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F0166328">APP/Q999/D/21/0166328</a>'
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
+                  </strong>
+                </section>
+              '
+            }
+          ],
+          [
+            {
+              text: "4 Vicarage Court, Aubrey Road, BS3 3EX"
+            },
+            {
+              text: "Sam Bidbod"
+            },
+            {
+              html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166451&site-address=4%20Vicarage%20Court%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Sam%20Bidbod&appealReference=APP%2F2021%2F56789%2F3226514">APP/Q999/D/21/0166451</a>'
+            },
+            {
+              html: '
+                <section>
+                  <strong class="govuk-tag govuk-tag--green">
+                    Open
+                  </strong>
+                </section>
+              '
+            }
+          ]
+        ]
+      }) }}
+
+    {% else %}
+
+      <!-- more simple results -->
       <table class="govuk-table">
         <caption class="govuk-table__caption govuk-table__caption--m">
-          Matched appeals
+          Open appeals
         </caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
@@ -162,7 +340,7 @@
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a class="govuk-link" href="appeal-details?status=closed&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256411">
+              <a class="govuk-link" href="appeal-details?status=open&appealCode=0166327&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256411">
                 {% if data['postcode'] %}
                   2 Aubrey House, Aubrey Road, {{ data['postcode'] }}
                 {% else %}
@@ -174,14 +352,14 @@
               J. M. Wigstone
             </td>
             <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--blue">
-                Closed
+              <strong class="govuk-tag govuk-tag--green">
+                Open
               </strong>
             </td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a class="govuk-link" href="appeal-details?status=closed&appealCode=0166328&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256412">
+              <a class="govuk-link" href="appeal-details?status=open&appealCode=0166328&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=APP%2F2021%2F56789%2F3256412">
                 {% if data['postcode'] %}
                   2 Aubrey House, Aubrey Road, {{ data['postcode'] }}
                 {% else %}
@@ -193,8 +371,8 @@
               J. M. Wigstone
             </td>
             <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--blue">
-                Closed
+              <strong class="govuk-tag govuk-tag--green">
+                Open
               </strong>
             </td>
           </tr>
@@ -221,10 +399,26 @@
         </tbody>
       </table>
 
-    </div>
+    {% endif %}
 
-  {% endif %}
+  </div>
 
-</div>
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-s">
+      Cannot see your appeal?
+    </h2>
+
+    <p class="govuk-body govuk-!-margin-bottom-7">
+
+        <a href="#" class="govuk-link">
+          {% if data['postcode'] %}
+            3 closed appeals found for {{ data['postcode'] }}
+          {% else %}
+            3 closed appeals found for BS3 3EX
+          {% endif %}
+        </a>
+    </p>
+  </div>
 
 {% endblock %}
