@@ -331,6 +331,15 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/contact-details/your-details', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-aboutyou-applicationinyourname"] == "No, I'm acting on behalf of the applicant"){
+      res.redirect(base+'full/contact-details/how-to-answer');
+    } else {
+      req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete";
+      res.redirect(base+'full/task-list');
+    }
+  })
+
+  router.post(base+'full/contact-details/how-to-answer', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-contactdetails"] = "Complete";
     res.redirect(base+'full/task-list');
   })
