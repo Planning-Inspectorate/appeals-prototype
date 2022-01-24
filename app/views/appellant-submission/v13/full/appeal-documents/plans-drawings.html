@@ -27,24 +27,15 @@
         <span class="govuk-caption-l">
           Upload documents for your appeal
         </span>
-        <h1 class="govuk-heading-l">
-          Plans and drawings
-        </h1>
-
-        <p class="govuk-body">
-          You do not need to submit the plans and drawings from your planning application. We'll get these from the local planning department.
-        </p>
-        <p class="govuk-body">
-          You can submit new or updated plans and drawings that support your appeal.
-        </p>
 
         {{ govukRadios({
           idPrefix: "appealsub-"+version+"-appealdocuments-plansdrawings",
           name: "appealsub-"+version+"-appealdocuments-plansdrawings",
           fieldset: {
             legend: {
-              text: "Do you want to submit any new plans or drawings with your appeal?",
-              classes: "govuk-fieldset__legend--m"
+              text: "Do you have any new plans or drawings that support your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
