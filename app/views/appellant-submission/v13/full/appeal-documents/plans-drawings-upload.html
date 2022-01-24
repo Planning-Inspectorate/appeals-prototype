@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -53,7 +53,7 @@
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-plansdrawings-files">
             {% if data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] and (data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] != "") %}
-              Upload more files
+              Replace the files
             {% else  %}
               Drag and drop or choose files
             {% endif %}

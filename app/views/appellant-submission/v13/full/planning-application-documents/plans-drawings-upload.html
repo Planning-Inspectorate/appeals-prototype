@@ -1,7 +1,7 @@
 {% extends "layouts/appellant-submission/v13.html" %}
 
 {% block pageTitle %}
-  New supporting documents - Upload documents for your appeal - {{serviceName}} - GOV.UK
+  Plans, drawings and supporting documents - Upload documents from your planning application - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,23 +25,29 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Upload documents for your appeal
+          Upload documents from your planning application
         </span>
         <h1 class="govuk-heading-l">
-          New supporting documents
+          Plans, drawings and supporting documents
         </h1>
+        <p class="govuk-body">
+          Upload the plans, drawings and supporting documents you submitted with your application.
+        </p>
+        <p class="govuk-body">
+          Do not include any new or updated documents. We'll ask for these later.
+        </p>
 
-        {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] and (data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] != "") %}
-          <h3 class="govuk-heading-m govuk-!-margin-top-8">
+        {% if data["appealsub-"+version+"-aboutapplication-plansdrawings"] and (data["appealsub-"+version+"-aboutapplication-plansdrawings"] != "") %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">
             Uploaded files
           </h3>
-          {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"]|is_string %}
+          {% if data["appealsub-"+version+"-aboutapplication-plansdrawings"]|is_string %}
             <p class="govuk-body">
-              <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] }}</a>
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-aboutapplication-plansdrawings"] }}</a>
             </p>
           {% else %}
             <ul class="govuk-list">
-              {% for item in data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] %}
+              {% for item in data["appealsub-"+version+"-aboutapplication-plansdrawings"] %}
                 <li>
                   <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
                 </li>
@@ -51,14 +57,14 @@
         {% endif %}
         
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-supportingdocuments-files">
-            {% if data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] and (data["appealsub-"+version+"-appealdocuments-supportingdocuments-files"] != "") %}
-              Upload more files
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-aboutapplication-plansdrawings">
+            {% if data["appealsub-"+version+"-aboutapplication-plansdrawings"] and (data["appealsub-"+version+"-aboutapplication-plansdrawings"] != "") %}
+              Replace the files
             {% else  %}
               Drag and drop or choose files
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-supportingdocuments-files" name="appealsub-{{version}}-appealdocuments-supportingdocuments-files" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-aboutapplication-plansdrawings" name="appealsub-{{version}}-aboutapplication-plansdrawings" type="file" multiple>
         </div>
 
         {{ govukDetails({

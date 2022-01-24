@@ -449,6 +449,10 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/application-upload', function (req, res) {
+    res.redirect(base+'full/planning-application-documents//plans-drawings-upload');
+  })
+
+  router.post(base+'full/planning-application-documents/plans-drawings-upload', function (req, res) {
     res.redirect(base+'full/planning-application-documents/design-access-statement');
   })
 
