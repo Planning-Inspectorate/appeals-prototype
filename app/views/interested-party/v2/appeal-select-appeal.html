@@ -47,7 +47,7 @@
   <!-- main table -->
   <div class="govuk-grid-column-full">
 
-    <!-- includes linked appeal number -->
+    <!-- includes linked appeal reference -->
     {% if data['version'] == "full" %}
 
       {{ govukTable({
@@ -137,7 +137,7 @@
         ]
       }) }}
 
-    <!-- includes appeal number, address is key data -->
+    <!-- includes appeal reference, address is key data -->
     {% elseif data['version'] == "full-linked-address-first" %}
 
       {{ govukTable({
@@ -228,7 +228,7 @@
         ]
       }) }}
 
-    <!-- includes appeal number, address is key data -->
+    <!-- includes appeal reference, address is key data -->
     {% elseif data['version'] == "linked-appeal" %}
 
       {{ govukTable({
