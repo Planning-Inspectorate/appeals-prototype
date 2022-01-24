@@ -1,7 +1,7 @@
 {% extends "layouts/appellant-submission/v13.html" %}
 
 {% block pageTitle %}
-  Supporting documents - Before you start - {{serviceName}} - GOV.UK
+  Supporting documents - Upload documents for your appeal - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -27,24 +27,15 @@
         <span class="govuk-caption-l">
           Upload documents for your appeal
         </span>
-        <h1 class="govuk-heading-l">
-          Supporting documents
-        </h1>
-
-        <p class="govuk-body">
-          You do not need to submit the supporting documents from your planning application. We'll get these from the local planning department.
-        </p>
-        <p class="govuk-body">
-          You can submit new or updated documents that support your appeal.
-        </p>
 
         {{ govukRadios({
           idPrefix: "appealsub-"+version+"-appealdocuments-supportingdocuments",
           name: "appealsub-"+version+"-appealdocuments-supportingdocuments",
           fieldset: {
             legend: {
-              text: "Do you want to submit any new supporting documents with your appeal?",
-              classes: "govuk-fieldset__legend--m"
+              text: "Do you have any other new documents that support your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
             }
           },
           items: [

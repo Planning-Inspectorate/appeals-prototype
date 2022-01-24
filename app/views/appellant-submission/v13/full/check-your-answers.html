@@ -9,7 +9,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -484,6 +484,19 @@
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              Planning application number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-aboutapplication-applicationnumber"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> planning application number</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               Planning application form
             </dt>
             <dd class="govuk-summary-list__value">
@@ -497,14 +510,14 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Planning application number
+              Plans, drawings and supporting documents
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-aboutapplication-applicationnumber"] }}
+              <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-plansdrawings"] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> planning application number</span>
+                Change<span class="govuk-visually-hidden"> plans, drawings and supporting documents</span>
               </a>
             </dd>
           </div>

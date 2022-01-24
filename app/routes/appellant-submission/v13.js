@@ -443,12 +443,16 @@ module.exports = function (router) {
  *** PLANNING APPLICATION DOCUMENTS ***
  **************************************/
 
-  router.post(base+'full/planning-application-documents/application-upload', function (req, res) {
+  router.post(base+'full/planning-application-documents/application-number', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "In progress";
-    res.redirect(base+'full/planning-application-documents/application-number');
+    res.redirect(base+'full/planning-application-documents/application-upload');
   })
 
-  router.post(base+'full/planning-application-documents/application-number', function (req, res) {
+  router.post(base+'full/planning-application-documents/application-upload', function (req, res) {
+    res.redirect(base+'full/planning-application-documents//plans-drawings-upload');
+  })
+
+  router.post(base+'full/planning-application-documents/plans-drawings-upload', function (req, res) {
     res.redirect(base+'full/planning-application-documents/design-access-statement');
   })
 
