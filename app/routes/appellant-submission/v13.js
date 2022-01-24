@@ -128,20 +128,36 @@ module.exports = function (router) {
     req.session.data["appealsub-"+v+"-taskliststatus-proceduretype"] = "Complete"
 
     req.session.data["appealsub-"+v+"-aboutapplication-applicationform"] = "planning_application_form.pdf"
+    req.session.data["appealsub-"+v+"-aboutapplication-applicationform-existing"] = "planning_application_form.pdf"
     req.session.data["appealsub-"+v+"-aboutapplication-applicationnumber"] = "987654321"
+    req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings"] = "plans_drawings_documents.pdf"
+    req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings-existing"] = "plans_drawings_documents.pdf"
+
     req.session.data["appealsub-"+v+"-aboutapplication-designaccess"] = "Yes"
     req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file"] = "design_access_statement.pdf"
+    req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file-existing"] = "design_access_statement.pdf"
     req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"] = "decision_letter.pdf"
+    req.session.data["appealsub-"+v+"-aboutapplication-decisionletter-existing"] = "decision_letter.pdf"
     req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete"
 
     req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"] = "appeal_statement.pdf"
+    req.session.data["appealsub-"+v+"-appealdocuments-appealstatement-existing"] = "appeal_statement.pdf"
     req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings"] = "Yes",
     req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files"] = [
       "plan_one.pdf",
       "drawings_two.pdf"
     ],
+    req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files-existing"] = [
+      "plan_one.pdf",
+      "drawings_two.pdf"
+    ],
     req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments"] = "Yes",
     req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files"] = [
+      "supporting_document_one.pdf",
+      "supporting_document_two.pdf",
+      "supporting_document_three.pdf"
+    ],
+    req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files-existing"] = [
       "supporting_document_one.pdf",
       "supporting_document_two.pdf",
       "supporting_document_three.pdf"
@@ -438,7 +454,7 @@ module.exports = function (router) {
     res.redirect(base+'full/task-list');
   })
 
-  
+
 /**************************************
  *** PLANNING APPLICATION DOCUMENTS ***
  **************************************/
@@ -449,10 +465,30 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/application-upload', function (req, res) {
-    res.redirect(base+'full/planning-application-documents//plans-drawings-upload');
+    
+    // Don't overwrite previously uploaded files with a blank upload
+    if (req.session.data["appealsub-"+v+"-aboutapplication-applicationform"] == "") {
+      if (req.session.data["appealsub-"+v+"-aboutapplication-applicationform-existing"] != "") {
+        req.session.data["appealsub-"+v+"-aboutapplication-applicationform"] = req.session.data["appealsub-"+v+"-aboutapplication-applicationform-existing"]
+      }
+    } else {
+      req.session.data["appealsub-"+v+"-aboutapplication-applicationform-existing"] = req.session.data["appealsub-"+v+"-aboutapplication-applicationform"]
+    }
+
+    res.redirect(base+'full/planning-application-documents/plans-drawings-upload');
   })
 
   router.post(base+'full/planning-application-documents/plans-drawings-upload', function (req, res) {
+    
+    // Don't overwrite previously uploaded files with a blank upload
+    if (req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings"] == "") {
+      if (req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings-existing"] != "") {
+        req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings"] = req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings-existing"]
+      }
+    } else {
+      req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings-existing"] = req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings"]
+    }
+    
     res.redirect(base+'full/planning-application-documents/design-access-statement');
   })
 
@@ -470,6 +506,16 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/design-access-statement-upload', function (req, res) {
+    
+    // Don't overwrite previously uploaded files with a blank upload
+    if (req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file"] == "") {
+      if (req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file-existing"] != "") {
+        req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file"] = req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file-existing"]
+      }
+    } else {
+      req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file-existing"] = req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file"]
+    }
+
     if (req.session.data["appealsub-"+v+"-beforeyoustart-permissiongrantedrefused"] == "I have not received a decision"){
       req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete";
       res.redirect(base+'full/task-list');
@@ -479,18 +525,38 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/decision-letter', function (req, res) {
+    
+    // Don't overwrite previously uploaded files with a blank upload
+    if (req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"] == "") {
+      if (req.session.data["appealsub-"+v+"-aboutapplication-decisionletter-existing"] != "") {
+        req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"] = req.session.data["appealsub-"+v+"-aboutapplication-decisionletter-existing"]
+      }
+    } else {
+      req.session.data["appealsub-"+v+"-aboutapplication-decisionletter-existing"] = req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"]
+    }
+
     req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "Complete";
     res.redirect(base+'full/task-list');
   })
 
-  
+
 /****************************************
  *** Upload documents for your appeal ***
  ****************************************/
   
   router.post(base+'full/appeal-documents/appeal-statement', function (req, res) {
+    
+    // Don't overwrite previously uploaded files with a blank upload
+    if (req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"] == "") {
+      if (req.session.data["appealsub-"+v+"-appealdocuments-appealstatement-existing"] != "") {
+        req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"] = req.session.data["appealsub-"+v+"-appealdocuments-appealstatement-existing"]
+      }
+    } else {
+      req.session.data["appealsub-"+v+"-appealdocuments-appealstatement-existing"] = req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"]
+    }
+
     req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "In progress";
-      res.redirect(base+'full/appeal-documents/plans-drawings');
+    res.redirect(base+'full/appeal-documents/plans-drawings');
   })
 
   router.post(base+'full/appeal-documents/plans-drawings', function (req, res) {
@@ -502,6 +568,16 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/appeal-documents/plans-drawings-upload', function (req, res) {
+    
+    // Don't overwrite previously uploaded files with a blank upload
+    if (req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files"] == "") {
+      if (req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files-existing"] != "") {
+        req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files"] = req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files-existing"]
+      }
+    } else {
+      req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files-existing"] = req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files"]
+    }
+
     res.redirect(base+'full/appeal-documents/supporting-documents');
   })
 
@@ -515,6 +591,16 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/appeal-documents/supporting-documents-upload', function (req, res) {
+
+    // Don't overwrite previously uploaded files with a blank upload
+    if (req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files"] == "") {
+      if (req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files-existing"] != "") {
+        req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files"] = req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files-existing"]
+      }
+    } else {
+      req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files-existing"] = req.session.data["appealsub-"+v+"-appealdocuments-supportingdocuments-files"]
+    }
+
     req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete";
     res.redirect(base+'full/task-list');
   })
