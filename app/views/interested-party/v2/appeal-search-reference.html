@@ -43,9 +43,25 @@
             This can be found on the appeal notification letter.
           </p> -->
 
-          <p class="govuk-hint">
-            This can be found on the appeal notification letter. For example, 1234567
-          </p>
+
+
+          {% if data['version'] == "alt" %}
+
+            <p class="govuk-body">
+              This can be found on the appeal notification letter. For example, APP/Q999/D/21/0166327.
+            </p>
+
+            <p class="govuk-hint">
+              You only need to enter the last 7 digits.
+            </p>
+
+          {% else %}
+
+            <p class="govuk-hint">
+              This can be found on the appeal notification letter. For example, APP/Q999/D/21/0166327. You only need to enter the last 7 digits.
+            </p>
+
+          {% endif %}
 
           <input class="govuk-input govuk-input--width-10" id="appealCode-input" name="appealCode" type="number">
 
