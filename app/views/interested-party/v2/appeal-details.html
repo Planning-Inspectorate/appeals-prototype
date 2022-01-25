@@ -50,15 +50,6 @@
       <dl class="govuk-summary-list">
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-            Local planning department
-          </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-            Bristol City Council
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Appeal site
           </dt>
@@ -86,23 +77,6 @@
           </dd>
         </div>
 
-        <!--
-        <div class="govuk-summary-list__row pins-summary-list__row--last">
-          <dt class="govuk-summary-list__key">
-            Application reference
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">
-              {% if data['appealCode'] %}
-                {{ data['appealCode'] }}
-              {% else %}
-                APP/2021/56789/3256412
-              {% endif %}
-            </p>
-          </dd>
-        </div>
-        -->
-
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
             Description of development
@@ -111,6 +85,16 @@
             Loft conversion of roof to existing dwelling (Certificate of Lawfulness of Proposed Use).
           </dd>
         </div>
+
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
+            Local planning department
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+            Bristol City Council
+          </dd>
+        </div>
+
       </dl>
 
       {% if data['status'] == "open" %}
