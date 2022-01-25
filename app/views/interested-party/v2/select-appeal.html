@@ -36,9 +36,9 @@
 
     <p class="govuk-body">
       {% if data['postcode'] %}
-        3 open appeals found for {{ data['postcode'] }}. <a href="appeal-search-address?version=" class="govuk-link">Change<span class="govuk-visually-hidden"> search address</span></a>
+        3 open appeals found for {{ data['postcode'] }}.<br><a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
       {% else %}
-        3 open appeals found for BS3 3EX. <a href="appeal-search-address?version=" class="govuk-link">Change<span class="govuk-visually-hidden"> search address</span></a>
+        3 open appeals found for BS3 3EX.<br><a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
       {% endif %}
     </p>
 
@@ -302,7 +302,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h2 class="govuk-heading-s">
-      Can’t see the appeal you're looking for?
+      Cannot see the appeal you're looking for?
     </h2>
 
     <p class="govuk-body govuk-!-margin-bottom-7">
