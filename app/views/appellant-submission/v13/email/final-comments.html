@@ -1,0 +1,86 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  We've received statements for you appeal - ((appeal reference))
+{% endblock %}
+
+{% block content %}
+<p><strong>Subject:</strong> We've received statements for you appeal - ((appeal reference))</p>
+<p><strong>From:</strong> Appeal a planning decision</p>
+
+<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-three-quarters">
+
+    <p class="govuk-body">
+      Appeal reference: ((appeal reference))<br>
+      Appeal site: ((site address))
+    </p>
+
+    <p class="govuk-body">Dear ((full name)),</p>
+    <p class="govuk-body">We've received statements from ((local planning department)) and interested parties for your appeal.</p>
+    <p class="govuk-body">I've attached the statements for your information.</p>
+
+    <h2 class="govuk-heading-m">
+      What you can do
+    </h2>
+    <p class="govuk-body">
+      You can respond to any issues raised in the statements. This is called your 'final comments'. You make your final comments in writing and submit them online.
+    </p>
+    {{ govukInsetText({
+      text: "You can find a link to submit your final comments at the end of the email we sent on ((start date))."
+    }) }}
+    <p class="govuk-body">
+      Your deadline is ((final comments deadline)).
+    </p>
+    <p class="govuk-body">
+      Final comments are optional. It is your decision whether you submit any.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      How to write final comments
+    </h2>
+    <p class="govuk-body">
+      Your comments must respond to issues raised in the statements I've attached. You do not need to repeat information from your appeal statement.
+    </p>
+    <p class="govuk-body">
+      You cannot:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        introduce new evidence or arguments
+      </li>
+      <li>
+        include inflammatory or abusive language
+      </li>
+      <li>
+        include sensitive information
+      </li>
+    </ul>
+    <p class="govuk-body">
+      Find out more about <a href="#">how to write your final comments</a>.
+    </p>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+    <p class="govuk-body">
+      If you submit final comments, we'll forward them to ((local planning department)).
+    </p>
+    <p class="govuk-body">
+      Once the deadline for final comments has passed, the Inspector will arrange a site visit. We'll contact you if you need to give them access.
+    </p>
+
+    <br><br>
+    <p class="govuk-body govuk-!-margin-bottom-9">
+      Thank you,<br>
+      ((case officer name))<br>
+      ((case team email))
+    </p>
+
+    <br><br><br><br><br>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <p class="govuk-body govuk-!-margin-top-9"><a href="start">(go to the email sent on ((start date)))</a></p>
+
+  </div>
+</div>
+{% endblock %}

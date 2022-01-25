@@ -1,0 +1,41 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  We've received your planning appeal
+{% endblock %}
+
+{% block content %}
+<p><strong>Subject:</strong> We've received your planning appeal/p>
+<p><strong>From:</strong> Appeal a planning decision</p>
+
+<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-three-quarters">
+
+    <p class="govuk-body">Dear ((name)),</p>
+
+    <p class="govuk-body">We've received your planning appeal for the following site: 9617 The Avenue, Maidstone, XM26 7YS</p>
+
+    <h2 class="govuk-heading-m">Local planning department:</h2>
+    <p class="govuk-body">((local planning department))</p>
+
+    <h2 class="govuk-heading-m">What you need to do</h2>
+    <p class="govuk-body">You need to send a copy of your appeal to ((local planning department)).</p>
+    <p class="govuk-body">You can download a copy of your appeal at <a href="javascript:preventDefault();">((link to PDF))</a>.</p>
+
+    <h2 class="govuk-heading-m">What happens next?</h2>
+    <p class="govuk-body">We'll check you've submitted everything we need to progress your appeal. We'll contact you once we've done this.</p>
+    
+    <p class="govuk-body">If you need to contact us, include your planning application number.</p>
+
+    <br><br>
+    <p class="govuk-body">
+      Thank you,<br>
+      The Planning Inspectorate<br>
+      enquiries@planninginspectorate.gov.uk
+    </p>
+
+  </div>
+</div>
+{% endblock %}
