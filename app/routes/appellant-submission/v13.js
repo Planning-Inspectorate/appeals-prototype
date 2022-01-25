@@ -636,10 +636,6 @@ module.exports = function (router) {
   })
   
   router.post(base+'full/procedure-type/inquiry/why', function (req, res) {
-    res.redirect(base+'full/procedure-type/inquiry/witnesses');
-  })
-  
-  router.post(base+'full/procedure-type/inquiry/witnesses', function (req, res) {
     res.redirect(base+'full/procedure-type/inquiry/days');
   })
   
