@@ -1,11 +1,11 @@
 {% extends "layout-email.html" %}
 
 {% block pageTitle %}
-  We've received statements for you appeal - ((appeal reference))
+  We've received statements for you appeal - A/1234567
 {% endblock %}
 
 {% block content %}
-<p><strong>Subject:</strong> We've received statements for you appeal - ((appeal reference))</p>
+<p><strong>Subject:</strong> We've received statements for you appeal - A/1234567</p>
 <p><strong>From:</strong> Appeal a planning decision</p>
 
 <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
@@ -14,12 +14,12 @@
   <div class="govuk-grid-column-three-quarters">
 
     <p class="govuk-body">
-      Appeal reference: ((appeal reference))<br>
-      Appeal site: ((site address))
+      Appeal reference: A/1234567<br>
+      Appeal site: 9617 The Avenue, Maidstone, XM26 7YS
     </p>
 
-    <p class="govuk-body">Dear ((full name)),</p>
-    <p class="govuk-body">We've received statements from ((local planning department)) and interested parties for your appeal.</p>
+    <p class="govuk-body">Dear [your name],</p>
+    <p class="govuk-body">We've received statements from City of Bradford Metropolitan District Council and interested parties for your appeal.</p>
     <p class="govuk-body">I've attached the statements for your information.</p>
 
     <h2 class="govuk-heading-m">
@@ -28,11 +28,12 @@
     <p class="govuk-body">
       You can respond to any issues raised in the statements. This is called your 'final comments'. You make your final comments in writing and submit them online.
     </p>
-    {{ govukInsetText({
-      text: "You can find a link to submit your final comments at the end of the email we sent on ((start date))."
-    }) }}
+    <div class="govuk-inset-text">
+      You can find a link to submit your final comments at the end of the email we sent on {{ 0 | daysInFuture }}.
+    </div>
+
     <p class="govuk-body">
-      Your deadline is ((final comments deadline)).
+      Your deadline is {{ 49 | daysInFuture }}.
     </p>
     <p class="govuk-body">
       Final comments are optional. It is your decision whether you submit any.
@@ -59,12 +60,12 @@
       </li>
     </ul>
     <p class="govuk-body">
-      Find out more about <a href="#">how to write your final comments</a>.
+      Find out more about <a href="javascript:preventDefault();">how to write your final comments</a>.
     </p>
 
     <h2 class="govuk-heading-m">What happens next</h2>
     <p class="govuk-body">
-      If you submit final comments, we'll forward them to ((local planning department)).
+      If you submit final comments, we'll forward them to City of Bradford Metropolitan District Council.
     </p>
     <p class="govuk-body">
       Once the deadline for final comments has passed, the Inspector will arrange a site visit. We'll contact you if you need to give them access.
@@ -73,13 +74,13 @@
     <br><br>
     <p class="govuk-body govuk-!-margin-bottom-9">
       Thank you,<br>
-      ((case officer name))<br>
-      ((case team email))
+      Chris Smith<br>
+      ChrisSmith@planninginspectorate.gov.uk
     </p>
 
     <br><br><br><br><br>
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-    <p class="govuk-body govuk-!-margin-top-9"><a href="start">(go to the email sent on ((start date)))</a></p>
+    <p class="govuk-body govuk-!-margin-top-9"><a href="start">Go to the email sent on [start date]</a></p>
 
   </div>
 </div>
