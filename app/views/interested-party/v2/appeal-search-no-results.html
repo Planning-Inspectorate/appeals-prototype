@@ -49,16 +49,12 @@
     {% endif %}
 
     {% if data['search'] == "number" %}
-      {{ govukButton({
-        href: "appeal-search-reference",
-        text: "Search for another appeal"
-      }) }}
+      <a href="appeal-search-reference" class="govuk-link">
     {% else %}
-      {{ govukButton({
-        href: "appeal-search-address",
-        text: "Search for another appeal"
-      }) }}
+      <a href="appeal-search-address" class="govuk-link">
     {% endif %}
+      Search for another appeal
+    </a>
 
   </div>
 </div>
