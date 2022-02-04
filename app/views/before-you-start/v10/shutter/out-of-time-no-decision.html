@@ -1,0 +1,27 @@
+{% extends "layouts/before-you-start/v10.html" %}
+
+{% block pageTitle %}
+  You cannot appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot appeal.
+      </h1>
+
+      <p class="govuk-body">
+        Your deadline to appeal has passed.
+      <p>
+
+      <p class="govuk-body">
+        Your deadline was {{ data['appealsub-'+version+'-beforeyoustart-deadline-day'] }} {{ data['appealsub-'+version+'-beforeyoustart-deadline-month'] | formatMonth }} {{ data['appealsub-'+version+'-beforeyoustart-deadline-year'] }}. This is 6 months from the decision date.
+      <p>
+
+    </div>
+  </div>
+
+{% endblock %}
