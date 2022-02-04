@@ -317,250 +317,347 @@
 
             <div id="accordion-default-content-interestedparties" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-interestedparties">
 
-              <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">
+              <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                {{ govukTag({
+                  classes: "govuk-tag--red govuk-!-margin-bottom-1",
+                  text: "WIP"
+                }) }}
 
-                    {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-bottom-1",
-                      text: "Ready for UR"
-                    }) }}
+                <span class="govuk-caption-m">Sprint Cote d’Ivoire</span>
+                <h3 class="govuk-heading-m">
+                  Interested party journey from LPD notice (version 3)
+                </h3>
 
-                    <span class="govuk-caption-m">Sprint Belgium</span>
-                    <h3 class="govuk-heading-m">
-                      Interested party journey from LPD notice (version 2)
-                    </h3>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/interested-party/v3/householder-appeal-first-notice-letter" class="govuk-link--no-visited-state">
+                      Householder appeal first notice (letter)
+                    </a>
+                  </li>
 
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>
-                        <a href="/interested-party/v2/householder-appeal-first-notice-letter" class="govuk-link--no-visited-state">
-                          Householder appeal first notice (letter)
-                        </a>
-                      </li>
-                      <!-- <li>
-                        <a href="/interested-party/v2/householder-appeal-first-notice" class="govuk-link--no-visited-state">
-                          Householder appeal first notice (email)
-                        </a>
-                      </li> -->
+                  <br>
 
-                      <br>
-                      <li>
-                        <a href="/interested-party/v2/guidance" class="govuk-link--no-visited-state">
-                          Guidance for commenting on an appeal
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/appeal-search-reference" class="govuk-link--no-visited-state">
-                          Search for an appeal with an appeal number
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/appeal-search-no-results?search=number" class="govuk-link--no-visited-state">
-                          No results from appeal number
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/appeal-search-address?version=" class="govuk-link--no-visited-state">
-                          Search for an appeal with a postcode
-                        </a>
-                      </li>
+                  <li>
+                    <a href="/interested-party/v3/guidance" class="govuk-link--no-visited-state">
+                      Guidance for commenting on an appeal
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/appeal-search-reference" class="govuk-link--no-visited-state">
+                      Search for an appeal with an appeal number
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/appeal-search-no-results?search=number" class="govuk-link--no-visited-state">
+                      No results from appeal number
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/appeal-details?status=open" class="govuk-link--no-visited-state">
+                      Appeal open for comments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/appeal-details?status=closed" class="govuk-link--no-visited-state">
+                      Appeal closed for comments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/appeal-details?status=completed" class="govuk-link--no-visited-state">
+                      Appeal closed
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/appeal-comment-name?checking=" class="govuk-link--no-visited-state">
+                      Your full name
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/appeal-comment-email?checking=" class="govuk-link--no-visited-state">Your email address</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/comment-upload" class="govuk-link--no-visited-state">Upload comment</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/check-answers" class="govuk-link--no-visited-state">Check your answers</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/comment-received" class="govuk-link--no-visited-state">Confirmation</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v3/comments-received-confirmation">Comment received confirmation email</a>
+                  </li>
 
-                      <li>
-                        <a href="/interested-party/v2/select-appeal?version=linked-appeal" class="govuk-link--no-visited-state">
-                          Select the appeal
-                        </a>
-                      </li>
-                      <!-- <li>
-                        <a href="/interested-party/v2/select-appeal?version=linked-address-first" class="govuk-link--no-visited-state">
-                          Select the appeal (linked address first)
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/select-appeal?version=linked-appeal-ref-first" class="govuk-link--no-visited-state">
-                          Select the appeal (linked appeal reference first)
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/select-appeal?version=" class="govuk-link--no-visited-state">
-                          Select the appeal (less data)
-                        </a>
-                      </li> -->
-                      <li>
-                        <a href="/interested-party/v2/appeal-details?status=open" class="govuk-link--no-visited-state">
-                          Appeal open for comments
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/appeal-details?status=closed" class="govuk-link--no-visited-state">
-                          Appeal closed for comments
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/appeal-details?status=completed" class="govuk-link--no-visited-state">
-                          Appeal closed
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/appeal-comment-name?checking=" class="govuk-link--no-visited-state">
-                          Your full name
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/appeal-comment-email?checking=" class="govuk-link--no-visited-state">Your email address</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/comment-upload" class="govuk-link--no-visited-state">Upload comment</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/check-answers" class="govuk-link--no-visited-state">Check your answers</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/comment-received" class="govuk-link--no-visited-state">Confirmation</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v2/comments-received-confirmation">Comment received confirmation email</a>
-                      </li>
+                </ul>
 
-                    </ul>
-
-                    <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
-                      <summary class="govuk-details__summary">
-                        <span class="govuk-details__summary-text">
-                          Jira Tickets (6)
-                        </span>
-                      </summary>
-                      <div class="govuk-details__text">
-                        <h4 class="govuk-heading-s">
-                          Content tickets
-                        </h4>
-                        <ul class="govuk-list govuk-list-bulleted govuk-!-margin-bottom-3">
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4209" target="_blank">AS-4209 - Householder appeal notification letter (LPD template)</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4215" target="_blank">AS-4215 - Full Planning appeal notification letter (LPD template)</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4214" target="_blank">AS-4214 - Submission confirmation email (Gov Notify)</a></li>
-                        </ul>
-                        <h4 class="govuk-heading-s">
-                          Design tickets
-                        </h4>
-                        <ul class="govuk-list govuk-list-bulleted">
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4210" target="_blank">AS-4210 - Search for an appeal</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4211" target="_blank">AS-4211 - View appeal details</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4213" target="_blank">AS-4213 - Submit representation</a></li>
-                        </ul>
-                      </div>
-                    </details>
-                  </div>
-
-                  <div class="govuk-inset-text govuk-!-margin-top-0">
-
-                    {{ govukTag({
-                      classes: "govuk-tag--blue govuk-!-margin-bottom-1",
-                      text: "Done"
-                    }) }}
-
-                    <span class="govuk-caption-m">Sprint Austria</span>
-                    <h3 class="govuk-heading-m">
-                      Interested party journey from LPD notice (version 1)
-                    </h3>
-
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>
-                        <a href="/interested-party/v1/householder-appeal-first-notice-letter" class="govuk-link--no-visited-state">Householder appeal first notice (letter)</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/householder-appeal-first-notice" class="govuk-link--no-visited-state">Householder appeal first notice (email)</a>
-                      </li><br>
-                      <li>
-                        <a href="/interested-party/v1/guidance" class="govuk-link--no-visited-state">
-                          Guidance for commenting on an appeal
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/appeal-search" class="govuk-link--no-visited-state">
-                          Search for an appeal
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/appeal-search-no-results" class="govuk-link--no-visited-state">
-                          No results
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/appeal-details?status=open" class="govuk-link--no-visited-state">
-                          Appeal open for comments
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/appeal-details?status=closed" class="govuk-link--no-visited-state">
-                          Appeal closed for comments
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/appeal-details?status=completed" class="govuk-link--no-visited-state">
-                          Appeal closed
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/appeal-comment-name?checking=" class="govuk-link--no-visited-state">
-                          Your full name
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/appeal-comment-email?checking=" class="govuk-link--no-visited-state">Your email address</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/comment-upload" class="govuk-link--no-visited-state">Upload comment</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/check-answers" class="govuk-link--no-visited-state">Check your answers</a>
-                      </li>
-                      <li>
-                        <a href="/interested-party/v1/comment-received" class="govuk-link--no-visited-state">Confirmation</a>
-                      </li>
-                      <li>
-                        <!-- <a href="/interested-party/v1/appeal-ip-comment-added-notify">Notify message about comment</a> -->
-                        Notify message about comment
-                      </li>
-
-                    </ul>
-
-                    <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
-                      <summary class="govuk-details__summary">
-                        <span class="govuk-details__summary-text">
-                          Jira Tickets (6)
-                        </span>
-                      </summary>
-                      <div class="govuk-details__text">
-                        <h4 class="govuk-heading-s">
-                          Content tickets
-                        </h4>
-                        <ul class="govuk-list govuk-list-bulleted govuk-!-margin-bottom-3">
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4209" target="_blank">AS-4209 - Householder appeal notification letter (LPD template)</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4215" target="_blank">AS-4215 - Full Planning appeal notification letter (LPD template)</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4214" target="_blank">AS-4214 - Submission confirmation email (Gov Notify)</a></li>
-                        </ul>
-                        <h4 class="govuk-heading-s">
-                          Design tickets
-                        </h4>
-                        <ul class="govuk-list govuk-list-bulleted">
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4210" target="_blank">AS-4210 - Search for an appeal</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4211" target="_blank">AS-4211 - View appeal details</a></li>
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4213" target="_blank">AS-4213 - Submit representation</a></li>
-                        </ul>
-                      </div>
-                    </details>
-
+                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Jira Tickets (6)
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
                     <h4 class="govuk-heading-s">
-                      Results
+                      Content tickets
+                    </h4>
+                    <ul class="govuk-list govuk-list-bulleted govuk-!-margin-bottom-3">
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4209" target="_blank">AS-4209 - Householder appeal notification letter (LPD template)</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4215" target="_blank">AS-4215 - Full Planning appeal notification letter (LPD template)</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4214" target="_blank">AS-4214 - Submission confirmation email (Gov Notify)</a></li>
+                    </ul>
+                    <h4 class="govuk-heading-s">
+                      Design tickets
                     </h4>
                     <ul class="govuk-list govuk-list-bulleted">
-                      <li><a href="https://miro.com/app/board/uXjVOSz_vAA=/" target="_blank">Miro board research notes (Sprint Austria)</a></li>
-                      <!-- <li><a href="#" target="_blank">Confluence notes</a></li> -->
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4210" target="_blank">AS-4210 - Search for an appeal</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4211" target="_blank">AS-4211 - View appeal details</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4213" target="_blank">AS-4213 - Submit representation</a></li>
                     </ul>
-
                   </div>
+                </details>
+              </div>
 
-                </div>
+              <!-- sprint Belgium -->
+              <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                {{ govukTag({
+                  classes: "govuk-tag--green govuk-!-margin-bottom-1",
+                  text: "Ready for UR"
+                }) }}
+
+                <span class="govuk-caption-m">Sprint Belgium</span>
+                <h3 class="govuk-heading-m">
+                  Interested party journey from LPD notice (version 2)
+                </h3>
+
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/interested-party/v2/householder-appeal-first-notice-letter" class="govuk-link--no-visited-state">
+                      Householder appeal first notice (letter)
+                    </a>
+                  </li>
+                  <!-- <li>
+                    <a href="/interested-party/v2/householder-appeal-first-notice" class="govuk-link--no-visited-state">
+                      Householder appeal first notice (email)
+                    </a>
+                  </li> -->
+
+                  <br>
+                  <li>
+                    <a href="/interested-party/v2/guidance" class="govuk-link--no-visited-state">
+                      Guidance for commenting on an appeal
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/appeal-search-reference" class="govuk-link--no-visited-state">
+                      Search for an appeal with an appeal number
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/appeal-search-no-results?search=number" class="govuk-link--no-visited-state">
+                      No results from appeal number
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/appeal-search-address?version=" class="govuk-link--no-visited-state">
+                      Search for an appeal with a postcode
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/interested-party/v2/select-appeal?version=linked-appeal" class="govuk-link--no-visited-state">
+                      Select the appeal
+                    </a>
+                  </li>
+                  <!-- <li>
+                    <a href="/interested-party/v2/select-appeal?version=linked-address-first" class="govuk-link--no-visited-state">
+                      Select the appeal (linked address first)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/select-appeal?version=linked-appeal-ref-first" class="govuk-link--no-visited-state">
+                      Select the appeal (linked appeal reference first)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/select-appeal?version=" class="govuk-link--no-visited-state">
+                      Select the appeal (less data)
+                    </a>
+                  </li> -->
+                  <li>
+                    <a href="/interested-party/v2/appeal-details?status=open" class="govuk-link--no-visited-state">
+                      Appeal open for comments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/appeal-details?status=closed" class="govuk-link--no-visited-state">
+                      Appeal closed for comments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/appeal-details?status=completed" class="govuk-link--no-visited-state">
+                      Appeal closed
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/appeal-comment-name?checking=" class="govuk-link--no-visited-state">
+                      Your full name
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/appeal-comment-email?checking=" class="govuk-link--no-visited-state">Your email address</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/comment-upload" class="govuk-link--no-visited-state">Upload comment</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/check-answers" class="govuk-link--no-visited-state">Check your answers</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/comment-received" class="govuk-link--no-visited-state">Confirmation</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v2/comments-received-confirmation">Comment received confirmation email</a>
+                  </li>
+
+                </ul>
+
+                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Jira Tickets (6)
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <h4 class="govuk-heading-s">
+                      Content tickets
+                    </h4>
+                    <ul class="govuk-list govuk-list-bulleted govuk-!-margin-bottom-3">
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4209" target="_blank">AS-4209 - Householder appeal notification letter (LPD template)</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4215" target="_blank">AS-4215 - Full Planning appeal notification letter (LPD template)</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4214" target="_blank">AS-4214 - Submission confirmation email (Gov Notify)</a></li>
+                    </ul>
+                    <h4 class="govuk-heading-s">
+                      Design tickets
+                    </h4>
+                    <ul class="govuk-list govuk-list-bulleted">
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4210" target="_blank">AS-4210 - Search for an appeal</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4211" target="_blank">AS-4211 - View appeal details</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4213" target="_blank">AS-4213 - Submit representation</a></li>
+                    </ul>
+                  </div>
+                </details>
+              </div>
+
+              <!-- sprint Austria -->
+              <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                {{ govukTag({
+                  classes: "govuk-tag--blue govuk-!-margin-bottom-1",
+                  text: "Done"
+                }) }}
+
+                <span class="govuk-caption-m">Sprint Austria</span>
+                <h3 class="govuk-heading-m">
+                  Interested party journey from LPD notice (version 1)
+                </h3>
+
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/interested-party/v1/householder-appeal-first-notice-letter" class="govuk-link--no-visited-state">Householder appeal first notice (letter)</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/householder-appeal-first-notice" class="govuk-link--no-visited-state">Householder appeal first notice (email)</a>
+                  </li><br>
+                  <li>
+                    <a href="/interested-party/v1/guidance" class="govuk-link--no-visited-state">
+                      Guidance for commenting on an appeal
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/appeal-search" class="govuk-link--no-visited-state">
+                      Search for an appeal
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/appeal-search-no-results" class="govuk-link--no-visited-state">
+                      No results
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/appeal-details?status=open" class="govuk-link--no-visited-state">
+                      Appeal open for comments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/appeal-details?status=closed" class="govuk-link--no-visited-state">
+                      Appeal closed for comments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/appeal-details?status=completed" class="govuk-link--no-visited-state">
+                      Appeal closed
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/appeal-comment-name?checking=" class="govuk-link--no-visited-state">
+                      Your full name
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/appeal-comment-email?checking=" class="govuk-link--no-visited-state">Your email address</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/comment-upload" class="govuk-link--no-visited-state">Upload comment</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/check-answers" class="govuk-link--no-visited-state">Check your answers</a>
+                  </li>
+                  <li>
+                    <a href="/interested-party/v1/comment-received" class="govuk-link--no-visited-state">Confirmation</a>
+                  </li>
+                  <li>
+                    <!-- <a href="/interested-party/v1/appeal-ip-comment-added-notify">Notify message about comment</a> -->
+                    Notify message about comment
+                  </li>
+
+                </ul>
+
+                <details class="govuk-details govuk-!-margin-bottom-6" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Jira Tickets (6)
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <h4 class="govuk-heading-s">
+                      Content tickets
+                    </h4>
+                    <ul class="govuk-list govuk-list-bulleted govuk-!-margin-bottom-3">
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4209" target="_blank">AS-4209 - Householder appeal notification letter (LPD template)</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4215" target="_blank">AS-4215 - Full Planning appeal notification letter (LPD template)</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4214" target="_blank">AS-4214 - Submission confirmation email (Gov Notify)</a></li>
+                    </ul>
+                    <h4 class="govuk-heading-s">
+                      Design tickets
+                    </h4>
+                    <ul class="govuk-list govuk-list-bulleted">
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4210" target="_blank">AS-4210 - Search for an appeal</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4211" target="_blank">AS-4211 - View appeal details</a></li>
+                      <li><a href="https://pins-ds.atlassian.net/browse/AS-4213" target="_blank">AS-4213 - Submit representation</a></li>
+                    </ul>
+                  </div>
+                </details>
+
+                <h4 class="govuk-heading-s">
+                  Results
+                </h4>
+                <ul class="govuk-list govuk-list-bulleted">
+                  <li><a href="https://miro.com/app/board/uXjVOSz_vAA=/" target="_blank">Miro board research notes (Sprint Austria)</a></li>
+                  <!-- <li><a href="#" target="_blank">Confluence notes</a></li> -->
+                </ul>
+
               </div>
 
             </div>

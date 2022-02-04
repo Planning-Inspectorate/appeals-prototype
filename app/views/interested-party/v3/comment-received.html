@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "Comment received" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-9">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          {{ title }}
+        </h1>
+
+
+
+        <div class="govuk-panel__body govuk-!-margin-bottom-3">
+          Your comment will be included in the appeal.
+        </div>
+
+        <div class="govuk-panel__body">
+          Appeal reference: <strong>{{data['appealCode']}}</strong>
+        </div>
+      </div>
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">
+        Your comments will be shared with the applicant and Bristol City Council.
+      </p>
+
+      <p class="govuk-body">
+        The Inspector will review them when determining the appeal.
+      </p>
+
+      <!-- <p class="govuk-body">
+        We will contact you again when a decision is made.
+      </p> -->
+
+      <!-- <p class="govuk-body">
+        A decision is expected by 27 May 2022.
+      </p> -->
+
+    </section>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+    </p>
+  </div>
+</div>
+{% endblock %}
