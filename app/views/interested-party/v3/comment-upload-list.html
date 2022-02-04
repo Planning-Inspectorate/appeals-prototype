@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "Your uploaded comments"  %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="check-answers" method="post">
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Filename</th>
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% set i = 0 %}
+            {% for file in data['comments'] %}
+              {% set i = i + 1 %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">{{ file.name }}</th>
+
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a class="govuk-link" href="/interested-party/comments-file/delete?row={{ i }}">
+                    Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
+        <input type="hidden" name="supplementary-completed-text" value="Completed">
+        <a href="comment-upload" class="govuk-button govuk-button--secondary">
+          Add another
+        </a>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

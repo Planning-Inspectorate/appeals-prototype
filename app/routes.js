@@ -49,4 +49,6 @@ require('./routes/standalone/lpa-questionnaire-security.js')(router);
 require('./routes/standalone/appeal-submission-security.js')(router);
 require('./routes/standalone/appeal-submission-security-magiclink.js')(router);
 
+require('./routes/interested-party/upload-comments.js')(router);
+
 module.exports = router

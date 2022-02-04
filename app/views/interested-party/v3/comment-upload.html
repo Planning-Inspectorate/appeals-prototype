@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "Upload your comments"  %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- <form action="comment-upload-list" method="post"> -->
+      <form action="" method="post" novalidate>
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+        {{ govukFileUpload({
+          id: "comments-file",
+          name: "comments-file",
+          formGroup: {
+            classes: "govuk-!-margin-bottom-3"
+          },
+          label: {
+            classes: "govuk-label--m govuk-!-margin-top-8",
+            text: "Upload a file"
+          }
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Files you can upload",
+          html: '
+            <p class="govuk-body">
+              You can upload the following types of file:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>RTF</li>
+              <li>TXT</li>
+              <li>DOC</li>
+              <li>DOCX</li>
+              <li>PDF</li>
+
+              <!-- <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li> -->
+            </ul>
+
+            <p>
+              Your file must be smaller than 15MB.
+            </p>
+
+          '
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
