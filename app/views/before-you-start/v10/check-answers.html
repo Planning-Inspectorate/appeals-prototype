@@ -157,9 +157,11 @@
           
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What you're appealing
+              Was your planning application granted or refused?
             </dt>
             <dd class="govuk-summary-list__value">
+              {{ data["bys-"+version+"-permissiongrantedrefused"] }}
+              <!--
               {% if (data["bys-"+version+"-permissiongrantedrefused"] == "Refused") %}
                 Reasons for refusal
               {% elseif (data["bys-"+version+"-permissiongrantedrefused"] == "Granted") %}
@@ -167,6 +169,7 @@
               {% else %}
                 Non-determination
               {% endif %}
+              -->
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="permission-granted-refused">
@@ -240,20 +243,22 @@
             </div>
           {% endif %}
           
-          <!--div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Claiming costs
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["bys-"+version+"-claimingcosts"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="claiming-costs">
-                Change<span class="govuk-visually-hidden"> claiming costs</span>
-              </a>
-            </dd>
-          </div>
-          
+          {% if ((data['bys-'+version+'-whatareyouappealing'] == "Householder planning") and (data['bys-'+version+'-permissiongrantedrefused'] == "Refused")) or ((data['bys-'+version+'-whatareyouappealing'] == "Prior approval") and (data['bys-'+version+'-priorapproval'] == "Yes")) or ((data['bys-'+version+'-whatareyouappealing'] == "Removal or variation of conditions") and (data['bys-'+version+'-removalvariationconditions'] == "Yes")) %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Are you claiming costs as part of your appeal?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["bys-"+version+"-claimingcosts"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="claiming-costs">
+                  Change<span class="govuk-visually-hidden"> claiming costs</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          <!--
           {% if data["appealsub-"+version+"-route"] != "householder" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -311,6 +316,12 @@
           </div>
         </details>
 
+        {{ govukButton({
+          href: "javascript:preventDefault();",
+          text: "Continue to my appeal"
+        }) }}
+
+<!--
         {% if data['appealsub-'+version+'-route'] == "full" %}
           {{ govukButton({
             text: "Continue to my appeal",
@@ -322,6 +333,7 @@
             href: "/before-you-start/"+version+"/task-list/expedited"
           }) }}
         {% endif %}
+-->
 
       </form>
 
