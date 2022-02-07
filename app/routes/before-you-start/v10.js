@@ -193,6 +193,15 @@ module.exports = function (router) {
   router.post(base+'enforcement-notice', function (req, res) {
     if (req.session.data["bys-"+v+"-enforcementnotice"] == "No"){
       if ((req.session.data['bys-'+v+'-whatareyouappealing'] == "Householder planning") && (req.session.data['bys-'+v+'-permissiongrantedrefused'] == "Refused")) {
+        // Continue down expedited written reps route if householder planning refused
+        req.session.data['bys-'+v+'-route'] = "householder"
+        res.redirect(base+'claiming-costs');
+      } else if ((req.session.data['bys-'+v+'-whatareyouappealing'] == "Prior approval") && (req.session.data['bys-'+v+'-priorapproval'] == "Yes")) {
+        // Continue down expedited written reps route if prior approval for householder
+        req.session.data['bys-'+v+'-route'] = "householder"
+        res.redirect(base+'claiming-costs');
+      } else if ((req.session.data['bys-'+v+'-whatareyouappealing'] == "Removal or variation of conditions") && (req.session.data['bys-'+v+'-removalvariationconditions'] == "Yes")) {
+        // Continue down expedited written reps route if removal/variation of conditions for householder
         req.session.data['bys-'+v+'-route'] = "householder"
         res.redirect(base+'claiming-costs');
       } else {
