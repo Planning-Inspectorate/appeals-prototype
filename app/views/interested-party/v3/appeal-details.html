@@ -139,7 +139,17 @@
               Decision issued
             </dt>
             <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-              Accepted
+              {% if data['decision'] == "allowed" %}
+                Allowed
+              {% elseif data['decision'] == "disallowed" %}
+                Not allowed
+              {% elseif data['decision'] == "split" %}
+                Split decision
+              {% elseif data['decision'] == "invalid" %}
+                Not valid
+              {% else %}
+                Allowed
+              {% endif %}
             </dd>
           </div>
 
