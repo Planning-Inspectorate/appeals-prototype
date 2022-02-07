@@ -13,30 +13,25 @@ module.exports = function (router) {
     }
   })
 
-  router.post(base+'supplementary', function (req, res) {
-
-    // collate all variables from form
-    var newComment = {
-      'file': req.session.data['comments-file']
-    }
-
-    // delete form data so revisiting the upload page doesn't show stored info from last upload
-    req.session.data['comments-file'] = null
+  router.post(base+'comment-upload', function (req, res) {
 
     // if array doesn't exist, create it
     if (!req.session.data['comments']) {
       req.session.data['comments'] = []
     }
 
-    // Add uploaded file info to array
-    req.session.data['comments'].push(newComment)
+    // Append uploaded files to the existing array of uploads
+    req.session.data['comments'] = req.session.data['comments'].concat(req.session.data['comments-file']);
+
+    // delete form data so revisiting the upload page doesn't show stored info from last upload
+    req.session.data['comments-file'] = null
 
     // redirect to list of uploaded files
     res.redirect(base+'comment-upload-list');
 
   })
 
-  router.post(base+'delete', function (req, res) {
+  router.post(base+'comment-delete', function (req, res) {
 
     // remove item from array
     req.session.data['comments'].splice(req.session.data['deleterow'],1);
