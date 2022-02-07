@@ -1,8 +1,5 @@
 {% extends "layout.html" %}
 
-{% set pageref = "###" %}
-{% extends "layout.html" %}
-
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
@@ -17,7 +14,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
   {{ govukBackLink({
@@ -80,7 +77,6 @@
               {% set i = i + 1 %}
               <p class="govuk-body">{{ file }}</p>
             {% endfor %}
-
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="comment-upload?checking=1">

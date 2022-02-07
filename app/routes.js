@@ -4,9 +4,12 @@ const router = express.Router();
 // Add your routes here - above the module.exports line
 require('./routes/eligibility/v8.js')(router);
 require('./routes/eligibility/v9.js')(router);
+require('./routes/before-you-start/v10.js')(router);
+
 require('./routes/appellant-submission/v10.js')(router);
 require('./routes/appellant-submission/v11.js')(router);
 require('./routes/appellant-submission/v12.js')(router);
+require('./routes/appellant-submission/v13.js')(router);
 
 require('./routes/appeal-submission.js')(router);
 

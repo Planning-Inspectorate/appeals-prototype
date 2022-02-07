@@ -26,50 +26,49 @@
       <form action="" method="post">
 
         <span class="govuk-caption-l">
-          Review the procedure type
+          Recommend a procedure for this appeal
         </span>
-        <h1 class="govuk-heading-xl">
-          This appeal will be decided by written representations.
-        </h1>
 
-        {% set witnessesHtml %}
+        {% set inquirydaysHtml %}
           {{ govukInput({
-            id: "lpaq-"+version+"-proceduretype-decidedby-witnesses",
-            name: "lpaq-"+version+"-proceduretype-decidedby-witnesses",
+            id: "lpaq-"+version+"-proceduretype-decidedby-inquirydays",
+            name: "lpaq-"+version+"-proceduretype-decidedby-inquirydays",
             label: {
-              text: "How many inquiry witnesses would you intend to call?"
+              text: "How many days would you expect the inquiry to last?"
             },
             classes: "govuk-input--width-3",
-            value: data["lpaq-"+version+"-proceduretype-decidedby-witnesses"]
+            value: data["lpaq-"+version+"-proceduretype-decidedby-inquirydays"]
           }) }}
         {% endset -%}
+
 
         {{ govukRadios({
           idPrefix: "lpaq-"+version+"-proceduretype-decidedby",
           name: "lpaq-"+version+"-proceduretype-decidedby",
           fieldset: {
             legend: {
-              text: "Do you agree with this procedure type?",
-              classes: "govuk-fieldset__legend--l"
+              text: "Which procedure do you think is most appropriate for this appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
             }
           },
           items: [
             {
-              value: "Yes, we agree",
-              text: "Yes, we agree",
-              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "Yes, we agree")
+              value: "Written representations",
+              text: "Written representations",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "Written representations")
             },
             {
-              value: "No, we recommend a hearing",
-              text: "No, we recommend a hearing",
-              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, we recommend a hearing")
+              value: "Hearing",
+              text: "Hearing",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "Hearing")
             },
             {
-              value: "No, we recommend an inquiry",
-              text: "No, we recommend an inquiry",
-              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "No, we recommend an inquiry"),
+              value: "Inquiry",
+              text: "Inquiry",
+              checked: checked("lpaq-"+version+"-proceduretype-decidedby", "Inquiry"),
               conditional: {
-                html: witnessesHtml
+                html: inquirydaysHtml
               }
             }
           ]

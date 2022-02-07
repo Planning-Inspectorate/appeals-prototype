@@ -1,0 +1,49 @@
+{% extends "layouts/before-you-start/v10.html" %}
+
+{% block pageTitle %}
+  Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Before you start
+      </h1>
+      <p class="govuk-body">
+        We need to ask you some questions about your appeal, to check you can use this service.
+      </p>
+      <p class="govuk-body">
+        If you're eligible to use this service, you'll be able to continue and submit your appeal.
+      </p>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-5",
+        href: "planning-department",
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/public/javascripts/autocomplete/accessible-autocomplete.min.js"></script>
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#bys-{{version}}-planningdepartment')
+    })
+  </script>
+{% endblock %}

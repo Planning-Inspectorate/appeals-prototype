@@ -30,6 +30,122 @@
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-appellant">
+                  Before you start
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
+
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Version 10 - Before you start
+                    </h3>
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Additional questions for prior approval and removal or change of conditions to go down expedited written representations route
+                    </h4>
+                    <p class="govuk-body">
+                      Splitting out the "Before you start" journey from the "Appellant submission" journey so we can more easily manage changes across the various possible journeys therough the appeal service.
+                    </p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/before-you-start/v10/">Start 'Before you start'</a>
+                      </li>
+                      <li>
+                        <a href="/before-you-start/v10/skip/full-bys-cya">Start from check your answers in 'Before you start'</a>
+                      </li>
+                    </ul>
+                    <!--details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          User research (1)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3458764516591934481&cot=14" target="_blank">Agents and appellants UR analysis</a></li>
+                        </ul>
+                      </div>
+                    </details-->
+                    <!--details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (5)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4086" target="_blank">AS-4086 Revert to getting plans from appellant</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4412" target="_blank">AS-4412 Fix upload fields to not overwrite previously uploaded file when blank</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4108" target="_blank">AS-4108 Full Planning - Notify Appeal Valid/Start Comms</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4252" target="_blank">AS-4252 Submission confirmation email (GovNotify) - appellant/agent</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4362" target="_blank">AS-4362 Appellant notification email: statement of case and IP comments / final comments prompt</a></li>
+                        </ul>
+                      </div>
+                    </details-->
+                  </div>
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                      text: "Done"
+                    }) }}
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Version 9 - Before you start
+                    </h3>
+                    <p class="govuk-body govuk-body-s">
+                      Previously referred to as the 'Eligibility checker', the 'Before you start' section is part of the appellant submission process to check the service is suitable to deal with their appeal.
+                    <p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/eligibility/v9/planning-department">Start journey from first question</a>
+                      </li>
+                    </ul>
+                    <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          User research (2)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://miro.com/app/board/o9J_lv1IHjc=/?moveToWidget=3074457366068246037&cot=14">Notes from research sessions</a></li>
+                          <li><a href="https://miro.com/app/board/o9J_lv1IHjc=/?moveToWidget=3074457366338321846&cot=14">User research analysis</a></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (1)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-3579" target="_blank">AS-3579 Eligibility checker combining HAS and Full appeals (MVP)</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-appellant">
                   Appellant submission
                 </span>
               </h2>
@@ -251,50 +367,6 @@
                           <li><a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3074457366852883508&cot=14">UR - Full appeal submission journey</a></li>
                           <li><a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3074457366890275896&cot=14">UR - Closing chat</a></li>
                           <li><a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3074457367056189145&cot=14">UR analysis</a></li>
-                        </ul>
-                      </div>
-                    </details>
-                  </div>
-
-                  <div class="govuk-inset-text govuk-!-margin-top-0">
-                    {{ govukTag({
-                      classes: "govuk-tag--blue govuk-!-margin-bottom-3",
-                      text: "Done"
-                    }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                      Version 9 - Before you start
-                    </h3>
-                    <p class="govuk-body govuk-body-s">
-                      Previously referred to as the 'Eligibility checker', the 'Before you start' section is part of the appellant submission process to check the service is suitable to deal with their appeal.
-                    <p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>
-                        <a href="/eligibility/v9/planning-department">Start journey from first question</a>
-                      </li>
-                    </ul>
-                    <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
-                      <summary class="govuk-details__summary">
-                        <span class="govuk-details__summary-text">
-                          User research (2)
-                        </span>
-                      </summary>
-                      <div class="govuk-details__text">
-                        <ul class="govuk-list govuk-list-bulleted">
-                          <li><a href="https://miro.com/app/board/o9J_lv1IHjc=/?moveToWidget=3074457366068246037&cot=14">Notes from research sessions</a></li>
-                          <li><a href="https://miro.com/app/board/o9J_lv1IHjc=/?moveToWidget=3074457366338321846&cot=14">User research analysis</a></li>
-                        </ul>
-                      </div>
-                    </details>
-
-                    <details class="govuk-details" data-module="govuk-details">
-                      <summary class="govuk-details__summary">
-                        <span class="govuk-details__summary-text">
-                          Jira Tickets (1)
-                        </span>
-                      </summary>
-                      <div class="govuk-details__text">
-                        <ul class="govuk-list govuk-list-bulleted">
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-3579" target="_blank">AS-3579 Eligibility checker combining HAS and Full appeals (MVP)</a></li>
                         </ul>
                       </div>
                     </details>

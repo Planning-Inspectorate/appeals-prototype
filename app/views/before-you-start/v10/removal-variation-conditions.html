@@ -1,0 +1,64 @@
+{% extends "layouts/before-you-start/v10.html" %}
+
+{% block pageTitle %}
+  Are the conditions for householder planning permission? - Before you start - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Before you start
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "bys-"+version+"-removalvariationconditions",
+          name: "bys-"+version+"-removalvariationconditions",
+          fieldset: {
+            legend: {
+              text: "Are the conditions for householder planning permission?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("bys-"+version+"-removalvariationconditions", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("bys-"+version+"-removalvariationconditions", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -19,14 +19,48 @@
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">
-        Upload a single file
+        Uploading a single file
       </h1>
       
   </div>
 </div>
 
+  <style>
+    .example-wrapper {
+      border: 1px solid #b1b4b6;
+      padding: 10px;
+    }
+    .example-code {
+      border: 1px solid #b1b4b6;
+      border-top: none;
+      padding: 10px 20px;
+    }
+    .example-code pre {
+      font-size: 1rem;
+      white-space: pre-wrap;
+    }
+  </style>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      <div class="example-wrapper" style="">
+
+          <p class="govuk-body-s govuk-!-margin-bottom-0">Example</p>
+      </div>
+
+        <div class="example-code">
+          <pre>
+            <code>
+&lt;div class="govuk-form-group"&gt;
+  &lt;label class="govuk-label" for="single-upload"&gt;
+    Drag and drop or choose a file
+  &lt;/label&gt;
+  &lt;input class="govuk-file-upload pins-file-upload" id="single-upload" name="single-upload" type="file"&gt;
+&lt;/div&gt;
+            </code>
+          </pre>
+        </div>
       
       <div class="govuk-form-group">
         <label class="govuk-label" for="single-upload">

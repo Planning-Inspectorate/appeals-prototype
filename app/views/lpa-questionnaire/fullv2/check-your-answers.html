@@ -36,16 +36,16 @@
         Before you submit your evidence, take a moment to make sure you're happy with the answers you've provided.
       <p>
 
-      <h2 class="govuk-heading-l">Procedure type</h2>
+      <h2 class="govuk-heading-l">Appeal procedure</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Do you agree that this appeal will be decided by written representations?
+            Which procedure do you think is most appropriate for this appeal?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data["lpaq-"+version+"-proceduretype-decidedby"] }}{% if data["lpaq-"+version+"-proceduretype-decidedby"] == "No, we recommend an inquiry" %}.<br>We plan to call {{ data["lpaq-"+version+"-proceduretype-decidedby-witnesses"] }} witnesses.{% endif %}
+            {{ data["lpaq-"+version+"-proceduretype-decidedby"] }}{% if data["lpaq-"+version+"-proceduretype-decidedby"] == "Inquiry" %}.<br>We expect the inquiry to last {{ data["lpaq-"+version+"-proceduretype-decidedby-inquirydays"] }} days.{% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link govuk-link--disabled" href="javascript:preventDefault();">

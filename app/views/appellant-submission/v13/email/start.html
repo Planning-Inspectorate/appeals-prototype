@@ -1,0 +1,93 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Full appeal started email
+{% endblock %}
+
+{% block content %}
+<p><strong>Subject:</strong>An update on your appeal - 9617 The Avenue, XM26 7YS</p>
+<p><strong>From:</strong> Appeal a planning decision</p>
+
+<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-three-quarters">
+
+    <p class="govuk-body">
+      Appeal site: 9617 The Avenue, Maidstone, XM26 7YS
+    </p>
+
+    <p class="govuk-body">Dear [full name]</p>
+
+    <p class="govuk-body">We've reviewed the information you submitted and have everything we need to progress your appeal.</p>
+
+    <p class="govuk-body">We'll decide your appeal by written representations.</p>
+
+    <h2 class="govuk-heading-m">
+      Your appeal reference
+    </h2>
+    <p class="govuk-body">A/1234567</p>
+
+    <h2 class="govuk-heading-m">
+      Your case officer
+    </h2>
+    <p class="govuk-body">
+      <strong>Chris Smith</strong><br>
+      ChrisSmith@planninginspectorate.gov.uk
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Appeal timeline
+    </h2>
+    <p class="govuk-body">
+      Appeal start date:  {{ 0 | daysInFuture }}<br>
+      Questionnaire deadline:  {{ 7 | daysInFuture }}<br>
+      Statements deadline:  {{ 35 | daysInFuture }}<br>
+      Final comments deadline: {{ 49 | daysInFuture }}
+    </p>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+    <p class="govuk-body">
+      City of Bradford Metropolitan District Council completes a questionnaire about your planning application and submits their case file. They'll forward you a copy of this for your information.
+    </p>
+    <p class="govuk-body">
+      Then City of Bradford Metropolitan District Council and interested parties can respond to your appeal. They do this by submitting written statements.
+    </p>
+    <p class="govuk-body">
+      If we receive any statements, we'll share them with you and invite you to respond. This is called your 'final comments'.
+    </p>
+    <p class="govuk-body">
+      We expect these steps to take about 7 weeks. Then an Inspector will begin considering your appeal.
+    </p>
+
+    <h2 class="govuk-heading-m">What you need to do</h2> 
+    <p class="govuk-body">
+      You do not need to do anything else at this stage. We have everything we need from you. We'll contact you if this changes.
+    </p>
+    <p class="govuk-body">
+      If you contact us about your appeal, quote your appeal reference number.
+    </p>
+
+    <h3 class="govuk-heading-s">Link to submit final comments</h3>
+    {{ govukInsetText({
+      text: "Keep this link safe in case you decide to submit final comments later."
+    }) }}
+    
+    <p class="govuk-body">Submit your final comments at: <a href="/final-comments/v1/appellant">https://planninginspectorate.gov.uk/final-comments-f1234567</a></p>
+
+    <br><br>
+    <p class="govuk-body">
+      Thank you,
+    </p>
+    <p class="govuk-body govuk-!-margin-bottom-9">
+      The Planning Inspectorate<br>
+      enquiries@planninginspectorate.gov.uk
+    </p>
+
+    <br><br><br><br><br>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <p class="govuk-body govuk-!-margin-top-9"><a href="final-comments">Continue to the next part of the test</a></p>
+
+  </div>
+</div>
+{% endblock %}
