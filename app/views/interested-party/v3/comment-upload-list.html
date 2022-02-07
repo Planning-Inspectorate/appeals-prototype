@@ -50,10 +50,9 @@
             {% for file in data['comments'] %}
               {% set i = i + 1 %}
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">{{ file.name }}</th>
-
+                <td scope="row" class="govuk-table__cell"><a href="javascript:peventDefault();">{{ file }}</a></td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link" href="/interested-party/comments-file/delete?row={{ i }}">
+                  <a class="govuk-link" href="/interested-party/v3/comment-delete?row={{ i }}">
                     Delete<span class="govuk-visually-hidden"> {{document.name}}</span>
                   </a>
                 </td>
@@ -62,15 +61,15 @@
           </tbody>
         </table>
 
-        <input type="hidden" name="supplementary-completed" value="govuk-tag app-task-list__task-completed">
-        <input type="hidden" name="supplementary-completed-text" value="Completed">
-        <a href="comment-upload" class="govuk-button govuk-button--secondary">
-          Add another
-        </a>
+        <div class="govuk-button-group">
+          <a href="comment-upload" class="govuk-button govuk-button--secondary">
+            Add another
+          </a>
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </div>
 
       </form>
 
