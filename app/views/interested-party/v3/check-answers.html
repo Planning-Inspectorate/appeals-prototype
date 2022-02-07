@@ -34,6 +34,9 @@
         {{ title }}
       </h1>
 
+    </div>
+    <div class="govuk-grid-column-full">
+
       <!-- <h2 class="govuk-heading-m">Your comment</h2> -->
 
       <dl class="govuk-summary-list">
@@ -69,11 +72,11 @@
             Comments
           </dt>
           <dd class="govuk-summary-list__value">
-            <ul class="govuk-list">
-              {% for file in data['comments'] %}
-                <li><a href="javascript:preventDefault();">{{ file }}</a></li>
-              {% endfor %}
-            </ul>
+            {% set i = 0 %}
+            {% for file in data['comments'] %}
+              {% set i = i + 1 %}
+              <p class="govuk-body">{{ file }}</p>
+            {% endfor %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="comment-upload?checking=1">
