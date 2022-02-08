@@ -1,0 +1,32 @@
+.email-inbox {
+  font-size: 16px;
+}
+
+.email-inbox .govuk-table__header {
+  padding-left: 10px;
+}
+
+.email-inbox td {
+  padding: 0;
+}
+
+.email-unread td {
+  font-weight: bold;
+}
+
+.email-read td {
+  background: #f5f5f5;
+  padding: 10px;
+}
+
+.email-inbox a:link {
+  padding: 10px;
+  color: $govuk-text-colour;
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+}
+
+.email-inbox a:visited {
+  color: $govuk-text-colour;
+}

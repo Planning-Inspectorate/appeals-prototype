@@ -64,6 +64,17 @@ module.exports = function (env) {
     else return '';
   }
 
+  filters.emailDaysAgo = function(num) {
+    var d = moment().subtract(num,"days").format("D MMM")
+    if (d !== 'Invalid date') return d
+    else return ''
+  }
+
+  filters.minutesAgo = function(num) {
+    var d = moment().subtract(num,"minutes").format("hh:mm")
+    if (d !== 'Invalid date') return d
+    else return ''
+  }
 
   filters.daysAgo = function(num) {
     var d = moment().subtract(num,"days").format("D MMMM YYYY")
