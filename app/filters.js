@@ -71,7 +71,7 @@ module.exports = function (env) {
   }
 
   filters.minutesAgo = function(num) {
-    var d = moment().subtract(num,"minutes").format("hh:mm")
+    var d = moment().subtract(num,"minutes").format("HH:mm")
     if (d !== 'Invalid date') return d
     else return ''
   }
