@@ -1,7 +1,7 @@
 {% extends "layout-email.html" %}
 
 {% block pageTitle %}
-  14 Fox Lane, Upper Brushton, LA12 6UX - review these comments from interested parties
+  We've received your statement of case
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
     <h1 class="govuk-heading-m">
-      14 Fox Lane, Upper Brushton, LA12 6UX - review these comments from interested parties
+      We've received your statement of case
     </h1>
 
     <p class="govuk-body">
@@ -32,45 +32,44 @@
       <div class="govuk-grid-column-two-thirds">
 
         <p class="govuk-body">
-          Appeal site: 14 Fox Lane, Upper Brushton, LA12 6UX<br>
-          Appeal reference: 1345264
-        </p>
-        <br>
-
-        <p class="govuk-body">
           Dear City of Bradford Metropolitan District Council
         </p>
         <p class="govuk-body">
-          We've received comments from interested parties for the appeal against the refusal of planning application 1345264.
+          We've received your statement of case for appeal 1345264. It's now available for the Inspector to review when considering the appeal.
         </p>
         <p class="govuk-body">
-          The comments are attached for you to review.
+          Site address: 14 Fox Lane, Upper Brushton, LA12 6UX<br>
+          Application reference: 21/05058/FUL
         </p>
 
         <h2 class="govuk-heading-m">
-          What you can do
+          File submitted:
         </h2>
         <p class="govuk-body">
-          You can submit final comments in response to any issues that the interested parties have raised. You cannot introduce any new evidence or arguments in your final comments.
+          statement-of-case-f1234567.pdf
         </p>
         <p class="govuk-body">
-          Submit your final comments at: <a href="/final-comments/v1/lpd">https://planninginspectorate.gov.uk/final-comments-f1234567</a>
+          You can download a copy of the file at: <a href="javascripot:preventDefault();">https://docs.appeals.planninginspectorate.gov.uk/2105058FUL/statement-of-case-f1234567.pdf</a>
         </p>
+
+        <h2 class="govuk-heading-m">
+          Submitted on:
+        </h2>
         <p class="govuk-body">
-          Your deadline is {{ 14 | daysInFuture }}.
-        </p>
-        <p class="govuk-body">
-          Submitting final comments is optional.
+          {{ 0 | daysAgo }} at {{ 2 | minutesAgo }}
         </p>
 
         <h2 class="govuk-heading-m">
           What happens next
         </h2>
         <p class="govuk-body">
-          If you submit final comments, we'll forward them to the appellant for their information.
+          We'll review your statement and forward it to the appellant.
         </p>
         <p class="govuk-body">
-          Once the deadline for final comments has passed, the Inspector will begin considering the appeal.
+          If we receive comments from interested parties about this appeal, we'll forward them to you for you to review. You can submit final comments in response to any issues that interested parties raise.
+        </p>
+        <p class="govuk-body">
+          The appellant can submit final comments in response to interested party comments and your statement. If they do this, we'll forward their comments to you for your information.
         </p>
 
         <br>
@@ -81,6 +80,12 @@
           Chris Smith
           <br>
           caseteam@planning inspectorate.gov.uk
+        </p>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <p class="govuk-body">
+          <a href="/lpd-comms/v1/inbox-prompt-for-comments">Go to your inbox</a>
         </p>
 
       </div>
