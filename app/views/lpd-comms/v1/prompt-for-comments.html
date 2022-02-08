@@ -1,0 +1,88 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  1 The Manor, Butterton, BT12 6UX - review these comments from interested parties
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukBackLink({
+      text: "Back to Inbox",
+      href: "inbox-prompt-for-comments"
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h1 class="govuk-heading-m">
+      1 The Manor, Butterton, BT12 6UX - review these comments from interested parties
+    </h1>
+
+    <p class="govuk-body">
+      <strong>From: </strong>Appeal a planning decision
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+    <div class="govuk-grid-row govuk-!-margin-top-5">
+      <div class="govuk-grid-column-two-thirds">
+
+        <p class="govuk-body">
+          Appeal site: 1 The Manor, Butterton, BT12 6UX<br>
+          Appeal reference: 2776190
+        </p>
+        <br>
+
+        <p class="govuk-body">
+          Dear City of Bradford Metropolitan District Council
+        </p>
+        <p class="govuk-body">
+          We've received comments from interested parties for the appeal against the refusal of planning application 2776190.
+        </p>
+        <p class="govuk-body">
+          The comments are attached for you to review.
+        </p>
+
+        <h2 class="govuk-heading-m">
+          What you can do
+        </h2>
+        <p class="govuk-body">
+          You can submit final comments in response to any issues that the interested parties have raised. You cannot introduce any new evidence or arguments in your final comments.
+        </p>
+        <p class="govuk-body">
+          Submit your final comments at: <a href="/final-comments/v1/lpd">https://planninginspectorate.gov.uk/final-comments-f1234567</a>
+        </p>
+        <p class="govuk-body">
+          Your deadline is  {{ 14 | daysInFuture }}.
+        </p>
+        <p class="govuk-body">
+          Submitting final comments is optional.
+        </p>
+
+        <h2 class="govuk-heading-m">
+          What happens next
+        </h2>
+        <p class="govuk-body">
+          If you submit final comments, we'll forward them to the appellant for their information.
+        </p>
+        <p class="govuk-body">
+          Once the deadline for final comments has passed, the Inspector will begin considering the appeal.
+        </p>
+
+        <br>
+        <p class="govuk-body">
+          Thank you,
+        </p>
+        <p class="govuk-body">
+          Alex Bennet
+          <br>
+          caseteam@planning inspectorate.gov.uk
+        </p>
+
+      </div>
+    </div>
+{% endblock %}
