@@ -41,7 +41,13 @@
         </div>
 
         <div class="govuk-panel__body">
-          Appeal reference: <strong>{{data['appealCode']}}</strong>
+          Appeal reference: <strong>
+            {% if data['appealCode'] %}
+              {{ data['appealCode'] }}
+            {% else %}
+              0166327
+            {% endif %}
+            </strong>
         </div>
       </div>
 
