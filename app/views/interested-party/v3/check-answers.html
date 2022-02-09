@@ -72,11 +72,17 @@
             Comments
           </dt>
           <dd class="govuk-summary-list__value">
-            {% set i = 0 %}
-            {% for file in data['comments'] %}
-              {% set i = i + 1 %}
-              <p class="govuk-body">{{ file }}</p>
-            {% endfor %}
+            <p class="govuk-body">
+              {% if data['comments'] %}
+                {% set i = 0 %}
+                {% for file in data['comments'] %}
+                  {% set i = i + 1 %}
+                    {{ file }}<br>
+                {% endfor %}
+              {% else %}
+                Appeal comments.txt
+              {% endif %}
+            </p>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="comment-upload?checking=1">
@@ -85,6 +91,9 @@
           </dd>
         </div>
       </dl>
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
 
       <h2 class="govuk-heading-m">
         Now send your comments

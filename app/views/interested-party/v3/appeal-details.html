@@ -47,7 +47,7 @@
 
     <div class="govuk-grid-column-full">
       {% if data['status'] == "open" %}
-
+        <!-- comments are open -->
         <section class="govuk-!-margin-bottom-3">
           <strong class="govuk-tag govuk-tag--green">
             Open for comments
@@ -176,6 +176,17 @@
         {% endif %}
 
       </dl>
+
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <p class="govuk-body">
+        <a href="#">
+          View the application details on the local planning department’s website (opens in new tab)
+        </a>
+      </p>
+
 
       {% if data['status'] == "open" %}
 
