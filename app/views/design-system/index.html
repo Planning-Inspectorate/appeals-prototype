@@ -1,0 +1,61 @@
+{% extends "layout-ds.html" %}
+{% set dssection = "home" %}
+
+{% block pageTitle %}
+  {{ serviceName }} Design System
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "design-system/_nav.html" %} 
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-xl">
+          {{serviceName}} Design System
+        </h1>
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+
+        <h2 class="govuk-heading-l">
+          Components
+        </h2>
+        <p class="govuk-body">
+          Reusable components specific to the Appeal a planning decision service for the Planning Inspectorate
+        </p>
+        <p class="govuk-body">
+          <a href="/design-system/components/" class="govuk-link govuk-!-font-weight-bold">Browse components</a>
+        </p>
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+
+        <h2 class="govuk-heading-l">
+          Patterns
+        </h2>
+        <p class="govuk-body">
+          Reusable patterns developed as part of the Appeal a planning decision service for the Planning Inspectorate
+        </p>
+        <p class="govuk-body">
+          <a href="/design-system/patterns/" class="govuk-link govuk-!-font-weight-bold">Browse patterns</a>
+        </p>
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+
+
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}
