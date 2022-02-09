@@ -13,7 +13,7 @@ module.exports = function (router) {
     }
   })
 
-  router.post(base+'comment-upload', function (req, res) {
+  router.post(base+'comment-upload-check', function (req, res) {
 
     // if array doesn't exist, create it
     if (!req.session.data['comments']) {
