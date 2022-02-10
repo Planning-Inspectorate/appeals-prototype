@@ -1,0 +1,189 @@
+{% extends "layout-ds.html" %}
+{% set dssection = "components" %}
+{% set dspage = "file-upload-single" %}
+
+{% block pageTitle %}
+  {{ serviceName }} Design System
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "design-system/_nav.html" %} 
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-one-quarter">
+        {% include "design-system/components/_nav.html" %}
+      </div>
+
+      <div class="govuk-grid-column-three-quarters">
+
+        <span class="govuk-caption-l">
+          Components
+        </span>
+        <h1 class="govuk-heading-xl">
+          File upload - single
+          <div>
+            {{ govukTag({
+              classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-2",
+              text: "MVP"
+            }) }}
+          </div>
+        </h1>
+        <p class="govuk-body">
+          This component is intended for use as a minimum viable solution to uploading a single file on a screen.
+        </p>
+        <p class="govuk-body">
+          It allows the user to upload a single file, but has no functionality as part of a series of screens that allows the user to see what they have uploaded, or to remove the uploaded file.
+        </p>
+
+        <div class="ds-example">
+          <div class="ds-example__titlebar">
+            <p class="govuk-body-s govuk-!-margin-bottom-0">
+              Initial view example
+            </p>
+          </div>
+          <div class="ds-example__rendered">
+            
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="file-upload-single">
+                  Drag and drop or choose a file
+              </label>
+              <input class="govuk-file-upload pins-file-upload" id="file-upload-single" name="file-upload-single" type="file">
+            </div>            
+
+          </div>
+          <div class="ds-example__html">
+            <pre><code class="hljs">&lt;div class="govuk-form-group"&gt;
+  &lt;label class="govuk-label govuk-label--m" for="file-upload-single"&gt;
+    Drag and drop or choose a file
+  &lt;/label&gt;
+  &lt;input class="govuk-file-upload pins-file-upload" id="file-upload-single" name="file-upload-single" type="file"&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
+        <p class="govuk-body">
+          In order for the user the remove or change the uploaded file, the user would have to revisit the page which would change to display a link to the previously uploaded file, and provide the functionality to upload another file to replace it.
+        </p>
+
+        <div class="ds-example">
+          <div class="ds-example__titlebar">
+            <p class="govuk-body-s govuk-!-margin-bottom-0">
+              File uploaded example
+            </p>
+          </div>
+          <div class="ds-example__rendered">
+            
+            <h3 class="govuk-heading-m govuk-!-margin-top-6">
+              Uploaded file
+            </h3>
+            <p class="govuk-body govuk-!-margin-bottom-8">
+              <a href="#" class="govuk-link">filename.pdf</a>
+            </p>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="file-upload-single">
+                Replace the file
+              </label>
+              <input class="govuk-file-upload pins-file-upload" id="file-upload-single" name="file-upload-single" type="file">
+            </div>            
+
+          </div>
+          <div class="ds-example__html">
+            <pre><code class="hljs">&lt;h3 class="govuk-heading-m govuk-!-margin-top-6"&gt;
+  Uploaded file
+&lt;/h3&gt;
+&lt;p class="govuk-body govuk-!-margin-bottom-8"&gt;
+  &lt;a href="#" class="govuk-link"&gt;filename.pdf&lt;/a&gt;
+&lt;/p&gt;
+&lt;div class="govuk-form-group"&gt;
+  &lt;label class="govuk-label govuk-label--m" for="file-upload-single"&gt;
+    Replace the file
+  &lt;/label&gt;
+  &lt;input class="govuk-file-upload pins-file-upload" id="file-upload-single" name="file-upload-single" type="file"&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l">
+          When to use this component
+        </h2>
+        <p class="govuk-body">
+          The Appeal a planning decision service historically relies on a large amount of documents provided in a number of forms including, but not limited to, Word documents, PDFs, scans of handwritten documents, and photographs.
+        </p>
+        <p class="govuk-body">
+          Where possible, we should look to only include file uploads where it is completely necessary, and where the input of text in the service is not a viable solution.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          When not to use this component
+        </h2>
+        <p class="govuk-body">
+          When it is in the best interests of the user and the service to collect the relevant information with text inputs.
+        </p>
+
+        <h2 class="govuk-heading-l">
+          How it works
+        </h2>
+        <p class="govuk-body">
+          This component is an enhancement of the <a href="https://design-system.service.gov.uk/components/file-upload/">GOV.UK Design System file upload component</a>. 
+        </p>
+        <p class="govuk-body">
+          Additional styling has been added to the component to create a recognisable area in which users can drag and drop a file in order to upload it. There are no JavaScript enhancements required for this component.
+        </p>
+
+        <h3 class="govuk-heading-m">
+          Error messages
+        </h3>
+        <p class="govuk-body">
+          Refer to the GOV.UK Design System for the <a href="https://design-system.service.gov.uk/components/file-upload/#error-messages">file upload component error messages</a>.
+        </p>
+        <p class="govuk-body">
+          Error messages should be styled like this:
+        </p>
+
+        <div class="ds-example">
+          <div class="ds-example__titlebar">
+            <p class="govuk-body-s govuk-!-margin-bottom-0">
+              Example
+            </p>
+          </div>
+          <div class="ds-example__rendered">
+            
+            <div class="govuk-form-group govuk-form-group--error">
+              <label class="govuk-label govuk-label--m" for="file-upload-single">
+                  Drag and drop or choose a file
+              </label>
+  <p id="file-upload-1-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span> The file must be smaller than 15MB
+  </p>
+              <input class="govuk-file-upload pins-file-upload" id="file-upload-single" name="file-upload-single" type="file">
+            </div>            
+
+          </div>
+          <div class="ds-example__html">
+            <pre><code class="hljs">
+&lt;div class="govuk-form-group govuk-form-group--error"&gt;
+  &lt;label class="govuk-label govuk-label--m" for="file-upload-single"&gt;
+    Drag and drop or choose a file
+  &lt;/label&gt;
+  &lt;p id="file-upload-1-error" class="govuk-error-message"&gt;
+    &lt;span class="govuk-visually-hidden"&gt;Error:&lt;/span&gt; The file must be smaller than 15MB
+  &lt;/p&gt;
+  &lt;input class="govuk-file-upload pins-file-upload" id="file-upload-single" name="file-upload-single" type="file"&gt;
+&lt;/div&gt;
+            </code></pre>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+  </div>
+
+{% endblock %}
