@@ -1,0 +1,66 @@
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+{% set subServiceName = "Comment on an appeal" %}
+
+{% set title = "What’s your full name?" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <!-- if you are checking your answers -->
+      {% if data['checking'] %}
+        <form action="check-answers" method="post">
+      {% else %}
+        <form action="appeal-comment-email" method="post">
+      {% endif %}
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+        <div class="govuk-form-group">
+
+          <label class="govuk-label govuk-label--l" for="postcode">
+            {{ title }}
+          </label>
+
+          <p class="govuk-body">
+            We need to know who’s commenting on the appeal.
+          </p>
+
+          <div class="govuk-form-group">
+
+            <input class="govuk-input" id="full-name" name="full-name" type="text" spellcheck="false" autocomplete="name" value="{{ data['full-name'] }}"></div>
+
+          </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
