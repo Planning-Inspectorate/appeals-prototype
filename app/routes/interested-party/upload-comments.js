@@ -1,6 +1,6 @@
 module.exports = function (router) {
 
-  var base = "/interested-party/v3/"
+  var base = "/interested-party-comments/v3/"
 
   router.get(base+'upload-comments-redirect', function (req, res) {
     // take the user to the right screen based on previous actions (if any)

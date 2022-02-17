@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 
+{% set pageref = "###" %}
+{% extends "layout.html" %}
+
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
@@ -14,7 +17,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
   {{ govukBackLink({
@@ -34,10 +37,11 @@
         {{ title }}
       </h1>
 
-    </div>
-    <div class="govuk-grid-column-full">
-
       <!-- <h2 class="govuk-heading-m">Your comment</h2> -->
+
+    </div>
+
+    <div class="govuk-grid-column-full">
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
@@ -67,22 +71,12 @@
             </a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row pins-summary-list__row--last">
+        <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Comments
+            Comment
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">
-              {% if data['comments'] %}
-                {% set i = 0 %}
-                {% for file in data['comments'] %}
-                  {% set i = i + 1 %}
-                    {{ file }}<br>
-                {% endfor %}
-              {% else %}
-                Appeal comments.txt
-              {% endif %}
-            </p>
+            <p class="govuk-body">Avenue appeal comments - 12 Jan 2022.txt (0.21MB file)</p>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="comment-upload?checking=1">
@@ -92,19 +86,8 @@
         </div>
       </dl>
 
-    </div>
-    <div class="govuk-grid-column-two-thirds">
-
-      <h2 class="govuk-heading-m">
-        Now send your comments
-      </h2>
-
-      <p class="govuk-body">
-        By sending your comments, you are confirming that, to the best of your knowledge, the details you are providing are correct.
-      </p>
-
       {{ govukButton({
-        text: "Accept and send",
+        text: "Continue",
         href: "comment-received"
       }) }}
 
