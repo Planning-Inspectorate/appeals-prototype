@@ -1,7 +1,8 @@
+{% set pageref = "BYS-ACP-5" %}
 {% extends "layouts/before-you-start/v10.html" %}
 
 {% block pageTitle %}
-  You need to use a different service - {{serviceName}} - GOV.UK
+  You need to use the existing service - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block content %}
@@ -10,20 +11,24 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        You need to use a different service.
+        You need to use the existing service
       </h1>
-
       <p class="govuk-body">
-        This is a new service. It is not yet available for appeals that involve an enforcement notice.
-      <p>
+        This new service is only for appeals that do not involve an enforcement notice.
+      </p>
+      <p class="govuk-body">
+        You need to submit your appeal using the existing service, the Appeals Casework Portal.
+      </p>
 
       <h2 class="govuk-heading-m">
-        How to appeal
+        How to begin your appeal
       </h2>
-
       <p class="govuk-body">
-        You can <a href="javascript:preventDefault();" class="govuk-link">appeal using our appeals casework portal</a>.
-      <p>
+        To begin your appeal, log in or register on the Appeals Casework Portal.
+      </p>
+      {{ govukButton({
+        text: "Continue to the Appeals Casework Portal"
+      }) }}
 
     </div>
   </div>
