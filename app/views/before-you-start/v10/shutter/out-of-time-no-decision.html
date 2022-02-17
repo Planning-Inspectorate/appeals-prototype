@@ -1,3 +1,4 @@
+{% set pageref = "BYS-OOT-2" %}
 {% extends "layouts/before-you-start/v10.html" %}
 
 {% block pageTitle %}
@@ -10,16 +11,16 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        You cannot appeal.
+        You cannot appeal
       </h1>
 
       <p class="govuk-body">
         Your deadline to appeal has passed.
-      <p>
+      </p>
 
       <p class="govuk-body">
         Your deadline was {{ data['bys-'+version+'-deadline-day'] }} {{ data['bys-'+version+'-deadline-month'] | formatMonth }} {{ data['bys-'+version+'-deadline-year'] }}. This is 6 months from the decision date.
-      <p>
+      </p>
 
     </div>
   </div>
