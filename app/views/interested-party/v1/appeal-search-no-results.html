@@ -4,7 +4,7 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% set title = "No matching appeals" %}
+{% set title = "Search for an appeal" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -34,27 +34,13 @@
       {{ title }}
     </h1>
 
-    {% if data['search'] == "number" %}
-      <p class="govuk-body">
-        No appeals found using that appeal reference.
-      </p>
-    {% else %}
-      <p class="govuk-body">
-        {% if data['postcode'] %}
-          No appeals found for {{ data['postcode'] }}. <a href="appeal-search-address?version=" class="govuk-link">Change<span class="govuk-visually-hidden"> search address</span></a>
-        {% else %}
-          No appeals found for BS3 3EX.
-        {% endif %}
-      </p>
-    {% endif %}
+    <p class="govuk-body-l">
+      We didn’t find any appeals using that appeal reference number.
+    </p>
 
-    {% if data['search'] == "number" %}
-      <a href="appeal-search-reference" class="govuk-link">
-    {% else %}
-      <a href="appeal-search-address" class="govuk-link">
-    {% endif %}
-      Search for another appeal
-    </a>
+    <p class="govuk-body">
+      Go back and <a href="appeal-search" class="govuk-link govuk-link--no-visited-state">search for another appeal</a>.
+    </p>
 
   </div>
 </div>
