@@ -6,14 +6,10 @@
 {% set serviceName = "Appeal a planning decision" %}
 {% set subServiceName = "Comment on an appeal" %}
 
-{% if data['appealCode'] != "true" %}
-  {% set appealCode = "0166327" %}
-{% endif %}
-
 {% if data['appealCode'] %}
   {% set title = "Appeal "+data['appealCode'] %}
 {% else %}
-  {% set title = "Appeal 0166327" %}
+  {% set title = "Appeal number 1234567" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -43,88 +39,104 @@
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
-    </div>
 
-    <div class="govuk-grid-column-full">
-      {% if data['status'] == "open" %}
-        <!-- comments are open -->
-        <section class="govuk-!-margin-bottom-3">
-          <strong class="govuk-tag govuk-tag--green">
-            Open for comments
-          </strong>
-        </section>
+      <!-- show if 'alt' has any value -->
+      {% if data['alt'] %}
 
-        <p class="govuk-body">
-          You can comment on this appeal until 11:59pm on 4 May 2022.
-        </p>
-
-      {% elseif data['status'] == "closed" %}
-        <!-- closed / can not comment -->
-        <section class="govuk-!-margin-bottom-3">
-          <strong class="govuk-tag govuk-tag--blue">
-            Closed for comments
-          </strong>
-        </section>
-
-        <p class="govuk-body">
-          The deadline for comments was 4 January 2022. You cannot add comments.
-        </p>
+        <!-- alt shows nothing here -->
 
       {% else %}
-        <!-- closed / decision made -->
-        <section class="govuk-!-margin-bottom-3">
-          <strong class="govuk-tag govuk-tag--black">
-            Decision made
-          </strong>
-        </section>
+
+        {% if data['status'] == "open" %}
+
+          <p class="govuk-body">
+            You can comment on this appeal until 11:59pm on 4 May 2022.
+          </p>
+
+          {% if data['status'] == "open" %}
+
+            {{ govukButton({
+              text: "Comment on this appeal",
+              classes: "govuk-!-margin-bottom-9",
+              href: "appeal-comment-name?checking="
+            }) }}
+
+          {% endif %}
+
+
+
+        {% else %}
+          <p class="govuk-body">
+            This appeal was closed on 4 January 2022. You cannot add comments.
+          </p>
+
+          {% if data['status'] == "completed" %}
+            <p class="govuk-body">
+              <a href="#">See the decision for this appeal</a>.
+            </p>
+          {% endif %}
+
+        {% endif %}
+
       {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Appeal details
+      </h2>
+
+      <!-- <p class="govuk-body">
+        This appeal is <strong class="govuk-tag govuk-tag--green">
+          Open
+        </strong>
+      </p> -->
 
       <dl class="govuk-summary-list">
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Appeal site
+            Appeal status
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>
-              {% if data['site-address'] %}
-                {{ data['site-address'] }}
-              {% else %}
-                2 Aubrey House, Aubrey Road, BS3 3EX
-              {% endif %}
+
+            <!-- open / closed appeal status -->
+            {% if data['status'] == "open" %}
+              <strong class="govuk-tag govuk-tag--green">
+                Open for comments
+            {% elif data['status'] == "closed" %}
+              <strong class="govuk-tag govuk-tag--blue">
+                Closed for comments
+            {% else %}
+              <strong class="govuk-tag govuk-tag--black">
+                Appeal closed
+            {% endif %}
+
+            </strong>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning application number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- <p class="govuk-body">{{ data.user.completeAppeal['application-number'] }}</p> -->
+            <p class="govuk-body">
+              APP/2021/56789/3256412
             </p>
           </dd>
         </div>
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key ">
-            Applicant
+            Applicant’s name
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['appellantName'] %}
-              {{ data['appellantName'] }}
-            {% else %}
-              J. M. Wigstone
-            {% endif %}
+            J. M. Wigstone
           </dd>
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-            Description of development
-          </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-            Loft conversion of roof to existing dwelling (Certificate of Lawfulness of Proposed Use).
-          </dd>
-        </div>
-
-        {% if data['status'] != "completed" %}
-          <div class="govuk-summary-list__row pins-summary-list__row--last">
-        {% else %}
-          <div class="govuk-summary-list__row">
-        {% endif %}
-
-          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border">
             Local planning department
           </dt>
           <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
@@ -132,70 +144,70 @@
           </dd>
         </div>
 
-        {% if data['status'] == "completed" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>
+              22 Avenue Grove<br>
+              Somerset<br>
+              BS72 7YS
+            </p>
+          </dd>
+        </div>
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-              Decision issued
-            </dt>
-            <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-              {% if data['decision'] == "allowed" %}
-                Allowed
-              {% elseif data['decision'] == "disallowed" %}
-                Disallowed
-              {% elseif data['decision'] == "split" %}
-                Split decision
-              {% elseif data['decision'] == "invalid" %}
-                Invalid
-              {% else %}
-                Allowed
-              {% endif %}
-            </dd>
-          </div>
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Related appeals
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>
+              None
+            </p>
+          </dd>
+        </div>
 
-          <div class="govuk-summary-list__row pins-summary-list__row--last">
-            <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-              Decision date
-            </dt>
-            <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-              2 February 2022
-            </dd>
-          </div>
-
-          <!-- <div class="govuk-summary-list__row pins-summary-list__row--last">
-            <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-              Decision document
-            </dt>
-            <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-              <a href="#">
-                See the appeal decision
-              </a>
-            </dd>
-          </div> -->
-
-        {% endif %}
+        <!-- <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Deadline for comments
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>
+              8 days left
+            </p>
+          </dd>
+        </div> -->
 
       </dl>
 
     </div>
 
+
     <div class="govuk-grid-column-two-thirds">
 
-      <p class="govuk-body">
-        <a href="#">
-          View the application details on the local planning department’s website (opens in new tab)
-        </a>
-      </p>
+      <!-- show if 'alt' has any value -->
+      {% if data['alt'] %}
 
+        <!-- appeal open for comments -->
+        {% if data['status'] == "open" %}
+          <h2 class="govuk-heading-m">
+            You can comment on this appeal until 11:59pm on 4 May 2022
+          </h2>
 
-      {% if data['status'] == "open" %}
+          <p class="govuk-body">
+            <a href="appeal-comment-name?checking=" class="govuk-link govuk-link--no-visited-state">
+              Comment on this appeal
+            </a>
+          </p>
 
-        <!-- user can comment -->
-        {{ govukButton({
-          text: "Comment on this appeal",
-          classes: "govuk-!-margin-bottom-9",
-          href: "appeal-comment-name?checking="
-        }) }}
+        {% else %}
+
+          <!-- appeal closed for comments or closed -->
+          <p class="govuk-body">
+            This appeal is closed. You cannot add comments.
+          </p>
+        {% endif %}
 
       {% endif %}
 
