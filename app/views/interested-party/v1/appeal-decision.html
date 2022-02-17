@@ -47,7 +47,7 @@
 
     <div class="govuk-grid-column-full">
       {% if data['status'] == "open" %}
-        <!-- comments are open -->
+
         <section class="govuk-!-margin-bottom-3">
           <strong class="govuk-tag govuk-tag--green">
             Open for comments
@@ -118,12 +118,7 @@
           </dd>
         </div>
 
-        {% if data['status'] != "completed" %}
-          <div class="govuk-summary-list__row pins-summary-list__row--last">
-        {% else %}
-          <div class="govuk-summary-list__row">
-        {% endif %}
-
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
           <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
             Local planning department
           </dt>
@@ -132,72 +127,9 @@
           </dd>
         </div>
 
-        {% if data['status'] == "completed" %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-              Decision issued
-            </dt>
-            <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-              {% if data['decision'] == "allowed" %}
-                Allowed
-              {% elseif data['decision'] == "disallowed" %}
-                Disallowed
-              {% elseif data['decision'] == "split" %}
-                Split decision
-              {% elseif data['decision'] == "invalid" %}
-                Invalid
-              {% else %}
-                Allowed
-              {% endif %}
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row pins-summary-list__row--last">
-            <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-              Decision date
-            </dt>
-            <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-              2 February 2022
-            </dd>
-          </div>
-
-          <!-- <div class="govuk-summary-list__row pins-summary-list__row--last">
-            <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-              Decision document
-            </dt>
-            <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-              <a href="#">
-                See the appeal decision
-              </a>
-            </dd>
-          </div> -->
-
-        {% endif %}
-
       </dl>
 
-    </div>
 
-    <div class="govuk-grid-column-two-thirds">
-
-      <p class="govuk-body">
-        <a href="#">
-          View the application details on the local planning department’s website (opens in new tab)
-        </a>
-      </p>
-
-
-      {% if data['status'] == "open" %}
-
-        <!-- user can comment -->
-        {{ govukButton({
-          text: "Comment on this appeal",
-          classes: "govuk-!-margin-bottom-9",
-          href: "appeal-comment-name?checking="
-        }) }}
-
-      {% endif %}
 
     </div>
   </div>
