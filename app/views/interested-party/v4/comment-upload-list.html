@@ -2,8 +2,7 @@
 
 {% extends "layout.html" %}
 
-{% set serviceName = "Appeal a planning decision" %}
-{% set subServiceName = "Comment on an appeal" %}
+{% set serviceName = "Find out about planning appeals" %}
 
 {% set title = "Your uploaded comments"  %}
 
@@ -33,7 +32,6 @@
 
       <form action="check-answers" method="post">
 
-        <span class="govuk-caption-l">{{ subServiceName }}</span>
         <h1 class="govuk-heading-l">
           {{ title }}
         </h1>
@@ -52,7 +50,7 @@
               <tr class="govuk-table__row">
                 <td scope="row" class="govuk-table__cell"><a href="javascript:peventDefault();">{{ file }}</a></td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
-                  <a class="govuk-link" href="/interested-party-comments/v3/comment-delete?row={{ i }}">
+                  <a class="govuk-link" href="/interested-party/v3/comment-delete?row={{ i }}">
                     Delete<span class="govuk-visually-hidden"> {{ file }}</span>
                   </a>
                 </td>

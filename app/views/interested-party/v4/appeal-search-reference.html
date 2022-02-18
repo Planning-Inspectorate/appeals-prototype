@@ -1,10 +1,9 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Appeal a planning decision" %}
-{% set subServiceName = "Comment on an appeal" %}
+{% set serviceName = "Find out about planning appeals" %}
 
-{% set title = "Enter the appeal reference" %}
+{% set title = "Enter the appeal number" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -31,8 +30,6 @@
 
       <form action="appeal-details?status=open" method="post">
 
-        <span class="govuk-caption-l">{{ subServiceName }}</span>
-
         <div class="govuk-form-group">
 
           <label class="govuk-label govuk-label--l" for="postcode">
@@ -51,12 +48,11 @@
 
         </div>
 
-        <!-- link to go to address lookup -->
-        <!-- <p class="govuk-body">
-          Or <a href="appeal-search-address?version=">
-            search for an appeal using the appeal site postcode
+        <p class="govuk-body">
+          <a href="appeal-search-address?version=">
+            Search for an appeal using the appeal site postcode
           </a>
-        </p> -->
+        </p>
 
         {{ govukButton({
           text: "Continue"

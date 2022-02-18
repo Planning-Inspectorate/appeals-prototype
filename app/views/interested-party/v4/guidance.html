@@ -1,8 +1,7 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Appeal a planning decision" %}
-{% set subServiceName = "Comment on an appeal" %}
+{% set serviceName = "Find out about planning appeals" %}
 
 {% set title = "Guidance for submitting comments" %}
 
@@ -29,7 +28,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{ subServiceName }}</span>
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
@@ -50,34 +48,24 @@
         We will share any comments you submit with the applicant and the local planning department.
       </p>
 
-      <p class="govuk-body">
-        Your comments must not include:
-      </p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <!-- <li>the appeal reference number</li> -->
-        <li>inflammatory or abusive language</li>
-        <li>sensitive information</li>
-      </ul>
-
-      <p class="govuk-body">
-        If you include anything you should not, we may ask you to resubmit your comments. This would delay the appeal.
+      <p>
+        You should only include personal information if it's relevant to the appeal.
       </p>
 
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            See a full list of what you should not include
+            See a full list of what counts as personal information
           </span>
         </summary>
         <div class="govuk-details__text">
 
           <p class="govuk-body">
-            You should not include:
+            Other examples of personal information
           </p>
 
           <ul class="govuk-list govuk-list--bullet">
-            <!-- <li>the appeal reference number</li> -->
+
             <li>
               comments from children
             </li>
@@ -90,47 +78,52 @@
             <li>
               information relating to crime
             </li>
+          </ul>
+
+          <p class="govuk-body">
+            It also includes any information relating to an individual's:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet">
             <li>
-              any information relating to an individual’s:
-
-              <ul class="govuk-list govuk-list--bullet">
-                <li>
-                  comments from children
-                </li>
-                <li>
-                  race
-                </li>
-                <li>
-                  ethnic origin
-                </li>
-                <li>
-                  politics
-                </li>
-                <li>
-                  religion
-                </li>
-                <li>
-                  trade union membership
-                </li>
-                <li>
-                  genetics
-                </li>
-                <li>
-                  physical characteristics
-                </li>
-                <li>
-                  sex life
-                </li>
-                <li>
-                  sexual orientation
-                </li>
-              </ul>
+              race
             </li>
-
+            <li>
+              ethnic origin
+            </li>
+            <li>
+              politics
+            </li>
+            <li>
+              religion
+            </li>
+            <li>
+              trade union membership
+            </li>
+            <li>
+              genetics
+            </li>
+            <li>
+              physical characteristics
+            </li>
+            <li>
+              sex life
+            </li>
+            <li>
+              sexual orientation
+            </li>
           </ul>
 
         </div>
       </details>
+
+      <p class="govuk-body">
+        If you include any personal information that's not relevant, we'll ask you to resubmit. This could mean that you miss the deadline to submit comments.
+      </p>
+
+      <p class="govuk-body">
+        Your comments must not include inflammatory or abusive language.
+      </p>
 
       <h2 class="govuk-heading-m">
         Before you start
@@ -156,7 +149,7 @@
 
       {{ govukButton({
         classes: "govuk-!-margin-top-5",
-        href: "appeal-search-reference",
+        href: "appeal-number",
         text: "Continue"
       }) }}
 
