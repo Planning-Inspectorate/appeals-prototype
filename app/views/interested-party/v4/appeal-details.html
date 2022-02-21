@@ -114,6 +114,11 @@
           </dt>
           <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
             Loft conversion of roof to existing dwelling (Certificate of Lawfulness of Proposed Use).
+            <p class="govuk-body">
+              <a href="#">
+                View the application details on the local planning department’s website (opens in new tab)
+              </a>
+            </p>
           </dd>
         </div>
 
@@ -149,6 +154,12 @@
               {% else %}
                 Allowed
               {% endif %}
+              <p class="govuk-body">
+                <a href="#">
+                  View the decision document for this appeal
+                </a>
+              </p>
+
             </dd>
           </div>
 
@@ -179,13 +190,6 @@
     </div>
 
     <div class="govuk-grid-column-two-thirds">
-
-      <p class="govuk-body">
-        <a href="#">
-          View the application details on the local planning department’s website (opens in new tab)
-        </a>
-      </p>
-
 
       {% if data['status'] == "open" %}
 
