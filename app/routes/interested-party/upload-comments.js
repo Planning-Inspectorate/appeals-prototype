@@ -60,7 +60,7 @@ module.exports = function (router) {
     if (appealType === 'appealNumber') {
       res.redirect('appeal-search-reference')
     } else {
-      res.redirect('appeal-search-address')
+      res.redirect('appeal-search-postcode')
     }
 
   })
