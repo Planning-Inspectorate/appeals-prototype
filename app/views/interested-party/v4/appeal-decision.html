@@ -4,16 +4,16 @@
 {% extends "layout.html" %}
 
 {% set serviceName = "Appeal a planning decision" %}
-{% set subServiceName = "Comment on an appeal" %}
+{% set subServiceName = "" %}
 
 {% if data['appealCode'] != "true" %}
   {% set appealCode = "0166327" %}
 {% endif %}
 
 {% if data['appealCode'] %}
-  {% set title = "Appeal "+data['appealCode'] %}
+  {% set title = "Appeal "+data['appealCode']+" decision" %}
 {% else %}
-  {% set title = "Appeal 0166327" %}
+  {% set title = "Appeal 0166327 decision" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -46,40 +46,41 @@
     </div>
 
     <div class="govuk-grid-column-full">
-      {% if data['status'] == "open" %}
-
-        <section class="govuk-!-margin-bottom-3">
-          <strong class="govuk-tag govuk-tag--green">
-            Open for comments
-          </strong>
-        </section>
-
-        <p class="govuk-body">
-          You can comment on this appeal until 11:59pm on 4 May 2022.
-        </p>
-
-      {% elseif data['status'] == "closed" %}
-        <!-- closed / can not comment -->
-        <section class="govuk-!-margin-bottom-3">
-          <strong class="govuk-tag govuk-tag--blue">
-            Closed for comments
-          </strong>
-        </section>
-
-        <p class="govuk-body">
-          The deadline for comments was 4 January 2022. You cannot add comments.
-        </p>
-
-      {% else %}
-        <!-- closed / decision made -->
-        <section class="govuk-!-margin-bottom-3">
-          <strong class="govuk-tag govuk-tag--black">
-            Decision made
-          </strong>
-        </section>
-      {% endif %}
 
       <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Inspector
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>
+              C J Ford BA (Hons) BTP MRTPI
+            </p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>
+              2 February 2022
+            </p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision issued
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>
+              Allowed
+            </p>
+          </dd>
+        </div>
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
