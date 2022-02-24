@@ -1,9 +1,7 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Find out about planning appeals" %}
-
-{% set title = "Appeals in progress at NE12 6EB" %}
+{% set serviceName = "" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -29,15 +27,39 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      {{ title }}
+      {% if data['postcode'] %}
+        Appeals in progress at {{ data['postcode'] }}
+      {% else %}
+        Appeals in progress at BS3 3EX
+      {% endif %}
     </h1>
+
+    <!-- another pattern where the postcode and link to change it is called out more -->
+
+    <!-- <h1 class="govuk-heading-l">
+      Appeals in progress
+    </h1>
+
+    <section class="govuk-!-margin-bottom-9">
+      <p class="govuk-body">
+        {% if data['postcode'] %}
+          3 appeals found at {{ data['postcode'] }}.
+        {% else %}
+          3 appeals found at BS3 3EX.
+        {% endif %}
+      </p>
+
+      <p class="govuk-body">
+        <a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
+      </p>
+    </section> -->
 
     <h2 class="govuk-heading-m">
       Open for comments
     </h2>
 
     <p class="govuk-body">
-      Select an appeal reference number to submit comments. We cannot accept comments after the deadline.
+      Select an appeal reference to view the appeal details
     </p>
 
     <!-- <p class="govuk-body">
@@ -60,16 +82,17 @@
       head: [
 
         {
-          text: "Site address",
-          classes: 'govuk-!-width-one-third'
+          text: "Appeal site",
+          classes: 'govuk-!-width-one-half'
         },
         {
           text: "Applicant",
-          classes: 'govuk-!-width-one-third'
+          classes: 'govuk-!-width-one-quarter'
         },
         {
-          text: "Appeal number",
-          classes: 'govuk-!-width-one-third'
+          text: "Appeal reference",
+          classes: 'govuk-!-width-one-quarter',
+          format: "numeric"
         }
       ],
       rows: [
@@ -81,7 +104,8 @@
             text: "J. M. Wigstone"
           },
           {
-            html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166321&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=0166321">0166321</a>'
+            html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166321&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=0166321">0166321</a>',
+            format: "numeric"
           }
         ]
       ]
@@ -110,18 +134,19 @@
 
       head: [
 
-        {
-          text: "Site address",
-          classes: 'govuk-!-width-one-third'
-        },
-        {
-          text: "Applicant",
-          classes: 'govuk-!-width-one-third'
-        },
-        {
-          text: "Appeal number",
-          classes: 'govuk-!-width-one-third'
-        }
+      {
+        text: "Appeal site",
+        classes: 'govuk-!-width-one-half'
+      },
+      {
+        text: "Applicant",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Appeal reference",
+        classes: 'govuk-!-width-one-quarter',
+        format: "numeric"
+      }
       ],
       rows: [
         [
@@ -132,7 +157,8 @@
             text: "Mel Pickins"
           },
           {
-            html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166327&site-address=103%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Mel%20Pickins&appealReference=0166327">0166327</a>'
+            html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166327&site-address=103%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Mel%20Pickins&appealReference=0166327">0166327</a>',
+            format: "numeric"
           }
         ],
         [
@@ -143,7 +169,8 @@
             text: "Mel Pickins"
           },
           {
-            html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166328&site-address=103%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Mel%20Pickins&appealReference=0166328">0166328</a>'
+            html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166328&site-address=103%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Mel%20Pickins&appealReference=0166328">0166328</a>',
+            format: "numeric"
           }
         ]
       ]
@@ -153,8 +180,9 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    <h2 class="govuk-visually-hidden">
-      Closed appeals
+    <!-- <h2 class="govuk-visually-hidden"> -->
+    <h2 class="govuk-heading-m">
+      Completed appeals
     </h2>
 
     <p class="govuk-body">
@@ -164,9 +192,9 @@
     <p>
       <a href="closed-appeals" class="govuk-link">
         {% if data['postcode'] %}
-          33 closed appeals found for {{ data['postcode'] }}
+          View 33 completed appeals for {{ data['postcode'] }}
         {% else %}
-          33 closed appeals found for BS3 3EX
+          View 33 completed appeals for BS3 3EX
         {% endif %}
       </a>
     </p>

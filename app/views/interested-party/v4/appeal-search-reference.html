@@ -1,9 +1,9 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Find out about planning appeals" %}
+{% set serviceName = "" %}
 
-{% set title = "Enter the appeal number" %}
+{% set title = "Enter the appeal reference" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -49,8 +49,8 @@
         </div>
 
         <p class="govuk-body">
-          <a href="appeal-search-address?version=">
-            Search for an appeal using the appeal site postcode
+          <a href="appeal-search-postcode?version=">
+            Search for an appeal using a postcode
           </a>
         </p>
 

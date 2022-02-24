@@ -3,9 +3,9 @@
 {% set pageref = "###" %}
 {% extends "layout.html" %}
 
-{% set title = "Do you have an appeal number?" %}
+{% set serviceName = "" %}
 
-{% set serviceName = "Find out about planning appeals" %}
+{% set title = "How do you want to search for an appeal?" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -29,39 +29,31 @@
 
       <form action="appealOption" method="post" class="form" id="question">
 
-        {% if data['error'] %}
-          <div class="govuk-form-group govuk-form-group--error">
-        {% else %}
-          <div class="govuk-form-group">
-        {% endif %}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="hasAppealNumber-hint">
 
-          <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
                 {{ title }}
               </h1>
             </legend>
 
-            <p class="govuk-body">
-              (Appeal number if you got a letter)
-            </p>
-
             <div class="govuk-radios" data-module="govuk-radios">
-
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="hasAppealNumber-1" name="hasAppealNumber" type="radio" value="appealNumber">
-                <label class="govuk-label govuk-radios__label" for="hasAppealNumber-1">
-                  Yes, I have an appeal number
+                <input class="govuk-radios__input" id="hasAppealNumber" name="hasAppealNumber" type="radio" value="appealNumber" aria-describedby="hasAppealNumber-item-hint">
+                <label class="govuk-label govuk-radios__label" for="hasAppealNumber">
+                  With an appeal reference
                 </label>
+                <div id="hasAppealNumber-item-hint" class="govuk-hint govuk-radios__hint">
+                  This can be found on the letter you received from the local planning department. If you did not receive a letter, you can find the appeal reference on the local planning department's website.
+                </div>
               </div>
-
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="hasAppealNumber-2" name="hasAppealNumber" type="radio" value="appealAddress">
+                <input class="govuk-radios__input" id="hasAppealNumber-2" name="hasAppealNumber" type="radio" value="appealAddress" aria-describedby="hasAppealNumber-2-item-hint">
                 <label class="govuk-label govuk-radios__label" for="hasAppealNumber-2">
-                  No, search with an address
+                  With a postcode
                 </label>
               </div>
-
             </div>
 
           </fieldset>
