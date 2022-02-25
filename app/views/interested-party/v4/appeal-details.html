@@ -154,11 +154,6 @@
               {% else %}
                 Allowed
               {% endif %}
-              <p class="govuk-body">
-                <a href="appeal-decision">
-                  View the decision document for this appeal
-                </a>
-              </p>
 
             </dd>
           </div>
@@ -186,6 +181,13 @@
         {% endif %}
 
       </dl>
+
+      <p class="govuk-body">
+        View the decision document for this appeal<br>
+        <a href="{{ asset_path }}files/blank.pdf">
+           Decision-letter-0166327.pdf
+        </a>
+      </p>
 
     </div>
 
