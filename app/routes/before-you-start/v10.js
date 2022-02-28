@@ -102,7 +102,7 @@ module.exports = function (router) {
   })
 
   router.post(base+'appeal-about', function (req, res) {
-    if (req.session.data["bys-"+v+"-appealabout"].includes("None of these") ){
+    if (req.session.data["bys-"+v+"-appealabout"].includes("No, my planning application was not about any of these") ){
       res.redirect(base+'permission-granted-refused');
     } else {
       res.redirect(base+'shutter/appeal-about');
