@@ -23,6 +23,8 @@
 
 {% block content %}
 
+{{ data['postcode'] }}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
@@ -33,6 +35,10 @@
         Appeals in progress at BS3 3EX
       {% endif %}
     </h1>
+
+    <p class="govuk-body govuk-!-margin-bottom-6">
+      Select an appeal to go to the appeal details.
+    </p>
 
     <!-- another pattern where the postcode and link to change it is called out more -->
 
@@ -57,10 +63,6 @@
     <h2 class="govuk-heading-m">
       Open for comments
     </h2>
-
-    <p class="govuk-body">
-      Select an appeal reference to view the appeal details.
-    </p>
 
     <!-- <p class="govuk-body">
       {% if data['postcode'] %}
@@ -98,7 +100,7 @@
       rows: [
         [
           {
-            text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+            text: "2 Aubrey House, Aubrey Road, Bristol BS3 3EX"
           },
           {
             text: "J. M. Wigstone"
