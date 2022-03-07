@@ -1,5 +1,5 @@
-{% set pageref = "BYS-003" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-003" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   Was your planning application about a listed building? - Before you start - {{serviceName}} - GOV.UK
@@ -30,8 +30,8 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "bys-"+version+"-listedbuilding",
-          name: "bys-"+version+"-listedbuilding",
+          idPrefix: "mvp-"+version+"-bys-listedbuilding",
+          name: "mvp-"+version+"-bys-listedbuilding",
           fieldset: {
             legend: {
               text: "Was your planning application about a listed building?",
@@ -43,12 +43,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("bys-"+version+"-listedbuilding", "Yes")
+              checked: checked("mvp-"+version+"-bys-listedbuilding", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("bys-"+version+"-listedbuilding", "No")
+              checked: checked("mvp-"+version+"-bys-listedbuilding", "No")
             }
           ]
         }) }}

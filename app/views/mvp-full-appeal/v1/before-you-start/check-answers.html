@@ -1,5 +1,5 @@
-{% set pageref = "BYS-CYA" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-CYA" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   You can appeal using this service - Before you start - {{serviceName}} - GOV.UK
@@ -33,7 +33,7 @@
           Based on your answers, you can appeal using this service.
         </p>
         <p class="govuk-body">
-          Your deadline to appeal is 11.59pm on Monday {{ data["bys-"+version+"-deadline-day"] }} {{ data["bys-"+version+"-deadline-month"] | formatMonth }} {{ data["bys-"+version+"-deadline-year"] }}.
+          Your deadline to appeal is 11.59pm on Monday {{ data["mvp-"+version+"-bys-deadline-day"] }} {{ data["mvp-"+version+"-bys-deadline-month"] | formatMonth }} {{ data["mvp-"+version+"-bys-deadline-year"] }}.
         </p>
       
         <h1 class="govuk-heading-m">
@@ -48,7 +48,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {% for lpa in data['lpas'] %}
-                {% if lpa.key == data["bys-"+version+"-planningdepartment"] %}
+                {% if lpa.key == data["mvp-"+version+"-bys-planningdepartment"] %}
                   {{lpa['official-name']}}
                 {% endif %}
               {% endfor %}
@@ -65,7 +65,7 @@
               Type of application
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["bys-"+version+"-whatareyouappealing"] }}
+              {{ data["mvp-"+version+"-bys-whatareyouappealing"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="what-are-you-appealing">
@@ -74,13 +74,13 @@
             </dd>
           </div>
 
-          {% if data["bys-"+version+"-whatareyouappealing"] == "Prior approval" %}
+          {% if data["mvp-"+version+"-bys-whatareyouappealing"] == "Prior approval" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Did you apply for prior approval to extend an existing home?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-priorapproval"] }}
+                {{ data["mvp-"+version+"-bys-priorapproval"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="what-are-you-appealing">
@@ -90,13 +90,13 @@
             </div>
           {% endif %}
 
-          {% if data["bys-"+version+"-whatareyouappealing"] == "Removal or variation of conditions" %}
+          {% if data["mvp-"+version+"-bys-whatareyouappealing"] == "Removal or variation of conditions" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Are the conditions for householder planning permission?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-removalvariationconditions"] }}
+                {{ data["mvp-"+version+"-bys-removalvariationconditions"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="what-are-you-appealing">
@@ -107,14 +107,14 @@
           {% endif %}
           
           {% if 
-              (data["bys-"+version+"-whatareyouappealing"] == "Householder planning") or
+              (data["mvp-"+version+"-bys-whatareyouappealing"] == "Householder planning") or
               (
-                (data["bys-"+version+"-whatareyouappealing"] == "Prior approval") and
-                (data["bys-"+version+"-priorapproval"] == "Yes")
+                (data["mvp-"+version+"-bys-whatareyouappealing"] == "Prior approval") and
+                (data["mvp-"+version+"-bys-priorapproval"] == "Yes")
               ) or
               (
-                (data["bys-"+version+"-whatareyouappealing"] == "Removal or variation of conditions") and
-                (data["bys-"+version+"-removalvariationconditions"] == "Yes")
+                (data["mvp-"+version+"-bys-whatareyouappealing"] == "Removal or variation of conditions") and
+                (data["mvp-"+version+"-bys-removalvariationconditions"] == "Yes")
               )
           %}
             <!-- expedited written representations route -->
@@ -140,13 +140,13 @@
             </div>
           {% endif %}
 
-          {% if data["bys-"+version+"-whatareyouappealing"] == "Householder planning" %}
+          {% if data["mvp-"+version+"-bys-whatareyouappealing"] == "Householder planning" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Is your appeal about a listed building?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-listedbuilding"] }}
+                {{ data["mvp-"+version+"-bys-listedbuilding"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="permission-granted-refused">
@@ -161,11 +161,11 @@
               Was your planning application granted or refused?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["bys-"+version+"-permissiongrantedrefused"] }}
+              {{ data["mvp-"+version+"-bys-permissiongrantedrefused"] }}
               <!--
-              {% if (data["bys-"+version+"-permissiongrantedrefused"] == "Refused") %}
+              {% if (data["mvp-"+version+"-bys-permissiongrantedrefused"] == "Refused") %}
                 Reasons for refusal
-              {% elseif (data["bys-"+version+"-permissiongrantedrefused"] == "Granted") %}
+              {% elseif (data["mvp-"+version+"-bys-permissiongrantedrefused"] == "Granted") %}
                 Conditions for a granted application
               {% else %}
                 Non-determination
@@ -179,15 +179,15 @@
             </dd>
           </div>
 
-          {% if (data["bys-"+version+"-permissiongrantedrefused"] == "I have not received a decision") %}
+          {% if (data["mvp-"+version+"-bys-permissiongrantedrefused"] == "I have not received a decision") %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Date decision due
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-decisiondatedue-day"] }}
-                {{ data["bys-"+version+"-decisiondatedue-month"] | formatMonth }}
-                {{ data["bys-"+version+"-decisiondatedue-year"] }}
+                {{ data["mvp-"+version+"-bys-decisiondatedue-day"] }}
+                {{ data["mvp-"+version+"-bys-decisiondatedue-month"] | formatMonth }}
+                {{ data["mvp-"+version+"-bys-decisiondatedue-year"] }}
 
               </dd>
               <dd class="govuk-summary-list__actions">
@@ -202,9 +202,9 @@
                 Date of decision
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-decisiondate-day"] }}
-                {{ data["bys-"+version+"-decisiondate-month"] | formatMonth }}
-                {{ data["bys-"+version+"-decisiondate-year"] }}
+                {{ data["mvp-"+version+"-bys-decisiondate-day"] }}
+                {{ data["mvp-"+version+"-bys-decisiondate-month"] | formatMonth }}
+                {{ data["mvp-"+version+"-bys-decisiondate-year"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="notice-decision-date">
@@ -219,7 +219,7 @@
               Have you received an enforcement notice?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["bys-"+version+"-enforcementnotice"] }}
+              {{ data["mvp-"+version+"-bys-enforcementnotice"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="enforcement-notice">
@@ -228,13 +228,13 @@
             </dd>
           </div>
           
-          {% if data["bys-"+version+"-enforcementnotice"] == "Yes" %}
+          {% if data["mvp-"+version+"-bys-enforcementnotice"] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 What is your enforcement notice about?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-enforcementnoticeabout"] }}
+                {{ data["mvp-"+version+"-bys-enforcementnoticeabout"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="enforcement-notice-about">
@@ -250,7 +250,7 @@
                 Are you claiming costs as part of your appeal?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-claimingcosts"] }}
+                {{ data["mvp-"+version+"-bys-claimingcosts"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="claiming-costs">
@@ -260,13 +260,13 @@
             </div>
           {% endif %}
           <!--
-          {% if data["appealsub-"+version+"-route"] != "householder" %}
+          {% if data["mvp-"+version+"-route"] != "householder" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Appeal to be decided by
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-"+version+"-appealprocedure"] }}
+                {{ data["mvp-"+version+"-bys-appealprocedure"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="appeal-procedure">
@@ -298,7 +298,7 @@
             <ul class="govuk-list govuk-list--bullet">
               <li>your planning application form</li>
               <li>the plans, drawings and supporting documents you submitted with your application</li>
-              {% if data["bys-"+version+"-permissiongrantedrefused"] != "I have not received a decision" %}
+              {% if data["mvp-"+version+"-bys-permissiongrantedrefused"] != "I have not received a decision" %}
                 <li>the decision letter from your local planning department</li>
               {% endif %}
               <li>your design and access statement, if you submitted one with your application</li>

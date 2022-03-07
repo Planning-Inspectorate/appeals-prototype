@@ -1,0 +1,144 @@
+{% extends "layouts/mvp-full-appeal/v1.html" %}
+
+{% block pageTitle %}
+  Your appeal statement - Upload documents for your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents for your appeal
+        </span>
+        <h1 class="govuk-heading-l">
+          Your appeal statement
+        </h1>
+
+        <p class="govuk-body">
+          Your appeal statement explains why you think the local planning department's decision was incorrect.
+        </p>
+        <p class="govuk-body">
+          If you refer to any documents in your appeal statement, for example photographs, you can upload them in the next step.
+        </p>
+        <p class="govuk-body">
+          You cannot include any sensitive information in your statement. If you do, you'll be asked to resubmit, which will delay your appeal.
+        </p>
+
+        {% set sensitiveHtml %}
+          <h3 class="govuk-heading-m">
+            Use of language and sensitive information
+          </h3>
+          <p class="govuk-body">
+            Your statement must not include racist, inflammatory or abusive language.
+          <p>
+          <p class="govuk-body">
+            Do not include sensitive information in your statement, as you'll be asked to resubmit and this will delay your appeal.
+          </p>
+          <p class="govuk-body">
+            Sensitive information refers to:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>comments from children</li>
+            <li>information relating to children</li>
+            <li>information relating to health</li>
+            <li>information relating to crime</li>
+            <li>
+              Any information relating to an individual’s:
+              <ul class="govuk-list govuk-list--bullet">
+                <li>race</li>
+                <li>ethnic origin</li>
+                <li>politics</li>
+                <li>religion</li>
+                <li>trade union membership</li>
+                <li>genetics</li>
+                <li>physical characteristics</li>
+                <li>sex life</li>
+                <li>sexual orientation</li>
+              </ul>
+            </li>
+          </ul>
+        {% endset -%}
+
+        {{ govukDetails({
+          summaryText: "What is sensitive information?",
+          html: sensitiveHtml
+        }) }}
+        
+        {% if data["mvp-"+version+"-appealdocs-appealstatement"] and data["mvp-"+version+"-appealdocs-appealstatement"] != "" %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">
+            Uploaded file
+          </h3>
+          <p class="govuk-body govuk-!-margin-bottom-8">
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["mvp-"+version+"-appealdocs-appealstatement"] }}</a>
+          </p>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-appealstatement">
+            {% if data["mvp-"+version+"-appealdocs-appealstatement"] and data["mvp-"+version+"-appealdocs-appealstatement"] != "" %}
+              Replace the file
+            {% else %}
+              Drag and drop or choose a file
+            {% endif %}
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-appealstatement" name="appealsub-{{version}}-appealdocuments-appealstatement" type="file">
+        </div>
+
+        {{ govukDetails({
+          summaryText: "Files you can upload",
+          html: '
+            <p class="govuk-body">
+              You can upload the following types of file:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
+            </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
+          '
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "mvp-"+version+"-appealdocs-sensitiveinfo",
+          name: "mvp-"+version+"-appealdocs-sensitiveinfo",
+          items: [
+            {
+              value: "checked",
+              text: "I confirm that I have not included any sensitive information in my appeal statement.",
+              checked: checked("mvp-"+version+"-appealdocs-sensitiveinfo", "checked")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

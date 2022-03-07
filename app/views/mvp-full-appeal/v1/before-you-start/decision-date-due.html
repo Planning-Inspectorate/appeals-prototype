@@ -1,5 +1,5 @@
-{% set pageref = "BYS-008" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-008" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   What date was your decision due? - Before you start - {{serviceName}} - GOV.UK
@@ -30,8 +30,8 @@
         </span>
 
         {{ govukDateInput({
-          id: "bys-"+version+"-decisiondatedue",
-          namePrefix: "bys-"+version+"-decisiondatedue",
+          id: "mvp-"+version+"-bys-decisiondatedue",
+          namePrefix: "mvp-"+version+"-bys-decisiondatedue",
           fieldset: {
             legend: {
               text: "What date was your decision due?​",
@@ -43,17 +43,17 @@
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data["bys-"+version+"-decisiondatedue-day"]
+              value: data["mvp-"+version+"-bys-decisiondatedue-day"]
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data["bys-"+version+"-decisiondatedue-month"]
+              value: data["mvp-"+version+"-bys-decisiondatedue-month"]
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data["bys-"+version+"-decisiondatedue-year"]
+              value: data["mvp-"+version+"-bys-decisiondatedue-year"]
             }
           ]
         }) }}

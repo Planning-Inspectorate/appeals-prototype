@@ -1,5 +1,5 @@
-{% set pageref = "BYS-009" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-009" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   Was your planning application about any of the following? - Before you start - {{serviceName}} - GOV.UK
@@ -30,8 +30,8 @@
         </span>
 
         {{ govukCheckboxes({
-          idPrefix: "bys-"+version+"-appealabout",
-          name: "bys-"+version+"-appealabout",
+          idPrefix: "mvp-"+version+"-bys-appealabout",
+          name: "mvp-"+version+"-bys-appealabout",
           fieldset: {
             legend: {
               text: "Was your planning application about any of the following?",
@@ -46,27 +46,27 @@
             {
               value: "A listed building",
               text: "A listed building",
-              checked: checked("bys-"+version+"-appealabout", "A listed building")
+              checked: checked("mvp-"+version+"-bys-appealabout", "A listed building")
             },
             {
               value: "Major dwellings",
               text: "Major dwellings",
-              checked: checked("bys-"+version+"-appealabout", "Major dwellings")
+              checked: checked("mvp-"+version+"-bys-appealabout", "Major dwellings")
             },
             {
               value: "Major general industry, storage or warehousing",
               text: "Major general industry, storage or warehousing",
-              checked: checked("bys-"+version+"-appealabout", "Major general industry, storage or warehousing")
+              checked: checked("mvp-"+version+"-bys-appealabout", "Major general industry, storage or warehousing")
             },
             {
               value: "Major retail and services",
               text: "Major retail and services",
-              checked: checked("bys-"+version+"-appealabout", "Major retail and services")
+              checked: checked("mvp-"+version+"-bys-appealabout", "Major retail and services")
             },
             {
               value: "Major travelling and caravan pitches",
               text: "Major travelling and caravan pitches",
-              checked: checked("bys-"+version+"-appealabout", "Major travelling and caravan pitches")
+              checked: checked("mvp-"+version+"-bys-appealabout", "Major travelling and caravan pitches")
             },
             {
               divider: "Or"
@@ -75,7 +75,7 @@
               value: "No, my planning application was not about any of these",
               text: "No, my planning application was not about any of these",
               behaviour: "exclusive",
-              checked: checked("bys-"+version+"-appealabout", "No, my planning application was not about any of these")
+              checked: checked("mvp-"+version+"-bys-appealabout", "No, my planning application was not about any of these")
             }
           ]
         }) }}

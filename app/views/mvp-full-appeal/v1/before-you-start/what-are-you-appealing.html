@@ -1,5 +1,5 @@
-{% set pageref = "BYS-002" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-002" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   What type of planning application is your appeal about? - Before you start - {{serviceName}} - GOV.UK
@@ -30,8 +30,8 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "bys-"+version+"-whatareyouappealing",
-          name: "bys-"+version+"-whatareyouappealing",
+          idPrefix: "mvp-"+version+"-bys-whatareyouappealing",
+          name: "mvp-"+version+"-bys-whatareyouappealing",
           fieldset: {
             legend: {
               text: "What type of planning application is your appeal about?",
@@ -46,37 +46,37 @@
             {
               value: "Full planning",
               text: "Full planning",
-              checked: checked("bys-"+version+"-whatareyouappealing", "Full planning")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "Full planning")
             },
             {
               value: "Householder planning",
               text: "Householder planning",
-              checked: checked("bys-"+version+"-whatareyouappealing", "Householder planning")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "Householder planning")
             },
             {
               value: "Outline planning",
               text: "Outline planning",
-              checked: checked("bys-"+version+"-whatareyouappealing", "Outline planning")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "Outline planning")
             },
             {
               value: "Prior approval",
               text: "Prior approval",
-              checked: checked("bys-"+version+"-whatareyouappealing", "Prior approval")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "Prior approval")
             },
             {
               value: "Reserved matters",
               text: "Reserved matters",
-              checked: checked("bys-"+version+"-whatareyouappealing", "Reserved matters")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "Reserved matters")
             },
             {
               value: "Removal or variation of conditions",
               text: "Removal or variation of conditions",
-              checked: checked("bys-"+version+"-whatareyouappealing", "Removal or variation of conditions")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "Removal or variation of conditions")
             },
             {
               value: "Something else",
               text: "Something else",
-              checked: checked("bys-"+version+"-whatareyouappealing", "Something else")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "Something else")
             },
             {
               divider: "or"
@@ -84,7 +84,7 @@
             {
               value: "I have not made a planning application",
               text: "I have not made a planning application",
-              checked: checked("bys-"+version+"-whatareyouappealing", "I have not made a planning application")
+              checked: checked("mvp-"+version+"-bys-whatareyouappealing", "I have not made a planning application")
             }
           ]
         }) }}

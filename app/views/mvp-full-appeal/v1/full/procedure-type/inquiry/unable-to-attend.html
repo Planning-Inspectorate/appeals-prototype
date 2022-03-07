@@ -1,0 +1,78 @@
+{% extends "layouts/mvp-full-appeal/v1.html" %}
+
+{% block pageTitle %}
+  Are there any dates you would be unable to attend? - Tell us how you would prefer us to decide your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us how you would prefer us to decide your appeal
+        </span>
+
+        {% set datesHtml %}
+          {{ govukTextarea({
+            id: "mvp-"+version+"-proceduretype-inquiry-unable-dates",
+            name: "mvp-"+version+"-proceduretype-inquiry-unable-dates",
+            label: {
+              text: "What dates would you be unable to attend?"
+            },
+            value: data["mvp-"+version+"-proceduretype-inquiry-unable-dates"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "mvp-"+version+"-proceduretype-inquiry-unable",
+          name: "mvp-"+version+"-proceduretype-inquiry-unable",
+          fieldset: {
+            legend: {
+              text: "Are there any dates you would be unable to attend?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("mvp-"+version+"-proceduretype-inquiry-unable", "Yes"),
+              conditional: {
+                html: datesHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("mvp-"+version+"-proceduretype-inquiry-unable", "No")
+            }
+          ]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

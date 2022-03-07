@@ -1,5 +1,5 @@
-{% set pageref = "BYS-007" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-007" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   Are you claiming costs as part of your appeal?- Before you start - {{serviceName}} - GOV.UK
@@ -30,8 +30,8 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "bys-"+version+"-claimingcosts",
-          name: "bys-"+version+"-claimingcosts",
+          idPrefix: "mvp-"+version+"-bys-claimingcosts",
+          name: "mvp-"+version+"-bys-claimingcosts",
           fieldset: {
             legend: {
               text: "Are you claiming costs as part of your appeal?",
@@ -43,12 +43,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("bys-"+version+"-claimingcosts", "HeYesaring")
+              checked: checked("mvp-"+version+"-bys-claimingcosts", "HeYesaring")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("bys-"+version+"-claimingcosts", "No")
+              checked: checked("mvp-"+version+"-bys-claimingcosts", "No")
             }
           ]
         }) }}

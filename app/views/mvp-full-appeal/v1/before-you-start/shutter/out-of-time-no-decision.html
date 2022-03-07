@@ -1,5 +1,5 @@
-{% set pageref = "BYS-OOT-2" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-OOT-2" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   You cannot appeal - {{serviceName}} - GOV.UK
@@ -19,7 +19,7 @@
       </p>
 
       <p class="govuk-body">
-        Your deadline was {{ data['bys-'+version+'-deadline-day'] }} {{ data['bys-'+version+'-deadline-month'] | formatMonth }} {{ data['bys-'+version+'-deadline-year'] }}. This is 6 months from the date the decision was due.
+        Your deadline was {{ data['mvp-'+version+'-bys-deadline-day'] }} {{ data['mvp-'+version+'-bys-deadline-month'] | formatMonth }} {{ data['mvp-'+version+'-bys-deadline-year'] }}. This is 6 months from the date the decision was due.
       </p>
 
     </div>

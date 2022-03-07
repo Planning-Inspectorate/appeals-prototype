@@ -1,5 +1,5 @@
-{% set pageref = "BYS-011" %}
-{% extends "layouts/before-you-start/v10.html" %}
+{% set pageref = "MVP-BYS-011" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
 
 {% block pageTitle %}
   Are the conditions for householder planning permission? - Before you start - {{serviceName}} - GOV.UK
@@ -30,8 +30,8 @@
         </span>
 
         {{ govukRadios({
-          idPrefix: "bys-"+version+"-removalvariationconditions",
-          name: "bys-"+version+"-removalvariationconditions",
+          idPrefix: "mvp-"+version+"-bys-removalvariationconditions",
+          name: "mvp-"+version+"-bys-removalvariationconditions",
           fieldset: {
             legend: {
               text: "Are the conditions for householder planning permission?",
@@ -43,12 +43,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("bys-"+version+"-removalvariationconditions", "Yes")
+              checked: checked("mvp-"+version+"-bys-removalvariationconditions", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("bys-"+version+"-removalvariationconditions", "No")
+              checked: checked("mvp-"+version+"-bys-removalvariationconditions", "No")
             }
           ]
         }) }}
