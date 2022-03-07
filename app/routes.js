@@ -50,5 +50,6 @@ require('./routes/standalone/appeal-submission-security.js')(router);
 require('./routes/standalone/appeal-submission-security-magiclink.js')(router);
 
 require('./routes/interested-party/upload-comments.js')(router);
+require('./routes/save-progress/v1.js')(router);
 
 module.exports = router

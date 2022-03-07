@@ -1,0 +1,58 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = "Confirm your email address" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+    <div class="govuk-form-group">
+
+      <label class="govuk-label govuk-label--l" for="postcode">
+        {{ title }}
+      </label>
+
+      <p class="govuk-body">
+        We've sent an email to <span class="govuk-!-font-weight-bold">admin@wedoplanningappeals.co.uk</span> to confirm that this is the correct email address.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        If you’re having problems
+      </h2>
+
+      <p class="govuk-body">
+        Check that the email has not gone into your spam or junk folder.
+      </p>
+
+      <p class="govuk-body">
+        If you still have not received an email from us, contact [customer service number?].
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
