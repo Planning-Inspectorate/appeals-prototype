@@ -32,6 +32,7 @@ module.exports = function (router) {
     } else if (req.session.data["mvp-"+v+"-bys-whatareyouappealing"] == "Something else") {
       res.redirect(base+'before-you-start/shutter/acp');
     } else if (req.session.data["mvp-"+v+"-bys-whatareyouappealing"] == "Householder planning") {
+      req.session.data['mvp-'+v+'-bys-route'] = "expedited"
       res.redirect(base+'before-you-start/listed-building');
     } else if (req.session.data["mvp-"+v+"-bys-whatareyouappealing"] == "Prior approval") {
       res.redirect(base+'before-you-start/prior-approval');
@@ -45,18 +46,22 @@ module.exports = function (router) {
   router.post(base+'before-you-start/prior-approval', function (req, res) {
     if (req.session.data["mvp-"+v+"-bys-priorapproval"] == "No"){
       // full appeal
+      req.session.data['mvp-'+v+'-bys-route'] = "full"
       res.redirect(base+'before-you-start/appeal-about');
     } else if (req.session.data["mvp-"+v+"-bys-priorapproval"] == "Yes"){
       // expedited written representations
+      req.session.data['mvp-'+v+'-bys-route'] = "expedited"
       res.redirect(base+'before-you-start/listed-building');
     }
   })
   router.post(base+'before-you-start/removal-variation-conditions', function (req, res) {
     if (req.session.data["mvp-"+v+"-bys-removalvariationconditions"] == "No"){
       // full appeal
+      req.session.data['mvp-'+v+'-bys-route'] = "full"
       res.redirect(base+'before-you-start/appeal-about');
     } else if (req.session.data["mvp-"+v+"-bys-removalvariationconditions"] == "Yes"){
       // expedited written representations
+      req.session.data['mvp-'+v+'-bys-route'] = "expedited"
       res.redirect(base+'before-you-start/listed-building');
     }
   })
@@ -79,6 +84,7 @@ module.exports = function (router) {
 
   router.post(base+'before-you-start/permission-granted-refused', function (req, res) {
     if (req.session.data["mvp-"+v+"-bys-permissiongrantedrefused"] == "I have not received a decision"){
+      req.session.data['mvp-'+v+'-bys-route'] = "full"
       res.redirect(base+'before-you-start/decision-date-due');
     } else {
       res.redirect(base+'before-you-start/notice-decision-date');
@@ -103,9 +109,11 @@ module.exports = function (router) {
       )
     ){
       // 6 months = 26 weeks for full appeals
+        req.session.data['mvp-'+v+'-bys-route'] = "full"
       deadlineDate.setDate(deadlineDate.getDate() + (26*7));
     } else {
-      // 12 weeks for the HAS appeals
+      // 12 weeks for the HAS (expedited) appeals
+        req.session.data['mvp-'+v+'-bys-route'] = "expedited"
       deadlineDate.setDate(deadlineDate.getDate() + (12*7));
     }
 
@@ -161,7 +169,7 @@ module.exports = function (router) {
   router.post(base+'before-you-start/enforcement-notice', function (req, res) {
 
 /************************
- * TODO
+ * TO DO
  * 
  * THIS ROUTING IS NOT CORRECT!
  * Needs to be based on type of planning application...
@@ -181,6 +189,12 @@ module.exports = function (router) {
  */
 
     if (req.session.data["mvp-"+v+"-bys-enforcementnotice"] == "No"){
+      if (req.session.data['mvp-'+v+'-bys-route'] == "expedited") {
+        res.redirect(base+'before-you-start/claiming-costs');
+      } else {
+        res.redirect(base+'full/task-list');
+      }
+      /*
       if ((req.session.data['mvp-'+v+'-bys-whatareyouappealing'] == "Householder planning") && (req.session.data['mvp-'+v+'-bys-permissiongrantedrefused'] == "Refused")) {
         // Continue down expedited written reps route if householder planning refused
         req.session.data['mvp-'+v+'-bys-route'] = "expedited"
@@ -196,7 +210,7 @@ module.exports = function (router) {
       } else {
         req.session.data['mvp-'+v+'-bys-route'] = "full"
         res.redirect(base+'full/task-list');
-      }
+      }*/
     } else {
       res.redirect(base+'before-you-start/shutter/acp');
     }
