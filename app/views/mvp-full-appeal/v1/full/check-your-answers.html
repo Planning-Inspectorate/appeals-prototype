@@ -38,7 +38,7 @@
               Was the planning application made in your name?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["mvp-"+version+"-aboutyou-applicationinyourname"] }}
+              {{ data["mvp-"+version+"-contactdetails-applicationinyourname"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
@@ -46,15 +46,15 @@
               </a>
             </dd>
           </div>
-          {% if data["mvp-"+version+"-aboutyou-applicationinyourname"] == "No, I'm acting on behalf of the applicant" %}
+          {% if data["mvp-"+version+"-contactdetails-applicationinyourname"] == "No, I'm acting on behalf of the applicant" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Appeal made on behalf of
               </dt>
               <dd class="govuk-summary-list__value">
-                <p class="govuk-body">{{ data["mvp-"+version+"-aboutyou-applicantname"] }}</p>
-                {% if data["mvp-"+version+"-aboutyou-applicantcompany"] %}
-                  <p class="govuk-body">{{ data["mvp-"+version+"-aboutyou-applicantcompany"] }}</p>
+                <p class="govuk-body">{{ data["mvp-"+version+"-contactdetails-applicantname"] }}</p>
+                {% if data["mvp-"+version+"-contactdetails-applicantcompany"] %}
+                  <p class="govuk-body">{{ data["mvp-"+version+"-contactdetails-applicantcompany"] }}</p>
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
@@ -69,12 +69,12 @@
               Your contact details
             </dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{ data["mvp-"+version+"-aboutyou-yourname"] }}</p>
-              {% if data["mvp-"+version+"-aboutyou-company"] %}
-              <p class="govuk-body">{{ data["mvp-"+version+"-aboutyou-company"] }}</p>
+              <p class="govuk-body">{{ data["mvp-"+version+"-contactdetails-yourname"] }}</p>
+              {% if data["mvp-"+version+"-contactdetails-company"] %}
+              <p class="govuk-body">{{ data["mvp-"+version+"-contactdetails-company"] }}</p>
               {% endif %}
-              <p class="govuk-body">{{ data["mvp-"+version+"-aboutyou-youremail"] }}</p>
-              <p class="govuk-body">{{ data["mvp-"+version+"-aboutyou-telephone"] }}</p>
+              <p class="govuk-body">{{ data["mvp-"+version+"-contactdetails-youremail"] }}</p>
+              <p class="govuk-body">{{ data["mvp-"+version+"-contactdetails-telephone"] }}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
@@ -436,14 +436,14 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                How many witnesses would you call?
+                How many days would you expect the inquiry to last?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["mvp-"+version+"-proceduretype-inquiry-witnesses"] }}
+                {{ data["mvp-"+version+"-proceduretype-inquiry-days"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> how many witnesses would you call?</span>
+                  Change<span class="govuk-visually-hidden"> how many days would you expect the inquiry to last</span>
                 </a>
               </dd>
             </div>

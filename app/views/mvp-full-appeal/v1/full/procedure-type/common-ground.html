@@ -41,14 +41,14 @@
         {% endif %}
 
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-proceduretype-commonground">
+          <label class="govuk-label govuk-label--m" for="mvp-{{version}}-proceduretype-commonground">
             {% if data["mvp-"+version+"-proceduretype-commonground"] and data["mvp-"+version+"-proceduretype-commonground"] != "" %}
               Replace the file
             {% else %}
               Drag and drop or choose a file
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-proceduretype-commonground" name="appealsub-{{version}}-proceduretype-commonground" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="mvp-{{version}}-proceduretype-commonground" name="mvp-{{version}}-proceduretype-commonground" type="file">
         </div>
 
         {{ govukDetails({
