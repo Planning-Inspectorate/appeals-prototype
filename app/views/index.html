@@ -42,6 +42,62 @@
 
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
+          <!-- save progress / return to appeals -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-appellant">
+                  Save and return to appeals
+                </span>
+              </h2>
+            </div>
+
+            <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Version 1 - Save progress
+                    </h3>
+
+                    <p class="govuk-body">
+                      Designing a pattern to help users save their progress during an appeal submission and later return to their appeal.
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/save-progress/v1/check-answers">End ‘Before you start’ / Check answers</a>
+                      </li>
+                    </ul>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (1)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4621" target="_blank">AS-4621 - Save progress and return to appeal submissions (opens in new tab)</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <!-- before you start -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">

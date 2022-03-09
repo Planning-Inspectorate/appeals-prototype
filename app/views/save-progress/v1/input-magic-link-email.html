@@ -3,7 +3,7 @@
 
 {% set serviceName = "Appeal a planning decision" %}
 
-{% set title = "What’s your email address?" %}
+{% set title = "Enter the email address that you used for the appeal" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -28,7 +28,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="confirm-email" method="post">
+      <form action="magic-link-email-sent" method="post">
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -37,14 +37,6 @@
           <label class="govuk-label govuk-label--l" for="email">
             {{ title }}
           </label>
-
-          <p class="govuk-body">
-            We'll use this email to contact you if we have any questions about your appeal.
-          </p>
-
-          <p class="govuk-body">
-            You can also save your progress.
-          </p>
 
           <div class="govuk-form-group">
             <input class="govuk-input govuk-input--width-20" id="email" name="email" type="text" spellcheck="false" autocomplete="email" value="{{ data['email'] }}">
@@ -57,6 +49,12 @@
         }) }}
 
       </form>
+<!-- 
+      <p class="govuk-body">
+        <a href="appeal-start">
+          Start a new planning appeal
+        </a>
+      </p> -->
 
     </div>
   </div>

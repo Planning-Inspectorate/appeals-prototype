@@ -3,7 +3,7 @@
 
 {% set serviceName = "Appeal a planning decision" %}
 
-{% set title = "Your email address is confirmed" %}
+{% set title = "The link has expired" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -36,22 +36,15 @@
         {{ title }}
       </label>
 
-      <!-- <p class="govuk-body">
-        We'll use this email to contact you if we have any questions about your appeal.
+      <p class="govuk-body">
+        The link we sent was available for 30 minutes. It has now expired.
       </p>
 
       <p class="govuk-body">
-        You can also save your progress.
-      </p> -->
-
-      <div class="govuk-button-group">
-
-        {{ govukButton({
-          href: "what-is-your-application-number",
-          text: "Continue to my appeal"
-        }) }}
-
-      </div>
+        <a href="confirm-email-resent">
+          Send a new link
+        </a>
+      </p>
 
     </div>
   </div>
@@ -63,8 +56,8 @@
 
   <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
     <p class="govuk-body-s">
-      <a href="expired-link">
-        Link expired version
+      <a href="email-confirmed">
+        Link valid version
       </a>
     </p>
   </div>
