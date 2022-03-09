@@ -26,7 +26,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
 
     <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -37,22 +37,47 @@
       </label>
 
       <p class="govuk-body">
-        We've sent an email to <span class="govuk-!-font-weight-bold">admin@wedoplanningappeals.co.uk</span> to confirm that this is the correct email address.
+        We've sent an email to:<br>admin@wedoplanningappeals.co.uk
+      </p>
+
+      <p>
+        Go to your inbox to confirm that this is the correct email address.
       </p>
 
       <h2 class="govuk-heading-m">
         If you’re having problems
       </h2>
 
-      <p class="govuk-body">
-        Check that the email has not gone into your spam or junk folder.
-      </p>
-
-      <p class="govuk-body">
-        If you still have not received an email from us, contact [customer service number?].
-      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          check the email has not gone into your spam/bulk folder
+        </li>
+        <li>
+          we can <a href="">resend the email</a>
+        </li>
+        <li>
+          email our customer support team at enquiries@theplanninginspectorate.gov.uk
+        </li>
+        <li>
+          call our customer support team on 0303 444 5000
+        </li>
+      </ul>
 
     </div>
   </div>
+
+  <!-- this is a prototype only link -->
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+    <p class="govuk-body-s">
+      <a href="confirmation-email">
+        Go to the email (your inbox)
+      </a>
+    </p>
+  </div>
+
+</div>
 
 {% endblock %}

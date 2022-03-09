@@ -1,7 +1,7 @@
 {% extends "layout-email.html" %}
 
 {% block pageTitle %}
-  Appeal submission confirmation email
+  Return to appeal a planning decision
 {% endblock %}
 
 
@@ -10,7 +10,7 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
 
 
 {% block content %}
-<p><strong>Subject:</strong> Confirm your email address</p>
+<p><strong>Subject:</strong> Return to appeal a planning decision</p>
 <p><strong>From:</strong> planningappeals@bristolcitycouncil.gov.uk</p>
 
 <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
@@ -20,17 +20,11 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
 <div class="govuk-grid-row govuk-!-margin-top-5">
   <div class="govuk-grid-column-two-thirds">
 
-    <p class="govuk-body">
-      Dear [name],
-    </p>
+    <p class="govuk-body">Dear [name],</p>
 
     <p class="govuk-body">
-      You must confirm your email address so we can contact you if we have any questions about your appeal.
-    </p>
-
-    <p class="govuk-body">
-      Go to the link to confirm your email address:<br>
-      <a href="email-confirmed">www.gov.uk/appeal-a-planning-decision/confirm-email</a>
+      Go to the link to continue with your appeal submission:<br>
+      <a href="input-magic-link-email">www.gov.uk/appeal-a-planning-decision/continue</a>
     </p>
 
     <p class="govuk-body">

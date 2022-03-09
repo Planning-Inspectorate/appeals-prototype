@@ -3,7 +3,7 @@
 
 {% set serviceName = "Appeal a planning decision" %}
 
-{% set title = "Your email address is confirmed" %}
+{% set title = "We’ve sent you another email" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -26,7 +26,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
 
     <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -36,26 +36,28 @@
         {{ title }}
       </label>
 
-      <!-- <p class="govuk-body">
-        We'll use this email to contact you if we have any questions about your appeal.
+      <p class="govuk-body">
+        We've sent an email to:<br>admin@wedoplanningappeals.co.uk
+      </p>
+
+      <p>
+        Go to your inbox to confirm that this is the correct email address.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        If you’re having problems
+      </h2>
+
+      <p class="govuk-body">
+        Check that the email has not gone into your spam or junk folder.
       </p>
 
       <p class="govuk-body">
-        You can also save your progress.
-      </p> -->
-
-      <div class="govuk-button-group">
-
-        {{ govukButton({
-          href: "what-is-your-application-number",
-          text: "Continue to my appeal"
-        }) }}
-
-      </div>
+        If you still do not find this email, <a href="enquiries@planninginspectorate.gov.uk">send us an email at enquiries@planninginspectorate.gov.uk</a> or call 0303 444 5000.
+      </p>
 
     </div>
   </div>
-
 
   <!-- this is a prototype only link -->
   <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
@@ -63,11 +65,12 @@
 
   <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
     <p class="govuk-body-s">
-      <a href="expired-link">
-        Link expired version
+      <a href="confirmation-email">
+        Go to the email (your inbox)
       </a>
     </p>
   </div>
 
 </div>
+
 {% endblock %}

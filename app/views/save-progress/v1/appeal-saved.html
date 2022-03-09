@@ -26,7 +26,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
     <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -37,10 +37,43 @@
       </label>
 
       <p class="govuk-body">
+        Follow the link in the email we sent you to continue with your appeal.
+      </p>
+
+      <p class="govuk-body">
         You have until 3 April 2022 to submit your appeal.
       </p>
 
     </div>
   </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <ul class="govuk-list">
+      <li>
+        <a href="appeal-start" class="govuk-link">
+          Continue with another appeal
+        </a>
+      </li>
+      <!-- <li>
+        <a href="incomplete-appeals" class="govuk-link">
+          Go to my list of incomplete appeals
+        </a>
+      </li> -->
+    </ul>
+  </div>
+
+  <!-- this is a prototype only link -->
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+    <p class="govuk-body-s">
+      <a href="return-email">
+        Go to the email (your inbox)
+      </a>
+    </p>
+  </div>
+
+</div>
 
 {% endblock %}
