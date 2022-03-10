@@ -1,0 +1,84 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = "We’ve sent you an email" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+    <div class="govuk-form-group">
+
+      <label class="govuk-label govuk-label--l" for="postcode">
+        {{ title }}
+      </label>
+
+      <p class="govuk-body">
+        We’ve emailed a link to:<br>
+        admin@wedoplanningappeals.co.uk
+      </p>
+
+      <p class="govuk-body">
+        Go to the link in the email to continue with the appeal submission.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        If you’re having problems
+      </h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          check the email has not gone into your spam/bulk folder
+        </li>
+        <li>
+          we can <a href="">resend the email</a>
+        </li>
+        <li>
+          email our customer support team at enquiries@theplanninginspectorate.gov.uk
+        </li>
+        <li>
+          call our customer support team on 0303 444 5000
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- this is a prototype only link -->
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+    <p class="govuk-body-s">
+      <a href="magic-link-email">
+        Go to the email (your inbox)
+      </a>
+    </p>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Return to appeal a planning decision
+{% endblock %}
+
+
+Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[INSERT HERE]Application reference:[INSERT HERE]An appeal has been made against the decision of [LPD]to [insert reason for appeal, i.e. refuse to grant planning permission].[The appeal will be determined on the basis of written representations.][The appeal will be determined on the basis of a hearing.] [The appeal will be determined on the basis of an inquiry.] Interested individuals that want to take part in the Inquiry can do so by applying for Rule 6 status.Rule 6 status means that you would be able to present your evidence on a formal basis and cross examine the evidence of others.You can learn more about Rule 6 at:https://www.gov.uk/government/publications/apply-for-rule-6-status-on-a-planning-appeal-or-called-in-applicationWhat happens next** TO BE ADDED **Thank you,The Planning Inspectorate
+
+
+
+{% block content %}
+<p><strong>Subject:</strong> Return to appeal a planning decision</p>
+<p><strong>From:</strong> planningappeals@bristolcitycouncil.gov.uk</p>
+
+<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+
+<hr>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">Dear [name],</p>
+
+    <p class="govuk-body">
+      Go to the link to continue with your appeal submission:<br>
+      <a href="input-magic-link-email">www.gov.uk/appeal-a-planning-decision/continue</a>
+    </p>
+
+    <p class="govuk-body">
+      This link will expire after 30 minutes.
+    </p>
+
+    <p class="govuk-body">
+      From The Planning Inspectorate
+    </p>
+
+  </div>
+</div>
+{% endblock %}

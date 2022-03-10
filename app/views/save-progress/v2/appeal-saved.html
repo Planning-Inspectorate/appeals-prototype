@@ -1,0 +1,79 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = "Your appeal has been saved" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+
+    <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+    <div class="govuk-form-group">
+
+      <label class="govuk-label govuk-label--l" for="postcode">
+        {{ title }}
+      </label>
+
+      <p class="govuk-body">
+        Follow the link in the email we sent you to continue with your appeal.
+      </p>
+
+      <p class="govuk-body">
+        You have until 3 April 2022 to submit your appeal.
+      </p>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <ul class="govuk-list">
+      <li>
+        <a href="what-is-your-email" class="govuk-link">
+          Continue with another appeal
+        </a>
+      </li>
+      <!-- <li>
+        <a href="incomplete-appeals" class="govuk-link">
+          Go to my list of incomplete appeals
+        </a>
+      </li> -->
+    </ul>
+  </div>
+
+  <!-- this is a prototype only link -->
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+    <p class="govuk-body-s">
+      <a href="return-email">
+        Go to the email (your inbox)
+      </a>
+    </p>
+  </div>
+
+</div>
+
+{% endblock %}

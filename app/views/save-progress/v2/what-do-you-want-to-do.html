@@ -1,0 +1,72 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = "What do you want to do?" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+        <div class="govuk-form-group">
+
+          <label class="govuk-label govuk-label--l" for="new-or-continue">
+            {{ title }}
+          </label>
+
+          {{ govukRadios({
+            name: "new-or-continue",
+            fieldset: {
+
+            },
+            items: [
+              {
+                value: "new",
+                text: "Start a new appeal"
+              },
+              {
+                value: "continue",
+                text: "Continue with an appeal"
+              }
+            ]
+          }) }}
+
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
