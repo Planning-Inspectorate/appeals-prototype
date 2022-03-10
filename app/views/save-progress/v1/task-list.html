@@ -57,12 +57,21 @@
                 Provide your contact details
               </a>
             </span>
-            {% if data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
-              <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["appealsub-"+version+"-taskliststatus-contactdetails"] == "In progress" %}
+            <!-- grubby logic -->
+            {% if data['progress'] == 'yes' %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              
             {% else %}
-              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+
+              <!-- the existing logic -->
+              {% if data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
+                <strong class="app-task-list__tag govuk-tag">Complete</strong>
+              {% elseif data["appealsub-"+version+"-taskliststatus-contactdetails"] == "In progress" %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+              {% else %}
+                <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+              {% endif %}
+
             {% endif %}
           </li>
           <li class="app-task-list__item">
