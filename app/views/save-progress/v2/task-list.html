@@ -1,4 +1,4 @@
-{% extends "layouts/save-progress/v1.html" %}
+{% extends "layouts/save-progress/v2.html" %}
 
 {% block pageTitle %}
   Task list - Appeal a planning decision for application number 1234567 - {{serviceName}} - GOV.UK
@@ -60,7 +60,7 @@
             <!-- grubby logic -->
             {% if data['progress'] == 'yes' %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
-              
+
             {% else %}
 
               <!-- the existing logic -->
