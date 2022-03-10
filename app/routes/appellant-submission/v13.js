@@ -163,7 +163,7 @@ module.exports = function (router) {
       "supporting_document_three.pdf"
     ],
     req.session.data["appealsub-"+v+"-taskliststatus-appealdocuments"] = "Complete"
-    
+
     res.redirect(base+'full/task-list');
   })
 
@@ -175,7 +175,7 @@ module.exports = function (router) {
   /*
    * All routing in theis file is based on the logic in thes Miro board frame:
    * https://miro.com/app/board/o9J_lv1IHjc=/?moveToWidget=3074457365971757787&cot=14
-   * 
+   *
    * The relevant frame is titled "v9a Before you start (eligibility checker)"
    */
 
@@ -205,7 +205,7 @@ module.exports = function (router) {
     } else if (req.session.data["appealsub-"+v+"-beforeyoustart-whatareyouappealing"] == "Householder planning") {
       res.redirect(base+'before-you-start/listed-building');
     } else {
-      res.redirect(base+'before-you-start/appeal-about');        
+      res.redirect(base+'before-you-start/appeal-about');
     }
   })
 
@@ -239,7 +239,7 @@ module.exports = function (router) {
     var enteredDay = req.session.data['appealsub-'+v+'-beforeyoustart-decisiondate-day'];
     var enteredMonth = req.session.data['appealsub-'+v+'-beforeyoustart-decisiondate-month'];
     var enteredYear = req.session.data['appealsub-'+v+'-beforeyoustart-decisiondate-year'];
-    var enteredDate = new Date(enteredYear, enteredMonth - 1, enteredDay); 
+    var enteredDate = new Date(enteredYear, enteredMonth - 1, enteredDay);
 
     // calculate deadline for appeal based on decision due date
     var deadlineDate = new Date(enteredDate);
@@ -286,7 +286,7 @@ module.exports = function (router) {
     var enteredDay = req.session.data['appealsub-'+v+'-beforeyoustart-decisiondatedue-day'];
     var enteredMonth = req.session.data['appealsub-'+v+'-beforeyoustart-decisiondatedue-month'];
     var enteredYear = req.session.data['appealsub-'+v+'-beforeyoustart-decisiondatedue-year'];
-    var enteredDate = new Date(enteredYear, enteredMonth - 1, enteredDay); 
+    var enteredDate = new Date(enteredYear, enteredMonth - 1, enteredDay);
 
     // calculate deadline for appeal based on decision due date
     // 6 months = 26 weeks for the prototype
@@ -328,7 +328,7 @@ module.exports = function (router) {
     }
   })
 
-  
+
 /************************************
  *** Provide your contact details ***
  ************************************/
@@ -364,7 +364,7 @@ module.exports = function (router) {
 /*******************
  *** APPEAL SITE ***
  *******************/
-  
+
   router.post(base+'full/appeal-site/site-address', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-appealsite"] = "In progress";
     res.redirect(base+'full/appeal-site/own-land');
@@ -465,7 +465,7 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/application-upload', function (req, res) {
-    
+
     // Don't overwrite previously uploaded files with a blank upload
     if (req.session.data["appealsub-"+v+"-aboutapplication-applicationform"] == "") {
       if (req.session.data["appealsub-"+v+"-aboutapplication-applicationform-existing"] != "") {
@@ -479,7 +479,7 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/plans-drawings-upload', function (req, res) {
-    
+
     // Don't overwrite previously uploaded files with a blank upload
     if (req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings"] == "") {
       if (req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings-existing"] != "") {
@@ -488,7 +488,7 @@ module.exports = function (router) {
     } else {
       req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings-existing"] = req.session.data["appealsub-"+v+"-aboutapplication-plansdrawings"]
     }
-    
+
     res.redirect(base+'full/planning-application-documents/design-access-statement');
   })
 
@@ -506,7 +506,7 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/design-access-statement-upload', function (req, res) {
-    
+
     // Don't overwrite previously uploaded files with a blank upload
     if (req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file"] == "") {
       if (req.session.data["appealsub-"+v+"-aboutapplication-designaccess-file-existing"] != "") {
@@ -525,7 +525,7 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/planning-application-documents/decision-letter', function (req, res) {
-    
+
     // Don't overwrite previously uploaded files with a blank upload
     if (req.session.data["appealsub-"+v+"-aboutapplication-decisionletter"] == "") {
       if (req.session.data["appealsub-"+v+"-aboutapplication-decisionletter-existing"] != "") {
@@ -543,9 +543,9 @@ module.exports = function (router) {
 /****************************************
  *** Upload documents for your appeal ***
  ****************************************/
-  
+
   router.post(base+'full/appeal-documents/appeal-statement', function (req, res) {
-    
+
     // Don't overwrite previously uploaded files with a blank upload
     if (req.session.data["appealsub-"+v+"-appealdocuments-appealstatement"] == "") {
       if (req.session.data["appealsub-"+v+"-appealdocuments-appealstatement-existing"] != "") {
@@ -568,7 +568,7 @@ module.exports = function (router) {
   })
 
   router.post(base+'full/appeal-documents/plans-drawings-upload', function (req, res) {
-    
+
     // Don't overwrite previously uploaded files with a blank upload
     if (req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files"] == "") {
       if (req.session.data["appealsub-"+v+"-appealdocuments-plansdrawings-files-existing"] != "") {
@@ -609,7 +609,7 @@ module.exports = function (router) {
 /**********************************************
  *** Upload an application for appeal costs ***
  **********************************************/
-  
+
   router.post(base+'full/claiming-costs', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-claimingcosts"] = "Complete";
     res.redirect(base+'full/task-list');
@@ -619,7 +619,7 @@ module.exports = function (router) {
 /***********************************************************
  *** Tell us how you would like us to decide your appeal ***
  ***********************************************************/
-  
+
   router.post(base+'full/procedure-type/decide', function (req, res) {
     if (req.session.data['appealsub-'+v+'-proceduretype-decide'] == "Written representations") {
       req.session.data["appealsub-"+v+"-taskliststatus-proceduretype"] = "Complete";
@@ -630,19 +630,19 @@ module.exports = function (router) {
       res.redirect(base+'full/procedure-type/inquiry/why');
     }
   })
-  
+
   router.post(base+'full/procedure-type/hearing/why', function (req, res) {
     res.redirect(base+'full/procedure-type/common-ground');
   })
-  
+
   router.post(base+'full/procedure-type/inquiry/why', function (req, res) {
     res.redirect(base+'full/procedure-type/inquiry/days');
   })
-  
+
   router.post(base+'full/procedure-type/inquiry/days', function (req, res) {
     res.redirect(base+'full/procedure-type/common-ground');
   })
-  
+
   router.post(base+'full/procedure-type/common-ground', function (req, res) {
     req.session.data["appealsub-"+v+"-taskliststatus-proceduretype"] = "Complete";
     res.redirect(base+'full/task-list');
