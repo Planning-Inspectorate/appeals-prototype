@@ -1,0 +1,55 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Your email inbox
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Your email inbox
+    </h1>
+
+    <table class="govuk-table email-inbox">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">From</th>
+          <th scope="col" class="govuk-table__header">Subject</th>
+          <th scope="col" class="govuk-table__header">Date/Time</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row email-unread">
+          <td class="govuk-table__cell"><a href="started-refusal">Appeal a planning decision</a></td>
+          <td class="govuk-table__cell"><a href="confirmation-email">Confirm your email address</a></td>
+          <td class="govuk-table__cell"><a href="started-refusal">{{ 20 | minutesAgo }}</a></td>
+        </tr>
+        <tr class="govuk-table__row email-read">
+          <td class="govuk-table__cell">Amazon.co.uk</td>
+          <td class="govuk-table__cell">Confirmation of your order 015-6667394-025648&hellip;</td>
+          <td class="govuk-table__cell">{{ 2 | emailDaysAgo }}</td>
+        </tr>
+        <tr class="govuk-table__row email-read">
+          <td class="govuk-table__cell">BT</td>
+          <td class="govuk-table__cell">Don't miss out! Your selected package is stil&hellip;</td>
+          <td class="govuk-table__cell">{{ 5 | emailDaysAgo }}</td>
+        </tr>
+        <tr class="govuk-table__row email-read">
+          <td class="govuk-table__cell">Disneyland Paris</td>
+          <td class="govuk-table__cell">Snap up the deals to visit Disneyland Paris</td>
+          <td class="govuk-table__cell">{{ 9 | emailDaysAgo }}</td>
+        </tr>
+        <tr class="govuk-table__row email-read">
+          <td class="govuk-table__cell">Audible.co.uk</td>
+          <td class="govuk-table__cell">Enjoy 2 free audiobooks with your 30-day trial</td>
+          <td class="govuk-table__cell">{{ 15 | emailDaysAgo }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}
