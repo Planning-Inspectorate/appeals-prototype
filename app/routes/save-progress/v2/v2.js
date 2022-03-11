@@ -18,7 +18,7 @@ module.exports = function (router) {
     if (choice === 'new') {
       res.redirect('/appellant-submission/v13/')
     } else {
-      res.redirect('what-is-your-email')
+      res.redirect('input-magic-link-email')
     }
 
   })
