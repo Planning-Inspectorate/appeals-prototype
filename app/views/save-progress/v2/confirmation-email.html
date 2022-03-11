@@ -10,11 +10,16 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
 
 
 {% block content %}
-<p><strong>Subject:</strong> Confirm your email address</p>
-<p><strong>From:</strong> planningappeals@bristolcitycouncil.gov.uk</p>
-
-<img src="{{ asset_path }}images/pi-logo.png" width="150"/>
-
+<p>
+  <strong>Subject:</strong> Confirm your email address
+</p>
+<p>
+  <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
+  <strong>From:</strong> planningappeals@bristolcitycouncil.gov.uk
+</p>
+<p>
+  <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+</p>
 <hr>
 
 <div class="govuk-grid-row govuk-!-margin-top-5">

@@ -36,10 +36,6 @@
         {{ title }}
       </label>
 
-      <!-- <p class="govuk-body">
-        You’ll need to submit some documents with your appeal.
-      </p> -->
-
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
@@ -72,6 +68,10 @@
         </div>
       </details>
 
+      <p class="govuk-body">
+        From now, you’re able to save and continue with your appeal later.
+      </p>
+
       <div class="govuk-button-group">
 
         {{ govukButton({
@@ -81,7 +81,7 @@
 
         {{ govukButton({
           href: "appeal-saved",
-          text: "Save and exit",
+          text: "Save and come back later",
           classes: "govuk-button--secondary"
         }) }}
 
