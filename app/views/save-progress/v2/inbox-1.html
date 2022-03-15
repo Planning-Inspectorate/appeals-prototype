@@ -23,9 +23,9 @@
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row email-unread">
-          <td class="govuk-table__cell"><a href="started-refusal">Appeal a planning decision</a></td>
+          <td class="govuk-table__cell"><a href="confirmation-email">Appeal a planning decision</a></td>
           <td class="govuk-table__cell"><a href="confirmation-email">Confirm your email address</a></td>
-          <td class="govuk-table__cell"><a href="started-refusal">{{ 20 | minutesAgo }}</a></td>
+          <td class="govuk-table__cell"><a href="confirmation-email">{{ 2 | minutesAgo }}</a></td>
         </tr>
         <tr class="govuk-table__row email-read">
           <td class="govuk-table__cell">Amazon.co.uk</td>
@@ -46,6 +46,11 @@
           <td class="govuk-table__cell">Audible.co.uk</td>
           <td class="govuk-table__cell">Enjoy 2 free audiobooks with your 30-day trial</td>
           <td class="govuk-table__cell">{{ 15 | emailDaysAgo }}</td>
+        </tr>
+        <tr class="govuk-table__row email-read">
+          <td class="govuk-table__cell">Appeal a planning decision</td>
+          <td class="govuk-table__cell">14 Fox Lane, Upper Brushton, LA12 6UX - full appea&hellip;</td>
+          <td class="govuk-table__cell">{{ 32 | emailDaysAgo }}</td>
         </tr>
       </tbody>
     </table>
