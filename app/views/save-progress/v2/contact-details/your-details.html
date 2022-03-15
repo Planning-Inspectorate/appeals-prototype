@@ -33,7 +33,7 @@
 
         <p class="govuk-body">
           This is the email you gave us for this appeal:<br>
-          admin@appellants.co.uk
+          {{ data['email'] or 'sam@mac.com'}}
         </p>
 
         <!-- <p class="govuk-body">

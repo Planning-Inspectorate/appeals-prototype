@@ -34,7 +34,12 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
 
     <p class="govuk-body">
       Go to the link to continue with your appeal submission:<br>
-      <a href="incomplete-appeals">www.gov.uk/appeal-a-planning-decision/appeals</a>
+
+      {% if data['savedOn'] === 'start' %}
+        <a href="before-you-continue">www.gov.uk/appeal-a-planning-decision/appeals?session=679aa0</a>
+      {% else %}
+          <a href="incomplete-appeals">www.gov.uk/appeal-a-planning-decision/appeals?session=321fa2</a>
+      {% endif %}
     </p>
 
     <p class="govuk-body">
