@@ -2,29 +2,39 @@
   font-size: 16px;
 }
 
-.email-inbox .govuk-table__header {
-  padding-left: 10px;
-}
-
 .email-inbox td {
   padding: 0;
 }
 
 .email-unread td {
   font-weight: bold;
+  padding: 10px 0;
 }
 
 .email-read td {
   background: #f5f5f5;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .email-inbox a:link {
-  padding: 10px;
   color: $govuk-text-colour;
   display: inline-block;
   text-decoration: none;
   width: 100%;
+}
+
+.email-inbox a:hover {
+  text-decoration: underline;
+}
+
+.email-inbox a:focus {
+  // removes the gds focus styles
+  background-color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  // simple link
+  text-decoration: underline;
 }
 
 .email-inbox a:visited {
