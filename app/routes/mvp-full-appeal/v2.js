@@ -22,15 +22,15 @@ module.exports = function (router) {
       ){
         res.redirect(base+'before-you-start/what-are-you-appealing');
       } else {
-        res.redirect(base+'before-you-start/shutter/acp');
+        res.redirect(base+'before-you-start/shutter/lpa-ineligible');
       }
     })
 
   router.post(base+'before-you-start/what-are-you-appealing', function (req, res) {
     if (req.session.data["mvp-"+v+"-bys-whatareyouappealing"] == "I have not made a planning application") {
-      res.redirect(base+'before-you-start/shutter/acp');
+      res.redirect(base+'before-you-start/shutter/planning-application-not-made');
     } else if (req.session.data["mvp-"+v+"-bys-whatareyouappealing"] == "Something else") {
-      res.redirect(base+'before-you-start/shutter/acp');
+      res.redirect(base+'before-you-start/shutter/planning-application-something-else');
     } else if (req.session.data["mvp-"+v+"-bys-whatareyouappealing"] == "Householder planning") {
       req.session.data['mvp-'+v+'-bys-route'] = "expedited"
       res.redirect(base+'before-you-start/listed-building');
@@ -70,7 +70,7 @@ module.exports = function (router) {
     if (req.session.data["mvp-"+v+"-bys-listedbuilding"] == "No"){
       res.redirect(base+'before-you-start/permission-granted-refused');
     } else {
-      res.redirect(base+'before-you-start/shutter/acp');
+      res.redirect(base+'before-you-start/shutter/listed-building');
     }
   })
 
@@ -78,7 +78,7 @@ module.exports = function (router) {
     if (req.session.data["mvp-"+v+"-bys-appealabout"].includes("No, my planning application was not about any of these") ){
       res.redirect(base+'before-you-start/permission-granted-refused');
     } else {
-      res.redirect(base+'before-you-start/shutter/acp');
+      res.redirect(base+'before-you-start/shutter/appeal-about');
     }
   })
 
@@ -167,60 +167,24 @@ module.exports = function (router) {
   })
 
   router.post(base+'before-you-start/enforcement-notice', function (req, res) {
-
-/************************
- * TO DO
- * 
- * THIS ROUTING IS NOT CORRECT!
- * Needs to be based on type of planning application...
- * And if householder and refused, go down expedited route
- * Need to set as expedited at type of application choice and change route when needed...
- * e.g. 
- *  selects householder = expedited route
- *  householder was granted = full route
- *  prior approval to extend home = expedited
- *  prior approval to extend home, but granted = full
- *  prior approval to extend home, and refused = expedited
- *  prior approval to extend home, non-determination = full
- *  prior approval NOT to extend home = full
- * 
- *  Need to map these out more completely so the logic is correct
- * 
- */
-
     if (req.session.data["mvp-"+v+"-bys-enforcementnotice"] == "No"){
       if (req.session.data['mvp-'+v+'-bys-route'] == "expedited") {
         res.redirect(base+'before-you-start/claiming-costs');
       } else {
-        res.redirect(base+'full/task-list');
+        //res.redirect(base+'full/task-list');
+        res.redirect(base+'before-you-start/check-answers');
       }
-      /*
-      if ((req.session.data['mvp-'+v+'-bys-whatareyouappealing'] == "Householder planning") && (req.session.data['mvp-'+v+'-bys-permissiongrantedrefused'] == "Refused")) {
-        // Continue down expedited written reps route if householder planning refused
-        req.session.data['mvp-'+v+'-bys-route'] = "expedited"
-        res.redirect(base+'before-you-start/claiming-costs');
-      } else if ((req.session.data['mvp-'+v+'-bys-whatareyouappealing'] == "Prior approval") && (req.session.data['mvp-'+v+'-bys-priorapproval'] == "Yes")) {
-        // Continue down expedited written reps route if prior approval for householder
-        req.session.data['mvp-'+v+'-bys-route'] = "expedited"
-        res.redirect(base+'before-you-start/claiming-costs');
-      } else if ((req.session.data['mvp-'+v+'-bys-whatareyouappealing'] == "Removal or variation of conditions") && (req.session.data['mvp-'+v+'-bys-removalvariationconditions'] == "Yes")) {
-        // Continue down expedited written reps route if removal/variation of conditions for householder
-        req.session.data['mvp-'+v+'-bys-route'] = "expedited"
-        res.redirect(base+'before-you-start/claiming-costs');
-      } else {
-        req.session.data['mvp-'+v+'-bys-route'] = "full"
-        res.redirect(base+'full/task-list');
-      }*/
     } else {
-      res.redirect(base+'before-you-start/shutter/acp');
+      res.redirect(base+'before-you-start/shutter/enforcement-notice');
     }
   })
 
   router.post(base+'before-you-start/claiming-costs', function (req, res) {
     if (req.session.data["mvp-"+v+"-bys-claimingcosts"] == "No"){
-      res.redirect(base+'expedited/task-list');
+      //res.redirect(base+'expedited/task-list');
+      res.redirect(base+'before-you-start/check-answers');
     } else {
-      res.redirect(base+'before-you-start/shutter/acp');
+      res.redirect(base+'before-you-start/shutter/claiming-costs');
     }
   })
 
@@ -243,17 +207,6 @@ module.exports = function (router) {
     })
   
     router.post(base+'full/contact-details/your-details', function (req, res) {
-      /* 
-       * Removed screen as UR didn't prove it was needed
-       * See https://miro.com/app/board/o9J_lKgVTgQ=/?moveToWidget=3458764519990288140&cot=14
-       */
-      /*
-      if (req.session.data["mvp-"+v+"-contactdetails-applicationinyourname"] == "No, I'm acting on behalf of the applicant"){
-        res.redirect(base+'full/contact-details/how-to-answer');
-      } else {
-        req.session.data["mvp-"+v+"-taskliststatus-contactdetails"] = "Complete";
-        res.redirect(base+'full/task-list');
-      }*/
       req.session.data["mvp-"+v+"-taskliststatus-contactdetails"] = "Complete";
       res.redirect(base+'full/task-list');
     })

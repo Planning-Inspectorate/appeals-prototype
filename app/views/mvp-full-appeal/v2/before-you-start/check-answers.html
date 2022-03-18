@@ -1,4 +1,4 @@
-{% set pageref = "MVP-BYS-CYA" %}
+{% set pageref = "MVP2-BYS-CYA" %}
 {% extends "layouts/mvp-full-appeal/v2.html" %}
 
 {% block pageTitle %}
@@ -317,24 +317,24 @@
           </div>
         </details>
 
+<!--
         {{ govukButton({
           href: "javascript:preventDefault();",
           text: "Continue to my appeal"
         }) }}
+-->
 
-<!--
-        {% if data['appealsub-'+version+'-route'] == "full" %}
+        {% if data['mvp-'+version+'-bys-route'] == "full" %}
           {{ govukButton({
             text: "Continue to my appeal",
-            href: "/before-you-start/"+version+"/task-list/full"
+            href: "/mvp-full-appeal/"+version+"/full/task-list"
           }) }}
         {% else %}
           {{ govukButton({
             text: "Continue to my appeal",
-            href: "/before-you-start/"+version+"/task-list/expedited"
+            href: "/mvp-full-appeal/"+version+"/expedited/task-list"
           }) }}
         {% endif %}
--->
 
       </form>
 
