@@ -12,6 +12,7 @@ require('./routes/appellant-submission/v12.js')(router);
 require('./routes/appellant-submission/v13.js')(router);
 
 require('./routes/mvp-full-appeal/v1.js')(router);
+require('./routes/mvp-full-appeal/v2.js')(router);
 
 require('./routes/appeal-submission.js')(router);
 

@@ -1,0 +1,65 @@
+{% set pageref = "MVP2-FUL-APP-004" %}
+{% extends "layouts/mvp-full-appeal/v2.html" %}
+
+{% block pageTitle %}
+  Supporting documents - Upload documents for your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents for your appeal
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "mvp-"+version+"-appealdocs-supportingdocuments",
+          name: "mvp-"+version+"-appealdocs-supportingdocuments",
+          fieldset: {
+            legend: {
+              text: "Do you have any other new documents that support your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("mvp-"+version+"-appealdocs-supportingdocuments", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("mvp-"+version+"-appealdocs-supportingdocuments", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
