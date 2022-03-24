@@ -32,8 +32,9 @@
         <p class="govuk-body">
           Based on your answers, you can appeal using this service.
         </p>
+        
         <p class="govuk-body">
-          Your deadline to appeal is 11.59pm on Monday Monday 3 August 2022.
+          Your deadline to appeal is 11.59pm on Monday {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}.
         </p>
 
         <h1 class="govuk-heading-m">
