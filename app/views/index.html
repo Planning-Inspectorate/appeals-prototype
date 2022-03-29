@@ -43,256 +43,80 @@ service-start{% extends "layout.html" %}
 
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
-          <!-- save progress / return to appeals -->
+          <!-- guidance -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-appellant">
-                  Save and return to appeals
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-guidance">
+                  Guidance
                 </span>
               </h2>
             </div>
 
-            <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
+            <div id="accordion-default-content-guidance" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-guidance">
 
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-
                     {{ govukTag({
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
-
-                    <p class="govuk-body">
-                      Designing a pattern to help users save their progress during an appeal submission and later return to their appeal.
-                    </p>
-
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                      ‘Save and return’ - version 2
+                      Appeal refused planning permission - Version 1
                     </h3>
-
                     <ul class="govuk-list govuk-list--bullet">
                       <li>
-                        <a href="/save-progress/v2/check-answers">
-                          End ‘Before you start’ / Check answers
-                        </a>
+                        <a href="/guidance/full/v1/overview">Overview</a>
                       </li>
                       <li>
-                        <a href="/save-progress/v2/what-is-your-application-number">
-                          What is your application number
-                        </a>
+                        <a href="/guidance/full/v1/when-you-can-appeal">When you can appeal</a>
                       </li>
                       <li>
-                        <a href="/save-progress/v2/what-is-your-email">
-                          What is your email address
-                        </a>
+                        <a href="/guidance/full/v1/before-you-appeal">Before you appeal</a>
                       </li>
                       <li>
-                        <a href="/save-progress/v2/confirm-email">
-                          Confirm your email address
-                        </a>
+                        <a href="/guidance/full/v1/how-to-appeal">How to appeal</a>
                       </li>
                       <li>
-                        <a href="/save-progress/v2/confirmation-email">
-                          Subject: Confirm your email address
-                        </a>
+                        <a href="/guidance/full/v1/stages-of-an-appeal">The stages of an appeal</a>
                       </li>
                       <li>
-                        <a href="/save-progress/v2/email-confirmed">
-                          Your email address is confirmed
-                        </a>
+                        <a href="/guidance/full/v1/your-appeal-decision">Your appeal decision</a>
                       </li>
                       <li>
-                        <a href="/save-progress/v2/expired-link">
-                          Link expired
-                        </a>
+                        <a href="/guidance/full/v1/claim-costs-for-your-appeal">Claim costs for your appeal</a>
                       </li>
                       <li>
-                        <a href="/save-progress/v2/confirm-email-resent">
-                          New link sent
-                        </a>
+                        <a href="/guidance/full/v1/comment-on-planning-appeal">Comment on a planning appeal</a>
                       </li>
-                      <li>
-                        <a href="/save-progress/v2/before-you-continue">
-                          You’ll need to submit some documents
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/task-list">
-                          Task list
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/contact-details/who-are-you">
-                          Provide your contact details<br>
-                          Was the planning application made in your name?
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/contact-details/your-details">
-                          Provide your contact details<br>
-                          Contact details
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/appeal-saved">
-                          Your appeal has been saved
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/return-email">
-                          Subject: Return to appeal a planning decision
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="/save-progress/v2/appeal-closed">
-                          Appeal closed (return link expired)
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/input-magic-link-email">
-                          Enter the email address that you used for the appeal
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/magic-link-email-sent">
-                          We’ve sent you an email
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/magic-link-email">
-                          Subject: Return to appeal a planning decision
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/incomplete-appeals">
-                          Incomplete appeals
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v2/return-email">
-                          Return email
-                        </a>
-                      </li>
-                      <br>
-                      <li>
-                        <a href="/save-progress/v2/service-start">
-                          Service start
-                        </a>
-                      </li>
-
                     </ul>
-
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                      ‘Save and return’ - version 1
-                    </h3>
-
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>
-                        <a href="/save-progress/v1/check-answers">
-                          End ‘Before you start’ / Check answers
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/what-is-your-application-number">
-                          What is your application number
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/what-is-your-email">
-                          What is your email address
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/confirm-email">
-                          Confirm your email address
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/confirmation-email">
-                          Subject: Confirm your email address
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/email-confirmed">
-                          Your email address is confirmed
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/before-you-continue">
-                          You’ll need to submit some documents
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/task-list">
-                          Task list
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/contact-details/who-are-you">
-                          Provide your contact details<br>
-                          Was the planning application made in your name?
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/contact-details/your-details">
-                          Provide your contact details<br>
-                          Contact details
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/appeal-saved">
-                          Your appeal has been saved
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/return-email">
-                          Subject: Return to appeal a planning decision
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/input-magic-link-email">
-                          Enter the email address that you used for the appeal
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/magic-link-email-sent">
-                          We’ve sent you an email
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/save-progress/v1/magic-link-email">
-                          Subject: Return to appeal a planning decision
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/incomplete-appeals">
-                          Incomplete appeals
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/return-email">
-                          Return email
-                        </a>
-                      </li>
-
-                    </ul>
-
-                    <details class="govuk-details" data-module="govuk-details">
+                    <!--details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
                       <summary class="govuk-details__summary">
                         <span class="govuk-details__summary-text">
-                          Jira Tickets (1)
+                          User research (1)
                         </span>
                       </summary>
                       <div class="govuk-details__text">
                         <ul class="govuk-list govuk-list-bulleted">
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4621" target="_blank">AS-4621 - Save progress and return to appeal submissions (opens in new tab)</a></li>
+                          <li><a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3458764516591934481&cot=14" target="_blank">Agents and appellants UR analysis</a></li>
                         </ul>
                       </div>
-                    </details>
+                    </details-->
+                    <!--details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (2)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4484" target="_blank">AS-4484 Amendment 'Before you start' journey for Prior Approval and vary/remove a condition</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4534" target="_blank">AS-4534 How can we make the before you start journey positive for anyone who can appeal?</a></li>
+                        </ul>
+                      </div>
+                    </details-->
                   </div>
 
                 </div>
@@ -646,6 +470,264 @@ service-start{% extends "layout.html" %}
                 </div>
 
               </div>
+            </div>
+          </div>
+
+          <!-- save progress / return to appeals -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-appellant">
+                  Save and return to appeals
+                </span>
+              </h2>
+            </div>
+
+            <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+
+                    <p class="govuk-body">
+                      Designing a pattern to help users save their progress during an appeal submission and later return to their appeal.
+                    </p>
+
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      ‘Save and return’ - version 2
+                    </h3>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/save-progress/v2/check-answers">
+                          End ‘Before you start’ / Check answers
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/what-is-your-application-number">
+                          What is your application number
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/what-is-your-email">
+                          What is your email address
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/confirm-email">
+                          Confirm your email address
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/confirmation-email">
+                          Subject: Confirm your email address
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/email-confirmed">
+                          Your email address is confirmed
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/expired-link">
+                          Link expired
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/confirm-email-resent">
+                          New link sent
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/before-you-continue">
+                          You’ll need to submit some documents
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/task-list">
+                          Task list
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/contact-details/who-are-you">
+                          Provide your contact details<br>
+                          Was the planning application made in your name?
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/contact-details/your-details">
+                          Provide your contact details<br>
+                          Contact details
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/appeal-saved">
+                          Your appeal has been saved
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/return-email">
+                          Subject: Return to appeal a planning decision
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="/save-progress/v2/appeal-closed">
+                          Appeal closed (return link expired)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/input-magic-link-email">
+                          Enter the email address that you used for the appeal
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/magic-link-email-sent">
+                          We’ve sent you an email
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/magic-link-email">
+                          Subject: Return to appeal a planning decision
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/incomplete-appeals">
+                          Incomplete appeals
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v2/return-email">
+                          Return email
+                        </a>
+                      </li>
+                      <br>
+                      <li>
+                        <a href="/save-progress/v2/what-do-you-want-to-do">
+                          Service start
+                        </a>
+                      </li>
+
+                    </ul>
+
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      ‘Save and return’ - version 1
+                    </h3>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/save-progress/v1/check-answers">
+                          End ‘Before you start’ / Check answers
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/what-is-your-application-number">
+                          What is your application number
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/what-is-your-email">
+                          What is your email address
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/confirm-email">
+                          Confirm your email address
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/confirmation-email">
+                          Subject: Confirm your email address
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/email-confirmed">
+                          Your email address is confirmed
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/before-you-continue">
+                          You’ll need to submit some documents
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/task-list">
+                          Task list
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/contact-details/who-are-you">
+                          Provide your contact details<br>
+                          Was the planning application made in your name?
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/contact-details/your-details">
+                          Provide your contact details<br>
+                          Contact details
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/appeal-saved">
+                          Your appeal has been saved
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/return-email">
+                          Subject: Return to appeal a planning decision
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/input-magic-link-email">
+                          Enter the email address that you used for the appeal
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/magic-link-email-sent">
+                          We’ve sent you an email
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v1/magic-link-email">
+                          Subject: Return to appeal a planning decision
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/incomplete-appeals">
+                          Incomplete appeals
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/return-email">
+                          Return email
+                        </a>
+                      </li>
+
+                    </ul>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (1)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4621" target="_blank">AS-4621 - Save progress and return to appeal submissions (opens in new tab)</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </div>
 
