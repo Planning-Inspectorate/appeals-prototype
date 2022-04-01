@@ -1,0 +1,56 @@
+{% set pageref = "MVP-FUL-PLA-002" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
+
+{% block pageTitle %}
+  What is your planning application number? - Upload documents from your planning application - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents from your planning application
+        </span>
+        
+        {{ govukInput({
+          id: "mvp-"+version+"-applicationdocs-applicationnumber",
+          name: "mvp-"+version+"-applicationdocs-applicationnumber",
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: "What is your planning application number?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "You can find this on the decision letter from your local planning department"
+          },
+          value: data["mvp-"+version+"-applicationdocs-applicationnumber"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

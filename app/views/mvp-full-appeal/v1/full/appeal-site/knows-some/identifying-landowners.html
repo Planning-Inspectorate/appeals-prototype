@@ -1,0 +1,91 @@
+{% set pageref = "MVP-FUL-AAS-006" %}
+{% extends "layouts/mvp-full-appeal/v1.html" %}
+
+{% block pageTitle %}
+  Identifying the {% if data["mvp-"+version+"-appealsite-ownsome"] == "Yes" %}other {% endif %}landowners - Tell us about the appeal site - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %} 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {% if data["mvp-"+version+"-appealsite-ownsome"] == "Yes" %}
+
+          <h1 class="govuk-heading-l">Identifying the other landowners</h1>
+          <p class="govuk-body">You must have attempted to identify all the other landowners.</p>
+          <p class="govuk-body">This includes:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>searching the land registry</li>
+            <li>putting up a site notice at the appeal site</li>
+          </ul>
+
+          <h2 class="govuk-heading-m">Confirm that you have attempted to identify the other landowners</h2>
+
+          {{ govukCheckboxes({
+            idPrefix: "mvp-"+version+"-appealsite-knowsome-identifying",
+            name: "mvp-"+version+"-appealsite-knowsome-identifying",
+            items: [
+              {
+                value: "I confirm that I've attempted to identify all the other landowners, but have not been successful.",
+                text: "I confirm that I've attempted to identify all the other landowners, but have not been successful.",
+                checked: checked("mvp-"+version+"-appealsite-knowsome-identifying", "I confirm that I've attempted to identify all the other landowners, but have not been successful.")
+              }
+            ]
+          }) }}
+
+        {% else %}
+
+          <h1 class="govuk-heading-l">Identifying the landowners</h1>
+          <p class="govuk-body">You must have attempted to identify all the other landowners.</p>
+          <p class="govuk-body">This includes:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>searching the land registry</li>
+            <li>putting up a site notice at the appeal site</li>
+          </ul>
+
+          <h2 class="govuk-heading-m">Confirm that you have attempted to identify the landowners</h2>
+
+          {{ govukCheckboxes({
+            idPrefix: "mvp-"+version+"-appealsite-knowsome-identifying",
+            name: "mvp-"+version+"-appealsite-knowsome-identifying",
+            items: [
+              {
+                value: "I confirm that I've attempted to identify all the landowners, but have not been successful.",
+                text: "I confirm that I've attempted to identify all the landowners, but have not been successful.",
+                checked: checked("mvp-"+version+"-appealsite-knowsome-identifying", "I confirm that I've attempted to identify all the landowners, but have not been successful.")
+              }
+            ]
+          }) }}
+
+        {% endif %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
