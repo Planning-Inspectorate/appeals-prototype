@@ -1,0 +1,79 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = "Your email address is confirmed" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+    <div class="govuk-form-group">
+
+      <label class="govuk-label govuk-label--l" for="postcode">
+        {{ title }}
+      </label>
+
+      <!-- <p class="govuk-body">
+        You can save your progress on this appeal from now on.
+      </p>
+
+      <p class="govuk-body">
+        This email will get you back to the appeal.
+      </p> -->
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          href: "before-you-continue",
+          text: "Continue"
+        }) }}
+
+        <!-- {{ govukButton({
+          href: "appeal-saved",
+          text: "Save and come back later",
+          classes: "govuk-button--secondary"
+        }) }} -->
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- this is a prototype only link -->
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+    <p class="govuk-body-s">
+      <a href="expired-link">
+        Link expired version
+      </a>
+    </p>
+  </div>
+
+</div>
+{% endblock %}
