@@ -53,9 +53,25 @@
           ]
         }) }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+
+        <!-- hacky hijack of this green button -->
+        <!-- quick hack for the UR starting tomorrow -->
+        <!-- only relevant for full appeals -->
+
+        {% if data['saveDemo'] %}
+
+          {{ govukButton({
+            href: "/save-progress/v3/check-answers",
+            text: "Continue"
+          }) }}
+
+        {% else %}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        {% endif %}
 
       </form>
 
