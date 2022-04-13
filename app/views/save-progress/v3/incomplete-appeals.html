@@ -17,10 +17,6 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.go(-1);"
-  }) }}
 {% endblock %}
 
 {% block content %}
@@ -62,7 +58,7 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td scope="row" class="govuk-table__cell">
-            <a href="task-list?application=1234567&progress=yes" class="govuk-link govuk-link--no-visited-state">
+            <a href="task-list?application=1234567&progress=yes&continue=yes" class="govuk-link govuk-link--no-visited-state">
               1234567
             </a>
           </td>
@@ -72,7 +68,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td scope="row" class="govuk-table__cell">
-            <a href="task-list?application=2345678&progress=yes" class="govuk-link govuk-link--no-visited-state">
+            <a href="task-list?application=2345678&progress=yes&continue=yes" class="govuk-link govuk-link--no-visited-state">
               2345678
             </a>
           </td>
@@ -82,7 +78,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td scope="row" class="govuk-table__cell">
-            <a href="task-list?application=3456789&progress=yes" class="govuk-link govuk-link--no-visited-state">
+            <a href="task-list?application=3456789&progress=yes&continue=yes" class="govuk-link govuk-link--no-visited-state">
               3456789
             </a>
           </td>

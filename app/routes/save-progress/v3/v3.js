@@ -1,6 +1,6 @@
 module.exports = function (router) {
 
-  var v = "v2";
+  var v = "v3";
   var base = "/save-progress/"+v;
 
   // route for completing the contact details task
@@ -16,7 +16,7 @@ module.exports = function (router) {
     if (choice === 'new') {
       res.redirect('/appellant-submission/v13/')
     } else {
-      res.redirect('input-magic-link-email')
+      res.redirect('input-magic-link-email?continue=yes')
     }
   })
 
