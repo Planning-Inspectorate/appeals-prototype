@@ -3,7 +3,7 @@
 
 {% set serviceName = "Appeal a planning decision" %}
 
-{% set title = "We’ve sent you an email" %}
+{% set title = "We’ve sent you another email" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -54,10 +54,6 @@
       </p>
 
       <p class="govuk-body">
-        We can <a href="magic-link-email-resent">resend the email</a>.
-      </p>
-
-      <p class="govuk-body">
         If you’re still having problems, you can contact our customer support team:
       </p>
 
@@ -78,11 +74,13 @@
     </div>
   </div>
 
-  <!-- only for user research purposes -->
   <!-- this is a prototype only link -->
-  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0 govuk-!-margin-top-9">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
     <p class="govuk-body-s">
-      <a href="inbox-3" class="pins-prototype-only">
+      <a href="inbox-3">
         Go to the email (your inbox)
       </a>
     </p>

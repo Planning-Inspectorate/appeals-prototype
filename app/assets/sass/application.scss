@@ -30,6 +30,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/tables";
 @import "pins/email";
 @import "pins/public-guidance";
+@import "pins/prototype-only";
 
 .autocomplete__option {
 	font-family: "nta", Arial, sans-serif;
