@@ -17,13 +17,10 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
-  {% if data['continue'] == 'yes' %}
-    {{ govukBackLink({
-      text: "Back",
-      href: "javascript:history.go(-1);"
-    }) }}
-  {% endif %}
-
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -31,7 +28,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="magic-link-email-sent?continue=" method="post">
+      <form action="magic-link-email-sent" method="post">
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 

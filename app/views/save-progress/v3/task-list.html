@@ -1,12 +1,4 @@
-{% if data['progress'] == 'yes' %}
-
-  {% extends "layouts/save-progress/v2-no-back.html" %}
-
-{% else %}
-
-  {% extends "layouts/save-progress/v2.html" %}
-
-{% endif %}
+{% extends "layouts/save-progress/v2.html" %}
 
 {% block pageTitle %}
   Task list - Appeal a planning decision for application number 1234567 - {{serviceName}} - GOV.UK
@@ -27,13 +19,9 @@
       <!-- Count completed tasks -->
 
       {% set taskcount = 0 %}
-
       {% if data["contactdetails-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
-      {% elseif data['progress'] == 'yes' %}
-        {% set taskcount = taskcount + 1 %}
       {% endif %}
-
       {% if data["contactdetails-"+version+"-taskliststatus-appealsite"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
