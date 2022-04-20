@@ -58,7 +58,7 @@ service-start{% extends "layout.html" %}
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
 
-                  <!-- save and return version 2 -->
+                  <!-- Appeal -->
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
@@ -94,7 +94,7 @@ service-start{% extends "layout.html" %}
                       </li>
                     </ul>
 
-                    <details class="govuk-details" data-module="govuk-details">
+                    <!-- <details class="govuk-details" data-module="govuk-details">
                       <summary class="govuk-details__summary">
                         <span class="govuk-details__summary-text">
                           Jira Tickets (1)
@@ -105,7 +105,7 @@ service-start{% extends "layout.html" %}
                           <li><a href="https://pins-ds.atlassian.net/browse/AS-4621" target="_blank">AS-4621 - Save progress and return to appeal submissions (opens in new tab)</a></li>
                         </ul>
                       </div>
-                    </details>
+                    </details> -->
                   </div>
 
                 </div>
@@ -485,6 +485,11 @@ service-start{% extends "layout.html" %}
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 
                     {{ govukTag({
+                      classes: "govuk-tag--purple govuk-!-margin-bottom-3",
+                      text: "Ready for dev"
+                    }) }}
+
+                    {{ govukTag({
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
@@ -587,22 +592,22 @@ service-start{% extends "layout.html" %}
                           Subject: Return to appeal a planning decision
                         </a>
                       </li>
-                      <li>
+                      <!-- <li>
                         <a href="/save-progress/v3/incomplete-appeals">
                           Incomplete appeals
                         </a>
-                      </li>
+                      </li> -->
                       <li>
                         <a href="/save-progress/v3/return-email">
                           Return email
                         </a>
                       </li>
                       <br>
-                      <li>
+                      <!-- <li>
                         <a href="/save-progress/v3/service-start">
                           Service start
                         </a>
-                      </li>
+                      </li> -->
 
                     </ul>
 
