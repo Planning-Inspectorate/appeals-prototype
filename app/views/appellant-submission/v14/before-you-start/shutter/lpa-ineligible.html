@@ -1,0 +1,43 @@
+{% set pageref = "AS14-BYS-ACP-1" %}
+{% set lpaname = "Your local planning department" %}
+{% extends "layouts/before-you-start/v10.html" %}
+
+
+{% block pageTitle %}
+  You need to use the existing service - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You need to use the existing service
+      </h1>
+      <p class="govuk-body">
+        {% for lpa in data['lpas'] %}
+          {% if lpa.key == data["bys-"+version+"-planningdepartment"] %}
+            {% set lpaname = lpa['official-name'] %}
+          {% endif %}
+        {% endfor %}
+        {{ lpaname }} is not using this new service yet.
+      </p>
+      <p class="govuk-body">
+        You need to submit your appeal using the existing service, the Appeals Casework Portal.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        How to begin your appeal
+      </h2>
+      <p class="govuk-body">
+        To begin your appeal, log in or register on the Appeals Casework Portal.
+      </p>
+      {{ govukButton({
+        text: "Continue to the Appeals Casework Portal"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
