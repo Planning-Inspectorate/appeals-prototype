@@ -483,19 +483,21 @@
         
         <h2 class="govuk-heading-l govuk-!-margin-top-9">Your planning application</h2>
         <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Planning application number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-applicationdocs-applicationnumber"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> planning application number</span>
-              </a>
-            </dd>
-          </div>
+          {% if data["appealsub-"+version+"-applicationdocs-confirmingletter"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Letter confirming your planning application
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-applicationdocs-confirmingletter"] }}</a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> letter confirming your planning application</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Planning application form
@@ -506,6 +508,76 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> planning application form</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the application form include site ownership and agricultural holdings certificates?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-applicationdocs-certificates"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> application form includes site ownership and agricultural holdings certificates</span>
+              </a>
+            </dd>
+          </div>
+          <!-- cert upload -->
+          {% if data["appealsub-"+version+"-applicationdocs-certificates"] == "No, I submitted these separately" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Site ownership and agricultural holdings certificates
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data["appealsub-"+version+"-applicationdocs-certificate-files"]|is_string %}
+                  <p class="govuk-body">
+                    <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-applicationdocs-certificate-files"] }}</a>
+                  </p>
+                {% else %}
+                  <ul class="govuk-list">
+                    {% for item in data["appealsub-"+version+"-applicationdocs-certificate-files"] %}
+                      <li>
+                        <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> site ownership and agricultural holdings certificates</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Did the proposed development change after you submitted your application?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{ data["appealsub-"+version+"-applicationdocs-developmentchanged"] }}</p>
+              {% if data["appealsub-"+version+"-applicationdocs-developmentchanged"] == "Yes" %}
+              <p class="govuk-body">{{ data["appealsub-"+version+"-applicationdocs-developmentchanged-description"] }}</p>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> did the proposed development change after you submitted your application</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Planning application number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-applicationdocs-applicationnumber"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> planning application number</span>
               </a>
             </dd>
           </div>
@@ -550,19 +622,35 @@
               </dd>
             </div>
           {% endif %}
+          {% if data["appealsub-"+version+"-bys-permissiongrantedrefused"] == "I have not received a decision" %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Decision letter
+              Letter confirming your planning application
             </dt>
             <dd class="govuk-summary-list__value">
-              <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-applicationdocs-decisionletter"] }}</a>
+              <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-applicationdocs-confirmingletter"] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> decision letter</span>
+                Change<span class="govuk-visually-hidden"> letter confirming your planning application</span>
               </a>
             </dd>
           </div>
+          {% else %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Decision letter
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-applicationdocs-decisionletter"] }}</a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> decision letter</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
         </dl>
         
         <h2 class="govuk-heading-l govuk-!-margin-top-9">Your appeal</h2>
@@ -620,6 +708,53 @@
               </dd>
             </div>
           {% endif %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you plan to submit a planning obligation to support your appeal?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-appealdocs-planningobligation"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> do you plan to submit a planning obligation to support your appeal?</span>
+              </a>
+            </dd>
+          </div>
+          {% if data["appealsub-"+version+"-appealdocs-planningobligation"] == "Yes" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is the status of your planning obligation?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-appealdocs-planningobligation-status"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> what is the status of your planning obligation?</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          {% if data["appealsub-"+version+"-appealdocs-planningobligation-status"] == "Finalised and ready to submit" or data["appealsub-"+version+"-appealdocs-planningobligation-status"] == "In draft"  %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Planning obligation
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  {{ data["appealsub-"+version+"-appealdocs-planningobligation-upload"] }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> planning obligation</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             Any documents to support your appeal
