@@ -81,97 +81,26 @@
       </h2>
 
       <p class="govuk-body">
-        Any previous comments that you submitted as part of an application will be considered by the Inspector. The local planning department shares these with the Planning Inspectorate, so there is no need to submit repeat comments.
+        Any previous comments that you submitted as part of an application will be considered by the Planning Inspector. The local planning department shares these with the Planning Inspectorate, so there is no need to submit repeat comments.
       </p>
 
       <p class="govuk-body">
-        We will share any comments you submit with the applicant and the local planning department.
+        You should avoid including sensitive information (also called special category information) if it's not relevant to the appeal. Any sensitive information you share may be shared publicly if the Planning Inspector agrees that it's relevant to your appeal.
       </p>
 
       <p>
-        You should only include personal information if it's relevant to the appeal.
+        Your comments must not include inflammatory or abusive language.
       </p>
 
-      <p>
-        Personal information includes health, race and gender.
-      </p>
+      {% include "includes/sensitive-info-list.html" %}
 
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            See a full list of what counts as personal information
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-
-          <!-- <p class="govuk-body">
-            Other examples of personal information
-          </p> -->
-
-          <h3 class="govuk-heading-s">
-            Other examples of personal information
-          </h3>
-
-          <ul class="govuk-list govuk-list--bullet">
-
-            <li>
-              comments from children
-            </li>
-            <li>
-              information relating to children
-            </li>
-            <li>
-              information relating to health
-            </li>
-            <li>
-              information relating to crime
-            </li>
-          </ul>
-
-          <p class="govuk-body">
-            It also includes any information relating to an individual's:
-          </p>
-
-          <ul class="govuk-list govuk-list--bullet">
-            <li>
-              race
-            </li>
-            <li>
-              ethnic origin
-            </li>
-            <li>
-              politics
-            </li>
-            <li>
-              religion
-            </li>
-            <li>
-              trade union membership
-            </li>
-            <li>
-              genetics
-            </li>
-            <li>
-              physical characteristics
-            </li>
-            <li>
-              sex life
-            </li>
-            <li>
-              sexual orientation
-            </li>
-          </ul>
-
-        </div>
-      </details>
-
-      <p class="govuk-body">
+      <!-- <p class="govuk-body">
         If you include any personal information that's not relevant, we'll ask you to resubmit. This could mean that you miss the deadline to submit comments.
       </p>
 
       <p class="govuk-body">
         Your comments must not include inflammatory or abusive language.
-      </p>
+      </p> -->
 
       {{ govukButton({
         classes: "govuk-!-margin-top-5",

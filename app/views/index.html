@@ -58,12 +58,55 @@ service-start{% extends "layout.html" %}
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
 
-                  <!-- Appeal -->
+                  <!-- public guidance v1 -->
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
+
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Appeal refused planning permission - Version 2
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/guidance/full/v2/overview">Overview</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/when-you-can-appeal">When you can appeal</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/before-you-appeal">Before you appeal</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/submit-an-appeal">Submit an appeal</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/your-appeal-statement">Your appeal statement</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/stages-of-an-appeal">The stages of an appeal</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/your-appeal-decision">Your appeal decision</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/claim-costs-for-your-appeal">Claim costs for your appeal</a>
+                      </li>
+                      <li>
+                        <a href="/guidance/full/v2/comment-on-planning-appeal">Comment on a planning appeal</a>
+                      </li>
+                    </ul>
+
+                  </div>
+
+                  <!-- public guidance v1 -->
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
+                      text: "Ready for UR"
+                    }) }}
+
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                       Appeal refused planning permission - Version 1
                     </h3>
@@ -94,18 +137,6 @@ service-start{% extends "layout.html" %}
                       </li>
                     </ul>
 
-                    <!-- <details class="govuk-details" data-module="govuk-details">
-                      <summary class="govuk-details__summary">
-                        <span class="govuk-details__summary-text">
-                          Jira Tickets (1)
-                        </span>
-                      </summary>
-                      <div class="govuk-details__text">
-                        <ul class="govuk-list govuk-list-bulleted">
-                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4621" target="_blank">AS-4621 - Save progress and return to appeal submissions (opens in new tab)</a></li>
-                        </ul>
-                      </div>
-                    </details> -->
                   </div>
 
                 </div>
@@ -144,6 +175,9 @@ service-start{% extends "layout.html" %}
                       Splitting out the "Before you start" journey from the "Appellant submission" journey so we can more easily manage changes across the various possible journeys throughout the Appeal a planning decision service.
                     </p>
                     <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="before-you-start/v10/?saveDemo=1">Start 'Before you start' (UR link between BYS and Save and return)</a>
+                      </li>
                       <li>
                         <a href="/before-you-start/v10/">Start 'Before you start'</a>
                       </li>
@@ -490,8 +524,10 @@ service-start{% extends "layout.html" %}
                     }) }}
 
                     {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
-                      text: "Ready for UR"
+
+                      classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                      text: "Done"
+
                     }) }}
 
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
@@ -571,7 +607,6 @@ service-start{% extends "layout.html" %}
                           Subject: Return to appeal a planning decision
                         </a>
                       </li>
-
                       <li>
                         <a href="/save-progress/v3/appeal-closed">
                           Appeal closed (return link expired)
@@ -592,33 +627,36 @@ service-start{% extends "layout.html" %}
                           Subject: Return to appeal a planning decision
                         </a>
                       </li>
-                      <!-- <li>
-                        <a href="/save-progress/v3/incomplete-appeals">
-                          Incomplete appeals
-                        </a>
-                      </li> -->
                       <li>
-                        <a href="/save-progress/v3/return-email">
-                          Return email
+                        <a href="/save-progress/v3/task-list?progress=yes">
+                          Task list
                         </a>
                       </li>
-                      <br>
-                      <!-- <li>
-                        <a href="/save-progress/v3/service-start">
-                          Service start
-                        </a>
-                      </li> -->
 
                     </ul>
 
                     <details class="govuk-details" data-module="govuk-details">
                       <summary class="govuk-details__summary">
                         <span class="govuk-details__summary-text">
-                          Jira Tickets (1)
+                          User research
                         </span>
                       </summary>
                       <div class="govuk-details__text">
                         <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/963608577/UR_Greece+Sprint+-+Team+2" target="_blank">Confluence sprint 13 user research</a></li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (2)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4683" target="_blank">AS-4683 - Save progress and return to appeal submissions iterations (opens in new tab)</a></li>
                           <li><a href="https://pins-ds.atlassian.net/browse/AS-4621" target="_blank">AS-4621 - Save progress and return to appeal submissions (opens in new tab)</a></li>
                         </ul>
                       </div>
