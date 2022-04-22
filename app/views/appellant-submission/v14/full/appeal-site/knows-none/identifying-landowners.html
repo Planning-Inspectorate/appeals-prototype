@@ -1,5 +1,5 @@
 {% set pageref = "AS14-FUL-AAS-009" %}
-AS14{% extends "layouts/appellant-submission/v14.html" %}
+{% extends "layouts/appellant-submission/v14.html" %}
 
 {% block pageTitle %}
   Identifying the {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}other {% endif %}landowners - Tell us about the appeal site - {{serviceName}} - GOV.UK

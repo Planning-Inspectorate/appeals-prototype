@@ -488,7 +488,7 @@ module.exports = function (router) {
       if (req.session.data["appealsub-"+v+"-appealdocs-plansdrawings"] == "Yes"){
         res.redirect(base+'full/appeal-documents/plans-drawings-upload');
       } else {
-        res.redirect(base+'full/appeal-documents/supporting-documents');
+        res.redirect(base+'full/appeal-documents/planning-obligation');
       }
     })
   
@@ -503,6 +503,22 @@ module.exports = function (router) {
         req.session.data["appealsub-"+v+"-appealdocs-plansdrawings-files-existing"] = req.session.data["appealsub-"+v+"-appealdocs-plansdrawings-files"]
       }
   
+      res.redirect(base+'full/appeal-documents/planning-obligation');
+    })
+  
+    router.post(base+'full/appeal-documents/planning-obligation', function (req, res) {
+      if (req.session.data["appealsub-"+v+"-appealdocs-planningobligation"] == "Yes"){
+        res.redirect(base+'full/appeal-documents/planning-obligation-status');
+      } else {
+        res.redirect(base+'full/appeal-documents/supporting-documents');
+      }
+    })
+  
+    router.post(base+'full/appeal-documents/planning-obligation-status', function (req, res) {
+      res.redirect(base+'full/appeal-documents/planning-obligation-upload');
+    })
+  
+    router.post(base+'full/appeal-documents/planning-obligation-upload', function (req, res) {
       res.redirect(base+'full/appeal-documents/supporting-documents');
     })
   
