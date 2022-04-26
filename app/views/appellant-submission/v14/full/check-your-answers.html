@@ -486,14 +486,14 @@
           {% if data["appealsub-"+version+"-applicationdocs-confirmingletter"] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Letter confirming your planning application
+                Decision notice from your original planning application
               </dt>
               <dd class="govuk-summary-list__value">
-                <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-applicationdocs-confirmingletter"] }}</a>
+                <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-applicationdocs-originaldecision"] }}</a>
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> letter confirming your planning application</span>
+                  Change<span class="govuk-visually-hidden"> decision notice from your original planning application</span>
                 </a>
               </dd>
             </div>
@@ -554,6 +554,19 @@
           {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              Planning application number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["appealsub-"+version+"-applicationdocs-applicationnumber"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> planning application number</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               Did the proposed development change after you submitted your application?
             </dt>
             <dd class="govuk-summary-list__value">
@@ -565,19 +578,6 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
                 Change<span class="govuk-visually-hidden"> did the proposed development change after you submitted your application</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Planning application number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-applicationdocs-applicationnumber"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> planning application number</span>
               </a>
             </dd>
           </div>
