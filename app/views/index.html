@@ -520,7 +520,7 @@ service-start{% extends "layout.html" %}
 
                     {{ govukTag({
                       classes: "govuk-tag--purple govuk-!-margin-bottom-3",
-                      text: "Ready for dev"
+                      text: "For development"
                     }) }}
 
                     {{ govukTag({
@@ -608,28 +608,38 @@ service-start{% extends "layout.html" %}
                         </a>
                       </li>
                       <li>
-                        <a href="/save-progress/v3/appeal-closed">
-                          Appeal closed (return link expired)
+                        <a href="/save-progress/v3/input-code">
+                          Enter the code
                         </a>
                       </li>
                       <li>
-                        <a href="/save-progress/v3/input-magic-link-email">
-                          Enter the email address that you used for the appeal
+                        <a href="/save-progress/v3/email-with-code">
+                          Subject: Your code to continue with the appeal
                         </a>
                       </li>
                       <li>
-                        <a href="/save-progress/v3/magic-link-email-sent">
-                          We’ve sent you an email
+                        <a href="/save-progress/v3/appeal-submitted">
+                          Appeal submitted
                         </a>
                       </li>
                       <li>
-                        <a href="/save-progress/v3/magic-link-email">
-                          Subject: Return to appeal a planning decision
+                        <a href="/save-progress/v3/you-cannot-appeal">
+                          You cannot appeal
                         </a>
                       </li>
                       <li>
                         <a href="/save-progress/v3/task-list?progress=yes">
                           Task list
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v3/code-expired">
+                          Code expired
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v3/check-your-answers">
+                          Check your answers (end of appeal submission)
                         </a>
                       </li>
 
@@ -643,7 +653,7 @@ service-start{% extends "layout.html" %}
                       </summary>
                       <div class="govuk-details__text">
                         <ul class="govuk-list govuk-list-bulleted">
-                          <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/963608577/UR_Greece+Sprint+-+Team+2" target="_blank">Confluence sprint 13 user research</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/963608577/UR_Greece+Sprint+-+Team+2" target="_blank">Confluence sprint 11 user research</a></li>
                         </ul>
                       </div>
                     </details>
