@@ -1,4 +1,12 @@
-{% set pageref = "AS14-FUL-APP-XXX" %}
+{% if data["appealsub-v14-appealdocs-planningobligation-status"] == "Finalised and ready to submit" %}
+  {% set pageref = "FUL-APP-008-AS14" %}
+{% endif %}
+{% if data["appealsub-v14-appealdocs-planningobligation-status"] == "In draft" %}
+  {% set pageref = "FUL-APP-009-AS14" %}
+{% endif %}
+{% if data["appealsub-v14-appealdocs-planningobligation-status"] == "Not started yet" %}
+  {% set pageref = "FUL-APP-010-AS14" %}
+{% endif %}
 {% extends "layouts/appellant-submission/v14.html" %}
 
 {% block pageTitle %}

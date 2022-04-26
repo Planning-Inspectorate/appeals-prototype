@@ -26,6 +26,24 @@ module.exports = function (router) {
     res.redirect(base+'before-you-start/check-answers');
   })
 
+  router.get(base+'skip/bys-cya-full-refused', function (req, res) {
+    req.session.data["appealsub-"+v+"-bys-planningdepartment"] = "BRD";
+    req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] = "Full planning";
+    req.session.data["appealsub-"+v+"-bys-appealabout"] = [
+      "No, my planning application was not about any of these"
+    ],
+    req.session.data["appealsub-"+v+"-bys-permissiongrantedrefused"] = "Refused";
+    req.session.data["appealsub-"+v+"-bys-decisiondatedue-day"] = "04";
+    req.session.data["appealsub-"+v+"-bys-decisiondatedue-month"] = "04";
+    req.session.data["appealsub-"+v+"-bys-decisiondatedue-year"] = "2022";
+    req.session.data["appealsub-"+v+"-bys-deadline-day"] = 3,
+    req.session.data["appealsub-"+v+"-bys-deadline-month"] = 10,
+    req.session.data["appealsub-"+v+"-bys-deadline-year"] = 2022,
+    req.session.data["appealsub-"+v+"-bys-enforcementnotice"] = "No";
+    req.session.data["appealsub-"+v+"-bys-route"] = "full",
+    res.redirect(base+'before-you-start/check-answers');
+  })
+
 
 
 /************************
