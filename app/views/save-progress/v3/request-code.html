@@ -3,7 +3,7 @@
 
 {% set serviceName = "Appeal a planning decision" %}
 
-{% set title = "Code expired" %}
+{% set title = "Request a new code" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -33,14 +33,13 @@
       </label>
 
       <p class="govuk-body">
-        The code you’re trying to enter has expired.
+        Emails sometimes take a few minutes to arrive. If you do not receive the email, you can request a new one.
       </p>
 
-      <p class="govuk-body">
-        <a href="input-code" class="govuk-link">
-          Send another code
-        </a>
-      </p>
+      {{ govukButton({
+        href: "input-code",
+        text: "Request a new code"
+      }) }}
 
     </div>
 
