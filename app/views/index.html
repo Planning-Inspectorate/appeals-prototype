@@ -58,86 +58,101 @@ service-start{% extends "layout.html" %}
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
 
-                  <!-- public guidance v2 -->
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-bottom-3",
-                      text: "Archived"
+                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
+                      text: "For GOV.UK"
                     }) }}
-
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                      Appeal refused planning permission - Version 2
+                      Appeal a householder planning decision guidance - Version 1
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
-                      <li>
-                        <a href="/guidance/full/v2/overview">Overview</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/when-you-can-appeal">When you can appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/before-you-appeal">Before you appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/submit-an-appeal">Submit an appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/your-appeal-statement">Your appeal statement</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/stages-of-an-appeal">The stages of an appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/your-appeal-decision">Your appeal decision</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/claim-costs-for-your-appeal">Claim costs for your appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v2/comment-on-planning-appeal">Comment on a planning appeal</a>
-                      </li>
+                      <li><a href="/guidance/householder/v1/overview">Overview</a></li>
+                      <li><a href="/guidance/householder/v1/when-you-can-appeal">When you can appeal</a></li>
+                      <li><a href="/guidance/householder/v1/before-you-appeal">Before you appeal</a></li>
+                      <li><a href="/guidance/householder/v1/your-appeal-statement">Your appeal statement</a></li>
+                      <li><a href="/guidance/householder/v1/submit-an-appeal">Submit an appeal</a></li>
+                      <li><a href="/guidance/householder/v1/stages-of-an-appeal">The stages of an appeal</a></li>
+                      <li><a href="/guidance/householder/v1/your-appeal-decision">Your appeal decision</a></li>
+                      <li><a href="/guidance/householder/v1/claim-costs-for-your-appeal">Claim costs for your appeal</a></li>
+                      <li><a href="/guidance/householder/v1/comment-on-householder-appeal">Comment on a householder appeal</a></li>
                     </ul>
-
                   </div>
 
-                  <!-- public guidance v1 -->
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
-                      classes: "govuk-tag--grey govuk-!-margin-bottom-3",
-                      text: "Archived"
+                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
+                      text: "For GOV.UK"
                     }) }}
-
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                      Appeal refused planning permission - Version 1
+                      Appeal a planning decision guidance - Version 3
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
-                      <li>
-                        <a href="/guidance/full/v1/overview">Overview</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v1/when-you-can-appeal">When you can appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v1/before-you-appeal">Before you appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v1/how-to-appeal">How to appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v1/stages-of-an-appeal">The stages of an appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v1/your-appeal-decision">Your appeal decision</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v1/claim-costs-for-your-appeal">Claim costs for your appeal</a>
-                      </li>
-                      <li>
-                        <a href="/guidance/full/v1/comment-on-planning-appeal">Comment on a planning appeal</a>
-                      </li>
+                      <li><a href="/guidance/full/v3/overview">Overview</a></li>
+                      <li><a href="/guidance/full/v3/when-you-can-appeal">When you can appeal</a></li>
+                      <li><a href="/guidance/full/v3/before-you-appeal">Before you appeal</a></li>
+                      <li><a href="/guidance/full/v3/your-appeal-statement">Your appeal statement</a></li>
+                      <li><a href="/guidance/full/v3/submit-an-appeal">Submit an appeal</a></li>
+                      <li><a href="/guidance/full/v3/stages-of-an-appeal">The stages of an appeal</a></li>
+                      <li><a href="/guidance/full/v3/your-appeal-decision">Your appeal decision</a></li>
+                      <li><a href="/guidance/full/v3/claim-costs-for-your-appeal">Claim costs for your appeal</a></li>
+                      <li><a href="/guidance/full/v3/comment-on-planning-appeal">Comment on a planning appeal</a></li>
                     </ul>
-
                   </div>
+                  
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Archived guidance pages
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      
+                      <!-- public guidance v2 -->
+                      <div class="govuk-inset-text govuk-!-margin-top-0">
+                        {{ govukTag({
+                          classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                          text: "Archived"
+                        }) }}
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                          Appeal refused planning permission - Version 2
+                        </h3>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li><a href="/guidance/full/v2/overview">Overview</a></li>
+                          <li><a href="/guidance/full/v2/when-you-can-appeal">When you can appeal</a></li>
+                          <li><a href="/guidance/full/v2/before-you-appeal">Before you appeal</a></li>
+                          <li><a href="/guidance/full/v2/submit-an-appeal">Submit an appeal</a></li>
+                          <li><a href="/guidance/full/v2/your-appeal-statement">Your appeal statement</a></li>
+                          <li><a href="/guidance/full/v2/stages-of-an-appeal">The stages of an appeal</a></li>
+                          <li><a href="/guidance/full/v2/your-appeal-decision">Your appeal decision</a></li>
+                          <li><a href="/guidance/full/v2/claim-costs-for-your-appeal">Claim costs for your appeal</a></li>
+                          <li><a href="/guidance/full/v2/comment-on-planning-appeal">Comment on a planning appeal</a></li>
+                        </ul>
+                      </div>
+
+                      <!-- public guidance v1 -->
+                      <div class="govuk-inset-text govuk-!-margin-top-0">
+                        {{ govukTag({
+                          classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                          text: "Archived"
+                        }) }}
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                          Appeal refused planning permission - Version 1
+                        </h3>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li><a href="/guidance/full/v1/overview">Overview</a></li>
+                          <li><a href="/guidance/full/v1/when-you-can-appeal">When you can appeal</a></li>
+                          <li><a href="/guidance/full/v1/before-you-appeal">Before you appeal</a></li>
+                          <li><a href="/guidance/full/v1/how-to-appeal">How to appeal</a></li>
+                          <li><a href="/guidance/full/v1/stages-of-an-appeal">The stages of an appeal</a></li>
+                          <li><a href="/guidance/full/v1/your-appeal-decision">Your appeal decision</a></li>
+                          <li><a href="/guidance/full/v1/claim-costs-for-your-appeal">Claim costs for your appeal</a></li>
+                          <li><a href="/guidance/full/v1/comment-on-planning-appeal">Comment on a planning appeal</a></li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </details>
 
                 </div>
               </div>
