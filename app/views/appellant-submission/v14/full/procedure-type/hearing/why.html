@@ -1,0 +1,52 @@
+{% set pageref = "FUL-DYA-002-AS14" %}
+{% extends "layouts/appellant-submission/v14.html" %}
+
+{% block pageTitle %}
+  Why would you prefer a hearing? - Tell us how you would prefer us to decide your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us how you would prefer us to decide your appeal
+        </span>
+
+        {{ govukTextarea({
+          id: "appealsub-"+version+"-proceduretype-hearing-why",
+          name: "appealsub-"+version+"-proceduretype-hearing-why",
+          label: {
+            text: "Why would you prefer a hearing?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          value: data["appealsub-"+version+"-proceduretype-hearing-why"]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

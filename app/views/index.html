@@ -164,10 +164,14 @@ service-start{% extends "layout.html" %}
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-appellant">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-beforeyoustart">
                   Before you start
                 </span>
               </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-default-heading-beforeyoustart-summary">
+                These prototypes are now superceded by the 
+                "Full Appeal MVP Prototype" which includes "Before you start" as part of the end to end appeal submission.
+              </div>
             </div>
 
             <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
@@ -177,8 +181,8 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
-                      text: "Ready for UR"
+                      classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                      text: "Archived"
                     }) }}
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                       Version 10 - Before you start
@@ -226,8 +230,8 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
-                      classes: "govuk-tag--blue govuk-!-margin-bottom-3",
-                      text: "Done"
+                      classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                      text: "Archived"
                     }) }}
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                       Version 9 - Before you start
@@ -290,8 +294,87 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
-                      text: "Ready for UR"
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Version 14 - Missing questions in full appeal submission
+                    </h3>
+                    <!--h4 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Guidance
+                    </h4>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/appellant-submission/v13/costs-guidance/overview">Guidance - Claim planning appeal costs</a>
+                      </li>
+                    </ul-->
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Submission journeys
+                    </h4>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/appellant-submission/v14/before-you-start/">Start from 'Before you start'</a>
+                      </li>
+                      <li>
+                        Starting from check your answers in 'Before you start':</a>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>
+                            <a href="/appellant-submission/v14/skip/bys-cya-removalvary-nondetermination">Appeal non-determination of removal or variation of conditions</a>
+                          </li>
+                          <li>
+                            <a href="/appellant-submission/v14/skip/bys-cya-full-refused">Appeal refusal of full planning</a>
+                          </li>
+
+                          
+                          <!--li>
+                            <a href="/appellant-submission/v14/skip/full-bys-cya-refusal">Full appeal refusal</a>
+                          </li>
+                          <li>
+                            <a href="/appellant-submission/v14/skip/full-bys-cya-granted">Full appeal granted with conditions</a>
+                          </li-->
+                        </ul>
+                      </li>
+                      <!--li>
+                        <a href="/appellant-submission/v14/skip/full-task-list">Start from task list</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v14/skip/full-check-answers">Start from check your answers</a>
+                      </li-->
+                    </ul>
+                    <!--details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          User research (1)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3458764516591934481&cot=14" target="_blank">Agents and appellants UR analysis</a></li>
+                        </ul>
+                      </div>
+                    </details-->
+                    <!--details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (5)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4086" target="_blank">AS-4086 Revert to getting plans from appellant</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4412" target="_blank">AS-4412 Fix upload fields to not overwrite previously uploaded file when blank</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4108" target="_blank">AS-4108 Full Planning - Notify Appeal Valid/Start Comms</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4252" target="_blank">AS-4252 Submission confirmation email (GovNotify) - appellant/agent</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4362" target="_blank">AS-4362 Appellant notification email: statement of case and IP comments / final comments prompt</a></li>
+                        </ul>
+                      </div>
+                    </details-->
+                  </div>
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                      text: "Done"
                     }) }}
                     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                       Version 13 - Full appeal submission
