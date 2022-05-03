@@ -1,0 +1,68 @@
+{% set pageref = "LB-PLA-007-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+Does the application form include site ownership and agricultural holdings certificates? - Upload documents from your planning application - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents from your planning application
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-applicationdocs-certificates",
+          name: "appealsub-"+version+"-applicationdocs-certificates",
+          fieldset: {
+            legend: {
+              text: "Does the application form include site ownership and agricultural holdings certificates?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Some local planning departments include these on the application form. Others ask you to submit these separately."
+          },
+          items: [
+            {
+              value: "Yes, my application form includes site ownership and agricultural holdings certificates",
+              text: "Yes, my application form includes site ownership and agricultural holdings certificates",
+              checked: checked("appealsub-"+version+"-applicationdocs-certificates", "Yes, my application form includes site ownership and agricultural holdings certificates")
+            },
+            {
+              value: "No, I submitted these separately",
+              text: "No, I submitted these separately",
+              checked: checked("appealsub-"+version+"-applicationdocs-certificates", "No, I submitted these separately")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

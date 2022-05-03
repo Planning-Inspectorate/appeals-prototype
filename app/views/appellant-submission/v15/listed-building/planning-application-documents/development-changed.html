@@ -1,0 +1,81 @@
+{% set pageref = "LB-PLA-009-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+Did the proposed development change after you submitted your application? - Upload documents from your planning application - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents from your planning application
+        </span>
+        <h1 class="govuk-heading-l">
+          Did the proposed development change after you submitted your application?
+        </h1>
+        <p class="govuk-body">
+          Only tell us about changes you agreed with the local planning department.
+        <p>
+        <p class="govuk-body">
+          For example, if you applied to build 5 houses, but agreed to change this to 4 during the application process.
+        <p>
+
+        {% set developmentHtml %}
+          {{ govukTextarea({
+            id: "appealsub-"+version+"-applicationdocs-developmentchanged-description",
+            name: "appealsub-"+version+"-applicationdocs-developmentchanged-description",
+            label: {
+              text: "Enter the agreed description of development"
+            },
+            value: data["appealsub-"+version+"-applicationdocs-developmentchanged-description"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-applicationdocs-developmentchanged",
+          name: "appealsub-"+version+"-applicationdocs-developmentchanged",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: developmentHtml
+              },
+              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

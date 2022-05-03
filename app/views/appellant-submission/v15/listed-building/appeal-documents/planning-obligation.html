@@ -1,0 +1,95 @@
+{% set pageref = "LB-APP-006-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+Do you plan to submit a planning obligation to support your appeal? - Upload documents for your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents for your appeal
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealdocs-planningobligation",
+          name: "appealsub-"+version+"-appealdocs-planningobligation",
+          fieldset: {
+            legend: {
+              text: "Do you plan to submit a planning obligation to support your appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "This can be a section 106 agreement or a unilateral undertaking."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealdocs-planningobligation", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealdocs-planningobligation", "No")
+            }
+          ]
+        }) }}
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              What is a planning obligation?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">
+              A planning obligation is a legal agreement linked to your planning permission. It confirms that you agree to do or not do something if your development goes ahead. This is usually to help manage your development's impact on the area.
+            </p>
+            <p class="govuk-body">
+              For example, you might agree to:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                donate to a wildlife charity, if your development will affect local wildlife
+              </li>
+              <li>
+                help fund improvements to nearby roads, if your development will increase traffic
+              </li>
+              <li>
+                only use your garden building as an annexe for family members, instead of a holiday let
+              </li>
+            </ul>
+          </div>
+        </details>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
