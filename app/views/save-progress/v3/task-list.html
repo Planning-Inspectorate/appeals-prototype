@@ -10,14 +10,10 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Appeal a planning decision for application number {{ data['applicationNumber'] or 1234567 }}
+        Appeal a planning decision
       </h1>
 
-      <!--h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{data['sections-completed-text']}}</h2-->
-      <!--p class="govuk-body govuk-!-margin-bottom-7">You have completed {{data['sections-completed']}} of 5 sections.</p-->
-
       <!-- Count completed tasks -->
-
       {% set taskcount = 0 %}
       {% if data["contactdetails-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
@@ -40,14 +36,6 @@
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
       <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 6 tasks.</p>
-
-      <!--div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-warning-text__assistive">Warning</span>
-          You must submit your appeal by 11.59pm on {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}. If you miss this deadline, you lose your right to appeal.
-        </strong>
-      </div-->
 
       <div class="app-task-list app-task-list--fullappeal">
         <ul class="app-task-list__items">
@@ -171,6 +159,36 @@
         classes: "govuk-button--secondary"
       }) }}
 
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <dl class="govuk-summary-list govuk-summary-list-appealdetails">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning application number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            22/12345/FUL
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            74 Cannellini Drive<br>
+            Buttertown<br>
+            B3 4NS
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Deadline to appeal
+          </dt>
+          <dd class="govuk-summary-list__value">
+            12 May 2022
+          </dd>
+        </div>
+      </dl>
     </div>
   </div>
 
