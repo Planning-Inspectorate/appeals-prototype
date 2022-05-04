@@ -2,7 +2,7 @@
 {% extends "layouts/appellant-submission/v15.html" %}
 
 {% block pageTitle %}
-  Are the conditions for householder planning permission? - Before you start - {{serviceName}} - GOV.UK
+What type of planning permission do the conditions apply to? - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,21 +34,49 @@
           name: "appealsub-"+version+"-bys-removalvariationconditions",
           fieldset: {
             legend: {
-              text: "Are the conditions for householder planning permission?",
+              text: "What type of planning permission do the conditions apply to?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+            text: "You can check this on your original planning application form."
+          },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Yes")
+              value: "Full planning",
+              text: "Full planning",
+              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Full planning")
             },
             {
-              value: "No",
-              text: "No",
-              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "No")
+              value: "Householder planning",
+              text: "Householder planning",
+              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Householder planning")
+            },
+            {
+              value: "Listed building consent",
+              text: "Listed building consent",
+              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Listed building consent")
+            },
+            {
+              value: "Outline planning",
+              text: "Outline planning",
+              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Outline planning")
+            },
+            {
+              value: "Prior approval",
+              text: "Prior approval",
+              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Prior approval")
+            },
+            {
+              value: "Reserved matters",
+              text: "Reserved matters",
+              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Reserved matters")
+            },
+            {
+              value: "Something else",
+              text: "Something else",
+              checked: checked("appealsub-"+version+"-bys-removalvariationconditions", "Something else")
             }
           ]
         }) }}
