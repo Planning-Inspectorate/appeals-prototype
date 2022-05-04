@@ -74,7 +74,23 @@
             </dd>
           </div>
 
-          {% if data["appealsub-"+version+"-bys-whatareyouappealing"] == "Prior approval" %}
+          {% if data["appealsub-"+version+"-bys-whatareyouappealing"] == "Removal or variation of conditions" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What type of planning permission do the conditions apply to?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["appealsub-"+version+"-bys-removalvariationconditions"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="what-are-you-appealing">
+                  Change<span class="govuk-visually-hidden"> conditions for householder planning permission</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+          {% if (data["appealsub-"+version+"-bys-whatareyouappealing"] == "Prior approval") or (data["appealsub-"+version+"-bys-removalvariationconditions"] == "Prior approval") %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Did you apply for prior approval to extend an existing home?
@@ -85,22 +101,6 @@
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="what-are-you-appealing">
                   Change<span class="govuk-visually-hidden"> prior approval to extend an existing home</span>
-                </a>
-              </dd>
-            </div>
-          {% endif %}
-
-          {% if data["appealsub-"+version+"-bys-whatareyouappealing"] == "Removal or variation of conditions" %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Are the conditions for householder planning permission?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data["appealsub-"+version+"-bys-removalvariationconditions"] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="what-are-you-appealing">
-                  Change<span class="govuk-visually-hidden"> conditions for householder planning permission</span>
                 </a>
               </dd>
             </div>
@@ -121,16 +121,10 @@
           {% else %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Your appeal is not about
+                Was the planning application about a major development?
               </dt>
               <dd class="govuk-summary-list__value">
-                <ul class="govuk-list">
-                  <li>A listed building</li>
-                  <li>Major dwellings</li>
-                  <li>Major general industry, storage or warehousing</li>
-                  <li>Major retail and services</li>
-                  <li>Major travelling and caravan pitches</li>
-                </ul>
+                {{ data["appealsub-"+version+"-bys-appealabout"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="appeal-about">
@@ -317,17 +311,15 @@
           </div>
         </details>
 
-<!--
-        {{ govukButton({
-          href: "javascript:preventDefault();",
-          text: "Continue to my appeal"
-        }) }}
--->
-
         {% if data['appealsub-'+version+'-bys-route'] == "full" %}
           {{ govukButton({
             text: "Continue to my appeal",
             href: "/appellant-submission/"+version+"/full/task-list"
+          }) }}
+        {% elseif data['appealsub-'+version+'-bys-route'] == "listedbuilding" %}
+          {{ govukButton({
+            text: "Continue to my appeal",
+            href: "/appellant-submission/"+version+"/listed-building/task-list"
           }) }}
         {% else %}
           {{ govukButton({

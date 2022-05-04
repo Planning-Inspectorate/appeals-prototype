@@ -29,7 +29,7 @@
           Before you start
         </span>
 
-        {{ govukCheckboxes({
+        {{ govukRadios({
           idPrefix: "appealsub-"+version+"-bys-appealabout",
           name: "appealsub-"+version+"-bys-appealabout",
           fieldset: {
@@ -66,7 +66,7 @@
             <p class="govuk-body">
               A housing development is major if it has either:
             </p>
-            <ul class="govuk-list">
+            <ul class="govuk-list govuk-list--bullet">
               <li>
                 10 or more houses
               </li>
@@ -80,7 +80,7 @@
             <p class="govuk-body">
               Any other type of development is major if it either:
             </p>
-            <ul class="govuk-list">
+            <ul class="govuk-list govuk-list--bullet">
               <li>
                 creates 1000 square metres of floor space or more
               </li>

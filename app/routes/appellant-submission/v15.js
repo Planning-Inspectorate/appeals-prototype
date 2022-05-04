@@ -70,18 +70,36 @@ module.exports = function (router) {
 
   router.post(base+'before-you-start/what-are-you-appealing', function (req, res) {
     if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "I have not made a planning application") {
+
       res.redirect(base+'before-you-start/shutter/planning-application-not-made');
+
     } else if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "Something else") {
+
       res.redirect(base+'before-you-start/shutter/planning-application-something-else');
+
     } else if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "Householder planning") {
+
       req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
-      res.redirect(base+'before-you-start/listed-building');
+      //res.redirect(base+'before-you-start/listed-building');
+      res.redirect(base+'before-you-start/permission-granted-refused');
+
     } else if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "Prior approval") {
+
       res.redirect(base+'before-you-start/prior-approval');
+
     } else if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "Removal or variation of conditions") {
+
       res.redirect(base+'before-you-start/removal-variation-conditions');
+
+    } else if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "Listed building consent") {
+
+      req.session.data['appealsub-'+v+'-bys-route'] = "listedbuilding"
+      res.redirect(base+'before-you-start/appeal-about');
+
     } else {
-      res.redirect(base+'before-you-start/appeal-about');        
+
+      res.redirect(base+'before-you-start/appeal-about');    
+
     }
   })
 
@@ -93,21 +111,37 @@ module.exports = function (router) {
     } else if (req.session.data["appealsub-"+v+"-bys-priorapproval"] == "Yes"){
       // expedited written representations
       req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
-      res.redirect(base+'before-you-start/listed-building');
-    }
-  })
-  router.post(base+'before-you-start/removal-variation-conditions', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "No"){
-      // full appeal
-      req.session.data['appealsub-'+v+'-bys-route'] = "full"
-      res.redirect(base+'before-you-start/appeal-about');
-    } else if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Yes"){
-      // expedited written representations
-      req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
-      res.redirect(base+'before-you-start/listed-building');
+      //res.redirect(base+'before-you-start/listed-building');
+      res.redirect(base+'before-you-start/permission-granted-refused');
     }
   })
 
+  router.post(base+'before-you-start/removal-variation-conditions', function (req, res) {
+    if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Householder planning"){
+      // expedited written representations
+      req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
+      res.redirect(base+'before-you-start/permission-granted-refused');
+    } else if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Prior approval"){
+      res.redirect(base+'before-you-start/prior-approval');
+    } else if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Listed building consent"){
+      // listed building consent appeal
+      req.session.data['appealsub-'+v+'-bys-route'] = "listedbuilding"
+      res.redirect(base+'before-you-start/appeal-about');
+    } else {
+      // full appeal
+      req.session.data['appealsub-'+v+'-bys-route'] = "full"
+      res.redirect(base+'before-you-start/appeal-about');
+    }
+    
+    if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "No"){
+    } else if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Yes"){
+      // expedited written representations
+      req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
+      //res.redirect(base+'before-you-start/listed-building');
+      res.redirect(base+'before-you-start/permission-granted-refused');
+    }
+  })
+/*
   router.post(base+'before-you-start/listed-building', function (req, res) {
     if (req.session.data["appealsub-"+v+"-bys-listedbuilding"] == "No"){
       res.redirect(base+'before-you-start/permission-granted-refused');
@@ -115,9 +149,9 @@ module.exports = function (router) {
       res.redirect(base+'before-you-start/shutter/listed-building');
     }
   })
-
+*/
   router.post(base+'before-you-start/appeal-about', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-bys-appealabout"].includes("No, my planning application was not about any of these") ){
+    if (req.session.data["appealsub-"+v+"-bys-appealabout"] == "No") {
       res.redirect(base+'before-you-start/permission-granted-refused');
     } else {
       res.redirect(base+'before-you-start/shutter/appeal-about');
@@ -126,7 +160,20 @@ module.exports = function (router) {
 
   router.post(base+'before-you-start/permission-granted-refused', function (req, res) {
     if (req.session.data["appealsub-"+v+"-bys-permissiongrantedrefused"] == "I have not received a decision"){
-      req.session.data['appealsub-'+v+'-bys-route'] = "full"
+      if (
+          (req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] != "Listed building consent") &&
+          (
+            (req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] != "Prior approval") && 
+            (req.session.data['appealsub-'+v+'-bys-priorapproval'] != "Yes")
+          ) &&
+          (
+            (req.session.data['appealsub-'+v+'-bys-removalvariationconditions'] != "Prior approval") && 
+            (req.session.data['appealsub-'+v+'-bys-priorapproval'] != "Yes")
+          )
+      ){
+        // switch appeal rout from expedited to full
+        req.session.data['appealsub-'+v+'-bys-route'] = "full"
+      }
       res.redirect(base+'before-you-start/decision-date-due');
     } else {
       res.redirect(base+'before-you-start/notice-decision-date');
@@ -143,20 +190,27 @@ module.exports = function (router) {
 
     // calculate deadline for appeal based on decision due date
     var deadlineDate = new Date(enteredDate);
+
     if (
-      (req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Full planning") ||
-      (
-        (req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Householder planning") &&
-        (req.session.data['appealsub-'+v+'-bys-permissiongrantedrefused'] == "Granted")
-      )
+      ((req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Householder planning") && (req.session.data['appealsub-'+v+'-bys-permissiongrantedrefused'] == "Refused")) ||
+      ((req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Prior approval") && (req.session.data['appealsub-'+v+'-bys-priorapproval'] == "Yes") && (req.session.data['appealsub-'+v+'-bys-permissiongrantedrefused'] == "Refused")) ||
+      ((req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Removal or variation of conditions") && (req.session.data['appealsub-'+v+'-bys-removalvariationconditions'] == "Householder planning") && (req.session.data['appealsub-'+v+'-bys-permissiongrantedrefused'] == "Refused"))  ||
+      ((req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Removal or variation of conditions") && (req.session.data['appealsub-'+v+'-bys-removalvariationconditions'] == "Prior approval") && (req.session.data['appealsub-'+v+'-bys-priorapproval'] == "Yes") && (req.session.data['appealsub-'+v+'-bys-permissiongrantedrefused'] == "Refused")) 
     ){
-      // 6 months = 26 weeks for full appeals
-        req.session.data['appealsub-'+v+'-bys-route'] = "full"
+      // 12 weeks for the HAS (expedited) appeals
+      req.session.data['appealsub-'+v+'-bys-route'] = "expedited";
+      deadlineDate.setDate(deadlineDate.getDate() + (12*7));
+    } else if (
+      (req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Listed building consent") ||
+      (req.session.data['appealsub-'+v+'-bys-removalvariationconditions'] == "Listed building consent")
+      ) {
+      // 6 months = 26 weeks for listed building consent appeals
+      req.session.data['appealsub-'+v+'-bys-route'] = "listedbuilding";
       deadlineDate.setDate(deadlineDate.getDate() + (26*7));
     } else {
-      // 12 weeks for the HAS (expedited) appeals
-        req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
-      deadlineDate.setDate(deadlineDate.getDate() + (12*7));
+      // 6 months = 26 weeks for full appeals
+      req.session.data['appealsub-'+v+'-bys-route'] = "full"
+      deadlineDate.setDate(deadlineDate.getDate() + (26*7));
     }
 
     req.session.data["appealsub-"+v+"-bys-deadline-day"] = deadlineDate.getDate();
@@ -165,16 +219,15 @@ module.exports = function (router) {
 
     var todaysDate = new Date();
 
-    if (todaysDate > deadlineDate) {
-      if (req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Full planning"){
-        res.redirect(base+'before-you-start/shutter/out-of-time-full')
-      } else if (
-        req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Householder planning" &&
-        req.session.data['appealsub-'+v+'-bys-permissiongrantedrefused'] == "Granted"
-      ) {
-        res.redirect(base+'before-you-start/shutter/out-of-time-full')
-      } else {
+    if (todaysDate > deadlineDate) {      
+      if (
+        ((req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Householder planning") && (req.session.data['appealsub-'+v+'-bys-permissiongrantedrefused'] == "Refused")) ||
+        ((req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Prior approval") && (req.session.data['appealsub-'+v+'-bys-priorapproval'] == "Yes")) ||
+        ((req.session.data['appealsub-'+v+'-bys-whatareyouappealing'] == "Removal or variation of conditions") && (req.session.data['appealsub-'+v+'-bys-removalvariationconditions'] == "Householder planning"))
+      ){
         res.redirect(base+'before-you-start/shutter/out-of-time-householder')
+      } else {
+        res.redirect(base+'before-you-start/shutter/out-of-time-full')
       }
     } else {
       res.redirect(base+'before-you-start/enforcement-notice');
@@ -213,7 +266,6 @@ module.exports = function (router) {
       if (req.session.data['appealsub-'+v+'-bys-route'] == "expedited") {
         res.redirect(base+'before-you-start/claiming-costs');
       } else {
-        //res.redirect(base+'listed-building/task-list');
         res.redirect(base+'before-you-start/check-answers');
       }
     } else {
@@ -223,7 +275,6 @@ module.exports = function (router) {
 
   router.post(base+'before-you-start/claiming-costs', function (req, res) {
     if (req.session.data["appealsub-"+v+"-bys-claimingcosts"] == "No"){
-      //res.redirect(base+'expedited/task-list');
       res.redirect(base+'before-you-start/check-answers');
     } else {
       res.redirect(base+'before-you-start/shutter/claiming-costs');
