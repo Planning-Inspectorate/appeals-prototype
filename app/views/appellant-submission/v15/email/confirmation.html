@@ -13,9 +13,16 @@
 <div class="govuk-grid-row govuk-!-margin-top-5">
   <div class="govuk-grid-column-three-quarters">
 
-    <p class="govuk-body">Dear [your name],</p>
+    <p class="govuk-body">Dear {{ data["appealsub-v15-contactdetails-yourname"] or "[name]" }},</p>
 
-    <p class="govuk-body">We've received your planning appeal for the following site: 9617 The Avenue, Maidstone, XM26 7YS</p>
+    <p class="govuk-body">We've received your listed building appeal for the following site:</p>
+    <p class="govuk-body">
+      {{ data["appealsub-v15-appealsite-address-line-1"] or "9617 The Avenue" }}{% if data["appealsub-v15-appealsite-address-line-2"] %}<br>{% endif %}
+      {{ data["appealsub-v15-appealsite-address-line-2"] }}{% if data["appealsub-v15-appealsite-address-town"] %}<br>{% endif %}
+      {{ data["appealsub-v15-appealsite-address-town"] or "Maidstone" }}{% if data["appealsub-v15-appealsite-address-county"] %}<br>{% endif %}
+      {{ data["appealsub-v15-appealsite-address-county"] }}{% if data["appealsub-v15-appealsite-address-postcode"] %}<br>{% endif %}
+      {{ data["appealsub-v15-appealsite-address-postcode"] or "XM26 7YS" }}
+    </p>
 
     <h2 class="govuk-heading-m">Local planning department:</h2>
     <p class="govuk-body">City of Bradford Metropolitan District Council</p>
