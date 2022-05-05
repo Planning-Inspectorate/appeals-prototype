@@ -1,0 +1,93 @@
+{% set pageref = "LB-PLA-008-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+Site ownership and agricultural holdings certificates - Upload documents from your planning application - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents from your planning application
+        </span>
+        <h1 class="govuk-heading-l">
+          Site ownership and agricultural holdings certificates
+        </h1>
+
+        {% if data["appealsub-"+version+"-applicationdocs-certificate-files"] and (data["appealsub-"+version+"-applicationdocs-certificate-files"] != "") %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">
+            Uploaded files
+          </h3>
+          {% if data["appealsub-"+version+"-applicationdocs-certificate-files"]|is_string %}
+            <p class="govuk-body">
+              <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-applicationdocs-certificate-files"] }}</a>
+            </p>
+          {% else %}
+            <ul class="govuk-list">
+              {% for item in data["appealsub-"+version+"-applicationdocs-certificate-files"] %}
+                <li>
+                  <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endif %}
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-applicationdocs-certificate-files">
+            {% if data["appealsub-"+version+"-applicationdocs-certificate-files"] and (data["appealsub-"+version+"-applicationdocs-certificate-files"] != "") %}
+              Replace the files
+            {% else  %}
+              Drag and drop or choose files
+            {% endif %}
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-applicationdocs-certificate-files" name="appealsub-{{version}}-applicationdocs-certificate-files" type="file" multiple>
+        </div>
+
+        {{ govukDetails({
+          summaryText: "Files you can upload",
+          html: '
+            <p class="govuk-body">
+              You can upload the following types of file:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
+            </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
+          '
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

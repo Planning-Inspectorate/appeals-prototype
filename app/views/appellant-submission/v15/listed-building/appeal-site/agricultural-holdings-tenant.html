@@ -1,0 +1,65 @@
+{% set pageref = "LB-AAS-012-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+  Are you a tenant of the agricultural holding? - Tell us about the appeal site - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealsite-agriculturalholdings-tenant",
+          name: "appealsub-"+version+"-appealsite-agriculturalholdings-tenant",
+          fieldset: {
+            legend: {
+              text: "Are you a tenant of the agricultural holding?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-agriculturalholdings-tenant", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-agriculturalholdings-tenant", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
