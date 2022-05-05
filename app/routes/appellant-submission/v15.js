@@ -117,6 +117,7 @@ module.exports = function (router) {
   })
 
   router.post(base+'before-you-start/removal-variation-conditions', function (req, res) {
+
     if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Householder planning"){
       // expedited written representations
       req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
@@ -127,19 +128,21 @@ module.exports = function (router) {
       // listed building consent appeal
       req.session.data['appealsub-'+v+'-bys-route'] = "listedbuilding"
       res.redirect(base+'before-you-start/appeal-about');
+    } else if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Something else"){
+      res.redirect(base+'before-you-start/shutter/removal-variation-conditions');
     } else {
       // full appeal
       req.session.data['appealsub-'+v+'-bys-route'] = "full"
       res.redirect(base+'before-you-start/appeal-about');
     }
-    
+    /*
     if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "No"){
     } else if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Yes"){
       // expedited written representations
       req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
       //res.redirect(base+'before-you-start/listed-building');
       res.redirect(base+'before-you-start/permission-granted-refused');
-    }
+    }*/
   })
 /*
   router.post(base+'before-you-start/listed-building', function (req, res) {
