@@ -35,6 +35,11 @@
           We ask for your name and email address so we can contact you about your appeal.
         <p-->
 
+        <p class="govuk-body">
+          This is the email you gave us for this appeal:<br>
+          {{ data["savereturn-"+version+"-email"] or 'sam@mac.com'}}
+        </p>
+
         {% if data["appealsub-"+version+"-contactdetails-applicationinyourname"] == "Yes" %}
           {% set hintHtml %}
             <p class="govuk-body">

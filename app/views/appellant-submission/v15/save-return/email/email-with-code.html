@@ -1,0 +1,52 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Return to appeal a planning decision
+{% endblock %}
+
+{% block content %}
+
+<!-- faux email header -->
+<section>
+  <p>
+    <strong>Subject:</strong> Your code to continue with appeal for application {{ data["savereturn-v15-applicationnumber"] or '1234567'}}
+  </p>
+  <p>
+    <strong>To:</strong> {{ data["savereturn-v15-email"] or 'sam@mac.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">Dear [name],</p>
+
+    <p class="govuk-body">
+      Enter the code to continue with your appeal for application {{ data["savereturn-v15-applicationnumber"] or '1234567'}}.
+    </p>
+
+    <div class="govuk-inset-text">
+      406257
+    </div>
+
+    <p class="govuk-body">
+      This code will expire after 30 minutes.
+    </p>
+
+    <br><br>
+    <p class="govuk-body">
+      Thank you,
+    </p>
+    <p class="govuk-body govuk-!-margin-bottom-9">
+      The Planning Inspectorate<br>
+      enquiries@planninginspectorate.gov.uk
+    </p>
+
+  </div>
+</div>
+{% endblock %}

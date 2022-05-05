@@ -41,7 +41,17 @@
           </div>
 
           <div class="govuk-form-group">
-            <input class="govuk-input govuk-input--width-10" id="applicationNumber" name="applicationNumber" type="number" spellcheck="false" autocomplete="false" value="{{ data['applicationNumber'] }}">
+
+            {{ govukInput({
+              id: "savereturn-"+version+"-applicationnumber",
+              name: "savereturn-"+version+"-applicationnumber",
+              classes: "govuk-!-width-one-half",
+              label: {
+                text: "Planning application number"
+              },
+              value: data["savereturn-"+version+"-applicationnumber"]
+            }) }}
+
           </div>
 
         </div>

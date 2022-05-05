@@ -11,10 +11,10 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
 <!-- faux email header -->
 <section>
     <p>
-    <strong>Subject:</strong> Continue with your appeal for application {{ data['applicationNumber'] or '1234567'}}
+    <strong>Subject:</strong> Continue with your appeal for application {{ data["savereturn-v15-applicationnumber"] or '1234567'}}
   </p>
   <p>
-    <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
+    <strong>To:</strong> {{ data["savereturn-v15-email"] or 'sam@mac.com'}}<br>
     <strong>From:</strong> appeals@planninginspectorate.gov.uk
   </p>
   <p>
@@ -49,8 +49,13 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
       </li>
     </ol>
 
+    <br><br>
     <p class="govuk-body">
-      From The Planning Inspectorate
+      Thank you,
+    </p>
+    <p class="govuk-body govuk-!-margin-bottom-9">
+      The Planning Inspectorate<br>
+      enquiries@planninginspectorate.gov.uk
     </p>
 
   </div>
