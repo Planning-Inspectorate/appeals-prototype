@@ -311,6 +311,11 @@
           </div>
         </details>
 
+        {{ govukButton({
+          href: "/appellant-submission/"+version+"/save-return/what-is-your-application-number",
+          text: "Continue to my appeal"
+        }) }}
+<!--
         {% if data['appealsub-'+version+'-bys-route'] == "full" %}
           {{ govukButton({
             text: "Continue to my appeal",
@@ -327,7 +332,7 @@
             href: "/appellant-submission/"+version+"/expedited/task-list"
           }) }}
         {% endif %}
-
+-->
       </form>
 
     </div>

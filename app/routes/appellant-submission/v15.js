@@ -324,7 +324,7 @@ module.exports = function (router) {
   
     router.post(base+'listed-building/appeal-site/own-land', function (req, res) {
       if (req.session.data["appealsub-"+v+"-appealsite-ownland"] == "Yes"){
-        res.redirect(base+'listed-building/appeal-site/agricultural-holdings');
+        res.redirect(base+'listed-building/appeal-site/site-visible');
       } else {
         res.redirect(base+'listed-building/appeal-site/own-some');
       }
@@ -346,7 +346,7 @@ module.exports = function (router) {
   
     // If all landowners known
     router.post(base+'listed-building/appeal-site/knows-all/tell-landowners', function (req, res) {
-      res.redirect(base+'listed-building/appeal-site/agricultural-holdings');
+      res.redirect(base+'listed-building/appeal-site/site-visible');
     })
   
     // If some landowners known
@@ -357,7 +357,7 @@ module.exports = function (router) {
       res.redirect(base+'listed-building/appeal-site/knows-some/tell-landowners');
     })
     router.post(base+'listed-building/appeal-site/knows-some/tell-landowners', function (req, res) {
-      res.redirect(base+'listed-building/appeal-site/agricultural-holdings');
+      res.redirect(base+'listed-building/appeal-site/site-visible');
     })
   
     // If none of landowners known
@@ -365,9 +365,9 @@ module.exports = function (router) {
       res.redirect(base+'listed-building/appeal-site/knows-none/advertising-appeal');
     })
     router.post(base+'listed-building/appeal-site/knows-none/advertising-appeal', function (req, res) {
-      res.redirect(base+'listed-building/appeal-site/agricultural-holdings');
+      res.redirect(base+'listed-building/appeal-site/site-visible');
     })
-  
+/*  
     // Agricultural holdings
     router.post(base+'listed-building/appeal-site/agricultural-holdings', function (req, res) {
       if (req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings"] == "Yes"){
@@ -396,7 +396,7 @@ module.exports = function (router) {
     router.post(base+'listed-building/appeal-site/agricultural-holdings-tell-tenants', function (req, res) {
       res.redirect(base+'listed-building/appeal-site/site-visible');
     })
-  
+ */ 
     router.post(base+'listed-building/appeal-site/site-visible', function (req, res) {
       res.redirect(base+'listed-building/appeal-site/health-safety');
     })
@@ -446,18 +446,18 @@ module.exports = function (router) {
       if ( req.session.data["appealsub-"+v+"-applicationdocs-certificates"] == "No, I submitted these separately"){
         res.redirect(base+'listed-building/planning-application-documents/certificates-upload');
       } else {
-        res.redirect(base+'listed-building/planning-application-documents/application-number');
+        res.redirect(base+'listed-building/planning-application-documents/development-changed');
       }
     })
   
     router.post(base+'listed-building/planning-application-documents/certificates-upload', function (req, res) {
-      res.redirect(base+'listed-building/planning-application-documents/application-number');
+      res.redirect(base+'listed-building/planning-application-documents/development-changed');
     })
-  
+  /*
     router.post(base+'listed-building/planning-application-documents/application-number', function (req, res) {
       res.redirect(base+'listed-building/planning-application-documents/development-changed');
     })
-  
+  */
     router.post(base+'listed-building/planning-application-documents/development-changed', function (req, res) {
       res.redirect(base+'listed-building/planning-application-documents/plans-drawings-upload');
     })
@@ -473,9 +473,9 @@ module.exports = function (router) {
         req.session.data["appealsub-"+v+"-applicationdocs-plansdrawings-existing"] = req.session.data["appealsub-"+v+"-applicationdocs-plansdrawings"]
       }
       
-      res.redirect(base+'listed-building/planning-application-documents/design-access-statement');
+      res.redirect(base+'listed-building/planning-application-documents/design-access-statement-upload');
     })
-  
+  /*
     router.post(base+'listed-building/planning-application-documents/design-access-statement', function (req, res) {
       if (req.session.data["appealsub-"+v+"-applicationdocs-designaccess"] == "Yes"){
         res.redirect(base+'listed-building/planning-application-documents/design-access-statement-upload');
@@ -487,7 +487,7 @@ module.exports = function (router) {
         }
       }
     })
-  
+  */
     router.post(base+'listed-building/planning-application-documents/design-access-statement-upload', function (req, res) {
       
       // Don't overwrite previously uploaded files with a blank upload

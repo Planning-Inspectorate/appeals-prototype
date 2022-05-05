@@ -1,0 +1,58 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Return to appeal a planning decision
+{% endblock %}
+
+
+Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[INSERT HERE]Application reference:[INSERT HERE]An appeal has been made against the decision of [LPD]to [insert reason for appeal, i.e. refuse to grant planning permission].[The appeal will be determined on the basis of written representations.][The appeal will be determined on the basis of a hearing.] [The appeal will be determined on the basis of an inquiry.] Interested individuals that want to take part in the Inquiry can do so by applying for Rule 6 status.Rule 6 status means that you would be able to present your evidence on a formal basis and cross examine the evidence of others.You can learn more about Rule 6 at:https://www.gov.uk/government/publications/apply-for-rule-6-status-on-a-planning-appeal-or-called-in-applicationWhat happens next** TO BE ADDED **Thank you,The Planning Inspectorate
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> Continue with your appeal for application {{ data['applicationNumber'] or '1234567'}}
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      Dear [name],
+    </p>
+
+    <p class="govuk-body">
+      <!-- This link will expire after 6 weeks. -->
+      You have until 3 April 2022 to submit your appeal.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      How to get back to your appeal
+    </h2>
+
+    <ol class="govuk-list govuk-list--number">
+      <li>
+        Go to the link to receive a code: <a href="../input-code" class="govuk-link">www.gov.uk/appeal-a-planning-decision/continue?app=hgdsuyts6t16f</a>
+      </li>
+
+      <li>
+        Enter the code we send in an email to you.
+      </li>
+    </ol>
+
+    <p class="govuk-body">
+      From The Planning Inspectorate
+    </p>
+
+  </div>
+</div>
+{% endblock %}

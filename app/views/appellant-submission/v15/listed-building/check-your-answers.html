@@ -74,7 +74,6 @@
               {% if data["appealsub-"+version+"-contactdetails-company"] %}
               <p class="govuk-body">{{ data["appealsub-"+version+"-contactdetails-company"] }}</p>
               {% endif %}
-              <p class="govuk-body">{{ data["appealsub-"+version+"-contactdetails-youremail"] }}</p>
               <p class="govuk-body">{{ data["appealsub-"+version+"-contactdetails-telephone"] }}</p>
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -260,7 +259,7 @@
             </div>
             
           {% endif %}
-
+<!--
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is the appeal site part of an agricultural holding?
@@ -346,7 +345,7 @@
               {% endif %}
             {% endif %}
           {% endif %}
-
+-->
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Visible from a public road
@@ -552,6 +551,7 @@
               </dd>
             </div>
           {% endif %}
+<!--
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Planning application number
@@ -565,6 +565,7 @@
               </a>
             </dd>
           </div>
+-->
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Did the proposed development change after you submitted your application?
@@ -594,6 +595,7 @@
               </a>
             </dd>
           </div>
+<!--
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Design and access statement submitted with application
@@ -607,6 +609,7 @@
               </a>
             </dd>
           </div>
+-->
           {% if data["appealsub-"+version+"-applicationdocs-designaccess"] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -816,10 +819,17 @@
           </dl>
         {% endif %}
 
-        {{ govukButton({
-          href: "declaration",
-          text: "Save and continue"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            href: "declaration",
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "/appellant-submission/"+version+"/save-return/what-is-your-application-number",
+            text: "Continue to my appeal"
+          }) }}
+        </div>
 
       </form>
 
