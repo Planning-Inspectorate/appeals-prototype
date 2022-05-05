@@ -1,0 +1,54 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Appeal submission confirmation email
+{% endblock %}
+
+
+Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[INSERT HERE]Application reference:[INSERT HERE]An appeal has been made against the decision of [LPD]to [insert reason for appeal, i.e. refuse to grant planning permission].[The appeal will be determined on the basis of written representations.][The appeal will be determined on the basis of a hearing.] [The appeal will be determined on the basis of an inquiry.] Interested individuals that want to take part in the Inquiry can do so by applying for Rule 6 status.Rule 6 status means that you would be able to present your evidence on a formal basis and cross examine the evidence of others.You can learn more about Rule 6 at:https://www.gov.uk/government/publications/apply-for-rule-6-status-on-a-planning-appeal-or-called-in-applicationWhat happens next** TO BE ADDED **Thank you,The Planning Inspectorate
+
+
+
+{% block content %}
+<!-- faux email header -->
+<section>
+  <p>
+    <strong>Subject:</strong> Confirm your email address
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      Dear [name],
+    </p>
+
+    <p class="govuk-body">
+      You must confirm your email address so we can contact you if we have any questions about your appeal.
+    </p>
+
+    <p class="govuk-body">
+      Go to the link to confirm your email address:<br>
+      <a href="../email-confirmed">www.gov.uk/appeal-a-planning-decision/confirm-email</a>
+    </p>
+
+    <p class="govuk-body">
+      This link will expire after 30 minutes.
+    </p>
+
+    <p class="govuk-body">
+      From The Planning Inspectorate
+    </p>
+
+  </div>
+</div>
+{% endblock %}
