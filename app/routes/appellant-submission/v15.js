@@ -77,6 +77,25 @@ module.exports = function (router) {
     req.session.data["savereturn-"+v+"-email"] = "name@email.com";
     res.redirect(base+'listed-building/task-list');
   })
+  
+  router.get(base+'skip/tasklist-variation-lb-nondetermination', function (req, res) {
+    req.session.data["appealsub-v15-bys-planningdepartment"] = "BRD";
+    req.session.data["appealsub-v15-bys-whatareyouappealing"] = "Removal or variation of conditions";
+    req.session.data["appealsub-v15-bys-removalvariationconditions"] = "Listed building consent";
+    req.session.data["appealsub-v15-bys-route"] = "listedbuilding";
+    req.session.data["appealsub-v15-bys-appealabout"] = "No";
+    req.session.data["appealsub-v15-bys-permissiongrantedrefused"] = "I have not received a decision";
+    req.session.data["appealsub-v15-bys-decisiondatedue-day"] = "05";
+    req.session.data["appealsub-v15-bys-decisiondatedue-month"] = "05";
+    req.session.data["appealsub-v15-bys-decisiondatedue-year"] = "2022";
+    req.session.data["appealsub-v15-bys-deadline-day"] = 3;
+    req.session.data["appealsub-v15-bys-deadline-month"] = 11;
+    req.session.data["appealsub-v15-bys-deadline-year"] = 2022;
+    req.session.data["appealsub-v15-bys-enforcementnotice"] = "No";
+    req.session.data["savereturn-v15-applicationnumber"] = "987654321";
+    req.session.data["savereturn-v15-email"] = "name@email.com";
+    res.redirect(base+'listed-building/task-list');
+  })
 
 
 
