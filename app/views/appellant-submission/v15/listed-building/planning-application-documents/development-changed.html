@@ -29,13 +29,10 @@ Did the proposed development change after you submitted your application? - Uplo
           Upload documents from your planning application
         </span>
         <h1 class="govuk-heading-l">
-          Did the proposed development change after you submitted your application?
+          Is the description of development on your application form still correct?
         </h1>
         <p class="govuk-body">
-          Only tell us about changes you agreed with the local planning department.
-        <p>
-        <p class="govuk-body">
-          For example, if you applied to build 5 houses, but agreed to change this to 4 during the application process.
+          We need to know if you agreed a new one with the local planning department.
         <p>
 
         {% set developmentHtml %}
@@ -43,7 +40,7 @@ Did the proposed development change after you submitted your application? - Uplo
             id: "appealsub-"+version+"-applicationdocs-developmentchanged-description",
             name: "appealsub-"+version+"-applicationdocs-developmentchanged-description",
             label: {
-              text: "Enter the agreed description of development"
+              text: "What's the agreed description of development?"
             },
             value: data["appealsub-"+version+"-applicationdocs-developmentchanged-description"]
           }) }}
@@ -54,17 +51,17 @@ Did the proposed development change after you submitted your application? - Uplo
           name: "appealsub-"+version+"-applicationdocs-developmentchanged",
           items: [
             {
-              value: "Yes",
-              text: "Yes",
+              value: "Yes, the description of development is still correct",
+              text: "Yes, the description of development is still correct",
+              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "Yes, the description of development is still correct")
+            },
+            {
+              value: "No, I agreed a new one with the local planning deparment",
+              text: "No, I agreed a new one with the local planning deparment",
               conditional: {
                 html: developmentHtml
               },
-              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "Yes")
-            },
-            {
-              value: "No",
-              text: "No",
-              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "No")
+              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "No, I agreed a new one with the local planning deparment")
             }
           ]
         }) }}

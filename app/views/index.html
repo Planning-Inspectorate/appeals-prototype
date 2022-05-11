@@ -292,8 +292,8 @@ service-start{% extends "layout.html" %}
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds"><div class="govuk-inset-text govuk-!-margin-top-0">
                   {{ govukTag({
-                    classes: "govuk-tag--green govuk-!-margin-bottom-3",
-                    text: "Ready for UR"
+                    classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                    text: "WIP"
                   }) }}
                   <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
                     Version 15 - Listed building consent appeal submission
@@ -303,14 +303,17 @@ service-start{% extends "layout.html" %}
                   </h4>
                   <ul class="govuk-list govuk-list--bullet">
                     <li>
-                      <a href="/appellant-submission/v15/guidance/submit-an-appeal">Start from 'Submit an appeal' guidance</a>
+                      <a href="/appellant-submission/v15/guidance/submit-an-appeal">Start from 'Submit an appeal' guidance (to retrun to the service)</a>
                     </li>
                     <li>
                       <a href="/appellant-submission/v15/before-you-start/">Start from 'Before you start'</a>
                     </li>
-                    <!--li>
-                      <a href="/appellant-submission/v15/listed-building/task-list">Start from 'Task list' for a Listed building consent appeal</a>
-                    </li-->
+                    <li>
+                      <a href="/appellant-submission/v15/skip/savereturn-lb-refused">Start from 'Save and return' for appealing a refused listed building consent</a>
+                    </li>
+                    <li>
+                      <a href="/appellant-submission/v15/skip/tasklist-lb-refused">Start from 'Task list' to appeal a refused listed building consent</a>
+                    </li>
                     <!--li>
                       Starting from check your answers in 'Before you start':</a>
                       <ul class="govuk-list govuk-list--bullet">
@@ -323,6 +326,20 @@ service-start{% extends "layout.html" %}
                       </ul>
                     </li-->
                   </ul>
+
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        User research (2)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/979140609/UR+Listed+Building+Appeals+-+Appellant+Usability+Testing" target="_blank">1st round UR discussion guide</a></li>
+                        <li><a href="https://miro.com/app/board/uXjVO321JMQ=/?moveToWidget=3458764525111814660&cot=14" target="_blank">1st round of UR analysis with 2 listed building appellants</a></li>
+                      </ul>
+                    </div>
+                  </details>
                 </div>
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">

@@ -44,6 +44,40 @@ module.exports = function (router) {
     res.redirect(base+'before-you-start/check-answers');
   })
 
+  router.get(base+'skip/savereturn-lb-refused', function (req, res) {
+    req.session.data["appealsub-"+v+"-bys-planningdepartment"] = "BRD";
+    req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] = "Listed building consent";
+    req.session.data["appealsub-"+v+"-bys-route"] = "listedbuilding";
+    req.session.data["appealsub-"+v+"-bys-appealabout"] = "No";
+    req.session.data["appealsub-"+v+"-bys-permissiongrantedrefused"] = "Refused";
+    req.session.data["appealsub-"+v+"-bys-decisiondate-day"] = "04";
+    req.session.data["appealsub-"+v+"-bys-decisiondate-month"] = "05";
+    req.session.data["appealsub-"+v+"-bys-decisiondate-year"] = "2022";
+    req.session.data["appealsub-"+v+"-bys-deadline-day"] = 2;
+    req.session.data["appealsub-"+v+"-bys-deadline-month"] = 11;
+    req.session.data["appealsub-"+v+"-bys-deadline-year"] = 2022;
+    req.session.data["appealsub-"+v+"-bys-enforcementnotice"] = "No";
+    res.redirect(base+'listed-building/task-list');
+  })
+
+  router.get(base+'skip/tasklist-lb-refused', function (req, res) {
+    req.session.data["appealsub-"+v+"-bys-planningdepartment"] = "BRD";
+    req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] = "Listed building consent";
+    req.session.data["appealsub-"+v+"-bys-route"] = "listedbuilding";
+    req.session.data["appealsub-"+v+"-bys-appealabout"] = "No";
+    req.session.data["appealsub-"+v+"-bys-permissiongrantedrefused"] = "Refused";
+    req.session.data["appealsub-"+v+"-bys-decisiondate-day"] = "04";
+    req.session.data["appealsub-"+v+"-bys-decisiondate-month"] = "05";
+    req.session.data["appealsub-"+v+"-bys-decisiondate-year"] = "2022";
+    req.session.data["appealsub-"+v+"-bys-deadline-day"] = 2;
+    req.session.data["appealsub-"+v+"-bys-deadline-month"] = 11;
+    req.session.data["appealsub-"+v+"-bys-deadline-year"] = 2022;
+    req.session.data["appealsub-"+v+"-bys-enforcementnotice"] = "No";
+    req.session.data["savereturn-"+v+"-applicationnumber"] = "987654321";
+    req.session.data["savereturn-"+v+"-email"] = "name@email.com";
+    res.redirect(base+'listed-building/task-list');
+  })
+
 
 
 /************************
