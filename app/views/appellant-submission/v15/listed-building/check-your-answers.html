@@ -512,22 +512,22 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Does the application form include site ownership and agricultural holdings certificates?
+              Did you submit a separate ownership certificate document with your application?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data["appealsub-"+version+"-applicationdocs-certificates"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> application form includes site ownership and agricultural holdings certificates</span>
+                Change<span class="govuk-visually-hidden"> did you submit a separate ownership certificate document with your application?</span>
               </a>
             </dd>
           </div>
           <!-- cert upload -->
-          {% if data["appealsub-"+version+"-applicationdocs-certificates"] == "No, I submitted these separately" %}
+          {% if data["appealsub-"+version+"-applicationdocs-certificates"] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Site ownership and agricultural holdings certificates
+                Ownership certificate
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data["appealsub-"+version+"-applicationdocs-certificate-files"]|is_string %}
@@ -546,11 +546,12 @@
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> site ownership and agricultural holdings certificates</span>
+                  Change<span class="govuk-visually-hidden"> ownership certificate</span>
                 </a>
               </dd>
             </div>
           {% endif %}
+          
 <!--
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
