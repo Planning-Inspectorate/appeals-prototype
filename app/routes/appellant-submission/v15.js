@@ -492,18 +492,18 @@ module.exports = function (router) {
   
       req.session.data["appealsub-"+v+"-taskliststatus-planningapplicationdocuments"] = "In progress";
       //res.redirect(base+'listed-building/planning-application-documents/application-number');
-      res.redirect(base+'listed-building/planning-application-documents/certificates');
+      res.redirect(base+'listed-building/planning-application-documents/certificate');
     })
   
-    router.post(base+'listed-building/planning-application-documents/certificates', function (req, res) {
-      if ( req.session.data["appealsub-"+v+"-applicationdocs-certificates"] == "No, I submitted these separately"){
-        res.redirect(base+'listed-building/planning-application-documents/certificates-upload');
+    router.post(base+'listed-building/planning-application-documents/certificate', function (req, res) {
+      if ( req.session.data["appealsub-"+v+"-applicationdocs-certificates"] == "Yes"){
+        res.redirect(base+'listed-building/planning-application-documents/certificate-upload');
       } else {
         res.redirect(base+'listed-building/planning-application-documents/development-changed');
       }
     })
   
-    router.post(base+'listed-building/planning-application-documents/certificates-upload', function (req, res) {
+    router.post(base+'listed-building/planning-application-documents/certificate-upload', function (req, res) {
       res.redirect(base+'listed-building/planning-application-documents/development-changed');
     })
   /*
