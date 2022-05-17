@@ -1,7 +1,7 @@
 {% set pageref = "SAR-001-AS15" %}
 {% extends "layouts/appellant-submission/v15.html" %}
 
-{% set title = "What’s your planning application number?" %}
+{% set title = "What's your planning application number?" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -12,7 +12,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
   {{ govukBackLink({
@@ -46,9 +46,6 @@
               id: "savereturn-"+version+"-applicationnumber",
               name: "savereturn-"+version+"-applicationnumber",
               classes: "govuk-!-width-one-half",
-              label: {
-                text: "Planning application number"
-              },
               value: data["savereturn-"+version+"-applicationnumber"]
             }) }}
 
