@@ -57,7 +57,7 @@ module.exports = function (router) {
     req.session.data["appealsub-"+v+"-bys-deadline-month"] = 11;
     req.session.data["appealsub-"+v+"-bys-deadline-year"] = 2022;
     req.session.data["appealsub-"+v+"-bys-enforcementnotice"] = "No";
-    res.redirect(base+'listed-building/task-list');
+    res.redirect(base+'before-you-start/check-answers');
   })
 
   router.get(base+'skip/tasklist-lb-refused', function (req, res) {
