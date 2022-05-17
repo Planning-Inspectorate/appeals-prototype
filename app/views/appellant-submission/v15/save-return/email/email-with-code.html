@@ -8,6 +8,10 @@
 
 <!-- faux email header -->
 <section>
+  {{ govukTag({
+    classes: "govuk-tag--black govuk-!-margin-bottom-7",
+    text: "ALL A13"
+  }) }}
   <p>
     <strong>Subject:</strong> Your code to continue with appeal for application {{ data["savereturn-v15-applicationnumber"] or '1234567'}}
   </p>
