@@ -29,37 +29,29 @@ Site ownership and agricultural holdings certificates - Upload documents from yo
           Upload documents from your planning application
         </span>
         <h1 class="govuk-heading-l">
-          Site ownership and agricultural holdings certificates
+          Ownership certificate and agricultural land declaration
         </h1>
 
         {% if data["appealsub-"+version+"-applicationdocs-certificate-files"] and (data["appealsub-"+version+"-applicationdocs-certificate-files"] != "") %}
           <h3 class="govuk-heading-m govuk-!-margin-top-6">
-            Uploaded files
+            Uploaded file
           </h3>
-          {% if data["appealsub-"+version+"-applicationdocs-certificate-files"]|is_string %}
+          {% if data["appealsub-"+version+"-applicationdocs-certificate-files"] %}
             <p class="govuk-body">
               <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-applicationdocs-certificate-files"] }}</a>
             </p>
-          {% else %}
-            <ul class="govuk-list">
-              {% for item in data["appealsub-"+version+"-applicationdocs-certificate-files"] %}
-                <li>
-                  <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
-                </li>
-              {% endfor %}
-            </ul>
           {% endif %}
         {% endif %}
         
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-applicationdocs-certificate-files">
             {% if data["appealsub-"+version+"-applicationdocs-certificate-files"] and (data["appealsub-"+version+"-applicationdocs-certificate-files"] != "") %}
-              Replace the files
+              Replace the file
             {% else  %}
-              Drag and drop or choose files
+              Drag and drop or choose file
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-applicationdocs-certificate-files" name="appealsub-{{version}}-applicationdocs-certificate-files" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-applicationdocs-certificate-files" name="appealsub-{{version}}-applicationdocs-certificate-files" type="file">
         </div>
 
         {{ govukDetails({

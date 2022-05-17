@@ -33,22 +33,11 @@ Did you submit a separate ownership certificate document with your application? 
         </h1>
 
         <p class="govuk-body">
-          The 'ownership certificate' confirms if you own all or some of the land involved in your application. You would have chosen from 4 different options, labelled A, B, C or D.
+          The 'ownership certificate' confirms if you own all or some of the land involved in your application. 
         </p>
         <p class="govuk-body">
-          You submitted this separately if either:
+          You would have chosen 1 of 4 options, labelled A, B, C or D.
         </p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            your application form did not have an ownership certificate section
-          </li>
-          <li>
-            your local planning department asked for a separate document because of a mistake on your application form
-          </li>
-          <li>
-            you chose to submit a separate ownership certificate section
-          </li>
-        </ul>
 
         {{ govukRadios({
           idPrefix: "appealsub-"+version+"-applicationdocs-certificates",
@@ -77,6 +66,33 @@ Did you submit a separate ownership certificate document with your application? 
             classes: "govuk-button--secondary"
           }) }}
         </div>
+        
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Did I submit this separately?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">
+              You would have submitted this separately if either:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                your application form did not have an ownership certificate section
+              </li>
+              <li>
+                your local planning department asked for a separate document because of a mistake on your application form
+              </li>
+              <li>
+                you chose to submit a separate ownership certificate section
+              </li>
+            </ul>
+            <p class="govuk-body">
+              If you're still not sure, you can find your application on the local planning department's website.
+            </p>
+          </div>
+        </details>
 
       </form>
 

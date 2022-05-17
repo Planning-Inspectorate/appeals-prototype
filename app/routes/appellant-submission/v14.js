@@ -389,7 +389,7 @@ module.exports = function (router) {
     })
   
     router.post(base+'full/planning-application-documents/certificates', function (req, res) {
-      if ( req.session.data["appealsub-"+v+"-applicationdocs-certificates"] == "No, I submitted these separately"){
+      if ( req.session.data["appealsub-"+v+"-applicationdocs-certificates"] == "Yes"){
         res.redirect(base+'full/planning-application-documents/certificates-upload');
       } else {
         res.redirect(base+'full/planning-application-documents/application-number');

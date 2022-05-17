@@ -2,7 +2,7 @@
 {% extends "layouts/appellant-submission/v14.html" %}
 
 {% block pageTitle %}
-Does the application form include site ownership and agricultural holdings certificates? - Upload documents from your planning application - {{serviceName}} - GOV.UK
+Did you submit a separate ownership certificate and agricultural land declaration with your application? - Upload documents from your planning application - {{serviceName}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,6 +25,68 @@ Does the application form include site ownership and agricultural holdings certi
     
       <form action="" method="post">
 
+        <span class="govuk-caption-l">
+          Upload documents from your planning application
+        </span>
+        <h1 class="govuk-heading-l">
+          Did you submit a separate ownership certificate and agricultural land declaration with your application?
+        </h1>
+
+        <p class="govuk-body">
+          The 'ownership certificate' confirms if you own all or some of the land involved in your application. The 'agricultural land declaration' confirms if any of the land is part of an agricultural holding.
+        </p>
+        <p class="govuk-body">
+          You would have chosen 1 of 4 options, labelled A, B, C or D.
+        </p>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-applicationdocs-certificates",
+          name: "appealsub-"+version+"-applicationdocs-certificates",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-applicationdocs-certificates", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-applicationdocs-certificates", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Did I submit these separately?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">
+              You would have submitted these separately if either:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                your application form did not have an ownership certificate section
+              </li>
+              <li>
+                your local planning department asked for a separate document because of a mistake on your application form
+              </li>
+              <li>
+                you chose to submit a separate ownership certificate section
+              </li>
+            </ul>
+            <p class="govuk-body">
+              If you're still not sure, you can find your application on the local planning department's website.
+            </p>
+          </div>
+        </details>
+<!--
         <span class="govuk-caption-l">
           Upload documents from your planning application
         </span>
@@ -59,7 +121,7 @@ Does the application form include site ownership and agricultural holdings certi
         {{ govukButton({
           text: "Continue"
         }) }}
-
+      -->
       </form>
 
     </div>
