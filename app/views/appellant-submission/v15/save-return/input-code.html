@@ -14,7 +14,12 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
-
+{% if data["savereturn-v15-showbacklink"] == true %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endif %}
 {% endblock %}
 
 {% block content %}
