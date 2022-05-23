@@ -1,7 +1,7 @@
-{% set pageref = "SAR-010-AS15" %}
+{% set pageref = "SAR-012-AS15" %}
 {% extends "layouts/appellant-submission/v15.html" %}
 
-{% set title = "Request a new code" %}
+{% set title = "You cannot appeal" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -15,17 +15,12 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.go(-1);"
-  }) }}
-
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
     <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -36,13 +31,18 @@
       </label>
 
       <p class="govuk-body">
-        Emails sometimes take a few minutes to arrive. If you do not receive the code, you can request a new one.
+        Your deadline to appeal has passed.
       </p>
 
-      {{ govukButton({
-        href: "input-code",
-        text: "Request a new code"
-      }) }}
+      <p class="govuk-body">
+        Your deadline was 27 January 2022. This is 12 weeks from the decision date.
+      </p>
+
+      <p class="govuk-body">
+        <a href="javascript:preventDefault();" class="govuk-link">
+          Start a new appeal
+        </a>
+      </p>
 
     </div>
 

@@ -27,7 +27,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="/appellant-submission/{{version}}/listed-building/task-list" method="post">
+      <form action="" method="post">
 
         <span class="govuk-caption-l">{{ subServiceName }}</span>
 
@@ -37,9 +37,12 @@
             {{ title }}
           </label>
 
-          <div class="govuk-form-group">
-            <input class="govuk-input govuk-input--width-5" id="email" name="email" type="text" spellcheck="false" autocomplete=none value="" style="text-transform:uppercase">
-          </div>
+          {{ govukInput({
+            id: "savereturn-"+version+"-code",
+            name: "savereturn-"+version+"-code",
+            classes: "govuk-input--width-5",
+            value: data["savereturn-"+version+"-code"]
+          }) }}
 
         </div>
 
