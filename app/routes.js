@@ -5,6 +5,7 @@ const router = express.Router();
 require('./routes/eligibility/v8.js')(router);
 require('./routes/eligibility/v9.js')(router);
 require('./routes/before-you-start/v10.js')(router);
+require('./routes/before-you-start/v11.js')(router);
 
 require('./routes/appellant-submission/v10.js')(router);
 require('./routes/appellant-submission/v11.js')(router);
