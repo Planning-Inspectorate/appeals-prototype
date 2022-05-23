@@ -350,8 +350,9 @@ module.exports = function (router) {
       res.redirect(base+'save-return/shutter/appeal-submitted');
     } else if (req.session.data["savereturn-"+v+"-code"] == "999999") {
       // Appeal already submitted
-      res.redirect(base+'save-return/shutter/appeal-submitted');
+      res.redirect(base+'save-return/shutter/you-cannot-appeal');
     } else {
+      res.redirect(base+'listed-building/task-list');
     }
   })
 
