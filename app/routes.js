@@ -7,6 +7,8 @@ require('./routes/eligibility/v9.js')(router);
 require('./routes/before-you-start/v10.js')(router);
 require('./routes/before-you-start/v11.js')(router);
 
+require('./routes/enforcement/v1.js')(router);
+
 require('./routes/appellant-submission/v10.js')(router);
 require('./routes/appellant-submission/v11.js')(router);
 require('./routes/appellant-submission/v12.js')(router);

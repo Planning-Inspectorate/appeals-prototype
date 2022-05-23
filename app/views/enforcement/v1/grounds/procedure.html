@@ -1,0 +1,85 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "layout.html" %}
+
+{% set title = "How would you prefer us to decide your appeal?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/enforcementprocedure" method="post">
+
+      <span class="govuk-caption-l">
+        Tell us how you would prefer us to decide your appeal
+      </span>
+
+      {{ govukRadios({
+        idPrefix: "procedure",
+        name: "procedure",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "written",
+            text: "Written representations",
+            hint: {
+              text: "For appeals where the issues are clear from written statements and a site visit. This is the quickest and most common way to make an appeal."
+            },
+            checked: checked("appealsub-"+version+"-proceduretype-decide", "Written representations")
+          },
+          {
+            value: "hearing",
+            text: "Hearing",
+            hint: {
+              text: "For appeals with more complex issues. The Inspector leads a discussion to answer questions they have about the appeal."
+            },
+            checked: checked("appealsub-"+version+"-proceduretype-decide", "Hearing")
+          },
+          {
+            value: "inquiry",
+            text: "Inquiry",
+            hint: {
+              text: "For appeals with very complex issues. Appeal evidence is tested by legal representatives, who question witnesses under oath."
+            },
+            checked: checked("appealsub-"+version+"-proceduretype-decide", "Inquiry")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}
