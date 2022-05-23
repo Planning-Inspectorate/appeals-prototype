@@ -1,0 +1,68 @@
+{% extends "layouts/appellant-submission/v13.html" %}
+
+{% set title = "Is there anyone else appealing the enforcement notice?" %}
+
+{% block pageTitle %}
+  {{title}} - Additional people - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/additionalpeople" method="post">
+
+      <span class="govuk-caption-l">
+        Tell us about any additional people
+      </span>
+      {{ govukRadios({
+        idPrefix: "enf-"+version+"-additionalpeople",
+        name: "addedpeople",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "They must have the same address and be appealing against the same enforcement notice."
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
