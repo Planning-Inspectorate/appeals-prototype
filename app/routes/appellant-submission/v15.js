@@ -347,11 +347,12 @@ module.exports = function (router) {
       res.redirect(base+'listed-building/task-list');
     } else if (req.session.data["savereturn-"+v+"-code"] == "111111") {
       // Appeal already submitted
-      res.redirect(base+'save-return/shutter/appeal-submitted');
+      res.redirect(base+'save-return/appeal-submitted');
     } else if (req.session.data["savereturn-"+v+"-code"] == "999999") {
-      // Appeal already submitted
-      res.redirect(base+'save-return/shutter/you-cannot-appeal');
+      // Deadline passed - cannot appeal
+      res.redirect(base+'save-return/you-cannot-appeal');
     } else {
+      // for journey completeness, the missing "incorrect code" screen should go here
       res.redirect(base+'listed-building/task-list');
     }
   })
