@@ -24,7 +24,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="" method="post">
+      <form action="health-and-safety-issues" method="post">
 
         <span class="govuk-caption-l">
           Tell us about the appeal site
@@ -33,7 +33,7 @@
         {% set infoHtml %}
           {{ govukTextarea({
             id: "appealsub-"+version+"-appealsite-visible-info",
-            name: "appealsub-"+version+"-appealsite-visible-info",
+            name: "sitevisibility",
             label: {
               text: "How is visibility restricted?"
             },

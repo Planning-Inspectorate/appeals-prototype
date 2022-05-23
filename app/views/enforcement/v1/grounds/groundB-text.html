@@ -1,0 +1,100 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% set title = "Tell us how the development never happened, or is not being used in the way that the local planning department says it is" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Grounds and facts
+        </span>
+
+        <div class="govuk-form-group govuk-!-margin-bottom-0">
+          <fieldset class="govuk-fieldset">
+
+            <!-- <p class="govuk-body">
+              It does not matter what your status was at the time the enforcement notice was served. You must tell us your status at the time of making this appeal.
+            </p> -->
+
+            {{ govukTextarea({
+              name: "more-detail",
+              id: "more-detail",
+              label: {
+                text: title,
+                classes: "govuk-label--l",
+                isPageHeading: true
+              },
+              hint: {
+                text: "You may wish to show the difference between the actual use (or lack of it) and what the local planning department alleges."
+              }
+            }) }}
+
+          </fieldset>
+        </div>
+
+        <p class="govuk-body">
+          <a href="groundB-file" class="govuk-link">
+            Upload your reasons in a document
+          </a>
+        </p>
+
+        <!-- route user based on what they selected -->
+        {% if data['grounds-3'] %}
+          {{ govukButton({
+            href: "groundC-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-4'] %}
+          {{ govukButton({
+            href: "groundD-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-5'] %}
+          {{ govukButton({
+            href: "groundE-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-6'] %}
+          {{ govukButton({
+            href: "groundF-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-7'] %}
+          {{ govukButton({
+            href: "groundG-text",
+            text: "Continue"
+          }) }}
+        {% else %}
+          {{ govukButton({
+            href: "late-application",
+            text: "Continue"
+          }) }}
+        {% endif %}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

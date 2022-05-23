@@ -1,0 +1,109 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% set title = "Tell us how the development never happened, or is not being used in the way that the local planning department says it is" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<span class="govuk-caption-l">
+  Grounds and facts
+</span>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--l" for="caseofficer-{{version}}-update-otherpolicies">
+            {{ title  }}
+          </label>
+          <p class="govuk-hint">
+            You may wish to show the difference between the actual use (or lack of it) and what the local planning department alleges.
+          <p>
+          <input class="govuk-file-upload pins-file-upload-multiple" id="caseofficer-{{version}}-update-otherpolicies" name="caseofficer-{{version}}-update-otherpolicies" type="file" multiple>
+        </div>
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }}
+
+        <p class="govuk-body">
+          <a href="groundB-text" class="govuk-link">
+            Explain your reasons using a text box
+          </a>
+        </p>
+
+        <!-- route user based on what they selected -->
+        {% if data['grounds-3'] %}
+          {{ govukButton({
+            href: "groundC-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-4'] %}
+          {{ govukButton({
+            href: "groundD-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-5'] %}
+          {{ govukButton({
+            href: "groundE-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-6'] %}
+          {{ govukButton({
+            href: "groundF-text",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-7'] %}
+          {{ govukButton({
+            href: "groundG-text",
+            text: "Continue"
+          }) }}
+        {% else %}
+          {{ govukButton({
+            href: "late-application",
+            text: "Continue"
+          }) }}
+        {% endif %}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
