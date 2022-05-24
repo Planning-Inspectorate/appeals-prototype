@@ -25,6 +25,14 @@ module.exports = function (router) {
 
   // ENF 00X
   // Enforcement
+  // Contact details
+  router.post('/contactdetails', function (req, res) {
+    req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
+    res.redirect('/enforcement/v1/task-list')
+  })
+
+  // ENF 00X
+  // Enforcement
   // Additional people
   router.post('/additionalpeople', function (req, res) {
 
@@ -33,9 +41,10 @@ module.exports = function (router) {
 
     // route depending on value
     if (addedpeople === 'yes') {
-      res.redirect('morepeople')
+      res.redirect('/enforcement/v1/additional-people/add-person')
     } else {
-      res.redirect('/enforcement/v1/appeal-site/postcode-address')
+      req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
+      res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-addpeople=Complete')
     }
   })
 
@@ -67,7 +76,8 @@ module.exports = function (router) {
     if (interest === 'none') {
       res.redirect('moreinfo')
     } else {
-      res.redirect('/enforcement/v1/grounds/grounds')
+      req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
+      res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-appealsite=Complete')
     }
   })
 
@@ -105,6 +115,33 @@ module.exports = function (router) {
 
   // ENF 00X
   // Enforcement
+  // Contact details
+  router.post('/lateapplication', function (req, res) {
+
+    // Make a variable from session data
+    let application = req.session.data['enforcement-late-applcation']
+
+    // route depending on value
+    if (application === 'no') {
+      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+      res.redirect('/enforcement/v1/task-list')
+    } else {
+      res.redirect('/enforcement/v1/grounds/application-date')
+    }
+
+  })
+
+  // ENF 00X
+  // Enforcement
+  // Grounds with applicaiton decision, end of grounds
+  router.post('/endgrounds', function (req, res) {
+    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+    res.redirect('/enforcement/v1/task-list')
+  })
+
+
+  // ENF 00X
+  // Enforcement
   // Prefered procedure
   // How would you like us to decide your appeal?
   router.post('/enforcementprocedure', function (req, res) {
@@ -114,18 +151,28 @@ module.exports = function (router) {
 
     // route depending on value
     if (how === 'written') {
-      res.redirect('/enforcement/v1/upload/planning-obligation')
+      req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
+      res.redirect('/enforcement/v1/task-list')
     } else if (how === 'hearing') {
-      res.redirect('hearing')
+      res.redirect('/enforcement/v1/procedure/hearing')
     } else {
-      res.redirect('inqury')
+      res.redirect('/enforcement/v1/procedure/inquiry')
     }
+  })
+
+  // ENF 00X
+  // Enforcement
+  // Prefered procedure
+  // Back to tasklist after telling us why you want a hearing/inquiry
+  router.post('/endprocedure', function (req, res) {
+    req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
+    res.redirect('/enforcement/v1/task-list')
   })
 
   router.post('/planningobligation', function (req, res) {
 
     // Make a variable from session data
-    let obligation = req.session.data['enf-planning-obligation']
+    let obligation = req.session.data['enforcement-planning-obligation']
     // route depending on value
     if (obligation === 'Yes') {
       res.redirect('/enforcement/v1/upload/planning-obligation-stuff')
@@ -134,7 +181,13 @@ module.exports = function (router) {
     }
   })
 
-
+  // ENF 00X
+  // Enforcement
+  // Contact details
+  router.post('/enforcementnotice', function (req, res) {
+    req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
+    res.redirect('/enforcement/v1/task-list')
+  })
 
 
 }

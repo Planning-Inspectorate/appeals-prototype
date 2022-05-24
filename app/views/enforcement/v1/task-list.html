@@ -1,5 +1,6 @@
 {% set pageref = "MVP2-FUL-TL" %}
-{% extends "layouts/mvp-full-appeal/v2.html" %}
+
+{% extends "layout.html" %}
 
 {% set title = "Appeal an enforcement notice" %}
 
@@ -18,33 +19,43 @@
 
       <!-- Count completed tasks -->
       {% set taskcount = 0 %}
-      {% if data["enforcement-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
+
+      {% if data["enforcement-taskliststatus-contactdetails"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["enforcement-"+version+"-taskliststatus-appealsite"] == "Complete" %}
+
+      {% if data["enforcement-taskliststatus-addpeople"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["enforcement-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
+
+      {% if data["enforcement-taskliststatus-appealsite"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["enforcement-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete" %}
+
+      {% if data["enforcement-taskliststatus-grounds"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["enforcement-"+version+"-taskliststatus-appealdocuments"] == "Complete" %}
+
+      {% if data["enforcement-taskliststatus-proceduretype"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
-      {% if data["enforcement-"+version+"-taskliststatus-claimingcosts"] == "Complete" %}
+
+      {% if data["enforcement-taskliststatus-appealdocuments"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
 
       <p class="govuk-body">
-        You have completed {{taskcount}} of 6 tasks.
+        You have completed {{taskcount}} of 7 tasks.
       </p>
 
       <p class="govuk-body govuk-!-margin-bottom-7">
-        Your deadline to appeal is {{ data['bys-v11-enforcementeffectivedate-day'] }} {{ data['bys-v11-enforcementeffectivedate-month'] | formatMonth }} {{ data['bys-v11-enforcementeffectivedate-year'] }}.
+        {% if data['bys-v11-enforcementeffectivedate-day'] %}
+          Your deadline to appeal is {{ data['bys-v11-enforcementeffectivedate-day'] }} {{ data['bys-v11-enforcementeffectivedate-month'] | formatMonth }} {{ data['bys-v11-enforcementeffectivedate-year'] }}.
+        {% else %}
+          Your deadline to appeal is {{ 20 | daysInFuture }}.
+        {% endif %}
       </p>
 
       <!--div class="govuk-warning-text">
@@ -65,9 +76,25 @@
                 Provide your contact details
               </a>
             </span>
-            {% if data["mvp-"+version+"-taskliststatus-contactdetails"] == "Complete" %}
+            {% if data["enforcement-taskliststatus-contactdetails"] == "Complete" %}
               <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["mvp-"+version+"-taskliststatus-contactdetails"] == "In progress" %}
+            {% elseif data["enforcement-taskliststatus-contactdetails"] == "In progress" %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
+            {% else %}
+              <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
+            {% endif %}
+          </li>
+
+          <!-- additional people -->
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="additional-people/additional-people">
+                Add people to the appeal
+              </a>
+            </span>
+            {% if data["enforcement-taskliststatus-addpeople"] == "Complete" %}
+              <strong class="app-task-list__tag govuk-tag">Complete</strong>
+            {% elseif data["enforcement-taskliststatus-addpeople"] == "In progress" %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
             {% else %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
@@ -77,13 +104,13 @@
           <!-- appeal site -->
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="appeal-site/site-address">
+              <a href="appeal-site/postcode-address">
                 Tell us about the appeal site
               </a>
             </span>
-            {% if data["mvp-"+version+"-taskliststatus-appealsite"] == "Complete" %}
+            {% if data["enforcement-taskliststatus-appealsite"] == "Complete" %}
               <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["mvp-"+version+"-taskliststatus-appealsite"] == "In progress" %}
+            {% elseif data["enforcement-taskliststatus-appealsite"] == "In progress" %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
             {% else %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
@@ -93,13 +120,14 @@
           <!-- grounds of appeal -->
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="appeal-site/site-address">
+              <a href="grounds/grounds">
+                <!-- Choose your grounds of appeal -->
                 Choose your grounds of appeal
               </a>
             </span>
-            {% if data["mvp-"+version+"-taskliststatus-appealsite"] == "Complete" %}
+            {% if data["enforcement-taskliststatus-grounds"] == "Complete" %}
               <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["mvp-"+version+"-taskliststatus-appealsite"] == "In progress" %}
+            {% elseif data["enforcement-taskliststatus-grounds"] == "In progress" %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
             {% else %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
@@ -109,13 +137,13 @@
           <!-- procedure type -->
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="procedure-type/decide">
+              <a href="procedure/procedure">
                 Tell us how you would prefer us to decide your appeal
               </a>
             </span>
-            {% if data["mvp-"+version+"-taskliststatus-proceduretype"] == "Complete" %}
+            {% if data["enforcement-taskliststatus-proceduretype"] == "Complete" %}
               <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["mvp-"+version+"-taskliststatus-proceduretype"] == "In progress" %}
+            {% elseif data["enforcement-taskliststatus-proceduretype"] == "In progress" %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
             {% else %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
@@ -125,13 +153,13 @@
           <!-- upload appeal documents -->
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="appeal-documents/appeal-statement">
+              <a href="upload/planning-obligation">
                 Upload documents for your appeal
               </a>
             </span>
-            {% if data["mvp-"+version+"-taskliststatus-appealdocuments"] == "Complete" %}
+            {% if data["enforcement-taskliststatus-appealdocuments"] == "Complete" %}
               <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["mvp-"+version+"-taskliststatus-appealdocuments"] == "In progress" %}
+            {% elseif data["enforcement-taskliststatus-appealdocuments"] == "In progress" %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
             {% else %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
@@ -140,11 +168,12 @@
 
           <!-- last task -->
           <li class="app-task-list__item">
-            {% if (data["mvp-"+version+"-taskliststatus-contactdetails"] == "Complete")
-                and data["mvp-"+version+"-taskliststatus-appealsite"] == "Complete"
-                and data["mvp-"+version+"-taskliststatus-proceduretype"] == "Complete"
-                and data["mvp-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete"
-                and data["mvp-"+version+"-taskliststatus-appealdocuments"] == "Complete"
+            {% if (data["enforcement-taskliststatus-contactdetails"] == "Complete")
+                and data["enforcement-taskliststatus-addpeople"] == "Complete"
+                and data["enforcement-taskliststatus-appealsite"] == "Complete"
+                and data["enforcement-taskliststatus-grounds"] == "Complete"
+                and data["enforcement-taskliststatus-proceduretype"] == "Complete"
+                and data["enforcement-taskliststatus-appealdocuments"] == "Complete"
             %}
               <span class="app-task-list__task-name">
                 <a href="check-your-answers">

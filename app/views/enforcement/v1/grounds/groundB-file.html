@@ -21,7 +21,7 @@
 
 {% block content %}
 <span class="govuk-caption-l">
-  Grounds and facts
+  Choose your grounds of appeal
 </span>
 
   <div class="govuk-grid-row">
@@ -36,7 +36,13 @@
           <p class="govuk-hint">
             You may wish to show the difference between the actual use (or lack of it) and what the local planning department alleges.
           <p>
-          <input class="govuk-file-upload pins-file-upload-multiple" id="caseofficer-{{version}}-update-otherpolicies" name="caseofficer-{{version}}-update-otherpolicies" type="file" multiple>
+
+          <!-- upload files -->
+          <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-plansdrawings-files">
+            Drag and drop or choose files
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-b-reasons" name="enforcement-ground-a-reasons" type="file" multiple>
+
         </div>
 
         {{ govukInsetText({

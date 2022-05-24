@@ -35,7 +35,12 @@
           Based on your answers, you can appeal using this service.
         </p>
         <p class="govuk-body">
-          Your deadline to appeal is 11.59pm on Monday {{ data["bys-"+version+"-deadline-day"] }} {{ data["bys-"+version+"-deadline-month"] | formatMonth }} {{ data["bys-"+version+"-deadline-year"] }}.
+          Your deadline to appeal is 11.59pm on Monday
+          {% if data["bys-"+version+"-deadline-day"] %}
+            {{ data["bys-"+version+"-deadline-day"] }} {{ data["bys-"+version+"-deadline-month"] | formatMonth }} {{ data["bys-"+version+"-deadline-year"] }}.
+          {% else %}
+            {{ 20 | daysInFuture }}.
+          {% endif %}
         </p>
 
         <h1 class="govuk-heading-m">
@@ -52,7 +57,7 @@
                 What do you want to appeal?
               </dt>
               <dd class="govuk-summary-list__value">
-                Appeal an enforcement notice
+                An enforcement notice
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="what-do-you-want-to-appeal">
@@ -63,10 +68,10 @@
 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Is your appeal about a listed building?
+                What were you served with?
               </dt>
               <dd class="govuk-summary-list__value">
-                No
+                An enforcement notice
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="notice-type">
@@ -94,9 +99,14 @@
                 Date of issue
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["bys-v11-enforcementissuedate-day"] }}
-                {{ data["bys-v11-enforcementissuedate-month"] | formatMonth }}
-                {{ data["bys-v11-enforcementissuedate-year"] }}
+                {% if data["bys-v11-enforcementissuedate-day"] %}
+                  {{ data["bys-v11-enforcementissuedate-day"] }}
+                  {{ data["bys-v11-enforcementissuedate-month"] | formatMonth }}
+                  {{ data["bys-v11-enforcementissuedate-year"] }}
+                {% else %}
+                  {{ 8 | daysAgo }}.
+                {% endif %}
+
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="notice-decision-date">
@@ -110,9 +120,14 @@
                 Effective date
               </dt>
               <dd class="govuk-summary-list__value">
+                {% if data["bys-v11-enforcementeffectivedate-day"] %}
                 {{ data["bys-v11-enforcementeffectivedate-day"] }}
                 {{ data["bys-v11-enforcementeffectivedate-month"] | formatMonth }}
                 {{ data["bys-v11-enforcementeffectivedate-year"] }}
+                {% else %}
+                  {{ 20 | daysInFuture }}.
+                {% endif %}
+
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="notice-decision-date">

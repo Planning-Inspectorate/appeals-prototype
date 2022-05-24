@@ -3,10 +3,10 @@
 
 {% extends "layout.html" %}
 
-{% set title = "What were you served with?" %}
+{% set title = "How many witnesses would you expect to give evidence at the inquiry?" %}
 
 {% block pageTitle %}
-  {{title}} - Before you start - GOV.UK
+  {{title}} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,32 +27,22 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/noticetype" method="post">
+    <form action="/endprocedure" method="post">
 
       <span class="govuk-caption-l">
-        Before you start
+        Tell us how you would prefer us to decide your appeal
       </span>
 
-      {{ govukRadios({
-        idPrefix: "bys-"+version+"-notice",
-        name: "notice",
-        fieldset: {
-          legend: {
-            text: title,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
+      {{ govukInput({
+        id: "enforcement-inquiry-witnesses",
+        name: "enforcement-inquiry-witnesses",
+        classes: "govuk-input--width-3",
+        label: {
+          text: title,
+          classes: "govuk-label--l",
+          isPageHeading: true
         },
-        items: [
-          {
-            value: "enforcement",
-            text: "An enforcement notice"
-          },
-          {
-            value: "listedbuilding",
-            text: "A listed building enforcement notice"
-          }
-        ]
+        value: data["enforcement-inquiry-witnesses"]
       }) }}
 
       {{ govukButton({
@@ -63,5 +53,6 @@
 
   </div>
 </div>
+
 
 {% endblock %}
