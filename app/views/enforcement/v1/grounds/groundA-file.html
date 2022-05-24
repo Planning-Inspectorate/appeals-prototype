@@ -25,7 +25,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      Grounds and facts
+      Choose your grounds of appeal
     </span>
 
     <form action="" method="post">
@@ -37,7 +37,13 @@
         <p class="govuk-hint">
           You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
         <p>
-        <input class="govuk-file-upload pins-file-upload-multiple" id="caseofficer-{{version}}-update-otherpolicies" name="caseofficer-{{version}}-update-otherpolicies" type="file" multiple>
+
+        <!-- upload files -->
+        <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-plansdrawings-files">
+          Drag and drop or choose files
+        </label>
+        <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" type="file" multiple>
+
       </div>
 
       {{ govukInsetText({
