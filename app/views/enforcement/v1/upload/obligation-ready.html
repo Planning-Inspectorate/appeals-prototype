@@ -35,32 +35,9 @@
         {{ title }}
       </h1>
 
-      {% if data["enforcement-planning-obligation"] and (data["enforcement-planning-obligation"] != "") %}
-        <h3 class="govuk-heading-m govuk-!-margin-top-8">
-          Uploaded files
-        </h3>
-        {% if data["enforcement-planning-obligation"]|is_string %}
-          <p class="govuk-body">
-            <a href="javascript:preventDefault();" class="govuk-link">{{ data["enforcement-planning-obligation"] }}</a>
-          </p>
-        {% else %}
-          <ul class="govuk-list">
-            {% for item in data["enforcement-planning-obligation"] %}
-              <li>
-                <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      {% endif %}
-
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-plansdrawings-files">
-          {% if data["enforcement-planning-obligation"] and (data["enforcement-planning-obligation"] != "") %}
-            Replace the files
-          {% else  %}
-            Drag and drop or choose a file
-          {% endif %}
+          Drag and drop or choose a file
         </label>
         <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-plansdrawings-files" name="appealsub-{{version}}-appealdocuments-plansdrawings-files" type="file" multiple>
       </div>

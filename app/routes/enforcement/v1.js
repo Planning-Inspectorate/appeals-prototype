@@ -33,6 +33,14 @@ module.exports = function (router) {
 
   // ENF 00X
   // Enforcement
+  // Contact details
+  router.post('/endcontact', function (req, res) {
+    req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
+    res.redirect('/enforcement/v1/task-list')
+  })
+
+  // ENF 00X
+  // Enforcement
   // Additional people
   router.post('/additionalpeople', function (req, res) {
 

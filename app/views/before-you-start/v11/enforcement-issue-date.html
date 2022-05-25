@@ -1,8 +1,6 @@
 <!-- needs page ref -->
 <!-- {% set pageref = "BYS-002" %} -->
 
-{% extends "layouts/before-you-start/v11.html" %}
-
 {% extends "layout.html" %}
 
 {% set title = "When was the enforcement notice issued?" %}
@@ -66,6 +64,7 @@
         }) }}
 
         {{ govukButton({
+          href: "enforcement-effective-date",
           text: "Continue"
         }) }}
 

@@ -33,6 +33,39 @@
         Before you start
       </span>
 
+      {% set intentDate %}
+
+        {{ govukDateInput({
+          id: "enforcement-intent-date",
+          namePrefix: "enforcement-intent-date",
+          fieldset: {
+            legend: {
+              text: "When did you submit your intent to appeal?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-intent-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-intent-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["enforcement-intent-date-year"]
+            }
+          ]
+        }) }}
+
+      {% endset -%}
+
       {{ govukRadios({
         idPrefix: "bys-"+version+"-intent",
         name: "intent",
@@ -46,7 +79,10 @@
         items: [
           {
             value: "intent",
-            text: "Yes, I did submit an intent to appeal"
+            text: "Yes, I did submit an intent to appeal",
+            conditional: {
+              html: intentDate
+            }
           },
           {
             value: "nointent",
