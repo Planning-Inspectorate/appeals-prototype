@@ -3,7 +3,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "Do you plan to submit a planning obligation to support your appeal?" %}
+{% set title = "Do you occupy the land or building now?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -26,15 +26,15 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/planningobligation" method="post">
+    <form action="other-appeals" method="post">
 
       <span class="govuk-caption-l">
-        Upload documents for your appeal
+        Tell us about the appeal site
       </span>
 
       {{ govukRadios({
-        idPrefix: "enforcement-planning-obligation",
-        name: "enforcement-planning-obligation",
+        idPrefix: "enforcement-site-occupation",
+        name: "enforcement-site-occupation",
         fieldset: {
           legend: {
             text: title,
@@ -42,16 +42,19 @@
             classes: "govuk-fieldset__legend--l"
           }
         },
+        hint: {
+          text: "This includes spoken or written consent."
+        },
         items: [
           {
             value: "Yes",
-            text: "Yes",
-            checked: checked("enforcement-planning-obligation", "Yes")
+            text: "Yes, I occupy the land or building now",
+            checked: checked("enforcement-site-occupation", "Yes")
           },
           {
             value: "No",
-            text: "No",
-            checked: checked("enforcement-planning-obligation", "No")
+            text: "No, I do not occupy the land or building now",
+            checked: checked("enforcement-site-occupation", "No")
           }
         ]
       }) }}

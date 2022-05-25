@@ -19,7 +19,7 @@ module.exports = function (router) {
     if (user === 'appellant') {
       res.redirect('/enforcement/v1/contact-details/contact-details')
     } else {
-      res.redirect('/enforcement/v1/agent-enforcement')
+      res.redirect('/enforcement/v1/contact-details/who-was-served')
     }
   })
 
@@ -74,10 +74,26 @@ module.exports = function (router) {
 
     // route depending on value
     if (interest === 'none') {
-      res.redirect('moreinfo')
+      res.redirect('/enforcement/v1/appeal-site/owner-consent')
     } else {
       req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
       res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-appealsite=Complete')
+    }
+  })
+
+  // ENF 00X
+  // Enforcement
+  // Site interest
+  router.post('/ownerconsent', function (req, res) {
+
+    // Make a variable from session data
+    let interest = req.session.data['enforcement-site-owner-consent']
+
+    // route depending on value
+    if (interest === 'Yes') {
+      res.redirect('/enforcement/v1/appeal-site/site-occupation')
+    } else {
+      res.redirect('/enforcement/v1/appeal-site/your-interest')
     }
   })
 
@@ -169,15 +185,37 @@ module.exports = function (router) {
     res.redirect('/enforcement/v1/task-list')
   })
 
+  // ENF 00X
+  // Enforcement
+  // Prefered procedure
+  // Are you submitting a planning obligation
   router.post('/planningobligation', function (req, res) {
 
     // Make a variable from session data
     let obligation = req.session.data['enforcement-planning-obligation']
     // route depending on value
     if (obligation === 'Yes') {
-      res.redirect('/enforcement/v1/upload/planning-obligation-stuff')
+      res.redirect('/enforcement/v1/upload/planning-obligation-status')
     } else {
       res.redirect('/enforcement/v1/upload/plans-or-drawings')
+    }
+  })
+
+  // ENF 00X
+  // Enforcement
+  // Prefered procedure
+  // Are you submitting a planning obligation
+  router.post('/planningobligationstatus', function (req, res) {
+
+    // Make a variable from session data
+    let obligationstatus = req.session.data['enforcement-planning-obligation-status']
+    // route depending on value
+    if (obligationstatus === 'ready') {
+      res.redirect('/enforcement/v1/upload/obligation-ready')
+    } else if (obligationstatus === 'draft') {
+      res.redirect('/enforcement/v1/upload/obligation-draft')
+    } else {
+      res.redirect('/enforcement/v1/upload/obligation-not-started')
     }
   })
 
