@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you made any other appeals for this development or nearby sites?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/endgrounds" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {% set infoHtml %}
+
+          {{ govukTextarea({
+            name: "other-appeals",
+            id: "other-appeals",
+            hint: {
+              text: "Tell us about the other appeals, including reference numbers if you have them."
+            }
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "enforcement-other-appeals",
+          name: "enforcement-other-appeals",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "The Planning Inspectorate might choose to consider related cases together."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes, I have made other appeals for this development or nearby sites",
+              checked: checked("appealsub-"+version+"-appealsite-visible", "Yes"),
+              conditional: {
+                html: infoHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No, I have not made other appeals for this development or nearby sites",
+              checked: checked("appealsub-"+version+"-appealsite-visible", "No")
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
