@@ -128,7 +128,7 @@ module.exports = function (router) {
 
     } else if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "Something else") {
 
-      res.redirect(base+'before-you-start/shutter/planning-application-something-else');
+      res.redirect(base+'before-you-start/shutter/planning-application-not-made');
 
     } else if (req.session.data["appealsub-"+v+"-bys-whatareyouappealing"] == "Householder planning") {
 
@@ -188,24 +188,8 @@ module.exports = function (router) {
       req.session.data['appealsub-'+v+'-bys-route'] = "full"
       res.redirect(base+'before-you-start/appeal-about');
     }
-    /*
-    if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "No"){
-    } else if (req.session.data["appealsub-"+v+"-bys-removalvariationconditions"] == "Yes"){
-      // expedited written representations
-      req.session.data['appealsub-'+v+'-bys-route'] = "expedited"
-      //res.redirect(base+'before-you-start/listed-building');
-      res.redirect(base+'before-you-start/permission-granted-refused');
-    }*/
   })
-/*
-  router.post(base+'before-you-start/listed-building', function (req, res) {
-    if (req.session.data["appealsub-"+v+"-bys-listedbuilding"] == "No"){
-      res.redirect(base+'before-you-start/permission-granted-refused');
-    } else {
-      res.redirect(base+'before-you-start/shutter/listed-building');
-    }
-  })
-*/
+  
   router.post(base+'before-you-start/appeal-about', function (req, res) {
     if (req.session.data["appealsub-"+v+"-bys-appealabout"] == "No") {
       res.redirect(base+'before-you-start/permission-granted-refused');
@@ -420,36 +404,7 @@ module.exports = function (router) {
     router.post(base+'listed-building/appeal-site/knows-none/advertising-appeal', function (req, res) {
       res.redirect(base+'listed-building/appeal-site/site-visible');
     })
-/*  
-    // Agricultural holdings
-    router.post(base+'listed-building/appeal-site/agricultural-holdings', function (req, res) {
-      if (req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings"] == "Yes"){
-        res.redirect(base+'listed-building/appeal-site/agricultural-holdings-tenant');
-      } else {
-        res.redirect(base+'listed-building/appeal-site/site-visible');
-      }
-    })
-  
-    router.post(base+'listed-building/appeal-site/agricultural-holdings-tenant', function (req, res) {
-      if (req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-tenant"] == "Yes"){
-        res.redirect(base+'listed-building/appeal-site/agricultural-holdings-other-tenants');
-      } else {
-        res.redirect(base+'listed-building/appeal-site/agricultural-holdings-tell-tenants');
-      }
-    })
-  
-    router.post(base+'listed-building/appeal-site/agricultural-holdings-other-tenants', function (req, res) {
-      if (req.session.data["appealsub-"+v+"-appealsite-agriculturalholdings-othertenants"] == "Yes"){
-        res.redirect(base+'listed-building/appeal-site/agricultural-holdings-tell-tenants');
-      } else {
-        res.redirect(base+'listed-building/appeal-site/site-visible');
-      }
-    })
-  
-    router.post(base+'listed-building/appeal-site/agricultural-holdings-tell-tenants', function (req, res) {
-      res.redirect(base+'listed-building/appeal-site/site-visible');
-    })
- */ 
+
     router.post(base+'listed-building/appeal-site/site-visible', function (req, res) {
       res.redirect(base+'listed-building/appeal-site/health-safety');
     })
@@ -506,11 +461,7 @@ module.exports = function (router) {
     router.post(base+'listed-building/planning-application-documents/certificate-upload', function (req, res) {
       res.redirect(base+'listed-building/planning-application-documents/development-changed');
     })
-  /*
-    router.post(base+'listed-building/planning-application-documents/application-number', function (req, res) {
-      res.redirect(base+'listed-building/planning-application-documents/development-changed');
-    })
-  */
+    
     router.post(base+'listed-building/planning-application-documents/development-changed', function (req, res) {
       res.redirect(base+'listed-building/planning-application-documents/plans-drawings-upload');
     })
@@ -528,19 +479,7 @@ module.exports = function (router) {
       
       res.redirect(base+'listed-building/planning-application-documents/design-access-statement-upload');
     })
-  /*
-    router.post(base+'listed-building/planning-application-documents/design-access-statement', function (req, res) {
-      if (req.session.data["appealsub-"+v+"-applicationdocs-designaccess"] == "Yes"){
-        res.redirect(base+'listed-building/planning-application-documents/design-access-statement-upload');
-      } else {
-        if (req.session.data["appealsub-"+v+"-bys-permissiongrantedrefused"] == "I have not received a decision"){
-          res.redirect(base+'listed-building/planning-application-documents/confirming-letter');
-        } else {
-          res.redirect(base+'listed-building/planning-application-documents/decision-letter');
-        }
-      }
-    })
-  */
+    
     router.post(base+'listed-building/planning-application-documents/design-access-statement-upload', function (req, res) {
       
       // Don't overwrite previously uploaded files with a blank upload
