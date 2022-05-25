@@ -136,19 +136,27 @@
               </dd>
             </div>
 
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Did you submit an intent to appeal?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                No
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="notice-decision-date">
-                  Change<span class="govuk-visually-hidden"> date of decision</span>
-                </a>
-              </dd>
-            </div>
+            {% if data['intent'] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Intent to appeal submitted date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data["enforcement-intent-date-day"] %}
+                    {{ data["enforcement-intent-date-day"] }}
+                  {{ data["enforcement-intent-date-month"] | formatMonth }}
+                  {{ data["enforcement-intent-date-year"] }}
+                  {% else %}
+                    {{ 2 | daysAgo }}.
+                  {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="notice-decision-date">
+                    Change<span class="govuk-visually-hidden"> date of decision</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
 
 
           </dl>

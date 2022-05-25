@@ -49,7 +49,7 @@ module.exports = function (router) {
 
      // route depending on value
      if (appealing === 'planning') {
-       res.redirect('planningscreens')
+       res.redirect('/')
      } else {
        res.redirect(base+'notice-type')
      }
@@ -67,25 +67,57 @@ module.exports = function (router) {
      if (notice === 'enforcement') {
        res.redirect(base+'planning-department?appeal=enforcement')
      } else {
-       res.redirect(base+'shutter')
+       res.redirect(base+'shutter/listed-building-enforcement-notice')
      }
    })
 
    // BYS 00X
    // Enforcement
    // Notice issue date
-   router.post(base+'enforcement-issue-date', function (req, res) {
+   // router.post(base+'enforcement-issue-date', function (req, res) {
+   //
+   //   // get enforcement issue date from user
+   //   var enteredDay = req.session.data['bys-'+v+'-enforcementissuedate-day'];
+   //   var enteredMonth = req.session.data['bys-'+v+'-enforcementissuedate-month'];
+   //   var enteredYear = req.session.data['bys-'+v+'-enforcementissuedate-year'];
+   //   var enteredDate = new Date(enteredYear, enteredMonth - 1, enteredDay);
+   //
+   //   // calculate deadline for appeal based on decision due date
+   //   // 6 months = 26 weeks for the prototype
+   //   var deadlineDate = new Date(enteredDate);
+   //   deadlineDate.setDate(deadlineDate.getDate() + 28);
+   //
+   //   req.session.data['bys-'+v+'-deadline-day'] = deadlineDate.getDate();
+   //   req.session.data['bys-'+v+'-deadline-month'] = deadlineDate.getMonth() + 1;
+   //   req.session.data['bys-'+v+'-deadline-year'] = deadlineDate.getFullYear();
+   //
+   //   var todaysDate = new Date();
+   //
+   //   if (todaysDate > deadlineDate) {
+   //     res.redirect(base+'shutter/out-of-time-no-decision')
+   //   } else {
+   //     // skip the enforcement question…
+   //     res.redirect(base+'enforcement-effective-date')
+   //   }
+   // })
+
+
+   // BYS 00X
+   // Enforcement
+   // Notice effective date, if it is in the past, ask about intent
+   router.post('/enforcementeffectivedatecheck', function (req, res) {
 
      // get enforcement issue date from user
-     var enteredDay = req.session.data['bys-'+v+'-enforcementissuedate-day'];
-     var enteredMonth = req.session.data['bys-'+v+'-enforcementissuedate-month'];
-     var enteredYear = req.session.data['bys-'+v+'-enforcementissuedate-year'];
+     var enteredDay = req.session.data['bys-'+v+'-enforcementeffectivedate-day'];
+     var enteredMonth = req.session.data['bys-'+v+'-enforcementeffectivedate-month'];
+     var enteredYear = req.session.data['bys-'+v+'-enforcementeffectivedate-year'];
      var enteredDate = new Date(enteredYear, enteredMonth - 1, enteredDay);
 
-     // calculate deadline for appeal based on decision due date
-     // 6 months = 26 weeks for the prototype
+     // work out whether intent is nceessary
+     // based on the effective date and todays date
+
      var deadlineDate = new Date(enteredDate);
-     deadlineDate.setDate(deadlineDate.getDate() + 28);
+     deadlineDate.setDate(deadlineDate.getDate() + 1);
 
      req.session.data['bys-'+v+'-deadline-day'] = deadlineDate.getDate();
      req.session.data['bys-'+v+'-deadline-month'] = deadlineDate.getMonth() + 1;
@@ -94,12 +126,14 @@ module.exports = function (router) {
      var todaysDate = new Date();
 
      if (todaysDate > deadlineDate) {
-       res.redirect(base+'shutter/out-of-time-no-decision')
+       res.redirect(base+'appeal-intent')
      } else {
        // skip the enforcement question…
-       res.redirect(base+'enforcement-effective-date')
+       res.redirect(base+'check-answers')
      }
    })
+
+
 
    // BYS 00X
    // Enforcement
@@ -111,9 +145,15 @@ module.exports = function (router) {
 
      // route depending on value
      if (intent === 'intent') {
-       res.redirect(base+'/intent-date')
-     } else {
+       req.session.data['intent'] = "intent";
        res.redirect(base+'check-answers?appeal=enforcement')
+     } else {
+       // if there is no intent, out of setTimeout(function () {
+
+       // shutter
+       res.redirect(base+'shutter/out-of-time-enforcement');
+
+       // res.redirect(base+'check-answers?appeal=enforcement')
      }
    })
 

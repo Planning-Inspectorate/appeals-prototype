@@ -43,6 +43,63 @@ service-start{% extends "layout.html" %}
 
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
+          <!-- enforcement -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-guidance">
+                  Enforcement appeals
+                </span>
+              </h2>
+            </div>
+
+            <div id="accordion-default-content-guidance" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-guidance">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Appeal a householder planning decision enforcement - Version 1
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li><a href="/before-you-start/v11">Before you start</a></li>
+                      <li><a href="/enforcement/v1/before-you-continue">Before you continue</a></li>
+                    </ul>
+                  </div>
+
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Design boards
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+
+                      <!-- miro boards -->
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li><a href="https://miro.com/app/board/uXjVO1nC9Qk=/">Miro board for enforcement appeals (Sprint 16, Jordan)</a></li>
+                        <li><a href="https://miro.com/app/board/uXjVO321JMQ=/">UR discovery for enforcement and listed buildings (Sprint 15, Israel)</a></li>
+                        <li><a href="https://miro.com/app/board/uXjVO321JMQ=/">UR discovery for enforcement and GOV.UK guidance (Sprint 14, Hungary)</a></li>
+                        <li><a href="https://miro.com/app/board/uXjVOBKFX-E=/">Miro board for enforcement appeals (Sprint 13, Greece)</a></li>
+                        <li><a href="https://miro.com/app/board/uXjVOE4OjCU=/">Enforcement appeals discovery board</a></li>
+                      </ul>
+
+                    </div>
+                  </details>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
           <!-- guidance -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
@@ -99,7 +156,7 @@ service-start{% extends "layout.html" %}
                       <li><a href="/guidance/full/v3/comment-on-planning-appeal">Comment on a planning appeal</a></li>
                     </ul>
                   </div>
-                  
+
                   <details class="govuk-details" data-module="govuk-details">
                     <summary class="govuk-details__summary">
                       <span class="govuk-details__summary-text">
@@ -107,7 +164,7 @@ service-start{% extends "layout.html" %}
                       </span>
                     </summary>
                     <div class="govuk-details__text">
-                      
+
                       <!-- public guidance v2 -->
                       <div class="govuk-inset-text govuk-!-margin-top-0">
                         {{ govukTag({
@@ -169,7 +226,7 @@ service-start{% extends "layout.html" %}
                 </span>
               </h2>
               <div class="govuk-accordion__section-summary govuk-body" id="accordion-default-heading-beforeyoustart-summary">
-                These prototypes are now superceded by the 
+                These prototypes are now superceded by the
                 "Full Appeal MVP Prototype" which includes "Before you start" as part of the end to end appeal submission.
               </div>
             </div>
@@ -317,7 +374,7 @@ service-start{% extends "layout.html" %}
                     <li>
                       <a href="/appellant-submission/v15/skip/tasklist-variation-lb-nondetermination">Start from 'Task list' to appeal non-determination of removal or variation of conditions on listed building consent</a>
                     </li>
-                    
+
                     <!--li>
                       Starting from check your answers in 'Before you start':</a>
                       <ul class="govuk-list govuk-list--bullet">

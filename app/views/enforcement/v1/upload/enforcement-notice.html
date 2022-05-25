@@ -37,11 +37,7 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-plansdrawings-files">
-          {% if data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] and (data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] != "") %}
-            Replace the files
-          {% else  %}
-            Drag and drop or choose files
-          {% endif %}
+          Drag and drop or choose a file
         </label>
         <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-plansdrawings-files" name="appealsub-{{version}}-appealdocuments-plansdrawings-files" type="file" multiple>
       </div>
