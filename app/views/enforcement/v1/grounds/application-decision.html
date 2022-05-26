@@ -77,7 +77,7 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("appealsub-"+version+"-appealsite-visible", "Yes"),
+              checked: checked("enforcement-application-decision", "Yes"),
               conditional: {
                 html: infoHtml
               }
@@ -85,11 +85,10 @@
             {
               value: "No",
               text: "No",
-              checked: checked("appealsub-"+version+"-appealsite-visible", "No")
+              checked: checked("enforcement-application-decision", "No")
             }
           ]
         }) }}
-
 
         {{ govukButton({
           text: "Continue"

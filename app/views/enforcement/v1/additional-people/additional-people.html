@@ -30,8 +30,8 @@
         Tell us about any additional people
       </span>
       {{ govukRadios({
-        idPrefix: "enf-"+version+"-additionalpeople",
-        name: "addedpeople",
+        idPrefix: "enforcement-additionalpeople",
+        name: "enforcement-additionalpeople",
         fieldset: {
           legend: {
             text: title,
@@ -44,11 +44,11 @@
         },
         items: [
           {
-            value: "yes",
+            value: "Yes",
             text: "Yes"
           },
           {
-            value: "no",
+            value: "No",
             text: "No"
           }
         ]

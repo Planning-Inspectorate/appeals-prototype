@@ -34,17 +34,6 @@
         Are there any health and safety issues on the appeal site?
       </h1>
 
-      {% set infoHtml %}
-        {{ govukTextarea({
-          id: "appealsub-"+version+"-appealsite-healthsafety-info",
-          name: "appealsub-"+version+"-appealsite-healthsafety-info",
-          label: {
-            text: "Tell us about the health and safety issues"
-          },
-          value: data["appealsub-"+version+"-appealsite-healthsafety-info"]
-        }) }}
-      {% endset -%}
-
       <p class="govuk-body">
         Tell us about any health and safety issues on the appeal site in case an Inspector needs to carry out a site visit.
       </p>
@@ -72,14 +61,25 @@
         "
       }) }}
 
+      {% set infoHtml %}
+        {{ govukTextarea({
+          id: "enforcement-site-healthsafety-details",
+          name: "enforcement-site-healthsafety-details",
+          label: {
+            text: "Tell us about the health and safety issues"
+          },
+          value: data["enforcement-site-healthsafety-details"]
+        }) }}
+      {% endset -%}
+
       {{ govukRadios({
-        idPrefix: "appealsub-"+version+"-appealsite-healthsafety",
-        name: "appealsub-"+version+"-appealsite-healthsafety",
+        idPrefix: "enforcement-site-healthsafety",
+        name: "enforcement-site-healthsafety",
         items: [
           {
             value: "Yes",
             text: "Yes",
-            checked: checked("appealsub-"+version+"-appealsite-healthsafety", "Yes"),
+            checked: checked("enforcement-site-healthsafety", "Yes"),
             conditional: {
               html: infoHtml
             }
@@ -87,7 +87,7 @@
           {
             value: "No",
             text: "No",
-            checked: checked("appealsub-"+version+"-appealsite-healthsafety", "No")
+            checked: checked("enforcement-site-healthsafety", "No")
           }
         ]
       }) }}

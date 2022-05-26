@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/additionalpeople" method="post">
+    <form action="/addmorepeople" method="post">
 
       <span class="govuk-caption-l">
         Tell us about any additional people
@@ -40,7 +40,7 @@
             Name
           </dt>
           <dd class="govuk-summary-list__value  govuk-!-width-one-half">
-            Nic Griffchon
+            {{ data["enforcement-added-person"] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -61,8 +61,8 @@
       </h2> -->
 
       {{ govukRadios({
-        idPrefix: "addedpeople",
-        name: "addedpeople",
+        idPrefix: "enforcement-morepeople",
+        name: "enforcement-morepeople",
         fieldset: {
           legend: {
             text: "Do you need to add another person?",
@@ -72,11 +72,11 @@
         },
         items: [
           {
-            value: "yes",
+            value: "Yes",
             text: "Yes"
           },
           {
-            value: "no",
+            value: "No",
             text: "No"
           }
         ]

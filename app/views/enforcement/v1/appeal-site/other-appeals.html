@@ -33,11 +33,12 @@
         {% set infoHtml %}
 
           {{ govukTextarea({
-            name: "other-appeals",
-            id: "other-appeals",
+            name: "enforcement-other-appeals-details",
+            id: "enforcement-other-appeals-details",
             hint: {
               text: "Tell us about the other appeals, including reference numbers if you have them."
-            }
+            },
+            value: data["enforcement-other-appeals-details"]
           }) }}
         {% endset -%}
 

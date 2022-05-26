@@ -13,7 +13,7 @@ module.exports = function (router) {
   router.post('/whoareyou', function (req, res) {
 
     // Make a variable from session data
-    let user = req.session.data['identity']
+    let user = req.session.data['enforcement-identity']
 
     // route depending on value
     if (user === 'appellant') {
@@ -45,16 +45,34 @@ module.exports = function (router) {
   router.post('/additionalpeople', function (req, res) {
 
     // Make a variable from session data
-    let addedpeople = req.session.data['addedpeople']
+    let addedpeople = req.session.data['enforcement-additionalpeople']
 
     // route depending on value
-    if (addedpeople === 'yes') {
+    if (addedpeople === 'Yes') {
       res.redirect('/enforcement/v1/additional-people/add-person')
     } else {
       req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
       res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-addpeople=Complete')
     }
   })
+
+  // ENF 00X
+  // Enforcement
+  // Additional people
+  router.post('/addmorepeople', function (req, res) {
+
+    // Make a variable from session data
+    let addedpeople = req.session.data['enforcement-morepeople']
+
+    // route depending on value
+    if (addedpeople === 'Yes') {
+      res.redirect('/enforcement/v1/additional-people/add-person')
+    } else {
+      req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
+      res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-addpeople=Complete')
+    }
+  })
+
 
   // ENF 00X
   // Enforcement
@@ -78,7 +96,7 @@ module.exports = function (router) {
   router.post('/siteinterest', function (req, res) {
 
     // Make a variable from session data
-    let interest = req.session.data['interest']
+    let interest = req.session.data['enforcement-interest']
 
     // route depending on value
     if (interest === 'none') {
@@ -143,10 +161,10 @@ module.exports = function (router) {
   router.post('/lateapplication', function (req, res) {
 
     // Make a variable from session data
-    let application = req.session.data['enforcement-late-applcation']
+    let application = req.session.data['enforcement-late-application']
 
     // route depending on value
-    if (application === 'no') {
+    if (application === 'No') {
       req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
       res.redirect('/enforcement/v1/task-list')
     } else {
