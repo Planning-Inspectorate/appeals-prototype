@@ -44,62 +44,62 @@
           <p>
 
           {{ govukInput({
-            id: "enforcement-"+version+"-appealsite-address-line-1",
-            name: "enforcement-"+version+"-appealsite-address-line-1",
+            id: "enforcement-site-address-line1",
+            name: "enforcement-site-address-line1",
             label: {
               html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
             },
-            value: data["enforcement-"+version+"-appealsite-address-line-1"]
+            value: data["enforcement-site-address-line1"]
           }) }}
 
           {{ govukInput({
-            id: "enforcement-"+version+"-appealsite-address-line-2",
-            name: "enforcement-"+version+"-appealsite-address-line-2",
+            id: "enforcement-site-address-line2",
+            name: "enforcement-site-address-line2",
             label: {
               html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
             },
-            value: data["enforcement-"+version+"-appealsite-address-line-2"]
+            value: data["enforcement-site-address-line2"]
           }) }}
 
           {{ govukInput({
-            id: "enforcement-"+version+"-appealsite-address-town",
-            name: "enforcement-"+version+"-appealsite-address-town",
+            id: "enforcement-site-address-town",
+            name: "enforcement-site-address-town",
             label: {
               text: "Town or city"
             },
-            value: data["enforcement-"+version+"-appealsite-address-town"],
+            value: data["enforcement-site-address-town"],
             classes: "govuk-!-width-two-thirds"
           }) }}
 
           {{ govukInput({
-            id: "enforcement-"+version+"-appealsite-address-county",
-            name: "enforcement-"+version+"-appealsite-address-county",
+            id: "enforcement-site-address-county",
+            name: "enforcement-site-address-county",
             label: {
               text: "County"
             },
-            value: data["enforcement-"+version+"-appealsite-address-county"],
+            value: data["enforcement-site-address-county"],
             classes: "govuk-!-width-two-thirds"
           }) }}
 
           {{ govukInput({
-            id: "enforcement-"+version+"-appealsite-address-easting",
-            name: "enforcement-"+version+"-appealsite-address-easting",
+            id: "enforcement-site-address-easting",
+            name: "enforcement-site-address-easting",
             label: {
               text: "Grid reference Easting"
             },
             value: "Value",
-            value: data["enforcement-"+version+"-appealsite-address-easting"],
+            value: data["enforcement-site-address-easting"],
             classes: "govuk-input--width-10"
           }) }}
 
           {{ govukInput({
-            id: "enforcement-"+version+"-appealsite-address-northing",
-            name: "enforcement-"+version+"-appealsite-address-northing",
+            id: "enforcement-site-address-northing",
+            name: "enforcement-site-address-northing",
             label: {
               text: "Grid reference Northing"
             },
             value: "Value",
-            value: data["enforcement-"+version+"-appealsite-address-northing"],
+            value: data["enforcement-site-address-northing"],
             classes: "govuk-input--width-10"
           }) }}
 

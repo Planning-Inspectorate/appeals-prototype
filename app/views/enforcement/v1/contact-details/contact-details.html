@@ -1,4 +1,4 @@
-{% extends "layouts/appellant-submission/v13.html" %}
+{% extends "layout.html" %}
 
 {% set title = "Contact details" %}
 
@@ -34,8 +34,8 @@
         </h1>
 
         {{ govukInput({
-          id: "appealsub-"+version+"-aboutyou-yourname",
-          name: "appealsub-"+version+"-aboutyou-yourname",
+          id: "enforcement-your-email",
+          name: "enforcement-your-email",
           label: {
             text: "Your email address"
           },
@@ -46,8 +46,8 @@
         }) }}
 
         {{ govukInput({
-          id: "appealsub-"+version+"-aboutyou-yourname",
-          name: "appealsub-"+version+"-aboutyou-yourname",
+          id: "enforcement-your-name",
+          name: "enforcement-your-name",
           label: {
             text: "Your full name"
           },
@@ -58,25 +58,25 @@
         }) }}
 
         {{ govukInput({
-          id: "appealsub-"+version+"-aboutyou-company",
-          name: "appealsub-"+version+"-aboutyou-company",
+          id: "enforcement-company-name",
+          name: "enforcement-company-name",
           label: {
             text: "Company name (optional)"
           },
           classes: "govuk-!-width-two-thirds",
-          value: data["appealsub-"+version+"-aboutyou-company"]
+          value: data["enforcement-company-name"]
         }) }}
 
         {{ govukInput({
           label: {
             text: "Your telephone number"
           },
-          id: "appealsub-"+version+"-aboutyou-telephone",
-          name: "appealsub-"+version+"-aboutyou-telephone",
+          id: "enforcement-telephone",
+          name: "enforcement-telephone",
           type: "tel",
           autocomplete: "tel",
           classes: "govuk-input--width-10",
-          value: data["appealsub-"+version+"-aboutyou-telephone"]
+          value: data["enforcement-telephone"]
         }) }}
 
         <div class="govuk-button-group">

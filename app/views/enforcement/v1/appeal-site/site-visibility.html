@@ -32,18 +32,18 @@
 
         {% set infoHtml %}
           {{ govukTextarea({
-            id: "appealsub-"+version+"-appealsite-visible-info",
-            name: "sitevisibility",
+            id: "enforcement-site-visibility-details",
+            name: "enforcement-site-visibility-details",
             label: {
               text: "How is visibility restricted?"
             },
-            value: data["appealsub-"+version+"-appealsite-visible-info"]
+            value: data["enforcement-site-visibility-details"]
           }) }}
         {% endset -%}
 
         {{ govukRadios({
-          idPrefix: "appealsub-"+version+"-appealsite-visible",
-          name: "appealsub-"+version+"-appealsite-visible",
+          idPrefix: "enforcement-site-visibility",
+          name: "enforcement-site-visibility",
           fieldset: {
             legend: {
               text: "Is the site visible from a public road?",
@@ -55,12 +55,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("appealsub-"+version+"-appealsite-visible", "Yes")
+              checked: checked("enforcement-site-visibility", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("appealsub-"+version+"-appealsite-visible", "No"),
+              checked: checked("enforcement-site-visibility", "No"),
               conditional: {
                 html: infoHtml
               }

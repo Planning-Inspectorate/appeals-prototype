@@ -33,11 +33,12 @@
       </span>
 
       {{ govukTextarea({
-        name: "enforcement-your-site-interest",
-        id: "enforcement-your-site-interest",
+        name: "enforcement-site-interest-details",
+        id: "enforcement-site-interest-details",
         label: {
           text: title,
           classes: "govuk-label--l",
+          value: data['enforcement-site-interest-details'],
           isPageHeading: true
         }
       }) }}
