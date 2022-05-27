@@ -189,13 +189,13 @@ module.exports = function (router) {
   router.post('/enforcementprocedure', function (req, res) {
 
     // Make a variable from session data
-    let how = req.session.data['procedure']
+    let how = req.session.data['enforcement-procedure']
 
     // route depending on value
-    if (how === 'written') {
+    if (how === 'Written representations') {
       req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
       res.redirect('/enforcement/v1/task-list')
-    } else if (how === 'hearing') {
+    } else if (how === 'Hearing') {
       res.redirect('/enforcement/v1/procedure/hearing')
     } else {
       res.redirect('/enforcement/v1/procedure/inquiry')
@@ -236,9 +236,9 @@ module.exports = function (router) {
     // Make a variable from session data
     let obligationstatus = req.session.data['enforcement-planning-obligation-status']
     // route depending on value
-    if (obligationstatus === 'ready') {
+    if (obligationstatus === 'Finalised and ready to submit') {
       res.redirect('/enforcement/v1/upload/obligation-ready')
-    } else if (obligationstatus === 'draft') {
+    } else if (obligationstatus === 'In draft') {
       res.redirect('/enforcement/v1/upload/obligation-draft')
     } else {
       res.redirect('/enforcement/v1/upload/obligation-not-started')

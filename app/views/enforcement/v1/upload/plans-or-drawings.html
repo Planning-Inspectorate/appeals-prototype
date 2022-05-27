@@ -3,7 +3,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "How would you prefer us to decide your appeal?" %}
+{% set title = "Plans or drawings" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -32,20 +32,20 @@
         Upload documents for your appeal
       </span>
       <h1 class="govuk-heading-l">
-        Plans or drawings
+        {{ title }}
       </h1>
 
-      {% if data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] and (data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] != "") %}
+      {% if data['enforcement-uploaded-plans'] and (data['enforcement-uploaded-plans'] != "") %}
         <h3 class="govuk-heading-m govuk-!-margin-top-8">
           Uploaded files
         </h3>
-        {% if data["appealsub-"+version+"-appealdocuments-plansdrawings-files"]|is_string %}
+        {% if data['enforcement-uploaded-plans']|is_string %}
           <p class="govuk-body">
-            <a href="javascript:preventDefault();" class="govuk-link">{{ data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] }}</a>
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data['enforcement-uploaded-plans'] }}</a>
           </p>
         {% else %}
           <ul class="govuk-list">
-            {% for item in data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] %}
+            {% for item in data['enforcement-uploaded-plans'] %}
               <li>
                 <a href="javascript:preventDefault();" class="govuk-link">{{ item }}</a>
               </li>
@@ -54,15 +54,22 @@
         {% endif %}
       {% endif %}
 
-      <div class="govuk-form-group">
+      <!-- <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="appealsub-{{version}}-appealdocuments-plansdrawings-files">
-          {% if data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] and (data["appealsub-"+version+"-appealdocuments-plansdrawings-files"] != "") %}
+          {% if data['enforcement-uploaded-plans'] and (data['enforcement-uploaded-plans'] != "") %}
             Replace the files
           {% else  %}
             Drag and drop or choose files
           {% endif %}
         </label>
         <input class="govuk-file-upload pins-file-upload" id="appealsub-{{version}}-appealdocuments-plansdrawings-files" name="appealsub-{{version}}-appealdocuments-plansdrawings-files" type="file" multiple>
+      </div> -->
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="enforcement-uploaded-plans">
+          Drag and drop or choose a file
+        </label>
+        <input class="govuk-file-upload pins-file-upload" id="enforcement-uploaded-plans" name="enforcement-uploaded-plans" type="file" multiple>
       </div>
 
       {{ govukDetails({

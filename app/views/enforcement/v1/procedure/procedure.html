@@ -34,8 +34,8 @@
       </span>
 
       {{ govukRadios({
-        idPrefix: "procedure",
-        name: "procedure",
+        idPrefix: "enforcement-procedure",
+        name: "enforcement-procedure",
         fieldset: {
           legend: {
             text: title,
@@ -45,28 +45,28 @@
         },
         items: [
           {
-            value: "written",
+            value: "Written representations",
             text: "Written representations",
             hint: {
               text: "For appeals where the issues are clear from written statements and a site visit. This is the quickest and most common way to make an appeal."
             },
-            checked: checked("appealsub-"+version+"-proceduretype-decide", "Written representations")
+            checked: checked("enforcement-procedure-written", "Written representations")
           },
           {
-            value: "hearing",
+            value: "Hearing",
             text: "Hearing",
             hint: {
               text: "For appeals with more complex issues. The Inspector leads a discussion to answer questions they have about the appeal."
             },
-            checked: checked("appealsub-"+version+"-proceduretype-decide", "Hearing")
+            checked: checked("enforcement-procedure-hearing", "Hearing")
           },
           {
-            value: "inquiry",
+            value: "Inquiry",
             text: "Inquiry",
             hint: {
               text: "For appeals with very complex issues. Appeal evidence is tested by legal representatives, who question witnesses under oath."
             },
-            checked: checked("appealsub-"+version+"-proceduretype-decide", "Inquiry")
+            checked: checked("enforcement-procedure-inquiry", "Inquiry")
           }
         ]
       }) }}
