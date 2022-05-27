@@ -33,6 +33,39 @@
         Choose your grounds of appeal
       </span>
 
+      {% set applicationDate %}
+
+        {{ govukDateInput({
+          id: "enforcement-retroapplication-date",
+          namePrefix: "enforcement-retroapplication-date",
+          fieldset: {
+            legend: {
+              text: "When did you submit your planning application?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-retroapplication-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-retroapplication-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["enforcement-retroapplication-date-year"]
+            }
+          ]
+        }) }}
+
+      {% endset -%}
+
       {{ govukRadios({
         idPrefix: "enforcement-late-application",
         name: "enforcement-late-application",
@@ -46,11 +79,16 @@
         items: [
           {
             value: "Yes",
-            text: "Yes, I submitted a planning application after the local planning department issued the enforcement notice"
+            text: "Yes",
+            checked: checked("enforcement-late-application", "Yes"),
+            conditional: {
+              html: applicationDate
+            }
           },
           {
             value: "No",
-            text: "No, I did not submit a planning application after the local planning department issued the enforcement notice"
+            text: "No",
+            checked: checked("enforcement-late-application", "No")
           }
         ]
       }) }}

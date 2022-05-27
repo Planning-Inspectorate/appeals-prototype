@@ -163,13 +163,8 @@ module.exports = function (router) {
     // Make a variable from session data
     let application = req.session.data['enforcement-late-application']
 
-    // route depending on value
-    if (application === 'No') {
-      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-      res.redirect('/enforcement/v1/task-list')
-    } else {
-      res.redirect('/enforcement/v1/grounds/application-date')
-    }
+    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+    res.redirect('/enforcement/v1/task-list')
 
   })
 
