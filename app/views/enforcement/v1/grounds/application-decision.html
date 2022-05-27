@@ -30,7 +30,7 @@
           Tell us about the appeal site
         </span>
 
-        {% set infoHtml %}
+        {% set decisionDate %}
 
           {{ govukDateInput({
             id: "enforcement-application-decision-date",
@@ -79,7 +79,7 @@
               text: "Yes",
               checked: checked("enforcement-application-decision", "Yes"),
               conditional: {
-                html: infoHtml
+                html: decisionDate
               }
             },
             {
