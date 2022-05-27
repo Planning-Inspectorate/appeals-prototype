@@ -415,7 +415,7 @@
               How would you prefer us to decide your appeal?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-proceduretype-decide"] }}
+              {{ data['enforcement-procedure'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
@@ -424,17 +424,59 @@
             </dd>
           </div>
 
-          {% if data["appealsub-"+version+"-proceduretype-decide"] == "Hearing" %}
+          {% if data['enforcement-procedure'] == "Hearing" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Why would you prefer a hearing?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["appealsub-"+version+"-proceduretype-hearing-why"] }}
+                {{ data['enforcement-procedure-why-hearing'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
                   Change<span class="govuk-visually-hidden"> why would you prefer a hearing</span>
+                </a>
+              </dd>
+            </div>
+          {% elif data['enforcement-procedure'] == "Inquiry" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Why would you prefer an inquiry?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-procedure-why-inquiry'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> why would you prefer an inquiry</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How many days would you expect an inquiry to last?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-inquiry-days'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> how many days would you expect an inquiry to last</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How many witnesses would you expect to give evidence at the inquiry?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-inquiry-witnesses'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> how many witnesses would you expect to give evidence at the inquiry</span>
                 </a>
               </dd>
             </div>
@@ -482,110 +524,114 @@
             </div>
           {% endif %}
 
-          {% if data["appealsub-"+version+"-proceduretype-decide"] != "Written representations" %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Draft statement of common ground
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-proceduretype-commonground"] }}</a>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> draft statement of common ground</span>
-                </a>
-              </dd>
-            </div>
-          {% endif %}
-
         </dl>
 
         <!-- uploaded documents -->
         <h2 class="govuk-heading-l govuk-!-margin-top-9">Upload documents for your appeal</h2>
         <dl class="govuk-summary-list">
+
+
+          <!-- planning obligation -->
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Planning application number
+              Do you plan to submit a planning obligation to support your appeal?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-aboutapplication-applicationnumber"] }}
+              {{ data["enforcement-planning-obligation"] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> planning application number</span>
+                Change<span class="govuk-visually-hidden"> do you plan to submit a planning obligation to support your appeal</span>
               </a>
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Planning application form
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-applicationform"] }}</a>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> planning application form</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Plans, drawings and supporting documents
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-plansdrawings"] }}</a>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> plans, drawings and supporting documents</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Design and access statement submitted with application
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["appealsub-"+version+"-aboutapplication-designaccess"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> planning application number</span>
-              </a>
-            </dd>
-          </div>
-          {% if data["appealsub-"+version+"-aboutapplication-designaccess"] == "Yes" %}
+
+          {% if data['enforcement-planning-obligation'] == 'Yes' %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Design and access statement
+                What is the status of your planning obligation?
               </dt>
               <dd class="govuk-summary-list__value">
-                <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-designaccess-file"] }}</a>
+                {{ data["enforcement-planning-obligation-status"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> planning application number</span>
+                  Change<span class="govuk-visually-hidden"> do you plan to submit a planning obligation to support your appeal</span>
                 </a>
               </dd>
             </div>
           {% endif %}
+
+
+          {% if data['enforcement-planning-obligation-status'] == 'Finalised and ready to submit' %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Your planning obligation
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href=''>
+                  {{ data['enforcement-uploaded-planning-obligation'] }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> your planning obligation</span>
+                </a>
+              </dd>
+            </div>
+          {% elif data['enforcement-planning-obligation-status'] == 'In draft' %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Your draft planning obligation
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href=''>
+                  {{ data['enforcement-uploaded-draft-planning-obligation'] }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> your draft planning obligation</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+          {% if data['enforcement-uploaded-plans'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Plans or drawings
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href=''>
+                  {{ data['enforcement-uploaded-plans'] }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> your plans or drawings</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Decision letter
+              Enforcement notice
             </dt>
             <dd class="govuk-summary-list__value">
-              <a href="javascript:preventDefault();">{{ data["appealsub-"+version+"-aboutapplication-decisionletter"] }}</a>
+              <a href=''>
+                {{ data['enforcement-uploaded-notice'] }}
+              </a>
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> decision letter</span>
+                Change<span class="govuk-visually-hidden"> your plans or drawings</span>
               </a>
             </dd>
           </div>
+
         </dl>
-
-
 
         {{ govukButton({
           href: "declaration",
