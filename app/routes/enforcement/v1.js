@@ -327,8 +327,8 @@ router.get(base+'skip/appeal-before-you-start', function (req, res) {
     req.session.data["enforcement-procedure"] = "Written representations";
     // Update with appeal upload dummy data
     req.session.data["enforcement-planning-obligation"] = "No";
-    req.session.data["enforcement-uploaded-notice"] = "Providence enforcement notice.pdf";
-    
+    req.session.data["enforcement-uploaded-notice"] = "Providence-enforcement-notice.pdf";
+
     res.redirect('/enforcement/v1/task-list')
   })
 

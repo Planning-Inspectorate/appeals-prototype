@@ -62,7 +62,7 @@
                  Who was served the enforcement notice?
                </dt>
                <dd class="govuk-summary-list__value">
-                 {{ data['enforcement-notice-name']  or "Sam Davis"}}
+                 {{ data['enforcement-notice-name']  or "Nic Davis"}}
                </dd>
                <dd class="govuk-summary-list__actions">
                  <a class="govuk-link" href="javascript:preventDefault();">
@@ -77,14 +77,14 @@
               Your contact details
             </dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{ data["enforcement-your-email"] }}</p>
-              <p class="govuk-body">{{ data["enforcement-your-name"] }}</p>
+              <p class="govuk-body">{{ data["enforcement-your-email"] or 'nickydavies@jambon.co.uk' }}</p>
+              <p class="govuk-body">{{ data["enforcement-your-name"] or 'Nic Davies' }}</p>
 
               {% if data["enforcement-company-name"] %}
                 <p class="govuk-body">{{ data['enforcement-company-name'] }}</p>
               {% endif %}
 
-              <p class="govuk-body">{{ data['enforcement-telephone'] }}</p>
+              <p class="govuk-body">{{ data['enforcement-telephone'] or '01179428242' }}</p>
 
             </dd>
 
@@ -104,11 +104,11 @@
               Is there anyone else appealing the enforcement notice?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["enforcement-additionalpeople"] }}
+              {{ data["enforcement-additionalpeople"] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> address of the appeal site</span>
+                Change<span class="govuk-visually-hidden"> additional people</span>
               </a>
             </dd>
           </div>
@@ -141,25 +141,30 @@
               Appeal site address
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["enforcement-site-address-line1"] }}
+
+              {{ data["enforcement-site-address-line1"] or '1 Providence Avenue' }}
 
               {% if data["enforcement-site-address-line2"] %}
                 <br>{{ data["enforcement-site-address-line2"] }}
               {% endif %}
 
               {% if data["enforcement-site-address-town"] %}
-                <br>{{ data["enforcement-site-address-town"] }}
+                <br>{{ data["enforcement-site-address-town"]}}
+              {% else %}
+                <br>Jamton
               {% endif %}
 
               {% if data["enforcement-site-address-county"] %}
-                <br>{{ data["enforcement-site-address-county"] }}
+                <br>{{ data["enforcement-site-address-county"] or '' }}
               {% endif %}
 
               {% if data["enforcement-site-address-postcode"] %}
                 <br>{{ data["enforcement-site-address-postcode"] }}
-              {% else %}
+              {% elseif data["enforcement-site-address-easting"] %}
                 <br>{{ data["enforcement-site-address-easting"] }}
                 <br>{{ data["enforcement-site-address-northing"] }}
+              {% else %}
+                <br>JM2 3BL
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -176,7 +181,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">
-                {{ data["enforcement-site-visibility"] }}
+                {{ data["enforcement-site-visibility"] or 'Yes' }}
               </p>
 
               {% if data["enforcement-site-visibility"] == "No" %}
@@ -199,7 +204,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">
-                {{ data["enforcement-site-healthsafety"] }}
+                {{ data["enforcement-site-healthsafety"] or 'No' }}
               </p>
 
               {% if data["enforcement-site-healthsafety"] == "Yes" %}
@@ -225,7 +230,7 @@
                 {% if data['enforcement-interest'] != 'none' %}
                   <!-- one of the 4 -->
                   <p class="govuk-body">
-                    {{ data['enforcement-interest'] }}
+                    {{ data['enforcement-interest'] or 'Owner' }}
                   </p>
                 {% else %}
                   <!-- none of the above-->
@@ -297,67 +302,87 @@
               Your grounds of appeal
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['grounds-1'] %}
+
+              {% if data['grounds-1'] != null
+                 or data['grounds-2'] != null
+                 or data['grounds-3'] != null
+                 or data['grounds-4'] != null
+                 or data['grounds-5'] != null
+                 or data['grounds-6'] != null
+                 or data['grounds-7'] != null %}
+
+                {% if data['grounds-1'] %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                    Ground A
+                  </h3>
+                  <p class="govuk-body">
+                    The supposed breach of planning control should be allowed
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-2'] %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                    Ground B
+                  </h3>
+                  <p class="govuk-body">
+                    The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-3'] %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                    Ground C
+                  </h3>
+                  <p class="govuk-body">
+                    The supposed breach of planning control does not need planning permission
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-4'] %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                    Ground D
+                  </h3>
+                  <p class="govuk-body">
+                    The local planning department missed its deadline to take action
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-5'] %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                    Ground E
+                  </h3>
+                  <p class="govuk-body">
+                    The local planning department did not serve copies of the enforcement notice as they’re legally required to
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-6'] %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                    Ground F
+                  </h3>
+                  <p class="govuk-body">
+                    There’s more work to do than is needed to undo the supposed breach of planning control
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-7'] %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                    Ground G
+                  </h3>
+                  <p class="govuk-body">
+                    More time is needed to undo the supposed breach of planning control
+                  </p>
+                {% endif %}
+
+              {% else %}
+
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
                   Ground A
                 </h3>
                 <p class="govuk-body">
                   The supposed breach of planning control should be allowed
                 </p>
-              {% endif %}
 
-              {% if data['grounds-2'] %}
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  Ground B
-                </h3>
-                <p class="govuk-body">
-                  The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is
-                </p>
-              {% endif %}
-
-              {% if data['grounds-3'] %}
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  Ground C
-                </h3>
-                <p class="govuk-body">
-                  The supposed breach of planning control does not need planning permission
-                </p>
-              {% endif %}
-
-              {% if data['grounds-4'] %}
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  Ground D
-                </h3>
-                <p class="govuk-body">
-                  The local planning department missed its deadline to take action
-                </p>
-              {% endif %}
-
-              {% if data['grounds-5'] %}
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  Ground E
-                </h3>
-                <p class="govuk-body">
-                  The local planning department did not serve copies of the enforcement notice as they’re legally required to
-                </p>
-              {% endif %}
-
-              {% if data['grounds-6'] %}
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  Ground F
-                </h3>
-                <p class="govuk-body">
-                  There’s more work to do than is needed to undo the supposed breach of planning control
-                </p>
-              {% endif %}
-
-              {% if data['grounds-7'] %}
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  Ground G
-                </h3>
-                <p class="govuk-body">
-                  More time is needed to undo the supposed breach of planning control
-                </p>
               {% endif %}
 
             </dd>
@@ -415,7 +440,7 @@
               How would you prefer us to decide your appeal?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['enforcement-procedure'] }}
+              {{ data['enforcement-procedure'] or 'Written representations'}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
@@ -537,7 +562,7 @@
               Do you plan to submit a planning obligation to support your appeal?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data["enforcement-planning-obligation"] }}
+              {{ data["enforcement-planning-obligation"] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
@@ -621,7 +646,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <a href=''>
-                {{ data['enforcement-uploaded-notice'] }}
+                {{ data['enforcement-uploaded-notice'] or 'Providence-enforcement-notice.pdf' }}
               </a>
             </dd>
             <dd class="govuk-summary-list__actions">
