@@ -2,9 +2,17 @@
 {% set lpaname = "Your local planning department" %}
 {% extends "layouts/before-you-start/v10.html" %}
 
-
 {% block pageTitle %}
   You need to use the existing service - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service.'
+  }) }}
 {% endblock %}
 
 {% block content %}
