@@ -62,7 +62,7 @@
                  Who was served the enforcement notice?
                </dt>
                <dd class="govuk-summary-list__value">
-                 {{ data['enforcement-notice-name'] }}
+                 {{ data['enforcement-notice-name']  or "Sam Davis"}}
                </dd>
                <dd class="govuk-summary-list__actions">
                  <a class="govuk-link" href="javascript:preventDefault();">
@@ -302,7 +302,7 @@
                   Ground A
                 </h3>
                 <p class="govuk-body">
-                  I believe my development should’ve been allowed.
+                  The supposed breach of planning control should be allowed
                 </p>
               {% endif %}
 
@@ -311,7 +311,7 @@
                   Ground B
                 </h3>
                 <p class="govuk-body">
-                  The development never happened, or it’s not being used in the way that the local planning department says it is.
+                  The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is
                 </p>
               {% endif %}
 
@@ -320,7 +320,7 @@
                   Ground C
                 </h3>
                 <p class="govuk-body">
-                  My developement does not need planning permission.
+                  The supposed breach of planning control does not need planning permission
                 </p>
               {% endif %}
 
@@ -329,7 +329,7 @@
                   Ground D
                 </h3>
                 <p class="govuk-body">
-                  The local planning department missed its deadline to take action.
+                  The local planning department missed its deadline to take action
                 </p>
               {% endif %}
 
@@ -338,7 +338,7 @@
                   Ground E
                 </h3>
                 <p class="govuk-body">
-                  The local planning department did not serve copies of the enforcement notice as they’re legally required to.
+                  The local planning department did not serve copies of the enforcement notice as they’re legally required to
                 </p>
               {% endif %}
 
@@ -347,7 +347,7 @@
                   Ground F
                 </h3>
                 <p class="govuk-body">
-                  I’m required to do more than is needed to undo the development.
+                  There’s more work to do than is needed to undo the supposed breach of planning control
                 </p>
               {% endif %}
 
@@ -356,7 +356,7 @@
                   Ground G
                 </h3>
                 <p class="govuk-body">
-                  I need more time to undo the development.
+                  More time is needed to undo the supposed breach of planning control
                 </p>
               {% endif %}
 
