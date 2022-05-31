@@ -140,21 +140,25 @@ module.exports = function (router) {
    // Intent to appeal question
    router.post('/intent', function (req, res) {
 
-     // Make a variable from session data
-     let intent = req.session.data['intent']
+     // // Make a variable from session data
+     // let intent = req.session.data['intent']
+     //
+     // // route depending on value
+     // if (intent === 'intent') {
+     //   req.session.data['intent'] = "intent";
+     //   res.redirect(base+'check-answers?appeal=enforcement')
+     // } else {
+     //   // if there is no intent, out of setTimeout(function () {
+     //
+     //   // shutter
+     //   res.redirect(base+'shutter/out-of-time-enforcement');
+     //
+     //   // res.redirect(base+'check-answers?appeal=enforcement')
+     // }
 
-     // route depending on value
-     if (intent === 'intent') {
-       req.session.data['intent'] = "intent";
-       res.redirect(base+'check-answers?appeal=enforcement')
-     } else {
-       // if there is no intent, out of setTimeout(function () {
+     // no shutter
+     res.redirect(base+'check-answers?appeal=enforcement');
 
-       // shutter
-       res.redirect(base+'shutter/out-of-time-enforcement');
-
-       // res.redirect(base+'check-answers?appeal=enforcement')
-     }
    })
 
 
