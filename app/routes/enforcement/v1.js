@@ -261,4 +261,77 @@ module.exports = function (router) {
   })
 
 
+
+
+// ENF 00X
+// Enforcement
+// Quick link to appeal start
+router.get(base+'skip/appeal-before-you-start', function (req, res) {
+  req.session.data["enforcement-taskliststatus-contactdetails"] = "";
+  req.session.data["enforcement-taskliststatus-addpeople"] = "";
+  req.session.data["enforcement-taskliststatus-appealsite"] = "";
+  req.session.data["enforcement-taskliststatus-grounds"] = "";
+  req.session.data["enforcement-taskliststatus-proceduretype"] = "";
+  req.session.data["enforcement-taskliststatus-appealdocuments"] = "";
+  res.redirect('/before-you-start/v11')
+})
+
+  // ENF 00X
+  // Enforcement
+  // Quick link to appeal start
+  router.get(base+'skip/appeal-start', function (req, res) {
+    // clears tasklist statuses
+    req.session.data["enforcement-taskliststatus-contactdetails"] = "";
+    req.session.data["enforcement-taskliststatus-addpeople"] = "";
+    req.session.data["enforcement-taskliststatus-appealsite"] = "";
+    req.session.data["enforcement-taskliststatus-grounds"] = "";
+    req.session.data["enforcement-taskliststatus-proceduretype"] = "";
+    req.session.data["enforcement-taskliststatus-appealdocuments"] = "";
+
+    // insert clearing of form data
+    // enforcement-notice-name
+
+    res.redirect('/enforcement/v1/before-you-continue')
+  })
+
+  // ENF 00X
+  // Enforcement
+  // Quick link to a complete task list
+  router.get(base+'skip/tasks', function (req, res) {
+    // Makes all tasklist statuses Complete
+    req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
+    req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
+    req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
+    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+    req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
+    req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
+    // Update with dummy contact data
+    req.session.data["enforcement-notice-name"] = "Nic Davies";
+    req.session.data["enforcement-your-email"] = "nickydavies@jambon.co.uk";
+    req.session.data["enforcement-your-name"] = "Nic Davies";
+    req.session.data["enforcement-telephone"] = "01179428242";
+    // Update with additional people dummy data
+    req.session.data["enforcement-additionalpeople"] = "No";
+    // Update with appeal site dummy data
+    req.session.data["enforcement-site-address-line1"] = "1 Providence Avenue";
+    req.session.data["enforcement-site-address-line2"] = "Sewbridge";
+    req.session.data["enforcement-site-address-town"] = "Jamton";
+    req.session.data["enforcement-site-address-county"] = "Jamton";
+    req.session.data["enforcement-site-address-postcode"] = "JM2 3BL";
+    req.session.data["enforcement-site-visibility"] = "Yes";
+    req.session.data["enforcement-site-healthsafety"] = "No";
+    req.session.data["enforcement-interest"] = "Owner";
+    // Update with appeal grounds dummy data
+    req.session.data["grounds-1"] = "GroundA";
+    // Update with appeal procedure dummy data
+    req.session.data["enforcement-procedure"] = "Written representations";
+    // Update with appeal upload dummy data
+    req.session.data["enforcement-planning-obligation"] = "No";
+    req.session.data["enforcement-uploaded-notice"] = "Providence enforcement notice.pdf";
+    
+    res.redirect('/enforcement/v1/task-list')
+  })
+
+
+
 }
