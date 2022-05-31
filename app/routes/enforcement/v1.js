@@ -125,6 +125,14 @@ module.exports = function (router) {
 
   // ENF 00X
   // Enforcement
+  // Other appeals ending to site interests
+  router.post('/otherappeals', function (req, res) {
+    req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
+    res.redirect('/enforcement/v1/task-list')
+  })
+
+  // ENF 00X
+  // Enforcement
   // Grounds
   router.post('/grounds', function (req, res) {
 
@@ -158,10 +166,10 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Contact details
-  router.post('/lateapplication', function (req, res) {
+  router.post('/application', function (req, res) {
 
     // Make a variable from session data
-    let application = req.session.data['enforcement-late-application']
+    let application = req.session.data['enforcement-application']
 
     if (application === 'Yes') {
       res.redirect('/enforcement/v1/grounds/application-decision')
