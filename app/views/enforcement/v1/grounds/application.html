@@ -27,7 +27,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/lateapplication" method="post">
+    <form action="/application" method="post">
 
       <span class="govuk-caption-l">
         Choose your grounds of appeal
@@ -67,8 +67,8 @@
       {% endset -%}
 
       {{ govukRadios({
-        idPrefix: "enforcement-late-application",
-        name: "enforcement-late-application",
+        idPrefix: "enforcement-application",
+        name: "enforcement-application",
         fieldset: {
           legend: {
             text: title,
@@ -83,7 +83,7 @@
           {
             value: "Yes",
             text: "Yes, I submitted a planning application to the local planning department",
-            checked: checked("enforcement-late-application", "Yes"),
+            checked: checked("enforcement-application", "Yes"),
             conditional: {
               html: applicationDate
             }
@@ -91,7 +91,7 @@
           {
             value: "No",
             text: "No, I did not submit a planning application to the local planning department",
-            checked: checked("enforcement-late-application", "No")
+            checked: checked("enforcement-application", "No")
           }
         ]
       }) }}
