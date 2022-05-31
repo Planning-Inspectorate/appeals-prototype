@@ -3,7 +3,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "Did you submit a planning application after the local planning department issued the enforcement notice?" %}
+{% set title = "Did you submit a planning application to the local planning department?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -76,10 +76,13 @@
             classes: "govuk-fieldset__legend--l"
           }
         },
+        hint: {
+          text: "The planning application must have been for the same breech of planning control as written in the enforcement notice."
+        },
         items: [
           {
             value: "Yes",
-            text: "Yes",
+            text: "Yes, I submitted a planning application to the local planning department",
             checked: checked("enforcement-late-application", "Yes"),
             conditional: {
               html: applicationDate
@@ -87,7 +90,7 @@
           },
           {
             value: "No",
-            text: "No",
+            text: "No, I did not submit a planning application to the local planning department",
             checked: checked("enforcement-late-application", "No")
           }
         ]
