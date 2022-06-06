@@ -147,19 +147,19 @@ module.exports = function (router) {
 
     // route depending on value
     if (groundA) {
-      res.redirect('/enforcement/v1/grounds/groundA-text')
+      res.redirect('/enforcement/v1/grounds/groundA')
     } else if (groundB) {
-      res.redirect('/enforcement/v1/grounds/groundB-text')
+      res.redirect('/enforcement/v1/grounds/groundB')
     } else if (groundC) {
-      res.redirect('/enforcement/v1/grounds/groundC-text')
+      res.redirect('/enforcement/v1/grounds/groundC')
     } else if (groundD) {
-      res.redirect('/enforcement/v1/grounds/groundD-text')
+      res.redirect('/enforcement/v1/grounds/groundD')
     } else if (groundE) {
-      res.redirect('/enforcement/v1/grounds/groundE-text')
+      res.redirect('/enforcement/v1/grounds/groundE')
     } else if (groundF) {
-      res.redirect('/enforcement/v1/grounds/groundF-text')
+      res.redirect('/enforcement/v1/grounds/groundF')
     } else {
-      res.redirect('/enforcement/v1/grounds/groundG-text')
+      res.redirect('/enforcement/v1/grounds/groundG')
     }
   })
 
