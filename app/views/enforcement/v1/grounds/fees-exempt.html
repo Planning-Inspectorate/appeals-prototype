@@ -1,6 +1,6 @@
 {% extends "layouts/appellant-submission/v11.html" %}
 
-{% set title = "Is there a reason why you should not pay a fee?" %}
+{% set title = "Is there a reason why you do not have to pay a fee?" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -32,6 +32,19 @@
 
       <div class="govuk-form-group">
 
+        {% set exemptReason %}
+
+          {{ govukTextarea({
+            id: "enforcement-fees-exempt-reason",
+            name: "enforcement-fees-exempt-reason",
+            label: {
+              text: "Tell us why you do not have to pay a fee"
+            },
+            value: data["enforcement-fees-exempt-reason"]
+          }) }}
+
+        {% endset -%}
+
         {{ govukRadios({
           idPrefix: "enforcement-fees-paid",
           name: "enforcement-fees-paid",
@@ -46,12 +59,13 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("enforcement-fees-paid", "Yes")
+              conditional: {
+                html: exemptReason
+              }
             },
             {
               value: "No",
-              text: "No",
-              checked: checked("enforcement-fees-paid", "No")
+              text: "No"
             }
           ]
         }) }}
