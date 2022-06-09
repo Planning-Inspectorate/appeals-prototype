@@ -165,6 +165,44 @@ module.exports = function (router) {
 
   // ENF 00X
   // Enforcement
+  // Fees paid
+  router.post('/feespaid', function (req, res) {
+
+    // Make a variable from session data
+    let feespaid = req.session.data['enforcement-fees-paid']
+
+    // route depending on value
+    if (feespaid === 'Yes') {
+      // Make a variable from session data
+      let groundB = req.session.data['grounds-2']
+      let groundC = req.session.data['grounds-3']
+      let groundD = req.session.data['grounds-4']
+      let groundE = req.session.data['grounds-5']
+      let groundF = req.session.data['grounds-6']
+      let groundG = req.session.data['grounds-7']
+
+      // route depending on value
+      if (groundB) {
+        res.redirect('/enforcement/v1/grounds/groundB')
+      } else if (groundC) {
+        res.redirect('/enforcement/v1/grounds/groundC')
+      } else if (groundD) {
+        res.redirect('/enforcement/v1/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v1/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v1/grounds/groundF')
+      } else {
+        res.redirect('/enforcement/v1/grounds/groundG')
+      }
+
+    } else {
+      res.redirect('/enforcement/v1/grounds/fees-exempt')
+    }
+  })
+
+  // ENF 00X
+  // Enforcement
   // Fee for ground A only
   router.post('/fee', function (req, res) {
 
