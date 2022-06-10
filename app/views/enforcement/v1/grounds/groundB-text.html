@@ -59,38 +59,45 @@
           </a>
         </p>
 
-        <!-- route user based on what they selected -->
-        {% if data['grounds-3'] %}
+        <div class="govuk-button-group">
+          <!-- route user based on what they selected -->
+          {% if data['grounds-3'] %}
+            {{ govukButton({
+              href: "groundC-text",
+              text: "Save and continue"
+            }) }}
+          {% elif data['grounds-4'] %}
+            {{ govukButton({
+              href: "groundD-text",
+              text: "Save and continue"
+            }) }}
+          {% elif data['grounds-5'] %}
+            {{ govukButton({
+              href: "groundE-text",
+              text: "Save and continue"
+            }) }}
+          {% elif data['grounds-6'] %}
+            {{ govukButton({
+              href: "groundF-text",
+              text: "Save and continue"
+            }) }}
+          {% elif data['grounds-7'] %}
+            {{ govukButton({
+              href: "groundG-text",
+              text: "Save and continue"
+            }) }}
+          {% else %}
+            {{ govukButton({
+              href: "application",
+              text: "Save and continue"
+            }) }}
+          {% endif %}
           {{ govukButton({
-            href: "groundC-text",
-            text: "Continue"
+            href: "javascript:preventDefault();",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
           }) }}
-        {% elif data['grounds-4'] %}
-          {{ govukButton({
-            href: "groundD-text",
-            text: "Continue"
-          }) }}
-        {% elif data['grounds-5'] %}
-          {{ govukButton({
-            href: "groundE-text",
-            text: "Continue"
-          }) }}
-        {% elif data['grounds-6'] %}
-          {{ govukButton({
-            href: "groundF-text",
-            text: "Continue"
-          }) }}
-        {% elif data['grounds-7'] %}
-          {{ govukButton({
-            href: "groundG-text",
-            text: "Continue"
-          }) }}
-        {% else %}
-          {{ govukButton({
-            href: "application",
-            text: "Continue"
-          }) }}
-        {% endif %}
+        </div>
 
       </form>
 
