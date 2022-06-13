@@ -24,7 +24,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/endgrounds" method="post">
+      {% if data['grounds-1'] %}
+        <form action="fees" method="post">
+      {% else %}
+        <form action="/endgrounds" method="post">
+      {% endif %}
 
         <span class="govuk-caption-l">
           Tell us about the appeal site
