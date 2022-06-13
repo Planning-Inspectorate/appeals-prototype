@@ -145,6 +145,9 @@ module.exports = function (router) {
     let groundF = req.session.data['grounds-6']
     let groundG = req.session.data['grounds-7']
 
+    // default method for reasons
+    req.session.data["enforcement-reason-method"] = "text";
+
     // route depending on value
     if (groundA) {
       res.redirect('/enforcement/v1/grounds/groundA')
@@ -173,28 +176,9 @@ module.exports = function (router) {
 
     // route depending on value
     if (feespaid === 'Yes') {
-      // Make a variable from session data
-      let groundB = req.session.data['grounds-2']
-      let groundC = req.session.data['grounds-3']
-      let groundD = req.session.data['grounds-4']
-      let groundE = req.session.data['grounds-5']
-      let groundF = req.session.data['grounds-6']
-      let groundG = req.session.data['grounds-7']
 
-      // route depending on value
-      if (groundB) {
-        res.redirect('/enforcement/v1/grounds/groundB')
-      } else if (groundC) {
-        res.redirect('/enforcement/v1/grounds/groundC')
-      } else if (groundD) {
-        res.redirect('/enforcement/v1/grounds/groundD')
-      } else if (groundE) {
-        res.redirect('/enforcement/v1/grounds/groundE')
-      } else if (groundF) {
-        res.redirect('/enforcement/v1/grounds/groundF')
-      } else {
-        res.redirect('/enforcement/v1/grounds/groundG')
-      }
+      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+      res.redirect('/enforcement/v1/task-list')
 
     } else {
       res.redirect('/enforcement/v1/grounds/fees-exempt')
@@ -239,12 +223,18 @@ module.exports = function (router) {
 
     // Make a variable from session data
     let application = req.session.data['enforcement-application']
+    let groundA = req.session.data['grounds-1']
 
     if (application === 'Yes') {
       res.redirect('/enforcement/v1/grounds/application-decision')
     } else {
-      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-      res.redirect('/enforcement/v1/task-list')
+      if (groundA) {
+        res.redirect('/enforcement/v1/grounds/fees')
+      } else {
+        req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+        res.redirect('/enforcement/v1/task-list')
+      }
+
     }
 
   })
