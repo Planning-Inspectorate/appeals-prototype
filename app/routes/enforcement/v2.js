@@ -3,30 +3,36 @@ module.exports = function (router) {
   var v = "v2";
   var base = "/enforcement/"+v+"/";
 
- /******************************
-  *** ENFORCEMENT SUBMISSION ***
-  ******************************/
+    router.get('*', function(req, res, next){
+      // Change the version for this prototype
+      res.locals['version'] = '2'
+      next()
+    })
 
-  // ENF 00X
-  // Enforcement
-  // Who are you?
-  router.post('/whoareyou', function (req, res) {
+   /******************************
+    *** ENFORCEMENT SUBMISSION ***
+    ******************************/
 
-    // Make a variable from session data
-    let user = req.session.data['enforcement-identity']
+    // ENF 00X
+    // Enforcement
+    // Who are you?
+    router.post(base+'contact-details/who-are-you', function (req, res) {
 
-    // route depending on value
-    if (user === 'appellant') {
-      res.redirect('/enforcement/v2/contact-details/contact-details')
-    } else {
-      res.redirect('/enforcement/v2/contact-details/who-was-served')
-    }
-  })
+      // Make a variable from session data
+      let user = req.session.data['enforcement-identity']
+
+      // route depending on value
+      if (user === 'appellant') {
+        res.redirect('/enforcement/v2/contact-details/contact-details')
+      } else {
+        res.redirect('/enforcement/v2/contact-details/who-was-served')
+      }
+    })
 
   // ENF 00X
   // Enforcement
   // Contact details
-  router.post('/contactdetails', function (req, res) {
+  router.post(base+'contact-details/contact-details', function (req, res) {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
     res.redirect('/enforcement/v2/task-list')
   })
@@ -42,7 +48,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Additional people
-  router.post('/additionalpeople', function (req, res) {
+  router.post(base+'additional-people/additional-people', function (req, res) {
 
     // Make a variable from session data
     let addedpeople = req.session.data['enforcement-additionalpeople']
@@ -59,7 +65,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Additional people
-  router.post('/addmorepeople', function (req, res) {
+  router.post(base+'additional-people/added-people', function (req, res) {
 
     // Make a variable from session data
     let addedpeople = req.session.data['enforcement-morepeople']
@@ -93,7 +99,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Site interest
-  router.post('/siteinterest', function (req, res) {
+  router.post(base+'appeal-site/site-interest', function (req, res) {
 
     // Make a variable from session data
     let interest = req.session.data['enforcement-interest']
@@ -110,7 +116,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Site interest
-  router.post('/ownerconsent', function (req, res) {
+  router.post(base+'appeal-site/owner-consent', function (req, res) {
 
     // Make a variable from session data
     let interest = req.session.data['enforcement-site-owner-consent']
@@ -126,7 +132,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Other appeals ending to site interests
-  router.post('/otherappeals', function (req, res) {
+  router.post(base+'appeal-site/other-appeals', function (req, res) {
     req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
     res.redirect('/enforcement/v2/task-list')
   })
@@ -134,7 +140,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post('/grounds', function (req, res) {
+  router.post(base+'grounds/grounds', function (req, res) {
 
     // Make a variable from session data
     let groundA = req.session.data['grounds-1']
@@ -169,7 +175,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Fees paid
-  router.post('/feespaid', function (req, res) {
+  router.post(base+'grounds/fees', function (req, res) {
 
     // Make a variable from session data
     let feespaid = req.session.data['enforcement-fees-paid']
@@ -219,7 +225,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Contact details
-  router.post('/application', function (req, res) {
+  router.post(base+'grounds/application', function (req, res) {
 
     // Make a variable from session data
     let application = req.session.data['enforcement-application']
@@ -242,7 +248,12 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds with applicaiton decision, end of grounds
-  router.post('/endgrounds', function (req, res) {
+  router.post(base+'grounds/application-decision', function (req, res) {
+    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+    res.redirect('/enforcement/v2/task-list')
+  })
+
+  router.post(base+'grounds/fees-exempt', function (req, res) {
     req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
     res.redirect('/enforcement/v2/task-list')
   })
@@ -252,7 +263,7 @@ module.exports = function (router) {
   // Enforcement
   // Prefered procedure
   // How would you like us to decide your appeal?
-  router.post('/enforcementprocedure', function (req, res) {
+  router.post(base+'procedure/procedure', function (req, res) {
 
     // Make a variable from session data
     let how = req.session.data['enforcement-procedure']
@@ -272,7 +283,7 @@ module.exports = function (router) {
   // Enforcement
   // Prefered procedure
   // Back to tasklist after telling us why you want a hearing/inquiry
-  router.post('/endprocedure', function (req, res) {
+  router.post(base+'procedure/endprocedure', function (req, res) {
     req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
     res.redirect('/enforcement/v2/task-list')
   })
@@ -281,7 +292,7 @@ module.exports = function (router) {
   // Enforcement
   // Prefered procedure
   // Are you submitting a planning obligation
-  router.post('/planningobligation', function (req, res) {
+  router.post(base+'upload/planning-obligation', function (req, res) {
 
     // Make a variable from session data
     let obligation = req.session.data['enforcement-planning-obligation']
@@ -297,7 +308,7 @@ module.exports = function (router) {
   // Enforcement
   // Prefered procedure
   // Are you submitting a planning obligation
-  router.post('/planningobligationstatus', function (req, res) {
+  router.post(base+'upload/planning-obligation-status', function (req, res) {
 
     // Make a variable from session data
     let obligationstatus = req.session.data['enforcement-planning-obligation-status']
@@ -314,7 +325,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Contact details
-  router.post('/enforcementnotice', function (req, res) {
+  router.post(base+'upload/enforcement-notice', function (req, res) {
     req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
     res.redirect('/enforcement/v2/task-list')
   })
