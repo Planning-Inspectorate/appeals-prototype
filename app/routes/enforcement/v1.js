@@ -103,8 +103,6 @@ module.exports = function (router) {
       res.redirect('/enforcement/v1/appeal-site/owner-consent')
     } else {
       res.redirect('/enforcement/v1/appeal-site/other-appeals')
-      // req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
-      // res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-appealsite=Complete')
     }
   })
 
