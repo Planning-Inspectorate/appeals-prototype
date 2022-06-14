@@ -5,9 +5,9 @@ const router = express.Router();
 
 
 // Import routes for new versioning system
-router.use("/:folder/v:version", (req, res, next) => {
-	return require(`./views/${req.params.folder}/v${req.params.version}/_routes`)(req, res, next);
-})
+// router.use("/:folder/v:version", (req, res, next) => {
+// 	return require(`./views/${req.params.folder}/v${req.params.version}/_routes`)(req, res, next);
+// })
 
 
 
