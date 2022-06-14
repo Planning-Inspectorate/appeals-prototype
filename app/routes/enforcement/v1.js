@@ -102,8 +102,9 @@ module.exports = function (router) {
     if (interest === 'none') {
       res.redirect('/enforcement/v1/appeal-site/owner-consent')
     } else {
-      req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
-      res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-appealsite=Complete')
+      res.redirect('/enforcement/v1/appeal-site/other-appeals')
+      // req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
+      // res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-appealsite=Complete')
     }
   })
 
