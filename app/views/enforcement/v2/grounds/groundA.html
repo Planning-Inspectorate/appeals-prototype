@@ -1,6 +1,6 @@
 {% extends "layouts/appellant-submission/v11.html" %}
 
-{% set title = "Tell us why the supposed breach of planning control should be allowed " %}
+{% set title = "Tell us your reasons for choosing Ground A" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -35,19 +35,19 @@
         {% if data['enforcement-reason-method'] == 'text' %}
 
           <!-- reasons by textarea input -->
-          <!-- reasons by multitext input -->
-          {{ govukTextarea({
-            name: "enforcement-ground-a-reasons",
-            id: "enforcement-ground-a-reasons",
-            label: {
-              text: title,
-              classes: "govuk-label--l",
-              isPageHeading: true
-            },
-            hint: {
-              text: "You do not need to repeat the local planning department’s reasons for issuing the enforcement notice."
-            }
-          }) }}
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="enforcement-ground-a-reasons">
+                {{ title }}
+              </label>
+            </h1>
+            <div class="govuk-inset-text">
+              The supposed breach of planning control should be allowed
+            </div>
+            <div id="enforcement-ground-a-reasons-hint" class="govuk-hint">
+              You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
+            </div>
+            <textarea class="govuk-textarea" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" rows="5" aria-describedby="enforcement-ground-a-reasons-hint"></textarea>
+          </div>
 
           <p class="govuk-body">
             <a href="groundA?enforcement-reason-method=file" class="govuk-link">
@@ -61,6 +61,10 @@
           <label class="govuk-label govuk-label--l" for="enforcement-ground-a-reasons">
             {{ title  }}
           </label>
+
+          <div class="govuk-inset-text">
+            The supposed breach of planning control should be allowed
+          </div>
 
           <p class="govuk-hint">
             You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.

@@ -60,6 +60,23 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Appeal an enforcement notice - Version 2
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <!-- <li><a href="/before-you-start/v11">Before you start</a></li> -->
+                      <li><a href="/enforcement/v2/skip/appeal-before-you-start">Before you start</a></li>
+                      <li><a href="/enforcement/v2/skip/appeal-start">Before you continue</a></li>
+                      <li><a href="/enforcement/v2/skip/tasks">Completed task list</a></li>
+
+                    </ul>
+                  </div>
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}

@@ -1,0 +1,108 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "layout.html" %}
+
+{% set title = "Did you submit a planning application to the local planning department?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/application" method="post">
+
+      <span class="govuk-caption-l">
+        Choose your grounds of appeal
+      </span>
+
+      {% set applicationDate %}
+
+        {{ govukDateInput({
+          id: "enforcement-retroapplication-date",
+          namePrefix: "enforcement-retroapplication-date",
+          fieldset: {
+            legend: {
+              text: "When did you submit your planning application?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-retroapplication-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-retroapplication-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["enforcement-retroapplication-date-year"]
+            }
+          ]
+        }) }}
+
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "enforcement-application",
+        name: "enforcement-application",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "The planning application must have been for the same breach of planning control as written in the enforcement notice."
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes, I submitted a planning application to the local planning department",
+            checked: checked("enforcement-application", "Yes"),
+            conditional: {
+              html: applicationDate
+            }
+          },
+          {
+            value: "No",
+            text: "No, I did not submit a planning application to the local planning department",
+            checked: checked("enforcement-application", "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

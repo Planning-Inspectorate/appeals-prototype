@@ -1,6 +1,6 @@
 module.exports = function (router) {
 
-  var v = "v1";
+  var v = "v2";
   var base = "/enforcement/"+v+"/";
 
  /******************************
@@ -17,9 +17,9 @@ module.exports = function (router) {
 
     // route depending on value
     if (user === 'appellant') {
-      res.redirect('/enforcement/v1/contact-details/contact-details')
+      res.redirect('/enforcement/v2/contact-details/contact-details')
     } else {
-      res.redirect('/enforcement/v1/contact-details/who-was-served')
+      res.redirect('/enforcement/v2/contact-details/who-was-served')
     }
   })
 
@@ -28,7 +28,7 @@ module.exports = function (router) {
   // Contact details
   router.post('/contactdetails', function (req, res) {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
-    res.redirect('/enforcement/v1/task-list')
+    res.redirect('/enforcement/v2/task-list')
   })
 
   // ENF 00X
@@ -36,7 +36,7 @@ module.exports = function (router) {
   // Contact details
   router.post('/endcontact', function (req, res) {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
-    res.redirect('/enforcement/v1/task-list')
+    res.redirect('/enforcement/v2/task-list')
   })
 
   // ENF 00X
@@ -49,10 +49,10 @@ module.exports = function (router) {
 
     // route depending on value
     if (addedpeople === 'Yes') {
-      res.redirect('/enforcement/v1/additional-people/add-person')
+      res.redirect('/enforcement/v2/additional-people/add-person')
     } else {
       req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
-      res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-addpeople=Complete')
+      res.redirect('/enforcement/v2/task-list?enforcement-taskliststatus-addpeople=Complete')
     }
   })
 
@@ -66,10 +66,10 @@ module.exports = function (router) {
 
     // route depending on value
     if (addedpeople === 'Yes') {
-      res.redirect('/enforcement/v1/additional-people/add-person')
+      res.redirect('/enforcement/v2/additional-people/add-person')
     } else {
       req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
-      res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-addpeople=Complete')
+      res.redirect('/enforcement/v2/task-list?enforcement-taskliststatus-addpeople=Complete')
     }
   })
 
@@ -86,7 +86,7 @@ module.exports = function (router) {
     if (visibility === 'yes') {
       res.redirect('morepeople')
     } else {
-      res.redirect('/enforcement/v1/appeal-site/postcode-address')
+      res.redirect('/enforcement/v2/appeal-site/postcode-address')
     }
   })
 
@@ -100,10 +100,10 @@ module.exports = function (router) {
 
     // route depending on value
     if (interest === 'none') {
-      res.redirect('/enforcement/v1/appeal-site/owner-consent')
+      res.redirect('/enforcement/v2/appeal-site/owner-consent')
     } else {
       req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
-      res.redirect('/enforcement/v1/task-list?enforcement-taskliststatus-appealsite=Complete')
+      res.redirect('/enforcement/v2/task-list?enforcement-taskliststatus-appealsite=Complete')
     }
   })
 
@@ -117,9 +117,9 @@ module.exports = function (router) {
 
     // route depending on value
     if (interest === 'Yes') {
-      res.redirect('/enforcement/v1/appeal-site/site-occupation')
+      res.redirect('/enforcement/v2/appeal-site/site-occupation')
     } else {
-      res.redirect('/enforcement/v1/appeal-site/your-interest')
+      res.redirect('/enforcement/v2/appeal-site/your-interest')
     }
   })
 
@@ -128,7 +128,7 @@ module.exports = function (router) {
   // Other appeals ending to site interests
   router.post('/otherappeals', function (req, res) {
     req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
-    res.redirect('/enforcement/v1/task-list')
+    res.redirect('/enforcement/v2/task-list')
   })
 
   // ENF 00X
@@ -150,19 +150,19 @@ module.exports = function (router) {
 
     // route depending on value
     if (groundA) {
-      res.redirect('/enforcement/v1/grounds/groundA')
+      res.redirect('/enforcement/v2/grounds/groundA')
     } else if (groundB) {
-      res.redirect('/enforcement/v1/grounds/groundB')
+      res.redirect('/enforcement/v2/grounds/groundB')
     } else if (groundC) {
-      res.redirect('/enforcement/v1/grounds/groundC')
+      res.redirect('/enforcement/v2/grounds/groundC')
     } else if (groundD) {
-      res.redirect('/enforcement/v1/grounds/groundD')
+      res.redirect('/enforcement/v2/grounds/groundD')
     } else if (groundE) {
-      res.redirect('/enforcement/v1/grounds/groundE')
+      res.redirect('/enforcement/v2/grounds/groundE')
     } else if (groundF) {
-      res.redirect('/enforcement/v1/grounds/groundF')
+      res.redirect('/enforcement/v2/grounds/groundF')
     } else {
-      res.redirect('/enforcement/v1/grounds/groundG')
+      res.redirect('/enforcement/v2/grounds/groundG')
     }
   })
 
@@ -178,10 +178,10 @@ module.exports = function (router) {
     if (feespaid === 'Yes') {
 
       req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-      res.redirect('/enforcement/v1/task-list')
+      res.redirect('/enforcement/v2/task-list')
 
     } else {
-      res.redirect('/enforcement/v1/grounds/fees-exempt')
+      res.redirect('/enforcement/v2/grounds/fees-exempt')
     }
   })
 
@@ -200,17 +200,17 @@ module.exports = function (router) {
 
     // route depending on value
     if (groundB) {
-      res.redirect('/enforcement/v1/grounds/groundB')
+      res.redirect('/enforcement/v2/grounds/groundB')
     } else if (groundC) {
-      res.redirect('/enforcement/v1/grounds/groundC')
+      res.redirect('/enforcement/v2/grounds/groundC')
     } else if (groundD) {
-      res.redirect('/enforcement/v1/grounds/groundD')
+      res.redirect('/enforcement/v2/grounds/groundD')
     } else if (groundE) {
-      res.redirect('/enforcement/v1/grounds/groundE')
+      res.redirect('/enforcement/v2/grounds/groundE')
     } else if (groundF) {
-      res.redirect('/enforcement/v1/grounds/groundF')
+      res.redirect('/enforcement/v2/grounds/groundF')
     } else {
-      res.redirect('/enforcement/v1/grounds/groundG')
+      res.redirect('/enforcement/v2/grounds/groundG')
     }
 
   })
@@ -226,13 +226,13 @@ module.exports = function (router) {
     let groundA = req.session.data['grounds-1']
 
     if (application === 'Yes') {
-      res.redirect('/enforcement/v1/grounds/application-decision')
+      res.redirect('/enforcement/v2/grounds/application-decision')
     } else {
       if (groundA) {
-        res.redirect('/enforcement/v1/grounds/fees')
+        res.redirect('/enforcement/v2/grounds/fees')
       } else {
         req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-        res.redirect('/enforcement/v1/task-list')
+        res.redirect('/enforcement/v2/task-list')
       }
 
     }
@@ -244,7 +244,7 @@ module.exports = function (router) {
   // Grounds with applicaiton decision, end of grounds
   router.post('/endgrounds', function (req, res) {
     req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-    res.redirect('/enforcement/v1/task-list')
+    res.redirect('/enforcement/v2/task-list')
   })
 
 
@@ -260,11 +260,11 @@ module.exports = function (router) {
     // route depending on value
     if (how === 'Written representations') {
       req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
-      res.redirect('/enforcement/v1/task-list')
+      res.redirect('/enforcement/v2/task-list')
     } else if (how === 'Hearing') {
-      res.redirect('/enforcement/v1/procedure/hearing')
+      res.redirect('/enforcement/v2/procedure/hearing')
     } else {
-      res.redirect('/enforcement/v1/procedure/inquiry')
+      res.redirect('/enforcement/v2/procedure/inquiry')
     }
   })
 
@@ -274,7 +274,7 @@ module.exports = function (router) {
   // Back to tasklist after telling us why you want a hearing/inquiry
   router.post('/endprocedure', function (req, res) {
     req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
-    res.redirect('/enforcement/v1/task-list')
+    res.redirect('/enforcement/v2/task-list')
   })
 
   // ENF 00X
@@ -287,9 +287,9 @@ module.exports = function (router) {
     let obligation = req.session.data['enforcement-planning-obligation']
     // route depending on value
     if (obligation === 'Yes') {
-      res.redirect('/enforcement/v1/upload/planning-obligation-status')
+      res.redirect('/enforcement/v2/upload/planning-obligation-status')
     } else {
-      res.redirect('/enforcement/v1/upload/plans-or-drawings')
+      res.redirect('/enforcement/v2/upload/plans-or-drawings')
     }
   })
 
@@ -303,11 +303,11 @@ module.exports = function (router) {
     let obligationstatus = req.session.data['enforcement-planning-obligation-status']
     // route depending on value
     if (obligationstatus === 'Finalised and ready to submit') {
-      res.redirect('/enforcement/v1/upload/obligation-ready')
+      res.redirect('/enforcement/v2/upload/obligation-ready')
     } else if (obligationstatus === 'In draft') {
-      res.redirect('/enforcement/v1/upload/obligation-draft')
+      res.redirect('/enforcement/v2/upload/obligation-draft')
     } else {
-      res.redirect('/enforcement/v1/upload/obligation-not-started')
+      res.redirect('/enforcement/v2/upload/obligation-not-started')
     }
   })
 
@@ -316,8 +316,10 @@ module.exports = function (router) {
   // Contact details
   router.post('/enforcementnotice', function (req, res) {
     req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
-    res.redirect('/enforcement/v1/task-list')
+    res.redirect('/enforcement/v2/task-list')
   })
+
+
 
 
 // ENF 00X
@@ -346,9 +348,9 @@ router.get(base+'skip/appeal-before-you-start', function (req, res) {
     req.session.data["enforcement-taskliststatus-appealdocuments"] = "";
 
     // insert clearing of form data
-    // enforcement-notice-name
 
-    res.redirect('/enforcement/v1/before-you-continue')
+    // enforcement-notice-name
+    res.redirect('/enforcement/v2/before-you-continue')
   })
 
   // ENF 00X
@@ -386,7 +388,7 @@ router.get(base+'skip/appeal-before-you-start', function (req, res) {
     req.session.data["enforcement-planning-obligation"] = "No";
     req.session.data["enforcement-uploaded-notice"] = "Providence-enforcement-notice.pdf";
 
-    res.redirect('/enforcement/v1/task-list')
+    res.redirect('/enforcement/v2/task-list')
   })
 
 

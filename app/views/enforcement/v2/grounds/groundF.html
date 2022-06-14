@@ -1,6 +1,6 @@
 {% extends "layouts/appellant-submission/v11.html" %}
 
-{% set title = "Tell us why the supposed breach of planning control should be allowed " %}
+{% set title = "Tell us why you think there’s more work to do than is needed to undo the supposed breach of planning control" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -34,11 +34,10 @@
 
         {% if data['enforcement-reason-method'] == 'text' %}
 
-          <!-- reasons by textarea input -->
           <!-- reasons by multitext input -->
           {{ govukTextarea({
-            name: "enforcement-ground-a-reasons",
-            id: "enforcement-ground-a-reasons",
+            name: "enforcement-ground-f-reasons",
+            id: "enforcement-ground-f-reasons",
             label: {
               text: title,
               classes: "govuk-label--l",
@@ -50,7 +49,7 @@
           }) }}
 
           <p class="govuk-body">
-            <a href="groundA?enforcement-reason-method=file" class="govuk-link">
+            <a href="groundF?enforcement-reason-method=file" class="govuk-link">
               Upload your reasons in a document
             </a>
           </p>
@@ -58,19 +57,18 @@
         {% else %}
 
           <!-- reasons by file -->
-          <label class="govuk-label govuk-label--l" for="enforcement-ground-a-reasons">
+          <label class="govuk-label govuk-label--l" for="enforcement-ground-f-reasons">
             {{ title  }}
           </label>
-
           <p class="govuk-hint">
             You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
           <p>
 
           <!-- upload files -->
-          <label class="govuk-label govuk-label--m" for="enforcement-ground-a-reasons">
+          <label class="govuk-label govuk-label--m" for="enforcement-ground-f-reasons">
             Drag and drop or choose files
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" type="file" multiple>
+          <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-f-reasons" name="enforcement-ground-f-reasons" type="file" multiple>
 
         </div>
 
@@ -98,7 +96,7 @@
         }) }}
 
         <p class="govuk-body">
-          <a href="groundA?enforcement-reason-method=text" class="govuk-link">
+          <a href="groundF?enforcement-reason-method=text" class="govuk-link">
             Explain your reasons using a text box
           </a>
         </p>
@@ -106,32 +104,7 @@
       {% endif %}
 
       <!-- route user based on what they selected -->
-      {% if data['grounds-2'] %}
-        {{ govukButton({
-          href: "groundB",
-          text: "Continue"
-        }) }}
-      {% elif data['grounds-3'] %}
-        {{ govukButton({
-          href: "groundC",
-          text: "Continue"
-        }) }}
-      {% elif data['grounds-4'] %}
-        {{ govukButton({
-          href: "groundD",
-          text: "Continue"
-        }) }}
-      {% elif data['grounds-5'] %}
-        {{ govukButton({
-          href: "groundE",
-          text: "Continue"
-        }) }}
-      {% elif data['grounds-6'] %}
-        {{ govukButton({
-          href: "groundF",
-          text: "Continue"
-        }) }}
-      {% elif data['grounds-7'] %}
+      {% if data['grounds-7'] %}
         {{ govukButton({
           href: "groundG",
           text: "Continue"
@@ -142,8 +115,6 @@
           text: "Continue"
         }) }}
       {% endif %}
-
-
 
     </form>
 
