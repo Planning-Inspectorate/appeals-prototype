@@ -36,8 +36,10 @@
         </p>
         <p class="govuk-body">
           Your deadline to appeal is 11.59pm on Monday
-          {% if data["bys-"+version+"-deadline-day"] %}
-            {{ data["bys-"+version+"-deadline-day"] }} {{ data["bys-"+version+"-deadline-month"] | formatMonth }} {{ data["bys-"+version+"-deadline-year"] }}.
+          {% if data["bys-v11-enforcementeffectivedate-day"] %}
+          {{ data["bys-v11-enforcementeffectivedate-day"] }}
+          {{ data["bys-v11-enforcementeffectivedate-month"] | formatMonth }}
+          {{ data["bys-v11-enforcementeffectivedate-year"] }}
           {% else %}
             {{ 20 | daysInFuture }}.
           {% endif %}
