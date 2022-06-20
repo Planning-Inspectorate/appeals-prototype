@@ -33,15 +33,13 @@
         {{ title }}
       </h1>
 
-      <p>You need to upload one or more documents explaining why each ground applies to your case.</p>
+      <p>You need to upload one or more documents explaining why each ground applies to your case. If you explain all grounds in one document make sure it is clear which explanation is for each.</p>
 
       <!-- <div class="govuk-inset-text"> -->
         <p class="govuk-!-margin-bottom-1">Based on your previous answer, you need to explain:</p>
         <ul class="govuk-list govuk-list--bullet">
           {% for ground in data['grounds'] %}
             <li>{{ ground }}</li>
-          {% else %}
-            <li>No features selected</li>
           {% endfor %}
         </ul>
       <!-- </div> -->
@@ -59,7 +57,7 @@
           classes: 'govuk-label--m govuk-!-margin-top-8'
         },
         hint: {
-          text: 'The files must be a JPG, BMP, PNG, TIF, DOC() or PDF and be smaller than 15MB'
+          text: 'The files must be a DOC, DOCX, PDF, JPG, PNG, or TIF and be smaller than 15MB'
         },
         attributes: { multiple: '' }
       }) }}
