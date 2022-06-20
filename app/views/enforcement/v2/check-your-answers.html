@@ -37,13 +37,15 @@
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Was the enforcement notice served against you?
+              Who was named on the enforcement notice?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['enforcement-identity'] == 'appellant' %}
-                Yes, the enforcement notice was served against me
+                {{ data['enforcement-your-name'] }}
+              {% elif data['enforcement-identity'] == 'agent' %}
+                  {{ data['enforcement-your-name'] }}
               {% else %}
-                 No, I'm acting on behalf of the person it was served to
+                 No, I’m acting on behalf of the person it was served to
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">

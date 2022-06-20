@@ -47,29 +47,6 @@
         }) }}
 
         {{ govukInput({
-          id: "enforcement-your-name",
-          name: "enforcement-your-name",
-          label: {
-            text: "Your full name"
-          },
-          hint: {
-            html: hintHtml
-          },
-          classes: "govuk-!-width-two-thirds",
-          value: data["enforcement-your-name"]
-        }) }}
-
-        {{ govukInput({
-          id: "enforcement-company-name",
-          name: "enforcement-company-name",
-          label: {
-            text: "Company name (optional)"
-          },
-          classes: "govuk-!-width-two-thirds",
-          value: data["enforcement-company-name"]
-        }) }}
-
-        {{ govukInput({
           label: {
             text: "Your telephone number"
           },
@@ -80,6 +57,10 @@
           classes: "govuk-input--width-10",
           value: data["enforcement-telephone"]
         }) }}
+
+        <p class="govuk-body">
+          We’ll only use this to contact you about your appeal.
+        </p>
 
         <div class="govuk-button-group">
           {{ govukButton({
