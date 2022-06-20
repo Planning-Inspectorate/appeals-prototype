@@ -33,10 +33,10 @@
         {{ title }}
       </h1>
 
-      <p>You need to upload one or more documents explaining why each ground applies to your case. If you explain all grounds in one document make sure it is clear which explanation is for each.</p>
+      <p>You need to upload one or more documents explaining why each ground applies to your case. Make sure you list your reasons for each ground of appeal.</p>
 
       <!-- <div class="govuk-inset-text"> -->
-        <p class="govuk-!-margin-bottom-1">Based on your previous answer, you need to tell us reasons for:</p>
+        <p class="govuk-!-margin-bottom-1">Based on your previous answer, tell us your reasons for:</p>
         <ul class="govuk-list govuk-list--bullet">
           {% for ground in data['grounds'] %}
             <li>{{ ground | safe }}</li>
