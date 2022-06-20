@@ -36,10 +36,10 @@
       <p>You need to upload one or more documents explaining why each ground applies to your case. If you explain all grounds in one document make sure it is clear which explanation is for each.</p>
 
       <!-- <div class="govuk-inset-text"> -->
-        <p class="govuk-!-margin-bottom-1">Based on your previous answer, you need to explain:</p>
+        <p class="govuk-!-margin-bottom-1">Based on your previous answer, you need to tell us reasons for:</p>
         <ul class="govuk-list govuk-list--bullet">
           {% for ground in data['grounds'] %}
-            <li>{{ ground }}</li>
+            <li>{{ ground | safe }}</li>
           {% endfor %}
         </ul>
       <!-- </div> -->

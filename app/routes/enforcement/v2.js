@@ -144,24 +144,6 @@ module.exports = function (router) {
     res.redirect('/enforcement/v2/grounds/upload-reasons')
   })
 
-  // ENF 00X
-  // Enforcement
-  // Fees paid
-  router.post(base+'grounds/fees', function (req, res) {
-
-    // Make a variable from session data
-    let feespaid = req.session.data['enforcement-fees-paid']
-
-    // route depending on value
-    if (feespaid === 'Yes') {
-
-      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-      res.redirect('/enforcement/v2/task-list')
-
-    } else {
-      res.redirect('/enforcement/v2/grounds/fees-exempt')
-    }
-  })
 
 
   // ENF 00X
@@ -180,13 +162,7 @@ module.exports = function (router) {
     if (application === 'Yes') {
       res.redirect('/enforcement/v2/grounds/application-decision')
     } else {
-      if (grounds.includes("Ground A")) {
-        res.redirect('/enforcement/v2/grounds/fees')
-      } else {
-        req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-        res.redirect('/enforcement/v2/task-list')
-      }
-
+      res.redirect('/enforcement/v2/grounds/fees')
     }
 
   })
@@ -195,8 +171,27 @@ module.exports = function (router) {
   // Enforcement
   // Grounds with applicaiton decision, end of grounds
   router.post(base+'grounds/application-decision', function (req, res) {
-    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-    res.redirect('/enforcement/v2/task-list')
+    res.redirect('/enforcement/v2/grounds/fees')
+  })
+
+
+  // ENF 00X
+  // Enforcement
+  // Fees paid
+  router.post(base+'grounds/fees', function (req, res) {
+
+    // Make a variable from session data
+    let feespaid = req.session.data['enforcement-fees-paid']
+
+    // route depending on value
+    if (feespaid === 'Yes') {
+
+      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+      res.redirect('/enforcement/v2/task-list')
+
+    } else {
+      res.redirect('/enforcement/v2/grounds/fees-exempt')
+    }
   })
 
   router.post(base+'grounds/fees-exempt', function (req, res) {
