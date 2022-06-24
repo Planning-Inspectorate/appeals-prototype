@@ -32,49 +32,39 @@
 
       <div class="govuk-form-group">
 
+        <!-- reasons by file -->
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-b-reasons">
+          {{ title  }}
+        </label>
+
+        <div class="govuk-inset-text">
+           The alleged breach of planning permission has not happened.
+        </div>
+
+        <p class="govuk-hint">
+          You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
+        <p>
+
         {% if data['enforcement-reason-method'] == 'text' %}
 
           <!-- reasons by textarea input -->
-          <div class="govuk-form-group">
-            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="enforcement-ground-b-reasons">
-                {{ title }}
-              </label>
-            </h1>
-            <div class="govuk-inset-text">
-               The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is.
-            </div>
-            <div id="enforcement-ground-b-reasons-hint" class="govuk-hint">
-              You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
-            </div>
-            <textarea class="govuk-textarea" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" rows="5" aria-describedby="enforcement-ground-b-reasons-hint"></textarea>
-          </div>
+          <textarea class="govuk-textarea" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" rows="5" aria-describedby="enforcement-ground-b-reasons-hint"></textarea>
 
-          <p class="govuk-body">
-            <a href="groundB?enforcement-reason-method=file" class="govuk-link">
-              Upload your reasons in a document
-            </a>
-          </p>
+        </div>
+
+        <p class="govuk-body">
+          <a href="groundB?enforcement-reason-method=file" class="govuk-link">
+            Or upload your reasons in a document
+          </a>
+        </p>
 
         {% else %}
-
-          <!-- reasons by file -->
-          <label class="govuk-label govuk-label--l" for="enforcement-ground-b-reasons">
-            {{ title  }}
-          </label>
-          <div class="govuk-inset-text">
-             The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is.
-          </div>
-          <p class="govuk-hint">
-            You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
-          <p>
 
           <!-- upload files -->
           <label class="govuk-label govuk-label--m" for="enforcement-ground-b-reasons">
             Drag and drop or choose files
           </label>
           <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" type="file" multiple>
-
-        </div>
 
         {{ govukInsetText({
           text: "File size should be no more than 15MB"
@@ -101,7 +91,7 @@
 
         <p class="govuk-body">
           <a href="groundB?enforcement-reason-method=text" class="govuk-link">
-            Explain your reasons using a text box
+            Or explain your reasons using a text box
           </a>
         </p>
 
@@ -139,8 +129,6 @@
           text: "Continue"
         }) }}
       {% endif %}
-
-    </form>
 
   </div>
 </div>

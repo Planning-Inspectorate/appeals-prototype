@@ -141,7 +141,20 @@ module.exports = function (router) {
   // Enforcement
   // Grounds
   router.post(base+'grounds/grounds', function (req, res) {
-    res.redirect('/enforcement/v2/grounds/upload-reasons')
+
+    // res.redirect('/enforcement/v2/grounds/upload-reasons')
+
+    // Make a variable from session data
+    let groundA = req.session.data['grounds-1']
+    let groundB = req.session.data['grounds-2']
+    let groundC = req.session.data['grounds-3']
+    let groundD = req.session.data['grounds-4']
+    let groundE = req.session.data['grounds-5']
+    let groundF = req.session.data['grounds-6']
+    let groundG = req.session.data['grounds-7']
+
+    // default method for reasons
+    req.session.data["enforcement-reason-method"] = "text";
 
     // route depending on value
     if (groundA) {
