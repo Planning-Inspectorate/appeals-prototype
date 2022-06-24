@@ -1,6 +1,6 @@
-{% extends "layouts/appellant-submission/v11.html" %}
+{% extends "layout.html" %}
 
-{% set title = "Which grounds apply to your case?" %}
+{% set title = "Which statements apply to your case?" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -26,60 +26,76 @@
 
       <form method="post">
 
-        {{ govukCheckboxes({
-          idPrefix: 'grounds',
-          name: 'grounds',
-          classes: '',
-          fieldset: {
-            legend: {
-              html: '<span class="govuk-caption-l">Choose your grounds of appeal</span>'+title,
-              isPageHeading: true,
-              classes: 'govuk-fieldset__legend--l'
-            }
-          },
-          hint: {
-            text: 'Select all that apply.'
-          },
-          items: [
-            {
-              html: '<span class="govuk-!-font-weight-bold">Ground A:</span> The supposed breach of planning control should be allowed',
-              value: '<span class="govuk-!-font-weight-bold">Ground A:</span> The supposed breach of planning control should be allowed',
-              checked: checked('grounds','<span class="govuk-!-font-weight-bold">Ground A:</span> The supposed breach of planning control should be allowed')
-            },
-            {
-              html: '<span class="govuk-!-font-weight-bold">Ground B:</span> The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is',
-              value: '<span class="govuk-!-font-weight-bold">Ground B:</span> The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is',
-              checked: checked('grounds','<span class="govuk-!-font-weight-bold">Ground B:</span> The supposed breach of planning control never happened, or is not being used in the way that the local planning department says it is')
-            },
-            {
-              html: '<span class="govuk-!-font-weight-bold">Ground C:</span> The supposed breach of planning control does not need planning permission',
-              value: '<span class="govuk-!-font-weight-bold">Ground C:</span> The supposed breach of planning control does not need planning permission',
-              checked: checked('grounds','<span class="govuk-!-font-weight-bold">Ground C:</span> The supposed breach of planning control does not need planning permission')
-            },
-            {
-              html: '<span class="govuk-!-font-weight-bold">Ground D:</span> The local planning department missed its deadline to take action',
-              value: '<span class="govuk-!-font-weight-bold">Ground D:</span> The local planning department missed its deadline to take action',
-              checked: checked('grounds','<span class="govuk-!-font-weight-bold">Ground D:</span> The local planning department missed its deadline to take action')
-            },
-            {
-              html: '<span class="govuk-!-font-weight-bold">Ground E:</span> The local planning department did not serve copies of the enforcement notice as they&rsquo;re legally required to',
-              value: '<span class="govuk-!-font-weight-bold">Ground E:</span> The local planning department did not serve copies of the enforcement notice as they&rsquo;re legally required to',
-              checked: checked('grounds','<span class="govuk-!-font-weight-bold">Ground E:</span> The local planning department did not serve copies of the enforcement notice as they&rsquo;re legally required to')
-            },
-            {
-              html: '<span class="govuk-!-font-weight-bold">Ground F:</span> There&rsquo;s more work to do than is needed to undo the supposed breach of planning control',
-              value: '<span class="govuk-!-font-weight-bold">Ground F:</span> There&rsquo;s more work to do than is needed to undo the supposed breach of planning control',
-              checked: checked('grounds','<span class="govuk-!-font-weight-bold">Ground F:</span> There&rsquo;s more work to do than is needed to undo the supposed breach of planning control')
-            },
-            {
-              html: '<span class="govuk-!-font-weight-bold">Ground G:</span> More time is needed to undo the supposed breach of planning control',
-              value: '<span class="govuk-!-font-weight-bold">Ground G:</span> More time is needed to undo the supposed breach of planning control',
-              checked: checked('grounds','<span class="govuk-!-font-weight-bold">Ground G:</span> More time is needed to undo the supposed breach of planning control')
-            }
-          ]
-        }) }}
+        <span class="govuk-caption-l">
+          Choose your grounds of appeal
+        </span>
 
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ title }}
+              </h1>
+            </legend>
 
+            <p class="govuk-hint">
+              Select all that apply.
+            </p>
+
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="grounds-1" name="grounds-1" type="checkbox" value="groundA">
+                <label class="govuk-label govuk-checkboxes__label" for="grounds-1">
+                  <!-- <span class="govuk-heading-s govuk-!-margin-bottom-0">Ground A</span> -->
+                  Ground A. Planning permission should be granted for the alleged breach in the enforcement notice.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="grounds-2" name="grounds-2" type="checkbox" value="groundB">
+                <label class="govuk-label govuk-checkboxes__label" for="grounds-2">
+                  <!-- <span class="govuk-heading-s govuk-!-margin-bottom-0">Ground B</span> -->
+                  Ground B. The alleged breach of planning permission has not happened.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="grounds-3" name="grounds-3" type="checkbox" value="groundC">
+                <label class="govuk-label govuk-checkboxes__label" for="grounds-3">
+                  <!-- <span class="govuk-heading-s govuk-!-margin-bottom-0">Ground C</span> -->
+                  Ground C. The alleged breach does not require planning permission.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="grounds-4" name="grounds-4" type="checkbox" value="groundD">
+                <label class="govuk-label govuk-checkboxes__label" for="grounds-4">
+                  <!-- <span class="govuk-heading-s govuk-!-margin-bottom-0">Ground D</span> -->
+                  Ground D. It’s too late for the local authority to serve the enforcement notice.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="grounds-5" name="grounds-5" type="checkbox" value="groundE">
+                <label class="govuk-label govuk-checkboxes__label" for="grounds-5">
+                  <!-- <span class="govuk-heading-s govuk-!-margin-bottom-0">Ground E</span> -->
+                  Ground E. Copies of the enforcement notice were not legally served to the right people.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="grounds-6" name="grounds-6" type="checkbox" value="groundF">
+                <label class="govuk-label govuk-checkboxes__label" for="grounds-6">
+                  <!-- <span class="govuk-heading-s govuk-!-margin-bottom-0">Ground F</span> -->
+                  Ground F. The steps to comply with the enforcement notice are excessive.
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="grounds-7" name="grounds-7" type="checkbox" value="groundG">
+                <label class="govuk-label govuk-checkboxes__label" for="grounds-7">
+                  <!-- <span class="govuk-heading-s govuk-!-margin-bottom-0">Ground G</span> -->
+                  Ground G. I need more time to comply with the enforcement notice.
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
 
         {{ govukButton({
           text: "Continue"
