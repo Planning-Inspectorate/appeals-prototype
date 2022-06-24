@@ -142,8 +142,26 @@ module.exports = function (router) {
   // Grounds
   router.post(base+'grounds/grounds', function (req, res) {
     res.redirect('/enforcement/v2/grounds/upload-reasons')
-  })
 
+    // route depending on value
+    if (groundA) {
+      res.redirect('/enforcement/v2/grounds/groundA')
+    } else if (groundB) {
+      res.redirect('/enforcement/v2/grounds/groundB')
+    } else if (groundC) {
+      res.redirect('/enforcement/v2/grounds/groundC')
+    } else if (groundD) {
+      res.redirect('/enforcement/v2/grounds/groundD')
+    } else if (groundE) {
+      res.redirect('/enforcement/v2/grounds/groundE')
+    } else if (groundF) {
+      res.redirect('/enforcement/v2/grounds/groundF')
+    } else if (groundG) {
+      res.redirect('/enforcement/v2/grounds/groundG')
+    } else {
+      res.redirect('/enforcement/v2/grounds/application')
+    }
+  })
 
 
   // ENF 00X
