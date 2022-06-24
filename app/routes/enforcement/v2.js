@@ -141,18 +141,7 @@ module.exports = function (router) {
   // Enforcement
   // Grounds
   router.post(base+'grounds/grounds', function (req, res) {
-
-    // Make a variable from session data
-    let groundA = req.session.data['grounds-1']
-    let groundB = req.session.data['grounds-2']
-    let groundC = req.session.data['grounds-3']
-    let groundD = req.session.data['grounds-4']
-    let groundE = req.session.data['grounds-5']
-    let groundF = req.session.data['grounds-6']
-    let groundG = req.session.data['grounds-7']
-
-    // default method for reasons
-    req.session.data["enforcement-reason-method"] = "text";
+    res.redirect('/enforcement/v2/grounds/upload-reasons')
 
     // route depending on value
     if (groundA) {
@@ -174,6 +163,36 @@ module.exports = function (router) {
     }
   })
 
+
+  // ENF 00X
+  // Enforcement
+  // Contact details
+  router.post(base+'grounds/application', function (req, res) {
+
+    if (!req.session.data['grounds']) {
+      req.session.data['grounds'] = []
+    }
+
+    // Make a variable from session data
+    let application = req.session.data['enforcement-application']
+    let grounds = req.session.data['grounds']
+
+    if (application === 'Yes') {
+      res.redirect('/enforcement/v2/grounds/application-decision')
+    } else {
+      res.redirect('/enforcement/v2/grounds/fees')
+    }
+
+  })
+
+  // ENF 00X
+  // Enforcement
+  // Grounds with applicaiton decision, end of grounds
+  router.post(base+'grounds/application-decision', function (req, res) {
+    res.redirect('/enforcement/v2/grounds/fees')
+  })
+
+
   // ENF 00X
   // Enforcement
   // Fees paid
@@ -191,68 +210,6 @@ module.exports = function (router) {
     } else {
       res.redirect('/enforcement/v2/grounds/fees-exempt')
     }
-  })
-
-  // ENF 00X
-  // Enforcement
-  // Fee for ground A only
-  router.post('/fee', function (req, res) {
-
-    // Make a variable from session data
-    let groundB = req.session.data['grounds-2']
-    let groundC = req.session.data['grounds-3']
-    let groundD = req.session.data['grounds-4']
-    let groundE = req.session.data['grounds-5']
-    let groundF = req.session.data['grounds-6']
-    let groundG = req.session.data['grounds-7']
-
-    // route depending on value
-    if (groundB) {
-      res.redirect('/enforcement/v2/grounds/groundB')
-    } else if (groundC) {
-      res.redirect('/enforcement/v2/grounds/groundC')
-    } else if (groundD) {
-      res.redirect('/enforcement/v2/grounds/groundD')
-    } else if (groundE) {
-      res.redirect('/enforcement/v2/grounds/groundE')
-    } else if (groundF) {
-      res.redirect('/enforcement/v2/grounds/groundF')
-    } else {
-      res.redirect('/enforcement/v2/grounds/groundG')
-    }
-
-  })
-
-
-  // ENF 00X
-  // Enforcement
-  // Contact details
-  router.post(base+'grounds/application', function (req, res) {
-
-    // Make a variable from session data
-    let application = req.session.data['enforcement-application']
-    let groundA = req.session.data['grounds-1']
-
-    if (application === 'Yes') {
-      res.redirect('/enforcement/v2/grounds/application-decision')
-    } else {
-      if (groundA) {
-        res.redirect('/enforcement/v2/grounds/fees')
-      } else {
-        req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-        res.redirect('/enforcement/v2/task-list')
-      }
-
-    }
-
-  })
-
-  // ENF 00X
-  // Enforcement
-  // Grounds with applicaiton decision, end of grounds
-  router.post(base+'grounds/application-decision', function (req, res) {
-    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-    res.redirect('/enforcement/v2/task-list')
   })
 
   router.post(base+'grounds/fees-exempt', function (req, res) {

@@ -8,6 +8,15 @@ These prototypes cover different journeys for users of the appeal a planning dec
 
 ## Creating a new version of an existing prototype
 
+### New version
+
+1. Go to `app/views/[prototype]`
+2. Duplicate the latest version folder and increment the version number
+
+### Old version
+
+The old versioning system still works and is in use for a lot of the features, the steps for creating a new version are:
+
 1. Go to `app/views/[prototype]`
 2. Duplicate the latest version folder and increment the version number
 3. Open one of the files within the folder and change the `{% extends ... %}` to the new version number
