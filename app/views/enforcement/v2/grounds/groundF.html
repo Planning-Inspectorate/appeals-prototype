@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Tell us why you think there’s more work to do than is needed to undo the supposed breach of planning control" %}
+{% set title = "Tell us your reasons for choosing Ground F" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -32,37 +32,32 @@
 
       <div class="govuk-form-group">
 
+        <!-- reasons by file -->
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-f-reasons">
+          {{ title  }}
+        </label>
+
+        <div class="govuk-inset-text">
+          The steps to comply with the enforcement notice are excessive.
+        </div>
+
+        <p class="govuk-hint">
+          You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
+        <p>
+
         {% if data['enforcement-reason-method'] == 'text' %}
 
-          <!-- reasons by multitext input -->
-          {{ govukTextarea({
-            name: "enforcement-ground-f-reasons",
-            id: "enforcement-ground-f-reasons",
-            label: {
-              text: title,
-              classes: "govuk-label--l",
-              isPageHeading: true
-            },
-            hint: {
-              text: "You do not need to repeat the local planning department’s reasons for issuing the enforcement notice."
-            }
-          }) }}
+          <textarea class="govuk-textarea" id="enforcement-ground-f-reasons" name="enforcement-ground-f-reasons" rows="5" aria-describedby="enforcement-ground-f-reasons-hint"></textarea>
 
-          <p class="govuk-body">
-            <a href="groundF?enforcement-reason-method=file" class="govuk-link">
-              Upload your reasons in a document
-            </a>
-          </p>
+        </div>
+
+        <p class="govuk-body">
+          <a href="groundF?enforcement-reason-method=file" class="govuk-link">
+            Or upload your reasons in a document
+          </a>
+        </p>
 
         {% else %}
-
-          <!-- reasons by file -->
-          <label class="govuk-label govuk-label--l" for="enforcement-ground-f-reasons">
-            {{ title  }}
-          </label>
-          <p class="govuk-hint">
-            You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
-          <p>
 
           <!-- upload files -->
           <label class="govuk-label govuk-label--m" for="enforcement-ground-f-reasons">
@@ -70,7 +65,7 @@
           </label>
           <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-f-reasons" name="enforcement-ground-f-reasons" type="file" multiple>
 
-        </div>
+
 
         {{ govukInsetText({
           text: "File size should be no more than 15MB"
@@ -97,28 +92,25 @@
 
         <p class="govuk-body">
           <a href="groundF?enforcement-reason-method=text" class="govuk-link">
-            Explain your reasons using a text box
+            Or explain your reasons using a text box
           </a>
         </p>
 
-      {% endif %}
+        {% endif %}
 
-      <!-- route user based on what they selected -->
-      {% if data['grounds-7'] %}
-        {{ govukButton({
-          href: "groundG",
-          text: "Continue"
-        }) }}
-      {% else %}
-        {{ govukButton({
-          href: "application",
-          text: "Continue"
-        }) }}
-      {% endif %}
+        <!-- route user based on what they selected -->
+        {% if data['grounds-7'] %}
+          {{ govukButton({
+            href: "groundG",
+            text: "Continue"
+          }) }}
+        {% else %}
+          {{ govukButton({
+            href: "application",
+            text: "Continue"
+          }) }}
+        {% endif %}
 
-    </form>
-
-  </div>
-</div>
-
+      </div>
+    </div>
 {% endblock %}

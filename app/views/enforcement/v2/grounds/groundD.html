@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Tell us why you think the local planning department missed its deadline to take action" %}
+{% set title = "Tell us your reasons for choosing Ground D" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -32,37 +32,32 @@
 
       <div class="govuk-form-group">
 
+        <!-- reasons by file -->
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-d-reasons">
+          {{ title  }}
+        </label>
+
+        <div class="govuk-inset-text">
+          It’s too late for the local authority to serve the enforcement notice.
+        </div>
+
+        <p class="govuk-hint">
+          You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
+        <p>
+
         {% if data['enforcement-reason-method'] == 'text' %}
 
-          <!-- reasons by multitext input -->
-          {{ govukTextarea({
-            name: "enforcement-ground-d-reasons",
-            id: "enforcement-ground-d-reasons",
-            label: {
-              text: title,
-              classes: "govuk-label--l",
-              isPageHeading: true
-            },
-            hint: {
-              text: "You do not need to repeat the local planning department’s reasons for issuing the enforcement notice."
-            }
-          }) }}
+          <textarea class="govuk-textarea" id="enforcement-ground-d-reasons" name="enforcement-ground-d-reasons" rows="5" aria-describedby="enforcement-ground-d-reasons-hint"></textarea>
 
-          <p class="govuk-body">
-            <a href="groundD?enforcement-reason-method=file" class="govuk-link">
-              Upload your reasons in a document
-            </a>
-          </p>
+        </div>
+
+        <p class="govuk-body">
+          <a href="groundD?enforcement-reason-method=file" class="govuk-link">
+            Or upload your reasons in a document
+          </a>
+        </p>
 
         {% else %}
-
-          <!-- reasons by file -->
-          <label class="govuk-label govuk-label--l" for="enforcement-ground-d-reasons">
-            {{ title  }}
-          </label>
-          <p class="govuk-hint">
-            You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
-          <p>
 
           <!-- upload files -->
           <label class="govuk-label govuk-label--m" for="enforcement-ground-d-reasons">
@@ -70,7 +65,7 @@
           </label>
           <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-d-reasons" name="enforcement-ground-d-reasons" type="file" multiple>
 
-        </div>
+
 
         {{ govukInsetText({
           text: "File size should be no more than 15MB"
@@ -97,38 +92,35 @@
 
         <p class="govuk-body">
           <a href="groundD?enforcement-reason-method=text" class="govuk-link">
-            Explain your reasons using a text box
+            Or explain your reasons using a text box
           </a>
         </p>
 
-      {% endif %}
+        {% endif %}
 
-      <!-- route user based on what they selected -->
-      {% if data['grounds-5'] %}
-        {{ govukButton({
-          href: "groundE",
-          text: "Continue"
-        }) }}
-      {% elif data['grounds-6'] %}
-        {{ govukButton({
-          href: "groundF",
-          text: "Continue"
-        }) }}
-      {% elif data['grounds-7'] %}
-        {{ govukButton({
-          href: "groundG",
-          text: "Continue"
-        }) }}
-      {% else %}
-        {{ govukButton({
-          href: "application",
-          text: "Continue"
-        }) }}
-      {% endif %}
+        <!-- route user based on what they selected -->
+        {% if data['grounds-5'] %}
+          {{ govukButton({
+            href: "groundE",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-6'] %}
+          {{ govukButton({
+            href: "groundF",
+            text: "Continue"
+          }) }}
+        {% elif data['grounds-7'] %}
+          {{ govukButton({
+            href: "groundG",
+            text: "Continue"
+          }) }}
+        {% else %}
+          {{ govukButton({
+            href: "application",
+            text: "Continue"
+          }) }}
+        {% endif %}
 
-    </form>
-
-  </div>
-</div>
-
+      </div>
+    </div>
 {% endblock %}
