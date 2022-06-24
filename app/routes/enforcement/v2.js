@@ -167,8 +167,10 @@ module.exports = function (router) {
       res.redirect('/enforcement/v2/grounds/groundE')
     } else if (groundF) {
       res.redirect('/enforcement/v2/grounds/groundF')
-    } else {
+    } else if (groundG) {
       res.redirect('/enforcement/v2/grounds/groundG')
+    } else {
+      res.redirect('/enforcement/v2/grounds/application')
     }
   })
 
