@@ -99,7 +99,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Site interest
-  router.post(base+'appeal-site/site-interest', function (req, res) {
+  router.post(base+'appeal-site/siteinterest', function (req, res) {
 
     // Make a variable from session data
     let interest = req.session.data['enforcement-interest']

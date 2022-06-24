@@ -1,6 +1,6 @@
-{% extends "layouts/appellant-submission/v11.html" %}
+{% extends "layout.html" %}
 
-{% set title = "What is your interest in the land or building?" %}
+{% set title = "What is your or your client’s interest in the land?" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -24,7 +24,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form method="post">
+      <form action="siteinterest" method="post">
 
         <span class="govuk-caption-l">
           Tell us about the appeal site
