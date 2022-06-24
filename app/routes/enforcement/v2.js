@@ -272,7 +272,7 @@ module.exports = function (router) {
     if (obligation === 'Yes') {
       res.redirect('/enforcement/v2/upload/planning-obligation-status')
     } else {
-      res.redirect('/enforcement/v2/upload/plans-or-drawings')
+      res.redirect('/enforcement/v2/upload/enforcement-notice')
     }
   })
 
@@ -295,13 +295,17 @@ module.exports = function (router) {
   })
 
   // ENF 00X
-  // Enforcement
-  // Contact details
+  // Enforcement notice
   router.post(base+'upload/enforcement-notice', function (req, res) {
+    res.redirect('/enforcement/v2/upload/plans-or-drawings')
+  })
+
+  // ENF 00X
+  // Enforcement plans
+  router.post(base+'upload/plans-or-drawings', function (req, res) {
     req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
     res.redirect('/enforcement/v2/task-list')
   })
-
 
 
 
