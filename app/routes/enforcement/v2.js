@@ -297,7 +297,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement notice
   router.post(base+'upload/enforcement-notice', function (req, res) {
-    res.redirect('/enforcement/v2/upload/plans-or-drawings')
+    res.redirect('/enforcement/v2/upload/supporting-documents')
   })
 
   // ENF 00X
@@ -308,19 +308,42 @@ module.exports = function (router) {
   })
 
 
+  // ENF 00X
+  // Do you have supporting documents?
+  router.post(base+'upload/supporting-documents', function (req, res) {
 
-// ENF 00X
-// Enforcement
-// Quick link to appeal start
-router.get(base+'skip/appeal-before-you-start', function (req, res) {
-  req.session.data["enforcement-taskliststatus-contactdetails"] = "";
-  req.session.data["enforcement-taskliststatus-addpeople"] = "";
-  req.session.data["enforcement-taskliststatus-appealsite"] = "";
-  req.session.data["enforcement-taskliststatus-grounds"] = "";
-  req.session.data["enforcement-taskliststatus-proceduretype"] = "";
-  req.session.data["enforcement-taskliststatus-appealdocuments"] = "";
-  res.redirect('/before-you-start/v11')
-})
+    // Make a variable from session data
+    let supportingdocuments = req.session.data['enforcement-supporting-documents']
+
+    // route depending on value
+    if (supportingdocuments === 'Yes') {
+      res.redirect('/enforcement/v2/upload/additional-documents')
+    } else {
+      req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
+      res.redirect('/enforcement/v2/task-list')
+    }
+  })
+
+  // ENF 00X
+  // Additional documents
+  router.post(base+'upload/additional-documents', function (req, res) {
+    req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
+    res.redirect('/enforcement/v2/task-list')
+  })
+
+
+  // ENF 00X
+  // Enforcement
+  // Quick link to appeal start
+  router.get(base+'skip/appeal-before-you-start', function (req, res) {
+    req.session.data["enforcement-taskliststatus-contactdetails"] = "";
+    req.session.data["enforcement-taskliststatus-addpeople"] = "";
+    req.session.data["enforcement-taskliststatus-appealsite"] = "";
+    req.session.data["enforcement-taskliststatus-grounds"] = "";
+    req.session.data["enforcement-taskliststatus-proceduretype"] = "";
+    req.session.data["enforcement-taskliststatus-appealdocuments"] = "";
+    res.redirect('/before-you-start/v11')
+  })
 
   // ENF 00X
   // Enforcement
