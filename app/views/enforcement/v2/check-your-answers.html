@@ -641,7 +641,7 @@
             </div>
           {% endif %}
 
-          {% if data['enforcement-uploaded-plans'] %}
+          <!-- {% if data['enforcement-uploaded-plans'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Plans or drawings
@@ -657,11 +657,11 @@
                 </a>
               </dd>
             </div>
-          {% endif %}
+          {% endif %} -->
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Enforcement notice
+              Enforcement notice and additional plans
             </dt>
             <dd class="govuk-summary-list__value">
               <a href=''>
@@ -670,10 +670,28 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> your plans or drawings</span>
+                Change<span class="govuk-visually-hidden"> enforcement notice</span>
               </a>
             </dd>
           </div>
+
+          {% if data['enforcement-supporting-documents'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Supporting documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href=''>
+                  {{ data['enforcement-uploaded-documents'] or 'Statement of common ground.pdf' }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> supporting documents</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
 
         </dl>
 
