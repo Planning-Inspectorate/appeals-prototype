@@ -133,34 +133,32 @@ module.exports = function (router) {
      }
    })
 
-
-
    // BYS 00X
    // Enforcement
    // Intent to appeal question
    router.post('/intent', function (req, res) {
 
-     // // Make a variable from session data
-     // let intent = req.session.data['intent']
-     //
-     // // route depending on value
-     // if (intent === 'intent') {
-     //   req.session.data['intent'] = "intent";
-     //   res.redirect(base+'check-answers?appeal=enforcement')
-     // } else {
-     //   // if there is no intent, out of setTimeout(function () {
-     //
-     //   // shutter
-     //   res.redirect(base+'shutter/out-of-time-enforcement');
-     //
-     //   // res.redirect(base+'check-answers?appeal=enforcement')
-     // }
+     // Make a variable from session data
+     let intent = req.session.data['enforcement-intent']
 
-     // no shutter
-     res.redirect(base+'check-answers?appeal=enforcement');
+     // route depending on value
+     if (intent === 'intent') {
+       // req.session.data['intent'] = "intent";
+       res.redirect(base+'date-of-intent')
+     } else {
+       // if no intent
+       res.redirect(base+'check-answers?appeal=enforcement')
+     }
 
    })
 
+   // BYS 00X
+   // Enforcement
+   // Intent to appeal question
+   router.post('/intentfinish', function (req, res) {
+     // no shutter
+     res.redirect(base+'check-answers?appeal=enforcement')
+   })
 
 
 

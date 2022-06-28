@@ -157,29 +157,12 @@
             </div>
           {% endif %}
 
-
         </dl>
 
-
         {{ govukButton({
-          href: "/enforcement/v1/before-you-continue",
+          href: "/enforcement/v2/before-you-continue",
           text: "Continue to my appeal"
         }) }}
-
-
-<!--
-        {% if data['appealsub-'+version+'-route'] == "full" %}
-          {{ govukButton({
-            text: "Continue to my appeal",
-            href: "/before-you-start/"+version+"/task-list/full"
-          }) }}
-        {% else %}
-          {{ govukButton({
-            text: "Continue to my appeal",
-            href: "/before-you-start/"+version+"/task-list/expedited"
-          }) }}
-        {% endif %}
--->
 
       </form>
 

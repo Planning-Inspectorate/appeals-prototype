@@ -158,6 +158,7 @@ module.exports = function (router) {
 
     // route depending on value
     if (groundA) {
+      req.session.data["ground-a-selected"] = "Yes";
       res.redirect('/enforcement/v2/grounds/groundA')
     } else if (groundB) {
       res.redirect('/enforcement/v2/grounds/groundB')
@@ -179,32 +180,53 @@ module.exports = function (router) {
 
   // ENF 00X
   // Enforcement
-  // Contact details
-  router.post(base+'grounds/application', function (req, res) {
-
-    if (!req.session.data['grounds']) {
-      req.session.data['grounds'] = []
-    }
+  // Did you sumbit a planning application
+  router.post('/applicationmade', function (req, res) {
 
     // Make a variable from session data
     let application = req.session.data['enforcement-application']
-    let grounds = req.session.data['grounds']
+    let groundA = req.session.data['ground-a-selected']
 
     if (application === 'Yes') {
-      res.redirect('/enforcement/v2/grounds/application-decision')
+      res.redirect('/enforcement/v2/grounds/application-date')
     } else {
-      res.redirect('/enforcement/v2/grounds/fees')
+
+      if ( groundA === 'Yes') {
+        res.redirect('/enforcement/v2/grounds/fees')
+      } else {
+        req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+        res.redirect('/enforcement/v2/task-list')
+      }
+
     }
 
   })
 
   // ENF 00X
   // Enforcement
-  // Grounds with applicaiton decision, end of grounds
-  router.post(base+'grounds/application-decision', function (req, res) {
-    res.redirect('/enforcement/v2/grounds/fees')
-  })
+  // Fees paid
+  router.post('/applicationdecision', function (req, res) {
 
+    // Make a variable from session data
+    let decisionreceived = req.session.data['enforcement-application-decision']
+
+    // route depending on value
+    if (decisionreceived === 'Yes') {
+
+      // decision received, let’s ask for the date
+      res.redirect('/enforcement/v2/grounds/application-decision-date')
+
+    // no decision, let’s move on
+    } else {
+
+
+      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+      res.redirect('/enforcement/v2/task-list')
+
+      res.redirect('/enforcement/v2/grounds/fees-exempt')
+
+    }
+  })
 
   // ENF 00X
   // Enforcement
@@ -225,11 +247,21 @@ module.exports = function (router) {
     }
   })
 
-  router.post(base+'grounds/fees-exempt', function (req, res) {
+  // ENF 00X
+  // Enforcement
+  // Ending the grounds tasks
+  router.post('/endgrounds', function (req, res) {
     req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
     res.redirect('/enforcement/v2/task-list')
   })
 
+  // ENF 00X
+  // Enforcement
+  // Fee questions finished, ending the grounds tasks
+  router.post(base+'grounds/fees-exempt', function (req, res) {
+    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+    res.redirect('/enforcement/v2/task-list')
+  })
 
   // ENF 00X
   // Enforcement
