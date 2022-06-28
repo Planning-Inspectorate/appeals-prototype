@@ -204,10 +204,11 @@ module.exports = function (router) {
 
   // ENF 00X
   // Enforcement
-  // Fees paid
+  // Application decision
   router.post('/applicationdecision', function (req, res) {
 
     // Make a variable from session data
+    let groundA = req.session.data['ground-a-selected']
     let decisionreceived = req.session.data['enforcement-application-decision']
 
     // route depending on value
@@ -219,11 +220,12 @@ module.exports = function (router) {
     // no decision, let’s move on
     } else {
 
-
-      req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-      res.redirect('/enforcement/v2/task-list')
-
-      res.redirect('/enforcement/v2/grounds/fees-exempt')
+      if (groundA === 'Yes') {
+        res.redirect('/enforcement/v2/grounds/fees')
+      } else {
+        req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+        res.redirect('/enforcement/v2/task-list')
+      }
 
     }
   })
@@ -231,7 +233,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Fees paid
-  router.post(base+'grounds/fees', function (req, res) {
+  router.post('/feespaid', function (req, res) {
 
     // Make a variable from session data
     let feespaid = req.session.data['enforcement-fees-paid']
