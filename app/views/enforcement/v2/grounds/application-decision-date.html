@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Have you received a decision from the local planning department about your planning application?" %}
+{% set title = "When did you receive the decision?" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -24,15 +24,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/applicationdecision" method="post">
+      {% if data['grounds-1'] %}
+        <form action="fees" method="post">
+      {% else %}
+        <form action="/endgrounds" method="post">
+      {% endif %}
 
         <span class="govuk-caption-l">
           Tell us about the appeal site
         </span>
 
-        {{ govukRadios({
-          idPrefix: "enforcement-application-decision",
-          name: "enforcement-application-decision",
+        {{ govukDateInput({
+          id: "enforcement-application-decision-date",
+          namePrefix: "enforcement-application-decision-date",
           fieldset: {
             legend: {
               text: title,
@@ -42,14 +46,19 @@
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("enforcement-application-decision", "Yes")
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-application-decision-date-day"]
             },
             {
-              value: "No",
-              text: "No",
-              checked: checked("enforcement-application-decision", "No")
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-application-decision-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["enforcement-application-decision-date-year"]
             }
           ]
         }) }}
