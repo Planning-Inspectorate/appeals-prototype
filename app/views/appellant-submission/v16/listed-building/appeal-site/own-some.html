@@ -1,0 +1,73 @@
+{% set pageref = "LB-AAS-003-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+  Do you own some of the land involved in the appeal? - Tell us about the appeal site - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-appealsite-ownsome",
+          name: "appealsub-"+version+"-appealsite-ownsome",
+          fieldset: {
+            legend: {
+              text: "Do you own some of the land involved in the appeal?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-appealsite-ownsome", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-appealsite-ownsome", "No")
+            }
+          ]
+        }) }}
+
+
+<div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      {{ govukButton({
+        href: "/appellant-submission/"+version+"/save-return/appeal-saved?savedOn=task",
+        text: "Save and come back later",
+        classes: "govuk-button--secondary"
+      }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

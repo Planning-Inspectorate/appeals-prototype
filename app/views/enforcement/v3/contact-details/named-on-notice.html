@@ -1,0 +1,112 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "layout.html" %}
+
+{% set title = "Who was named on the enforcement notice?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="contact-details" method="post">
+
+      <span class="govuk-caption-l">
+        Provide your contact details
+      </span>
+
+      {% set namedPerson %}
+
+        {{ govukInput({
+          label: {
+            text: "Name on the enforcement notice",
+            classes: "govuk-label",
+            isPageHeading: false
+          },
+          id: "enforcement-person",
+          name: "enforcement-person"
+          }) }}
+
+      {% endset -%}
+
+      {% set namedCompany %}
+
+        {{ govukInput({
+          label: {
+            text: "Company name on the enforcement notice",
+            classes: "govuk-label",
+            isPageHeading: false
+          },
+          id: "enforcement-company",
+          name: "enforcement-company"
+          }) }}
+
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "enforcement-identity",
+        name: "enforcement-identity",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "If you are not the person or the company named on the enforcement notice, you must have permission to submit an appeal on their behalf."
+        },
+        items: [
+          {
+            value: "appellant",
+            text: "Myself",
+            conditional: {
+              html: namedPerson
+            }
+          },
+          {
+            value: "agent",
+            text: "Another person",
+              conditional: {
+                html: namedPerson
+              }
+          },
+          {
+            value: "company",
+            text: "A company",
+              conditional: {
+                html: namedCompany
+              }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        href: "contact-details",
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

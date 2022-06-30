@@ -1,0 +1,102 @@
+{% set pageref = "LB-PLA-007-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+Did you submit a separate ownership certificate document with your application? - Upload documents from your planning application - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents from your planning application
+        </span>
+        <h1 class="govuk-heading-l">
+          Did you submit a separate ownership certificate document with your application?
+        </h1>
+
+        <p class="govuk-body">
+          The 'ownership certificate' confirms if you own all or some of the land involved in your application.
+        </p>
+        <p class="govuk-body">
+          You would have chosen 1 of 4 options, labelled A, B, C or D.
+        </p>
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-applicationdocs-certificates",
+          name: "appealsub-"+version+"-applicationdocs-certificates",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("appealsub-"+version+"-applicationdocs-certificates", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("appealsub-"+version+"-applicationdocs-certificates", "No")
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+          {{ govukButton({
+            href: "/appellant-submission/"+version+"/save-return/appeal-saved?savedOn=task",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Did I submit this separately?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">
+              You would have submitted this separately if either:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                your application form did not have an ownership certificate section
+              </li>
+              <li>
+                your local planning department asked for a separate document because of a mistake on your application form
+              </li>
+              <li>
+                you chose to submit a separate ownership certificate section
+              </li>
+            </ul>
+            <p class="govuk-body">
+              If you're still not sure, you can find your application on the local planning department’s website.
+            </p>
+          </div>
+        </details>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

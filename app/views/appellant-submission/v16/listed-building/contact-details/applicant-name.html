@@ -1,0 +1,87 @@
+{% set pageref = "LB-PYC-002-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+  What is the applicant’s name? - Provide your contact details - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Provide your contact details
+        </span>
+        <h1 class="govuk-heading-l">
+          What is the applicant’s name?
+        </h1>
+
+        {{ govukInput({
+          id: "appealsub-"+version+"-contactdetails-applicantfirstname",
+          name: "appealsub-"+version+"-contactdetails-applicantfirstname",
+          label: {
+            text: "Applicant’s first name"
+          },
+          hint: {
+            text: "Enter this as it’s written on the planning application form."
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: data["appealsub-"+version+"-contactdetails-applicantfirstname"]
+        }) }}
+
+        {{ govukInput({
+          id: "appealsub-"+version+"-contactdetails-applicantlastname",
+          name: "appealsub-"+version+"-contactdetails-applicantlastname",
+          label: {
+            text: "Applicant’s last name"
+          },
+          hint: {
+            text: "Enter this as it’s written on the planning application form."
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: data["appealsub-"+version+"-contactdetails-applicantlastname"]
+        }) }}
+
+        {{ govukInput({
+          id: "appealsub-"+version+"-contactdetails-applicantcompany",
+          name: "appealsub-"+version+"-contactdetails-applicantcompany",
+          label: {
+            text: "Company name (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: data["appealsub-"+version+"-contactdetails-applicantcompany"]
+        }) }}
+
+<div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      {{ govukButton({
+        href: "/appellant-submission/"+version+"/save-return/appeal-saved?savedOn=task",
+        text: "Save and come back later",
+        classes: "govuk-button--secondary"
+      }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
