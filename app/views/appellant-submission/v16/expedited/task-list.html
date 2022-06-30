@@ -1,0 +1,175 @@
+{% extends "layouts/before-you-start/v10.html" %}
+
+{% block pageTitle %}
+  Task list - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Appeal a householder planning decision
+      </h1>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0 of 5 sections.</p>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> About you
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled" aria-describedby="your-details-status">
+                  Your details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> About the original planning application
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                  Planning application number
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                  Upload the original planning application form
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                  Upload the decision letter
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+
+          </ul>
+        </li>
+
+         <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> About your appeal
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled" aria-describedby="appeal-statement-status">
+                  Your appeal statement
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                 Any other documents to support your appeal
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">4. </span> Visiting the appeal site
+          </h2>
+          <ul class="app-task-list__items">
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                  Address of the appeal site
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                  Ownership of the appeal site
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                  Access to the appeal site
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="javascript:preventDefault();" class="govuk-link--disabled">
+                  Any health and safety issues
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Not started</strong>
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">5. </span> Submit your appeal
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Check your answers
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--grey">Cannot start yet</strong>
+            </li>
+          </ul>
+        </li>
+
+      </ol>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <dl class="govuk-summary-list govuk-summary-list-appealdetails">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Planning application number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            22/12345/FUL
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Deadline to appeal
+          </dt>
+          <dd class="govuk-summary-list__value">
+            12 May 2022
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% set pageref = "SAR-014-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% set title = "Enter your appeal details" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <div class="govuk-form-group">
+
+          <label class="govuk-label govuk-label--l" for="email">
+            {{ title }}
+          </label>
+
+          <p class="govuk-body">
+            We'll use this information to email you a code to continue with your appeal.
+          </p>
+
+          {{ govukInput({
+            id: "savereturn-"+version+"-email",
+            name: "savereturn-"+version+"-email",
+            label: {
+              text: "Email address for your appeal"
+            },
+            type: "email",
+            autocomplete: "email",
+            spellcheck: false,
+            classes: "govuk-!-width-two-thirds",
+            value: data["savereturn-"+version+"-email"]
+          }) }}
+
+          {{ govukInput({
+            id: "savereturn-"+version+"-applicationnumber",
+            name: "savereturn-"+version+"-applicationnumber",
+            label: {
+              text: "Planning application number"
+            },
+            classes: "govuk-!-width-two-thirds",
+            value: data["savereturn-"+version+"-applicationnumber"]
+          }) }}
+
+          <!--div class="govuk-form-group">
+            <input class="govuk-input govuk-input--width-20" id="email" name="email" type="text" spellcheck="false" autocomplete="email" value="">
+          </div-->
+
+        </div>
+
+        {{ govukButton({
+          href: "input-code",
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

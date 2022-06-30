@@ -1,0 +1,85 @@
+{% set pageref = "LB-PLA-009-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+Did the proposed development change after you submitted your application? - Upload documents from your planning application - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post">
+
+        <span class="govuk-caption-l">
+          Upload documents from your planning application
+        </span>
+        <h1 class="govuk-heading-l">
+          Is the description of development on your application form still correct?
+        </h1>
+        <p class="govuk-body">
+          We need to know if you agreed a new one with the local planning department.
+        <p>
+
+        {% set developmentHtml %}
+          {{ govukTextarea({
+            id: "appealsub-"+version+"-applicationdocs-developmentchanged-description",
+            name: "appealsub-"+version+"-applicationdocs-developmentchanged-description",
+            label: {
+              text: "What’s the agreed description of development?"
+            },
+            value: data["appealsub-"+version+"-applicationdocs-developmentchanged-description"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "appealsub-"+version+"-applicationdocs-developmentchanged",
+          name: "appealsub-"+version+"-applicationdocs-developmentchanged",
+          items: [
+            {
+              value: "Yes, the description of development is still correct",
+              text: "Yes, the description of development is still correct",
+              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "Yes, the description of development is still correct")
+            },
+            {
+              value: "No, I agreed a new one with the local planning deparment",
+              text: "No, I agreed a new one with the local planning deparment",
+              conditional: {
+                html: developmentHtml
+              },
+              checked: checked("appealsub-"+version+"-applicationdocs-developmentchanged", "No, I agreed a new one with the local planning deparment")
+            }
+          ]
+        }) }}
+
+<div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      {{ govukButton({
+        href: "/appellant-submission/"+version+"/save-return/appeal-saved?savedOn=task",
+        text: "Save and come back later",
+        classes: "govuk-button--secondary"
+      }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

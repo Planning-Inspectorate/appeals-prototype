@@ -1,0 +1,55 @@
+{% set pageref = "SAR-006-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% set title = "The link has expired" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+    <div class="govuk-form-group">
+
+      <label class="govuk-label govuk-label--l" for="postcode">
+        {{ title }}
+      </label>
+
+      <p class="govuk-body">
+        The link we sent was available for 30 minutes. It has now expired.
+      </p>
+
+      <p class="govuk-body">
+        <a href="confirm-email-resent">
+          Send a new link
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+  <!-- this is a prototype only link -->
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+    <p class="govuk-body-s pins-prototype-only">
+      <a href="email-confirmed">
+        Link valid version
+      </a>
+    </p>
+  </div>
+
+</div>
+{% endblock %}

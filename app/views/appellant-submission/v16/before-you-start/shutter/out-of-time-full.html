@@ -1,0 +1,37 @@
+{% set pageref = "BYS-OOT-1-AS15" %}
+{% extends "layouts/appellant-submission/v15.html" %}
+
+{% block pageTitle %}
+  You cannot appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot appeal
+      </h1>
+
+      <p class="govuk-body">
+        Your deadline to appeal has passed.
+      </p>
+
+      <p class="govuk-body">
+        Your deadline was {{ data['appealsub-'+version+'-bys-deadline-day'] }} {{ data['appealsub-'+version+'-bys-deadline-month'] | formatMonth }} {{ data['appealsub-'+version+'-bys-deadline-year'] }}. This is 6 months from the decision date.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
