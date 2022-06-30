@@ -384,63 +384,125 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds"><div class="govuk-inset-text govuk-!-margin-top-0">
-                  {{ govukTag({
-                    classes: "govuk-tag--blue govuk-!-margin-bottom-3",
-                    text: "Done"
-                  }) }}
-                  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
-                    Version 15 - Listed building consent appeal submission
-                  </h3>
-                  <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
-                    Submission journeys
-                  </h4>
-                  <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                      <a href="/appellant-submission/v15/guidance/submit-an-appeal">Start from 'Submit an appeal' guidance (to return to the service)</a>
-                    </li>
-                    <li>
-                      <a href="/appellant-submission/v15/before-you-start/">Start from 'Before you start'</a>
-                    </li>
-                    <li>
-                      <a href="/appellant-submission/v15/skip/savereturn-lb-refused">Start from 'Save and return' for appealing a refused listed building consent</a>
-                    </li>
-                    <li>
-                      <a href="/appellant-submission/v15/skip/tasklist-lb-refused">Start from 'Task list' to appeal a refused listed building consent</a>
-                    </li>
-                    <li>
-                      <a href="/appellant-submission/v15/skip/tasklist-variation-lb-nondetermination">Start from 'Task list' to appeal non-determination of removal or variation of conditions on listed building consent</a>
-                    </li>
+                <div class="govuk-grid-column-two-thirds">
 
-                    <!--li>
-                      Starting from check your answers in 'Before you start':</a>
-                      <ul class="govuk-list govuk-list--bullet">
-                        <li>
-                          <a href="/appellant-submission/v15/skip/bys-cya-removalvary-nondetermination">Appeal non-determination of removal or variation of conditions</a>
-                        </li>
-                        <li>
-                          <a href="/appellant-submission/v15/skip/bys-cya-full-refused">Appeal refusal of full planning</a>
-                        </li>
-                      </ul>
-                    </li-->
-                  </ul>
+                  <!-- version 16 -->
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                  <details class="govuk-details" data-module="govuk-details">
-                    <summary class="govuk-details__summary">
-                      <span class="govuk-details__summary-text">
-                        User research (4)
-                      </span>
-                    </summary>
-                    <div class="govuk-details__text">
-                      <ul class="govuk-list govuk-list--bullet">
-                        <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/979140609/UR+Listed+Building+Appeals+-+Appellant+Usability+Testing" target="_blank">1st round UR discussion guide</a></li>
-                        <li><a href="https://miro.com/app/board/uXjVO321JMQ=/?moveToWidget=3458764525111814660&cot=14" target="_blank">1st round of UR analysis with 2 listed building appellants</a></li>
-                        <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/984219817/UR+Listed+Building+Appeals+-+Applicant+Usability+Testing" target="_blank">2nd round UR discussion guide</a></li>
-                        <li><a href="https://miro.com/app/board/uXjVO0S3sFM=/?moveToWidget=3458764526153521447&cot=14" target="_blank">2nd round of UR analysis with 4 applicants</a></li>
-                      </ul>
-                    </div>
-                  </details>
-                </div>
+                    {{ govukTag({
+                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
+                      text: "Ready for build"
+                    }) }}
+
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Version 16 - Listed building consent appeal submission
+                    </h3>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/appellant-submission/v16/guidance/submit-an-appeal"> ‘Appeal a listed building consent decision’ guidance</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v16/before-you-start/">Before you start</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v16/skip/savereturn-lb-refused">You can appeal (refused listed building consent)</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v16/skip/tasklist-lb-refused">Task list (refused listed building consent)</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v16/skip/tasklist-variation-lb-nondetermination">Task list (non-determination of removal or variation of conditions on listed building consent)</a>
+                      </li>
+
+                      <!--li>
+                        Starting from check your answers in 'Before you start':</a>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>
+                            <a href="/appellant-submission/v16/skip/bys-cya-removalvary-nondetermination">Appeal non-determination of removal or variation of conditions</a>
+                          </li>
+                          <li>
+                            <a href="/appellant-submission/v16/skip/bys-cya-full-refused">Appeal refusal of full planning</a>
+                          </li>
+                        </ul>
+                      </li-->
+                    </ul>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          User research (4)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/979140609/UR+Listed+Building+Appeals+-+Appellant+Usability+Testing" target="_blank">1st round UR discussion guide</a></li>
+                          <li><a href="https://miro.com/app/board/uXjVO321JMQ=/?moveToWidget=3458764525111814660&cot=14" target="_blank">1st round of UR analysis with 2 listed building appellants</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/984219817/UR+Listed+Building+Appeals+-+Applicant+Usability+Testing" target="_blank">2nd round UR discussion guide</a></li>
+                          <li><a href="https://miro.com/app/board/uXjVO0S3sFM=/?moveToWidget=3458764526153521447&cot=14" target="_blank">2nd round of UR analysis with 4 applicants</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+
+                  <!-- version 15 -->
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                      text: "Done"
+                    }) }}
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      Version 15 - Listed building consent appeal submission
+                    </h3>
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Submission journeys
+                    </h4>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/appellant-submission/v15/guidance/submit-an-appeal">Start from 'Submit an appeal' guidance (to return to the service)</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v15/before-you-start/">Start from 'Before you start'</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v15/skip/savereturn-lb-refused">Start from 'Save and return' for appealing a refused listed building consent</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v15/skip/tasklist-lb-refused">Start from 'Task list' to appeal a refused listed building consent</a>
+                      </li>
+                      <li>
+                        <a href="/appellant-submission/v15/skip/tasklist-variation-lb-nondetermination">Start from 'Task list' to appeal non-determination of removal or variation of conditions on listed building consent</a>
+                      </li>
+
+                      <!--li>
+                        Starting from check your answers in 'Before you start':</a>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>
+                            <a href="/appellant-submission/v15/skip/bys-cya-removalvary-nondetermination">Appeal non-determination of removal or variation of conditions</a>
+                          </li>
+                          <li>
+                            <a href="/appellant-submission/v15/skip/bys-cya-full-refused">Appeal refusal of full planning</a>
+                          </li>
+                        </ul>
+                      </li-->
+                    </ul>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          User research (4)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/979140609/UR+Listed+Building+Appeals+-+Appellant+Usability+Testing" target="_blank">1st round UR discussion guide</a></li>
+                          <li><a href="https://miro.com/app/board/uXjVO321JMQ=/?moveToWidget=3458764525111814660&cot=14" target="_blank">1st round of UR analysis with 2 listed building appellants</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/984219817/UR+Listed+Building+Appeals+-+Applicant+Usability+Testing" target="_blank">2nd round UR discussion guide</a></li>
+                          <li><a href="https://miro.com/app/board/uXjVO0S3sFM=/?moveToWidget=3458764526153521447&cot=14" target="_blank">2nd round of UR analysis with 4 applicants</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
