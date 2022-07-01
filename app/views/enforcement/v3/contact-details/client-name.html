@@ -1,0 +1,72 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "layout.html" %}
+
+{% set title = "Who are you doing the appeal for?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="contact-details" method="post">
+
+      <span class="govuk-caption-l">
+        Provide your contact details
+      </span>
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            {{ title }}
+          </h1>
+        </legend>
+
+        <div id="name-hint" class="govuk-hint">
+           Write the name as it is written on the enforcement notice
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="enforcement-first-name">
+            First name
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="enforcement-first-name" name="enforcement-first-name" type="text" spellcheck="false" autocomplete="given-name">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="enforcement-last-name">
+            Last name
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="enforcement-last-name" name="enforcement-last-name" type="text" spellcheck="false" autocomplete="family-name">
+        </div>
+
+      </<fieldset>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

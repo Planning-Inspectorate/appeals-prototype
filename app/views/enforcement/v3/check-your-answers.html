@@ -40,12 +40,10 @@
               Who was named on the enforcement notice?
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['enforcement-identity'] == 'appellant' %}
-                {{ data['enforcement-your-name'] }}
-              {% elif data['enforcement-identity'] == 'agent' %}
-                  {{ data['enforcement-your-name'] }}
+              {% if data['enforcement-identity'] == 'company' %}
+                {{ data['enforcement-company-name'] }}
               {% else %}
-                 No, I’m acting on behalf of the person it was served to
+                {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -55,37 +53,12 @@
             </dd>
           </div>
 
-          {% if data['enforcement-identity'] == 'appellant' %}
-            <!-- appellant -->
-          {% else %}
-             <!-- agent -->
-             <div class="govuk-summary-list__row">
-               <dt class="govuk-summary-list__key">
-                 Who was served the enforcement notice?
-               </dt>
-               <dd class="govuk-summary-list__value">
-                 {{ data['enforcement-notice-name']  or "Nic Davis"}}
-               </dd>
-               <dd class="govuk-summary-list__actions">
-                 <a class="govuk-link" href="javascript:preventDefault();">
-                   Change<span class="govuk-visually-hidden"> was the planning application made in your name?</span>
-                 </a>
-               </dd>
-             </div>
-          {% endif %}
-
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Your contact details
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data["enforcement-your-email"] or 'nickydavies@jambon.co.uk' }}</p>
-              <p class="govuk-body">{{ data["enforcement-your-name"] or 'Nic Davies' }}</p>
-
-              {% if data["enforcement-company-name"] %}
-                <p class="govuk-body">{{ data['enforcement-company-name'] }}</p>
-              {% endif %}
-
               <p class="govuk-body">{{ data['enforcement-telephone'] or '01179428242' }}</p>
 
             </dd>
