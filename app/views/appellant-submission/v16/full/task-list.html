@@ -1,5 +1,5 @@
-{% set pageref = "FUL-TL-AS15" %}
-{% extends "layouts/appellant-submission/v15.html" %}
+{% set pageref = "FUL-TL-AS16" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
   Task list - Appeal a planning decision - {{serviceName}} - GOV.UK
@@ -9,10 +9,18 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    
+
       <h1 class="govuk-heading-xl">
         Appeal a planning decision
       </h1>
+
+      <p class="govuk-body govuk-!-margin-bottom-7">
+        {% if data['bys-v11-enforcementeffectivedate-day'] %}
+          Your deadline to appeal is 11.59pm on Monday {{ data["appealsub-"+version+"-bys-deadline-day"] }} {{ data["appealsub-"+version+"-bys-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-bys-deadline-year"] }}.
+        {% else %}
+          Your deadline to appeal is {{ 20 | daysInFuture }}.
+        {% endif %}
+      </p>
       <!--h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{data['sections-completed-text']}}</h2-->
       <!--p class="govuk-body govuk-!-margin-bottom-7">You have completed {{data['sections-completed']}} of 5 sections.</p-->
 
@@ -39,7 +47,7 @@
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
       <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 6 tasks.</p>
-      
+
       <!--div class="govuk-warning-text">
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
@@ -134,11 +142,11 @@
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Optional</strong>
             {% endif %}
           </li-->
-          <li class="app-task-list__item">            
-            {% if (data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete") 
+          <li class="app-task-list__item">
+            {% if (data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete")
                 and data["appealsub-"+version+"-taskliststatus-appealsite"] == "Complete"
                 and data["appealsub-"+version+"-taskliststatus-proceduretype"] == "Complete"
-                and data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete" 
+                and data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete"
                 and data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "Complete"
             %}
               <span class="app-task-list__task-name">
@@ -158,26 +166,7 @@
       </div>
 
     </div>
-    <div class="govuk-grid-column-one-third">
-      <dl class="govuk-summary-list govuk-summary-list-appealdetails">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Planning application number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            22/12345/FUL
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Deadline to appeal
-          </dt>
-          <dd class="govuk-summary-list__value">
-            12 May 2022
-          </dd>
-        </div>
-      </dl>
-    </div>
+    
   </div>
 
 {% endblock %}

@@ -1,5 +1,5 @@
-{% set pageref = "SAR-008-AS15" %}
-{% extends "layouts/appellant-submission/v15.html" %}
+{% set pageref = "SAR-008-AS16" %}
+{% extends "layout.html" %}
 
 {% set title = "You’ll need to submit some documents with your appeal" %}
 
@@ -82,7 +82,7 @@
     </p>
 
     <div class="govuk-button-group">
-      
+
       <!--
       {{ govukButton({
         href: "task-list",
@@ -103,7 +103,7 @@
       {% else %}
         {{ govukButton({
           text: "Continue to my appeal",
-          href: "/appellant-submission/"+version+"/expedited/task-list"
+          href: "/appellant-submission/v16/expedited/task-list"
         }) }}
       {% endif %}
 
