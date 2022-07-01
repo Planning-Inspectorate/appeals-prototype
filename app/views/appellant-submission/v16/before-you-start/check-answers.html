@@ -1,5 +1,5 @@
-{% set pageref = "BYS-CYA-AS15" %}
-{% extends "layouts/appellant-submission/v15.html" %}
+{% set pageref = "BYS-CYA-AS16" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
   You can appeal using this service - Before you start - {{serviceName}} - GOV.UK
@@ -24,7 +24,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form action="" method="post">
-      
+
         <h1 class="govuk-heading-l">
           You can appeal using this service
         </h1>
@@ -35,7 +35,7 @@
         <p class="govuk-body">
           Your deadline to appeal is 11.59pm on Monday {{ data["appealsub-"+version+"-bys-deadline-day"] }} {{ data["appealsub-"+version+"-bys-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-bys-deadline-year"] }}.
         </p>
-      
+
         <h1 class="govuk-heading-m">
           Check your answers
         </h1>
@@ -105,8 +105,8 @@
               </dd>
             </div>
           {% endif %}
-          
-          {% if 
+
+          {% if
               (data["appealsub-"+version+"-bys-whatareyouappealing"] == "Householder planning") or
               (
                 (data["appealsub-"+version+"-bys-whatareyouappealing"] == "Prior approval") and
@@ -133,7 +133,7 @@
               </dd>
             </div>
           {% endif %}
-          
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Was your planning application granted or refused?
@@ -182,7 +182,7 @@
               </dd>
             </div>
           {% endif %}
-          
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Have you received an enforcement notice?
@@ -196,7 +196,7 @@
               </a>
             </dd>
           </div>
-          
+
           {% if data["appealsub-"+version+"-bys-enforcementnotice"] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -212,7 +212,7 @@
               </dd>
             </div>
           {% endif %}
-          
+
           {% if ((data['bys-'+version+'-whatareyouappealing'] == "Householder planning") and (data['bys-'+version+'-permissiongrantedrefused'] == "Refused")) or ((data['bys-'+version+'-whatareyouappealing'] == "Prior approval") and (data['bys-'+version+'-priorapproval'] == "Yes")) or ((data['bys-'+version+'-whatareyouappealing'] == "Removal or variation of conditions") and (data['bys-'+version+'-removalvariationconditions'] == "Yes")) %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -231,10 +231,9 @@
         </dl>
 
         {{ govukButton({
-          href: "/appellant-submission/"+version+"/save-return/what-is-your-application-number",
           text: "Continue to my appeal"
         }) }}
-        
+
       </form>
 
     </div>

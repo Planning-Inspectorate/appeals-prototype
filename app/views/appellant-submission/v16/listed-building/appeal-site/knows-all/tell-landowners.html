@@ -1,5 +1,5 @@
-{% set pageref = "LB-AAS-005-AS15" %}
-{% extends "layouts/appellant-submission/v15.html" %}
+{% set pageref = "LB-AAS-005-AS16" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
   Telling the {% if data["appealsub-"+version+"-appealsite-ownsome"] == "Yes" %}other {% endif %}landowners - Tell us about the appeal site - {{serviceName}} - GOV.UK
@@ -41,7 +41,7 @@
           <p class="govuk-body">You must have told all the other landowners about your appeal.</p>
           <p class="govuk-body">You must have done this within the last 21 days using a copy of the <a href="javascript:preventDefault();">form in annexe 2A or 2B of the 'making your appeal' guidance</a>.</p>
 
-          <h2 class="govuk-heading-m">Confirm that you've told the other landowners</h2>
+          <h2 class="govuk-heading-m">Confirm that you’ve told the other landowners</h2>
           <p class="govuk-body">I confirm that:</p>
 
           {{ govukCheckboxes({
@@ -72,7 +72,7 @@
           <p class="govuk-body">You must have told all the landowners about your appeal.</p>
           <p class="govuk-body">You must have done this within the last 21 days using a copy of <a href="javascript:preventDefault();">the form in annexe 2A or 2B of the 'making your appeal' guidance</a>.</p>
 
-          <h2 class="govuk-heading-m">Confirm that you've told the landowners</h2>
+          <h2 class="govuk-heading-m">Confirm that you’ve told the landowners</h2>
           <p class="govuk-body">I confirm that:</p>
 
           {{ govukCheckboxes({

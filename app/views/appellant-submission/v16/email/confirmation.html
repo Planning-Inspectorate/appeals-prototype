@@ -1,11 +1,11 @@
 {% extends "layout-email.html" %}
 
 {% block pageTitle %}
-  We've received your listed building appeal
+  We’ve received your listed building appeal
 {% endblock %}
 
 {% block content %}
-<p><strong>Subject:</strong> We've received your listed building appeal</p>
+<p><strong>Subject:</strong> We’ve received your listed building appeal</p>
 <p><strong>From:</strong> Appeal a planning decision</p>
 
 <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
@@ -15,7 +15,7 @@
 
     <p class="govuk-body">Dear {{ data["appealsub-v15-contactdetails-yourname"] or "[name]" }},</p>
 
-    <p class="govuk-body">We've received your listed building appeal for the following site:</p>
+    <p class="govuk-body">We’ve received your listed building appeal for the following site:</p>
     <p class="govuk-body">
       {{ data["appealsub-v15-appealsite-address-line-1"] or "9617 The Avenue" }}{% if data["appealsub-v15-appealsite-address-line-2"] %}<br>{% endif %}
       {{ data["appealsub-v15-appealsite-address-line-2"] }}{% if data["appealsub-v15-appealsite-address-town"] %}<br>{% endif %}
@@ -32,7 +32,7 @@
     <p class="govuk-body">You can download a copy of your appeal at <a href="javascript:preventDefault();">[link to PDF]</a>.</p>
 
     <h2 class="govuk-heading-m">What happens next?</h2>
-    <p class="govuk-body">We'll check you've submitted everything we need to progress your appeal. We'll contact you once we've done this.</p>
+    <p class="govuk-body">We'll check you’ve submitted everything we need to progress your appeal. We'll contact you once we’ve done this.</p>
     
     <p class="govuk-body">If you need to contact us, include your planning application number.</p>
 
