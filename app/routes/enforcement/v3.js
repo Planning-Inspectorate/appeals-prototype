@@ -32,7 +32,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Contact details
-  router.post(base+'contact-details/contact-details', function (req, res) {
+  router.post(base+'contact-details/finish-contact-details', function (req, res) {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
     res.redirect('/enforcement/v3/task-list')
   })
@@ -44,6 +44,26 @@ module.exports = function (router) {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
     res.redirect('/enforcement/v3/task-list')
   })
+
+  // ENF 00X
+  // Enforcement
+  // Additional people
+  router.post(base+'contact-details/named-on-notice', function (req, res) {
+
+    // Make a variable from session data
+    let identity = req.session.data['enforcement-identity']
+
+    // route depending on value
+    if (identity === 'appellant') {
+      res.redirect('/enforcement/v3/contact-details/your-name')
+    } else if (identity === 'agent') {
+      res.redirect('/enforcement/v3/contact-details/client-name')
+    } else {
+      res.redirect('/enforcement/v3/contact-details/company-name')
+    }
+
+  })
+
 
   // ENF 00X
   // Enforcement
