@@ -68,34 +68,34 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Additional people
-  router.post(base+'additional-people/additional-people-v3', function (req, res) {
+  router.post(base+'contact-details/additional-people-v3', function (req, res) {
 
     // Make a variable from session data
     let addedpeople = req.session.data['enforcement-additionalpeople']
 
     // route depending on value
     if (addedpeople === 'Yes') {
-      res.redirect('/enforcement/v3/additional-people/add-person')
+      res.redirect('/enforcement/v3/contact-details/add-person')
     } else {
-      req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
-      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-addpeople=Complete')
+      req.session.data["enforcement-taskliststatus-contact-details"] = "Complete";
+      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-contactdetails=Complete')
     }
   })
 
   // ENF 00X
   // Enforcement
   // Additional people
-  router.post(base+'additional-people/added-people-v3', function (req, res) {
+  router.post(base+'contact-details/added-people-v3', function (req, res) {
 
     // Make a variable from session data
     let addedpeople = req.session.data['enforcement-morepeople']
 
     // route depending on value
     if (addedpeople === 'Yes') {
-      res.redirect('/enforcement/v3/additional-people/add-person')
+      res.redirect('/enforcement/v3/contact-details/add-person')
     } else {
-      req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
-      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-addpeople=Complete')
+      req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
+      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-contactdetails=Complete')
     }
   })
 
