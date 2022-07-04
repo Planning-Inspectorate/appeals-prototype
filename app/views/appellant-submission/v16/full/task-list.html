@@ -1,15 +1,24 @@
 {% set pageref = "FUL-TL-AS15" %}
-{% extends "layouts/appellant-submission/v15.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
   Task list - Appeal a planning decision - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    
+
       <h1 class="govuk-heading-xl">
         Appeal a planning decision
       </h1>
@@ -38,15 +47,15 @@
       {% endif %}
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{taskcount}} of 6 tasks.</p>
-      
-      <!--div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-warning-text__assistive">Warning</span>
-          You must submit your appeal by 11.59pm on {{ data["appealsub-"+version+"-beforeyoustart-deadline-day"] }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-month"] | formatMonth }} {{ data["appealsub-"+version+"-beforeyoustart-deadline-year"] }}. If you miss this deadline, you lose your right to appeal.
-        </strong>
-      </div-->
+      <p class="govuk-body">You have completed {{taskcount}} of 6 tasks.</p>
+
+      <p class="govuk-body govuk-!-margin-bottom-7">
+        {% if data['appealsub-v16-enforcementeffectivedate-day'] %}
+          Your deadline to appeal is {{ data['appealsub-v16-enforcementeffectivedate-day'] }} {{ data['bys-v11-enforcementeffectivedate-month'] | formatMonth }} {{ data['bys-v11-enforcementeffectivedate-year'] }}.
+        {% else %}
+          Your deadline to appeal is {{ 20 | daysInFuture }}.
+        {% endif %}
+      </p>
 
       <div class="app-task-list app-task-list--fullappeal">
         <ul class="app-task-list__items">
@@ -134,11 +143,11 @@
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Optional</strong>
             {% endif %}
           </li-->
-          <li class="app-task-list__item">            
-            {% if (data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete") 
+          <li class="app-task-list__item">
+            {% if (data["appealsub-"+version+"-taskliststatus-contactdetails"] == "Complete")
                 and data["appealsub-"+version+"-taskliststatus-appealsite"] == "Complete"
                 and data["appealsub-"+version+"-taskliststatus-proceduretype"] == "Complete"
-                and data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete" 
+                and data["appealsub-"+version+"-taskliststatus-planningapplicationdocuments"] == "Complete"
                 and data["appealsub-"+version+"-taskliststatus-appealdocuments"] == "Complete"
             %}
               <span class="app-task-list__task-name">
@@ -158,26 +167,7 @@
       </div>
 
     </div>
-    <div class="govuk-grid-column-one-third">
-      <dl class="govuk-summary-list govuk-summary-list-appealdetails">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Planning application number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            22/12345/FUL
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Deadline to appeal
-          </dt>
-          <dd class="govuk-summary-list__value">
-            12 May 2022
-          </dd>
-        </div>
-      </dl>
-    </div>
+
   </div>
 
 {% endblock %}

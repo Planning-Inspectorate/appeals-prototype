@@ -7,7 +7,7 @@
 {% if data["appealsub-v15-appealdocs-planningobligation-status"] == "Not started yet" %}
   {% set pageref = "LB-APP-010-AS15" %}
 {% endif %}
-{% extends "layouts/appellant-submission/v15.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
   {% if data["appealsub-"+version+"-appealdocs-planningobligation-status"] == "Finalised and ready to submit" %}

@@ -11,8 +11,17 @@
       <h1 class="govuk-heading-xl">
         Appeal a householder planning decision
       </h1>
+
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0 of 5 sections.</p>
+      <p class="govuk-body">You have completed 0 of 5 sections.</p>
+
+      <p class="govuk-body govuk-!-margin-bottom-7">
+        {% if data['appealsub-v16-enforcementeffectivedate-day'] %}
+          Your deadline to appeal is {{ data['appealsub-v16-enforcementeffectivedate-day'] }} {{ data['bys-v11-enforcementeffectivedate-month'] | formatMonth }} {{ data['bys-v11-enforcementeffectivedate-year'] }}.
+        {% else %}
+          Your deadline to appeal is {{ 20 | daysInFuture }}.
+        {% endif %}
+      </p>
 
       <ol class="app-task-list">
         <li>
@@ -148,27 +157,6 @@
         </li>
 
       </ol>
-    </div>
-
-    <div class="govuk-grid-column-one-third">
-      <dl class="govuk-summary-list govuk-summary-list-appealdetails">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Planning application number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            22/12345/FUL
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Deadline to appeal
-          </dt>
-          <dd class="govuk-summary-list__value">
-            12 May 2022
-          </dd>
-        </div>
-      </dl>
     </div>
 
   </div>

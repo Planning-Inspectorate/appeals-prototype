@@ -1,5 +1,5 @@
 {% set pageref = "SAR-008-AS15" %}
-{% extends "layouts/appellant-submission/v15.html" %}
+{% extends "layout.html" %}
 
 {% set title = "You’ll need to submit some documents with your appeal" %}
 
@@ -82,7 +82,7 @@
     </p>
 
     <div class="govuk-button-group">
-      
+
       <!--
       {{ govukButton({
         href: "task-list",
@@ -93,17 +93,17 @@
       {% if data['appealsub-'+version+'-bys-route'] == "full" %}
         {{ govukButton({
           text: "Continue to my appeal",
-          href: "/appellant-submission/"+version+"/full/task-list"
+          href: "/appellant-submission/v16/full/task-list"
         }) }}
       {% elseif data['appealsub-'+version+'-bys-route'] == "listedbuilding" %}
         {{ govukButton({
           text: "Continue to my appeal",
-          href: "/appellant-submission/"+version+"/listed-building/task-list"
+          href: "/appellant-submission/v16/listed-building/task-list"
         }) }}
       {% else %}
         {{ govukButton({
           text: "Continue to my appeal",
-          href: "/appellant-submission/"+version+"/expedited/task-list"
+          href: "/appellant-submission/v16/expedited/task-list"
         }) }}
       {% endif %}
 

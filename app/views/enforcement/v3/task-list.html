@@ -24,10 +24,6 @@
         {% set taskcount = taskcount + 1 %}
       {% endif %}
 
-      {% if data["enforcement-taskliststatus-addpeople"] == "Complete" %}
-        {% set taskcount = taskcount + 1 %}
-      {% endif %}
-
       {% if data["enforcement-taskliststatus-appealsite"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
@@ -47,7 +43,7 @@
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
 
       <p class="govuk-body">
-        You have completed {{taskcount}} of 7 tasks.
+        You have completed {{taskcount}} of 6 tasks.
       </p>
 
       <p class="govuk-body govuk-!-margin-bottom-7">
