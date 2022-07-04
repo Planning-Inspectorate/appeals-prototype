@@ -1,4 +1,4 @@
-{% set pageref = "SAR-008-AS16" %}
+{% set pageref = "SAR-008-AS15" %}
 {% extends "layout.html" %}
 
 {% set title = "You’ll need to submit some documents with your appeal" %}
@@ -93,12 +93,12 @@
       {% if data['appealsub-'+version+'-bys-route'] == "full" %}
         {{ govukButton({
           text: "Continue to my appeal",
-          href: "/appellant-submission/"+version+"/full/task-list"
+          href: "/appellant-submission/v16/full/task-list"
         }) }}
       {% elseif data['appealsub-'+version+'-bys-route'] == "listedbuilding" %}
         {{ govukButton({
           text: "Continue to my appeal",
-          href: "/appellant-submission/"+version+"/listed-building/task-list"
+          href: "/appellant-submission/v16/listed-building/task-list"
         }) }}
       {% else %}
         {{ govukButton({
