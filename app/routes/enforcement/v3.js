@@ -68,34 +68,34 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Additional people
-  router.post(base+'additional-people/additional-people', function (req, res) {
+  router.post(base+'contact-details/additional-people-v3', function (req, res) {
 
     // Make a variable from session data
     let addedpeople = req.session.data['enforcement-additionalpeople']
 
     // route depending on value
     if (addedpeople === 'Yes') {
-      res.redirect('/enforcement/v3/additional-people/add-person')
+      res.redirect('/enforcement/v3/contact-details/add-person')
     } else {
-      req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
-      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-addpeople=Complete')
+      req.session.data["enforcement-taskliststatus-contact-details"] = "Complete";
+      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-contactdetails=Complete')
     }
   })
 
   // ENF 00X
   // Enforcement
   // Additional people
-  router.post(base+'additional-people/added-people', function (req, res) {
+  router.post(base+'contact-details/added-people-v3', function (req, res) {
 
     // Make a variable from session data
     let addedpeople = req.session.data['enforcement-morepeople']
 
     // route depending on value
     if (addedpeople === 'Yes') {
-      res.redirect('/enforcement/v3/additional-people/add-person')
+      res.redirect('/enforcement/v3/contact-details/add-person')
     } else {
-      req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
-      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-addpeople=Complete')
+      req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
+      res.redirect('/enforcement/v3/task-list?enforcement-taskliststatus-contactdetails=Complete')
     }
   })
 
@@ -201,7 +201,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Did you sumbit a planning application
-  router.post('/applicationmade', function (req, res) {
+  router.post('/applicationmade-v3', function (req, res) {
 
     // Make a variable from session data
     let application = req.session.data['enforcement-application']
@@ -225,7 +225,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Application decision
-  router.post('/applicationdecision', function (req, res) {
+  router.post('/applicationdecision-v3', function (req, res) {
 
     // Make a variable from session data
     let groundA = req.session.data['ground-a-selected']
@@ -253,7 +253,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Fees paid
-  router.post('/feespaid', function (req, res) {
+  router.post('/feespaid-v3', function (req, res) {
 
     // Make a variable from session data
     let feespaid = req.session.data['enforcement-fees-paid']
