@@ -38,17 +38,19 @@
         You must add 1 person at a time.
       </p>
 
-      {{ govukInput({
-        id: "enforcement-added-person",
-        name: "enforcement-added-person",
-        label: {
-          text: "Full name"
-        },
-        hint: {
-          html: hintHtml
-        },
-        classes: "govuk-!-width-two-thirds"
-      }) }}
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="enforcement-added-person-first-name">
+          First name
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="enforcement-added-person-first-name" name="enforcement-added-person-first-name" type="text" spellcheck="false" autocomplete="given-name">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="enforcement-added-person-last-name">
+          Last name
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="enforcement-added-person-last-name" name="enforcement-added-person-last-name" type="text" spellcheck="false" autocomplete="family-name">
+      </div>
 
       <div class="govuk-button-group">
         {{ govukButton({

@@ -35,6 +35,7 @@
         <!-- contact details -->
         <h2 class="govuk-heading-l">Provide your contact details</h2>
         <dl class="govuk-summary-list">
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Who was named on the enforcement notice?
@@ -69,11 +70,7 @@
               </a>
             </dd>
           </div>
-        </dl>
 
-        <!-- added appellants -->
-        <h2 class="govuk-heading-l govuk-!-margin-top-9">Tell us about additional people</h2>
-        <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is there anyone else appealing the enforcement notice?
@@ -95,7 +92,8 @@
                 Added to the appeal
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["enforcement-added-person"] }}
+                {{ data["enforcement-added-person-first-name"] }}
+                {{ data["enforcement-added-person-last-name"] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
@@ -107,6 +105,11 @@
           {% endif %}
 
         </dl>
+
+        <!-- added appellants -->
+        <h2 class="govuk-heading-l govuk-!-margin-top-9">Tell us about additional people</h2>
+
+
 
         <!-- appeal site -->
         <h2 class="govuk-heading-l govuk-!-margin-top-9">Tell us about the appeal site</h2>
