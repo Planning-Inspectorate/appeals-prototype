@@ -150,7 +150,7 @@
           <!-- upload appeal documents -->
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="upload/planning-obligation">
+              <a href="upload/enforcement-notice">
                 Upload documents for your appeal
               </a>
             </span>
@@ -166,7 +166,6 @@
           <!-- last task -->
           <li class="app-task-list__item">
             {% if (data["enforcement-taskliststatus-contactdetails"] == "Complete")
-                and data["enforcement-taskliststatus-addpeople"] == "Complete"
                 and data["enforcement-taskliststatus-appealsite"] == "Complete"
                 and data["enforcement-taskliststatus-grounds"] == "Complete"
                 and data["enforcement-taskliststatus-proceduretype"] == "Complete"

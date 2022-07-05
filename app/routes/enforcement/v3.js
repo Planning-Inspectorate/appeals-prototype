@@ -326,7 +326,7 @@ module.exports = function (router) {
     if (obligation === 'Yes') {
       res.redirect('/enforcement/v3/upload/planning-obligation-status')
     } else {
-      res.redirect('/enforcement/v3/upload/enforcement-notice')
+      res.redirect('/enforcement/v3/upload/supporting-documents')
     }
   })
 
@@ -351,7 +351,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement notice
   router.post(base+'upload/enforcement-notice', function (req, res) {
-    res.redirect('/enforcement/v3/upload/supporting-documents')
+    res.redirect('/enforcement/v3/upload/planning-obligation')
   })
 
   // ENF 00X
@@ -364,7 +364,7 @@ module.exports = function (router) {
 
   // ENF 00X
   // Do you have supporting documents?
-  router.post(base+'upload/supporting-documents', function (req, res) {
+  router.post(base+'upload/supporting-documents-v3', function (req, res) {
 
     // Make a variable from session data
     let supportingdocuments = req.session.data['enforcement-supporting-documents']
