@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "You have added 1 person to the appeal" %}
+{% set title = "Named on the appeal" %}
 
 {% block pageTitle %}
   {{title}} - Additional people - GOV.UK
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="added-people-v4" method="post">
+    <form action="added-names-v4" method="post">
 
       <span class="govuk-caption-l">
         Tell us who was on the enforcement notice
@@ -36,9 +36,10 @@
 
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-            Name
+            Individual
           </dt>
           <dd class="govuk-summary-list__value  govuk-!-width-one-half">
             {{ data["enforcement-first-name"] }}
@@ -55,6 +56,29 @@
             </a>
           </dd>
         </div>
+
+        <!-- company name first if one is named -->
+        {% if data['enforcement-company-name'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Company
+            </dt>
+            <dd class="govuk-summary-list__value  govuk-!-width-one-half">
+              {{ data["enforcement-company-name"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Remove<span class="govuk-visually-hidden"> Nic Griffchon</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
 
         {% if data['enforcement-added-person-first-name'] %}
 
@@ -90,7 +114,7 @@
         name: "enforcement-morepeople",
         fieldset: {
           legend: {
-            text: "Do you need to add another person?",
+            text: "Do you need to add more names?",
             isPageHeading: false,
             classes: "govuk-fieldset__legend--m"
           }
