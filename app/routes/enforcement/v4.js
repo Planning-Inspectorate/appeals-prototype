@@ -83,14 +83,14 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Additional people
-  router.post(base+'named-on-notice/added-people-v4', function (req, res) {
+  router.post(base+'named-on-notice/added-names-v4', function (req, res) {
 
     // Make a variable from session data
     let addedpeople = req.session.data['enforcement-morepeople']
 
     // route depending on value
     if (addedpeople === 'Yes') {
-      res.redirect('/enforcement/v4/named-on-notice/add-person')
+      res.redirect('/enforcement/v4/named-on-notice/named-on-notice')
     } else {
       req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
       res.redirect('/enforcement/v4/task-list?enforcement-taskliststatus-contactdetails=Complete')

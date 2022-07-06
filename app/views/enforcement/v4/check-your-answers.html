@@ -41,11 +41,15 @@
               Who was named on the enforcement notice?
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if data['enforcement-identity'] == 'company' %}
-                {{ data['enforcement-company-name'] }}
-              {% else %}
-                {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}
+
+              {% if data['enforcement-first-name'] %}
+                {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}<br>
               {% endif %}
+
+              {% if data['enforcement-company-name'] %}
+                {{ data['enforcement-company-name'] }}
+              {% endif %}
+
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
@@ -102,7 +106,7 @@
               </dd>
             </div>
           {% endif %}
-          
+
         </dl>
 
         <!-- appeal site -->
