@@ -98,24 +98,28 @@
 
         {% endif %}
 
-        <!-- route user based on what they selected -->
-        {% if data['grounds-7'] %}
-          {{ govukButton({
-            href: "groundG",
-            text: "Save and continue"
-          }) }}
-        {% else %}
-          {{ govukButton({
-            href: "application",
-            text: "Save and continue"
-          }) }}
-        {% endif %}
+        <div class="govuk-button-group">
 
-        {{ govukButton({
-          href: "",
-          text: "Save and come back later",
-          classes: "govuk-button--secondary"
-        }) }}
+          <!-- route user based on what they selected -->
+          {% if data['grounds-7'] %}
+            {{ govukButton({
+              href: "groundG",
+              text: "Save and continue"
+            }) }}
+          {% else %}
+            {{ govukButton({
+              href: "application",
+              text: "Save and continue"
+            }) }}
+          {% endif %}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+
+        </div>
 
       </div>
     </div>

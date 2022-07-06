@@ -58,16 +58,17 @@
           iconFallbackText: "Warning"
         }) }} -->
 
-        {{ govukButton({
-          href: "confirmation",
-          text: "Confirm and submit appeal"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
 
-        {{ govukButton({
-          href: "",
-          text: "Save and come back later",
-          classes: "govuk-button--secondary"
-        }) }}
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
 
       </form>
 
