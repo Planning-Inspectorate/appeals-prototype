@@ -1,8 +1,11 @@
-{% set pageref = "MVP2-BYS-001" %}
-{% extends "layouts/mvp-full-appeal/v2.html" %}
+<!-- needs new page ref -->
+<!-- {% set pageref = "BYS-001" %} -->
+{% extends "layouts/before-you-start/v12.html" %}
+
+{% set title = "Which local planning department issued the enforcement notice?" %}
 
 {% block pageTitle %}
-  Which local planning department dealt with your planning application?
+{{ title }}
  - Before you start - {{serviceName}} - GOV.UK
 {% endblock %}
 
@@ -24,6 +27,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <!--
+      {% if data['appeal'] == 'enforcement' %}
+        <form action="enforcement-issue-date" method="post">
+      {% else %}
+        <form action="" method="post">
+      {% endif %} -->
+
       <form action="" method="post">
 
         <span class="govuk-caption-l">
@@ -32,11 +42,11 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label govuk-label--l" for="postcode">
-            Which local planning department dealt with your planning application?
+            {{ title }}
           </label>
 
-          <p class="govuk-hint">This is also known as your 'local planning authority' or 'LPA'.</p>
-          <select class="govuk-select govuk-input--width-20" id="mvp-{{version}}-bys-planningdepartment" name="mvp-{{version}}-bys-planningdepartment">
+          <p class="govuk-hint">This is also known as your ‘local planning authority’ or ‘LPA’.</p>
+          <select class="govuk-select govuk-input--width-20" id="bys-{{version}}-planningdepartment" name="bys-{{version}}-planningdepartment">
             <option value=""></option>
             {% for lpa in data['lpas'] %}
               <option value="{{lpa.key}}"{% if lpa.key == data["bya-"+version+"-planningdepartment"] %} selected{% endif %}>{{lpa['official-name']}}</option>
@@ -59,7 +69,7 @@
   <script type="text/javascript" src="/public/javascripts/autocomplete/accessible-autocomplete.min.js"></script>
   <script>
     accessibleAutocomplete.enhanceSelectElement({
-      selectElement: document.querySelector('#mvp-{{version}}-bys-planningdepartment')
+      selectElement: document.querySelector('#bys-{{version}}-planningdepartment')
     })
   </script>
 {% endblock %}

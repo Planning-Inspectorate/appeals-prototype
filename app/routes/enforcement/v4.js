@@ -403,7 +403,7 @@ module.exports = function (router) {
     req.session.data["enforcement-taskliststatus-grounds"] = "";
     req.session.data["enforcement-taskliststatus-proceduretype"] = "";
     req.session.data["enforcement-taskliststatus-appealdocuments"] = "";
-    res.redirect('/before-you-start/v11')
+    res.redirect('/before-you-start/v12')
   })
 
   // ENF 00X

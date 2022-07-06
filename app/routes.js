@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
-
-
 // Import routes for new versioning system
 router.use("/:folder/v:version", (req, res, next) => {
 	try {
@@ -13,12 +10,12 @@ router.use("/:folder/v:version", (req, res, next) => {
 	}
 })
 
-
 // Old versioning imports
 require('./routes/eligibility/v8.js')(router);
 require('./routes/eligibility/v9.js')(router);
 require('./routes/before-you-start/v10.js')(router);
 require('./routes/before-you-start/v11.js')(router);
+require('./routes/before-you-start/v12.js')(router);
 
 require('./routes/enforcement/v1.js')(router);
 require('./routes/enforcement/v2.js')(router);
@@ -78,10 +75,6 @@ require('./routes/interested-party/upload-comments.js')(router);
 require('./routes/save-progress/v1/v1.js')(router);
 require('./routes/save-progress/v2/v2.js')(router);
 require('./routes/save-progress/v3/v3.js')(router);
-
-
-
-
 
 // Add your routes above the module.exports line
 module.exports = router
