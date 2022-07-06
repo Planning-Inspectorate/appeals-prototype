@@ -8,38 +8,33 @@ service-start{% extends "layout.html" %}
 
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
+      <div class="govuk-grid-column-two-thirds">
 
         <h1 class="govuk-heading-xl">
           {{serviceName}} prototypes
         </h1>
 
         <h2 class="govuk-heading-l">Introduction</h2>
-        <p class="govuk-body">
+        <!-- <p class="govuk-body">
           Users make a planning application to their local planning authority (LPA), which is usually their local council. If the LPA makes a decision that the user thinks is incorrect, legislation says they can appeal the decision. They can also appeal if the LPA takes too long to make a decision.
-        </p>
+        </p> -->
         <p class="govuk-body">
-          These prototypes cover different journeys for users of the appeal a planning decision service. This includes appellants, agents acting on behalf of appellants, LPAs, case officers, and inspectors.
+          These prototypes cover different journeys for users of the appeal a planning decision service. This includes appellants, agents acting on behalf of appellants, local planning departments, case officers, and inspectors.
         </p>
-        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-        {{ govukTag({
-            text: "For development",
-            classes: "govuk-tag--purple govuk-!-margin-bottom-1"
-        }) }}
-        <h2 class="govuk-heading-l">Full Appeal MVP Prototype</h2>
-        <p class="govuk-body">This prototype is to be used as documentation in the delivery of the MVP for the full appeal submission journey. <!--It will not change and has been signed off.--></p>
-        <p class="govuk-body"><a href="/mvp-full-appeal/v1/before-you-start/planning-department">Start MVP journey</a></p>
-        <p class="govuk-body"><a href="/mvp-full-appeal/v2/before-you-start/">Start MVP v2 journey (Changes to "Before you start" only)</a></p>
 
         {# Size modifiers: xl, l, m #}
-        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-        {{ govukTag({
+      </div>
+      <div class="govuk-grid-column-full">
+        <!-- <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> -->
+        <!-- {{ govukTag({
             text: "For design and user research",
             classes: "govuk-tag--purple govuk-!-margin-bottom-1"
-        }) }}
-        <h2 class="govuk-heading-l">Private Beta Prototypes</h2>
+        }) }} -->
+
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+          Private Beta Prototypes
+        </h2>
 
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
@@ -152,6 +147,47 @@ service-start{% extends "layout.html" %}
             </div>
           </div>
 
+
+
+
+
+
+          <!-- MVP links -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-guidance">
+                  Full Appeal MVP Prototype
+                </span>
+              </h2>
+            </div>
+
+            <div id="accordion-default-content-guidance" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-guidance">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                        text: "For development",
+                        classes: "govuk-tag--purple govuk-!-margin-bottom-1"
+                    }) }}
+
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                      MVP from before you start
+                    </h3>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li><a href="/mvp-full-appeal/v1/before-you-start/planning-department">Version 1</a></li>
+                      <li><a href="/mvp-full-appeal/v2/before-you-start/">Version 2</a></li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
 
 
           <!-- guidance -->
@@ -279,10 +315,13 @@ service-start{% extends "layout.html" %}
                   Before you start
                 </span>
               </h2>
+
+              <!--
               <div class="govuk-accordion__section-summary govuk-body" id="accordion-default-heading-beforeyoustart-summary">
                 These prototypes are now superceded by the
                 "Full Appeal MVP Prototype" which includes "Before you start" as part of the end to end appeal submission.
-              </div>
+              </div> -->
+
             </div>
 
             <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
