@@ -14,8 +14,6 @@ router.use("/:folder/v:version", (req, res, next) => {
 })
 
 
-
-
 // Old versioning imports
 require('./routes/eligibility/v8.js')(router);
 require('./routes/eligibility/v9.js')(router);
@@ -25,6 +23,7 @@ require('./routes/before-you-start/v11.js')(router);
 require('./routes/enforcement/v1.js')(router);
 require('./routes/enforcement/v2.js')(router);
 require('./routes/enforcement/v3.js')(router);
+require('./routes/enforcement/v4.js')(router);
 
 require('./routes/appellant-submission/v10.js')(router);
 require('./routes/appellant-submission/v11.js')(router);

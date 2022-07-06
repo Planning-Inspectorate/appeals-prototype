@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% set title = "Do you have a reason why you have not paid?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Choose your grounds of appeal
+    </span>
+
+    <form method="post">
+
+      <div class="govuk-form-group">
+
+        {% set exemptReason %}
+
+          {{ govukTextarea({
+            id: "enforcement-fees-exempt-reason",
+            name: "enforcement-fees-exempt-reason",
+            label: {
+              text: "Tell us why you do not have to pay a fee"
+            },
+            value: data["enforcement-fees-exempt-reason"]
+          }) }}
+
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "enforcement-fees-paid",
+          name: "enforcement-fees-paid",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: exemptReason
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      {{ govukButton({
+        href: "",
+        text: "Save and come back later",
+        classes: "govuk-button--secondary"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
