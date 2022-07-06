@@ -58,55 +58,6 @@
             </dd>
           </div>
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Your contact details
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{ data["enforcement-your-email"] or 'nickydavies@jambon.co.uk' }}</p>
-              <p class="govuk-body">{{ data['enforcement-telephone'] or '01179428242' }}</p>
-
-            </dd>
-
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> contact details</span>
-              </a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Is there anyone else appealing the enforcement notice?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data["enforcement-additionalpeople"] or 'No' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> additional people</span>
-              </a>
-            </dd>
-          </div>
-
-          {% if data['enforcement-additionalpeople'] == "Yes" %}
-
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Added to the appeal
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data["enforcement-added-person-first-name"] }}
-                {{ data["enforcement-added-person-last-name"] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> address of the appeal site</span>
-                </a>
-              </dd>
-            </div>
-          {% endif %}
-
         </dl>
 
         <!-- appeal site -->

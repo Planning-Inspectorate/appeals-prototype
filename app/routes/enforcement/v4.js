@@ -126,7 +126,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Site interest
-  router.post(base+'appeal-site/siteinterest', function (req, res) {
+  router.post(base+'appeal-site/siteinterest-v4', function (req, res) {
 
     // Make a variable from session data
     let interest = req.session.data['enforcement-interest']
@@ -135,8 +135,9 @@ module.exports = function (router) {
     if (interest === 'none') {
       res.redirect('/enforcement/v4/appeal-site/owner-consent')
     } else {
-      req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
-      res.redirect('/enforcement/v4/task-list?enforcement-taskliststatus-appealsite=Complete')
+      res.redirect('/enforcement/v4/appeal-site/other-appeals')
+      // req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
+      // res.redirect('/enforcement/v4/task-list?enforcement-taskliststatus-appealsite=Complete')
     }
   })
 
@@ -159,7 +160,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Other appeals ending to site interests
-  router.post(base+'appeal-site/other-appeals', function (req, res) {
+  router.post(base+'appeal-site/otherappeals-v4', function (req, res) {
     req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
     res.redirect('/enforcement/v4/task-list')
   })
@@ -403,7 +404,7 @@ module.exports = function (router) {
     req.session.data["enforcement-taskliststatus-grounds"] = "";
     req.session.data["enforcement-taskliststatus-proceduretype"] = "";
     req.session.data["enforcement-taskliststatus-appealdocuments"] = "";
-    res.redirect('/before-you-start/v12')
+    res.redirect('/before-you-start/v11')
   })
 
   // ENF 00X
