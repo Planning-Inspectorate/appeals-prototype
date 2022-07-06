@@ -122,7 +122,7 @@ module.exports = function (router) {
    // BYS 00X
    // Enforcement
    // Intent to appeal question
-   router.post('/intent', function (req, res) {
+   router.post('/intent-v12', function (req, res) {
 
      // Make a variable from session data
      let intent = req.session.data['enforcement-intent']
@@ -141,7 +141,7 @@ module.exports = function (router) {
    // BYS 00X
    // Enforcement
    // Intent to appeal question
-   router.post('/intentfinish', function (req, res) {
+   router.post('/intentfinish-v12', function (req, res) {
      // no shutter
      res.redirect(base+'check-answers?appeal=enforcement')
    })
