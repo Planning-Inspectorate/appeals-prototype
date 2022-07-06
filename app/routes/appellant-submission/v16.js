@@ -321,6 +321,10 @@ module.exports = function (router) {
     }
   })
 
+  router.post(base+'before-you-start/check-answers', function (req, res) {
+    res.redirect(base+'save-return/what-is-your-application-number');
+  })
+
 
 /***********************
  *** SAVE AND RETURN ***
