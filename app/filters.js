@@ -158,7 +158,7 @@ module.exports = function (env) {
       let html = ""
       list.forEach(function(item){
         html =  `${html}\n<li>${item}</li>`
-      })    
+      })
       return html;
     } else {
       return list;
@@ -173,11 +173,11 @@ module.exports = function (env) {
       return date.add(7, "days").format("D MMMM YYYY");
     }
   }
-  
+
   filters.is_string = function(obj) {
     return typeof obj == 'string';
   }
-  
+
   filters.removeLeadingZero = function(obj) {
     return obj.replace(/^0+/, '');
   }

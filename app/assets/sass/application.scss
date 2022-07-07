@@ -32,6 +32,30 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/public-guidance";
 @import "pins/prototype-only";
 
+
+.index {
+	.govuk-accordion__section-toggle {
+		float: right;
+	}
+
+	.govuk-accordion__section-heading-text {
+		float: left;
+		margin-top: 2px;
+	}
+
+	.govuk-accordion__section-toggle,
+	.govuk-accordion__section-heading-text {
+		padding-right: 10px;
+		margin-bottom: 0;
+		font-size: 19px;
+		line-height: 1;
+	}
+
+	.govuk-accordion__section-button {
+		padding-bottom: 0;
+	}
+}
+
 .autocomplete__option {
 	font-family: "nta", Arial, sans-serif;
 }

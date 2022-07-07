@@ -1,5 +1,7 @@
 service-start{% extends "layout.html" %}
 
+{% set bodyClasses = "index" %}
+
 {% block pageTitle %}
   Prototypes for {{ serviceName }}
 {% endblock %}
@@ -10,21 +12,17 @@ service-start{% extends "layout.html" %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-l">
           {{serviceName}} prototypes
         </h1>
 
-        <h2 class="govuk-heading-l">Introduction</h2>
+        <h2 class="govuk-heading-m">Introduction</h2>
 
         <p class="govuk-body">
           These prototypes cover different journeys for users of the appeal a planning decision service. This includes appellants, agents acting on behalf of appellants, local planning departments, case officers, and inspectors.
         </p>
-        
-      </div>
-      
-      <div class="govuk-grid-column-full">
 
-        <h2 class="govuk-heading-l govuk-!-margin-bottom-0">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
           Private Beta Prototypes
         </h2>
 
@@ -50,7 +48,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--red govuk-!-margin-bottom-3",
                       text: "WIP"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Appeal an enforcement notice - Version 4
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -67,7 +65,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Appeal an enforcement notice - Version 3
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -84,7 +82,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Appeal an enforcement notice - Version 2
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -101,7 +99,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Appeal an enforcement notice - Version 1
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -165,7 +163,7 @@ service-start{% extends "layout.html" %}
                         classes: "govuk-tag--purple govuk-!-margin-bottom-1"
                     }) }}
 
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       MVP from before you start
                     </h3>
 
@@ -202,7 +200,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "For GOV.UK"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Appeal a householder planning decision guidance - Version 1
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -223,7 +221,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "For GOV.UK"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Appeal a planning decision guidance - Version 3
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -253,7 +251,7 @@ service-start{% extends "layout.html" %}
                           classes: "govuk-tag--grey govuk-!-margin-bottom-3",
                           text: "Archived"
                         }) }}
-                        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                           Appeal refused planning permission - Version 2
                         </h3>
                         <ul class="govuk-list govuk-list--bullet">
@@ -275,7 +273,7 @@ service-start{% extends "layout.html" %}
                           classes: "govuk-tag--grey govuk-!-margin-bottom-3",
                           text: "Archived"
                         }) }}
-                        <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                           Appeal refused planning permission - Version 1
                         </h3>
                         <ul class="govuk-list govuk-list--bullet">
@@ -326,7 +324,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--grey govuk-!-margin-bottom-3",
                       text: "Archived"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 10 - Before you start
                     </h3>
                     <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
@@ -375,7 +373,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--grey govuk-!-margin-bottom-3",
                       text: "Archived"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 9 - Before you start
                     </h3>
                     <p class="govuk-body govuk-body-s">
@@ -442,7 +440,7 @@ service-start{% extends "layout.html" %}
                       text: "Ready for build"
                     }) }}
 
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 16 - Listed building consent appeal submission
                     </h3>
 
@@ -499,7 +497,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 15 - Listed building consent appeal submission
                     </h3>
                     <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
@@ -557,7 +555,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 14 - Missing questions in full appeal submission
                     </h3>
                     <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
@@ -586,7 +584,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 13 - Full appeal submission
                     </h3>
                     <h4 class="govuk-heading-s govuk-!-margin-bottom-3">
@@ -663,7 +661,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 12 - Full appeal submission
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -719,7 +717,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 11 - Full appeal submission
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -763,7 +761,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 10 - Full appeal submission
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -838,7 +836,7 @@ service-start{% extends "layout.html" %}
 
                     }) }}
 
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       ‘Save and return’ - version 3
                     </h3>
 
@@ -997,7 +995,7 @@ service-start{% extends "layout.html" %}
                       </a>
                     </p>
 
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       ‘Save and return’ - version 2
                     </h3>
 
@@ -1137,7 +1135,7 @@ service-start{% extends "layout.html" %}
                       text: "Complete"
                     }) }}
 
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       ‘Save and return’ - version 1
                     </h3>
 
@@ -1272,7 +1270,7 @@ service-start{% extends "layout.html" %}
                 }) }}
 
                 <span class="govuk-caption-m">Sprint 9 - Cote d’Ivoire</span>
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Interested party LPD notice template
                 </h3>
 
@@ -1314,7 +1312,7 @@ service-start{% extends "layout.html" %}
                 }) }}
 
                 <span class="govuk-caption-m">Sprint 10 - Democratic Republic of Congo</span>
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Interested party journeys (version 4)
                 </h3>
 
@@ -1410,7 +1408,7 @@ service-start{% extends "layout.html" %}
                 }) }}
 
                 <span class="govuk-caption-m">Sprint 9 - Cote d’Ivoire</span>
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Interested party journey from LPD notice (version 3)
                 </h3>
 
@@ -1524,7 +1522,7 @@ service-start{% extends "layout.html" %}
                 }) }}
 
                 <span class="govuk-caption-m">Sprint 8 - Belgium</span>
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Interested party journey from LPD notice (version 2)
                 </h3>
 
@@ -1648,7 +1646,7 @@ service-start{% extends "layout.html" %}
                 }) }}
 
                 <span class="govuk-caption-m">Sprint 7 - Austria</span>
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Interested party journey from LPD notice (version 1)
                 </h3>
 
@@ -1774,7 +1772,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Version 3
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -1821,7 +1819,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Version 2
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -1852,7 +1850,7 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Version history
                     </h3>
 
@@ -1911,7 +1909,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       LPD communications - Version 1
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -1973,7 +1971,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--green govuk-!-margin-bottom-3",
                       text: "Ready for UR"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Full planning LPD questionnaire - Version 2
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -2058,7 +2056,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Full planning LPD questionnaire - Version 1
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -2139,7 +2137,7 @@ service-start{% extends "layout.html" %}
                       classes: "govuk-tag--blue govuk-!-margin-bottom-3",
                       text: "Done"
                     }) }}
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version 9 - LPA Questionnaire journey
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
@@ -2195,7 +2193,7 @@ service-start{% extends "layout.html" %}
                 <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Case officer journeys v7
                       {{ govukTag({
                         classes: "govuk-tag--red govuk-!-margin-left-1",
@@ -2240,7 +2238,7 @@ service-start{% extends "layout.html" %}
                   </div>
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Case officer journeys v6
                       {{ govukTag({
                         classes: "govuk-tag--blue govuk-!-margin-left-1",
@@ -2286,7 +2284,7 @@ service-start{% extends "layout.html" %}
                   </div>
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Case officer journeys v5
                       {{ govukTag({
                         classes: "govuk-tag--blue govuk-!-margin-left-1",
@@ -2357,7 +2355,7 @@ service-start{% extends "layout.html" %}
                 <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Statement of case v1
                       {{ govukTag({
                         classes: "govuk-tag--blue govuk-!-margin-left-1",
@@ -2430,7 +2428,7 @@ service-start{% extends "layout.html" %}
                 <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Final comments v1
                       {{ govukTag({
                         classes: "govuk-tag--blue govuk-!-margin-left-1",
@@ -2507,7 +2505,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-inspector" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-inspector">
 
               <div class="govuk-inset-text govuk-!-margin-top-0">
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Inspector journeys v5
                   {{ govukTag({
                     classes: "govuk-tag--green govuk-!-margin-left-1",
@@ -2541,7 +2539,7 @@ service-start{% extends "layout.html" %}
               </div>
 
               <div class="govuk-inset-text govuk-!-margin-top-0">
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Inspector journeys v4
                   {{ govukTag({
                     classes: "govuk-tag--blue govuk-!-margin-left-1",
@@ -2591,7 +2589,7 @@ service-start{% extends "layout.html" %}
 
               <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Version history
                 </h3>
 
@@ -2663,7 +2661,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-cst" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-cst">
 
               <div class="govuk-inset-text govuk-!-margin-top-0">
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   CST journeys v5a
                   {{ govukTag({
                     classes: "govuk-tag--blue govuk-!-margin-left-1",
@@ -2706,7 +2704,7 @@ service-start{% extends "layout.html" %}
 
               <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                <h3 class="govuk-heading-m">
+                <h3 class="govuk-heading-s">
                   Version history
                 </h3>
 
@@ -2797,7 +2795,7 @@ service-start{% extends "layout.html" %}
             text: "Archived",
             classes: "govuk-tag--purple govuk-!-margin-bottom-1 govuk-!-margin-top-9"
         }) }}
-        <h2 class="govuk-heading-l">Archived Private Beta Prototypes</h2>
+        <h2 class="govuk-heading-m">Archived Private Beta Prototypes</h2>
         <p class="govuk-body">
           In upgrading the prototype kit from v9.10.0 to v11.0.0, there were multiple breaking changes. Therefore the prototypes listed below will link to an <a href="https://has-appeal.herokuapp.com/">older instance of Heroku</a>, and will be housed in an <a href="https://github.com/Planning-Inspectorate/householder-appeal-prototype">older Github repository</a>.
         </p>
@@ -2819,7 +2817,7 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Version history
                     </h3>
 
@@ -3058,7 +3056,7 @@ service-start{% extends "layout.html" %}
                 <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Version 3 - Track my appeal with security
                       <!--{{ govukTag({
                         classes: "govuk-tag--grey govuk-!-margin-left-1",
@@ -3113,7 +3111,7 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Version history
                     </h3>
 
@@ -3340,7 +3338,7 @@ service-start{% extends "layout.html" %}
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 
-                    <h3 class="govuk-heading-m">
+                    <h3 class="govuk-heading-s">
                       Version history
                     </h3>
 
@@ -3585,13 +3583,13 @@ service-start{% extends "layout.html" %}
             text: "Archived",
             classes: "govuk-tag--purple govuk-!-margin-bottom-1 govuk-!-margin-top-9"
         }) }}
-        <h2 class="govuk-heading-l">Alpha Prototypes</h2>
+        <h2 class="govuk-heading-m">Alpha Prototypes</h2>
         <p class="govuk-body">Prototypes developed during alpha have been moved to a separate server:</p>
         <p class="govuk-body"><a href="https://has-appeal-alpha.herokuapp.com/" target="_blank">View alpha prototypes</a></p>
 
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-        <h2 class="govuk-heading-l">Components</h2>
+        <h2 class="govuk-heading-m">Components</h2>
         <p class="govuk-body">Examples of design patterns, for reference, not user testing. </p>
         <p class="govuk-body"><a href="https://has-appeal.herokuapp.com/components" target="_blank">View prototypes</a></p>
 
