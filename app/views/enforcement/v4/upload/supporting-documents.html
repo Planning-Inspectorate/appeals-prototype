@@ -3,7 +3,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "Do you have any other new documents to support your appeal?" %}
+{% set title = "Do you have any other documents to support your appeal?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -38,7 +38,7 @@
           name: "enforcement-supporting-documents",
           fieldset: {
             legend: {
-              text: "Do you have any other new documents that support your appeal?",
+              text: title,
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
