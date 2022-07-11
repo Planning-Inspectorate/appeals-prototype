@@ -166,7 +166,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post(base+'grounds/grounds', function (req, res) {
+  router.post(base+'grounds/reasons', function (req, res) {
 
     // res.redirect('/enforcement/v4/grounds/upload-reasons')
 
@@ -179,28 +179,350 @@ module.exports = function (router) {
     let groundF = req.session.data['grounds-6']
     let groundG = req.session.data['grounds-7']
 
-    // default method for reasons
-    req.session.data["enforcement-reason-method"] = "text";
 
-    // route depending on value
-    if (groundA) {
-      req.session.data["ground-a-selected"] = "Yes";
-      res.redirect('/enforcement/v4/grounds/groundA')
-    } else if (groundB) {
-      res.redirect('/enforcement/v4/grounds/groundB')
-    } else if (groundC) {
-      res.redirect('/enforcement/v4/grounds/groundC')
-    } else if (groundD) {
-      res.redirect('/enforcement/v4/grounds/groundD')
-    } else if (groundE) {
-      res.redirect('/enforcement/v4/grounds/groundE')
-    } else if (groundF) {
-      res.redirect('/enforcement/v4/grounds/groundF')
-    } else if (groundG) {
-      res.redirect('/enforcement/v4/grounds/groundG')
+
+    // see what format they chose
+    let format = req.session.data['enforcement-facts-format']
+
+    if (format == "file") {
+      // use document files
+      res.redirect('/enforcement/v4/grounds/upload-facts')
+    } else if (format == "files") {
+      // use document files
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "files";
+
+      // use textarea input
+      // route depending on value
+      if (groundA) {
+        req.session.data["ground-a-selected"] = "Yes";
+        res.redirect('/enforcement/v4/grounds/groundA')
+      } else if (groundB) {
+        res.redirect('/enforcement/v4/grounds/groundB')
+      } else if (groundC) {
+        res.redirect('/enforcement/v4/grounds/groundC')
+      } else if (groundD) {
+        res.redirect('/enforcement/v4/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
     } else {
-      res.redirect('/enforcement/v4/grounds/application')
+
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "text";
+
+      // use textarea input
+      // route depending on value
+      if (groundA) {
+        req.session.data["ground-a-selected"] = "Yes";
+        res.redirect('/enforcement/v4/grounds/groundA')
+      } else if (groundB) {
+        res.redirect('/enforcement/v4/grounds/groundB')
+      } else if (groundC) {
+        res.redirect('/enforcement/v4/grounds/groundC')
+      } else if (groundD) {
+        res.redirect('/enforcement/v4/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
     }
+
+  })
+
+
+  // ENF 00X
+  // Enforcement
+  // Grounds
+  router.post(base+'grounds/groundB', function (req, res) {
+
+    // res.redirect('/enforcement/v4/grounds/upload-reasons')
+
+    // Make a variable from session data
+    let groundC = req.session.data['grounds-3']
+    let groundD = req.session.data['grounds-4']
+    let groundE = req.session.data['grounds-5']
+    let groundF = req.session.data['grounds-6']
+    let groundG = req.session.data['grounds-7']
+
+    // see what format they chose
+    let format = req.session.data['enforcement-facts-format']
+
+    if (format == "files") {
+      // use document files
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "files";
+
+      // use textarea input
+      // route depending on value
+      if (groundC) {
+        res.redirect('/enforcement/v4/grounds/groundC')
+      } else if (groundD) {
+        res.redirect('/enforcement/v4/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    } else {
+
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "text";
+
+      // use textarea input
+      // route depending on value
+      if (groundC) {
+        res.redirect('/enforcement/v4/grounds/groundC')
+      } else if (groundD) {
+        res.redirect('/enforcement/v4/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    }
+
+  })
+
+
+  // ENF 00X
+  // Enforcement
+  // Grounds
+  router.post(base+'grounds/groundC', function (req, res) {
+
+    // res.redirect('/enforcement/v4/grounds/upload-reasons')
+
+    // Make a variable from session data
+    let groundD = req.session.data['grounds-4']
+    let groundE = req.session.data['grounds-5']
+    let groundF = req.session.data['grounds-6']
+    let groundG = req.session.data['grounds-7']
+
+    // see what format they chose
+    let format = req.session.data['enforcement-facts-format']
+
+    if (format == "files") {
+      // use document files
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "files";
+
+      // use textarea input
+      // route depending on value
+      if (groundD) {
+        res.redirect('/enforcement/v4/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    } else {
+
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "text";
+
+      // use textarea input
+      // route depending on value
+      if (groundD) {
+        res.redirect('/enforcement/v4/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    }
+
+  })
+
+
+  // ENF 00X
+  // Enforcement
+  // Grounds
+  router.post(base+'grounds/groundD', function (req, res) {
+
+    // res.redirect('/enforcement/v4/grounds/upload-reasons')
+
+    // Make a variable from session data
+    let groundE = req.session.data['grounds-5']
+    let groundF = req.session.data['grounds-6']
+    let groundG = req.session.data['grounds-7']
+
+    // see what format they chose
+    let format = req.session.data['enforcement-facts-format']
+
+    if (format == "files") {
+      // use document files
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "files";
+
+      // use textarea input
+      // route depending on value
+      if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    } else {
+
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "text";
+
+      // use textarea input
+      // route depending on value
+      if (groundE) {
+        res.redirect('/enforcement/v4/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    }
+
+  })
+
+
+
+  // ENF 00X
+  // Enforcement
+  // Grounds
+  router.post(base+'grounds/groundE', function (req, res) {
+
+    // res.redirect('/enforcement/v4/grounds/upload-reasons')
+
+    // Make a variable from session data
+    let groundF = req.session.data['grounds-6']
+    let groundG = req.session.data['grounds-7']
+
+    // see what format they chose
+    let format = req.session.data['enforcement-facts-format']
+
+    if (format == "files") {
+      // use document files
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "files";
+
+      // use textarea input
+      // route depending on value
+      if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    } else {
+
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "text";
+
+      // use textarea input
+      // route depending on value
+      if (groundF) {
+        res.redirect('/enforcement/v4/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    }
+
+  })
+
+
+
+  // ENF 00X
+  // Enforcement
+  // Grounds
+  router.post(base+'grounds/groundF', function (req, res) {
+
+    // res.redirect('/enforcement/v4/grounds/upload-reasons')
+
+    // Make a variable from session data
+    let groundG = req.session.data['grounds-7']
+
+    // see what format they chose
+    let format = req.session.data['enforcement-facts-format']
+
+    if (format == "files") {
+      // use document files
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "files";
+
+      // use textarea input
+      // route depending on value
+      if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    } else {
+
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "text";
+
+      // use textarea input
+      // route depending on value
+      if (groundG) {
+        res.redirect('/enforcement/v4/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v4/grounds/application')
+      }
+
+    }
+
+  })
+
+
+  // ENF 00X
+  // Enforcement
+  // Grounds
+  router.post(base+'grounds/groundG', function (req, res) {
+
+    res.redirect('/enforcement/v4/grounds/application')
+
   })
 
 

@@ -28,7 +28,7 @@
       Choose your grounds of appeal
     </span>
 
-    <form action="" method="post">
+    <form method="post">
 
       <div class="govuk-form-group">
 
@@ -51,11 +51,11 @@
 
         </div>
 
-        <p class="govuk-body">
+        <!-- <p class="govuk-body">
           <a href="groundG?enforcement-reason-method=file" class="govuk-link">
             Or upload your reasons in a document
           </a>
-        </p>
+        </p> -->
 
         {% else %}
 
@@ -90,19 +90,17 @@
           '
         }) }}
 
-        <p class="govuk-body">
+        <!-- <p class="govuk-body">
           <a href="groundG?enforcement-reason-method=text" class="govuk-link">
             Or explain your reasons using a text box
           </a>
-        </p>
+        </p> -->
 
         {% endif %}
 
         <div class="govuk-button-group">
 
-          <!-- go to application question -->
           {{ govukButton({
-            href: "application",
             text: "Save and continue"
           }) }}
 
