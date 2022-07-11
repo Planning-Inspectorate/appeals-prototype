@@ -388,39 +388,56 @@
               <!-- if they entered reasons using text input -->
               {% else %}
 
-                {% if data["enforcement-ground-a-reasons"] %}
+                <!-- some default data if there are no values -->
+                {% if data["enforcement-ground-a-reasons"] or
+                    data["enforcement-ground-b-reasons"] or
+                    data["enforcement-ground-c-reasons"] or
+                    data["enforcement-ground-d-reasons"] or
+                    data["enforcement-ground-e-reasons"] or
+                    data["enforcement-ground-f-reasons"] or
+                    data["enforcement-ground-g-reasons"]
+                %}
+
+                  {% if data["enforcement-ground-a-reasons"] %}
+                    <p class="govuk-body">
+                      {{ data["enforcement-ground-a-reasons"] }}
+                    </p>
+                  {% endif %}
+                  {% if data["enforcement-ground-b-reasons"] %}
+                    <p class="govuk-body">
+                      {{ data["enforcement-ground-b-reasons"] }}
+                    </p>
+                  {% endif %}
+                  {% if data["enforcement-ground-c-reasons"] %}
+                    <p class="govuk-body">
+                      {{ data["enforcement-ground-c-reasons"] }}
+                    </p>
+                  {% endif %}
+                  {% if data["enforcement-ground-d-reasons"] %}
+                    <p class="govuk-body">
+                      {{ data["enforcement-ground-d-reasons"] }}
+                    </p>
+                  {% endif %}
+                  {% if data["enforcement-ground-e-reasons"] %}
+                    <p class="govuk-body">
+                      {{ data["enforcement-ground-e-reasons"] }}
+                    </p>
+                  {% endif %}
+                  {% if data["enforcement-ground-f-reasons"] %}
+                    <p class="govuk-body">
+                      {{ data["enforcement-ground-f-reasons"] }}
+                    </p>
+                  {% endif %}
+                  {% if data["enforcement-ground-g-reasons"] %}
+                    <p class="govuk-body">
+                      {{ data["enforcement-ground-g-reasons"] }}
+                    </p>
+                  {% endif %}
+
+                {% else %}
+                  <!-- no data, use a default -->
                   <p class="govuk-body">
-                    {{ data["enforcement-ground-a-reasons"] }}
-                  </p>
-                {% endif %}
-                {% if data["enforcement-ground-b-reasons"] %}
-                  <p class="govuk-body">
-                    {{ data["enforcement-ground-b-reasons"] }}
-                  </p>
-                {% endif %}
-                {% if data["enforcement-ground-c-reasons"] %}
-                  <p class="govuk-body">
-                    {{ data["enforcement-ground-c-reasons"] }}
-                  </p>
-                {% endif %}
-                {% if data["enforcement-ground-d-reasons"] %}
-                  <p class="govuk-body">
-                    {{ data["enforcement-ground-d-reasons"] }}
-                  </p>
-                {% endif %}
-                {% if data["enforcement-ground-e-reasons"] %}
-                  <p class="govuk-body">
-                    {{ data["enforcement-ground-e-reasons"] }}
-                  </p>
-                {% endif %}
-                {% if data["enforcement-ground-f-reasons"] %}
-                  <p class="govuk-body">
-                    {{ data["enforcement-ground-f-reasons"] }}
-                  </p>
-                {% endif %}
-                {% if data["enforcement-ground-g-reasons"] %}
-                  <p class="govuk-body">
-                    {{ data["enforcement-ground-g-reasons"] }}
+                    Ground-A-facts.doc
                   </p>
                 {% endif %}
 
