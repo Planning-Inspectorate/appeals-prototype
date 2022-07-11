@@ -374,23 +374,69 @@
             </dd>
           </div>
 
-          <!-- if ground a, show fees answer -->
-          {% if data['grounds-1'] %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Have you paid the fee for the same development as in the enforcement notice?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data["enforcement-fees-paid"] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> if you have paid the fee for the same development</span>
-                </a>
-              </dd>
-            </div>
-          {% endif %}
 
+          <!-- facts and reasons -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Facts and reasons to support your grounds
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <!-- if they uploaded a single document -->
+              {% if data["enforcement-facts-format"] == "file" %}
+                {{ data['enforcement-grounds-facts'] }}
+
+              <!-- if they entered reasons using text input -->
+              {% else %}
+
+                {% if data["enforcement-ground-a-reasons"] %}
+                  <p class="govuk-body">
+                    {{ data["enforcement-ground-a-reasons"] }}
+                  </p>
+                {% endif %}
+                {% if data["enforcement-ground-b-reasons"] %}
+                  <p class="govuk-body">
+                    {{ data["enforcement-ground-b-reasons"] }}
+                  </p>
+                {% endif %}
+                {% if data["enforcement-ground-c-reasons"] %}
+                  <p class="govuk-body">
+                    {{ data["enforcement-ground-c-reasons"] }}
+                  </p>
+                {% endif %}
+                {% if data["enforcement-ground-d-reasons"] %}
+                  <p class="govuk-body">
+                    {{ data["enforcement-ground-d-reasons"] }}
+                  </p>
+                {% endif %}
+                {% if data["enforcement-ground-e-reasons"] %}
+                  <p class="govuk-body">
+                    {{ data["enforcement-ground-e-reasons"] }}
+                  </p>
+                {% endif %}
+                {% if data["enforcement-ground-f-reasons"] %}
+                  <p class="govuk-body">
+                    {{ data["enforcement-ground-f-reasons"] }}
+                  </p>
+                {% endif %}
+                {% if data["enforcement-ground-g-reasons"] %}
+                  <p class="govuk-body">
+                    {{ data["enforcement-ground-g-reasons"] }}
+                  </p>
+                {% endif %}
+
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> facts and reasons to support your grounds</span>
+              </a>
+            </dd>
+          </div>
+
+
+
+
+          <!-- if there was an application -->
           {% if data["enforcement-application"] == "Yes" %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -426,6 +472,23 @@
               </div>
             {% endif %}
 
+          {% endif %}
+
+          <!-- if ground a, show fees answer -->
+          {% if data['grounds-1'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Have you paid the fee for the same development as in the enforcement notice?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["enforcement-fees-paid"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> if you have paid the fee for the same development</span>
+                </a>
+              </dd>
+            </div>
           {% endif %}
 
         </dl>

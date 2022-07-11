@@ -28,7 +28,7 @@
       Choose your grounds of appeal
     </span>
 
-    <form action="" method="post">
+    <form method="post">
 
       <div class="govuk-form-group">
 
@@ -51,11 +51,11 @@
 
         </div>
 
-        <p class="govuk-body">
+        <!-- <p class="govuk-body">
           <a href="groundC?enforcement-reason-method=file" class="govuk-link">
             Or upload your reasons in a document
           </a>
-        </p>
+        </p> -->
 
         {% else %}
 
@@ -88,50 +88,26 @@
           '
         }) }}
 
-        <p class="govuk-body">
+        <!-- <p class="govuk-body">
           <a href="groundC?enforcement-reason-method=text" class="govuk-link">
             Or explain your reasons using a text box
           </a>
-        </p>
+        </p> -->
 
       {% endif %}
 
       <div class="govuk-button-group">
 
-        <!-- route user based on what they selected -->
-        {% if data['grounds-4'] %}
-          {{ govukButton({
-            href: "groundD",
-            text: "Save and continue"
-          }) }}
-        {% elif data['grounds-5'] %}
-          {{ govukButton({
-            href: "groundE",
-            text: "Save and continue"
-          }) }}
-        {% elif data['grounds-6'] %}
-          {{ govukButton({
-            href: "groundF",
-            text: "Save and continue"
-          }) }}
-        {% elif data['grounds-7'] %}
-          {{ govukButton({
-            href: "groundG",
-            text: "Save and continue"
-          }) }}
-        {% else %}
-          {{ govukButton({
-            href: "application",
-            text: "Save and continue"
-          }) }}
-        {% endif %}
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
 
         {{ govukButton({
           href: "",
           text: "Save and come back later",
           classes: "govuk-button--secondary"
         }) }}
-        
+
       </div>
 
   </div>
