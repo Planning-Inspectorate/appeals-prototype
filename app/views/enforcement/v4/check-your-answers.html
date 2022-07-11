@@ -42,12 +42,17 @@
             </dt>
             <dd class="govuk-summary-list__value">
 
-              {% if data['enforcement-first-name'] %}
-                {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}<br>
-              {% endif %}
+              {% if data['enforcement-first-name'] or data['enforcement-company-name'] %}
+                {% if data['enforcement-first-name'] %}
+                  {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}<br>
+                {% endif %}
 
-              {% if data['enforcement-company-name'] %}
-                {{ data['enforcement-company-name'] }}
+                {% if data['enforcement-company-name'] %}
+                  {{ data['enforcement-company-name'] }}
+                {% endif %}
+
+              {% else %}
+                Nic Davies
               {% endif %}
 
             </dd>
@@ -548,6 +553,22 @@
         <h2 class="govuk-heading-l govuk-!-margin-top-9">Upload documents for your appeal</h2>
         <dl class="govuk-summary-list">
 
+          <!-- enforcement notice and plans -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enforcement notice and additional plans
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href=''>
+                {{ data['enforcement-uploaded-notice'] or 'Project-Providence-enforcement-notice.pdf' }}
+              </a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> enforcement notice</span>
+              </a>
+            </dd>
+          </div>
 
           <!-- planning obligation -->
           <div class="govuk-summary-list__row">
@@ -564,13 +585,15 @@
             </dd>
           </div>
 
+          <!-- if use said yes to planning obligation -->
           {% if data['enforcement-planning-obligation'] == 'Yes' %}
+
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 What is the status of your planning obligation?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["enforcement-planning-obligation-status"] }}
+                {{ data['enforcement-planning-obligation-status'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
@@ -579,7 +602,6 @@
               </dd>
             </div>
           {% endif %}
-
 
           {% if data['enforcement-planning-obligation-status'] == 'Finalised and ready to submit' %}
             <div class="govuk-summary-list__row">
@@ -615,40 +637,8 @@
             </div>
           {% endif %}
 
-          <!-- {% if data['enforcement-uploaded-plans'] %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Plans or drawings
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <a href=''>
-                  {{ data['enforcement-uploaded-plans'] }}
-                </a>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> your plans or drawings</span>
-                </a>
-              </dd>
-            </div>
-          {% endif %} -->
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Enforcement notice and additional plans
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <a href=''>
-                {{ data['enforcement-uploaded-notice'] or 'Providence-enforcement-notice.pdf' }}
-              </a>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> enforcement notice</span>
-              </a>
-            </dd>
-          </div>
-
+          <!-- extra documents -->
           {% if data['enforcement-supporting-documents'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
@@ -656,7 +646,7 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 <a href=''>
-                  {{ data['enforcement-uploaded-documents'] or 'Statement of common ground.pdf' }}
+                  {{ data['enforcement-uploaded-documents'] or 'Project-Providence-costs.pdf' }}
                 </a>
               </dd>
               <dd class="govuk-summary-list__actions">
