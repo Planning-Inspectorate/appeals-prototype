@@ -638,6 +638,10 @@ module.exports = function (router) {
   // Prefered procedure
   // Back to tasklist after telling us why you want a hearing/inquiry
   router.post(base+'procedure/endprocedure', function (req, res) {
+
+    let statementfile = req.session.data['enforcement-statement-common-ground']
+    req.session.data["nforcement-statement-common-ground"] = statementfile;
+
     req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
     res.redirect('/enforcement/v4/task-list')
   })

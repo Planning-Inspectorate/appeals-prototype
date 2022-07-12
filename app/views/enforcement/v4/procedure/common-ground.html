@@ -36,24 +36,24 @@
           {{ title }}
         </h1>
 
-        {% if data["enforcement-proceduretype-commonground"] and data["enforcement-proceduretype-commonground"] != "" %}
+        {% if data["enforcement-statement-common-ground"] and data["enforcement-statement-common-ground"] != "" %}
           <h3 class="govuk-heading-m govuk-!-margin-top-6">
             Uploaded file
           </h3>
           <p class="govuk-body govuk-!-margin-bottom-8">
-            <a href="javascript:preventDefault();" class="govuk-link">{{ data["enforcement-proceduretype-commonground"] }}</a>
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["enforcement-statement-common-ground"] }}</a>
           </p>
         {% endif %}
 
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-label--m" for="enforcement-proceduretype-commonground">
-            {% if data["enforcement-proceduretype-commonground"] and data["enforcement-proceduretype-commonground"] != "" %}
+          <label class="govuk-label govuk-label--m" for="enforcement-statement-common-ground">
+            {% if data["enforcement-statement-common-ground"] and data["enforcement-statement-common-ground"] != "" %}
               Replace the file
             {% else %}
               Drag and drop or choose a file
             {% endif %}
           </label>
-          <input class="govuk-file-upload pins-file-upload" id="enforcement-proceduretype-commonground" name="enforcement-proceduretype-commonground" type="file">
+          <input class="govuk-file-upload pins-file-upload" id="enforcement-statement-common-ground" name="enforcement-statement-common-ground" type="file">
         </div>
 
         {{ govukDetails({
