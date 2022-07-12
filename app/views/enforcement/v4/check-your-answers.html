@@ -476,6 +476,7 @@
           </div>
 
           {% if data['enforcement-procedure'] == "Hearing" %}
+
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Why would you prefer a hearing?
@@ -489,7 +490,10 @@
                 </a>
               </dd>
             </div>
+
           {% elif data['enforcement-procedure'] == "Inquiry" %}
+
+            <!-- why inquiry -->
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Why would you prefer an inquiry?
@@ -504,6 +508,7 @@
               </dd>
             </div>
 
+            <!-- inquiry days -->
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 How many days would you expect an inquiry to last?
@@ -518,6 +523,7 @@
               </dd>
             </div>
 
+            <!-- witnesses -->
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 How many witnesses would you expect to give evidence at the inquiry?
@@ -531,16 +537,14 @@
                 </a>
               </dd>
             </div>
-          {% endif %}
 
-          {% if data['enforcement-statement-common-ground'] %}
-
+            <!-- statement of common ground -->
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Draft statement of common ground
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['enforcement-statement-common-ground'] }}
+                {{ data['enforcement-statement-common-ground'] or 'Providence-statement-of-common-ground.pdf' }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
