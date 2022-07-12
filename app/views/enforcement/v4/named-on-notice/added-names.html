@@ -53,11 +53,42 @@
               </a>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Remove<span class="govuk-visually-hidden"> Nic Griffchon</span>
+              <a class="govuk-link" href="confirm-remove?entity=person">
+                Remove<span class="govuk-visually-hidden"> this person</span>
               </a>
             </dd>
           </div>
+        {% elseif data['enforcement-company-name'] %}
+        <!-- no data defaults -->
+        {% else %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              {% if data['enforcement-identity'] == 'person' %}
+                Person
+              {% else %}
+                Company
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value  govuk-!-width-one-half">
+              {% if data['enforcement-identity'] == 'person' %}
+                Nic Davies
+              {% else %}
+                Jambon Produce Company
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="confirm-remove?entity=person">
+                Remove<span class="govuk-visually-hidden"> this person</span>
+              </a>
+            </dd>
+          </div>
+
         {% endif %}
 
         <!-- company name if one is named -->
@@ -75,36 +106,13 @@
               </a>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Remove<span class="govuk-visually-hidden"> Nic Griffchon</span>
+              <a class="govuk-link" href="confirm-remove?entity=company">
+                Remove<span class="govuk-visually-hidden"> this company</span>
               </a>
             </dd>
           </div>
         {% endif %}
 
-
-        {% if data['enforcement-added-person-first-name'] %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Name
-            </dt>
-            <dd class="govuk-summary-list__value  govuk-!-width-one-half">
-              {{ data["enforcement-added-person-first-name"] }}
-              {{ data["enforcement-added-person-first-name"] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> name</span>
-              </a>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Remove<span class="govuk-visually-hidden"> Nic Griffchon</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
 
       </dl>
 
@@ -145,7 +153,7 @@
           text: "Save and come back later",
           classes: "govuk-button--secondary"
         }) }}
-        
+
       </div>
 
     </form>
