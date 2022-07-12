@@ -59,9 +59,9 @@
             </dd>
           </div>
         {% elseif data['enforcement-company-name'] %}
-        <!-- no data defaults -->
-        {% else %}
 
+        {% else %}
+          <!-- no data defaults -->
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
               {% if data['enforcement-identity'] == 'person' %}
@@ -74,7 +74,7 @@
               {% if data['enforcement-identity'] == 'person' %}
                 Nic Davies
               {% else %}
-                Jambon Produce Company
+                Providence Produce Company
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -98,7 +98,7 @@
               Company
             </dt>
             <dd class="govuk-summary-list__value  govuk-!-width-one-half">
-              {{ data["enforcement-company-name"] }}
+              {{ data["enforcement-company-name"] or 'Providence Produce Company' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">

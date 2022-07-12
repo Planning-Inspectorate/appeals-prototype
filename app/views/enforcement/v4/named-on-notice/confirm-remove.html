@@ -32,20 +32,24 @@
           Check your answers and submit your appeal
         </span>
         <h1 class="govuk-heading-xl">
-          Are you sure you want to remove this {{ data['entity'] }}?
+          Are you sure you want to remove {% if data['entity'] == 'person' %}
+            <!-- company name if one is named -->
+            {{ data["enforcement-first-name"] or 'Nic'}}
+            {{ data["enforcement-last-name"] or 'Davies'}}
+          {% else %}
+            {{ data["enforcement-company-name"] or 'Providence Produce Company'}}
+          {% endif %} from the appeal?
         </h1>
 
-        <p class="govuk-body">
-          The name will be removed from this appeal.
+        {{ govukButton({
+          text: "Confirm removal"
+        }) }}
+
         <p>
-
-        <div class="govuk-button-group">
-
-          {{ govukButton({
-            text: "Save and continue"
-          }) }}
-
-        </div>
+          <a href="added-names" class="govuk-link govuk-link--no-visited-state">
+            Cancel
+          </a>
+        </p>
 
       </form>
 
