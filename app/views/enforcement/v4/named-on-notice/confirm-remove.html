@@ -1,0 +1,55 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "layout.html" %}
+
+
+{% block pageTitle %}
+  Are you sure you want to remove this {{entity}}? - Check your answers and submit your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="added-names" method="post">
+
+        <span class="govuk-caption-l">
+          Check your answers and submit your appeal
+        </span>
+        <h1 class="govuk-heading-xl">
+          Are you sure you want to remove this {{ data['entity'] }}?
+        </h1>
+
+        <p class="govuk-body">
+          The name will be removed from this appeal.
+        <p>
+
+        <div class="govuk-button-group">
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
