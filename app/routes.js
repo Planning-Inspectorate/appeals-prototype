@@ -21,6 +21,7 @@ require('./routes/enforcement/v1.js')(router);
 require('./routes/enforcement/v2.js')(router);
 require('./routes/enforcement/v3.js')(router);
 require('./routes/enforcement/v4.js')(router);
+require('./routes/enforcement/v5.js')(router);
 
 require('./routes/appellant-submission/v10.js')(router);
 require('./routes/appellant-submission/v11.js')(router);
