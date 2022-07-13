@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% set title = "Have you received a decision from the local planning department about your planning application?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/applicationdecision-v5" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {{ govukRadios({
+          idPrefix: "enforcement-application-decision",
+          name: "enforcement-application-decision",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("enforcement-application-decision", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("enforcement-application-decision", "No")
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
