@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  {{ serviceName }}
 {% endblock %}
 
 {% block header %}
@@ -61,10 +61,17 @@
             text: "GOV.UK Prototype Kit " + releaseVersion
           },
           {
+            href: 'https://pins-appeals.herokuapp.com' + currentURL,
+            text: "View page on Heroku (opens in new tab)",
+            attributes: {
+              target: 'blank'
+            }
+          } if local,
+          {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
           }
-        ],
+        ] | cleanArray,
         visuallyHiddenTitle: "Footer links"
       }
     }) }}

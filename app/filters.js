@@ -182,6 +182,12 @@ module.exports = function (env) {
     return obj.replace(/^0+/, '');
   }
 
+  filters.cleanArray = (array) => {
+    return array.filter(item => {
+      return (item && (item !==""))
+    })
+  }
+
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
