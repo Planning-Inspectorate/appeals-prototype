@@ -28,7 +28,7 @@
       Choose your grounds of appeal
     </span>
 
-    <form method="post">
+    <form action="reasonsB" method="post">
 
       <div class="govuk-form-group">
 
@@ -45,10 +45,19 @@
           You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
         <p>
 
+        <p class="govuk-hint">
+          You can upload documents to support your appeal later.
+        <p>
+
         {% if data['enforcement-reason-method'] == 'text' %}
 
-          <!-- reasons by textarea input -->
-          <textarea class="govuk-textarea" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" rows="5" aria-describedby="enforcement-ground-b-reasons-hint"></textarea>
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="3000">
+
+          <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" rows="5" aria-describedby="enforcement-ground-b-reasons-hint"></textarea>
+
+          <div id="enforcement-ground-b-reasons-info" class="govuk-hint govuk-character-count__message">
+            <!-- You can enter up to 3,000 words -->
+          </div>
 
         </div>
 

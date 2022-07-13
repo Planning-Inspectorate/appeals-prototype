@@ -39,7 +39,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Who was named on the enforcement notice?
+              Named on the notice
             </dt>
             <dd class="govuk-summary-list__value">
 
@@ -68,7 +68,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Your contact details
+              Contact details
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data["enforcement-your-email"] or 'nickydavies@jambon.co.uk' }}</p>
@@ -252,7 +252,7 @@
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Your grounds of appeal
+              Grounds of appeal
             </dt>
             <dd class="govuk-summary-list__value">
 
@@ -324,86 +324,151 @@
 
 
           <!-- facts and reasons -->
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Facts and reasons to support your grounds
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <!-- if they uploaded a single document -->
-              {% if data["enforcement-facts-format"] == "file" %}
-                {{ data['enforcement-grounds-facts'] }}
 
-              <!-- if they entered reasons using text input -->
-              {% else %}
+          <!-- if there is ANY reason data -->
 
-                <!-- some default data if there are no values -->
-                {% if data["enforcement-ground-a-reasons"] or
-                    data["enforcement-ground-b-reasons"] or
-                    data["enforcement-ground-c-reasons"] or
-                    data["enforcement-ground-d-reasons"] or
-                    data["enforcement-ground-e-reasons"] or
-                    data["enforcement-ground-f-reasons"] or
-                    data["enforcement-ground-g-reasons"]
-                %}
-
-                  {% if data["enforcement-ground-a-reasons"] %}
-                    <p class="govuk-body">
-                      {{ data["enforcement-ground-a-reasons"] or "Ground A reasons" }}
-                    </p>
-                  {% endif %}
-
-                  {% if data["enforcement-ground-b-reasons"] %}
-                    <p class="govuk-body">
-                      {{ data["enforcement-ground-b-reasons"] or "Ground B reasons" }}
-                    </p>
-                  {% endif %}
-
-                  {% if data["enforcement-ground-c-reasons"] %}
-                    <p class="govuk-body">
-                      {{ data["enforcement-ground-c-reasons"] or "Ground C reasons" }}
-                    </p>
-                  {% endif %}
-
-                  {% if data["enforcement-ground-d-reasons"] %}
-                    <p class="govuk-body">
-                      {{ data["enforcement-ground-d-reasons"] or "Ground D reasons" }}
-                    </p>
-                  {% endif %}
-
-                  {% if data["enforcement-ground-e-reasons"] %}
-                    <p class="govuk-body">
-                      {{ data["enforcement-ground-e-reasons"] or "Ground E reasons" }}
-                    </p>
-                  {% endif %}
-
-                  {% if data["enforcement-ground-f-reasons"] %}
-                    <p class="govuk-body">
-                      {{ data["enforcement-ground-f-reasons"] or "Ground F reasons" }}
-                    </p>
-                  {% endif %}
-
-                  {% if data["enforcement-ground-g-reasons"] %}
-                    <p class="govuk-body">
-                      {{ data["enforcement-ground-g-reasons"] or "Ground G reasons" }}
-                    </p>
-                  {% endif %}
-
-                {% endif %}
-
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> facts and reasons to support your grounds</span>
-              </a>
-            </dd>
-          </div>
+          {% if data['enforcement-ground-a-reasons'] != null
+             or data['enforcement-ground-b-reasons'] != null
+             or data['enforcement-ground-c-reasons'] != null
+             or data['enforcement-ground-d-reasons'] != null
+             or data['enforcement-ground-e-reasons'] != null
+             or data['enforcement-ground-f-reasons'] != null
+             or data['enforcement-ground-g-reasons'] != null %}
 
 
+            <!-- list out the data -->
 
+            {% if data["enforcement-ground-a-reasons"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for Ground A
+                </dt>
+                <dd class="govuk-summary-list__value">
+                <p class="govuk-body pins-line-clamp">
+                  {{ data["enforcement-ground-a-reasons"] or "Ground A reasons" }}
+                </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="javascript:preventDefault();">
+                    Change<span class="govuk-visually-hidden"> ground A reasons</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+            {% if data["enforcement-ground-b-reasons"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for Ground B
+                </dt>
+                <dd class="govuk-summary-list__value">
+                <p class="govuk-body pins-line-clamp">
+                  {{ data["enforcement-ground-b-reasons"] or "Ground B reasons" }}
+                </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="javascript:preventDefault();">
+                    Change<span class="govuk-visually-hidden"> ground B reasons</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+            {% if data["enforcement-ground-c-reasons"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for Ground C
+                </dt>
+                <dd class="govuk-summary-list__value">
+                <p class="govuk-body pins-line-clamp">
+                  {{ data["enforcement-ground-c-reasons"] or "Ground C reasons" }}
+                </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="javascript:preventDefault();">
+                    Change<span class="govuk-visually-hidden"> ground C reasons</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+            {% if data["enforcement-ground-d-reasons"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for Ground D
+                </dt>
+                <dd class="govuk-summary-list__value">
+                <p class="govuk-body pins-line-clamp">
+                  {{ data["enforcement-ground-d-reasons"] or "Ground D reasons" }}
+                </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="javascript:preventDefault();">
+                    Change<span class="govuk-visually-hidden"> ground B reasons</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+            {% if data["enforcement-ground-e-reasons"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for Ground E
+                </dt>
+                <dd class="govuk-summary-list__value">
+                <p class="govuk-body pins-line-clamp">
+                  {{ data["enforcement-ground-e-reasons"] or "Ground E reasons" }}
+                </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="javascript:preventDefault();">
+                    Change<span class="govuk-visually-hidden"> ground E reasons</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+            {% if data["enforcement-ground-f-reasons"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for Ground F
+                </dt>
+                <dd class="govuk-summary-list__value">
+                <p class="govuk-body pins-line-clamp">
+                  {{ data["enforcement-ground-b-reasons"] or "Ground F reasons" }}
+                </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="javascript:preventDefault();">
+                    Change<span class="govuk-visually-hidden"> ground F reasons</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+            {% if data["enforcement-ground-g-reasons"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for Ground G
+                </dt>
+                <dd class="govuk-summary-list__value">
+                <p class="govuk-body pins-line-clamp">
+                  {{ data["enforcement-ground-g-reasons"] or "Ground G reasons" }}
+                </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="javascript:preventDefault();">
+                    Change<span class="govuk-visually-hidden"> ground G reasons</span>
+                  </a>
+                </dd>
+              </div>
+            {% endif %}
+
+          {% endif %}
 
           <!-- if there was an application -->
           {% if data["enforcement-application"] == "Yes" %}
+
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Planning application submitted
@@ -420,23 +485,41 @@
               </dd>
             </div>
 
-            {% if data["enforcement-application-decision"] == "Yes" %}
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Planning application decision
-                </dt>
-                <dd class="govuk-summary-list__value">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Planning application decision
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data["enforcement-application-decision"] == "Yes" %}
                   {{ data["enforcement-application-decision-date-day"] }}
                   {{ data["enforcement-application-decision-date-month"] | formatMonth  }}
                   {{ data["enforcement-application-decision-date-year"] }}
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="javascript:preventDefault();">
-                    Change<span class="govuk-visually-hidden"> planning application decision</span>
-                  </a>
-                </dd>
-              </div>
-            {% endif %}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> planning application decision</span>
+                </a>
+              </dd>
+            </div>
+
+          {% else %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Planning application submitted
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> planning application submitted</span>
+              </a>
+            </dd>
+          </div>
 
           {% endif %}
 
@@ -444,14 +527,14 @@
           {% if data['grounds-1'] %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Have you paid the fee for the same development as in the enforcement notice?
+                Fee paid for the same development
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data["enforcement-fees-paid"] }}
+                {{ data["enforcement-fees-paid"] or 'Yes' }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> if you have paid the fee for the same development</span>
+                  Change<span class="govuk-visually-hidden"> fee paid for the same development</span>
                 </a>
               </dd>
             </div>
@@ -461,6 +544,7 @@
 
         <!-- appeal procedure -->
         <h2 class="govuk-heading-l govuk-!-margin-top-9">Tell us how you would prefer us to decide your appeal</h2>
+
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -599,14 +683,14 @@
 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                What is the status of your planning obligation?
+                Planning obligation status
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['enforcement-planning-obligation-status'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="javascript:preventDefault();">
-                  Change<span class="govuk-visually-hidden"> do you plan to submit a planning obligation to support your appeal</span>
+                  Change<span class="govuk-visually-hidden"> planning obligation status</span>
                 </a>
               </dd>
             </div>

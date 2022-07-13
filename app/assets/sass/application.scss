@@ -31,7 +31,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/email";
 @import "pins/public-guidance";
 @import "pins/prototype-only";
-
+@import "pins/truncate-comments";
 
 .index {
 	.govuk-accordion__section-toggle {
