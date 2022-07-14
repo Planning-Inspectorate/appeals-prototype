@@ -1,70 +1,122 @@
 {% extends "layout.html" %}
 
-{# {% block beforeContent %}
+{% block beforeContent %}
   {{ govukBackLink({
     html: 'Back',
-    href: 'javascript:history.back()'
+    href: '../your-appeals'
   }) }}
-{% endblock %} #}
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
       <h1 class="govuk-heading-l">
         Update your statement
       </h1>
 
-      <p>You can change which grounds of appeal are associated with your case (apart from ground A) as well as uploading additional documents to support them.</p>
+      <p class="govuk-!-margin-bottom-6">You can change which grounds of appeal are associated with your appeal (apart from ground A) as well as adding additional reasnons and documents to support them.</p>
+    </div>
 
+    {% set grounds %}
+      <ul class="govuk-list govuk-list--bulle">
+      {% for ground in data['statement-grounds'] %}
+        <li>{{ ground }}</li>
+      {% endfor %}
+      </ul>
+    {% endset -%}
 
-
-      <h2 class="govuk-heading-m">
-        Current grounds of appeal
-      </h2>
-
-      {{ govukTable({
-        caption: 'Current grounds of appeal',
-        captionClasses: 'govuk-table__caption--m',
-        firstCellIsHeader: false,
-        head: [
-          {
-            html: 'Ground',
-            classes: 'govuk-!-width-one-half'
-          },
-          {
-            html: 'Evidence',
-            classes: 'govuk-!-width-one-quarter'
-          },
-          {
-            html: 'Actions',
-            classes: 'govuk-!-width-one-quarter',
-            format: 'numeric'
-          }
-        ],
+    <div class="govuk-grid-column-full">
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-8',
         rows: [
-          [
-            {
-              html: 'A: Planning permission should be granted for the alleged breach in the enforcement notice'
+          {
+            key: {
+              text: 'Grounds of appeal'
             },
-            {
-              html: ''
+            value: {
+              html: grounds
             },
-            {
-              html: ''
+            actions: {
+              items: [
+                {
+                  href: 'grounds',
+                  text: 'Change',
+                  visuallyHiddenText: 'Grounds of appeal'
+                }
+              ]
             }
-          ]
+          },
+          {
+            key: {
+              text: 'Reasons for Ground A'
+            },
+            value: {
+              html: data['statement-ground-a']
+            },
+            actions: {
+              items: [
+                {
+                  href: 'reasons-a',
+                  text: 'Change',
+                  visuallyHiddenText: 'Reasons for Ground A'
+                }
+              ]
+            }
+          } if 'Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.' in data['statement-grounds'],
+          {
+            key: {
+              text: 'Reasons for Ground G'
+            },
+            value: {
+              html: data['statement-ground-g']
+            },
+            actions: {
+              items: [
+                {
+                  href: 'reasons-g',
+                  text: 'Change',
+                  visuallyHiddenText: 'Reasons for Ground G'
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: 'Supporting documents'
+            },
+            value: {
+              html: '<span class="govuk-hint">None</span>'
+            },
+            actions: {
+              items: [
+                {
+                  href: 'supporting-docs-upload',
+                  text: 'Change',
+                  visuallyHiddenText: 'Supporting documents'
+                }
+              ]
+            }
+          }
         ]
       }) }}
 
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: 'Submit changes'
+        }) }}
 
+        {{ govukButton({
+          text: 'Save and come back later',
+          href: '#0',
+          classes: 'govuk-button--secondary'
+        }) }}
+      </div>
 
-
-      <div class="team-questions">
+      <div class="team-questions govuk-!-width-two-thirds">
         <ul class="govuk-list govuk-list--bullet">
-          <li>What data do we need to ask for here?</li>
-          <li>If the link in the email is a magic link do we need to ask them anything?</li>
-          <li>Is there a way to navigate to this without the email? For example, is there a return link on GOV.UK?</li>
+          <li>Should this be called 'statement' if it isn't elsewhere?</li>
+          <li>You can't change if Ground A is associated with your appeal, but if it is can you add more evidence?</li>
         </ul>
       </div>
     </div>
