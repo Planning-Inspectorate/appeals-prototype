@@ -1,0 +1,59 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "layout.html" %}
+
+
+{% block pageTitle %}
+  Are you sure you want to remove this {{entity}}? - Check your answers and submit your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="added-names" method="post">
+
+        <span class="govuk-caption-l">
+          Check your answers and submit your appeal
+        </span>
+        <h1 class="govuk-heading-xl">
+          Are you sure you want to remove {% if data['entity'] == 'person' %}
+            <!-- company name if one is named -->
+            {{ data["enforcement-first-name"] or 'Nic'}}
+            {{ data["enforcement-last-name"] or 'Davies'}}
+          {% else %}
+            {{ data["enforcement-company-name"] or 'Providence Produce Company'}}
+          {% endif %} from the appeal?
+        </h1>
+
+        {{ govukButton({
+          text: "Confirm removal"
+        }) }}
+
+        <p>
+          <a href="added-names" class="govuk-link govuk-link--no-visited-state">
+            Cancel
+          </a>
+        </p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

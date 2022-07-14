@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% set title = "Is the site visible from a public road?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="health-and-safety-issues" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {% set infoHtml %}
+          {{ govukTextarea({
+            id: "enforcement-site-visibility-details",
+            name: "enforcement-site-visibility-details",
+            label: {
+              text: "How is visibility restricted?"
+            },
+            value: data["enforcement-site-visibility-details"]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "enforcement-site-visibility",
+          name: "enforcement-site-visibility",
+          fieldset: {
+            legend: {
+              text: "Is the site visible from a public road?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("enforcement-site-visibility", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("enforcement-site-visibility", "No"),
+              conditional: {
+                html: infoHtml
+              }
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
