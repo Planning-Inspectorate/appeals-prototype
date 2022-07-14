@@ -33,6 +33,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/prototype-only";
 @import "pins/truncate-comments";
 
+// Restyle the accordion on the index page of the prototype to make it easier to scan for work
 .index {
 	.govuk-accordion__section-toggle {
 		float: right;
@@ -64,6 +65,17 @@ $govuk-assets-path: '/govuk/assets/';
 	border-bottom: none;
 }
 
+// Questions / highlights for the team in-situ on the page
+.team-questions {
+	@include govuk-responsive-margin(9, "top");
+	padding: govuk-spacing(4);
+	border: 1px solid govuk-colour("orange");
+	border-left-width: 10px;
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+}
 
 .loading {
 

@@ -24,6 +24,13 @@ let caseOfficerQuestionnaires = require('./caseOfficerQuestionnaires.json')
 
 let data = {
 
+  "statement-grounds": [
+    "Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.",
+    "Ground G: I need more time to comply with the enforcement notice."
+  ],
+  "statement-ground-a": "I believe planning permission should be granted for the alleged breach in the enforcement notice.",
+  "statement-ground-g": "I need more time to comply with the enforcement notice.",
+
   cstSearch:
   [
     {
@@ -878,9 +885,9 @@ let data = {
     }
   ],
 
-  lpas,  
-  availableAppeals,    
-  validationAppeals,    
+  lpas,
+  availableAppeals,
+  validationAppeals,
   caseOfficerQuestionnaires
 
 }

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %} #}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-l">
+          Your appeals
+        </h1>
+
+        {{ govukTable({
+          caption: '',
+          captionClasses: 'govuk-table__caption--m',
+          firstCellIsHeader: false,
+          head: [
+            {
+              html: 'Reference'
+            },
+            {
+              html: 'Type of application'
+            },
+            {
+              html: 'Local planning department'
+            }
+            ,
+            {
+              html: 'Action'
+            }
+          ],
+          rows: [
+            [
+              {
+                html: '123456789'
+              },
+              {
+                html: 'Enforcement notice'
+              },
+              {
+                html: 'City of Bradford Metropolitan District Council'
+              },
+              {
+                html: '<a href="update/">Update your statement</a>'
+              }
+            ]
+          ]
+        }) }}
+
+
+        <div class="team-questions govuk-!-width-two-thirds">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Do we need to have a "dashboard" for everyone or just people with multiple cases? Would it not be easier/more consistent to always have one?</li>
+            <li>If we always have this dashboard, isn't this just an account? Why did we decide to not have accounts when the old system does?</li>
+            <li>If we always have one can we track an appeal, view details, add statement and final comments all in one place?</li>
+            <li>Should we link to this page from the confirmation page at the end of submission? For example, <a href="#0">View and update your appeal</a>.</li>
+            <li>Is there an appeal reference to use as the unique identifier in the table?</li>
+          </ul>
+        </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

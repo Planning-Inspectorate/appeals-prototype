@@ -41,7 +41,20 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-guidance" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-guidance">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-grid-column-full">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Enforcement statement submission - Version 1
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li><a href="/enforcement-statement/v1/appeal-submitted-email">Appeal submitted email</a></li>
+                    </ul>
+                  </div>
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
@@ -169,7 +182,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-guidance" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-guidance">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
@@ -207,7 +220,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-guidance" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-guidance">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
@@ -331,7 +344,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({
@@ -444,7 +457,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-grid-column-full">
 
                   <!-- version 16 -->
                   <div class="govuk-inset-text govuk-!-margin-top-0">
@@ -829,7 +842,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-grid-column-full">
 
                   <p class="govuk-body">
                     Designing a pattern to help users save their progress during an appeal submission and later return to their appeal.
@@ -2827,7 +2840,7 @@ service-start{% extends "layout.html" %}
             <div id="accordion-default-content-appellant" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-appellant">
 
               <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-grid-column-full">
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 
