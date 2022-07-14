@@ -10,8 +10,8 @@ const router = new express.Router()
 
 
 
-router.post('/question', function (req, res) {
-  res.redirect('next-page')
+router.post('/return/', function (req, res) {
+  res.redirect('../your-appeals')
 })
 
 

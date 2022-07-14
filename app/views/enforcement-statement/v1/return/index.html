@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %} #}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <h1 class="govuk-heading-l">
+          Save and return journey
+        </h1>
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+
+      <div class="team-questions">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>What data do we need to ask for here?</li>
+          <li>If the link in the email is a magic link do we need to ask them anything?</li>
+          <li>Is there a way to navigate to this without the email? For example, is there a return link on GOV.UK?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
