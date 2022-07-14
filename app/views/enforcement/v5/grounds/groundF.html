@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% set title = "Tell us your reasons for choosing Ground F" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Choose your grounds of appeal
+    </span>
+
+    <form action="reasonsF" method="post">
+
+      <div class="govuk-form-group">
+
+        <!-- reasons by file -->
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-f-reasons">
+          {{ title  }}
+        </label>
+
+        <div class="govuk-inset-text">
+          The steps to comply with the enforcement notice are excessive.
+        </div>
+
+        <p class="govuk-hint">
+          You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
+        <p>
+
+        <p class="govuk-hint">
+          You can upload documents to support your appeal later.
+        <p>
+
+        {% if data['enforcement-reason-method'] == 'text' %}
+
+          <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="3000">
+
+            <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-f-reasons" name="enforcement-ground-f-reasons" rows="5" aria-describedby="enforcement-ground-f-reasons-hint"></textarea>
+
+            <div id="enforcement-ground-f-reasons-info" class="govuk-hint govuk-character-count__message">
+              <!-- You can enter up to 3,000 words -->
+            </div>
+
+          </div>
+
+        {% else %}
+
+          <!-- upload files -->
+          <label class="govuk-label govuk-label--m" for="enforcement-ground-f-reasons">
+            Drag and drop or choose files
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-f-reasons" name="enforcement-ground-f-reasons" type="file" multiple>
+
+
+
+        {{ govukInsetText({
+          text: "File size should be no more than 15MB"
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with file formats",
+          html: '
+            <p class="govuk-body">
+              Your file must be in one of the following formats:
+            <p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>pdf</li>
+              <li>doc</li>
+              <li>docx</li>
+              <li>tif</li>
+              <li>tiff</li>
+              <li>jpg</li>
+              <li>jpeg</li>
+              <li>png</li>
+            </ul>
+          '
+        }) }}
+
+        <!-- <p class="govuk-body">
+          <a href="groundF?enforcement-reason-method=text" class="govuk-link">
+            Or explain your reasons using a text box
+          </a>
+        </p> -->
+
+        {% endif %}
+
+        <div class="govuk-button-group">
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+
+        </div>
+
+      </div>
+    </div>
+{% endblock %}

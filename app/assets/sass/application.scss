@@ -31,6 +31,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "pins/email";
 @import "pins/public-guidance";
 @import "pins/prototype-only";
+@import "pins/truncate-comments";
 
 // Restyle the accordion on the index page of the prototype to make it easier to scan for work
 .index {
