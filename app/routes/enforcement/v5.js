@@ -205,11 +205,77 @@ module.exports = function (router) {
 
   })
 
+  // ENF 00X
+  // Enforcement
+  // Grounds
+  router.post(base+'grounds/reasonsA', function (req, res) {
+
+    // Make a variable from session data
+    let groundB = req.session.data['grounds-3']
+    let groundC = req.session.data['grounds-3']
+    let groundD = req.session.data['grounds-4']
+    let groundE = req.session.data['grounds-5']
+    let groundF = req.session.data['grounds-6']
+    let groundG = req.session.data['grounds-7']
+
+    // see what format they chose
+    let format = req.session.data['enforcement-facts-format']
+
+    if (format == "files") {
+      // use document files
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "files";
+
+      // use textarea input
+      // route depending on value
+      if (groundB) {
+        res.redirect('/enforcement/v5/grounds/groundB')
+      } else if (groundC) {
+        res.redirect('/enforcement/v5/grounds/groundC')
+      } else if (groundD) {
+        res.redirect('/enforcement/v5/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v5/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v5/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v5/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v5/grounds/application')
+      }
+
+    } else {
+
+      // default method for reasons
+      req.session.data["enforcement-reason-method"] = "text";
+
+      // use textarea input
+      // route depending on value
+      if (groundB) {
+        res.redirect('/enforcement/v5/grounds/groundB')
+      } else if (groundC) {
+        res.redirect('/enforcement/v5/grounds/groundC')
+      } else if (groundD) {
+        res.redirect('/enforcement/v5/grounds/groundD')
+      } else if (groundE) {
+        res.redirect('/enforcement/v5/grounds/groundE')
+      } else if (groundF) {
+        res.redirect('/enforcement/v5/grounds/groundF')
+      } else if (groundG) {
+        res.redirect('/enforcement/v5/grounds/groundG')
+      } else {
+        res.redirect('/enforcement/v5/grounds/application')
+      }
+
+    }
+
+  })
+
 
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post(base+'grounds/groundB', function (req, res) {
+  router.post(base+'grounds/reasonsB', function (req, res) {
 
     // res.redirect('/enforcement/v5/grounds/upload-reasons')
 
@@ -273,7 +339,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post(base+'grounds/groundC', function (req, res) {
+  router.post(base+'grounds/reasonsC', function (req, res) {
 
     // res.redirect('/enforcement/v5/grounds/upload-reasons')
 
@@ -332,7 +398,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post(base+'grounds/groundD', function (req, res) {
+  router.post(base+'grounds/reasonsD', function (req, res) {
 
     // res.redirect('/enforcement/v5/grounds/upload-reasons')
 
@@ -387,7 +453,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post(base+'grounds/groundE', function (req, res) {
+  router.post(base+'grounds/reasonsE', function (req, res) {
 
     // res.redirect('/enforcement/v5/grounds/upload-reasons')
 
@@ -437,7 +503,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post(base+'grounds/groundF', function (req, res) {
+  router.post(base+'grounds/reasonsF', function (req, res) {
 
     // res.redirect('/enforcement/v5/grounds/upload-reasons')
 
@@ -481,7 +547,7 @@ module.exports = function (router) {
   // ENF 00X
   // Enforcement
   // Grounds
-  router.post(base+'grounds/groundG', function (req, res) {
+  router.post(base+'grounds/reasonsG', function (req, res) {
 
     res.redirect('/enforcement/v5/grounds/application')
 

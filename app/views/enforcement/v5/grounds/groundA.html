@@ -28,7 +28,7 @@
       Choose your grounds of appeal
     </span>
 
-    <form action="" method="post">
+    <form action="reasonsA" method="post">
 
       <div class="govuk-form-group">
 
@@ -45,11 +45,23 @@
           You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
         <p>
 
+        <p class="govuk-hint">
+          You can upload documents to support your appeal later.
+        <p>
+
         {% if data['enforcement-reason-method'] == 'text' %}
 
-          <textarea class="govuk-textarea" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" rows="5" aria-describedby="enforcement-ground-a-reasons-hint"></textarea>
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="3000">
+
+          <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" rows="5" aria-describedby="enforcement-ground-a-reasons-hint"></textarea>
+
+          <div id="enforcement-ground-a-reasons-info" class="govuk-hint govuk-character-count__message">
+            <!-- You can enter up to 3,000 words -->
+          </div>
 
         </div>
+
+      </div>
 
         <!-- <p class="govuk-body">
           <a href="groundA?enforcement-reason-method=file" class="govuk-link">
@@ -99,43 +111,9 @@
         {% endif %}
         <div class="govuk-button-group">
 
-          <!-- route user based on what they selected -->
-          {% if data['grounds-2'] %}
-            {{ govukButton({
-              href: "groundB",
-              text: "Save and continue"
-            }) }}
-          {% elif data['grounds-3'] %}
-            {{ govukButton({
-              href: "groundC",
-              text: "Save and continue"
-            }) }}
-          {% elif data['grounds-4'] %}
-            {{ govukButton({
-              href: "groundD",
-              text: "Save and continue"
-            }) }}
-          {% elif data['grounds-5'] %}
-            {{ govukButton({
-              href: "groundE",
-              text: "Save and continue"
-            }) }}
-          {% elif data['grounds-6'] %}
-            {{ govukButton({
-              href: "groundF",
-              text: "Save and continue"
-            }) }}
-          {% elif data['grounds-7'] %}
-            {{ govukButton({
-              href: "groundG",
-              text: "Save and continue"
-            }) }}
-          {% else %}
-            {{ govukButton({
-              href: "application",
-              text: "Save and continue"
-            }) }}
-          {% endif %}
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
 
           {{ govukButton({
             href: "",

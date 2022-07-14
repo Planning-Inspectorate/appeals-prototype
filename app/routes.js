@@ -1,6 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
+router.use('/', (req, res, next) => {
+	// Grab the current URL
+	res.locals.currentURL = req.url
+
+	// Set a flag for if the proto is running locally
+	if (req.get('host').includes('localhost')) {
+		res.locals.local = true
+	}
+
+	next()
+})
+
 // Import routes for new versioning system
 router.use("/:folder/v:version", (req, res, next) => {
 	try {
