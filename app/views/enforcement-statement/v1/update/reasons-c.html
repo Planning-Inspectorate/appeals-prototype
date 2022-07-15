@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <h1 class="govuk-heading-l">
+          Ground C reasons
+        </h1>
+
+        {{ govukInsetText({
+          html: 'The alleged breach does not require planning permission.'
+        }) }}
+
+        <p>You do not need to repeat the local planning department&rsquo;s reasons for issuing the enforcement notice.</p>
+
+        <p>You can upload documents to support your statement later.</p>
+
+        {{ govukCharacterCount({
+          name: 'statement-ground-c',
+          id: 'statement-ground-c',
+          value: data['statement-ground-c'],
+          maxwords: '3000',
+          rows: 10,
+          label: {
+            html: 'What are your reasons for choosing Ground B?',
+            classes: 'govuk-label--m govuk-!-margin-top-8',
+            isPageHeading: false
+          }
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

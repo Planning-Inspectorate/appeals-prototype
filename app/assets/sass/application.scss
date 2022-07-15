@@ -57,6 +57,10 @@ $govuk-assets-path: '/govuk/assets/';
 	}
 }
 
+.delete-link {
+	color: $govuk-error-colour!important;
+}
+
 .autocomplete__option {
 	font-family: "nta", Arial, sans-serif;
 }
@@ -151,4 +155,30 @@ $govuk-assets-path: '/govuk/assets/';
 .govuk-accordion__section-content .govuk-table__row:last-child .govuk-table__cell,
 .remove-bottom-border {
 	border-bottom: none;
+}
+
+
+.govuk-summary-list.long-answers {
+	@include govuk-media-query($from: tablet) {
+		position: relative;
+
+		&,
+		.govuk-summary-list__row,
+		.govuk-summary-list__key,
+		.govuk-summary-list__value,
+		.govuk-summary-list__actions {
+			display: block;
+			width: 100%;
+			border: 0;
+		}
+
+		.govuk-summary-list__actions {
+			position: absolute;
+			top: 0;
+		}
+
+		.govuk-summary-list__row {
+			border-bottom: 1px solid $govuk-border-colour!important;
+		}
+	}
 }
