@@ -12,9 +12,9 @@
     <div class="govuk-grid-column-two-thirds">
       <form method="post">
 
-      {# Weird hack to have a disabled ground a submit as true with a duplicate hidden non-disabled one #}
+      {# Hack to have a hidden Ground A submitted #}
       <style>
-        .govuk-checkboxes__item:nth-of-type(2) { display: none }
+        .govuk-checkboxes__item:first-of-type { display: none }
       </style>
 
         {{ govukCheckboxes({
@@ -34,11 +34,6 @@
             Select all that apply.'
           },
           items: [
-            {
-              html: 'Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.',
-              checked: true,
-              disabled: true
-            },
             {
               value: 'Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.',
               checked: true
@@ -76,13 +71,9 @@
           ]
         }) }}
 
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: 'Save and continue'
-          }) }}
-
-          <a class="govuk-link" href="#">Cancel</a>
-        </div>
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
 
       </form>
 
