@@ -10,30 +10,40 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post">
+      <form method="post" id="multiupload">
         <h1 class="govuk-heading-l">
-          Ground A reasons
+          Supporting documents
         </h1>
 
-        {{ govukInsetText({
-          html: 'Planning permission should be granted for the alleged breach in the enforcement notice.'
-        }) }}
+        <p>You can upload your reasons, comments or site plans </p>
 
-        <p>You do not need to repeat the local planning department&rsquo;s reasons for issuing the enforcement notice.</p>
+        {% set uploadHtml %}
+          {{ govukFileUpload({
+            id: "statement-supporting-docs",
+            name: "_statement-supporting-docs",
+            classes: 'moj-multi-file-upload__input',
+            label: {
+              text: "Upload files",
+              classes: 'govuk-label--m'
+            },
+            hint: {
+              text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
+            },
+            attributes: { multiple: '' }
+          }) }}
 
-        <p>You can upload documents to support your statement later.</p>
+          {{govukButton({
+            text: 'Upload file',
+            classes: 'govuk-button--secondary moj-multi-file-upload__button'
+          })}}
+        {% endset %}
 
-        {{ govukCharacterCount({
-          name: 'statement-ground-a',
-          id: 'statement-ground-a',
-          value: data['statement-ground-a'],
-          maxwords: '3000',
-          rows: 10,
-          label: {
-            html: 'What are your reasons for choosing Ground A?',
-            classes: 'govuk-label--m govuk-!-margin-top-8',
-            isPageHeading: false
-          }
+        {{ mojMultiFileUpload({
+          uploadedFiles: {
+            heading: { text: 'Files added' },
+            items: uploadedFiles
+          },
+          uploadHtml: uploadHtml
         }) }}
 
         {{ govukButton({
@@ -45,4 +55,17 @@
   </div>
 {% endblock %}
 
-{% block pageScripts %}{% endblock %}
+{% block pageScripts %}
+  <script>
+  // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
+    $('#multiupload').submit(function(e) {
+      e.preventDefault();
+
+      $('.moj-multi-file-upload__filename').each(function() {
+        $('<input name="statement-supporting-docs" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+      });
+
+      $(this).unbind('submit').submit();
+    })
+  </script>
+{% endblock %}

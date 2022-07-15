@@ -110,6 +110,10 @@ router.post('/update/reasons-g', function (req, res) {
   res.redirect('./')
 })
 
+router.post('/update/supporting-docs', function (req, res) {
+  res.redirect('./')
+})
+
 router.post('/update/cancel', function (req, res) {
   res.redirect('cancelled')
 })

@@ -219,7 +219,17 @@
       }) }}
       {% endif %}
 
-
+      {% set files %}
+        {% if data['statement-supporting-docs'] %}
+          <ul class="govuk-list govuk-list--bullet">
+          {% for file in data['statement-supporting-docs'] %}
+            <li>{{ file }}</li>
+          {% endfor %}
+          </ul>
+        {% else %}
+          <span class="govuk-hint">None</span>
+        {% endif %}
+      {% endset -%}
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
@@ -228,12 +238,12 @@
               text: 'Supporting documents'
             },
             value: {
-              html: '<span class="govuk-hint">None</span>'
+              html: files
             },
             actions: {
               items: [
                 {
-                  href: 'supporting-docs-upload',
+                  href: 'supporting-docs',
                   text: 'Change',
                   classes: 'govuk-link--no-visited-state'
                 }
