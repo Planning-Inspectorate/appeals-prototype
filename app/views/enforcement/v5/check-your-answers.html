@@ -19,7 +19,7 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
       <form action="declaration" method="post">
@@ -325,20 +325,20 @@
 
           <!-- facts and reasons -->
 
-          <!-- if there is ANY reason data -->
+          <!-- if any grounds were selected -->
 
-          {% if data['enforcement-ground-a-reasons'] != null
-             or data['enforcement-ground-b-reasons'] != null
-             or data['enforcement-ground-c-reasons'] != null
-             or data['enforcement-ground-d-reasons'] != null
-             or data['enforcement-ground-e-reasons'] != null
-             or data['enforcement-ground-f-reasons'] != null
-             or data['enforcement-ground-g-reasons'] != null %}
-
+          {% if data['grounds-1'] != null
+             or data['grounds-2'] != null
+             or data['grounds-3'] != null
+             or data['grounds-4'] != null
+             or data['grounds-5'] != null
+             or data['grounds-6'] != null
+             or data['grounds-7'] != null %}
 
             <!-- list out the data -->
 
-            {% if data["enforcement-ground-a-reasons"] %}
+            {% if data['grounds-1'] %}
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Reasons for Ground A
@@ -356,7 +356,8 @@
               </div>
             {% endif %}
 
-            {% if data["enforcement-ground-b-reasons"] %}
+            {% if data['grounds-2'] %}
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Reasons for Ground B
@@ -374,7 +375,8 @@
               </div>
             {% endif %}
 
-            {% if data["enforcement-ground-c-reasons"] %}
+            {% if data['grounds-3'] %}
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Reasons for Ground C
@@ -392,7 +394,8 @@
               </div>
             {% endif %}
 
-            {% if data["enforcement-ground-d-reasons"] %}
+            {% if data['grounds-4'] %}
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Reasons for Ground D
@@ -410,7 +413,8 @@
               </div>
             {% endif %}
 
-            {% if data["enforcement-ground-e-reasons"] %}
+            {% if data['grounds-5'] %}
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Reasons for Ground E
@@ -428,7 +432,8 @@
               </div>
             {% endif %}
 
-            {% if data["enforcement-ground-f-reasons"] %}
+            {% if data['grounds-6'] %}
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Reasons for Ground F
@@ -446,7 +451,8 @@
               </div>
             {% endif %}
 
-            {% if data["enforcement-ground-g-reasons"] %}
+            {% if data['grounds-7'] %}
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Reasons for Ground G
@@ -666,14 +672,14 @@
           <!-- planning obligation -->
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you plan to submit a planning obligation to support your appeal?
+              Do you plan to submit a planning obligation?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data["enforcement-planning-obligation"] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">
-                Change<span class="govuk-visually-hidden"> do you plan to submit a planning obligation to support your appeal</span>
+                Change<span class="govuk-visually-hidden"> do you plan to submit a planning obligation</span>
               </a>
             </dd>
           </div>
