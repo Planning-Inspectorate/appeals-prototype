@@ -12,9 +12,18 @@
     <div class="govuk-grid-column-two-thirds">
       <form method="post">
 
-        <h1 class="govuk-heading-l">
-          Save and return journey
-        </h1>
+        {{ govukInput({
+          id: '_return',
+          name: '_return',
+          value: data['_return'],
+          classes: 'govuk-input--width-4',
+          label: {
+            html: 'Enter the code we sent to your email address',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          spellcheck: false
+        }) }}
 
         {{ govukButton({
           html: 'Continue'
