@@ -172,6 +172,10 @@ $govuk-assets-path: '/govuk/assets/';
 			border: 0;
 		}
 
+		.govuk-summary-list__value {
+			padding-top: 0;
+		}
+
 		.govuk-summary-list__actions {
 			position: absolute;
 			top: 0;
