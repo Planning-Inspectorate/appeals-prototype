@@ -128,7 +128,7 @@ module.exports = function (router) {
      let intent = req.session.data['enforcement-intent']
 
      // route depending on value
-     if (intent === 'intent') {
+     if (intent === 'Yes') {
        // req.session.data['intent'] = "intent";
        res.redirect(base+'date-of-intent')
      } else {
