@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: 'Appeal statement submitted'
+      }) }}
+
+      <p>We&rsquo;ve sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">
+        What happens next?
+      </h2>
+
+      <p>We&rsquo;ll review your update and forward it to the local planning authority.</p>
+
+    </div>
+  </div>
+{% endblock %}

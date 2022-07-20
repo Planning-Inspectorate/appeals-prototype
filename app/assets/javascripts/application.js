@@ -7,7 +7,47 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
+  window.MOJFrontend.initAll()
 })
+
+// Read more links
+jQuery(function() {
+  var shortening_text = $(".long-answers .govuk-summary-list__value");
+
+  shortening_text.each(function() {
+    var txt = $(this).html();
+    if (txt.length < 500) return;
+    $(this).html(
+      txt.slice(0, 500) +
+        '<span>... </span><a href="#" class="show">Read more</a>' +
+        '<span style="display:none;">' +
+        txt.slice(800, txt.length) +
+        ' <a href="#" class="less">Close</a></span>'
+    );
+  });
+
+  $("a.show", shortening_text).click(function(event) {
+    event.preventDefault();
+    $(this)
+      .hide()
+      .prev()
+      .hide();
+    $(this)
+      .next()
+      .show();
+  });
+
+  $("a.less", shortening_text).click(function(event) {
+    event.preventDefault();
+    $(this)
+      .parent()
+      .hide()
+      .prev()
+      .show()
+      .prev()
+      .show();
+  });
+});
 
 
 
@@ -17,11 +57,10 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
       uploadFileEntryHook: $.noop,
       uploadFileExitHook: $.noop,
       uploadFileErrorHook: $.noop,
-      uploadFileErrorHook: $.noop,
       fileDeleteHook: $.noop,
       uploadStatusText: 'Uploading files, please wait',
       dropzoneHintText: 'Drag and drop files here or',
-      dropzoneButtonText: 'Choose files'
+      dropzoneButtonText: 'Select files'
     };
 
     this.params = $.extend({}, this.defaultParams, params);
@@ -42,6 +81,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
     this.dropzone.on('dragover', $.proxy(this, 'onDragOver'));
     this.dropzone.on('dragleave', $.proxy(this, 'onDragLeave'));
     this.dropzone.on('drop', $.proxy(this, 'onDrop'));
+    this.feedbackContainer.addClass('moj-hidden');
   };
 
   MOJFrontend.MultiFileUpload.prototype.setupLabel = function() {
@@ -63,20 +103,20 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.onDragOver = function(e) {
-  	e.preventDefault();
-  	this.dropzone.addClass('moj-multi-file-upload--dragover');
+    e.preventDefault();
+    this.dropzone.addClass('moj-multi-file-upload--dragover');
   };
 
   MOJFrontend.MultiFileUpload.prototype.onDragLeave = function() {
-  	this.dropzone.removeClass('moj-multi-file-upload--dragover');
+    this.dropzone.removeClass('moj-multi-file-upload--dragover');
   };
 
   MOJFrontend.MultiFileUpload.prototype.onDrop = function(e) {
-  	e.preventDefault();
-  	this.dropzone.removeClass('moj-multi-file-upload--dragover');
+    e.preventDefault();
+    this.dropzone.removeClass('moj-multi-file-upload--dragover');
     this.feedbackContainer.removeClass('moj-hidden');
     this.status.html(this.params.uploadStatusText);
-  	this.uploadFiles(e.originalEvent.dataTransfer.files);
+    this.uploadFiles(e.originalEvent.dataTransfer.files);
   };
 
   MOJFrontend.MultiFileUpload.prototype.uploadFiles = function(files) {
@@ -113,26 +153,23 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   MOJFrontend.MultiFileUpload.prototype.getFileRowHtml = function(file) {
     var html = '';
     html += '<div class="govuk-summary-list__row moj-multi-file-upload__row">';
-    html += '  <dd class="govuk-summary-list__value moj-multi-file-upload__message">';
-    html +=       '<span class="moj-multi-file-upload__filename">'+file.name+'</span>';
-    html +=       '<span class="moj-multi-file-upload__progress">0%</span>';
-    html += '  </dd>';
-    html += '  <dd class="govuk-summary-list__actions moj-multi-file-upload__actions"></dd>';
+    html += '<dd class="govuk-summary-list__value moj-multi-file-upload__message">';
+    html += '<span class="moj-multi-file-upload__filename">'+file.name+'</span>';
+    html += '<span class="moj-multi-file-upload__progress">(0%)</span>';
+    html += '</dd>';
+    html += '<dd class="govuk-summary-list__actions moj-multi-file-upload__actions">';
+    html += '<a class="remove-link moj-multi-file-upload__delete" href="#0" value="' + file.name + '">Remove <span class="govuk-visually-hidden">' + file.name + '</span></a>';
+    html += '</dd>';
     html += '</div>';
     return html;
   };
 
-  MOJFrontend.MultiFileUpload.prototype.getDeleteButtonHtml = function(file) {
-    var html = '<button class="moj-multi-file-upload__delete govuk-button govuk-button--secondary govuk-!-margin-bottom-0" type="button" name="delete" value="' + file.filename + '">';
-    html += 'Delete <span class="govuk-visually-hidden">' + file.originalname + '</span>';
-    html += '</button>';
-    return html;
-  };
+
 
   MOJFrontend.MultiFileUpload.prototype.uploadFile = function(file) {
     this.params.uploadFileEntryHook(this, file);
     var formData = new FormData();
-    formData.append(this.params.fieldName, file);
+    formData.append('documents', file);
     var item = $(this.getFileRowHtml(file));
     this.feedbackContainer.find('.moj-multi-file-upload__list').append(item);
 
@@ -150,7 +187,6 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
           item.find('.moj-multi-file-upload__message').html(this.getSuccessHtml(response.success));
           this.status.html(response.success.messageText);
         }
-        item.find('.moj-multi-file-upload__actions').append(this.getDeleteButtonHtml(response.file));
         this.params.uploadFileExitHook(this, file, response);
       }, this),
       error: $.proxy(function(jqXHR, textStatus, errorThrown) {
@@ -162,7 +198,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
           if (e.lengthComputable) {
             var percentComplete = e.loaded / e.total;
             percentComplete = parseInt(percentComplete * 100, 10);
-            item.find('.moj-multi-file-upload__progress').text(' ' + percentComplete + '%');
+            item.find('.moj-multi-file-upload__progress').text(' (' + percentComplete + '%)');
           }
         }, false);
         return xhr;
@@ -173,24 +209,21 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
     e.preventDefault(); // if user refreshes page and then deletes
     var button = $(e.currentTarget);
-    var data = {};
-    data[button[0].name] = button[0].value;
-    $.ajax({
-      url: this.params.deleteUrl,
-      type: 'post',
-      dataType: 'json',
-      data: data,
-      success: $.proxy(function(response){
-        if(response.error) {
-          // handle error
-        } else {
-          button.parents('.moj-multi-file-upload__row').remove();
-          if(this.feedbackContainer.find('.moj-multi-file-upload__row').length === 0) {
-            this.feedbackContainer.addClass('moj-hidden');
-          }
-        }
-        this.params.fileDeleteHook(this, response);
-      }, this)
-    });
+
+    button.parents('.moj-multi-file-upload__row').remove();
+    if(this.feedbackContainer.find('.moj-multi-file-upload__row').length === 0) {
+      this.feedbackContainer.addClass('moj-hidden');
+    }
   };
 }
+
+// Initialise MOJ multi file upload
+if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+  new MOJFrontend.MultiFileUpload({
+    container: $('.moj-multi-file-upload'),
+    uploadUrl: 'upload',
+    deleteUrl: 'upload'
+  });
+}
+
+
