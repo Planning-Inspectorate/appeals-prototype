@@ -5,7 +5,7 @@ module.exports = function (router) {
 
     router.get('*', function(req, res, next){
       // Change the version for this prototype
-      res.locals['version'] = '4'
+      res.locals['version'] = '5'
       next()
     })
 

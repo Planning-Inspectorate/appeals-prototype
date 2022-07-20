@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% set title = "Listed building enforcement appeals" %}
+
+{% block pageTitle %}
+  {{ title }} - Check your answers and submit your appeal - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <p>
+        Appeal process from before you start / eligibility checker, through to submitting and listed building enforcement appeal.
+      </p>
+
+      <!-- <h2 class="govuk-heading-m">
+        Version 2
+      </h2>
+
+      <h3 class="govuk-heading-s">Changes</h3>
+      <p>Information about this version.</p>
+
+      <h3 class="govuk-heading-s">Research notes</h3>
+      <p>Information about the research.</p>
+      <p><a href="#0">View user research report</a><p>
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: 'v1/question'
+      }) }} -->
+
+
+      {% set v1 %}
+        <h3 class="govuk-heading-s">
+          Changes
+        </h3>
+        <p>
+          First draft of the enforcement listed building journey
+        </p>
+
+        {{ govukButton({
+          text: 'View prototype',
+          href: '/enforcement-listed-building/v1/before-you-continue',
+          classes: "govuk-button--secondary"
+        }) }}
+
+        <h3 class="govuk-heading-s">
+          Research notes
+        </h3>
+        <p>
+          TBD
+        </p>
+
+        <!-- <p>
+          <a href="#0">
+            View user research report
+          </a>
+        <p> -->
+
+      {% endset %}
+
+      {{ govukAccordion({
+        items: [
+          {
+            heading: { text: 'Version 1' },
+            content: { html: v1 }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
