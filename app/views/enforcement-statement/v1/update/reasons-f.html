@@ -10,28 +10,31 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Ground F reasons
+      </h1>
+
+      {{ govukInsetText({
+        html: 'The steps to comply with the enforcement notice are excessive.'
+      }) }}
+
+      <p>You do not need to repeat the local planning authority&rsquo;s reasons for issuing the enforcement notice.</p>
+
+      <p>You can upload documents to support your statement later.</p>
+    </div>
+
+    <div class="govuk-grid-column-three-quarters">
       <form method="post">
-        <h1 class="govuk-heading-l">
-          Ground F reasons
-        </h1>
-
-        {{ govukInsetText({
-          html: 'The steps to comply with the enforcement notice are excessive.'
-        }) }}
-
-        <p>You do not need to repeat the local planning authority&rsquo;s reasons for issuing the enforcement notice.</p>
-
-        <p>You can upload documents to support your statement later.</p>
 
         {{ govukCharacterCount({
           name: 'statement-ground-f',
           id: 'statement-ground-f',
           value: data['statement-ground-f'],
-          maxwords: '3000',
-          rows: 10,
+          maxwords: '1000',
+          rows: 15,
           label: {
             html: 'What are your reasons for choosing Ground F?',
-            classes: 'govuk-label--m govuk-!-margin-top-8',
+            classes: 'govuk-label--m govuk-!-margin-top-6',
             isPageHeading: false
           }
         }) }}

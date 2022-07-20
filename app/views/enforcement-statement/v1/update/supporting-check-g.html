@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" id="multiupload">
+
+        {{ govukRadios({
+          idPrefix: 'statement-supporting-check-g',
+          name: 'statement-supporting-check-g',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Do you want to upload supporting documents for Ground G?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              html: 'Yes',
+              value: 'Yes',
+              checked: checked('statement-supporting-check-g','Yes')
+            },
+            {
+              html: 'No',
+              value: 'No',
+              checked: checked('statement-supporting-check-g','No')
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

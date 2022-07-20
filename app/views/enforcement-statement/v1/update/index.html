@@ -9,14 +9,17 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-l">
         Update your appeal statement
       </h1>
 
-      <p>You can revisit your appeal statement any number of times before 11.59pm on Monday {{ 35 | daysInFuture }}.</p>
+      <p>{{data['cya'] or 'no'}} You can change your grounds of appeal (apart from ground A), and add other reasons, comments and documents to support your appeal.</p>
 
-      <p class="govuk-!-margin-bottom-9">You can change your grounds of appeal (apart from ground A), and add other reasons, comments and documents to support your appeal.</p>
+      {{ govukInsetText({
+        html: 'Your deadline to make changes to your appeal statement is 11.59pm on Monday '+ 35 | daysInFuture
+      }) }}
+
     </div>
 
     {% set grounds %}
@@ -28,8 +31,10 @@
     {% endset -%}
 
     <div class="govuk-grid-column-three-quarters-from-desktop">
+
+    {# GROUNDS #}
       {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0',
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
@@ -41,217 +46,97 @@
             actions: {
               items: [
                 {
-                  href: 'grounds',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
+                  href: 'grounds?cya=true',
+                  text: 'Change'
                 }
               ]
             }
           }
         ]
       }) }}
-      {% if 'Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.' in data['statement-grounds'] %}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0 long-answers',
-        rows: [
-          {
-            key: {
-              text: 'Reasons for Ground A'
-            },
-            value: {
-              html: data['statement-ground-a'] | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: 'reasons-a',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      {% endif %}
-      {% if 'Ground B: The alleged breach of planning permission has not happened.' in data['statement-grounds'] %}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0 long-answers',
-        rows: [
-          {
-            key: {
-              text: 'Reasons for Ground B'
-            },
-            value: {
-              html: data['statement-ground-b'] | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: 'reasons-b',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      {% endif %}
-      {% if 'Ground C: The alleged breach does not require planning permission.' in data['statement-grounds'] %}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0 long-answers',
-        rows: [
-          {
-            key: {
-              text: 'Reasons for Ground C'
-            },
-            value: {
-              html: data['statement-ground-c'] | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: 'reasons-c',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      {% endif %}
-      {% if 'Ground D: It’s too late for the local authority to serve the enforcement notice.' in data['statement-grounds'] %}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0 long-answers',
-        rows: [
-          {
-            key: {
-              text: 'Reasons for Ground D'
-            },
-            value: {
-              html: data['statement-ground-d'] | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: 'reasons-d',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      {% endif %}
-      {% if 'Ground E: Copies of the enforcement notice were not legally served to the right people.' in data['statement-grounds'] %}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0 long-answers',
-        rows: [
-          {
-            key: {
-              text: 'Reasons for Ground E'
-            },
-            value: {
-              html: data['statement-ground-e'] | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: 'reasons-e',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      {% endif %}
-      {% if 'Ground F: The steps to comply with the enforcement notice are excessive.' in data['statement-grounds'] %}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0 long-answers',
-        rows: [
-          {
-            key: {
-              text: 'Reasons for Ground F'
-            },
-            value: {
-              html: data['statement-ground-f'] | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: 'reasons-f',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      {% endif %}
-      {% if 'Ground G: I need more time to comply with the enforcement notice.' in data['statement-grounds'] %}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-0 long-answers',
-        rows: [
-          {
-            key: {
-              text: 'Reasons for Ground G'
-            },
-            value: {
-              html: data['statement-ground-g'] | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: 'reasons-g',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      {% endif %}
 
-      {% set files %}
-        {% if data['statement-supporting-docs'] %}
-          <ul class="govuk-list govuk-list--bullet">
-          {% for file in data['statement-supporting-docs'] %}
-            <li>{{ file }}</li>
-          {% endfor %}
-          </ul>
-        {% else %}
-          <span class="govuk-hint">None</span>
-        {% endif %}
-      {% endset -%}
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: 'Supporting documents'
-            },
-            value: {
-              html: files
-            },
-            actions: {
-              items: [
-                {
-                  href: 'supporting-docs',
-                  text: 'Change',
-                  classes: 'govuk-link--no-visited-state'
-                }
-              ]
+
+
+
+
+
+      {% for ground in data['statement-grounds'] %}
+
+        {{ govukSummaryList({
+          classes: 'long-answers govuk-!-margin-bottom-0',
+          rows: [
+            {
+              key: {
+                text: 'Reasons for ' + ground | truncate(8, true, "")
+              },
+              value: {
+                html: data['statement-ground' + ground | truncate(8, true, "") | lower | replace("ground ", "-")] | nl2br
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'reasons' + ground | truncate(8, true, "") | lower | replace("ground ", "-") + '?cya=true',
+                    text: 'Change'
+                  }
+                ]
+              }
             }
-          }
-        ]
-      }) }}
+          ]
+        }) }}
+
+        {% set files %}
+          <ul class="govuk-list govuk-list--bullet">
+
+            {% for file in data['statement-supporting-docs' + ground | truncate(8, true, "") | lower | replace("ground ", "-")] %}
+              <li>{{ file }}</li>
+            {% endfor %}
+
+          </ul>
+        {% endset -%}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: 'Add supporting documents for ' + ground | truncate(8, true, "")
+              },
+              value: {
+                html: data['statement-supporting-check' + ground | truncate(8, true, "") | lower | replace("ground ", "-")] or 'No'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'supporting-check' + ground | truncate(8, true, "") | lower | replace("ground ", "-") +'?cya=true',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Supporting documents for ' + ground | truncate(8, true, "")
+              },
+              value: {
+                html: files
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'supporting-upload' + ground | truncate(8, true, "") | lower | replace("ground ", "-") +'?cya=true',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['statement-supporting-check' + ground | truncate(8, true, "") | lower | replace("ground ", "-")] == 'Yes'
+          ]
+        }) }}
+
+      {% endfor %}
+
+
+
+
 
 
       <div class="govuk-button-group">
