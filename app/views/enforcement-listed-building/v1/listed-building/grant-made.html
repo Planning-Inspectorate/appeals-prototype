@@ -3,7 +3,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "How many witnesses would you expect to give evidence at the inquiry?" %}
+{% set title = "Has a grant been made under section 3A or 4 of the Historic Buildings and Ancient Monuments Ace 1953?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -23,26 +23,37 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <form method="post">
 
       <span class="govuk-caption-l">
-        Tell us how you would prefer us to decide your appeal
+        Tell us about the listed building
       </span>
 
-      {{ govukInput({
-        id: "enforcement-inquiry-witnesses",
-        name: "enforcement-inquiry-witnesses",
-        classes: "govuk-input--width-3",
-        label: {
-          text: title,
-          classes: "govuk-label--l",
-          isPageHeading: true
+      {{ govukRadios({
+        idPrefix: "listed-building-grant-made",
+        name: "listed-building-grant-made",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
         },
-        value: data["enforcement-inquiry-witnesses"]
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: checked("listed-building-grant-made", "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: checked("listed-building-grant-made", "No")
+          }
+        ]
       }) }}
 
       <div class="govuk-button-group">
@@ -63,6 +74,4 @@
 
   </div>
 </div>
-
-
 {% endblock %}

@@ -24,6 +24,10 @@
         {% set taskcount = taskcount + 1 %}
       {% endif %}
 
+      {% if data["enforcement-taskliststatus-building"] == "Complete" %}
+        {% set taskcount = taskcount + 1 %}
+      {% endif %}
+
       {% if data["enforcement-taskliststatus-appealsite"] == "Complete" %}
         {% set taskcount = taskcount + 1 %}
       {% endif %}
@@ -43,7 +47,7 @@
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
 
       <p class="govuk-body">
-        You have completed {{taskcount}} of 6 tasks.
+        You have completed {{taskcount}} of 7 tasks.
       </p>
 
       <p class="govuk-body govuk-!-margin-bottom-7">
@@ -81,21 +85,21 @@
             {% endif %}
           </li>
 
-          <!-- additional people -->
-          <!-- <li class="app-task-list__item">
+
+          <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="additional-people/additional-people">
-                Tell us about additional people
+              <a href="listed-building/grade">
+                Tell us about the listed building
               </a>
             </span>
-            {% if data["enforcement-taskliststatus-addpeople"] == "Complete" %}
+            {% if data["enforcement-taskliststatus-building"] == "Complete" %}
               <strong class="app-task-list__tag govuk-tag">Complete</strong>
-            {% elseif data["enforcement-taskliststatus-addpeople"] == "In progress" %}
+            {% elseif data["enforcement-taskliststatus-building"] == "In progress" %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--blue">In progress</strong>
             {% else %}
               <strong class="app-task-list__tag govuk-tag govuk-tag--grey">Not started</strong>
             {% endif %}
-          </li> -->
+          </li>
 
           <!-- appeal site -->
           <li class="app-task-list__item">

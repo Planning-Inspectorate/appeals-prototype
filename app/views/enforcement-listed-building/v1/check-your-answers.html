@@ -87,6 +87,67 @@
         </dl>
 
         <!-- appeal site -->
+        <h2 class="govuk-heading-l govuk-!-margin-top-9">
+          Tell us about the listed building
+        </h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Listed building grade
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["building-grade"] or 'Grade II*' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> listed building grade</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              First listed date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data["listed-building-listed-date-day"] %}
+                {{ data["listed-building-listed-date-day"] }}
+                {{ data["listed-building-listed-date-month"] | formatMonth  }}
+                {{ data["listed-building-listed-date-year"] }}
+              {% else %}
+                2 February 1977
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> first listed date</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Grant made under section 3A or 4 of the Historic Buildings and Ancient Monuments Ace 1953?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data["listed-building-grant-made"] == "Yes" %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> first listed date</span>
+              </a>
+            </dd>
+          </div>
+
+
+
+        </dl>
+
+        <!-- appeal site -->
         <h2 class="govuk-heading-l govuk-!-margin-top-9">Tell us about the appeal site</h2>
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">

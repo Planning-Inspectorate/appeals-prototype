@@ -1,6 +1,8 @@
 const express = require('express')
 const router = new express.Router()
 
+
+
 /*******************************************
  *** LISTED BUILDINGS ENFORCEMENT NOTICE ***
 /*******************************************/
@@ -56,8 +58,36 @@ router.post('/named-on-notice/added-names', function (req, res) {
 
 })
 
- // TELL US ABOUT THE APPEAL SITE
- // ******************************************
+
+
+// **************************
+// TELL US ABOUT THE BUILDING
+// **************************
+
+// Building grade
+// ******************************************
+router.post('/listed-building/grade', function (req, res) {
+ res.redirect('listed-date')
+})
+
+// Building listed date
+// ******************************************
+router.post('/listed-building/listed-date', function (req, res) {
+ res.redirect('grant-made')
+})
+
+// Finish the building task
+// ******************************************
+router.post('/listed-building/grant-made', function (req, res) {
+ req.session.data["enforcement-taskliststatus-building"] = "Complete";
+ res.redirect('../task-list')
+})
+
+
+
+// *****************************
+// TELL US ABOUT THE APPEAL SITE
+// *****************************
 
 // Site interest
 // ******************************************
@@ -98,11 +128,12 @@ router.post('/appeal-site/other-appeals', function (req, res) {
 
 
 
-
+// *****************************
 // CHOOSE YOUR GROUNDS OF APPEAL
 // *****************************
 
 // Which statements apply to your case?
+// ******************************************
 router.post('/grounds/grounds', function (req, res) {
 
  // Make a variable from session data
@@ -114,13 +145,9 @@ router.post('/grounds/grounds', function (req, res) {
  let groundF = req.session.data['grounds-6']
  let groundG = req.session.data['grounds-7']
 
- // default method for ground
- req.session.data["enforcement-reason-method"] = "text";
-
     // use textarea input
     // route depending on value
     if (groundA) {
-     req.session.data["ground-a-selected"] = "Yes";
      res.redirect('groundA')
     } else if (groundB) {
      res.redirect('groundB')
@@ -141,6 +168,7 @@ router.post('/grounds/grounds', function (req, res) {
 })
 
 // Ground A reasons
+// ******************************************
 router.post('/grounds/groundA', function (req, res) {
 
  // Make a variable from session data
@@ -151,61 +179,28 @@ router.post('/grounds/groundA', function (req, res) {
  let groundF = req.session.data['grounds-6']
  let groundG = req.session.data['grounds-7']
 
- // see what format they chose
- let format = req.session.data['enforcement-facts-format']
-
- if (format == "files") {
-   // use document files
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "files";
-
-   // use textarea input
-   // route depending on value
-   if (groundB) {
-     res.redirect('groundB')
-   } else if (groundC) {
-     res.redirect('groundC')
-   } else if (groundD) {
-     res.redirect('groundD')
-   } else if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('application')
-   }
-
+ // route depending on value
+ if (groundB) {
+   res.redirect('groundB')
+ } else if (groundC) {
+   res.redirect('groundC')
+ } else if (groundD) {
+   res.redirect('groundD')
+ } else if (groundE) {
+   res.redirect('groundE')
+ } else if (groundF) {
+   res.redirect('groundF')
+ } else if (groundG) {
+   res.redirect('groundG')
  } else {
-
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "text";
-
-   // use textarea input
-   // route depending on value
-   if (groundB) {
-     res.redirect('groundB')
-   } else if (groundC) {
-     res.redirect('groundC')
-   } else if (groundD) {
-     res.redirect('groundD')
-   } else if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('application')
-   }
-
+   res.redirect('application')
  }
 
 })
 
 
 // Ground B reasons
+// ******************************************
 router.post('/grounds/groundB', function (req, res) {
 
  // Make a variable from session data
@@ -266,6 +261,7 @@ router.post('/grounds/groundB', function (req, res) {
 
 
 // Ground C reasons
+// ******************************************
 router.post('/grounds/groundC', function (req, res) {
 
  // Make a variable from session data
@@ -319,7 +315,9 @@ router.post('/grounds/groundC', function (req, res) {
 
 })
 
+
 // Ground D reasons
+// ******************************************
 router.post('/grounds/groundD', function (req, res) {
 
  // Make a variable from session data
@@ -368,7 +366,9 @@ router.post('/grounds/groundD', function (req, res) {
 
 })
 
+
 // Ground E reasons
+// ******************************************
 router.post('/grounds/groundE', function (req, res) {
 
  // Make a variable from session data
@@ -412,7 +412,9 @@ router.post('/grounds/groundE', function (req, res) {
 
 })
 
+
 // Ground F reasons
+// ******************************************
 router.post('/grounds/groundF', function (req, res) {
 
  // res.redirect('grounds/upload-ground')
@@ -453,114 +455,99 @@ router.post('/grounds/groundF', function (req, res) {
 
 })
 
+
 // Ground G reasons
+// ******************************************
 router.post('/grounds/groundG', function (req, res) {
-
  res.redirect('application')
-
 })
 
 // Did you sumbit a planning application
-router.post('/application', function (req, res) {
+router.post('/grounds/application', function (req, res) {
 
- // Make a variable from session data
- let application = req.session.data['enforcement-application']
- let groundA = req.session.data['ground-a-selected']
+  // Make a variable from session data
+  let applicationMade = req.session.data['enforcement-application']
 
- if (application === 'Yes') {
-   res.redirect('application-date')
- } else {
-
-   if ( groundA === 'Yes') {
-     res.redirect('fees')
-   } else {
-     req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-     res.redirect('../task-list')
-   }
-
- }
+  // route depending on value
+  if (applicationMade === 'Yes') {
+    // application made, let’s ask for the date
+    res.redirect('application-date')
+  } else {
+    // no application, let’s move on
+    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
+    res.redirect('../task-list')
+  }
 
 })
 
 // Application decision
-router.post('/applicationdecision-v5', function (req, res) {
+// ******************************************
+router.post('/grounds/application-decision', function (req, res) {
 
  // Make a variable from session data
- let groundA = req.session.data['ground-a-selected']
  let decisionreceived = req.session.data['enforcement-application-decision']
 
  // route depending on value
  if (decisionreceived === 'Yes') {
-
    // decision received, let’s ask for the date
-   res.redirect('grounds/application-decision-date')
-
+   res.redirect('application-decision-date')
  // no decision, let’s move on
  } else {
-
-   if (groundA === 'Yes') {
-     res.redirect('grounds/fees')
-   } else {
-     req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-     res.redirect('task-list')
-   }
-
- }
-})
-
-// Fees paid
-router.post('/feespaid-v5', function (req, res) {
-
- // Make a variable from session data
- let feespaid = req.session.data['enforcement-fees-paid']
-
- // route depending on value
- if (feespaid === 'Yes') {
-
    req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
-   res.redirect('task-list')
-
- } else {
-   res.redirect('grounds/fees-exempt')
+   res.redirect('../task-list')
  }
+
 })
 
-// Ending the grounds tasks
-router.post('/endgrounds', function (req, res) {
+// When did you receive the decision?
+// ******************************************
+router.post('/grounds/application-decision-date', function (req, res) {
  req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
- res.redirect('task-list')
+ res.redirect('../task-list')
 })
 
-// Fee questions finished, ending the grounds tasks
-router.post('/grounds/fees-exempt', function (req, res) {
- req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
- res.redirect('task-list')
-})
-
-
+// ******************************************************
 //  TELL US HOW YOU WOULD PREFER US TO DECIDE YOUR APPEAL
 // ******************************************************
 
 // How would you like us to decide your appeal?
+// ******************************************
 router.post('/procedure/procedure', function (req, res) {
 
- // Make a variable from session data
- let how = req.session.data['enforcement-procedure']
+  // Make a variable from session data
+  let how = req.session.data['enforcement-procedure']
 
- // route depending on value
- if (how === 'Inquiry') {
+  // route depending on value
+  if (how === 'Inquiry') {
    res.redirect('inquiry')
- } else if (how === 'Hearing') {
+  } else if (how === 'Hearing') {
    res.redirect('hearing')
- } else {
+  } else {
    req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
    res.redirect('../task-list')
-
- }
+  }
 })
 
 // Back to tasklist after telling us why you want a hearing/inquiry
-router.post('/procedure/endprocedure', function (req, res) {
+// ******************************************
+router.post('/procedure/hearing', function (req, res) {
+
+  req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
+  res.redirect('../task-list')
+})
+
+// How many witnesses would you expect to give evidence at the inquiry?
+// ******************************************
+router.post('/procedure/inquiry-witnesses', function (req, res) {
+
+  let witnesses = req.session.data['enforcement-inquiry-witnesses']
+  req.session.data["enforcement-inquiry-witnesses"] = witnesses;
+  res.redirect('common-ground')
+})
+
+// Back to tasklist after telling us why you want a hearing/inquiry
+// ******************************************
+router.post('/procedure/common-ground', function (req, res) {
 
   let statementfile = req.session.data['enforcement-statement-common-ground']
   req.session.data["enforcement-statement-common-ground"] = statementfile;
@@ -569,15 +556,28 @@ router.post('/procedure/endprocedure', function (req, res) {
   res.redirect('../task-list')
 })
 
+// Back to tasklist after telling us why you want a hearing/inquiry
+// ******************************************
+router.post('/procedure/common-ground', function (req, res) {
+
+  req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
+  res.redirect('../task-list')
+})
+
+
+
+// *********************************
 //  UPLOAD DOCUMENTS FOR YOUR APPEAL
 // *********************************
 
 // Enforcement notice and additional plans
+// ******************************************
 router.post('/upload/enforcement-notice', function (req, res) {
   res.redirect('planning-obligation')
 })
 
 // Are you submitting a planning obligation
+// ******************************************
 router.post('/upload/planning-obligation', function (req, res) {
 
   // Make a variable from session data
@@ -591,8 +591,8 @@ router.post('/upload/planning-obligation', function (req, res) {
 })
 
 // Are you submitting a planning obligation
+// ******************************************
 router.post('/upload/planning-obligation-status', function (req, res) {
-
   // Make a variable from session data
   let obligationstatus = req.session.data['enforcement-planning-obligation-status']
   // route depending on value
@@ -605,11 +605,35 @@ router.post('/upload/planning-obligation-status', function (req, res) {
   }
 })
 
+// Do you have supporting documents?
+router.post('/upload/supporting-documents', function (req, res) {
 
+ // Make a variable from session data
+ let supportingdocuments = req.session.data['enforcement-supporting-documents']
+
+ // route depending on value
+ if (supportingdocuments === 'Yes') {
+   res.redirect('additional-documents')
+ } else {
+   req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
+   res.redirect('../task-list')
+ }
+})
+
+// ENF 00X
+// Additional documents
+router.post('/upload/additional-documents', function (req, res) {
+ req.session.data["enforcement-taskliststatus-appealdocuments"] = "Complete";
+ res.redirect('../task-list')
+})
+
+
+// *********************
 //  SKIP LINKS FOR INDEX
 // *********************
 
 // Quick link to appeal start
+// ******************************************
 router.get('/appeal-start', function (req, res) {
   // clears tasklist statuses
   req.session.data["enforcement-taskliststatus-contactdetails"] = "";
@@ -623,13 +647,12 @@ router.get('/appeal-start', function (req, res) {
   res.redirect('before-you-continue')
 })
 
-// ENF 00X
-// Enforcement
 // Quick link to a complete task list
+// ******************************************
 router.get('/tasks-done', function (req, res) {
   // Makes all tasklist statuses Complete
   req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
-  req.session.data["enforcement-taskliststatus-addpeople"] = "Complete";
+  req.session.data["enforcement-taskliststatus-building"] = "Complete";
   req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
   req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
   req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";

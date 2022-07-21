@@ -3,7 +3,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "How many witnesses would you expect to give evidence at the inquiry?" %}
+{% set title = "What is the grade of the building?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -23,26 +23,42 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <form method="post">
 
       <span class="govuk-caption-l">
-        Tell us how you would prefer us to decide your appeal
+        Tell us about the listed building
       </span>
 
-      {{ govukInput({
-        id: "enforcement-inquiry-witnesses",
-        name: "enforcement-inquiry-witnesses",
-        classes: "govuk-input--width-3",
-        label: {
-          text: title,
-          classes: "govuk-label--l",
-          isPageHeading: true
+      {{ govukRadios({
+        idPrefix: "building-grade",
+        name: "building-grade",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
         },
-        value: data["enforcement-inquiry-witnesses"]
+        items: [
+          {
+            value: "Grade I",
+            text: "Grade I",
+            checked: checked("building-grade", "Grade I")
+          },
+          {
+            value: "Grade II*",
+            text: "Grade II*",
+            checked: checked("building-grade", "Grade II*")
+          },
+          {
+            value: "Grade II",
+            text: "Grade II",
+            checked: checked("building-grade", "Grade II")
+          }
+        ]
       }) }}
 
       <div class="govuk-button-group">
@@ -63,6 +79,4 @@
 
   </div>
 </div>
-
-
 {% endblock %}
