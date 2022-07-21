@@ -525,6 +525,8 @@ router.post('/procedure/procedure', function (req, res) {
   } else {
    req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
    res.redirect('../task-list')
+   // var x = "enforcement-taskliststatus-proceduretype"
+   // finishProcedure(x, req, res)
   }
 })
 
@@ -545,18 +547,7 @@ router.post('/procedure/inquiry-witnesses', function (req, res) {
   res.redirect('common-ground')
 })
 
-// Back to tasklist after telling us why you want a hearing/inquiry
-// ******************************************
-router.post('/procedure/common-ground', function (req, res) {
-
-  let statementfile = req.session.data['enforcement-statement-common-ground']
-  req.session.data["enforcement-statement-common-ground"] = statementfile;
-
-  req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
-  res.redirect('../task-list')
-})
-
-// Back to tasklist after telling us why you want a hearing/inquiry
+// Back to tasklist after giving is your statement of common ground
 // ******************************************
 router.post('/procedure/common-ground', function (req, res) {
 
@@ -564,7 +555,19 @@ router.post('/procedure/common-ground', function (req, res) {
   res.redirect('../task-list')
 })
 
+// router.finishProcedure(req, res){
+//   req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
+//   res.redirect('../task-list')
+// }
 
+// function finishProcedure(x, req, res){
+//   // req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
+//   // res.redirect('../task-list')
+//   //
+//   req.session.data, x = "Complete";
+//   // set(req.session.data, x , 'Complete')
+//   res.redirect('../task-list')
+// }
 
 // *********************************
 //  UPLOAD DOCUMENTS FOR YOUR APPEAL
