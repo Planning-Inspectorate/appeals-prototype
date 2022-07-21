@@ -637,7 +637,7 @@ router.post('/upload/additional-documents', function (req, res) {
 router.get('/appeal-start', function (req, res) {
   // clears tasklist statuses
   req.session.data["enforcement-taskliststatus-contactdetails"] = "";
-  req.session.data["enforcement-taskliststatus-addpeople"] = "";
+  req.session.data["enforcement-taskliststatus-building"] = "";
   req.session.data["enforcement-taskliststatus-appealsite"] = "";
   req.session.data["enforcement-taskliststatus-grounds"] = "";
   req.session.data["enforcement-taskliststatus-proceduretype"] = "";
