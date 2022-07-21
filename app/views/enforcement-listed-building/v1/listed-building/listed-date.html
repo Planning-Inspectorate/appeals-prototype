@@ -1,12 +1,9 @@
-<!-- needs page ref -->
-<!-- {% set pageref = "BYS-002" %} -->
-
 {% extends "layout.html" %}
 
-{% set title = "Do you have any other documents to support your appeal?" %}
+{% set title = "What date was the building first listed?" %}
 
 {% block pageTitle %}
-  {{title}} - GOV.UK
+  {{title}} - Tell us about the appeal site - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +11,7 @@
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
   {{ govukBackLink({
     text: "Back",
@@ -30,12 +27,12 @@
       <form method="post">
 
         <span class="govuk-caption-l">
-          Upload documents for your appeal
+          Tell us about the listed building
         </span>
 
-        {{ govukRadios({
-          idPrefix: "enforcement-supporting-documents",
-          name: "enforcement-supporting-documents",
+        {{ govukDateInput({
+          id: "listed-building-listed-date",
+          namePrefix: "listed-building-listed-date",
           fieldset: {
             legend: {
               text: title,
@@ -45,20 +42,24 @@
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("enforcement-supporting-documents", "Yes")
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["listed-building-listed-date-day"]
             },
             {
-              value: "No",
-              text: "No",
-              checked: checked("enforcement-supporting-documents", "No")
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["listed-building-listed-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["listed-building-listed-date-year"]
             }
           ]
         }) }}
 
         <div class="govuk-button-group">
-
           {{ govukButton({
             text: "Save and continue"
           }) }}
@@ -68,7 +69,6 @@
             text: "Save and come back later",
             classes: "govuk-button--secondary"
           }) }}
-
         </div>
 
       </form>

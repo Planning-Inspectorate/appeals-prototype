@@ -49,8 +49,6 @@
           You can upload documents to support your appeal later.
         <p>
 
-        {% if data['enforcement-reason-method'] == 'text' %}
-
         <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="3000">
 
           <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" rows="5" aria-describedby="enforcement-ground-b-reasons-hint"></textarea>
@@ -61,67 +59,21 @@
 
         </div>
 
-        <!-- <p class="govuk-body">
-          <a href="groundB?enforcement-reason-method=file" class="govuk-link">
-            Or upload your reasons in a document
-          </a>
-        </p> -->
+        <div class="govuk-button-group">
 
-        {% else %}
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
 
-          <!-- upload files -->
-          <label class="govuk-label govuk-label--m" for="enforcement-ground-b-reasons">
-            Drag and drop or choose files
-          </label>
-          <input class="govuk-file-upload pins-file-upload" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" type="file" multiple>
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
 
-        {{ govukInsetText({
-          text: "File size should be no more than 15MB"
-        }) }}
+        </div>
 
-        {{ govukDetails({
-          summaryText: "Help with file formats",
-          html: '
-            <p class="govuk-body">
-              Your file must be in one of the following formats:
-            <p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>pdf</li>
-              <li>doc</li>
-              <li>docx</li>
-              <li>tif</li>
-              <li>tiff</li>
-              <li>jpg</li>
-              <li>jpeg</li>
-              <li>png</li>
-            </ul>
-          '
-        }) }}
-
-        <!-- <p class="govuk-body">
-          <a href="groundB?enforcement-reason-method=text" class="govuk-link">
-            Or explain your reasons using a text box
-          </a>
-        </p> -->
-
-      {% endif %}
-
-
-      <div class="govuk-button-group">
-
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
-
-        {{ govukButton({
-          href: "",
-          text: "Save and come back later",
-          classes: "govuk-button--secondary"
-        }) }}
-
-      </div>
-
+    </div>
   </div>
-</div>
 
 {% endblock %}
