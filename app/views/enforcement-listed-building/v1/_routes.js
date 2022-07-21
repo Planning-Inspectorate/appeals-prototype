@@ -18,10 +18,10 @@ router.post('/named-on-notice/named-on-notice', function (req, res) {
   let identity = req.session.data['enforcement-identity']
 
   // route depending on value
-  if (identity === 'company') {
-    res.redirect('company-name')
-  } else {
+  if (identity === 'person') {
     res.redirect('person-name')
+  } else {
+    res.redirect('company-name')
   }
 
 })
@@ -534,6 +534,8 @@ router.post('/procedure/procedure', function (req, res) {
 // ******************************************
 router.post('/procedure/hearing', function (req, res) {
 
+  // var x = "enforcement-taskliststatus-proceduretype"
+  // finishProcedure(x, req, res)
   req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
   res.redirect('../task-list')
 })
@@ -541,7 +543,6 @@ router.post('/procedure/hearing', function (req, res) {
 // How many witnesses would you expect to give evidence at the inquiry?
 // ******************************************
 router.post('/procedure/inquiry-witnesses', function (req, res) {
-
   let witnesses = req.session.data['enforcement-inquiry-witnesses']
   req.session.data["enforcement-inquiry-witnesses"] = witnesses;
   res.redirect('common-ground')
@@ -550,9 +551,10 @@ router.post('/procedure/inquiry-witnesses', function (req, res) {
 // Back to tasklist after giving is your statement of common ground
 // ******************************************
 router.post('/procedure/common-ground', function (req, res) {
-
   req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
   res.redirect('../task-list')
+  // var x = "enforcement-taskliststatus-proceduretype";
+  // finishProcedure(x, req, res)
 })
 
 // router.finishProcedure(req, res){
@@ -564,9 +566,8 @@ router.post('/procedure/common-ground', function (req, res) {
 //   // req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
 //   // res.redirect('../task-list')
 //   //
-//   req.session.data, x = "Complete";
-//   // set(req.session.data, x , 'Complete')
-//   res.redirect('../task-list')
+//   // req.session.data[x] = 'Complete';
+//   // res.redirect('../task-list')
 // }
 
 // *********************************
