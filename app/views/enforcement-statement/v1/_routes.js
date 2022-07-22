@@ -28,6 +28,8 @@ router.post('/update/grounds', function (req, res) {
     res.redirect('reasons-e')
   } else if (grounds.includes(groundF)) {
     res.redirect('reasons-f')
+  } else if (grounds.includes(groundG)) {
+    res.redirect('reasons-g')
   } else {
     res.redirect('./')
   }
