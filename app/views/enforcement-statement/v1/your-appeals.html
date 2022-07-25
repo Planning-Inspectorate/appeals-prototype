@@ -15,13 +15,19 @@
           Your appeals
         </h1>
 
+        <h2 class="govuk-heading-m">
+          Submitted appeals
+        </h2>
+
         {{ govukTable({
           caption: '',
           captionClasses: 'govuk-table__caption--m',
           firstCellIsHeader: false,
+          classes: 'govuk-!-margin-bottom-9',
           head: [
             {
-              html: 'Reference'
+              html: 'Planning application number',
+              classes: 'govuk-!-width-one-quarter'
             },
             {
               html: 'Type of application'
@@ -31,7 +37,8 @@
             }
             ,
             {
-              html: 'Action'
+              html: 'Action',
+              format: 'numeric'
             }
           ],
           rows: [
@@ -46,22 +53,91 @@
                 html: 'City of Bradford Metropolitan District Council'
               },
               {
-                html: '<a href="update/">Update your statement</a>'
+                html: '<a href="update/">Update your statement</a>',
+                format: 'numeric'
+              }
+            ],
+            [
+              {
+                html: '987654321'
+              },
+              {
+                html: 'Enforcement notice'
+              },
+              {
+                html: 'City of Bradford Metropolitan District Council'
+              },
+              {
+                html: '<a href="#0">Add final comments</a>',
+                format: 'numeric'
               }
             ]
           ]
         }) }}
 
 
-        <div class="team-questions govuk-!-width-two-thirds">
-          <ul class="govuk-list govuk-list--bullet">
-            <li>Do we need to have a "dashboard" for everyone or just people with multiple cases? Would it not be easier/more consistent to always have one?</li>
-            <li>If we always have this dashboard, isn't this just an account? Why did we decide to not have accounts when the old system does?</li>
-            <li>If we always have one can we track an appeal, view details, add statement and final comments all in one place?</li>
-            <li>Should we link to this page from the confirmation page at the end of submission? For example, <a href="#0">View and update your appeal</a>.</li>
-            <li>Is there an appeal reference to use as the unique identifier in the table?</li>
-          </ul>
-        </div>
+
+
+        <h2 class="govuk-heading-m">
+          Incomplete appeals
+        </h2>
+        <p>Select an appeal to continue with it or <a href="/appellant-submission/v13/">start a new planning appeal</a>.</p>
+
+        {{ govukTable({
+          caption: '',
+          captionClasses: 'govuk-table__caption--m',
+          firstCellIsHeader: false,
+          classes: 'govuk-!-margin-bottom-9',
+          head: [
+            {
+              html: 'Planning application number',
+              classes: 'govuk-!-width-one-quarter'
+            },
+            {
+              html: 'Type of application'
+            },
+            {
+              html: 'Local planning department'
+            }
+            ,
+            {
+              html: 'Days left to submit appeal',
+              format: 'numeric'
+            }
+          ],
+          rows: [
+            [
+              {
+                html: '<a href="#0">987654321</a>'
+              },
+              {
+                html: 'Full planning'
+              },
+              {
+                html: 'City of Bradford Metropolitan District Council'
+              },
+              {
+                html: '17 days',
+                format: 'numeric'
+              }
+            ],
+            [
+              {
+                html: '-'
+              },
+              {
+                html: 'Enforcement appeal'
+              },
+              {
+                html: 'City of Bradford Metropolitan District Council'
+              },
+              {
+                html: '19 days',
+                format: 'numeric'
+              }
+            ]
+          ]
+        }) }}
 
     </div>
   </div>
