@@ -10,6 +10,9 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Choose your grounds of appeal
+      </span>
       <h1 class="govuk-heading-l">
         Ground G reasons
       </h1>
@@ -27,9 +30,9 @@
       <form method="post">
 
         {{ govukCharacterCount({
-          name: 'statement-ground-g',
-          id: 'statement-ground-g',
-          value: data['statement-ground-g'],
+          name: 'ground-g',
+          id: 'ground-g',
+          value: data['ground-g'],
           maxwords: '1000',
           rows: 15,
           label: {
