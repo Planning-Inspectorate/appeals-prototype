@@ -10,12 +10,15 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Choose your grounds of appeal
+      </span>
       <h1 class="govuk-heading-l">
-        Ground G reasons
+        Ground E reasons
       </h1>
 
       {{ govukInsetText({
-        html: 'I need more time to comply with the enforcement notice.'
+        html: 'Copies of the enforcement notice were not legally served to the right people.'
       }) }}
 
       <p>You do not need to repeat the local planning authority&rsquo;s reasons for issuing the enforcement notice.</p>
@@ -27,13 +30,13 @@
       <form method="post">
 
         {{ govukCharacterCount({
-          name: 'statement-ground-g',
-          id: 'statement-ground-g',
-          value: data['statement-ground-g'],
+          name: 'ground-e',
+          id: 'ground-e',
+          value: data['ground-e'],
           maxwords: '1000',
           rows: 15,
           label: {
-            html: 'What are your reasons for choosing Ground G?',
+            html: 'What are your reasons for choosing Ground E?',
             classes: 'govuk-label--m govuk-!-margin-top-6',
             isPageHeading: false
           }

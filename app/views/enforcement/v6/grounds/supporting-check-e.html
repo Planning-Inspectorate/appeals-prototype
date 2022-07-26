@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        
+        <span class="govuk-caption-l">
+          Choose your grounds of appeal
+        </span>
+        {{ govukRadios({
+          idPrefix: 'supporting-check-e',
+          name: 'supporting-check-e',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Do you want to upload supporting documents for Ground E?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              html: 'Yes',
+              value: 'Yes',
+              checked: checked('supporting-check-e','Yes')
+            },
+            {
+              html: 'No',
+              value: 'No',
+              checked: checked('supporting-check-e','No')
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

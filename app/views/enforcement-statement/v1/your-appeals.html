@@ -26,7 +26,7 @@
           classes: 'govuk-!-margin-bottom-9',
           head: [
             {
-              html: 'Planning application number',
+              html: 'Reference number',
               classes: 'govuk-!-width-one-quarter'
             },
             {
@@ -34,8 +34,7 @@
             },
             {
               html: 'Local planning department'
-            }
-            ,
+            },
             {
               html: 'Action',
               format: 'numeric'
@@ -44,7 +43,7 @@
           rows: [
             [
               {
-                html: '123456789'
+                html: 'ENF13579F'
               },
               {
                 html: 'Enforcement notice'
@@ -54,21 +53,6 @@
               },
               {
                 html: '<a href="update/">Update your statement</a>',
-                format: 'numeric'
-              }
-            ],
-            [
-              {
-                html: '987654321'
-              },
-              {
-                html: 'Enforcement notice'
-              },
-              {
-                html: 'City of Bradford Metropolitan District Council'
-              },
-              {
-                html: '<a href="#0">Add final comments</a>',
                 format: 'numeric'
               }
             ]
@@ -90,7 +74,7 @@
           classes: 'govuk-!-margin-bottom-9',
           head: [
             {
-              html: 'Planning application number',
+              html: 'Reference number',
               classes: 'govuk-!-width-one-quarter'
             },
             {
@@ -103,12 +87,16 @@
             {
               html: 'Days left to submit appeal',
               format: 'numeric'
+            },
+            {
+              html: 'Action',
+              format: 'numeric'
             }
           ],
           rows: [
             [
               {
-                html: '<a href="#0">987654321</a>'
+                html: '123456789'
               },
               {
                 html: 'Full planning'
@@ -119,20 +107,28 @@
               {
                 html: '17 days',
                 format: 'numeric'
+              },
+              {
+                html: '<a href="#0">Continue</a>',
+                format: 'numeric'
               }
             ],
             [
               {
-                html: '-'
+                html: 'ENF246810P'
               },
               {
-                html: 'Enforcement appeal'
+                html: 'Enforcement notice'
               },
               {
                 html: 'City of Bradford Metropolitan District Council'
               },
               {
                 html: '19 days',
+                format: 'numeric'
+              },
+              {
+                html: '<a href="#0">Continue</a>',
                 format: 'numeric'
               }
             ]

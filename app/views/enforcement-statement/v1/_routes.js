@@ -319,9 +319,7 @@ router.post('/update/supporting-upload-e', function (req, res) {
     res.redirect('./')
   } else {
 
-    if (grounds.includes(groundC)) {
-      res.redirect('reasons-c')
-    } else if (grounds.includes(groundF)) {
+    if (grounds.includes(groundF)) {
       res.redirect('reasons-f')
     } else if (grounds.includes(groundG)) {
       res.redirect('reasons-g')
@@ -380,9 +378,7 @@ router.post('/update/supporting-upload-f', function (req, res) {
     res.redirect('./')
   } else {
 
-    if (grounds.includes(groundC)) {
-      res.redirect('reasons-c')
-    } else if (grounds.includes(groundG)) {
+    if (grounds.includes(groundG)) {
       res.redirect('reasons-g')
     } else {
       res.redirect('./')
