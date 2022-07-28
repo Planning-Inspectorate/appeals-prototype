@@ -183,6 +183,59 @@ service-start{% extends "layout.html" %}
                     Designing a pattern to help users save their progress during an appeal submission and later return to their appeal.
                   </p>
 
+                  <!-- save and return version 4 -->
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                    {{ govukTag({
+                      classes: "govuk-tag--purple govuk-!-margin-bottom-3",
+                      text: "For development"
+                    }) }}
+
+                    {{ govukTag({
+
+                      classes: "govuk-tag--blue govuk-!-margin-bottom-3",
+                      text: "Done"
+
+                    }) }}
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      ‘Save and return’ - version 4
+                    </h3>
+
+                    <ul class="govuk-list govuk-list--bullet">
+
+                      <li>
+                        <a href="/save-progress/v4/appeal-saved">
+                          Your appeal has been saved
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v4/return-email">
+                          Subject: Return to appeal a planning decision
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/save-progress/v4/email-with-code">
+                          Subject: Your code to continue with the appeal
+                        </a>
+                      </li>
+                    </ul>
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (2)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4683" target="_blank">AS-4683 - Save progress and return to appeal submissions iterations (opens in new tab)</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4621" target="_blank">AS-4621 - Save progress and return to appeal submissions (opens in new tab)</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+
                   <!-- save and return version 3 -->
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 

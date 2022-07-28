@@ -88,6 +88,7 @@ require('./routes/interested-party/upload-comments.js')(router);
 require('./routes/save-progress/v1/v1.js')(router);
 require('./routes/save-progress/v2/v2.js')(router);
 require('./routes/save-progress/v3/v3.js')(router);
+require('./routes/save-progress/v4/v4.js')(router);
 
 // Add your routes above the module.exports line
 module.exports = router
