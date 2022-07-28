@@ -34,8 +34,8 @@
         </span>
 
         {{ govukDateInput({
-          id: "bys-"+version+"-enforcementeffectivedate",
-          namePrefix: "bys-"+version+"-enforcementeffectivedate",
+          id: "bys-enforcement-effective-date",
+          namePrefix: "bys-enforcement-effective-date",
           fieldset: {
             legend: {
               text: title,
@@ -47,17 +47,17 @@
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data["bys-"+version+"-enforcementeffectivedate-day"]
+              value: data["bys-enforcement-effective-date-day"]
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data["bys-"+version+"-enforcementeffectivedate-month"]
+              value: data["bys-enforcement-effective-date-month"]
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data["bys-"+version+"-enforcementeffectivedate-year"]
+              value: data["bys-enforcement-effective-date-year"]
             }
           ]
         }) }}
