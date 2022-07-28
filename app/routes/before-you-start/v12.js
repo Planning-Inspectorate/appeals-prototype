@@ -94,9 +94,9 @@ module.exports = function (router) {
    router.post('/enforcementeffectivedatecheck-v12', function (req, res) {
 
      // get enforcement issue date from user
-     var enteredDay = req.session.data['bys-'+v+'-enforcementeffectivedate-day'];
-     var enteredMonth = req.session.data['bys-'+v+'-enforcementeffectivedate-month'];
-     var enteredYear = req.session.data['bys-'+v+'-enforcementeffectivedate-year'];
+     var enteredDay = req.session.data['bys-enforcement-effective-date-day'];
+     var enteredMonth = req.session.data['bys-enforcement-effective-date-month'];
+     var enteredYear = req.session.data['bys-enforcement-effective-date-year'];
      var enteredDate = new Date(enteredYear, enteredMonth - 1, enteredDay);
 
      // work out whether intent is nceessary
@@ -105,15 +105,18 @@ module.exports = function (router) {
      var deadlineDate = new Date(enteredDate);
      deadlineDate.setDate(deadlineDate.getDate());
 
-     req.session.data['bys-'+v+'-deadline-day'] = deadlineDate.getDate();
-     req.session.data['bys-'+v+'-deadline-month'] = deadlineDate.getMonth() + 1;
-     req.session.data['bys-'+v+'-deadline-year'] = deadlineDate.getFullYear();
+     req.session.data['bys-enforcement-effective-date-day'] = deadlineDate.getDate();
+     req.session.data['bys-enforcement-effective-date-month'] = deadlineDate.getMonth() + 1;
+     req.session.data['bys-enforcement-effective-date-year'] = deadlineDate.getFullYear();
 
      var todaysDate = new Date();
 
      if (todaysDate > deadlineDate) {
+       req.session.data['enforcement-effective'] = 'past';
        res.redirect(base+'appeal-intent')
+
      } else {
+       req.session.data['enforcement-effective'] = 'future';
        // skip the enforcement question…
        res.redirect(base+'check-answers')
      }
