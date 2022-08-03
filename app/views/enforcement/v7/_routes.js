@@ -460,7 +460,7 @@ const router = new express.Router()
     let how = req.session.data['enforcement-procedure']
 
     // route depending on value
-    if (how === 'Written representations') {
+    if (how === 'Written') {
       req.session.data["enforcement-taskliststatus-proceduretype"] = "Complete";
       res.redirect('/enforcement/v7/task-list')
     } else if (how === 'Hearing') {
