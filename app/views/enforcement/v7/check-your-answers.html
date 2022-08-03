@@ -33,7 +33,7 @@
         </h1>
 
         <!-- contact details -->
-        <h2 class="govuk-heading-l">Tell us who was on the enforcement notice</h2>
+        <h2 class="govuk-heading-m">Tell us who was on the enforcement notice</h2>
 
         <dl class="govuk-summary-list">
 
@@ -87,7 +87,7 @@
         </dl>
 
         <!-- appeal site -->
-        <h2 class="govuk-heading-l govuk-!-margin-top-9">Tell us about the appeal site</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Tell us about the appeal site</h2>
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -248,7 +248,7 @@
         </dl>
 
         <!-- grounds of appeal -->
-        <h2 class="govuk-heading-l govuk-!-margin-top-0">Choose your grounds of appeal</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-0">Choose your grounds of appeal</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-0">
           <div class="govuk-summary-list__row">
@@ -550,6 +550,7 @@
               </ul>
 
             {% endif %}
+
           </dl>
 
           <hr class="pins-table-divider">
@@ -596,7 +597,7 @@
 
           {% else %}
 
-          <div class="govuk-summary-list__row">
+          <div class="govuk-summary-list__row  pins-summary-list__row--last">
             <dt class="govuk-summary-list__key">
               Planning application submitted
             </dt>
@@ -614,7 +615,7 @@
 
           <!-- if ground a, show fees answer -->
           {% if data['grounds-1'] %}
-            <div class="govuk-summary-list__row  pins-summary-list__row--last">
+            <div class="govuk-summary-list__row pins-summary-list__row--last">
               <dt class="govuk-summary-list__key">
                 Fee paid for the same development
               </dt>
@@ -632,10 +633,12 @@
 
 
         <!-- appeal procedure -->
-        <h2 class="govuk-heading-l govuk-!-margin-top-9">Tell us how you would prefer us to decide your appeal</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Tell us how you would prefer us to decide your appeal</h2>
 
         <dl class="govuk-summary-list">
           {% if data['enforcement-procedure'] == "Written" %}
+            <div class="govuk-summary-list__row pins-summary-list__row--last">
+          {% elseif data['enforcement-procedure'] == fasle %}
             <div class="govuk-summary-list__row pins-summary-list__row--last">
           {% else %}
             <div class="govuk-summary-list__row">
@@ -736,7 +739,7 @@
         </dl>
 
         <!-- uploaded documents -->
-        <h2 class="govuk-heading-l govuk-!-margin-top-9">Upload documents for your appeal</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Upload documents for your appeal</h2>
         <dl class="govuk-summary-list">
 
           <!-- enforcement notice and plans -->
