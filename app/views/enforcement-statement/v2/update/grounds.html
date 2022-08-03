@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+      {# Hack to have a hidden Ground A submitted #}
+      <style>
+        .govuk-checkboxes__item:first-of-type { display: none }
+      </style>
+
+        {{ govukCheckboxes({
+          idPrefix: 'statement-grounds',
+          name: 'statement-grounds',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Which statements apply to your case?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            html: 'Ground A cannot be changed now your appeal has been submitted.
+            <br>
+            Select all that apply.'
+          },
+          items: [
+            {
+              value: 'Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.',
+              checked: true
+            },
+            {
+              html: 'Ground B: The alleged breach of planning permission has not happened.',
+              value: 'Ground B: The alleged breach of planning permission has not happened.',
+              checked: checked('statement-grounds','Ground B: The alleged breach of planning permission has not happened.')
+            },
+            {
+              html: 'Ground C: The alleged breach does not require planning permission.',
+              value: 'Ground C: The alleged breach does not require planning permission.',
+              checked: checked('statement-grounds','Ground C: The alleged breach does not require planning permission.')
+            },
+            {
+              html: 'Ground D: It’s too late for the local authority to serve the enforcement notice.',
+              value: 'Ground D: It’s too late for the local authority to serve the enforcement notice.',
+              checked: checked('statement-grounds','Ground D: It’s too late for the local authority to serve the enforcement notice.')
+            },
+            {
+              html: 'Ground E: Copies of the enforcement notice were not legally served to the right people.',
+              value: 'Ground E: Copies of the enforcement notice were not legally served to the right people.',
+              checked: checked('statement-grounds','Ground E: Copies of the enforcement notice were not legally served to the right people.')
+            },
+            {
+              html: 'Ground F: The steps to comply with the enforcement notice are excessive.',
+              value: 'Ground F: The steps to comply with the enforcement notice are excessive.',
+              checked: checked('statement-grounds','Ground F: The steps to comply with the enforcement notice are excessive.')
+            },
+            {
+              html: 'Ground G: I need more time to comply with the enforcement notice.',
+              value: 'Ground G: I need more time to comply with the enforcement notice.',
+              checked: checked('statement-grounds','Ground G: I need more time to comply with the enforcement notice.')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

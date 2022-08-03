@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %} #}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukInput({
+          id: '_return',
+          name: '_return',
+          value: data['_return'],
+          classes: 'govuk-input--width-4',
+          label: {
+            html: 'Enter the code we sent to your email address',
+            classes: 'govuk-label--l',
+            isPageHeading: true
+          },
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+        <p><a href="#0">Not received the code?</a></p>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
