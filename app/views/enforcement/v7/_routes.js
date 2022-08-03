@@ -616,7 +616,7 @@ const router = new express.Router()
     // Update with appeal grounds dummy data
     req.session.data["grounds-1"] = "GroundA";
     // Update with appeal procedure dummy data
-    req.session.data["enforcement-procedure"] = "Written representations";
+    req.session.data["enforcement-procedure"] = "Written";
     // Update with appeal upload dummy data
     req.session.data["enforcement-planning-obligation"] = "No";
     req.session.data["enforcement-uploaded-notice"] = "Providence-enforcement-notice.pdf";
