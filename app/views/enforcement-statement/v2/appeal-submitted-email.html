@@ -1,0 +1,93 @@
+{% extends "layout-email.html" %}
+
+{% block content %}
+  <p>
+    <strong>Subject:</strong> Your appeal is in progress - 9617 The Avenue, XM26 7YS
+    <br>
+    <strong>From:</strong> Appeal an enforcement notice
+  </p>
+
+  <img src="{{ asset_path }}images/pi-logo.png" width="150" class="govuk-!-margin-top-5"/>
+
+  <div class="govuk-grid-row govuk-!-margin-top-5">
+    <div class="govuk-grid-column-three-quarters">
+
+      <p>Appeal site: ((appeal site address))</p>
+
+      <p>Dear ((appellant named on the enforcement notice))</p>
+
+      <p>We've checked your enforcement notice appeal and have everything we need from you.</p>
+
+      <p>Your appeal is now in progress. This appeal will be decided by written representations.</p>
+
+      <h2 class="govuk-heading-m">
+        Appeal timeline
+      </h2>
+      <p>
+        Receive copy of local planning authority questionnaire: ((date 2 weeks after the appeal start))
+        <br>
+        Statement of case deadline: ((date 6 weeks after appeal start))
+        <br>
+        Final comments deadline: ((date 9 weeks after appeal start))
+        <br>
+        Planning obligation: ((date 9 weeks after this letter))
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Your appeal reference
+      </h2>
+      <p>((reference no))</p>
+
+      <h2 class="govuk-heading-m">
+        Your case officer
+      </h2>
+      <p>
+        ((case officer name))
+        <br>
+        ((case officer email address))
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Appeal start date
+      </h2>
+      <p>((date))</p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>((Local planning authority)) completes a questionnaire about your enforcement notice appeal and submits their case file. They'll forward a copy of this to you, for your information. This should happen in the next week.</p>
+
+      <p>Then the Inspector will begin considering your appeal. We’ll contact you if you need to give the Inspector access during their site visit.</p>
+
+      <p>You can expect a decision 48 weeks from the date you submitted your appeal.</p>
+
+      <h2 class="govuk-heading-m">
+        What you need to do
+      </h2>
+      <p>If you are happy with your appeal, you don’t need to do anything. However, you can change your appeal statement any number of times up to 6 weeks after your appeal start date. You can change your grounds of appeal (except ground A) and add other reasons, comments and documents to support your appeal. These will be shared with your local planning authority. </p>
+
+      <p>If you told us you intend on submitting a planning obligation, send a certified copy to us no later than 9 weeks from the date of this letter. </p>
+
+      <p>You can apply for costs if anyone involved in your appeal behaves unreasonably, for example missing deadlines. Costs can be awarded against you too. </p>
+
+      <p>
+        <a href="return/">
+          Change or update your appeal statement
+        </a>
+      </p>
+
+      <p>If you contact us about your appeal, you should quote  the appeal site address and post code. </p>
+
+      <p>
+        <br>
+        Thank you,
+        <br>
+        The Planning Inspectorate
+        <br>
+        north1@planninginspectorate.gov.uk
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

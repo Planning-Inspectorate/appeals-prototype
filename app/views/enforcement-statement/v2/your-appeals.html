@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %} #}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-l">
+          Your appeals
+        </h1>
+
+        <h2 class="govuk-heading-m">
+          Submitted appeals
+        </h2>
+
+        {{ govukTable({
+          caption: '',
+          captionClasses: 'govuk-table__caption--m',
+          firstCellIsHeader: false,
+          classes: 'govuk-!-margin-bottom-9',
+          head: [
+            {
+              html: 'Reference number',
+              classes: 'govuk-!-width-one-quarter'
+            },
+            {
+              html: 'Type of application'
+            },
+            {
+              html: 'Local planning department'
+            },
+            {
+              html: 'Action',
+              format: 'numeric'
+            }
+          ],
+          rows: [
+            [
+              {
+                html: 'ENF13579F'
+              },
+              {
+                html: 'Enforcement notice'
+              },
+              {
+                html: 'City of Bradford Metropolitan District Council'
+              },
+              {
+                html: '<a href="update/">Update your statement</a>',
+                format: 'numeric'
+              }
+            ]
+          ]
+        }) }}
+
+
+
+
+        <h2 class="govuk-heading-m">
+          Incomplete appeals
+        </h2>
+        <p>Select an appeal to continue with it or <a href="/appellant-submission/v13/">start a new planning appeal</a>.</p>
+
+        {{ govukTable({
+          caption: '',
+          captionClasses: 'govuk-table__caption--m',
+          firstCellIsHeader: false,
+          classes: 'govuk-!-margin-bottom-9',
+          head: [
+            {
+              html: 'Reference number',
+              classes: 'govuk-!-width-one-quarter'
+            },
+            {
+              html: 'Type of application'
+            },
+            {
+              html: 'Local planning department'
+            }
+            ,
+            {
+              html: 'Days left to submit appeal',
+              format: 'numeric'
+            },
+            {
+              html: 'Action',
+              format: 'numeric'
+            }
+          ],
+          rows: [
+            [
+              {
+                html: '123456789'
+              },
+              {
+                html: 'Full planning'
+              },
+              {
+                html: 'City of Bradford Metropolitan District Council'
+              },
+              {
+                html: '17 days',
+                format: 'numeric'
+              },
+              {
+                html: '<a href="#0">Continue</a>',
+                format: 'numeric'
+              }
+            ],
+            [
+              {
+                html: 'ENF246810P'
+              },
+              {
+                html: 'Enforcement notice'
+              },
+              {
+                html: 'City of Bradford Metropolitan District Council'
+              },
+              {
+                html: '19 days',
+                format: 'numeric'
+              },
+              {
+                html: '<a href="#0">Continue</a>',
+                format: 'numeric'
+              }
+            ]
+          ]
+        }) }}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

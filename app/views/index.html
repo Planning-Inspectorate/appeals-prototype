@@ -120,7 +120,21 @@ service-start{% extends "layout.html" %}
                       text: "Ready for UR"
                     }) }}
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
-                      Enforcement appeal statement
+                      Enforcement appeal statement v2
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li><a href="/enforcement-statement/v2/appeal-started-email">Email: Appeal submitted</a></li>
+                      <li><a href="/enforcement-statement/v2/update/">Statement overview</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
+                      text: "Ready for UR"
+                    }) }}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Enforcement appeal statement v1
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
                       <li><a href="/enforcement-statement/v1/appeal-started-email">Email: Appeal submitted</a></li>
