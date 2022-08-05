@@ -24,11 +24,10 @@
     <div class="govuk-grid-column-three-quarters">
       <form method="post">
 
-        {{ govukCharacterCount({
+        {{ govukTextarea({
           name: 'statement-ground-a',
           id: 'statement-ground-a',
           value: data['statement-ground-a'] |e,
-          maxwords: '1000',
           rows: 15,
           label: {
             html: 'What are your reasons for choosing Ground A?',
