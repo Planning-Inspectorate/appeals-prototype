@@ -363,8 +363,6 @@ const router = new express.Router()
   //---- /SUPPORTING DOCS
 
 
-
-
   // Did you sumbit a planning application
   router.post('/grounds/application', function (req, res) {
 
@@ -387,7 +385,11 @@ const router = new express.Router()
 
   })
 
-
+  // Application decision
+  // ******************************************
+  router.post('/grounds/application-date', function (req, res) {
+   res.redirect('application-decision')
+  })
 
   // Application decision
   router.post('/grounds/application-decision', function (req, res) {

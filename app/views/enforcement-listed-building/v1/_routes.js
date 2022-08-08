@@ -162,7 +162,7 @@ router.post('/grounds/grounds', function (req, res) {
     } else if (groundG) {
      res.redirect('groundG')
     } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
     }
 
 })
@@ -193,7 +193,7 @@ router.post('/grounds/groundA', function (req, res) {
  } else if (groundG) {
    res.redirect('groundG')
  } else {
-   res.redirect('application')
+   res.redirect('supporting-check')
  }
 
 })
@@ -231,7 +231,7 @@ router.post('/grounds/groundB', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  } else {
@@ -252,7 +252,7 @@ router.post('/grounds/groundB', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  }
@@ -289,7 +289,7 @@ router.post('/grounds/groundC', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  } else {
@@ -308,7 +308,7 @@ router.post('/grounds/groundC', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  }
@@ -342,7 +342,7 @@ router.post('/grounds/groundD', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  } else {
@@ -359,7 +359,7 @@ router.post('/grounds/groundD', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  }
@@ -390,7 +390,7 @@ router.post('/grounds/groundE', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  } else {
@@ -405,7 +405,7 @@ router.post('/grounds/groundE', function (req, res) {
    } else if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  }
@@ -435,7 +435,7 @@ router.post('/grounds/groundF', function (req, res) {
    if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  } else {
@@ -448,7 +448,7 @@ router.post('/grounds/groundF', function (req, res) {
    if (groundG) {
      res.redirect('groundG')
    } else {
-     res.redirect('application')
+     res.redirect('supporting-check')
    }
 
  }
@@ -459,8 +459,28 @@ router.post('/grounds/groundF', function (req, res) {
 // Ground G reasons
 // ******************************************
 router.post('/grounds/groundG', function (req, res) {
- res.redirect('application')
+  res.redirect('supporting-check')
 })
+
+
+// Supporting documents
+// ******************************************
+router.post('/grounds/supporting-check', function (req, res) {
+  let check = req.session.data['supporting-check']
+
+  if (check == 'Yes') {
+    res.redirect('supporting-upload')
+  } else {
+    res.redirect('application')
+  }
+})
+
+// Upload > applications
+// ******************************************
+router.post('/grounds/supporting-upload', function (req, res) {
+  res.redirect('application')
+})
+
 
 // Did you sumbit a planning application
 router.post('/grounds/application', function (req, res) {
@@ -477,6 +497,14 @@ router.post('/grounds/application', function (req, res) {
     req.session.data["enforcement-taskliststatus-grounds"] = "Complete";
     res.redirect('../task-list')
   }
+
+})
+
+// Application decision
+// ******************************************
+router.post('/grounds/application-date', function (req, res) {
+
+ res.redirect('application-decision')
 
 })
 
