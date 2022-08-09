@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Your reasons for Ground A" %}
+{% set title = "Your reasons for Ground K" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -33,44 +33,42 @@
       <div class="govuk-form-group">
 
         <!-- reasons by file -->
-        <label class="govuk-label govuk-label--l" for="enforcement-ground-a-reasons">
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-k-reasons">
           {{ title  }}
         </label>
 
-        <div class="govuk-body">
-          Tell us why the building does not have special historic, or architectural interest.
-        </div>
-
         <p class="govuk-body">
-          Give facts to support your argument.
+          Tell us why the steps to comply with planning permission are excessive.
         <p>
 
+        <!-- <p class="govuk-body">
+          Give facts to support your argument.
+        <p> -->
+
         <p class="govuk-body">
-          You do not need to repeat the local planning authority’s reasons for issuing the enforcement notice.
+          You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
         <p>
 
         <p class="govuk-body">
           You can upload documents to support your appeal or provide a statement later.
         <p>
 
-        <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" rows="5" aria-describedby="enforcement-ground-a-reasons-hint"></textarea>
+        <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-k-reasons" name="enforcement-ground-k-reasons" rows="5" aria-describedby="enforcement-ground-k-reasons-hint"></textarea>
+
+        <div class="govuk-button-group">
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+
+        </div>
 
       </div>
-
-      <div class="govuk-button-group">
-
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
-
-        {{ govukButton({
-          href: "",
-          text: "Save and come back later",
-          classes: "govuk-button--secondary"
-        }) }}
-
-      </div>
-
     </div>
-  </div>
 {% endblock %}

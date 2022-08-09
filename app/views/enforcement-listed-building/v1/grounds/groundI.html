@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Your reasons for Ground B" %}
+{% set title = "Your reasons for Ground I" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -33,27 +33,27 @@
       <div class="govuk-form-group">
 
         <!-- reasons by file -->
-        <label class="govuk-label govuk-label--l" for="enforcement-ground-b-reasons">
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-i-reasons">
           {{ title  }}
         </label>
 
-        <div class="govuk-body">
-          Tell us why the alleged breach of listed building planning permission has not happened. If building work has happened, you cannot plead this ground.
-        </div>
-
         <p class="govuk-body">
-          Give facts to support your argument.
+          Tell us why the steps to restore the building will impact on its usage. For example, I may not be able to live there if you need me to restore the roof to its original style.
         <p>
 
+        <!-- <p class="govuk-body">
+          Give facts to support your argument.
+        <p> -->
+
         <p class="govuk-body">
-          You do not need to repeat the local planning authority’s reasons for issuing the enforcement notice.
+          You do not need to repeat the local planning department’s reasons for issuing the enforcement notice.
         <p>
 
         <p class="govuk-body">
           You can upload documents to support your appeal or provide a statement later.
         <p>
 
-        <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-b-reasons" name="enforcement-ground-b-reasons" rows="5" aria-describedby="enforcement-ground-b-reasons-hint"></textarea>
+        <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-i-reasons" name="enforcement-ground-i-reasons" rows="5" aria-describedby="enforcement-ground-i-reasons-hint"></textarea>
 
         <div class="govuk-button-group">
 
@@ -69,7 +69,6 @@
 
         </div>
 
+      </div>
     </div>
-  </div>
-
 {% endblock %}
