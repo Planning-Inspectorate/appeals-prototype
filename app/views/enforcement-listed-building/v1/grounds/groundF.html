@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Your reasons for Ground A" %}
+{% set title = "Your reasons for Ground F" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -33,12 +33,12 @@
       <div class="govuk-form-group">
 
         <!-- reasons by file -->
-        <label class="govuk-label govuk-label--l" for="enforcement-ground-a-reasons">
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-f-reasons">
           {{ title  }}
         </label>
 
         <div class="govuk-body">
-          Tell us why the building does not have special historic, or architectural interest.
+          Tell us why you think the enforcement notice was not served legally. For example, if the notice was not served to the owner, or it was served more than 28 days after it was issued.
         </div>
 
         <p class="govuk-body">
@@ -53,24 +53,22 @@
           You can upload documents to support your appeal or provide a statement later.
         <p>
 
-        <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" rows="5" aria-describedby="enforcement-ground-a-reasons-hint"></textarea>
+        <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-f-reasons" name="enforcement-ground-f-reasons" rows="5" aria-describedby="enforcement-ground-f-reasons-hint"></textarea>
+
+        <div class="govuk-button-group">
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+
+        </div>
 
       </div>
-
-      <div class="govuk-button-group">
-
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
-
-        {{ govukButton({
-          href: "",
-          text: "Save and come back later",
-          classes: "govuk-button--secondary"
-        }) }}
-
-      </div>
-
     </div>
-  </div>
 {% endblock %}

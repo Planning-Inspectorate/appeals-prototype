@@ -1,8 +1,6 @@
 const express = require('express')
 const router = new express.Router()
 
-
-
 /*******************************************
  *** LISTED BUILDINGS ENFORCEMENT NOTICE ***
 /*******************************************/
@@ -57,8 +55,6 @@ router.post('/named-on-notice/added-names', function (req, res) {
   }
 
 })
-
-
 
 // **************************
 // TELL US ABOUT THE BUILDING
@@ -144,26 +140,37 @@ router.post('/grounds/grounds', function (req, res) {
  let groundE = req.session.data['grounds-5']
  let groundF = req.session.data['grounds-6']
  let groundG = req.session.data['grounds-7']
+ let groundH = req.session.data['grounds-8']
+ let groundI = req.session.data['grounds-9']
+ let groundJ = req.session.data['grounds-10']
+ let groundK = req.session.data['grounds-11']
 
-    // use textarea input
-    // route depending on value
-    if (groundA) {
-     res.redirect('groundA')
-    } else if (groundB) {
-     res.redirect('groundB')
-    } else if (groundC) {
-     res.redirect('groundC')
-    } else if (groundD) {
-     res.redirect('groundD')
-    } else if (groundE) {
-     res.redirect('groundE')
-    } else if (groundF) {
-     res.redirect('groundF')
-    } else if (groundG) {
-     res.redirect('groundG')
-    } else {
-     res.redirect('supporting-check')
-    }
+  // route depending on value
+  if (groundA) {
+    res.redirect('groundA')
+  } else if (groundB) {
+    res.redirect('groundB')
+  } else if (groundC) {
+    res.redirect('groundC')
+  } else if (groundD) {
+    res.redirect('groundD')
+  } else if (groundE) {
+    res.redirect('groundE')
+  } else if (groundF) {
+    res.redirect('groundF')
+  } else if (groundG) {
+    res.redirect('groundG')
+  } else if (groundH) {
+    res.redirect('groundH')
+  } else if (groundI) {
+    res.redirect('groundI')
+  } else if (groundJ) {
+    res.redirect('groundJ')
+  } else if (groundK) {
+    res.redirect('groundK')
+  } else {
+    res.redirect('supporting-check')
+  }
 
 })
 
@@ -172,12 +179,16 @@ router.post('/grounds/grounds', function (req, res) {
 router.post('/grounds/groundA', function (req, res) {
 
  // Make a variable from session data
- let groundB = req.session.data['grounds-3']
+ let groundB = req.session.data['grounds-2']
  let groundC = req.session.data['grounds-3']
  let groundD = req.session.data['grounds-4']
  let groundE = req.session.data['grounds-5']
  let groundF = req.session.data['grounds-6']
  let groundG = req.session.data['grounds-7']
+ let groundH = req.session.data['grounds-8']
+ let groundI = req.session.data['grounds-9']
+ let groundJ = req.session.data['grounds-10']
+ let groundK = req.session.data['grounds-11']
 
  // route depending on value
  if (groundB) {
@@ -192,6 +203,14 @@ router.post('/grounds/groundA', function (req, res) {
    res.redirect('groundF')
  } else if (groundG) {
    res.redirect('groundG')
+ } else if (groundH) {
+   res.redirect('groundH')
+ } else if (groundI) {
+   res.redirect('groundI')
+ } else if (groundJ) {
+   res.redirect('groundJ')
+ } else if (groundK) {
+   res.redirect('groundK')
  } else {
    res.redirect('supporting-check')
  }
@@ -203,59 +222,42 @@ router.post('/grounds/groundA', function (req, res) {
 // ******************************************
 router.post('/grounds/groundB', function (req, res) {
 
- // Make a variable from session data
- let groundC = req.session.data['grounds-3']
- let groundD = req.session.data['grounds-4']
- let groundE = req.session.data['grounds-5']
- let groundF = req.session.data['grounds-6']
- let groundG = req.session.data['grounds-7']
+  // Make a variable from session data
+  let groundC = req.session.data['grounds-3']
+  let groundD = req.session.data['grounds-4']
+  let groundE = req.session.data['grounds-5']
+  let groundF = req.session.data['grounds-6']
+  let groundG = req.session.data['grounds-7']
+  let groundH = req.session.data['grounds-8']
+  let groundI = req.session.data['grounds-9']
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
 
- // see what format they chose
- let format = req.session.data['enforcement-facts-format']
+  // see what format they chose
+  let format = req.session.data['enforcement-facts-format']
 
- if (format == "files") {
-   // use document files
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "files";
-
-   // use textarea input
-   // route depending on value
-   if (groundC) {
-     res.redirect('groundC')
-   } else if (groundD) {
-     res.redirect('groundD')
-   } else if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- } else {
-
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "text";
-
-   // use textarea input
-   // route depending on value
-   if (groundC) {
-     res.redirect('groundC')
-   } else if (groundD) {
-     res.redirect('groundD')
-   } else if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- }
+  // route depending on value
+  if (groundC) {
+   res.redirect('groundC')
+  } else if (groundD) {
+   res.redirect('groundD')
+  } else if (groundE) {
+   res.redirect('groundE')
+  } else if (groundF) {
+   res.redirect('groundF')
+  } else if (groundG) {
+   res.redirect('groundG')
+  } else if (groundH) {
+   res.redirect('groundH')
+  } else if (groundI) {
+   res.redirect('groundI')
+  } else if (groundJ) {
+   res.redirect('groundJ')
+  } else if (groundK) {
+   res.redirect('groundK')
+  } else {
+   res.redirect('supporting-check')
+  }
 
 })
 
@@ -264,54 +266,36 @@ router.post('/grounds/groundB', function (req, res) {
 // ******************************************
 router.post('/grounds/groundC', function (req, res) {
 
- // Make a variable from session data
- let groundD = req.session.data['grounds-4']
- let groundE = req.session.data['grounds-5']
- let groundF = req.session.data['grounds-6']
- let groundG = req.session.data['grounds-7']
+  // Make a variable from session data
+  let groundD = req.session.data['grounds-4']
+  let groundE = req.session.data['grounds-5']
+  let groundF = req.session.data['grounds-6']
+  let groundG = req.session.data['grounds-7']
+  let groundH = req.session.data['grounds-8']
+  let groundI = req.session.data['grounds-9']
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
 
- // see what format they chose
- let format = req.session.data['enforcement-facts-format']
-
- if (format == "files") {
-   // use document files
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "files";
-
-   // use textarea input
-   // route depending on value
-   if (groundD) {
-     res.redirect('groundD')
-   } else if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- } else {
-
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "text";
-
-   // use textarea input
-   // route depending on value
-   if (groundD) {
-     res.redirect('groundD')
-   } else if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- }
+  // route depending on value
+  if (groundD) {
+   res.redirect('groundD')
+  } else if (groundE) {
+   res.redirect('groundE')
+  } else if (groundF) {
+   res.redirect('groundF')
+  } else if (groundG) {
+   res.redirect('groundG')
+  } else if (groundH) {
+   res.redirect('groundH')
+  } else if (groundI) {
+   res.redirect('groundI')
+  } else if (groundJ) {
+   res.redirect('groundJ')
+  } else if (groundK) {
+   res.redirect('groundK')
+  } else {
+   res.redirect('supporting-check')
+  }
 
 })
 
@@ -320,49 +304,26 @@ router.post('/grounds/groundC', function (req, res) {
 // ******************************************
 router.post('/grounds/groundD', function (req, res) {
 
- // Make a variable from session data
- let groundE = req.session.data['grounds-5']
- let groundF = req.session.data['grounds-6']
- let groundG = req.session.data['grounds-7']
+  // Make a variable from session data
+  let groundE = req.session.data['grounds-5']
+  let groundF = req.session.data['grounds-6']
+  let groundG = req.session.data['grounds-7']
+  let groundH = req.session.data['grounds-8']
+  let groundI = req.session.data['grounds-9']
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
 
- // see what format they chose
- let format = req.session.data['enforcement-facts-format']
-
- if (format == "files") {
-   // use document files
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "files";
-
-   // use textarea input
-   // route depending on value
-   if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- } else {
-
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "text";
-
-   // use textarea input
-   // route depending on value
-   if (groundE) {
-     res.redirect('groundE')
-   } else if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- }
+  // use textarea input
+  // route depending on value
+  if (groundE) {
+   res.redirect('groundE')
+  } else if (groundF) {
+   res.redirect('groundF')
+  } else if (groundG) {
+   res.redirect('groundG')
+  } else {
+   res.redirect('supporting-check')
+  }
 
 })
 
@@ -371,44 +332,33 @@ router.post('/grounds/groundD', function (req, res) {
 // ******************************************
 router.post('/grounds/groundE', function (req, res) {
 
- // Make a variable from session data
- let groundF = req.session.data['grounds-6']
- let groundG = req.session.data['grounds-7']
+  // Make a variable from session data
+  let groundF = req.session.data['grounds-6']
+  let groundG = req.session.data['grounds-7']
+  let groundH = req.session.data['grounds-8']
+  let groundI = req.session.data['grounds-9']
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
 
- // see what format they chose
- let format = req.session.data['enforcement-facts-format']
+  // see what format they chose
+  let format = req.session.data['enforcement-facts-format']
 
- if (format == "files") {
-   // use document files
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "files";
-
-   // use textarea input
-   // route depending on value
-   if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- } else {
-
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "text";
-
-   // use textarea input
-   // route depending on value
-   if (groundF) {
-     res.redirect('groundF')
-   } else if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- }
+  // route depending on value
+  if (groundF) {
+   res.redirect('groundF')
+  } else if (groundG) {
+   res.redirect('groundG')
+  } else if (groundH) {
+   res.redirect('groundH')
+  } else if (groundI) {
+   res.redirect('groundI')
+  } else if (groundJ) {
+   res.redirect('groundJ')
+  } else if (groundK) {
+   res.redirect('groundK')
+  } else {
+   res.redirect('supporting-check')
+  }
 
 })
 
@@ -419,39 +369,27 @@ router.post('/grounds/groundF', function (req, res) {
 
  // res.redirect('grounds/upload-ground')
 
- // Make a variable from session data
- let groundG = req.session.data['grounds-7']
+  // Make a variable from session data
+  let groundG = req.session.data['grounds-7']
+  let groundH = req.session.data['grounds-8']
+  let groundI = req.session.data['grounds-9']
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
 
- // see what format they chose
- let format = req.session.data['enforcement-facts-format']
-
- if (format == "files") {
-   // use document files
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "files";
-
-   // use textarea input
-   // route depending on value
-   if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- } else {
-
-   // default method for ground
-   req.session.data["enforcement-reason-method"] = "text";
-
-   // use textarea input
-   // route depending on value
-   if (groundG) {
-     res.redirect('groundG')
-   } else {
-     res.redirect('supporting-check')
-   }
-
- }
+  // route depending on value
+  if (groundG) {
+   res.redirect('groundG')
+  } else if (groundH) {
+   res.redirect('groundH')
+  } else if (groundI) {
+   res.redirect('groundI')
+  } else if (groundJ) {
+   res.redirect('groundJ')
+  } else if (groundK) {
+   res.redirect('groundK')
+  } else {
+   res.redirect('supporting-check')
+  }
 
 })
 
@@ -459,6 +397,84 @@ router.post('/grounds/groundF', function (req, res) {
 // Ground G reasons
 // ******************************************
 router.post('/grounds/groundG', function (req, res) {
+
+  let groundH = req.session.data['grounds-8']
+  let groundI = req.session.data['grounds-9']
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
+
+  // route depending on value
+  if (groundH) {
+    res.redirect('groundH')
+  } else if (groundI) {
+    res.redirect('groundI')
+  } else if (groundJ) {
+    res.redirect('groundJ')
+  } else if (groundK) {
+    res.redirect('groundK')
+  } else {
+    res.redirect('supporting-check')
+  }
+
+})
+
+// Ground H reasons
+// ******************************************
+router.post('/grounds/groundH', function (req, res) {
+
+  let groundI = req.session.data['grounds-9']
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
+
+  // route depending on value
+  if (groundI) {
+    res.redirect('groundI')
+  } else if (groundJ) {
+    res.redirect('groundJ')
+  } else if (groundK) {
+    res.redirect('groundK')
+  } else {
+    res.redirect('supporting-check')
+  }
+
+})
+
+// Ground I reasons
+// ******************************************
+router.post('/grounds/groundI', function (req, res) {
+
+  let groundJ = req.session.data['grounds-10']
+  let groundK = req.session.data['grounds-11']
+
+  // route depending on value
+  if (groundJ) {
+    res.redirect('groundJ')
+  } else if (groundK) {
+    res.redirect('groundK')
+  } else {
+    res.redirect('supporting-check')
+  }
+
+})
+
+// Ground J reasons
+// ******************************************
+router.post('/grounds/groundJ', function (req, res) {
+
+  let groundK = req.session.data['grounds-11']
+
+  // route depending on value
+  if (groundK) {
+    res.redirect('groundK')
+  } else {
+    res.redirect('supporting-check')
+  }
+
+})
+
+// Ground K reasons
+// ******************************************
+router.post('/grounds/groundK', function (req, res) {
   res.redirect('supporting-check')
 })
 

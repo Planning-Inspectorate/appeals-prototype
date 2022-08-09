@@ -3,7 +3,7 @@
 
 {% extends "layout.html" %}
 
-{% set title = "Has a grant been made under section 3A or 4 of the Historic Buildings and Ancient Monuments Ace 1953?" %}
+{% set title = "Have you applied for a historic building grant or loan" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -41,6 +41,9 @@
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
+        },
+        hint: {
+          text: "This is a grant or loan made under section 3A or 4 of the Historic Monuments Act 1953."
         },
         items: [
           {
