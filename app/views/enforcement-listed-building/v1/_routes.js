@@ -85,6 +85,30 @@ router.post('/listed-building/grant-made', function (req, res) {
 // TELL US ABOUT THE APPEAL SITE
 // *****************************
 
+// Postcode address
+// ******************************************
+router.post('/appeal-site/postcode-address', function (req, res) {
+  res.redirect('site-visibility')
+})
+
+// Grid address
+// ******************************************
+router.post('/appeal-site/grid-address', function (req, res) {
+  res.redirect('site-visibility')
+})
+
+// Site visibility
+// ******************************************
+router.post('/appeal-site/site-visibility', function (req, res) {
+  res.redirect('health-and-safety-issues')
+})
+
+// Health and safety issues
+// ******************************************
+router.post('/appeal-site/health-and-safety-issues', function (req, res) {
+  res.redirect('site-interest')
+})
+
 // Site interest
 // ******************************************
 router.post('/appeal-site/site-interest', function (req, res) {
@@ -113,6 +137,18 @@ router.post('/appeal-site/owner-consent', function (req, res) {
  } else {
    res.redirect('your-interest')
  }
+})
+
+// What is your interest?
+// ******************************************
+router.post('/appeal-site/your-interest', function (req, res) {
+  res.redirect('other-appeals')
+})
+
+// Do you occupy the land or building now?
+// ******************************************
+router.post('/appeal-site/site-occupation', function (req, res) {
+  res.redirect('other-appeals')
 })
 
 // Finish the appeal site task
