@@ -620,6 +620,22 @@ router.post('/procedure/hearing', function (req, res) {
   res.redirect('../task-list')
 })
 
+// How many days would you expect the inquiry to last?
+// ******************************************
+router.post('/procedure/inquiry', function (req, res) {
+  let why = req.session.data['enforcement-procedure-why-inquiry']
+  req.session.data["enforcement-procedure-why-inquiry"] = why;
+  res.redirect('inquiry-days')
+})
+
+// How many days would you expect the inquiry to last?
+// ******************************************
+router.post('/procedure/inquiry-days', function (req, res) {
+  let days = req.session.data['enforcement-inquiry-days']
+  req.session.data["enforcement-inquiry-days"] = days;
+  res.redirect('inquiry-witnesses')
+})
+
 // How many witnesses would you expect to give evidence at the inquiry?
 // ******************************************
 router.post('/procedure/inquiry-witnesses', function (req, res) {
