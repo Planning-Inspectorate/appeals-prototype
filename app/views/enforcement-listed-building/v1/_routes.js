@@ -73,6 +73,16 @@ router.get('/named-on-notice/add-name', function (req, res) {
   res.redirect('added-names');
 })
 
+// Remove names from the array
+// ******************************************
+router.get('/named-on-notice/remove-name/:name', function (req, res) {
+  let name = req.params.name
+  let start = name-1
+
+  req.session.data['names'].splice(start, name)
+  res.redirect('../added-names');
+})
+
 
 // Added people / Do you need to add more names?
 // ******************************************
