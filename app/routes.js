@@ -16,6 +16,7 @@ router.use('/', (req, res, next) => {
 // Import routes for new versioning system
 router.use("/:folder/v:version", (req, res, next) => {
 	try {
+		res.locals.location = `${req.params.folder}/v${req.params.version}/`
 		return require(`./views/${req.params.folder}/v${req.params.version}/_routes`)(req, res, next)
 	} catch (e) {
 		next()
