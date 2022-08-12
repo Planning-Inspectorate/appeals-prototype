@@ -42,22 +42,12 @@
               Named on the notice
             </dt>
             <dd class="govuk-summary-list__value">
-
-              <!-- if there is a person's name show it -->
-              {% if data['enforcement-first-name'] or data['enforcement-company-name'] %}
-                {% if data['enforcement-first-name'] %}
-                  {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}<br>
-                {% endif %}
-
-                <!-- if there is a company name show it -->
-                {% if data['enforcement-company-name'] %}
-                  {{ data['enforcement-company-name'] }}
-                {% endif %}
-
+              {% for name in data['names'] %}
+                {{ name.name }}
+                <br>
               {% else %}
-                Providence Produce Company
-              {% endif %}
-
+                Nic Davies
+              {% endfor %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="javascript:preventDefault();">

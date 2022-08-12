@@ -28,26 +28,60 @@ router.post('/named-on-notice/named-on-notice', function (req, res) {
 // ******************************************
 router.post('/named-on-notice/person-name', function (req, res) {
  // req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
- res.redirect('added-names')
+ res.redirect('add-name')
 })
 
 // Company name
 // ******************************************
 router.post('/named-on-notice/company-name', function (req, res) {
  // req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
- res.redirect('added-names')
+ res.redirect('add-name')
+})
+
+// Add names to the array
+// ******************************************
+router.get('/named-on-notice/add-name', function (req, res) {
+  // If there are no supporters create an empty array
+  if (!req.session.data['names']) {
+    req.session.data['names'] = []
+  }
+
+  // Define name based on data entered or fallback
+  if (req.session.data['enforcement-company-name']) {
+    name = req.session.data['enforcement-company-name']
+  } else if (req.session.data['enforcement-first-name']) {
+    name = req.session.data['enforcement-first-name']+' '+req.session.data['enforcement-last-name']
+  } else {
+    name = 'Nic Davies'
+  }
+
+  // Setup the object with the answers given by user
+  const newName = Object.assign({
+    type: req.session.data['enforcement-identity'],
+    name: name
+  })
+
+  // Pass the above object into the array
+  req.session.data['names'].push(newName)
+
+  // Delete the answers so they can add another
+  delete req.session.data['enforcement-identity']
+  delete req.session.data['enforcement-company-name']
+  delete req.session.data['enforcement-first-name']
+  delete req.session.data['enforcement-last-name']
+
+  res.redirect('added-names');
 })
 
 
 // Added people / Do you need to add more names?
 // ******************************************
 router.post('/named-on-notice/added-names', function (req, res) {
-
   // Make a variable from session data
   let addedpeople = req.session.data['enforcement-morepeople']
 
   // route depending on value
-  if (addedpeople === 'Yes') {
+  if (addedpeople == 'Yes') {
     res.redirect('named-on-notice')
   } else {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
