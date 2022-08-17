@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %} #}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <h1 class="govuk-heading-l">
+          Before you start
+        </h1>
+        <p>This is a new service. Itrsquo;s only for appeals about certain local planning departments and planning application types.</p>
+
+        <h2 class="govuk-heading-m">
+          Check if you can use this service
+        </h2>
+        <p>Before you start, wersquo;ll check if you can use this service by asking some questions about your appeal.</p>
+
+        <p>If you cannot use this service, you can still appeal using the existing service.</p>
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

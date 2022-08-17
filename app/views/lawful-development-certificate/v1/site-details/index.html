@@ -1,0 +1,71 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {% call govukFieldset({
+    legend: {
+      html: 'What is the address of the appeal site?',
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      id: 'address-line-1',
+      name: 'address-line-1',
+      value: data['address-line-1'],
+      label: {
+        html: 'Address line 1'
+      },
+      autocomplete: 'address-line1'
+    }) }}
+
+    {{ govukInput({
+      id: 'address-line-2',
+      name: 'address-line-2',
+      value: data['address-line-2'],
+      label: {
+        html: 'Address line 2 (optional)'
+      },
+      autocomplete: 'address-line2'
+    }) }}
+
+    {{ govukInput({
+      id: 'address-town',
+      name: 'address-town',
+      value: data['address-town'],
+      classes: 'govuk-!-width-two-thirds',
+      label: {
+        html: 'Town or city'
+      },
+      autocomplete: 'address-level2'
+    }) }}
+
+    {{ govukInput({
+      id: 'address-postcode',
+      name: 'address-postcode',
+      value: data['address-postcode'],
+      classes: 'govuk-input--width-10',
+      label: {
+        html: 'Postcode'
+      },
+      autocomplete: 'postal-code'
+    }) }}
+
+  {% endcall %}
+{% endblock %}
+
+{% block notes %}
+  <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+      Full is not using the Design System pattern, why not? eg Line 1 2 rather than Building etc
+    </li>
+    <li>
+      County is usually not needed (confirmed by Post Office) can we remove?
+    </li>
+  </ul>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

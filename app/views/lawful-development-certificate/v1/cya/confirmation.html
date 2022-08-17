@@ -1,0 +1,40 @@
+gov {% extends "layout.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleHtml: 'Appeal submitted',
+        html: 'Your reference number<br><strong>HDJ2123F</strong>'
+      }) }}
+
+      <p>We&rsquo;ve sent you a confirmation email with a link to download a copy of your appeal.</p>
+
+      {{ govukInsetText({
+        html: '<p>You need to send a copy of your appeal to the local planning department.</p>'
+      }) }}
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p>We&rsquo;ll check you&rsquo;ve submitted everything we need to progress your appeal. We&rsquo;ll contact you once we&rsquo;ve done this.</p>
+
+      <p>
+        <a href="#0">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="notes">
+        <h2 class="govuk-heading-m">
+          Design notes
+        </h2>
+        <ul class="govuk-list">
+          <li>Do they need to send this one to the LPA?</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

@@ -114,7 +114,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   MOJFrontend.MultiFileUpload.prototype.onDrop = function(e) {
     e.preventDefault();
     this.dropzone.removeClass('moj-multi-file-upload--dragover');
-    this.feedbackContainer.removeClass('moj-hidden');
+    this.feedbackContainer.removeClass('moj-hidden').trigger('fileAdded');
     this.status.html(this.params.uploadStatusText);
     this.uploadFiles(e.originalEvent.dataTransfer.files);
   };
@@ -126,7 +126,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.onFileChange = function(e) {
-    this.feedbackContainer.removeClass('moj-hidden');
+    this.feedbackContainer.removeClass('moj-hidden').trigger('fileAdded');
     this.status.html(this.params.uploadStatusText);
     this.uploadFiles(e.currentTarget.files);
     this.fileInput.replaceWith($(e.currentTarget).val('').clone(true));
@@ -220,9 +220,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
 // Initialise MOJ multi file upload
 if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
   new MOJFrontend.MultiFileUpload({
-    container: $('.moj-multi-file-upload'),
-    uploadUrl: 'upload',
-    deleteUrl: 'upload'
+    container: $('.moj-multi-file-upload')
   });
 }
 

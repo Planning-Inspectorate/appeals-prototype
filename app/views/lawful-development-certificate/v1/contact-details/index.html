@@ -1,0 +1,47 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'appelant-check',
+    name: 'appelant-check',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: 'Was the  application for a lawful development certificate made in your name?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'If you are not the applicant, you must have their permission to submit an appeal on their behalf.'
+    },
+    items: [
+      {
+        html: 'Yes, the application was made in my name',
+        value: 'Yes',
+        checked: checked('appelant-check','Yes')
+      },
+      {
+        html: 'No, I&rsquo;m acting on behalf of the applicant',
+        value: 'No',
+        checked: checked('appelant-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+      Do we need to ask if they&rsquo;re an agent? (see enforcements)
+    </li>
+    <li>
+      Should this ask about company or person? (see enforcements)
+    </li>
+  </ul>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

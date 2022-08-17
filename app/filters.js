@@ -182,6 +182,11 @@ module.exports = function (env) {
     return obj.replace(/^0+/, '');
   }
 
+  filters.push = (array, item) => {
+    array.push(item)
+    return array
+  }
+
   filters.cleanArray = (array) => {
     return array.filter(item => {
       return (item && (item !==""))

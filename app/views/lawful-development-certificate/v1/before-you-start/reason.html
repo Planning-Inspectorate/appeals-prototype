@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukRadios({
+          idPrefix: 'reason',
+          name: 'reason',
+          fieldset: {
+            legend: {
+              html: 'The reason for the appeal is that the LPA has:',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              html: 'Refused/refused in part to grant a certificate of lawful use or development.',
+              value: 'Refused/refused in part to grant a certificate of lawful use or development.',
+              checked: checked('reason','Refused/refused in part to grant a certificate of lawful use or development.')
+            },
+            {
+              html: 'Failed to give notice of their decision within the appropriate period on an application for a certificate of lawful use or development.',
+              value: 'Failed to give notice of their decision within the appropriate period on an application for a certificate of lawful use or development.',
+              checked: checked('reason','Failed to give notice of their decision within the appropriate period on an application for a certificate of lawful use or development.')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+    </li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

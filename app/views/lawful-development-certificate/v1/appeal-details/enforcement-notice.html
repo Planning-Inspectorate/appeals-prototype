@@ -1,0 +1,40 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'enforcemnet-notice',
+    name: 'enforcemnet-notice',
+    fieldset: {
+      legend: {
+        html: 'Is there an effective enforcement notice on the site?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('enforcemnet-notice','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('enforcemnet-notice','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+
+    </li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

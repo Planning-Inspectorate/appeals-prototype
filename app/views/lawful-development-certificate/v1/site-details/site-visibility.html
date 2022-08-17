@@ -1,0 +1,59 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {% set detailsHTML %}
+    {{ govukTextarea({
+      name: 'visibilityDetails',
+      id: 'visibilityDetails',
+      value: data['visibilityDetails'],
+      rows: '5',
+      label: {
+        html: 'How is visibility restricted?'
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    idPrefix: 'site-visibility',
+    name: 'site-visibility',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: 'Is the site visible from a public road?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'Tell us if the land or property is visible from a public road in case an Inspector needs to carry out a visit'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('site-visibility','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('site-visibility','No'),
+        conditional: {
+          html: detailsHTML
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+      Used updated content from enforcements, rather than full.
+    </li>
+  </ul>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
