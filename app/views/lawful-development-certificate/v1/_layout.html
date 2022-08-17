@@ -15,7 +15,7 @@
 
         {% block questions %}{% endblock %}
 
-        <p class="govuk-body-s govuk-!-margin-bottom-1">Current:</p>
+        {# <p class="govuk-body-s govuk-!-margin-bottom-1">Current:</p>
         <div class="govuk-button-group">
           {{ govukButton({
             text: 'Save and continue'
@@ -76,26 +76,32 @@
           <p><a href="#0">Save and complete later</a></p>
         </div>
 
-        <p class="govuk-body-s govuk-!-margin-bottom-1">Link (continue):</p>
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Link (continue):</p> #}
         <div class="govuk-button-group">
           {{ govukButton({
             text: 'Continue'
           }) }}
 
-          <p><a href="#0">Save and complete later</a></p>
+          <p><a href="#0" class="govuk-link--no-visited-state">Save and complete later</a></p>
         </div>
 
-        <p class="govuk-body-s govuk-!-margin-bottom-1">Task list:</p>
+        {# <p class="govuk-body-s govuk-!-margin-bottom-1">Task list:</p>
         <div class="govuk-button-group">
           {{ govukButton({
             text: 'Save and continue'
           }) }}
 
           <p><a href="#0">Return to task list</a></p>
-        </div>
+        </div> #}
 
       </form>
 
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="notes">
+        {% block notes %}{% endblock %}
+      </aside>
     </div>
   </div>
 {% endblock %}

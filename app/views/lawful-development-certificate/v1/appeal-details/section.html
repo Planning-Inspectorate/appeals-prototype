@@ -1,0 +1,45 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'section',
+    name: 'section',
+    fieldset: {
+      legend: {
+        html: 'Select the section under which the application was made',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Section 191',
+        value: 'Section 191',
+        checked: checked('section','Section 191')
+      },
+      {
+        html: 'Section 192',
+        value: 'Section 192',
+        checked: checked('section','Section 192')
+      },
+      {
+        html: 'Section 26H',
+        value: 'Section 26H',
+        checked: checked('section','Section 26H')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+
+    </li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

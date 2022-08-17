@@ -1,0 +1,40 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'proposal',
+    name: 'proposal',
+    fieldset: {
+      legend: {
+        html: 'In the case of a proposal, had it been started before the application to the LPA was made?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('proposal','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('proposal','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+
+    </li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

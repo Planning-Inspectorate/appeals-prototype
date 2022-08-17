@@ -1,0 +1,28 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukTextarea({
+    name: 'appeal-details',
+    id: 'appeal-details',
+    value: data['appeal-details'],
+    rows: '5',
+    label: {
+      html: 'Please give a precise description of the proposed or existing use, operation or activity as outlined in the application in respect of which a certificate is sought',
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    }
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+
+    </li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

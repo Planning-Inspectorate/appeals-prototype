@@ -1,0 +1,50 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {% call govukFieldset({
+    legend: {
+    html: 'What&rsquo;s your name?' if data['appelant-check'] != 'No' else 'What&rsquo;s the applicant&rsquo;s name?',
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      id: 'appelant-first-name',
+      name: 'appelant-first-name',
+      value: data['appelant-first-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'First name'
+      },
+      autocomplete: 'given-name',
+      spellcheck: false
+    }) }}
+
+    {{ govukInput({
+      id: 'appelant-last-name',
+      name: 'appelant-last-name',
+      value: data['appelant-last-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'Last name'
+      },
+      autocomplete: 'family-name',
+      spellcheck: false
+    }) }}
+
+  {% endcall %}
+{% endblock %}
+
+{% block notes %}
+  <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+      Can a company appeal? If so, should this be asked on previous screen?
+    </li>
+  </ul>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
