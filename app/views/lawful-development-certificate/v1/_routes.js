@@ -21,7 +21,7 @@ router.post('/before-you-start/reason', function (req, res) {
 })
 
 router.post('/before-you-start/section', function (req, res) {
-  if (req.session.data['section'] == 'Section 26H') {
+  if (req.session.data['section'] == '26H') {
     res.redirect('date')
   } else {
     res.redirect('cya')
@@ -87,7 +87,7 @@ router.post('/site-details/health-and-safety', function (req, res) {
 // APPEAL DETAILS
 //
 router.post('/appeal-details/', function (req, res) {
-  if (req.session.data['section'] == 'Section 192' || req.session.data['section'] == 'Section 26H') {
+  if (req.session.data['section'] == '192' || req.session.data['section'] == '26H') {
     res.redirect('proposal')
   } else {
     res.redirect('site-usage')
