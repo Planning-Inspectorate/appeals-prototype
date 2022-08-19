@@ -213,3 +213,19 @@ aside.notes {
 	color: $govuk-focus-text-colour;
 	outline-color: $govuk-focus-colour;
 }
+
+
+
+
+// align text on multi line checkboxes
+.checkboxes-long-text {
+	.govuk-checkboxes__input,
+	.govuk-checkboxes__label::before {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.govuk-checkboxes__label::after {
+		top: calc(50% - 3px);
+		transform: translateY(-50%) rotate(-45deg);
+	}
+}
