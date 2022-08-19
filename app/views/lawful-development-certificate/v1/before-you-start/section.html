@@ -6,29 +6,26 @@
     name: 'section',
     fieldset: {
       legend: {
-        html: 'Select the section under which the application was made',
+        html: 'What section of law is relevant to your application?',
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }
     },
     items: [
       {
-        html: 'Section 191',
-        value: 'Section 191',
-        checked: checked('section','Section 191')
+        html: 'Section 191 &ndash; the existing use, operations or activity is legal',
+        value: '191',
+        checked: checked('section','191')
       },
       {
-        html: 'Section 192',
-        value: 'Section 192',
-        checked: checked('section','Section 192')
+        html: 'Section 192 &ndash; the proposed use, operations or activity is legal',
+        value: '192',
+        checked: checked('section','192')
       },
       {
-        html: 'Section 26H',
-        value: 'Section 26H',
-        checked: checked('section','Section 26H'),
-        hint: {
-          html: 'Ny: applications to be made in order for the applicant to ascertain whether proposed works for the alteration or extension of a listed building would be lawful.'
-        }
+        html: 'Section 26H &ndash; the proposed work to a listed building is legal',
+        value: '26H',
+        checked: checked('section','26H')
       }
     ]
   }) }}
