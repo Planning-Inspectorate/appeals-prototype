@@ -1,6 +1,19 @@
 const express = require('express')
 const router = new express.Router()
 
+router.post('*', function(req, res, next){
+  if (req.session.data['cya']) {
+    delete req.session.data['cya']
+    res.redirect('../cya/');
+  } else {
+    next()
+  }
+})
+
+
+
+
+
 //
 // BEFORE YOU START
 //
