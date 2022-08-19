@@ -2,10 +2,10 @@
 
 {% block questions %}
   <h1 class="govuk-heading-l">
-    Upload the decision letter from the LPA
+    Upload the decision letter from the local planning authority
   </h1>
 
-  <p>This is the letter from the local planning department telling you about the decision on your application.</p>
+  <p>This is the letter from the local planning authority telling you about the decision on your application.</p>
 
   {% set uploadHtml %}
     {{ govukFileUpload({
@@ -42,7 +42,10 @@
   </h2>
   <ul class="govuk-list">
     <li>
-      Should we replace the acronym?
+      Not shown if the reason for appeal is LPA not responding
+    </li>
+    <li>
+      Heard that what we want is the notice part of the letter which might be separate, how can we say this clearly?
     </li>
   </ul>
 {% endblock %}

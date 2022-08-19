@@ -17,10 +17,22 @@ router.post('/before-you-start/lpa', function (req, res) {
 })
 
 router.post('/before-you-start/reason', function (req, res) {
-  res.redirect('other')
+  res.redirect('section')
 })
 
-router.post('/before-you-start/other', function (req, res) {
+router.post('/before-you-start/section', function (req, res) {
+  if (req.session.data['section'] == 'Section 26H') {
+    res.redirect('date')
+  } else {
+    res.redirect('cya')
+  }
+})
+
+router.post('/before-you-start/date', function (req, res) {
+  res.redirect('cya')
+})
+
+router.post('/before-you-start/cya', function (req, res) {
   res.redirect('../contact-details/')
 })
 
@@ -75,10 +87,6 @@ router.post('/site-details/health-and-safety', function (req, res) {
 // APPEAL DETAILS
 //
 router.post('/appeal-details/', function (req, res) {
-  res.redirect('section')
-})
-
-router.post('/appeal-details/section', function (req, res) {
   if (req.session.data['section'] == 'Section 192' || req.session.data['section'] == 'Section 26H') {
     res.redirect('proposal')
   } else {

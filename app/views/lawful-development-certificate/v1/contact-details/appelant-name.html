@@ -33,18 +33,27 @@
       spellcheck: false
     }) }}
 
+    {{ govukInput({
+      id: 'appelant-company-name',
+      name: 'appelant-company-name',
+      value: data['appelant-company-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'Company name (optional)'
+      },
+      spellcheck: false
+    }) }}
+
   {% endcall %}
 {% endblock %}
 
 {% block notes %}
-  <h2 class="govuk-heading-m">
+  {# <h2 class="govuk-heading-m">
     Design notes
   </h2>
   <ul class="govuk-list">
-    <li>
-      Can a company appeal? If so, should this be asked on previous screen?
-    </li>
-  </ul>
+    <li></li>
+  </ul> #}
 {% endblock %}
 
 {% block pageScripts %}{% endblock %}
