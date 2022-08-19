@@ -81,7 +81,7 @@ router.post('/contact-details/agent-details', function (req, res) {
 // SITE DETAILS
 //
 router.post('/site-details/', function (req, res) {
-  res.redirect('health-and-safety')
+  res.redirect('site-visibility')
 })
 
 router.post('/site-details/site-visibility', function (req, res) {
@@ -128,7 +128,7 @@ router.post('/appeal-details/procedure', function (req, res) {
 })
 
 router.post('/appeal-details/procedure--reason', function (req, res) {
-  if (req.session.data['procedure'] == 'Hearing') {
+  if (req.session.data['procedure'] == 'Inquiry') {
     res.redirect('procedure--length')
   } else {
     res.redirect('../uploads/common-ground')
