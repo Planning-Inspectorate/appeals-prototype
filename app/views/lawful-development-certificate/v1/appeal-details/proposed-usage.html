@@ -7,7 +7,7 @@
     value: data['proposed-usage'],
     rows: '5',
     label: {
-      html: 'What&rsquo;s the proposed use, operation or activity as outlined in your application?',
+      html: 'What&rsquo;s the proposed work as outlined in your application?' if data['section'] == '26H' else 'What&rsquo;s the proposed use, operation or activity as outlined in your application?',
       classes: 'govuk-label--l',
       isPageHeading: true
     }
