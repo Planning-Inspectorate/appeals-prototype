@@ -2,12 +2,12 @@
 
 {% block questions %}
   {{ govukTextarea({
-    name: 'appeal-details',
-    id: 'appeal-details',
-    value: data['appeal-details'],
+    name: 'proposed-usage',
+    id: 'proposed-usage',
+    value: data['proposed-usage'],
     rows: '5',
     label: {
-      html: 'What&rsquo;s the proposed or existing use, operation or activity as outlined in your application?',
+      html: 'What&rsquo;s the proposed use, operation or activity as outlined in your application?',
       classes: 'govuk-label--l',
       isPageHeading: true
     }

@@ -15,48 +15,56 @@
       </h2>
 
       {{ govukSummaryList({
-        classes: 'govuk-summary-list--no-borer govuk-!-margin-bottom-9',
+        classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              html: 'Appealing'
+              text: 'Appealing'
             },
             value: {
-              html: 'A lawful development certificate (LDC)'
+              text: 'A lawful development certificate (LDC)'
             }
           },
           {
             key: {
-              html: 'Local planning authority'
+              text: 'Local planning authority'
             },
             value: {
-              html: data['lpa'] or 'Bradford'
+              text: data['lpa'] or 'Bradford'
             }
           },
           {
             key: {
-              html: 'Reason for appeal'
+              text: 'Section'
             },
             value: {
-              html: data['reason'] or 'Refused/refused in part to grant a certificate of lawful use or development.'
+              text: data['section'] or '192'
             }
           },
           {
             key: {
-              html: 'Section'
+              text: 'Application date'
             },
             value: {
-              html: data['section'] or '192'
+              text: applicationDate
             }
           },
           {
             key: {
-              html: 'Decision date'
+              text: 'Decision received'
             },
             value: {
-              html: decisionDate
+              text: data['decision-check'] or 'Yes'
             }
-          } if data['section'] == '26H'
+          },
+          {
+            key: {
+              text: 'Decision date'
+            },
+            value: {
+              text: decisionDate
+            }
+          } if data['decision-check'] != 'No'
         ]
       }) }}
 
@@ -127,7 +135,7 @@
             actions: {
               items: [
                 {
-                  href: '../site-details/?cya=true',
+                  href: '../site-details/address?cya=true',
                   html: 'Change'
                 }
               ]
@@ -167,38 +175,6 @@
           },
           {
             key: {
-              html: 'Proposed or existing use, operation or activity'
-            },
-            value: {
-              html: data['appeal-details'] or 'Theme park'
-            },
-            actions: {
-              items: [
-                {
-                  href: '../appeal-details/?cya=true',
-                  html: 'Change'
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              html: 'Site usage'
-            },
-            value: {
-              html: data['site-usage'] or 'Home for the Queen'
-            },
-            actions: {
-              items: [
-                {
-                  href: '../appeal-details/site-usage?cya=true',
-                  html: 'Change'
-                }
-              ]
-            }
-          },
-          {
-            key: {
               html: 'Enforcement notice'
             },
             value: {
@@ -215,6 +191,54 @@
           },
           {
             key: {
+              html: 'Site usage'
+            },
+            value: {
+              html: data['site-usage'] or 'Home for the Queen'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../site-details/site-usage?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Proposed use, operation or activity'
+            },
+            value: {
+              html: data['proposed-usage'] or 'Theme park'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/proposed-usage?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['section'] == '192' or data['section'] == '26H',
+          {
+            key: {
+              html: 'Proposal already started'
+            },
+            value: {
+              html: data['proposal-started'] or 'Yes'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/proposal-started?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['section'] == '192' or data['section'] == '26H',
+          {
+            key: {
               html: 'Appeal procedure'
             },
             value: {
@@ -224,6 +248,22 @@
               items: [
                 {
                   href: '../appeal-details/procedure?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Local planning authority reference'
+            },
+            value: {
+              html: data['lpa-reference'] or 'ABC123456'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/lpa-reference?cya=true',
                   html: 'Change'
                 }
               ]

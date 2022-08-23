@@ -7,7 +7,8 @@
   }) }}
 {% endblock %} #}
 
-{% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'July') +' '+ (data['decision-date-year'] or '2022') %}
+{% set applicationDate = (data['application-date-day'] or '1') +' '+ (data['application-date-month'] | formatMonth or 'July') +' '+ (data['application-date-year'] or '2022') %}
+{% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2022') %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -60,22 +61,6 @@
             },
             {
               key: {
-                text: 'Reason for appeal'
-              },
-              value: {
-                text: data['reason'] or 'Refused/refused in part to grant a certificate of lawful use or development.'
-              },
-              actions: {
-                items: [
-                  {
-                    href: 'reason',
-                    text: 'Change'
-                  }
-                ]
-              }
-            },
-            {
-              key: {
                 text: 'Section'
               },
               value: {
@@ -92,6 +77,38 @@
             },
             {
               key: {
+                text: 'Application date'
+              },
+              value: {
+                text: applicationDate
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'application-date',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Decision received'
+              },
+              value: {
+                text: data['decision-check'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'decision-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
                 text: 'Decision date'
               },
               value: {
@@ -100,12 +117,12 @@
               actions: {
                 items: [
                   {
-                    href: 'date',
+                    href: 'decision-date',
                     text: 'Change'
                   }
                 ]
               }
-            } if data['section'] == '26H'
+            } if data['decision-check'] != 'No'
           ]
         }) }}
 
