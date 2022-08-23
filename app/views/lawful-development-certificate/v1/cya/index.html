@@ -207,7 +207,7 @@
           },
           {
             key: {
-              html: 'Proposed use, operation or activity'
+              html: 'Proposed work' if data['section'] == '26H' else 'Proposed use, operation or activity'
             },
             value: {
               html: data['proposed-usage'] or 'Theme park'
