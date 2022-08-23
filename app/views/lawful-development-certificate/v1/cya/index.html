@@ -15,7 +15,7 @@
       </h2>
 
       {{ govukSummaryList({
-        classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-9',
+        classes: 'govuk-summary-list--no-borer govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
@@ -87,10 +87,10 @@
           },
           {
             key: {
-              html: 'Applicant&rsquo;s name' if data['appelant-check'] == 'No' else 'Your name'
+              html: 'Applicant&rsquo;s name' if data['appelant-check'] == 'No' else 'Contact details'
             },
             value: {
-              html: (data['appelant-first-name']+' '+data['appelant-last-name'] if data['appelant-first-name'] else 'Liz Windsor')+('<br>'+data['appelant-company-name'] if data['appelant-company-name'])
+              html: (data['appelant-first-name']+' '+data['appelant-last-name'] if data['appelant-first-name'] else 'Liz Windsor')+('<br>'+data['appelant-company-name'] if data['appelant-company-name'])+('<br>'+data['appelant-email'] if data['appelant-email'])
             },
             actions: {
               items: [
@@ -103,10 +103,10 @@
           },
           {
             key: {
-              html: 'Your name'
+              html: 'Your contact details'
             },
             value: {
-              html: data['agent-first-name']+' '+data['agent-last-name'] if data['agent-first-name'] else 'Chris Armstrong'
+              html: (data['agent-first-name']+' '+data['agent-last-name'] if data['agent-first-name'] else 'Chris Armstrong')+('<br>'+data['agent-company-name'] if data['agent-company-name'])+('<br>'+data['agent-email'] if data['agent-email'])
             },
             actions: {
               items: [
@@ -263,6 +263,22 @@
           } if data['procedure'] == 'Inquiry',
           {
             key: {
+              html: 'Inquiry witnesses'
+            },
+            value: {
+              html: (data['procedure-witnesses'] or '2')
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/procedure--witnesses?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['procedure'] == 'Inquiry',
+          {
+            key: {
               html: 'Draft statement of common ground'
             },
             value: {
@@ -276,7 +292,7 @@
                 }
               ]
             }
-          },
+          } if data['procedure'] == 'Inquiry' or data['procedure'] == 'Hearing',
           {
             key: {
               html: 'Appeal statement'
