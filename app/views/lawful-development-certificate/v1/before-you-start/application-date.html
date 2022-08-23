@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukDateInput({
+          id: 'application-date',
+          namePrefix: 'application-date',
+          fieldset: {
+            legend: {
+              html: 'What&rsquo;s the date of the application?​',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            html: 'For example, 31 3 2022'
+          },
+          items: [
+            {
+              name: 'day',
+              classes: 'govuk-input--width-2',
+              value: data['application-date-day']
+            },
+            {
+              name: 'month',
+              classes: 'govuk-input--width-2',
+              value: data['application-date-month']
+            },
+            {
+              name: 'year',
+              classes: 'govuk-input--width-4',
+              value: data['application-date-year']
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

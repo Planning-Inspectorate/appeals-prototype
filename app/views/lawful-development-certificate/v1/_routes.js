@@ -26,22 +26,34 @@ router.post('/before-you-start/appeal-type', function (req, res) {
 })
 
 router.post('/before-you-start/lpa', function (req, res) {
-  res.redirect('reason')
-})
-
-router.post('/before-you-start/reason', function (req, res) {
   res.redirect('section')
 })
 
+// router.post('/before-you-start/reason', function (req, res) {
+//   res.redirect('section')
+// })
+
 router.post('/before-you-start/section', function (req, res) {
-  if (req.session.data['section'] == '26H') {
-    res.redirect('date')
-  } else {
+  res.redirect('application-date')
+})
+
+router.post('/before-you-start/application-date', function (req, res) {
+  res.redirect('decision-check')
+})
+
+router.post('/before-you-start/application-date', function (req, res) {
+  res.redirect('decision-check')
+})
+
+router.post('/before-you-start/decision-check', function (req, res) {
+  if (req.session.data['decision-check'] == 'No') {
     res.redirect('cya')
+  } else {
+    res.redirect('decision-date')
   }
 })
 
-router.post('/before-you-start/date', function (req, res) {
+router.post('/before-you-start/decision-date', function (req, res) {
   res.redirect('cya')
 })
 
@@ -89,6 +101,14 @@ router.post('/site-details/site-visibility', function (req, res) {
 })
 
 router.post('/site-details/health-and-safety', function (req, res) {
+  res.redirect('enforcement-notice')
+})
+
+router.post('/site-details/enforcement-notice', function (req, res) {
+  res.redirect('site-usage')
+})
+
+router.post('/site-details/site-usage', function (req, res) {
   res.redirect('../appeal-details/')
 })
 
@@ -101,21 +121,17 @@ router.post('/site-details/health-and-safety', function (req, res) {
 //
 router.post('/appeal-details/', function (req, res) {
   if (req.session.data['section'] == '192' || req.session.data['section'] == '26H') {
-    res.redirect('proposal')
+    res.redirect('proposed-usage')
   } else {
-    res.redirect('site-usage')
+    res.redirect('procedure')
   }
 })
 
+router.post('/appeal-details/proposed-usage', function (req, res) {
+  res.redirect('proposal')
+})
+
 router.post('/appeal-details/proposal', function (req, res) {
-  res.redirect('site-usage')
-})
-
-router.post('/appeal-details/site-usage', function (req, res) {
-  res.redirect('enforcement-notice')
-})
-
-router.post('/appeal-details/enforcement-notice', function (req, res) {
   res.redirect('procedure')
 })
 
