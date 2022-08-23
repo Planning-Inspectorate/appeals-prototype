@@ -3,7 +3,7 @@
 {% block questions %}
   {% call govukFieldset({
     legend: {
-    html: 'What&rsquo;s your name?',
+    html: 'What are your contact details?',
     classes: 'govuk-fieldset__legend--l',
     isPageHeading: true
     }
@@ -33,20 +33,38 @@
       spellcheck: false
     }) }}
 
+    {{ govukInput({
+      id: 'agent-company-name',
+      name: 'agent-company-name',
+      value: data['agent-company-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'Company name (optional)'
+      },
+      spellcheck: false
+    }) }}
 
+    {{ govukInput({
+      id: 'agent-email',
+      name: 'agent-email',
+      value: data['agent-email'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'Email address'
+      },
+      type: 'email',
+      autocomplete: 'email',
+      spellcheck: false
+    }) }}
 
   {% endcall %}
 {% endblock %}
 
 {% block notes %}
-  <h2 class="govuk-heading-m">
+  {# <h2 class="govuk-heading-m">
     Design notes
   </h2>
-  <ul class="govuk-list">
-    <li>
-      Do we need the agents company name?
-    </li>
-  </ul>
+  <ul class="govuk-list"></ul> #}
 {% endblock %}
 
 {% block pageScripts %}{% endblock %}

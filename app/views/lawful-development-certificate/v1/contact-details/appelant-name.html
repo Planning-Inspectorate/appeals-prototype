@@ -3,7 +3,7 @@
 {% block questions %}
   {% call govukFieldset({
     legend: {
-    html: 'What&rsquo;s your name?' if data['appelant-check'] != 'No' else 'What&rsquo;s the applicant&rsquo;s name?',
+    html: 'What are your contact details?' if data['appelant-check'] != 'No' else 'What&rsquo;s the applicant&rsquo;s name?',
     classes: 'govuk-fieldset__legend--l',
     isPageHeading: true
     }
@@ -43,6 +43,21 @@
       },
       spellcheck: false
     }) }}
+
+    {% if data['appelant-check'] != 'No' %}
+      {{ govukInput({
+        id: 'appelant-email',
+        name: 'appelant-email',
+        value: data['appelant-email'],
+        classes: 'govuk-!-width-three-quarters',
+        label: {
+          html: 'Email address'
+        },
+        type: 'email',
+        autocomplete: 'email',
+        spellcheck: false
+      }) }}
+    {% endif %}
 
   {% endcall %}
 {% endblock %}

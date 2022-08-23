@@ -123,7 +123,7 @@ router.post('/appeal-details/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
     res.redirect('procedure--reason')
   } else {
-    res.redirect('../uploads/common-ground')
+    res.redirect('../uploads/appeal-statement')
   }
 })
 
@@ -136,6 +136,10 @@ router.post('/appeal-details/procedure--reason', function (req, res) {
 })
 
 router.post('/appeal-details/procedure--length', function (req, res) {
+  res.redirect('procedure--witnesses')
+})
+
+router.post('/appeal-details/procedure--witnesses', function (req, res) {
   res.redirect('../uploads/common-ground')
 })
 

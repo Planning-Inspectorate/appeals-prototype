@@ -1,18 +1,15 @@
 {% extends location+"_layout.html" %}
 
 {% block questions %}
-  {{ govukTextarea({
-    name: 'site-usage',
-    id: 'site-usage',
-    value: data['site-usage'],
-    rows: '5',
+  {{ govukInput({
+    id: 'procedure-witnesses',
+    name: 'procedure-witnesses',
+    value: data['procedure-witnesses'],
+    classes: 'govuk-input--width-3',
     label: {
-      html: 'How&rsquo;s the site used?',
+      html: 'How many witnesses would you expect to give evidence at the inquiry?',
       classes: 'govuk-label--l',
       isPageHeading: true
-    },
-    hint: {
-      text: 'Tell us the use of the site at the time of your application.'
     }
   }) }}
 {% endblock %}
