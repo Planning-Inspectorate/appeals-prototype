@@ -147,7 +147,7 @@ router.post('/appeal-details/procedure--reason', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry') {
     res.redirect('procedure--length')
   } else {
-    res.redirect('../uploads/common-ground')
+    res.redirect('../uploads/common-ground-check')
   }
 })
 
@@ -156,7 +156,7 @@ router.post('/appeal-details/procedure--length', function (req, res) {
 })
 
 router.post('/appeal-details/procedure--witnesses', function (req, res) {
-  res.redirect('../uploads/common-ground')
+  res.redirect('../uploads/common-ground-check')
 })
 
 
@@ -166,6 +166,14 @@ router.post('/appeal-details/procedure--witnesses', function (req, res) {
 //
 // UPLOADS
 //
+router.post('/uploads/common-ground-check', function (req, res) {
+  if (req.session.data['common-ground-check'] == 'Yes') {
+    res.redirect('common-ground')
+  } else {
+    res.redirect('appeal-statement')
+  }
+})
+
 router.post('/uploads/common-ground', function (req, res) {
   res.redirect('appeal-statement')
 })
