@@ -221,5 +221,32 @@ router.post('/uploads/other', function (req, res) {
 
 
 
+
+//
+// SAVE AND RETURN
+//
+router.get('/save-and-return/', function (req, res) {
+  if (req.session.data['appelant-email']) {
+    req.session.data['save-email'] = req.session.data['appelant-email']
+  } else if (req.session.data['agent-email']) {
+    req.session.data['save-email'] = req.session.data['agent-email']
+  } else {
+    res.redirect('email')
+  }
+
+  if (req.session.data['save-email-confirmed']) {
+    res.redirect('saved')
+  } else if (req.session.data['save-email']) {
+    res.redirect('confirm')
+  } else {
+    res.redirect('error')
+  }
+})
+
+
+
+
+
+
 // Add your routes above the module.exports line
 module.exports = router
