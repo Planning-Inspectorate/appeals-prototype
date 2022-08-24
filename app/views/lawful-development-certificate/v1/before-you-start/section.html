@@ -1,34 +1,53 @@
-{% extends location+"_layout.html" %}
+{% extends "layout.html" %}
 
-{% block questions %}
-  {{ govukRadios({
-    idPrefix: 'section',
-    name: 'section',
-    fieldset: {
-      legend: {
-        html: 'What section of law is relevant to your application?',
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
-      }
-    },
-    items: [
-      {
-        html: 'Section 191: the existing use, operations or activity is legal',
-        value: '191',
-        checked: checked('section','191')
-      },
-      {
-        html: 'Section 192: the proposed use, operations or activity is legal',
-        value: '192',
-        checked: checked('section','192')
-      },
-      {
-        html: 'Section 26H: the proposed work to a listed building is legal',
-        value: '26H',
-        checked: checked('section','26H')
-      }
-    ]
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
   }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukRadios({
+          idPrefix: 'section',
+          name: 'section',
+          fieldset: {
+            legend: {
+              html: 'What section of law is relevant to your application?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              html: 'Section 191: the existing use, operations or activity is legal',
+              value: '191',
+              checked: checked('section','191')
+            },
+            {
+              html: 'Section 192: the proposed use, operations or activity is legal',
+              value: '192',
+              checked: checked('section','192')
+            },
+            {
+              html: 'Section 26H: the proposed work to a listed building is legal',
+              value: '26H',
+              checked: checked('section','26H')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
 {% endblock %}
 
 {% block notes %}
