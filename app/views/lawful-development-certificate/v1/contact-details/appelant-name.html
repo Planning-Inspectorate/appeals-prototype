@@ -45,18 +45,24 @@
     }) }}
 
     {% if data['appelant-check'] != 'No' %}
-      {{ govukInput({
-        id: 'appelant-email',
-        name: 'appelant-email',
-        value: data['appelant-email'],
-        classes: 'govuk-!-width-three-quarters',
-        label: {
-          html: 'Email address'
-        },
-        type: 'email',
-        autocomplete: 'email',
-        spellcheck: false
-      }) }}
+      {% if data['save-email'] %}
+        {{ govukInsetText({
+          html: 'This is the email you gave us for this appeal: '+data['save-email'] or 'liz@palace.com'
+        }) }}
+      {% else %}
+        {{ govukInput({
+          id: 'appelant-email',
+          name: 'appelant-email',
+          value: data['appelant-email'],
+          classes: 'govuk-!-width-three-quarters',
+          label: {
+            html: 'Email address'
+          },
+          type: 'email',
+          autocomplete: 'email',
+          spellcheck: false
+        }) }}
+      {% endif %}
     {% endif %}
 
   {% endcall %}
