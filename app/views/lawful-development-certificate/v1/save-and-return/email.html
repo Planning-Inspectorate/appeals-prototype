@@ -1,0 +1,25 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'save-email',
+    name: 'save-email',
+    value: data['save-email'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: '<span class="govuk-caption-l">Save and complete later</span> What&rsquo;s your email address?',
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    type: 'email',
+    autocomplete: 'email',
+    spellcheck: false
+  }) }}
+{% endblock %}
+{% block buttons %}
+  {{ govukButton({
+    html: 'Continue'
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
