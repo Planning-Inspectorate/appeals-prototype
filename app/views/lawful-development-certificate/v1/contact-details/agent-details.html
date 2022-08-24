@@ -44,18 +44,24 @@
       spellcheck: false
     }) }}
 
-    {{ govukInput({
-      id: 'agent-email',
-      name: 'agent-email',
-      value: data['agent-email'],
-      classes: 'govuk-!-width-three-quarters',
-      label: {
-        html: 'Email address'
-      },
-      type: 'email',
-      autocomplete: 'email',
-      spellcheck: false
-    }) }}
+    {% if data['save-email'] %}
+      {{ govukInsetText({
+        html: 'You have confirmed your email for this appeal:<br>'+data['save-email'] or 'liz@palace.com'
+      }) }}
+    {% else %}
+      {{ govukInput({
+        id: 'agent-email',
+        name: 'agent-email',
+        value: data['agent-email'],
+        classes: 'govuk-!-width-three-quarters',
+        label: {
+          html: 'Email address'
+        },
+        type: 'email',
+        autocomplete: 'email',
+        spellcheck: false
+      }) }}
+    {% endif %}
 
   {% endcall %}
 {% endblock %}
