@@ -130,7 +130,7 @@
               html: 'Site address'
             },
             value: {
-              html: (data['address-line-1'] or 'Buckingham Palace')+('<br>'+data['address-line-2'] if data['address-line-2'])+('<br>'+(data['address-town'] or 'London'))+('<br>'+(data['address-postcode'] or 'SW1A 1AA'))
+              html: (data['address-line-1'] or 'Buckingham Palace')+('<br>'+data['address-line-2'] if data['address-line-2'])+('<br>'+(data['address-town'] or 'London'))+('<br>'+(data['address-postcode'] or 'SW1A 1AA') if data['grid'] != 'true' else '<br>'+(data['address-eastings'] or '529090')+', '+(data['address-northings'] or '179645'))
             },
             actions: {
               items: [
@@ -319,6 +319,22 @@
           } if data['procedure'] == 'Inquiry',
           {
             key: {
+              html: 'Upload draft statement of common ground'
+            },
+            value: {
+              html: data['common-ground-check'] or 'No'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/common-ground?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['common-ground-check'] == 'Inquiry' or data['procedure'] == 'Hearing',
+          {
+            key: {
               html: 'Draft statement of common ground'
             },
             value: {
@@ -332,7 +348,7 @@
                 }
               ]
             }
-          } if data['procedure'] == 'Inquiry' or data['procedure'] == 'Hearing',
+          } if data['common-ground-check'] == 'Yes',
           {
             key: {
               html: 'Appeal statement'
