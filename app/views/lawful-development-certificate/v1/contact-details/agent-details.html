@@ -46,7 +46,7 @@
 
     {% if data['save-email'] %}
       {{ govukInsetText({
-        html: 'This is the email you gave us for this appeal: '+data['save-email'] or 'liz@palace.com'
+        html: 'You have confirmed your email for this appeal:<br>'+data['save-email'] or 'liz@palace.com'
       }) }}
     {% else %}
       {{ govukInput({
