@@ -69,11 +69,16 @@ router.post('/before-you-start/cya', function (req, res) {
 // CONTACT DETAILS
 //
 router.post('/contact-details/', function (req, res) {
-  res.redirect('appelant-name')
+  res.redirect('application-check')
 })
 
-router.post('/contact-details/appelant-name', function (req, res) {
-  if (req.session.data['appelant-check'] == 'No') {
+router.post('/contact-details/application-check', function (req, res) {
+  res.redirect('appellant-name')
+})
+
+
+router.post('/contact-details/appellant-name', function (req, res) {
+  if (req.session.data['appellant-check'] == 'No') {
     res.redirect('agent-details')
   } else {
     res.redirect('../site-details/address')
@@ -226,8 +231,8 @@ router.post('/uploads/other', function (req, res) {
 // SAVE AND RETURN
 //
 router.get('/save-and-return/', function (req, res) {
-  if (req.session.data['appelant-email']) {
-    req.session.data['save-email'] = req.session.data['appelant-email']
+  if (req.session.data['appellant-email']) {
+    req.session.data['save-email'] = req.session.data['appellant-email']
   } else if (req.session.data['agent-email']) {
     req.session.data['save-email'] = req.session.data['agent-email']
   } else {

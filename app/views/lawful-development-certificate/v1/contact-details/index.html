@@ -2,12 +2,12 @@
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'appelant-check',
-    name: 'appelant-check',
+    idPrefix: 'appellant-check',
+    name: 'appellant-check',
     classes: '',
     fieldset: {
       legend: {
-        html: 'Was the  application for a lawful development certificate made in your name?',
+        html: 'Are you representing yourself or your company in the appeal?',
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }
@@ -17,14 +17,14 @@
     },
     items: [
       {
-        html: 'Yes, the application was made in my name',
+        html: 'Yes',
         value: 'Yes',
-        checked: checked('appelant-check','Yes')
+        checked: checked('appellant-check','Yes')
       },
       {
         html: 'No, I&rsquo;m acting on behalf of the applicant',
         value: 'No',
-        checked: checked('appelant-check','No')
+        checked: checked('appellant-check','No')
       }
     ]
   }) }}
