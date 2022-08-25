@@ -73,16 +73,21 @@ router.post('/contact-details/', function (req, res) {
 })
 
 router.post('/contact-details/application-check', function (req, res) {
-  res.redirect('appellant-name')
-})
-
-
-router.post('/contact-details/appellant-name', function (req, res) {
-  if (req.session.data['appellant-check'] == 'No') {
-    res.redirect('agent-details')
+  if (req.session.data['application-check'] == 'Another individual') {
+    res.redirect('appellant-name')
+  } else if (req.session.data['application-check'] == 'A company') {
+    res.redirect('company-name')
   } else {
     res.redirect('../site-details/address')
   }
+})
+
+router.post('/contact-details/appellant-name', function (req, res) {
+  res.redirect('agent-details')
+})
+
+router.post('/contact-details/company-name', function (req, res) {
+  res.redirect('agent-details')
 })
 
 router.post('/contact-details/agent-details', function (req, res) {

@@ -1,76 +1,43 @@
 {% extends location+"_layout.html" %}
 
 {% block questions %}
-  {% call govukFieldset({
-    legend: {
-    html: 'What are your contact details?',
-    classes: 'govuk-fieldset__legend--l',
-    isPageHeading: true
-    }
-  }) %}
-
+  {% set agencyName %}
     {{ govukInput({
-      id: 'agent-first-name',
-      name: 'agent-first-name',
-      value: data['agent-first-name'],
-      classes: 'govuk-!-width-three-quarters',
+      id: 'agency-name',
+      name: 'agency-name',
+      value: data['agency-name'],
       label: {
-        html: 'First name'
-      },
-      autocomplete: 'given-name',
-      spellcheck: false
+        html: 'Agency name'
+      }
     }) }}
-
-    {{ govukInput({
-      id: 'agent-last-name',
-      name: 'agent-last-name',
-      value: data['agent-last-name'],
-      classes: 'govuk-!-width-three-quarters',
-      label: {
-        html: 'Last name'
+  {% endset -%}
+  {{ govukRadios({
+    idPrefix: 'agency-check',
+    name: 'agency-check',
+    fieldset: {
+      legend: {
+        html: 'Do you work for an agency?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('agency-check','Yes'),
+        conditional: {
+          html: agencyName
+        }
       },
-      autocomplete: 'family-name',
-      spellcheck: false
-    }) }}
-
-    {{ govukInput({
-      id: 'agent-company-name',
-      name: 'agent-company-name',
-      value: data['agent-company-name'],
-      classes: 'govuk-!-width-three-quarters',
-      label: {
-        html: 'Company name (optional)'
-      },
-      spellcheck: false
-    }) }}
-
-    {% if data['save-email'] %}
-      {{ govukInsetText({
-        html: 'You have confirmed your email for this appeal:<br>'+data['save-email'] or 'liz@palace.com'
-      }) }}
-    {% else %}
-      {{ govukInput({
-        id: 'agent-email',
-        name: 'agent-email',
-        value: data['agent-email'],
-        classes: 'govuk-!-width-three-quarters',
-        label: {
-          html: 'Email address'
-        },
-        type: 'email',
-        autocomplete: 'email',
-        spellcheck: false
-      }) }}
-    {% endif %}
-
-  {% endcall %}
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('agency-check','No')
+      }
+    ]
+  }) }}
 {% endblock %}
 
-{% block notes %}
-  {# <h2 class="govuk-heading-m">
-    Design notes
-  </h2>
-  <ul class="govuk-list"></ul> #}
-{% endblock %}
-
+{% block notes %}{% endblock %}
 {% block pageScripts %}{% endblock %}

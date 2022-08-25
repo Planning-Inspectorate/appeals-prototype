@@ -1,42 +1,64 @@
 {% extends location+"_layout.html" %}
 
 {% block questions %}
-  {{ govukRadios({
-    idPrefix: 'appellant-check',
-    name: 'appellant-check',
-    classes: '',
-    fieldset: {
-      legend: {
-        html: 'Are you representing yourself or your company in the appeal?',
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
-      }
-    },
-    hint: {
-      html: 'If you are not the applicant, you must have their permission to submit an appeal on their behalf.'
-    },
-    items: [
-      {
-        html: 'Yes',
-        value: 'Yes',
-        checked: checked('appellant-check','Yes')
+  {% call govukFieldset({
+    legend: {
+    html: 'What are your contact details?',
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      id: 'applicant-first-name',
+      name: 'applicant-first-name',
+      value: data['applicant-first-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'First name'
       },
-      {
-        html: 'No, I&rsquo;m acting on behalf of the applicant',
-        value: 'No',
-        checked: checked('appellant-check','No')
-      }
-    ]
+      autocomplete: 'given-name',
+      spellcheck: false
+    }) }}
+
+    {{ govukInput({
+      id: 'applicant-last-name',
+      name: 'applicant-last-name',
+      value: data['applicant-last-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'Last name'
+      },
+      autocomplete: 'family-name',
+      spellcheck: false
+    }) }}
+
+    {% if data['save-email'] %}
+      {{ govukInsetText({
+        html: 'You have confirmed your email for this appeal:<br>'+data['save-email'] or 'liz@palace.com'
+      }) }}
+    {% else %}
+      {{ govukInput({
+        id: 'applicant-email',
+        name: 'applicant-email',
+        value: data['applicant-email'],
+        label: {
+          html: 'Email address'
+        },
+        type: 'email',
+        autocomplete: 'email',
+        spellcheck: false
+      }) }}
+    {% endif %}
+
+  {% endcall %}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Continue'
   }) }}
 {% endblock %}
 
-{% block notes %}
-  {# <h2 class="govuk-heading-m">
-    Design notes
-  </h2>
-  <ul class="govuk-list">
-    <li></li>
-  </ul> #}
-{% endblock %}
-
+{% block notes %}{% endblock %}
 {% block pageScripts %}{% endblock %}
