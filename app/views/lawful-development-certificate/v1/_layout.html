@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 
 {% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+
   {{ govukBackLink({
     html: 'Back',
     href: 'javascript:history.back()'
