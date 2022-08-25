@@ -1,5 +1,17 @@
 {% extends "layout.html" %}
 
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    html: 'Back',
+    href: '#0'
+  }) }}
+{% endblock %}
+
 {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'July') +' '+ (data['decision-date-year'] or '2022') %}
 
 {% block content %}
