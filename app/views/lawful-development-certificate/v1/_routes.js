@@ -243,7 +243,13 @@ router.get('/save-and-return/', function (req, res) {
   }
 })
 
+router.post('/save-and-return/email', function (req, res) {
+  if (!req.session.data['save-email']) {
+    req.session.data['save-email'] = 'example@email.com'
+  }
 
+  res.redirect('confirm')
+})
 
 
 
