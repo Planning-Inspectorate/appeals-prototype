@@ -94,7 +94,7 @@
               html: 'Application in your name'
             },
             value: {
-              html: data['appelant-check'] or 'Yes'
+              html: data['appellant-check'] or 'Yes'
             },
             actions: {
               items: [
@@ -107,15 +107,15 @@
           },
           {
             key: {
-              html: 'Applicant&rsquo;s name' if data['appelant-check'] == 'No' else 'Contact details'
+              html: 'Applicant&rsquo;s name' if data['appellant-check'] == 'No' else 'Contact details'
             },
             value: {
-              html: (data['appelant-first-name']+' '+data['appelant-last-name'] if data['appelant-first-name'] else 'Liz Windsor')+('<br>'+data['appelant-company-name'] if data['appelant-company-name'])+('<br>'+data['appelant-email'] if data['appelant-email'])
+              html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Liz Windsor')+('<br>'+data['appellant-company-name'] if data['appellant-company-name'])+('<br>'+data['appellant-email'] if data['appellant-email'])
             },
             actions: {
               items: [
                 {
-                  href: '../contact-details/appelant-name?cya=true',
+                  href: '../contact-details/appellant-name?cya=true',
                   html: 'Change'
                 }
               ]
@@ -131,12 +131,12 @@
             actions: {
               items: [
                 {
-                  href: '../contact-details/appelant-name?cya=true',
+                  href: '../contact-details/appellant-name?cya=true',
                   html: 'Change'
                 }
               ]
             }
-          } if data['appelant-check'] == 'No',
+          } if data['appellant-check'] == 'No',
           {
             key: {
               html: 'Site address'

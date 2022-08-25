@@ -1,0 +1,142 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {# Set appellant name as used in appellant and agent view #}
+  {% set appellantName %}
+    {{ govukInput({
+      id: 'appellant-first-name',
+      name: 'appellant-first-name',
+      value: data['appellant-first-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'First name'
+      },
+      autocomplete: 'given-name',
+      spellcheck: false
+    }) }}
+
+    {{ govukInput({
+      id: 'appellant-last-name',
+      name: 'appellant-last-name',
+      value: data['appellant-last-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'Last name'
+      },
+      autocomplete: 'family-name',
+      spellcheck: false
+    }) }}
+  {% endset -%}
+
+
+
+
+
+  {# Appellant view #}
+  {% if data['appellant-check'] == 'Yes' %}
+    {% call govukFieldset({
+      legend: {
+        html: 'What are your contact details?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    }) %}
+
+    {# If it's a company #}
+    {% if data['application-check'] == 'A company' %}
+      {{ govukInput({
+        id: 'appellant-company-name',
+        name: 'appellant-company-name',
+        value: data['appellant-company-name'],
+        classes: 'govuk-!-width-three-quarters',
+        label: {
+          html: 'Company name'
+        },
+        hint: {
+          html: 'This should match the name on the application to the local planning authority.'
+        },
+        spellcheck: false
+      }) }}
+
+    {# If it's an individual  #}
+    {% else %}
+      <p class="govuk-hint">This should match the name on the application to the local planning authority.</p>
+    {% endif %}
+
+    {# Include the name fields #}
+    {{ appellantName | safe }}
+
+    {# If the email has already been confirmed in save and return #}
+    {% if data['save-email'] %}
+      {{ govukInsetText({
+        html: 'You have confirmed your email for this appeal:<br>'+data['save-email'] or 'liz@palace.com'
+      }) }}
+
+    {# If save and return hasn't confirmed the email #}
+    {% else %}
+      {{ govukInput({
+        id: 'appellant-email',
+        name: 'appellant-email',
+        value: data['appellant-email'],
+        classes: 'govuk-!-width-three-quarters',
+        label: {
+          html: 'Email address'
+        },
+        type: 'email',
+        autocomplete: 'email',
+        spellcheck: false
+      }) }}
+    {% endif %}
+    {% endcall %}
+
+
+
+
+  {# Agent view #}
+  {% else %}
+    {# If it's a company #}
+    {% if data['application-check'] == 'A company' %}
+      {{ govukInput({
+        id: 'appellant-company-name',
+        name: 'appellant-company-name',
+        value: data['appellant-company-name'],
+        classes: 'govuk-!-width-three-quarters',
+        label: {
+          html: 'What&rsquo;s the company name?',
+          classes: 'govuk-label--l',
+          isPageHeading: true or false
+        },
+        hint: {
+          html: 'This should match the name on the application to the local planning authority.'
+        },
+        spellcheck: false
+      }) }}
+
+    {# If it's an individual  #}
+    {% else %}
+      {% call govukFieldset({
+        legend: {
+          html: 'What&rsquo;s the applicant&rsquo;s name?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      }) %}
+      <p class="govuk-hint">This should match the name on the application to the local planning authority.</p>
+
+      {# Include the name fields #}
+      {{ appellantName | safe }}
+      {% endcall %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li></li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
