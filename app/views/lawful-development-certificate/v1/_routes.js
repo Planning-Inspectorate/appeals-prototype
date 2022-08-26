@@ -236,29 +236,17 @@ router.post('/uploads/other', function (req, res) {
 // SAVE AND RETURN
 //
 router.get('/save-and-return/', function (req, res) {
-  if (req.session.data['appellant-email']) {
-    req.session.data['save-email'] = req.session.data['appellant-email']
-  } else if (req.session.data['agent-email']) {
-    req.session.data['save-email'] = req.session.data['agent-email']
+  if (req.session.data['applicant-email']) {
+    req.session.data['save-email'] = req.session.data['applicant-email']
   } else {
-    res.redirect('email')
+    req.session.data['save-email'] = 'email@example.com'
   }
 
   if (req.session.data['save-email-confirmed']) {
     res.redirect('saved')
-  } else if (req.session.data['save-email']) {
-    res.redirect('confirm')
   } else {
-    res.redirect('error')
+    res.redirect('confirm')
   }
-})
-
-router.post('/save-and-return/email', function (req, res) {
-  if (!req.session.data['save-email']) {
-    req.session.data['save-email'] = 'example@email.com'
-  }
-
-  res.redirect('confirm')
 })
 
 
