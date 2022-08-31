@@ -88,6 +88,7 @@ const router = new express.Router()
       req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
       res.redirect('/enforcement/v7/task-list?enforcement-taskliststatus-contactdetails=Complete')
     }
+    
   })
 
 
