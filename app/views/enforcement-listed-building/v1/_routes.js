@@ -8,96 +8,122 @@ const router = new express.Router()
 // TELL US WHO WAS ON THE ENFORCEMENT NOTICE
 // *****************************************
 
-// Named on notice
-// ******************************************
-router.post('/named-on-notice/named-on-notice', function (req, res) {
+/******************************
+*** ENFORCEMENT SUBMISSION ***
+******************************/
+
+// Contact details
+
+router.post('/contact-details/', function (req, res) {
+  res.redirect('application-check')
+})
+
+// Application identity
+
+router.post('/contact-details/application-check', function (req, res) {
+
+  // Make a variable from session data
+  let contactfirst = req.session.data['contact-first-name']
+  let contactlast = req.session.data['contact-last-name']
+
+  if (req.session.data['application-check'] == 'You') {
+    req.session.data["appellant-first-name"] = contactfirst;
+    req.session.data["appellant-last-name"] = contactlast;
+    res.redirect('added-names')
+  } else if (req.session.data['application-check'] == 'Another individual') {
+    res.redirect('appellant-name')
+  } else if (req.session.data['application-check'] == 'A company') {
+    res.redirect('company-name')
+  } else {
+    res.redirect('../site-details/postcode-address')
+  }
+})
+
+//
+
+router.post('/contact-details/appellant-name', function (req, res) {
+  res.redirect('added-names')
+})
+
+
+
+router.post('/contact-details/agent-details', function (req, res) {
+  res.redirect('../site-details/address')
+})
+
+// older routes below
+
+// Enforcement
+// Who are you?
+router.post('/contact-details/who-are-you', function (req, res) {
+
+  // Make a variable from session data
+  let user = req.session.data['enforcement-identity']
+
+  // route depending on value
+  if (user === 'appellant') {
+    res.redirect('/enforcement/v8/contact-details/contact-details')
+  } else {
+    res.redirect('/enforcement/v8/contact-details/who-was-served')
+  }
+})
+
+
+
+// Contact details
+router.post('/contact-details/finish-contact-details', function (req, res) {
+  req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
+  res.redirect('/enforcement/v8/task-list')
+})
+
+
+
+// Contact details
+router.post('/endcontact', function (req, res) {
+  req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
+  res.redirect('/enforcement/v8/task-list')
+})
+
+
+
+// Additional people
+router.post('/contact-details/contact-details', function (req, res) {
 
   // Make a variable from session data
   let identity = req.session.data['enforcement-identity']
 
   // route depending on value
-  if (identity === 'person') {
-    res.redirect('person-name')
+  if (identity === 'company') {
+    res.redirect('/enforcement/v8/contact-details/company-name')
   } else {
-    res.redirect('company-name')
+    res.redirect('/enforcement/v8/contact-details/person-name')
   }
 
 })
 
-// Person name
-// ******************************************
-router.post('/named-on-notice/person-name', function (req, res) {
- // req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
- res.redirect('add-name')
+// Contact details
+router.post('/contact-details/company-name', function (req, res) {
+  res.redirect('/enforcement/v8/contact-details/added-names')
 })
 
-// Company name
-// ******************************************
-router.post('/named-on-notice/company-name', function (req, res) {
- // req.session.data["enforcement-taskliststatus-appealsite"] = "Complete";
- res.redirect('add-name')
-})
+// Additional people
+router.post('/contact-details/added-names', function (req, res) {
 
-// Add names to the array
-// ******************************************
-router.get('/named-on-notice/add-name', function (req, res) {
-  // If there are no supporters create an empty array
-  if (!req.session.data['names']) {
-    req.session.data['names'] = []
-  }
-
-  // Define name based on data entered or fallback
-  if (req.session.data['enforcement-company-name']) {
-    name = req.session.data['enforcement-company-name']
-  } else if (req.session.data['enforcement-first-name']) {
-    name = req.session.data['enforcement-first-name']+' '+req.session.data['enforcement-last-name']
-  } else {
-    name = 'Nic Davies'
-  }
-
-  // Setup the object with the answers given by user
-  const newName = Object.assign({
-    type: req.session.data['enforcement-identity'],
-    name: name
-  })
-
-  // Pass the above object into the array
-  req.session.data['names'].push(newName)
-
-  // Delete the answers so they can add another
-  delete req.session.data['enforcement-identity']
-  delete req.session.data['enforcement-company-name']
-  delete req.session.data['enforcement-first-name']
-  delete req.session.data['enforcement-last-name']
-
-  res.redirect('added-names');
-})
-
-// Remove names from the array
-// ******************************************
-router.get('/named-on-notice/remove-name/:name', function (req, res) {
-  let name = req.params.name
-  let start = name-1
-
-  req.session.data['names'].splice(start, name)
-  res.redirect('../added-names');
-})
-
-
-// Added people / Do you need to add more names?
-// ******************************************
-router.post('/named-on-notice/added-names', function (req, res) {
   // Make a variable from session data
   let addedpeople = req.session.data['enforcement-morepeople']
+  let applicant = req.session.data['application-check']
 
   // route depending on value
-  if (addedpeople == 'Yes') {
-    res.redirect('named-on-notice')
+  if (addedpeople === 'Yes') {
+    if (applicant === 'You') {
+      res.redirect('/enforcement/v8/contact-details/application-check')
+    } else {
+      res.redirect('/enforcement/v8/contact-details/application-check?else')
+    }
   } else {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
-    res.redirect('../task-list?enforcement-taskliststatus-contactdetails=Complete')
+    res.redirect('/enforcement/v8/task-list?enforcement-taskliststatus-contactdetails=Complete')
   }
-
 })
 
 // **************************
