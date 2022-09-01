@@ -15,10 +15,6 @@ router.post('/contact-details/', function (req, res) {
 
 router.post('/contact-details/application-check', function (req, res) {
 
-
-
-
-
   // Make a variable from session data
   let contactfirst = req.session.data['contact-first-name']
   let contactlast = req.session.data['contact-last-name']
