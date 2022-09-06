@@ -22,12 +22,18 @@
           Supporting documents
         </h1>
 
-        {# <p>You can upload your reasons, comments or site plans.</p> #}
+        <p>
+          Upload your comments related to the local planning authority’s statement or interested party comments.
+        </p>
+
+        <p>
+          The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB
+        </p>
 
         {% set uploadHtml %}
           {{ govukFileUpload({
-            id: "statement-supporting-docs",
-            name: "_statement-supporting-docs",
+            id: "final-comment-supporting-docs",
+            name: "_final-comment-supporting-docs",
             classes: 'moj-multi-file-upload__input',
             label: {
               text: "Upload files",

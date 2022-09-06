@@ -8,7 +8,7 @@ const router = new express.Router()
 // Input code
 //////////////////////
 router.post('/input-code', function (req, res) {
-  res.redirect('comment')
+  res.redirect('final-comments')
 })
 
 // Contact details
