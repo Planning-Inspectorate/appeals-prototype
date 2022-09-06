@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukRadios({
+          idPrefix: 'supporting-check',
+          name: 'supporting-check',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Do you want to upload supporting documents for your appeal?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              html: 'Yes',
+              value: 'Yes',
+              checked: checked('supporting-check','Yes')
+            },
+            {
+              html: 'No',
+              value: 'No',
+              checked: checked('supporting-check','No')
+            }
+          ]
+        }) }}
+
+        {% include "includes/button-and-save-link.html" %}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
