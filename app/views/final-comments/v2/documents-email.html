@@ -1,7 +1,7 @@
 {% extends "layout-email.html" %}
 
 {% block pageTitle %}
-  Statements related to your appeal
+  Respond to these statements for your appeal - ENF13579F - GOV.UK
 {% endblock %}
 
 
@@ -11,7 +11,7 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
 <!-- faux email header -->
 <section>
     <p>
-    <strong>Subject:</strong> Statements related to your appeal
+    <strong>Subject:</strong> Respond to these statements for your appeal
   </p>
   <p>
     <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
@@ -27,20 +27,33 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
   <div class="govuk-grid-column-two-thirds">
 
     <p class="govuk-body">
+      Appeal reference: ENF13579F
+    </p>
+
+    <p class="govuk-body">
+      Appeal site: 11 Bradling Avenue, Sampleford, BS17 2PP
+    </p>
+
+    <p class="govuk-body">
       Dear [name],
     </p>
 
     <p class="govuk-body">
-      We have received all of the statements for your appeal.
+      {{ data['planningdepartment'] or 'Sampleford City Council' }} and other interested parties have submitted statements about your appeal.
     </p>
 
     <p class="govuk-body">
-      Please review all of the statements for your appeal.
+      We’ve attached statements for your information.
     </p>
 
     <h2 class="govuk-heading-m">
-      Final comments for your appeal
+      What you can do
     </h2>
+
+    <p class="govuk-body">
+      You can respond to the statement in writing. This is called your 'final comments'.
+    </p>
+
 
     <ol class="govuk-list govuk-list--number">
       <li>
