@@ -28,6 +28,151 @@
 
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
+          <!-- final comments -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-finalcomments">
+                  Final Comments
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-finalcomments" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-finalcomments">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    <h3 class="govuk-heading-s">
+                      Final comments v2
+                      {{ govukTag({
+                        classes: "govuk-tag--red govuk-!-margin-left-1",
+                        text: "In progress"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="https://pins-appeals.herokuapp.com/final-comments/v2/documents-email" title="">Final documents for the appeal (Case Officer cross copy)</a>
+                      </li>
+                    </ul>
+
+                    <a href="https://pins-ds.atlassian.net/browse/AS-5404">AS-5404 Final comments journey</a></li>
+
+                  </div>
+
+
+                  <!-- version 1 -->
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    <h3 class="govuk-heading-s">
+                      Final comments v1
+                      {{ govukTag({
+                        classes: "govuk-tag--blue govuk-!-margin-left-1",
+                        text: "Done"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/final-comments/v1/appellant" title="">Appellant - Upload final comments</a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v1/agent" title="">Agent - Upload final comments</a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v1/lpd" title="">Local planning department - Upload final comments</a>
+                      </li>
+                    </ul>
+                    <h4 class="govuk-heading-sm">
+                      Shutter pages
+                    </h4>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/final-comments/v1/shutter/cannot-submit-yet" title="">Cannot submit yet</a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v1/shutter/deadline-passed" title="">Your deadline has passed</a>
+                      </li>
+                    </ul>
+
+                    <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          User research (1)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>
+                            <a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3458764516592113823&cot=14" target="blank" title="">Final comments research findings</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (2)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4250">AS-4250 Final Comments submission form - appellant/agent</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4251">AS-4251 Final Comments submission form - LPD</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-footer-pages">
+                  Final comments
+                </span>
+              </h2>
+            </div>
+
+            <div id="accordion-default-content-guidance" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-footer-pages">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  {# VERSION 1 #}
+                  {% set version = "1" %}
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Version {{version}}
+                      {{ govukTag({
+                        classes: "govuk-tag--pink govuk-!-margin-left-1",
+                        text: "WIP"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li><a href="/lawful-development-certificate/v{{version}}/before-you-start/">Before you start</a></li>
+                      <li><a href="/lawful-development-certificate/v{{version}}/before-you-start/cya">Before you start: Check your answers</a></li>
+                      <li><a href="/lawful-development-certificate/v{{version}}/cya/">Check your answers</a></li>
+                    </ul>
+                  </div>
+                  {# /VERSION 1 #}
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <!-- lawful development certificate -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">

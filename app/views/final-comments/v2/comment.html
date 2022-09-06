@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% set title = "Your comments for the appeal" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <div class="govuk-form-group">
+
+        <!-- reasons by file -->
+        <label class="govuk-label govuk-label--l" for="enforcement-ground-a-reasons">
+          {{ title  }}
+        </label>
+
+        {# <div class="govuk-body">
+          This is the last time you can comment on the appeal or add updated documents.
+        </div>
+
+        <p class="govuk-body">
+          Your comments should be related to the local planning department statement or interested party comments. Give facts to support your argument.
+        <p>
+
+        <p class="govuk-body">
+          You do not need to repeat the local planning authority’s reasons for issuing the enforcement notice.
+        <p>
+
+        <p class="govuk-body">
+          You can upload documents to support your appeal or provide a statement later.
+        <p> #}
+
+        <textarea class="govuk-textarea govuk-js-character-count" id="enforcement-ground-a-reasons" name="enforcement-ground-a-reasons" rows="5" aria-describedby="enforcement-ground-a-reasons-hint"></textarea>
+
+      </div>
+
+      {% include "includes/button-and-save-link.html" %}
+
+    </div>
+  </div>
+{% endblock %}
