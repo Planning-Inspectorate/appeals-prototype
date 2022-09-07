@@ -94,7 +94,7 @@
               html: 'Your contact details'
             },
             value: {
-              html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Liz Windsor')+('<br>'+data['applicant-email'] if data['applicant-email'])
+              html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Liz Windsor')+('<br>'+data['applicant-email'] if data['applicant-email'] else 'liz@palace.com')
             },
             actions: {
               items: [
@@ -104,7 +104,7 @@
                 }
               ]
             }
-          }
+          },
           {
             key: {
               html: 'Named on certificate'
