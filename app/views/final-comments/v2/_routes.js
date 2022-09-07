@@ -13,11 +13,11 @@ router.post('/input-code', function (req, res) {
 
 // Contact details
 //////////////////////
-router.post('/comment', function (req, res) {
+router.post('/final-comments', function (req, res) {
   res.redirect('supporting-check')
 })
 
-// Application identity
+// Do they want to upload documents
 //////////////////////
 router.post('/supporting-check', function (req, res) {
 
