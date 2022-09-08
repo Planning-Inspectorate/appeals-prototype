@@ -155,6 +155,22 @@
           } if data['application-check'] == 'A company',
           {
             key: {
+              html: 'Agent at company'
+            },
+            value: {
+              html: (data['agency-check'])+('<br>'+data['agency-name'] if data['agency-name'])
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/agent-details?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['agency-check'],
+          {
+            key: {
               html: 'Site address'
             },
             value: {
