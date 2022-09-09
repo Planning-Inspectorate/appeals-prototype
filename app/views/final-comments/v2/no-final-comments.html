@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set title = "Your final comments" %}
+{% set title = "You have not provided any new comments or documents" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -12,6 +12,10 @@
       text: "Beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
   }) }}
 {% endblock %}
 
@@ -30,18 +34,12 @@
         </label>
 
         <div class="govuk-body">
-          Comments should be related to the local planning authority’s statement or comments from interested parties.
+          If you want to add comments or upload supporting documents, go back.
         </div>
 
         <p class="govuk-body">
-          You do not need to repeat the local planning authority’s reasons.
+          Final comments are optional.
         <p>
-
-        <p class="govuk-body">
-          You can upload documents to support your appeal or provide a statement later.
-        <p>
-
-        <textarea class="govuk-textarea govuk-js-character-count" id="final-comments" name="final-comments" rows="5" aria-describedby="final-comments-hint"></textarea>
 
       </div>
 
