@@ -19,22 +19,14 @@
       <form method="post" id="multiupload">
 
         <h1 class="govuk-heading-l">
-          Supporting documents
+          Additional documents
         </h1>
-
-        <p>
-          Upload your comments related to the local planning authority’s statement or interested party comments.
-        </p>
 
         {% set uploadHtml %}
           {{ govukFileUpload({
             id: "final-comment-supporting-docs",
             name: "_final-comment-supporting-docs",
             classes: 'moj-multi-file-upload__input',
-            label: {
-              text: "Upload files",
-              classes: 'govuk-label--m'
-            },
             hint: {
               text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
             },
