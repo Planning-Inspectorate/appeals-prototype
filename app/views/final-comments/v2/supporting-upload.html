@@ -26,10 +26,6 @@
           Upload your comments related to the local planning authority’s statement or interested party comments.
         </p>
 
-        <p>
-          The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB
-        </p>
-
         {% set uploadHtml %}
           {{ govukFileUpload({
             id: "final-comment-supporting-docs",
@@ -59,7 +55,7 @@
           uploadHtml: uploadHtml
         }) }}
 
-        {% include "includes/button-and-save-link.html" %}
+        {% include "includes/button.html" %}
 
       </form>
     </div>
