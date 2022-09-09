@@ -91,10 +91,10 @@
         rows: [
           {
             key: {
-              html: 'Application in your name'
+              html: 'Your contact details'
             },
             value: {
-              html: data['appellant-check'] or 'Yes'
+              html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Liz Windsor')+('<br>'+data['applicant-email'] if data['applicant-email'] else 'liz@palace.com')
             },
             actions: {
               items: [
@@ -107,15 +107,15 @@
           },
           {
             key: {
-              html: 'Applicant&rsquo;s name' if data['appellant-check'] == 'No' else 'Contact details'
+              html: 'Named on certificate'
             },
             value: {
-              html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Liz Windsor')+('<br>'+data['appellant-company-name'] if data['appellant-company-name'])+('<br>'+data['appellant-email'] if data['appellant-email'])
+              html: data['application-check'] or 'You'
             },
             actions: {
               items: [
                 {
-                  href: '../contact-details/appellant-name?cya=true',
+                  href: '../contact-details/application-check?cya=true',
                   html: 'Change'
                 }
               ]
@@ -123,10 +123,10 @@
           },
           {
             key: {
-              html: 'Your contact details'
+              html: 'Applicant&rsquo;s name'
             },
             value: {
-              html: (data['agent-first-name']+' '+data['agent-last-name'] if data['agent-first-name'] else 'Chris Armstrong')+('<br>'+data['agent-company-name'] if data['agent-company-name'])+('<br>'+data['agent-email'] if data['agent-email'])
+              html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Chris Armstrong')
             },
             actions: {
               items: [
@@ -136,7 +136,39 @@
                 }
               ]
             }
-          } if data['appellant-check'] == 'No',
+          } if data['application-check'] == 'Another individual',
+          {
+            key: {
+              html: 'Company name'
+            },
+            value: {
+              html: data['company-name'] or 'Acme Ltd'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/company-name?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['application-check'] == 'A company',
+          {
+            key: {
+              html: 'Agent at company'
+            },
+            value: {
+              html: (data['agency-check'])+('<br>'+data['agency-name'] if data['agency-name'])
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/agent-details?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['agency-check'],
           {
             key: {
               html: 'Site address'
@@ -424,7 +456,7 @@
                 }
               ]
             }
-          },
+          } if data['decision-check'] != 'No',
           {
             key: {
               html: 'Add new plans or drawings'

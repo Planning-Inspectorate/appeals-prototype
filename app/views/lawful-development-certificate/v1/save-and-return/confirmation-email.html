@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <p class="govuk-body">
-      Dear [name],
+      Dear {{ data['applicant-first-name'] or 'Liz' }} {{ data['applicant-last-name'] or 'Windsor' }},
     </p>
 
     <p class="govuk-body">
