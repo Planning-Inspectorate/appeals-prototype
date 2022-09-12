@@ -45,7 +45,7 @@ router.post('/documents-check', function (req, res) {
 
 // Upload
 //////////////////////
-router.post('/supporting-upload', function (req, res) {
+router.post('/documents-upload', function (req, res) {
   res.redirect('confirmation')
 })
 
