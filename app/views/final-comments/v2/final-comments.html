@@ -13,40 +13,44 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{ title  }}
+    </h1>
+    <p class="govuk-body">
+      Before you start:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>only comment on the statements from the local planning authority or interested parties</li>
+      <li>remove any sensitive or personal information</li>
+      <li>do not include any new evidence</li>
+    </ul>
 
+    {% set sensitiveHtml %}
+      
+      <p class="govuk-body">
+        Sensitive information refers to:
+      </p>
+      {% include "includes/sensitive-info-list.html" %}
+    {% endset -%}
+
+    {{ govukDetails({
+      summaryText: "What is sensitive information?",
+      html: sensitiveHtml
+    }) }}
     <form method="post">
-
-      <div class="govuk-form-group">
-
-        <!-- reasons by file -->
-        <label class="govuk-label govuk-label--l" for="final-comments">
-          {{ title  }}
-        </label>
-
-        <div class="govuk-body">
-          Comments should be related to the local planning authority’s statement or comments from interested parties.
-        </div>
-
-        <p class="govuk-body">
-          You do not need to repeat the local planning authority’s reasons.
-        <p>
-
-        <p class="govuk-body">
-          You can upload documents to support your appeal or provide a statement later.
-        <p>
-
-        <textarea class="govuk-textarea govuk-js-character-count" id="final-comments" name="final-comments" rows="5" aria-describedby="final-comments-hint"></textarea>
-
-      </div>
-
+      <textarea class="govuk-textarea govuk-js-character-count" id="final-comments" name="final-comments" rows="5" aria-describedby="final-comments-hint"></textarea>
       {% include "includes/button.html" %}
-
-    </div>
+    </form>
   </div>
+</div>
 {% endblock %}

@@ -8,50 +8,48 @@ const router = new express.Router()
 // Input code
 //////////////////////
 router.post('/input-code', function (req, res) {
-  res.redirect('final-comments')
+  res.redirect('final-comments-question')
+})
+
+// Do they want to add final comments
+//////////////////////
+router.post('/final-comments-question', function (req, res) {
+  // Make a variable from session data
+  let havecomments = req.session.data['adding-final-comments']
+  if (havecomments == 'Yes') {
+    res.redirect('final-comments')
+  } else {
+    res.redirect('documents-check')
+  }
 })
 
 // Contact details
 //////////////////////
 router.post('/final-comments', function (req, res) {
-  res.redirect('supporting-check')
+  res.redirect('documents-check')
 })
 
 // Do they want to upload documents
 //////////////////////
-router.post('/supporting-check', function (req, res) {
+router.post('/documents-check', function (req, res) {
 
   // Make a variable from session data
   let documents = req.session.data['supporting-check']
-  let comments = req.session.data['final-comments']
 
   if (documents == 'Yes') {
-    res.redirect('supporting-upload')
+    res.redirect('documents-upload')
   } else {
-    if (comments != true) {
-      res.redirect('no-final-comments')
-    } else {
-      res.redirect('confirmation')
-    }
+    res.redirect('confirmation')
   }
 })
 
 // Upload
 //////////////////////
 router.post('/supporting-upload', function (req, res) {
-  let uploaded = req.session.data['supporting-docs']
-  if (uploaded == null) {
-    res.redirect('no-final-comments')
-  } else {
-    res.redirect('confirmation')
-  }
-})
-
-// If nothing has been added, show this
-//////////////////////
-router.post('/no-final-comments', function (req, res) {
   res.redirect('confirmation')
 })
+
+
 
 
 // Add routes above

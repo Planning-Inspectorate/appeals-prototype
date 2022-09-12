@@ -35,16 +35,17 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
     </p>
 
     <p class="govuk-body">
-      Dear [name],
+      Dear Sam Avo,
     </p>
 
     <p class="govuk-body">
-      {{ data['planningdepartment'] or 'Sampleford City Council' }} and other interested parties have submitted statements about your appeal.
+      {{ data[''] or "Sampleford City Council" }} and other interested parties have submitted statements about your appeal.
     </p>
 
     <p class="govuk-body">
-      We’ve attached statements for your information.
+      We’ve attached the statements for your information.
     </p>
+
 
     <h2 class="govuk-heading-m">
       What you can do
@@ -52,6 +53,10 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
 
     <p class="govuk-body">
       You can respond to the statement in writing. This is called your ‘final comments’.
+    </p>
+
+    <p class="govuk-body">
+      Your comments must only respond to the issues in the statements. You do not need to repeat information from your appeal statement. You cannot introduce new evidence or arguments. Do not include any personal or sensitive information.
     </p>
 
     <ol class="govuk-list govuk-list--number">
@@ -65,7 +70,33 @@ Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[
     </ol>
 
     <p class="govuk-body">
-      From The Planning Inspectorate
+      Your deadline is {{ 21 | daysInFuture }}. This is the last time you can comment on the appeal or add updated documents.
+    </p>
+
+    <p class="govuk-body">
+      Final comments are optional. It is your decision whether you submit any.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p class="govuk-body">
+      If you submit final comments, we’ll forward them to {{ data[''] or "Sampleford City Council" }}.
+    </p>
+
+    <p class="govuk-body">
+      {{ data[''] or "Sampleford City Council" }} can also respond to interest parties’ statements. If it does, we’ll forward you a copy for your information.
+    </p>
+
+    <p class="govuk-body">
+      Once the deadline for final comments has passed, the Inspector will arrange a site visit. We’ll contact you if you need to give them access.
+    </p>
+
+    <p class="govuk-body">
+      Thank you,<br>
+      Mari Bidbod<br>
+      mari.bidbod@planninginspectorate.gov.uk
     </p>
 
   </div>
