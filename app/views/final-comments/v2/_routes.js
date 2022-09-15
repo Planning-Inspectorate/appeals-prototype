@@ -8,12 +8,12 @@ const router = new express.Router()
 // Input code
 //////////////////////
 router.post('/input-code', function (req, res) {
-  res.redirect('final-comments-question')
+  res.redirect('final-comments-check')
 })
 
 // Do they want to add final comments
 //////////////////////
-router.post('/final-comments-question', function (req, res) {
+router.post('/final-comments-check', function (req, res) {
   // Make a variable from session data
   let havecomments = req.session.data['adding-final-comments']
   if (havecomments == 'Yes') {

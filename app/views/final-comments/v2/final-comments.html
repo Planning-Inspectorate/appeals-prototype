@@ -42,7 +42,6 @@
           </ul>
 
           {% set sensitiveHtml %}
-
             <p class="govuk-body">
               Sensitive information refers to:
             </p>
@@ -53,16 +52,22 @@
             summaryText: "What is sensitive information?",
             html: sensitiveHtml
           }) }}
+
+          <p class="govuk-hint">
+            Final comments must be 3000 words or less.
+          </p>
+          
           <textarea class="govuk-textarea govuk-js-character-count" id="final-comments" name="final-comments" rows="6" aria-describedby="final-comments-info"></textarea>
         </div>
 
         <div id="final-comments-info" class="govuk-hint govuk-character-count__message">
-          You can enter up to 3000 words
+          Final comments must be 3000 characters or less.
         </div>
 
       </div>
 
       {% include "includes/button.html" %}
+
     </form>
   </div>
 </div>
