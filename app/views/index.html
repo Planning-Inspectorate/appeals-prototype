@@ -2269,7 +2269,7 @@
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-lpaq">
-                  LPD questionnaire
+                  LPA questionnaire
                 </span>
               </h2>
             </div>
@@ -2281,8 +2281,27 @@
                   <div class="govuk-inset-text govuk-!-margin-top-0">
 
                     {{ govukTag({
-                      classes: "govuk-tag--green govuk-!-margin-bottom-3",
-                      text: "Ready for UR"
+                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
+                      text: "WIP"
+                    }) }}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Full planning LPA questionnaire - Version 10
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/lpa-questionnaire/fullv2/email/started-refusal" title="">Start from email - Appeal against the refusal of planning application</a>
+                      </li>
+                    </ul>
+
+                  </div>
+
+
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                    {{ govukTag({
+                      classes: "govuk-tag--grey govuk-!-margin-bottom-3",
+                      text: "Out of date"
                     }) }}
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Full planning LPD questionnaire - Version 2
