@@ -1,0 +1,45 @@
+{% extends "layout-email.html" %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> Continue with your appeal
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['save-email'] or 'liz@palace.com' }}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      Dear {{ data['applicant-first-name'] or 'Liz' }} {{ data['applicant-last-name'] or 'Windsor' }},
+    </p>
+
+    <p class="govuk-body">
+      <!-- This link will expire after 6 weeks. -->
+      You have until 3 November 2022 to submit your appeal.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      How to get back to your appeal
+    </h2>
+
+    <p class="govuk-body">
+      Go to the link to return to your appeal: <a href="{{ data['last-page'] or '../contact-details/' }}" class="govuk-link">www.gov.uk/appeal-a-planning-decision/continue/0722bb4b-6650-4046-8a9f-0ad0efdd3b2f</a>
+    </p>
+
+    <p class="govuk-body">
+      From The Planning Inspectorate
+    </p>
+
+  </div>
+</div>
+{% endblock %}

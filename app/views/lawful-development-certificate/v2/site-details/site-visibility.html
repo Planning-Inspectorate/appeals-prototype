@@ -1,0 +1,59 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {% set detailsHTML %}
+    {{ govukTextarea({
+      name: 'site-visibility__details',
+      id: 'site-visibility__details',
+      value: data['site-visibility__details'],
+      rows: '5',
+      label: {
+        html: 'How is visibility restricted?'
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    idPrefix: 'site-visibility',
+    name: 'site-visibility',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: 'Is the site or subject of the appeal visible from a public road or footpath?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'An Inspector may need to carry out a visit '
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('site-visibility','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('site-visibility','No'),
+        conditional: {
+          html: detailsHTML
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{# {% block notes %}
+  <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+      Used updated content from enforcements, rather than full.
+    </li>
+  </ul>
+{% endblock %} #}
+
+{% block pageScripts %}{% endblock %}

@@ -1,0 +1,519 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    html: 'Back',
+    href: '#0'
+  }) }}
+{% endblock %}
+
+{% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'July') +' '+ (data['decision-date-year'] or '2022') %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Check your answers before submitting your appeal
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Check you can use this service
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: 'Appealing'
+            },
+            value: {
+              text: 'A lawful development certificate (LDC)'
+            }
+          },
+          {
+            key: {
+              text: 'Local planning authority'
+            },
+            value: {
+              text: data['lpa'] or 'Bradford'
+            }
+          },
+          {
+            key: {
+              text: 'Section'
+            },
+            value: {
+              text: data['section'] or '192'
+            }
+          },
+          {
+            key: {
+              text: 'Application date'
+            },
+            value: {
+              text: applicationDate
+            }
+          },
+          {
+            key: {
+              text: 'Decision received'
+            },
+            value: {
+              text: data['decision-check'] or 'Yes'
+            }
+          },
+          {
+            key: {
+              text: 'Decision date'
+            },
+            value: {
+              text: decisionDate
+            }
+          } if data['decision-check'] != 'No'
+        ]
+      }) }}
+
+
+
+      <h2 class="govuk-heading-m">
+        Appeal details
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              html: 'Your contact details'
+            },
+            value: {
+              html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Liz Windsor')+('<br>'+data['applicant-email'] if data['applicant-email'] else 'liz@palace.com')
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Named on certificate'
+            },
+            value: {
+              html: data['application-check'] or 'You'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/application-check?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Applicant&rsquo;s name'
+            },
+            value: {
+              html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Chris Armstrong')
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/appellant-name?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['application-check'] == 'Another individual',
+          {
+            key: {
+              html: 'Company name'
+            },
+            value: {
+              html: data['company-name'] or 'Acme Ltd'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/company-name?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['application-check'] == 'A company',
+          {
+            key: {
+              html: 'Agent at company'
+            },
+            value: {
+              html: (data['agency-check'])+('<br>'+data['agency-name'] if data['agency-name'])
+            },
+            actions: {
+              items: [
+                {
+                  href: '../contact-details/agent-details?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['agency-check'],
+          {
+            key: {
+              html: 'Site address'
+            },
+            value: {
+              html: (data['address-line-1'] or 'Buckingham Palace')+('<br>'+data['address-line-2'] if data['address-line-2'])+('<br>'+(data['address-town'] or 'London'))+('<br>'+(data['address-postcode'] or 'SW1A 1AA') if data['grid'] != 'true' else '<br>'+(data['address-eastings'] or '529090')+', '+(data['address-northings'] or '179645'))
+            },
+            actions: {
+              items: [
+                {
+                  href: '../site-details/address?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Site visible'
+            },
+            value: {
+              html: 'No<br>'+data['site-visibilityy__details'] if data['site-visibilityy'] == 'No' else 'Yes'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../site-details/site-visibility?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Site health and safety issues'
+            },
+            value: {
+              html: 'Yes<br>'+data['health-and-safety__details'] if data['health-and-safety'] == 'Yes' else 'No'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../site-details/health-and-safety?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Enforcement notice'
+            },
+            value: {
+              html: data['enforcemnet-notice'] or 'No'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/enforcement-notice?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Site usage'
+            },
+            value: {
+              html: data['site-usage'] or 'Home for the Queen'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../site-details/site-usage?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Proposed work' if data['section'] == '26H' else 'Proposed use, operation or activity'
+            },
+            value: {
+              html: data['proposed-usage'] or 'Theme park'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/proposed-usage?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['section'] == '192' or data['section'] == '26H',
+          {
+            key: {
+              html: 'Proposal already started'
+            },
+            value: {
+              html: data['proposal-started'] or 'Yes'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/proposal-started?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['section'] == '192' or data['section'] == '26H',
+          {
+            key: {
+              html: 'Appeal procedure'
+            },
+            value: {
+              html: data['procedure'] or 'Written representations'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/procedure?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Local planning authority reference'
+            },
+            value: {
+              html: data['lpa-reference'] or 'ABC123456'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/lpa-reference?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: data['procedure']+' reasons'
+            },
+            value: {
+              html: data['procedure-reason'] or 'My reasons…'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/procedure--reason?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['procedure'] == 'Inquiry' or data['procedure'] == 'Hearing',
+          {
+            key: {
+              html: 'Inquiry length'
+            },
+            value: {
+              html: (data['procedure-lenth'] or '5')+' days'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/procedure--length?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['procedure'] == 'Inquiry',
+          {
+            key: {
+              html: 'Inquiry witnesses'
+            },
+            value: {
+              html: (data['procedure-witnesses'] or '2')
+            },
+            actions: {
+              items: [
+                {
+                  href: '../appeal-details/procedure--witnesses?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['procedure'] == 'Inquiry',
+          {
+            key: {
+              html: 'Upload draft statement of common ground'
+            },
+            value: {
+              html: data['common-ground-check'] or 'No'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/common-ground?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['common-ground-check'] == 'Inquiry' or data['procedure'] == 'Hearing',
+          {
+            key: {
+              html: 'Draft statement of common ground'
+            },
+            value: {
+              html: data['common-ground'] | join('<br>') if data['common-ground'] else 'common-ground.pdf'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/common-ground?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['common-ground-check'] == 'Yes',
+          {
+            key: {
+              html: 'Appeal statement'
+            },
+            value: {
+              html: data['appeal-statement'] | join('<br>') if data['appeal-statement'] else 'appeal-statement.pdf'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/appeal-statement?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Original application'
+            },
+            value: {
+              html: data['application'] | join('<br>') if data['application'] else 'application.pdf'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/application?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Plans, drawings and supporting documents'
+            },
+            value: {
+              html: data['plans'] | join('<br>') if data['plans'] else 'plans.pdf'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/plans?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Decision letter'
+            },
+            value: {
+              html: data['decision-letter'] | join('<br>') if data['decision-letter'] else 'decision-letter.pdf'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/decision-letter?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          } if data['decision-check'] != 'No',
+          {
+            key: {
+              html: 'Add new plans or drawings'
+            },
+            value: {
+              html: data['new-plans-check'] or 'No'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/new-plans-check?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              html: 'Add new supporting documents'
+            },
+            value: {
+              html: data['other-check'] or 'No'
+            },
+            actions: {
+              items: [
+                {
+                  href: '../uploads/other-check?cya=true',
+                  html: 'Change'
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Declaration</h2>
+
+      <p class="govuk-!-margin-bottom-2">By submitting your appeal, you confirm you understand that:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>this is your only opportunity to submit the appeal</li>
+        <li>if you have not included all the information we’ve requested, we may not be able to progress your appeal</li>
+        <li>you can change your statement up to 6 weeks after submitting your appeal, we&rsquo;ll email you a link to do this</li>
+      </ul>
+
+      <p>You also confirm that, to the best of your knowledge, the details you are providing are correct.</p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          html: 'Accept and send',
+          href: 'confirmation'
+        }) }}
+
+        <p><a href="/{{location}}save-and-return/?last-page={{currentURL}}" class="govuk-link--no-visited-state">Save and complete later</a></p>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
