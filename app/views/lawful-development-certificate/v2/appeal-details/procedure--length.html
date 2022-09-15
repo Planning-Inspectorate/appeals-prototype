@@ -1,0 +1,28 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'procedure-lenth',
+    name: 'procedure-lenth',
+    value: data['procedure-lenth'],
+    classes: 'govuk-input--width-3',
+    label: {
+      html: 'How many days would you expect the inquiry to last?',
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    }
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+
+    </li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

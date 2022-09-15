@@ -1,0 +1,35 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'application-check',
+    name: 'application-check',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: 'Who&rsquo;s named on the application made to the local planning authority?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'You',
+        value: 'You',
+        checked: checked('application-check','You')
+      },
+      {
+        html: 'Another individual',
+        value: 'Another individual',
+        checked: checked('application-check','Another individual')
+      },
+      {
+        html: 'A company',
+        value: 'A company',
+        checked: checked('application-check','A company')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

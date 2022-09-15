@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+	{{ govukPhaseBanner({
+		tag: { text: 'Beta' },
+		html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+	}) }}
+
+	{{ govukBackLink({
+		html: 'Back',
+		href: 'javascript:history.back()'
+	}) }}
+{% endblock %}
+
+{% set applicationDate = (data['application-date-day'] or '1') +' '+ (data['application-date-month'] | formatMonth or 'July') +' '+ (data['application-date-year'] or '2022') %}
+{% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2022') %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        <h1 class="govuk-heading-l">
+          You can appeal using this service
+        </h1>
+        <p>Based on your answers, you can appeal using this service.</p>
+
+        <h2 class="govuk-heading-m">
+          Check your answers
+        </h2>
+
+        {{ govukSummaryList({
+          classes: '',
+          rows: [
+            {
+              key: {
+                text: 'Appealing'
+              },
+              value: {
+                text: 'A lawful development certificate (LDC)'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'appeal-type',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Local planning authority'
+              },
+              value: {
+                text: data['lpa'] or 'Bradford'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'lpa',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Section'
+              },
+              value: {
+                text: data['section'] or '192'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'section',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Application date'
+              },
+              value: {
+                text: applicationDate
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'application-date',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Decision received'
+              },
+              value: {
+                text: data['decision-check'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'decision-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Decision date'
+              },
+              value: {
+                text: decisionDate
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'decision-date',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['decision-check'] != 'No'
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          html: 'Continue appeal'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

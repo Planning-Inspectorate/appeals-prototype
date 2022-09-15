@@ -1,0 +1,28 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukTextarea({
+    name: 'site-usage',
+    id: 'site-usage',
+    value: data['site-usage'],
+    rows: '5',
+    label: {
+      html: 'What was the site use at the time of application?',
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    }
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+    <li>
+
+    </li>
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
