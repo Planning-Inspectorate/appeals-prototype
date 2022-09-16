@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
-{% set serviceName = "Manage planning appeals" %}
+{% set serviceName = "Make a beta service appeal link" %}
 
-{% set title = "Appeal APP/123456" %}
+{% set title = "Appeal 123456" %}
 
 {% block pageTitle %}
   {{title}} - Tell us about the appeal site - GOV.UK
@@ -37,7 +37,29 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Named on the notice
+            Appeal type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              Section 78 appeal
+            </p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              APP/123456
+            </p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Named on the appeal
           </dt>
           <dd class="govuk-summary-list__value">
 
@@ -105,12 +127,12 @@
 
         <div class="govuk-summary-list__row pins-summary-list__row--last">
           <dt class="govuk-summary-list__key">
-            Contact details
+            Deadline for final comments
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">{{ data["enforcement-your-email"] or 'nickydavies@jambon.co.uk' }}</p>
-            <p class="govuk-body">{{ data['enforcement-telephone'] or '01179428242' }}</p>
-
+            <p class="govuk-body">
+              {{ 6 | daysInFuture }}
+            </p>
           </dd>
         </div>
 
