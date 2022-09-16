@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% set serviceName = "Manage planning appeals" %}
+
+{% set title = "Appeal not found" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <!-- reasons by file -->
+      <label class="govuk-label govuk-label--l" for="final-comments">
+        {{ title  }}
+      </label>
+
+      <div class="govuk-body">
+        The appeal reference could not be matched with an appeal.
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
