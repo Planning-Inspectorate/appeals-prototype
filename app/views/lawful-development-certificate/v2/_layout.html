@@ -21,13 +21,11 @@
         {% block questions %}{% endblock %}
 
         {% block buttons %}
-          <div class="govuk-button-group">
-            {{ govukButton({
-              text: 'Continue'
-            }) }}
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
 
-            <p><a href="/{{location}}save-and-return/?last-page={{currentURL}}" class="govuk-link--no-visited-state">Save and complete later</a></p>
-          </div>
+          <p><a href="../task-list" class="govuk-link--no-visited-state">Return to task list</a></p>
         {% endblock %}
 
       </form>

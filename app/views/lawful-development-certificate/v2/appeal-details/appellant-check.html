@@ -2,8 +2,8 @@
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'application-check',
-    name: 'application-check',
+    idPrefix: 'appellant-check',
+    name: 'appellant-check',
     classes: '',
     fieldset: {
       legend: {
@@ -16,17 +16,17 @@
       {
         html: 'You',
         value: 'You',
-        checked: checked('application-check','You')
+        checked: checked('appellant-check','You')
       },
       {
         html: 'Another individual',
         value: 'Another individual',
-        checked: checked('application-check','Another individual')
+        checked: checked('appellant-check','Another individual')
       },
       {
         html: 'A company',
         value: 'A company',
-        checked: checked('application-check','A company')
+        checked: checked('appellant-check','A company')
       }
     ]
   }) }}
