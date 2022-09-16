@@ -51,6 +51,22 @@ router.post('/documents-upload', function (req, res) {
 
 
 
+// Case Officer mini-service
+
+// Appeal link
+//////////////////////
+router.post('/case-officer/appeal-search', function (req, res) {
+  res.redirect('appeal')
+})
+
+// Appeal link
+//////////////////////
+router.post('/case-officer/appeal', function (req, res) {
+  res.redirect('appeal-link')
+})
+
+
+
 
 // Add routes above
 //
