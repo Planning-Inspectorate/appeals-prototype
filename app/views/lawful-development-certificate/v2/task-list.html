@@ -32,6 +32,9 @@
         }
       </style>
 
+      {% set applicationDate = (data['application-date-day'] or '1') +' '+ (data['application-date-month'] | formatMonth or 'July') +' '+ (data['application-date-year'] or '2022') %}
+      {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2022') %}
+
       <ol class="app-task-list">
         <li>
           <h2 class="app-task-list__section">

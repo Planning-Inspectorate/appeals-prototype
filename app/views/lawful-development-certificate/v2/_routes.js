@@ -1,8 +1,17 @@
 const express = require('express')
 const router = new express.Router()
 
+
+
+
+
+// CYA links post back to the end
+// Doesn't work for complex questions that would require other things to be shown but a quick prototype hack is better than nothing
 router.post('*', function(req, res, next){
-  if (req.session.data['cya']) {
+  if (req.session.data['byscya']) {
+    delete req.session.data['byscya']
+    res.redirect('cya');
+  } else if (req.session.data['cya']) {
     delete req.session.data['cya']
     res.redirect('../task-list');
   } else {
