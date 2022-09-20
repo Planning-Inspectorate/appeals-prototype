@@ -627,6 +627,31 @@
               } if data['decision-check'] == 'Yes',
               {
                 key: {
+                  html: 'Appeal statement'
+                },
+                value: {
+                  html: data['appeal-statement'] | join('<br>') if data['appeal-statement'] else 'appeal-statement.pdf'
+                }
+                if data['appeal-statement-complete'] else
+                {
+                  html: '<span class="govuk-hint">Not started</span>'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'uploads/appeal-statement?cya=true',
+                      html: 'Change'
+                    }
+                    if data['appeal-statement-complete'] else
+                    {
+                      href: 'uploads/appeal-statement',
+                      html: 'Upload'
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
                   html: 'Add draft statement of common ground'
                 },
                 value: {
@@ -676,31 +701,6 @@
                   ]
                 }
               } if data['common-ground-check'] == 'Yes',
-              {
-                key: {
-                  html: 'Appeal statement'
-                },
-                value: {
-                  html: data['appeal-statement'] | join('<br>') if data['appeal-statement'] else 'appeal-statement.pdf'
-                }
-                if data['appeal-statement-complete'] else
-                {
-                  html: '<span class="govuk-hint">Not started</span>'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: 'uploads/appeal-statement?cya=true',
-                      html: 'Change'
-                    }
-                    if data['appeal-statement-complete'] else
-                    {
-                      href: 'uploads/appeal-statement',
-                      html: 'Upload'
-                    }
-                  ]
-                }
-              },
               {
                 key: {
                   html: 'Add new plans or drawings'
