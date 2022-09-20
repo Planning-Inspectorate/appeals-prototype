@@ -30,7 +30,7 @@
         </h2>
 
         {{ govukSummaryList({
-          classes: '',
+          classes: 'govuk-!-margin-bottom-9',
           rows: [
             {
               key: {
@@ -131,9 +131,12 @@
           ]
         }) }}
 
+        {{ govukInsetText({
+          html: 'You will not be able to change these answers later, you will have to start a new appeal.'
+        }) }}
 
         {{ govukButton({
-          html: 'Continue appeal'
+          html: 'Start appeal'
         }) }}
 
       </form>
