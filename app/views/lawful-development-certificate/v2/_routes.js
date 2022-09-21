@@ -294,5 +294,16 @@ router.post('/save-and-return/details-needed', function (req, res) {
 
 
 
+
+//
+// INVITE
+//
+router.post('/invite/email-address', function (req, res) {
+  res.redirect('sent')
+})
+
+
+
+
 // Add your routes above the module.exports line
 module.exports = router
