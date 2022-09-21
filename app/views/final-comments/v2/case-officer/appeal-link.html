@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set serviceName = "Make a beta service appeal link" %}
+{% set serviceName = "Make an ‘Appeal a planning decision’ appeal link" %}
 
 {% set title = "Link to the appeal" %}
 
@@ -9,12 +9,6 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
   {{ govukBackLink({
     text: "Back",
     href: "javascript:history.go(-1);"
@@ -66,13 +60,13 @@
 
       </div>
 
-      <button class="govuk-button govuk-button--secondary" onclick="copyText()" data-module="govuk-button">
+      {# <button class="govuk-button govuk-button--secondary" onclick="copyText()" data-module="govuk-button">
         Copy text
-      </button>
+      </button> #}
 
       <p>
         <a href="appeal-search">
-          Go back and use a different number
+          Go back and look for another appeal
         </a>
       </p>
 
