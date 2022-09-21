@@ -1,7 +1,6 @@
-{% set pageref = "" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Make a beta service appeal link" %}
+{% set serviceName = "Make an ‘Appeal a planning decision’ appeal link" %}
 
 {% set title = "What’s the appeal reference number?" %}
 
@@ -10,13 +9,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
   }) }}
-
 {% endblock %}
 
 {% block content %}
