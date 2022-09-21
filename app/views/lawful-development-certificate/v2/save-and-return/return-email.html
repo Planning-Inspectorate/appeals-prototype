@@ -7,7 +7,7 @@
     <strong>Subject:</strong> Continue with your appeal
   </p>
   <p>
-    <strong>To:</strong> {{ data['save-email'] or 'liz@palace.com' }}<br>
+    <strong>To:</strong> {{ data['applicant-email'] }}<br>
     <strong>From:</strong> appeals@planninginspectorate.gov.uk
   </p>
   <p>
@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <p class="govuk-body">
-      Dear {{ data['applicant-first-name'] or 'Liz' }} {{ data['applicant-last-name'] or 'Windsor' }},
+      Dear {{ data['applicant-first-name'] or 'Jim' }} {{ data['applicant-last-name'] or 'Hanson' }},
     </p>
 
     <p class="govuk-body">
@@ -32,9 +32,10 @@
       How to get back to your appeal
     </h2>
 
-    <p class="govuk-body">
-      Go to the link to return to your appeal: <a href="{{ data['last-page'] or '../contact-details/' }}" class="govuk-link">www.gov.uk/appeal-a-planning-decision/continue/0722bb4b-6650-4046-8a9f-0ad0efdd3b2f</a>
-    </p>
+    <ol class="govuk-list govuk-list--number">
+      <li>Go to the link to receive a code: <a href="enter-code" class="govuk-link">www.gov.uk/appeal-a-planning-decision/continue/0722bb4b-6650-4046-8a9f-0ad0efdd3b2f</a></li>
+      <li>Enter the code we send in an email to you.</li>
+    </ol>
 
     <p class="govuk-body">
       From The Planning Inspectorate

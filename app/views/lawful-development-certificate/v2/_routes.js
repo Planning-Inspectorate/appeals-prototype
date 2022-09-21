@@ -96,7 +96,18 @@ router.post('/appeal-details/:page', function (req, res, next) {
 })
 
 router.post('/appeal-details/contact-details', function (req, res) {
-  res.redirect('appellant-check')
+  // If they leave it blank add an example email so the no email set isn't triggered
+  if (!req.session.data['applicant-email']) {
+    req.session.data['applicant-email'] = 'example@email.com'
+  }
+
+  // If no email was set they'll be directed here, this will return them to the save and return journey or carry on with the appeal
+  if (req.session.data['saving']) {
+    delete req.session.data['saving']
+    res.redirect('../save-and-return/confirm')
+  } else {
+    res.redirect('appellant-check')
+  }
 })
 
 router.post('/appeal-details/appellant-check', function (req, res) {
@@ -265,10 +276,8 @@ router.post('/uploads/other', function (req, res) {
 // SAVE AND RETURN
 //
 router.get('/save-and-return/', function (req, res) {
-  if (req.session.data['applicant-email']) {
-    req.session.data['save-email'] = req.session.data['applicant-email']
-  } else {
-    req.session.data['save-email'] = 'email@example.com'
+  if (!req.session.data['applicant-email']) {
+    res.redirect('details-needed')
   }
 
   if (req.session.data['save-email-confirmed']) {
@@ -276,6 +285,10 @@ router.get('/save-and-return/', function (req, res) {
   } else {
     res.redirect('confirm')
   }
+})
+
+router.post('/save-and-return/details-needed', function (req, res) {
+  res.redirect('../appeal-details/contact-details?saving=true')
 })
 
 

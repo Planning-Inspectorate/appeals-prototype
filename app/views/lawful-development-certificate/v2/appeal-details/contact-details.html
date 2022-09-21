@@ -42,9 +42,9 @@
       }
     }) }}
 
-    {% if data['save-email'] %}
+    {% if data['save-email-confirmed'] %}
       {{ govukInsetText({
-        html: 'You have confirmed your email for this appeal:<br>'+data['save-email'] or 'liz@palace.com'
+        html: 'You have confirmed your email for this appeal:<br>'+data['applicant-email']
       }) }}
     {% else %}
       {{ govukInput({
