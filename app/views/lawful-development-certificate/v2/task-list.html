@@ -32,9 +32,6 @@
         }
       </style>
 
-      {% set applicationDate = (data['application-date-day'] or '1') +' '+ (data['application-date-month'] | formatMonth or 'July') +' '+ (data['application-date-year'] or '2022') %}
-      {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2022') %}
-
       <ol class="app-task-list">
         <li>
           <h2 class="app-task-list__section">
@@ -43,59 +40,8 @@
               html: 'Completed'
             }) }}
           </h2>
-          {{ govukSummaryList({
-            classes: 'govuk-!-margin-bottom-9',
-            rows: [
-              {
-                key: {
-                  text: 'Appealing'
-                },
-                value: {
-                  text: 'A lawful development certificate (LDC)'
-                }
-              },
-              {
-                key: {
-                  text: 'Local planning authority'
-                },
-                value: {
-                  text: data['lpa'] or 'Bradford'
-                }
-              },
-              {
-                key: {
-                  text: 'Section'
-                },
-                value: {
-                  text: data['section'] or '192'
-                }
-              },
-              {
-                key: {
-                  text: 'Application date'
-                },
-                value: {
-                  text: applicationDate
-                }
-              },
-              {
-                key: {
-                  text: 'Decision received'
-                },
-                value: {
-                  text: data['decision-check'] or 'Yes'
-                }
-              },
-              {
-                key: {
-                  text: 'Decision date'
-                },
-                value: {
-                  text: decisionDate
-                }
-              } if data['decision-check'] != 'No'
-            ]
-          }) }}
+
+          <p class="govuk-!-margin-bottom-9">You&rsquo;re appealing a lawful development certificate (LDC) with {{ data['lpa'] or 'Bradford' }} local planning authority. Your deadline to appeal is {{ '168' | daysInFuture }}.</p>
         </li>
 
 
