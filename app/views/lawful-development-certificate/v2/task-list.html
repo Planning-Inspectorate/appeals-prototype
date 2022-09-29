@@ -2,8 +2,6 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-quarter-from-desktop">
-    </div>
     <div class="govuk-grid-column-three-quarters-from-desktop">
       <h1 class="govuk-heading-l">
         Appeal a lawful development certificate
@@ -234,7 +232,7 @@
                 actions: {
                   items: [
                     {
-                      href: 'site-details/address?cya=true',
+                      href: 'appeal-details/address?cya=true',
                       html: 'Change'
                     }
                     if data['address-complete'] else
@@ -300,7 +298,7 @@
                   html: 'Site usage'
                 },
                 value: {
-                  html: data['site-usage'] or 'Home for the Queen'
+                  html: data['site-usage'] or 'Home for the King'
                 }
                 if data['site-usage-complete'] else
                 {
