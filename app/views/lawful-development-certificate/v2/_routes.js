@@ -152,7 +152,7 @@ router.post('/appeal-details/site-usage', function (req, res) {
   if (req.session.data['section'] == '192' || req.session.data['section'] == '26H') {
     res.redirect('proposed-usage')
   } else {
-    res.redirect('proposal-started')
+    res.redirect('procedure')
   }
 })
 
