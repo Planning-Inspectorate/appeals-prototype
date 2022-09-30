@@ -7,7 +7,7 @@
     <strong>Subject:</strong> Confirm your email address
   </p>
   <p>
-    <strong>To:</strong> {{ data['applicant-email'] }}<br>
+    <strong>To:</strong> {{ data['applicant-email'] or 'example@email.com' }}<br>
     <strong>From:</strong> appeals@planninginspectorate.gov.uk
   </p>
   <p>
@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <p class="govuk-body">
-      Dear {{ data['applicant-first-name'] or 'Liz' }} {{ data['applicant-last-name'] or 'Windsor' }},
+      Dear {{ data['applicant-first-name'] or 'Jane' }} {{ data['applicant-last-name'] or 'Doe' }},
     </p>
 
     <p class="govuk-body">

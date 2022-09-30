@@ -39,7 +39,7 @@
             }) }}
           </h2>
 
-          <p class="govuk-!-margin-bottom-9">You&rsquo;re appealing a lawful development certificate (LDC) with {{ data['lpa'] or 'Bradford' }} local planning authority. Your deadline to appeal is {{ '168' | daysInFuture }}.</p>
+          <p class="govuk-!-margin-bottom-9">You&rsquo;re appealing a lawful development certificate (LDC) with {{ data['lpa'] or 'Bradford' }} local planning authority. {{ ('Your deadline to appeal is ' + '168' | daysInFuture + '.') if data['section'] == '26H' }}</p>
         </li>
 
 
@@ -73,7 +73,7 @@
                   html: 'Your contact details'
                 },
                 value: {
-                  html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Charlie Windsor')+('<br>'+data['agency-name'] if data['agency-name'])+('<br>'+data['applicant-email'] if data['applicant-email'] else 'charles@palace.com')
+                  html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Jane Doe')+('<br>'+data['agency-name'] if data['agency-name'])+('<br>'+data['applicant-email'] if data['applicant-email'] else 'email@example.com')
                 }
                 if data['contact-details-complete'] else
                 {
@@ -120,10 +120,10 @@
               },
               {
                 key: {
-                  html: 'Appellant&rsquo;s name'
+                  html: 'Their name'
                 },
                 value: {
-                  html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Chris Armstrong')
+                  html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Joe Bloggs')
                 }
                 if data['appellant-name-complete'] else
                 {
@@ -223,7 +223,7 @@
                   html: 'Site address'
                 },
                 value: {
-                  html: (data['address-line-1'] or 'Buckingham Palace')+('<br>'+data['address-line-2'] if data['address-line-2'])+('<br>'+(data['address-town'] or 'London'))+('<br>'+(data['address-postcode'] or 'SW1A 1AA') if data['grid'] != 'true' else '<br>'+(data['address-eastings'] or '529090')+', '+(data['address-northings'] or '179645'))
+                  html: (data['address-line-1'] or '1 Road Name')+('<br>'+data['address-line-2'] if data['address-line-2'])+('<br>'+(data['address-town'] or 'London'))+('<br>'+(data['address-postcode'] or 'SW1A 1AA') if data['grid'] != 'true' else '<br>'+(data['address-eastings'] or '529090')+', '+(data['address-northings'] or '179645'))
                 }
                 if data['address-complete'] else
                 {
@@ -298,7 +298,7 @@
                   html: 'Site usage'
                 },
                 value: {
-                  html: data['site-usage'] or 'Home for the King'
+                  html: data['site-usage'] or 'Residential'
                 }
                 if data['site-usage-complete'] else
                 {
@@ -499,7 +499,7 @@
             rows: [
               {
                 key: {
-                  html: 'Original application form'
+                  html: 'Application form'
                 },
                 value: {
                   html: data['application'] | join('<br>') if data['application'] else 'application.pdf'

@@ -86,7 +86,6 @@ router.post('/appeal-details/:page', function (req, res, next) {
     && req.session.data['site-visibility-complete']
     && req.session.data['health-and-safety-complete']
     && req.session.data['site-usage-complete']
-    && req.session.data['proposal-started-complete']
     && req.session.data['procedure-complete']
   ){
     req.session.data['appeal-details-completed'] = 'true'

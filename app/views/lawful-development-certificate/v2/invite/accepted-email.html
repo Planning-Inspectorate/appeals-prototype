@@ -7,7 +7,7 @@
     <strong>Subject:</strong> Invite accepted
   </p>
   <p>
-    <strong>To:</strong> {{ data['applicant-email'] }}<br>
+    <strong>To:</strong> {{ data['applicant-email'] or 'example@email.com' }}<br>
     <strong>From:</strong> appeals@planninginspectorate.gov.uk
   </p>
   <p>
@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <p class="govuk-body">
-      The invite your sent to {{ data['invite-email-address'] or 'example@email.com' }} has been accepted.
+      The invite you sent to {{ data['invite-email-address'] or 'example@email.com' }} has been accepted.
     </p>
 
     <p class="govuk-body">
