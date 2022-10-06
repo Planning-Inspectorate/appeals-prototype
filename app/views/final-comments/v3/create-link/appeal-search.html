@@ -1,0 +1,43 @@
+{% extends location+"_layout-internal.html" %}
+
+{% block beforeContent %}{% endblock %}
+
+{% block questions %}
+  {% if error %}
+    {{ govukErrorSummary({
+      titleText: 'There is a problem',
+      errorList: [
+        {
+          text: error,
+          href: '#find-error'
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  {{ govukInput({
+    id: 'appeal-ref',
+    name: 'appeal-ref',
+    value: data['appeal-ref'],
+    classes: 'govuk-input--width-10',
+    label: {
+      html: 'What&rsquo;s the appeal reference number?',
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    hint: {
+      html: 'For example, A123BCD'
+    },
+    spellcheck: false,
+    errorMessage: {
+      text: error
+    } if error
+  }) }}
+
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Find appeal'
+  }) }}
+{% endblock %}

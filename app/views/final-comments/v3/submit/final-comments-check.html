@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukRadios({
+          idPrefix: 'adding-final-comments',
+          name: 'adding-final-comments',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Do you want to submit final comments?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "You can upload  documents to support your appeal later"
+          },
+          items: [
+            {
+              html: 'Yes',
+              value: 'Yes',
+              checked: checked('adding-final-comments','Yes')
+            },
+            {
+              html: 'No',
+              value: 'No',
+              checked: checked('adding-final-comments','No')
+            }
+          ]
+        }) }}
+
+        {% include "includes/button.html" %}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
