@@ -1,38 +1,22 @@
-{% extends "layout.html" %}
-
-{% set title = "Appeal closed for comments" %}
-
-{% block pageTitle %}
-  {{title}} - Tell us about the appeal site - GOV.UK
-{% endblock %}
+{% extends location+"_layout.html" %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
   }) }}
 {% endblock %}
 
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Appeal closed for comments
+      </h1>
 
-    <form method="post">
-
-      <!-- reasons by file -->
-      <label class="govuk-label govuk-label--l" for="final-comments">
-        {{ title  }}
-      </label>
-
-      <div class="govuk-body">
-        The appeal you’re trying to access is closed for comments.
-      </div>
+      <p>The appeal you&rsquo;re trying to access is closed for comments.</p>
 
     </div>
-
   </div>
-</div>
 {% endblock %}
