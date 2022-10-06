@@ -1,0 +1,104 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Respond to these statements for your appeal - ENF13579F - GOV.UK
+{% endblock %}
+
+
+Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[INSERT HERE]Application reference:[INSERT HERE]An appeal has been made against the decision of [LPD]to [insert reason for appeal, i.e. refuse to grant planning permission].[The appeal will be determined on the basis of written representations.][The appeal will be determined on the basis of a hearing.] [The appeal will be determined on the basis of an inquiry.] Interested individuals that want to take part in the Inquiry can do so by applying for Rule 6 status.Rule 6 status means that you would be able to present your evidence on a formal basis and cross examine the evidence of others.You can learn more about Rule 6 at:https://www.gov.uk/government/publications/apply-for-rule-6-status-on-a-planning-appeal-or-called-in-applicationWhat happens next** TO BE ADDED **Thank you,The Planning Inspectorate
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> Respond to these statements for your appeal
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      Appeal reference: ENF13579F
+    </p>
+
+    <p class="govuk-body">
+      Appeal site: 11 Bradling Avenue, Sampleford, BS17 2PP
+    </p>
+
+    <p class="govuk-body">
+      Dear Sam Avo,
+    </p>
+
+    <p class="govuk-body">
+      {{ data[''] or "Sampleford City Council" }} and other interested parties have submitted statements about your appeal.
+    </p>
+
+    <p class="govuk-body">
+      We’ve attached the statements for your information.
+    </p>
+
+
+    <h2 class="govuk-heading-m">
+      What you can do
+    </h2>
+
+    <p class="govuk-body">
+      You can respond to the statement in writing. This is called your ‘final comments’.
+    </p>
+
+    <p class="govuk-body">
+      Your comments must only respond to the issues in the statements. You do not need to repeat information from your appeal statement. You cannot introduce new evidence or arguments. Do not include any personal or sensitive information.
+    </p>
+
+    <ol class="govuk-list govuk-list--number">
+      <li>
+        Go to the link to receive a code: <a href="input-code" class="govuk-link">www.gov.uk/appeal-a-planning-decision/final-comments?app=d81vW7td12s4t5gff728y29</a>
+      </li>
+
+      <li>
+        Enter the code we send in an email to you.
+      </li>
+    </ol>
+
+    <p class="govuk-body">
+      Your deadline is {{ 21 | daysInFuture }}. This is the last time you can comment on the appeal or add updated documents.
+    </p>
+
+    <p class="govuk-body">
+      Final comments are optional. It is your decision whether you submit any.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p class="govuk-body">
+      If you submit final comments, we’ll forward them to {{ data[''] or "Sampleford City Council" }}.
+    </p>
+
+    <p class="govuk-body">
+      {{ data[''] or "Sampleford City Council" }} can also respond to interest parties’ statements. If it does, we’ll forward you a copy for your information.
+    </p>
+
+    <p class="govuk-body">
+      Once the deadline for final comments has passed, the Inspector will arrange a site visit. We’ll contact you if you need to give them access.
+    </p>
+
+    <p class="govuk-body">
+      Thank you,<br>
+      Mari Bidbod<br>
+      mari.bidbod@planninginspectorate.gov.uk
+    </p>
+
+  </div>
+</div>
+{% endblock %}

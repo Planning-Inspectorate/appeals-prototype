@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% set htmlClasses = 'internal' %}
+
+{% set serviceName = 'Create a final comments link' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
+
+      <form method="post">
+
+        {% block questions %}{% endblock %}
+
+        {% block buttons %}
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+        {% endblock %}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
