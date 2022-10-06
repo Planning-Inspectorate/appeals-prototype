@@ -1,57 +1,38 @@
-{% extends "layout.html" %}
+{% extends location+"_layout.html" %}
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Upload your new supporting documents
+  </h1>
+
+  {% set uploadHtml %}
+    {{ govukFileUpload({
+      id: "final-documents",
+      name: "final-documents",
+      classes: 'moj-multi-file-upload__input',
+      label: {
+        text: "Upload files",
+        classes: 'govuk-label--m'
+      },
+      hint: {
+        text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
+      },
+      attributes: { multiple: '' }
+    }) }}
+
+    {{govukButton({
+      text: 'Upload file',
+      classes: 'govuk-button--secondary moj-multi-file-upload__button'
+    })}}
+  {% endset %}
+
+  {{ mojMultiFileUpload({
+    uploadedFiles: {
+      heading: { text: 'Files added' },
+      items: []
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    uploadHtml: uploadHtml
   }) }}
-  {{ govukBackLink({
-    html: 'Back',
-    href: 'javascript:history.back()'
-  }) }}
-{% endblock %}
-
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="post" id="multiupload">
-
-        <h1 class="govuk-heading-l">
-          Additional documents
-        </h1>
-
-        {% set uploadHtml %}
-          {{ govukFileUpload({
-            id: "final-comment-supporting-docs",
-            name: "_final-comment-supporting-docs",
-            classes: 'moj-multi-file-upload__input',
-            hint: {
-              text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
-            },
-            attributes: { multiple: '' }
-          }) }}
-
-          {{govukButton({
-            text: 'Upload file',
-            classes: 'govuk-button--secondary moj-multi-file-upload__button'
-          })}}
-        {% endset %}
-
-        {{ mojMultiFileUpload({
-          uploadedFiles: {
-            heading: { text: 'Files added' },
-            items: uploadedFiles
-          },
-          uploadHtml: uploadHtml
-        }) }}
-
-        {% include "includes/button.html" %}
-
-      </form>
-    </div>
-  </div>
 {% endblock %}
 
 {% block pageScripts %}
@@ -61,7 +42,7 @@
       e.preventDefault();
 
       $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="supporting-docs" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+        $('<input name="final-documents" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
       });
 
       $(this).unbind('submit').submit();

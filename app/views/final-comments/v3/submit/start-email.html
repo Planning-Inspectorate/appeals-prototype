@@ -1,0 +1,65 @@
+{% extends "layout-email.html" %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> Respond to these statements for your appeal
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p>Appeal reference: ENF13579F
+    <br>
+      Appeal site: 11 Bradling Avenue, Sampleford, BS17 2PP</p>
+
+    <p>Dear Sam Avo,</p>
+
+    <p>Sampleford City Council and other interested parties have submitted statements about your appeal.</p>
+
+    <p>We&rsquo;ve attached the statements for your information.</p>
+
+
+    <h2 class="govuk-heading-m">
+      What you can do
+    </h2>
+
+    <p>You can respond to the statement in writing. This is called your &lsquo;final comments&rsquo;.</p>
+
+    <p>Your comments must only respond to the issues in the statements. You do not need to repeat information from your appeal statement. You cannot introduce new evidence or arguments. Do not include any personal or sensitive information.</p>
+
+    {{ govukInsetText({
+      html: 'Final comments are optional. It is your decision whether you submit any.'
+    }) }}
+
+    <p>If you want to add final comments go to the link:<br><a href="input-code" class="govuk-link">http://www.gov.uk/appeal-a-planning-decision/final-comments?app=d81vW7td12s4t5gff728y29</a></p>
+
+    <p>Your deadline is {{ 21 | daysInFuture }}. This is the last time you can comment on the appeal or add updated documents.</p>
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p>If you submit final comments, we&rsquo;ll forward them to Sampleford City Council</p>
+
+    <p>Sampleford City Council can also respond to interest parties&rsquo; statements. If it does, we&rsquo;ll forward you a copy for your information.</p>
+
+    <p>Once the deadline for final comments has passed, the Inspector will arrange a site visit. We&rsquo;ll contact you if you need to give them access.</p>
+
+    <p>Thank you,<br>
+      Mari Bidbod<br>
+      mari.bidbod@planninginspectorate.gov.uk</p>
+
+  </div>
+</div>
+{% endblock %}
