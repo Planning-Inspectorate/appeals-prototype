@@ -1,0 +1,29 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Invite someone to your appeal
+  </h1>
+
+  <p>This will give other people access to your appeal.</p>
+
+  {# <p>They will able to view and change everything you have entered, as well as being able to add details and submit the appeal on your behalf.</p> #}
+
+  {{ govukInsetText({
+    html: 'This cannot be undone.'
+  }) }}
+
+  {{ govukInput({
+    id: 'invite-email-address',
+    name: 'invite-email-address',
+    value: data['invite-email-address'],
+    label: {
+      html: 'What is their email address?',
+      classes: 'govuk-label--m'
+    },
+    type: 'email',
+    spellcheck: false
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
