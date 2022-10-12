@@ -1,0 +1,45 @@
+{% extends "layout-email.html" %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+  <p>
+    <strong>Subject:</strong> Confirm your email address
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['applicant-email'] or 'example@email.com' }}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      Dear {{ data['applicant-first-name'] or 'Jane' }} {{ data['applicant-last-name'] or 'Doe' }},
+    </p>
+
+    <p class="govuk-body">
+      You must confirm your email address before we can save your appeal.
+    </p>
+
+    <p class="govuk-body">
+      Go to the link to confirm your email address:<br>
+      <a href="saved?save-email-confirmed=true">www.gov.uk/appeal-a-planning-decision/confirm-email/0722bb4b-6650-4046-8a9f-0ad0efdd3b2f</a>
+    </p>
+
+    <p class="govuk-body">
+      This link will expire after 30 minutes.
+    </p>
+
+    <p class="govuk-body">
+      From The Planning Inspectorate
+    </p>
+
+  </div>
+</div>
+{% endblock %}

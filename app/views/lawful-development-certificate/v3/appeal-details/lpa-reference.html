@@ -1,0 +1,20 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'lpa-reference',
+    name: 'lpa-reference',
+    value: data['lpa-reference'],
+    classes: 'govuk-!-width-two-thirds',
+    label: {
+      html: 'What&rsquo;s the reference number for your application?',
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    hint: {
+      html: 'You can find this on any correspondence from the local planning authority, for example the letter confirming your application'
+    }
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

@@ -1,0 +1,66 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {% call govukFieldset({
+    legend: {
+    html: 'What are your contact details?',
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      id: 'applicant-first-name',
+      name: 'applicant-first-name',
+      value: data['applicant-first-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'First name'
+      },
+      autocomplete: 'given-name',
+      spellcheck: false
+    }) }}
+
+    {{ govukInput({
+      id: 'applicant-last-name',
+      name: 'applicant-last-name',
+      value: data['applicant-last-name'],
+      classes: 'govuk-!-width-three-quarters',
+      label: {
+        html: 'Last name'
+      },
+      autocomplete: 'family-name',
+      spellcheck: false
+    }) }}
+
+    {{ govukInput({
+      id: 'agency-name',
+      name: 'agency-name',
+      value: data['agency-name'],
+      label: {
+        html: 'Consultancy name (optional)'
+      }
+    }) }}
+
+    {% if data['save-email-confirmed'] %}
+      {{ govukInsetText({
+        html: 'You have confirmed your email for this appeal:<br>'+data['applicant-email']
+      }) }}
+    {% else %}
+      {{ govukInput({
+        id: 'applicant-email',
+        name: 'applicant-email',
+        value: data['applicant-email'],
+        label: {
+          html: 'Email address'
+        },
+        type: 'email',
+        autocomplete: 'email',
+        spellcheck: false
+      }) }}
+    {% endif %}
+
+  {% endcall %}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

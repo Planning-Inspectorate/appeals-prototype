@@ -1,0 +1,32 @@
+{% extends "layout-email.html" %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+  <p>
+    <strong>Subject:</strong> Invite accepted
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['applicant-email'] or 'example@email.com' }}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      The invite you sent to {{ data['invite-email-address'] or 'example@email.com' }} has been accepted.
+    </p>
+
+    <p class="govuk-body">
+      From The Planning Inspectorate
+    </p>
+
+  </div>
+</div>
+{% endblock %}

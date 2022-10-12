@@ -1,0 +1,38 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'other-check',
+    name: 'other-check',
+    fieldset: {
+      legend: {
+        html: 'Do you have any other new documents that support your appeal?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('other-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('other-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block notes %}
+  {# <h2 class="govuk-heading-m">
+    Design notes
+  </h2>
+  <ul class="govuk-list">
+
+  </ul> #}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
