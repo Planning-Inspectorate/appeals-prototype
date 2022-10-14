@@ -3,15 +3,18 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters-from-desktop">
-      <h1 class="govuk-heading-l">
-        Appeal a lawful development certificate
+      <h1 class="govuk-heading-xl">
+        Your appeal
       </h1>
 
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Manage your appeal</h2>
-      <ul class="govuk-list">
-        <li><a href="save-and-return/" class="govuk-link--no-visited-state">Save and complete later</a></li>
-        <li><a href="invite/email-address" class="govuk-link--no-visited-state">Invite someone to your appeal</a></li>
-      </ul>
+      <h2 class="govuk-heading-s">
+        Appeal incomplete
+      </h2>
+      <p>{{ ('Your deadline to appeal is ' + '168' | daysInFuture + '.') }}</p>
+
+      <p>
+        <a href="save-and-return/saved" class="govuk-link--no-visited-state">Save and come back later</a>.
+      </p>
 
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
 
@@ -33,22 +36,7 @@
       <ol class="app-task-list">
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">1. </span> Before you start
-            {{ govukTag({
-              html: 'Completed'
-            }) }}
-          </h2>
-
-          <p class="govuk-!-margin-bottom-9">You&rsquo;re appealing a lawful development certificate (LDC) with {{ data['lpa'] or 'Bradford' }} local planning authority. {{ ('Your deadline to appeal is ' + '168' | daysInFuture + '.') if data['section'] == '26H' }}</p>
-        </li>
-
-
-
-
-
-        <li>
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Prepare appeal
+            <span class="app-task-list__section-number">1. </span> Prepare appeal
             {% if data['appeal-details-completed'] == 'true' %}
               {{ govukTag({
                 html: 'Completed'
@@ -245,7 +233,7 @@
               },
               {
                 key: {
-                  html: 'Visible'
+                  html: 'Visibility'
                 },
                 value: {
                   html: 'No<br>'+data['site-visibilityy__details'] if data['site-visibilityy'] == 'No' else 'Yes'
@@ -477,7 +465,7 @@
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span> Upload documents
+            <span class="app-task-list__section-number">2. </span> Upload documents
             {% if data['uploads-completed'] == 'true' %}
               {{ govukTag({
                 html: 'Completed'
@@ -758,7 +746,7 @@
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">4. </span> Submit
+            <span class="app-task-list__section-number">3. </span> Submit
             {% if data['appeal-details-completed'] == 'true' and data['uploads-completed'] == 'true' %}
               {{ govukTag({
                 html: 'Ready to submit',

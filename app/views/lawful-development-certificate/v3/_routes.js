@@ -63,7 +63,7 @@ router.post('/before-you-start/decision-date', function (req, res) {
 })
 
 router.post('/before-you-start/cya', function (req, res) {
-  res.redirect('../task-list')
+  res.redirect('../save-and-return/email-address')
 })
 
 
@@ -274,32 +274,14 @@ router.post('/uploads/other', function (req, res) {
 //
 // SAVE AND RETURN
 //
-router.get('/save-and-return/', function (req, res) {
-  if (req.session.data['save-email-confirmed']) {
-    res.redirect('saved')
-  } else {
-    res.redirect('need-to-confirm')
-  }
+router.post('/save-and-return/email-address', function (req, res) {
+  res.redirect('confirm')
 })
 
-router.post('/save-and-return/need-to-confirm', function (req, res) {
-  if (!req.session.data['applicant-email']) {
-    res.redirect('../appeal-details/contact-details?saving=true')
-  } else {
-    res.redirect('confirm')
-  }
+router.post('/save-and-return/confirmed', function (req, res) {
+  res.redirect('../task-list')
 })
 
-
-
-
-
-//
-// INVITE
-//
-router.post('/invite/email-address', function (req, res) {
-  res.redirect('sent')
-})
 
 
 
