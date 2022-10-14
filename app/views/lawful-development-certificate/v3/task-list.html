@@ -587,57 +587,6 @@
               },
               {
                 key: {
-                  html: 'Add draft statement of common ground'
-                },
-                value: {
-                  html: data['common-ground-check'] or 'No'
-                }
-                if data['common-ground-check-complete'] else
-                {
-                  html: '<span class="govuk-hint">Not started</span>'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: 'uploads/common-ground-check?cya=true',
-                      html: 'Change'
-                    }
-                    if data['common-ground-check-complete'] else
-                    {
-                      href: 'uploads/common-ground-check',
-                      html: 'Answer'
-                    }
-                  ]
-                }
-              },
-
-              {
-                key: {
-                  html: 'Draft statement of common ground'
-                },
-                value: {
-                  html: data['common-ground'] | join('<br>') if data['common-ground'] else 'common-ground.pdf'
-                }
-                if data['common-ground-complete'] else
-                {
-                  html: '<span class="govuk-hint">Not started</span>'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: 'uploads/common-ground?cya=true',
-                      html: 'Change'
-                    }
-                    if data['common-ground-complete'] else
-                    {
-                      href: 'uploads/common-ground',
-                      html: 'Upload'
-                    }
-                  ]
-                }
-              } if data['common-ground-check'] == 'Yes',
-              {
-                key: {
                   html: 'Add new plans or drawings'
                 },
                 value: {

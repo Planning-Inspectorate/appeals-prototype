@@ -201,7 +201,6 @@ router.post('/uploads/:page', function (req, res, next) {
   if (
     req.session.data['application-complete']
     && req.session.data['plans-complete']
-    && req.session.data['common-ground-check-complete']
     && req.session.data['new-plans-check-complete']
     && req.session.data['other-check-complete']
   ){
@@ -228,18 +227,6 @@ router.post('/uploads/decision-letter', function (req, res) {
 })
 
 router.post('/uploads/appeal-statement', function (req, res) {
-  res.redirect('common-ground-check')
-})
-
-router.post('/uploads/common-ground-check', function (req, res) {
-  if (req.session.data['common-ground-check'] == 'Yes') {
-    res.redirect('common-ground')
-  } else {
-    res.redirect('new-plans-check')
-  }
-})
-
-router.post('/uploads/common-ground', function (req, res) {
   res.redirect('new-plans-check')
 })
 
