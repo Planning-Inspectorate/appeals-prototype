@@ -1,0 +1,17 @@
+{% extends location+"_layout.html" %}
+
+{% block beforeContent %}{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Your email address is confirmed
+  </h1>
+{% endblock %}
+{% block buttons %}
+  {{ govukButton({
+    html: 'Continue'
+  }) }}
+{% endblock %}
+
+
+{% block pageScripts %}{% endblock %}
