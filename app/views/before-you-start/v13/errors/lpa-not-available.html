@@ -1,0 +1,23 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    You need to use the existing service
+  </h1>
+
+  <p>Your local planning department is not using this new service yet.</p>
+
+  <p>You need to submit your appeal using the existing service, the Appeals Casework Portal.</p>
+
+  <h2 class="govuk-heading-m">
+    How to begin your appeal
+  </h2>
+  <p>To begin your appeal, log in or register on the Appeals Casework Portal.</p>
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Continue to the Appeals Casework Portal',
+    href: 'https://acp.planninginspectorate.gov.uk/'
+  }) }}
+{% endblock %}
