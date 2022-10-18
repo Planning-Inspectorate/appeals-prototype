@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+	{{ govukPhaseBanner({
+		tag: { text: 'Beta' },
+		html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+	}) }}
+
+	{{ govukBackLink({
+		html: 'Back',
+		href: 'javascript:history.back()'
+	}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukDateInput({
+          id: 'application-date',
+          namePrefix: 'application-date',
+          fieldset: {
+            legend: {
+              html: 'When was the application submitted to the local planning authority?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            html: 'For example, 31 3 2022'
+          },
+          items: [
+            {
+              name: 'day',
+              classes: 'govuk-input--width-2',
+              value: data['application-date-day']
+            },
+            {
+              name: 'month',
+              classes: 'govuk-input--width-2',
+              value: data['application-date-month']
+            },
+            {
+              name: 'year',
+              classes: 'govuk-input--width-4',
+              value: data['application-date-year']
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

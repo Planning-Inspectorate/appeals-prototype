@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
+
+      <form method="post">
+
+        {% block questions %}{% endblock %}
+
+        {% block buttons %}
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+
+          <p><a href="../task-list" class="govuk-link--no-visited-state">Return to task list</a></p>
+        {% endblock %}
+
+      </form>
+
+    </div>
+
+    <div class="govuk-grid-column-three-quarters govuk-grid-column-one-third-from-desktop">
+      <aside class="notes">
+        {% block notes %}{% endblock %}
+      </aside>
+    </div>
+  </div>
+{% endblock %}

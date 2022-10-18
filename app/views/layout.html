@@ -55,6 +55,11 @@
 {% if useAutoStoreData %}
   {% block footer %}
     {{ govukFooter({
+      navigation: [
+        {
+          items: prototypeLinks
+        }
+      ] if prototypeLinks,
       meta: {
         items: [
           {
