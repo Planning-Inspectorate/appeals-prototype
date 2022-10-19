@@ -54,38 +54,28 @@ router.post('/planning/type', function (req, res) {
 
   switch (type) {
     case 'Householder planning':
-      res.redirect('listed-building-check');
+      res.redirect('decision');
       break;
     case 'Prior approval':
     case 'Removal or variation of conditions':
       res.redirect('existing-home-check');
       break;
     default:
-      res.redirect('any-other-check');
+      res.redirect('major-development-check');
   }
 })
 
 router.post('/planning/existing-home-check', function (req, res) {
   if (req.session.data['existing-home-check'] == 'No') {
-    res.redirect('any-other-check');
+    res.redirect('major-development-check');
   } else {
-    res.redirect('listed-building-check');
+    res.redirect('decision');
   }
 })
 
-router.post('/planning/any-other-check', function (req, res) {
-  let others = req.session.data['any-other-check']?.toString() || ''
-
-  if (others.includes('Major')) {
-    res.redirect('../errors/certain-types')
-  } else {
-    res.redirect('decision')
-  }
-})
-
-router.post('/planning/listed-building-check', function (req, res) {
-  if (req.session.data['listed-building-check'] == 'Yes') {
-    res.redirect('../errors/no-listed');
+router.post('/planning/major-development-check', function (req, res) {
+  if (req.session.data['major-development-check'] == 'Yes') {
+    res.redirect('../errors/no-major');
   } else {
     res.redirect('decision')
   }
