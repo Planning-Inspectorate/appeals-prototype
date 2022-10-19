@@ -76,29 +76,7 @@
       } if data['planning-type'] == 'Prior approval' or data['planning-type'] == 'Removal or variation of conditions',
       {
         key: {
-          text: 'Your appeal is not about'
-        },
-        value: {
-          html: '<ul class="govuk-list">
-            <li>A listed building</li>
-            <li>Major dwellings</li>
-            <li>Major general industry, storage or warehousing</li>
-            <li>Major retail and services</li>
-            <li>Major travelling and caravan pitches</li>
-          </ul>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'application-date?cya=true',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['existing-home-check'] != 'Yes' and data['planning-type'] != 'Householder planning',
-      {
-        key: {
-          text: 'Listed building'
+          text: 'Major development'
         },
         value: {
           html: 'No'
@@ -106,12 +84,12 @@
         actions: {
           items: [
             {
-              href: 'listed-building-check?cya=true',
+              href: 'major-development-check',
               text: 'Change'
             }
           ]
         }
-      } if data['existing-home-check'] == 'Yes' or data['planning-type'] == 'Householder planning',
+      } if data['existing-home-check'] != 'Yes' and data['planning-type'] != 'Householder planning',
       {
         key: {
           text: 'Decision'
