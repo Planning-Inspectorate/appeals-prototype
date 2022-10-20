@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% set title = "Your final comments" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="3000">
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="final-comments">
+              {{ title }}
+            </label>
+          </h1>
+          <p class="govuk-body">
+            Before you start:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>only comment on the statements from the local planning authority or interested parties</li>
+            <li>remove any sensitive or personal information</li>
+            <li>do not include any new evidence</li>
+          </ul>
+
+          {% set sensitiveHtml %}
+            <p class="govuk-body">
+              Sensitive information refers to:
+            </p>
+            {% include "includes/sensitive-info-list.html" %}
+          {% endset -%}
+
+          {{ govukDetails({
+            summaryText: "What is sensitive information?",
+            html: sensitiveHtml
+          }) }}
+
+          <p class="govuk-hint">
+            Final comments must be 3000 words or less.
+          </p>
+          
+          <textarea class="govuk-textarea govuk-js-character-count" id="final-comments" name="final-comments" rows="6" aria-describedby="final-comments-info"></textarea>
+        </div>
+
+        <div id="final-comments-info" class="govuk-hint govuk-character-count__message">
+          Final comments must be 3000 characters or less.
+        </div>
+
+      </div>
+
+      {% include "includes/button.html" %}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

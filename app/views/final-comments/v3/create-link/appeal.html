@@ -1,0 +1,46 @@
+{% extends location+"_layout-internal.html" %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Appeal {{ data['appeal-ref'] or '123456' }}
+  </h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          html: 'Appellant'
+        },
+        value: {
+          html: 'Nic Davies'
+        }
+      },
+      {
+        key: {
+          html: 'Appeal site address'
+        },
+        value: {
+          html: '1 Friary Buildings<br>Bristol<br>BS1 6EA'
+        }
+      },
+      {
+        key: {
+          html: 'Final comments deadline'
+        },
+        value: {
+          html: 6 | daysInFuture
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukInsetText({
+    html: 'Check this is the right appeal before creating a final comments link.'
+  }) }}
+
+  {{ govukButton({
+    text: 'Create link'
+  }) }}
+{% endblock %}

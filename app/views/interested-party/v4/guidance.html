@@ -92,7 +92,26 @@
         Your comments must not include inflammatory or abusive language.
       </p>
 
-      {% include "includes/sensitive-info-list.html" %}
+      {% set sensitiveHtml %}
+        <h3 class="govuk-heading-m">
+          Use of language and sensitive information
+        </h3>
+        <p class="govuk-body">
+          Your statement must not include racist, inflammatory or abusive language.
+        <p>
+        <p class="govuk-body">
+          Do not include sensitive information in your statement, as you'll be asked to resubmit and this will delay your appeal.
+        </p>
+        <p class="govuk-body">
+          Sensitive information refers to:
+        </p>
+        {% include "includes/sensitive-info-list.html" %}
+      {% endset -%}
+
+      {{ govukDetails({
+        summaryText: "What is sensitive information?",
+        html: sensitiveHtml
+      }) }}
 
       <!-- <p class="govuk-body">
         If you include any personal information that's not relevant, we'll ask you to resubmit. This could mean that you miss the deadline to submit comments.

@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+
+{% set serviceName = "Make an ‘Appeal a planning decision’ appeal link" %}
+
+{% set title = "Section 78 appeal 123456" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <!-- reasons by file -->
+      <label class="govuk-label govuk-label--l" for="final-comments">
+        {{ title  }}
+      </label>
+
+      <p class="govuk-body govuk-!-margin-bottom-6">
+        Check this is the right appeal before making a final comments link.
+      </p>
+
+      <dl class="govuk-summary-list">
+
+        {# <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              Section 78 appeal
+            </p>
+          </dd>
+        </div> #}
+
+        {# <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              APP/123456
+            </p>
+          </dd>
+        </div> #}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appellant
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            <!-- if there is a person's name show it -->
+            {% if data['enforcement-first-name'] or data['enforcement-company-name'] %}
+              {% if data['enforcement-first-name'] %}
+                {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}<br>
+              {% endif %}
+
+              <!-- if there is a company name show it -->
+              {% if data['enforcement-company-name'] %}
+                {{ data['enforcement-company-name'] }}
+              {% endif %}
+
+            {% else %}
+              Nic Davies
+            {% endif %}
+
+          </dd>
+        </div>
+
+        {# <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">{{ data["enforcement-your-email"] or 'nickydavies@jambon.co.uk' }}</p>
+            <p class="govuk-body">{{ data['enforcement-telephone'] or '01179428242' }}</p>
+          </dd>
+        </div> #}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site address
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {{ data["enforcement-site-address-line1"] or '1 Friary Buildings' }}
+
+            {% if data["enforcement-site-address-line2"] %}
+              <br>{{ data["enforcement-site-address-line2"] }}
+            {% endif %}
+
+            {% if data["enforcement-site-address-town"] %}
+              <br>{{ data["enforcement-site-address-town"]}}
+            {% else %}
+              <br>Bristol
+            {% endif %}
+
+            {% if data["enforcement-site-address-county"] %}
+              <br>{{ data["enforcement-site-address-county"] or '' }}
+            {% endif %}
+
+            {% if data["enforcement-site-address-postcode"] %}
+              <br>{{ data["enforcement-site-address-postcode"] }}
+            {% elseif data["enforcement-site-address-easting"] %}
+              <br>{{ data["enforcement-site-address-easting"] }}
+              <br>{{ data["enforcement-site-address-northing"] }}
+            {% else %}
+              <br>BS1 6EA
+            {% endif %}
+          </dd>
+
+        </div>
+
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Appeal final comment window end
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              {{ 6 | daysInFuture }}
+            </p>
+          </dd>
+        </div>
+
+      </dl>
+
+      {# <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Make a link"
+        }) }}
+      </div> #}
+
+      <!-- button and link -->
+      {# <div class="govuk-button-group"> #}
+        <p>
+          {{ govukButton({
+            text: "Make a link to this appeal"
+          }) }}
+        </p>
+        <p>
+          <a href="appeal-search">
+            Go back and look for another appeal
+          </a>
+        </p>
+      {# </div> #}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

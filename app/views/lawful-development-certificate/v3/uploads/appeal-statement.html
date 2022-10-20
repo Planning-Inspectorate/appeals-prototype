@@ -1,0 +1,119 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Upload your appeal statement
+  </h1>
+
+  <p>Your appeal statement explains why you disagree with the local planning authority&rsquo;s decision. </p>
+
+  <p>If you refer to any documents in your appeal statement, for example photographs, you can upload them in the next step.</p>
+
+  {% set uploadHtml %}
+    {{ govukFileUpload({
+      id: "appeal-statement",
+      name: "appeal-statement",
+      classes: 'moj-multi-file-upload__input',
+      label: {
+        text: "Upload a file",
+        classes: 'govuk-label--m'
+      },
+      hint: {
+        text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
+      }
+    }) }}
+
+    {{govukButton({
+      text: 'Upload file',
+      classes: 'govuk-button--secondary moj-multi-file-upload__button'
+    })}}
+  {% endset %}
+
+  {{ mojMultiFileUpload({
+    uploadedFiles: {
+      heading: { text: 'File added' },
+      items: []
+    },
+    uploadHtml: uploadHtml
+  }) }}
+
+
+
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-9">
+    Sensitive information
+  </h2>
+
+  <p>You cannot include any sensitive information in your statement. If you do, you&rsquo;ll be asked to resubmit, which will delay your appeal.</p>
+
+  {% set sensitiveHTML %}
+    <p class="govuk-!-margin-bottom-2">Sensitive information refers to:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+      <li>comments from children</li>
+      <li>information relating to children</li>
+      <li>information relating to health</li>
+      <li>information relating to crime</li>
+      <li>
+        any information relating to an individual&rsquo;s:
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+          <li>race</li>
+          <li>ethnic origin</li>
+          <li>politics</li>
+          <li>religion</li>
+          <li>trade union membership</li>
+          <li>genetics</li>
+          <li>physical characteristics</li>
+          <li>sex life</li>
+          <li>sexual orientation</li>
+        </ul>
+      </li>
+    </ul>
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'What is sensitive information?',
+    html: sensitiveHTML
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: 'appeal-statement-confirmation',
+    name: 'appeal-statement-confirmation',
+    classes: 'checkboxes-long-text',
+    items: [
+      {
+        html: 'I confirm that I have not included any sensitive information in my appeal statement.',
+        value: 'I confirm that I have not included any sensitive information in my appeal statement.',
+        checked: checked('appeal-statement-confirmation','I confirm that I have not included any sensitive information in my appeal statement.')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+
+{% block pageScripts %}
+  <script>
+    // Hacky hacky single file
+    $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop a file here or ')
+    $('.moj-multi-file-upload__dropzone .govuk-button').text('Select file')
+    $('.moj-multi-file__uploaded-files').on('fileAdded', function() {
+      $('.moj-multi-file-upload__upload').hide()
+    });
+
+    $('.moj-multi-file__uploaded-files').click(function() {
+      $('.moj-multi-file-upload__upload').show()
+    });
+
+
+
+    // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
+    $('form').submit(function(e) {
+      e.preventDefault();
+
+      $('.moj-multi-file-upload__filename').each(function() {
+        $('<input name="appeal-statement" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+      });
+
+      $(this).unbind('submit').submit();
+    })
+  </script>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+	{{ govukPhaseBanner({
+		tag: { text: 'Beta' },
+		html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+	}) }}
+	
+	{{ govukBackLink({
+		html: 'Back',
+		href: 'javascript:history.back()'
+	}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+
+        {{ govukRadios({
+          idPrefix: 'bys-appeal-type',
+          name: 'bys-appeal-type',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'What do you want to appeal?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            html: ''
+          },
+          items: [
+            {
+              html: 'A planning decision',
+              value: 'A planning decision',
+              checked: checked('bys-appeal-type','A planning decision')
+            },
+            {
+              html: 'An enforcement notice',
+              value: 'An enforcement notice',
+              checked: checked('bys-appeal-type','An enforcement notice')
+            },
+            {
+              html: 'A listed building enforcement notice',
+              value: 'A listed building enforcement notice',
+              checked: checked('bys-appeal-type','A listed building enforcement notice')
+            },
+            {
+              html: 'A lawful development certificate (LDC)',
+              value: 'A lawful development certificate (LDC)',
+              checked: checked('bys-appeal-type','A lawful development certificate (LDC)')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

@@ -1,0 +1,44 @@
+{% extends location+"_layout.html" %}
+{% set prototypeLinks = [{href: 'errors/certain-types', text: 'Advertisement and DN not included yet'}] %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'appeal-type',
+    name: 'appeal-type',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: 'What do you want to appeal?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'A planning application',
+        value: 'planning application',
+        checked: checked('appeal-type','planning application')
+      },
+      {
+        html: 'An enforcement notice',
+        value: 'enforcement notice',
+        checked: checked('appeal-type','enforcement notice')
+      },
+      {
+        html: 'A lawful development certificate (LDC)',
+        value: 'lawful development certificate',
+        checked: checked('appeal-type','lawful development certificate')
+      },
+      {
+        html: 'An advertisement application',
+        value: 'advertisement application',
+        checked: checked('appeal-type','advertisement application')
+      },
+      {
+        html: 'A discontinuance notice (DN)',
+        value: 'discontinueance notice',
+        checked: checked('appeal-type','discontinueance notice')
+      }
+    ]
+  }) }}
+{% endblock %}

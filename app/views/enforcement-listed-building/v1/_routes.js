@@ -62,9 +62,9 @@ router.post('/contact-details/who-are-you', function (req, res) {
 
   // route depending on value
   if (user === 'appellant') {
-    res.redirect('/enforcement/v8/contact-details/contact-details')
+    res.redirect('/enforcement-listed-building/v8/contact-details/contact-details')
   } else {
-    res.redirect('/enforcement/v8/contact-details/who-was-served')
+    res.redirect('/enforcement-listed-building/v8/contact-details/who-was-served')
   }
 })
 
@@ -73,7 +73,7 @@ router.post('/contact-details/who-are-you', function (req, res) {
 // Contact details
 router.post('/contact-details/finish-contact-details', function (req, res) {
   req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
-  res.redirect('/enforcement/v8/task-list')
+  res.redirect('/enforcement-listed-building/v8/task-list')
 })
 
 
@@ -81,7 +81,7 @@ router.post('/contact-details/finish-contact-details', function (req, res) {
 // Contact details
 router.post('/endcontact', function (req, res) {
   req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
-  res.redirect('/enforcement/v8/task-list')
+  res.redirect('/enforcement-listed-building/v8/task-list')
 })
 
 
@@ -94,16 +94,16 @@ router.post('/contact-details/contact-details', function (req, res) {
 
   // route depending on value
   if (identity === 'company') {
-    res.redirect('/enforcement/v8/contact-details/company-name')
+    res.redirect('/enforcement-listed-building/v8/contact-details/company-name')
   } else {
-    res.redirect('/enforcement/v8/contact-details/person-name')
+    res.redirect('/enforcement-listed-building/v8/contact-details/person-name')
   }
 
 })
 
 // Contact details
 router.post('/contact-details/company-name', function (req, res) {
-  res.redirect('/enforcement/v8/contact-details/added-names')
+  res.redirect('/enforcement-listed-building/v8/contact-details/added-names')
 })
 
 // Additional people
@@ -116,13 +116,13 @@ router.post('/contact-details/added-names', function (req, res) {
   // route depending on value
   if (addedpeople === 'Yes') {
     if (applicant === 'You') {
-      res.redirect('/enforcement/v8/contact-details/application-check')
+      res.redirect('/enforcement-listed-building/v8/contact-details/application-check')
     } else {
-      res.redirect('/enforcement/v8/contact-details/application-check?else')
+      res.redirect('/enforcement-listed-building/v8/contact-details/application-check?else')
     }
   } else {
     req.session.data["enforcement-taskliststatus-contactdetails"] = "Complete";
-    res.redirect('/enforcement/v8/task-list?enforcement-taskliststatus-contactdetails=Complete')
+    res.redirect('/enforcement-listed-building/v8/task-list?enforcement-taskliststatus-contactdetails=Complete')
   }
 })
 

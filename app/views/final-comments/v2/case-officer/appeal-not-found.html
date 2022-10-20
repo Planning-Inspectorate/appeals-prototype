@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% set serviceName = "Make an ‘Appeal a planning decision’ appeal link" %}
+
+{% set title = "Appeal not found" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <!-- reasons by file -->
+      <label class="govuk-label govuk-label--l" for="final-comments">
+        {{ title  }}
+      </label>
+
+      <div class="govuk-body">
+        The appeal reference could not be matched with an appeal.
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends location+"common/cya.html" %}
+
+{% block questions %}
+  {{ super() }}
+
+  {% set applicationDate = (data['application-date-day'] or '1') +' '+ (data['application-date-month'] | formatMonth or 'July') +' '+ (data['application-date-year'] or '2022') %}
+  {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2022') %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          text: 'Local planning authority'
+        },
+        value: {
+          text: data['lpa'] or 'Bradford'
+        },
+        actions: {
+          items: [
+            {
+              href: '../lpa?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Appealing'
+        },
+        value: {
+          text: 'A lawful development certificate (LDC)'
+        },
+        actions: {
+          items: [
+            {
+              href: '../appeal-type',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Section of law'
+        },
+        value: {
+          text: data['section'] or '192'
+        },
+        actions: {
+          items: [
+            {
+              href: 'section-of-law?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Application date'
+        },
+        value: {
+          text: applicationDate
+        },
+        actions: {
+          items: [
+            {
+              href: 'application-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Decision received'
+        },
+        value: {
+          text: data['decision-check'] or 'Yes'
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision-check?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Decision date'
+        },
+        value: {
+          text: decisionDate
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['decision-check'] != 'No'
+    ]
+  }) }}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+    <h1 class="govuk-heading-l">
+      You can appeal using this service
+    </h1>
+    <p>Based on your answers, you can appeal using this service.</p>
+
+    <h2 class="govuk-heading-m">
+      Check your answers
+    </h2>
+{% endblock %}
+
+{% block buttons %}
+  {{ govukInsetText({
+    html: 'You will not be able to change these answers later, you will have to start a new appeal.'
+  }) }}
+
+  {{ govukButton({
+    html: 'Start appeal'
+  }) }}
+{% endblock %}

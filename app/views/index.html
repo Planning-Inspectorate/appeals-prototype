@@ -28,6 +28,220 @@
 
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
+          <!-- service down page -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-finalcomments">
+                  Service unavailable
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-finalcomments" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-finalcomments">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    <h3 class="govuk-heading-s">
+                      Service unavailable
+                      {{ govukTag({
+                        classes: "govuk-tag--red govuk-!-margin-left-1",
+                        text: "In progress"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/service-unavailable/v1/" title="">Service unavailable page</a>
+                      </li>
+                    </ul>
+
+                    <a href="https://pins-ds.atlassian.net/browse/AS-5395">AS-5395 Design ‘Service unavailable’ page</a></li>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- final comments -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-finalcomments">
+                  Final Comments
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-finalcomments" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-finalcomments">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    <h3 class="govuk-heading-s">
+                      Final comments v3
+                      {{ govukTag({
+                        classes: "govuk-tag--blue govuk-!-margin-left-1",
+                        text: "In progress"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/final-comments/v3/submit/start-email">
+                          Submit comments journey
+                        </a>
+
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>
+                            <a href="/final-comments/v3/submit/appeal-closed-for-comments">
+                              Closed for comments
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v3/create-link/appeal-search">
+                          Create link journey
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+
+
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    <h3 class="govuk-heading-s">
+                      Final comments v2
+                      {{ govukTag({
+                        classes: "govuk-!-margin-left-1",
+                        text: "Done"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/final-comments/v2/documents-email">
+                          Final documents for the appeal (Case Officer cross copy)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/input-code">
+                          Input the code (save and return)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/appeal-closed-for-comments">
+                          Appeal is closed for comments
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/final-comments-check">
+                          Do you want to submit final comments?
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/final-comments">
+                          Your final comments?
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/documents-check">
+                          Do you want to submit final comments?
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/documents-upload">
+                          Additional documents
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/confirmation">
+                          Appeal submitted
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v2/final-comments-check">
+                          Do you want to submit final comments?
+                        </a>
+                      </li>
+                    </ul>
+
+                    <a href="https://pins-ds.atlassian.net/browse/AS-5404">AS-5404 Final comments journey</a></li>
+
+                  </div>
+
+
+                  <!-- version 1 -->
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    <h3 class="govuk-heading-s">
+                      Final comments v1
+                      {{ govukTag({
+                        classes: "govuk-!-margin-left-1",
+                        text: "Done"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/final-comments/v1/appellant" title="">Appellant - Upload final comments</a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v1/agent" title="">Agent - Upload final comments</a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v1/lpd" title="">Local planning department - Upload final comments</a>
+                      </li>
+                    </ul>
+                    <h4 class="govuk-heading-sm">
+                      Shutter pages
+                    </h4>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/final-comments/v1/shutter/cannot-submit-yet" title="">Cannot submit yet</a>
+                      </li>
+                      <li>
+                        <a href="/final-comments/v1/shutter/deadline-passed" title="">Your deadline has passed</a>
+                      </li>
+                    </ul>
+
+                    <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          User research (1)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>
+                            <a href="https://miro.com/app/board/o9J_lnPE2TA=/?moveToWidget=3458764516592113823&cot=14" target="blank" title="">Final comments research findings</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
+
+                    <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Jira Tickets (2)
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list govuk-list-bulleted">
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4250">AS-4250 Final Comments submission form - appellant/agent</a></li>
+                          <li><a href="https://pins-ds.atlassian.net/browse/AS-4251">AS-4251 Final Comments submission form - LPD</a></li>
+                        </ul>
+                      </div>
+                    </details>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <!-- lawful development certificate -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
@@ -43,6 +257,44 @@
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
 
+                  {# VERSION 3 #}
+                  {% set version = "3" %}
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Version {{version}}
+                      {{ govukTag({
+                        classes: "govuk-tag--green govuk-!-margin-left-1",
+                        text: "Ready for dev"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li><a href="before-you-start/v13/?bys-next=/lawful-development-certificate/v{{version}}/save-and-return/email-address">Before you start</a></li>
+                      <li><a href="/lawful-development-certificate/v{{version}}/task-list">Task list</a></li>
+                    </ul>
+                  </div>
+                  {# /VERSION 3 #}
+
+                  {# VERSION 2 #}
+                  {% set version = "2" %}
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Version {{version}}
+                      {{ govukTag({
+                        classes: "govuk-!-margin-left-1",
+                        text: "Researched"
+                      }) }}
+                    </h3>
+                    <p>Reintroduced the task list, but a blend of that and a check your answers page.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li><a href="/lawful-development-certificate/v{{version}}/before-you-start/">Before you start</a></li>
+                      {# <li><a href="/lawful-development-certificate/v{{version}}/before-you-start/cya">Before you start: Check your answers</a></li> #}
+                      <li><a href="/lawful-development-certificate/v{{version}}/task-list">Task list</a></li>
+                    </ul>
+                  </div>
+                  {# /VERSION 2 #}
+
                   {# VERSION 1 #}
                   {% set version = "1" %}
                   <div class="govuk-inset-text govuk-!-margin-top-0">
@@ -50,10 +302,11 @@
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
                       Version {{version}}
                       {{ govukTag({
-                        classes: "govuk-tag--pink govuk-!-margin-left-1",
-                        text: "WIP"
+                        classes: "govuk-!-margin-left-1",
+                        text: "Researched"
                       }) }}
                     </h3>
+                    <p><a href="https://miro.com/app/board/uXjVPYjjAos=/">Miro board with research findings</a></p>
                     <ul class="govuk-list govuk-list--bullet">
                       <li><a href="/lawful-development-certificate/v{{version}}/before-you-start/">Before you start</a></li>
                       <li><a href="/lawful-development-certificate/v{{version}}/before-you-start/cya">Before you start: Check your answers</a></li>
@@ -1065,6 +1318,36 @@
 
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
+
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    {{ govukTag({
+                      classes: "govuk-tag--pink govuk-!-margin-bottom-3",
+                      text: "In progress"
+                    }) }}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
+                      Version 13
+                    </h3>
+                    <p>An updated before you start with all pages in. You can pass in a variable to use it across other prototypes, if viewing from here it will end at the check your answers.</p>
+                    {% set prototypeExplanation %}
+                      <p>You can pass in a variable so that the check your answers page will continue into another prototype folder at the end.</p>
+                      <p>Add <code>?bys-next=/your-prototype/v1/page</code> to the start page listed under each section on the prototypes list page.</p>
+                      <p>Full example:<br>
+                      <code>{{'<a href="before-you-start/v13/?bys-next=/your-prototype/v1/page">View before you start</a>'|e}}</code></p>
+                    {% endset -%}
+                    {{ govukDetails({
+                      summaryHtml: 'How to use with other prototypes',
+                      html: prototypeExplanation
+                    }) }}
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="before-you-start/v13/">View before you start</a>
+                      </li>
+                    </ul>
+
+                  </div>
+
+
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     {{ govukTag({

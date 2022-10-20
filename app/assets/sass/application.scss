@@ -57,6 +57,14 @@ $govuk-assets-path: '/govuk/assets/';
 	}
 }
 
+// Style the footer navigation area to be used for prototype links
+.govuk-footer__heading {
+	border-bottom: 0;
+	padding-bottom: 0;
+	@include govuk-font($size: 19, $weight: bold);
+	@include govuk-responsive-margin(4, "bottom");
+}
+
 .delete-link {
 	color: $govuk-error-colour!important;
 }
@@ -228,4 +236,34 @@ aside.notes {
 		top: calc(50% - 3px);
 		transform: translateY(-50%) rotate(-45deg);
 	}
+}
+
+
+
+
+.internal {
+	// Remove the GOV.UK logo
+	.govuk-header__logo {
+		display: none;
+	}
+		// Remove the service name padding so its flush with the container
+		.govuk-header__content {
+			padding-left: 0;
+		}
+		// Bump up the service name size to match the removed GOV.UK logo
+		.govuk-header__link--service-name {
+			font-size: 30px;
+			line-height: 1;
+		}
+
+	// Hide the OGL licence
+	.govuk-footer__licence-logo,
+	.govuk-footer__licence-description {
+		display: none;
+	}
+		// Remove margin so links line up now we've removed the OLG
+		.govuk-footer__inline-list,
+		.govuk-footer__inline-list-item {
+			margin-bottom: 0;
+		}
 }
