@@ -1,0 +1,63 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Manage Planning Inspectorate appeals" %}
+
+{% set title = "Give access to appeals" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+        <div class="govuk-form-group">
+
+          <label class="govuk-label govuk-label--l" for="email">
+            {{ title }}
+          </label>
+
+          <p class="govuk-body">
+            We will send an invite to this address to access all appeals.
+          </p>
+
+          <div class="govuk-form-group">
+            <input class="govuk-input govuk-!-width-one-half" id="email" name="email" type="text" spellcheck="false" autocomplete=none value=""><span class="govuk-body" style="margin-left: 0.4rem">@leeds.gov.uk</span>
+          </div>
+
+        </div>
+
+        {% include "includes/button.html" %}
+
+      </form>
+
+      <!-- this is a prototype only link -->
+      {# <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+        <p class="govuk-body-s pins-prototype-only">
+          <a href="lpa-questionnaire/v10">
+            To the questionnaire
+          </a>
+        </p>
+      </div> #}
+
+    </div>
+  </div>
+
+{% endblock %}

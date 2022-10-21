@@ -1,0 +1,50 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Manage Planning Inspectorate appeals" %}
+
+{% set title = "Confirm you want to add this email address" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <label class="govuk-label govuk-label--l" for="email">
+        {{ title }}
+      </label>
+
+      <p class="govuk-body-l">
+        sam.aye@leeds.gov.uk
+      </p>
+
+      {{ govukButton({
+        text: "Give access to this user"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
