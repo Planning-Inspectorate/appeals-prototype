@@ -1,0 +1,67 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Manage Planning Inspectorate appeals" %}
+
+{% set title = "Enter the code we sent to your email address" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+        <div class="govuk-form-group">
+
+          <label class="govuk-label govuk-label--l" for="email">
+            {{ title }}
+          </label>
+
+          <div class="govuk-form-group">
+            <input class="govuk-input govuk-input--width-5" id="email" name="email" type="text" spellcheck="false" autocomplete=none value="" style="text-transform:uppercase">
+          </div>
+
+        </div>
+
+        <div class="govuk-!-margin-bottom-6">
+          <p class="govuk-body">
+            <a href="request-code" class="govuk-!-margin-bottom-9">
+              Not received the code?
+            </a>
+          </p>
+        </div>
+
+        {% include "includes/button.html" %}
+
+      </form>
+
+      <!-- this is a prototype only link -->
+      {# <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+        <p class="govuk-body-s pins-prototype-only">
+          <a href="lpa-questionnaire/v10">
+            To the questionnaire
+          </a>
+        </p>
+      </div> #}
+
+    </div>
+  </div>
+
+{% endblock %}
