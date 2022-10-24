@@ -1,9 +1,9 @@
 {% set pageref = "" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Manage Planning Inspectorate appeals" %}
+{% set serviceName = "Manage your planning inspectorate appeals" %}
 
-{% set title = "Give access to appeals" %}
+{% set title = "Add a user" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -16,7 +16,10 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
-
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -35,7 +38,11 @@
           </label>
 
           <p class="govuk-body">
-            We will send an invite to this address to access all appeals.
+            You can add a new user to manage the appeals. They must have a local authority email address.
+          </p>
+
+          <p class="govuk-body">
+            Enter their email address and we’ll send them an invite link.
           </p>
 
           <div class="govuk-form-group">
@@ -44,7 +51,9 @@
 
         </div>
 
-        {% include "includes/button.html" %}
+        {{ govukButton({
+          text: "Send invite link"
+        }) }}
 
       </form>
 

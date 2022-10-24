@@ -1,9 +1,9 @@
 {% set pageref = "" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Manage Planning Inspectorate appeals" %}
+{% set serviceName = "Manage your planning inspectorate appeals" %}
 
-{% set title = "Check you want to remove this user" %}
+{% set title = "Remove a user" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -33,12 +33,21 @@
         {{ title }}
       </label>
 
-      <p class="govuk-body-l">
-        gil.caligiuri@leeds.gov.uk
+      <p class="govuk-body">
+        When you remove a user, the email address will not have access to manage your appeals and will not receive appeal notifcations.
+      </p>
+
+      <p class="govuk-body">
+        Confirm that you want to remove
+        {% if data['email'] %}
+          {{ data['email']+"@leeds.gov.uk" }}
+        {% else %}
+          sam.aye@leeds.gov.uk
+        {% endif %}
       </p>
 
       {{ govukButton({
-        text: "Remove access"
+        text: "Remove user"
       }) }}
 
     </form>

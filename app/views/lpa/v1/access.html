@@ -1,9 +1,9 @@
 {% set pageref = "" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Manage Planning Inspectorate appeals" %}
+{% set serviceName = "Manage your planning inspectorate appeals" %}
 
-{% set title = "Access to appeals" %}
+{% set title = "Manage your users" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -18,8 +18,8 @@
   }) }}
 
   {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.go(-1);"
+    text: "Back to your planning appeals",
+    href: "appeals"
   }) }}
 {% endblock %}
 
@@ -31,16 +31,24 @@
     {% set added %}
       <mark role="alert">
         <h3 class="govuk-notification-banner__heading">
-          sam.aye@leeds.gov.uk has been invited to access appeals
+          {% if data['email'] %}
+            {{ data['email']+"@leeds.gov.uk" }}
+          {% else %}
+            sam.aye@leeds.gov.uk
+          {% endif %} has been invited to manage your planning appeals
         </h3>
-        <p class="govuk-body">If they accept the invite they will appear in the list below and will be able to access all appeals.</p>
+        {# <p class="govuk-body">If they accept the invite they will appear in the list below and will be able to access all appeals.</p> #}
       </mark>
     {% endset %}
 
     {% set removed %}
       <mark role="alert">
         <h3 class="govuk-notification-banner__heading">
-          gil.caligiuri@leeds.gov.uk can no longer access appeals
+          {% if data['email'] %}
+            {{ data['email']+"@leeds.gov.uk" }}
+          {% else %}
+            sam.aye@leeds.gov.uk
+          {% endif %} has been removed
         </h3>
         {# <p class="govuk-body">If they accept the invite they will appear in the list below and will be able to access all appeals.</p> #}
       </mark>
@@ -66,24 +74,30 @@
 
     <p class="govuk-body">
       <a href="give-access" class="govuk-link">
-        Give access to someone
+        Add a user
       </a>
     </p>
 
-    {% if data['shared'] %}
-      <table class="govuk-table">
+    <table class="govuk-table">
 
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">User</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Action</th>
-          </tr>
-        </thead>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">User</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Action</th>
+        </tr>
+      </thead>
 
-        <tbody class="govuk-table__body">
+      <tbody class="govuk-table__body">
+
+        {% if data['shared'] %}
+
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              gil.caligiuri@leeds.gov.uk
+              {% if data['email'] %}
+                {{ data['email']+"@leeds.gov.uk" }}
+              {% else %}
+                sam.aye@leeds.gov.uk
+              {% endif %}
             </td>
 
             <td class="govuk-table__cell">
@@ -93,24 +107,25 @@
             </td>
           </tr>
 
-          {# <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              sam.aye@leedscouncil.gov.uk
-            </td>
+        {% endif %}
 
-            <td class="govuk-table__cell">
-              <a href="/lpa-questionnaire/v1/task-list?appeal=1021222" class="govuk-link govuk-link--no-visited-state">
-                Remove<span class="visually-hidden"> this user</span>
-              </a>
-            </td>
-          </tr> #}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            gil.caligiuri@leeds.gov.uk
+          </td>
 
+          <td class="govuk-table__cell">
+            {# <a href="confirm-remove" class="govuk-link govuk-link--no-visited-state">
+              Remove<span class="visually-hidden"> this user</span>
+            </a> #}
+          </td>
+        </tr>
 
-        </tbody>
-      </table>
+      </tbody>
+    </table>
 
+    {% if data['shared'] %}
     {% else %}
-
       <!-- this is a prototype only link -->
       <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
         <p class="govuk-body-s pins-prototype-only">
