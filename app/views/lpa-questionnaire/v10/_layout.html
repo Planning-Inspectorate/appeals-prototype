@@ -19,18 +19,13 @@
       <form method="post">
 
         {% block questions %}{% endblock %}
-        {% block buttons %}
-          <div class="govuk-button-group">
-            {{ govukButton({
-              text: 'Save and continue'
-            }) }}
 
-            {{ govukButton({
-              href: '/{{location}}save-and-return/?last-page={{currentURL}}',
-              text: 'Save and come back later',
-              classes: 'govuk-button--secondary'
-            }) }}
-          </div>
+        {% block buttons %}
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+
+          <p><a href="../task-list" class="govuk-link--no-visited-state">Return to task list</a></p>
         {% endblock %}
 
       </form>

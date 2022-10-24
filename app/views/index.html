@@ -2561,19 +2561,21 @@
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
 
+                  {% set version = "10" %}
                   <div class="govuk-inset-text govuk-!-margin-top-0">
-
-                    {{ govukTag({
-                      classes: "govuk-tag--red govuk-!-margin-bottom-3",
-                      text: "WIP"
-                    }) }}
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-3">
-                      Full planning LPA questionnaire - Version 10
+                      Version {{version}}
+                      {{ govukTag({
+                        classes: "govuk-tag--red govuk-!-margin-left-1",
+                        text: "WIP"
+                      }) }}
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
-                      <li>
+                      {# <li>
                         <a href="/lpa-questionnaire/fullv2/email/started-refusal" title="">Start from email - Appeal against the refusal of planning application</a>
-                      </li>
+                      </li> #}
+                      <li><a href="/lpa-questionnaire/v{{version}}/task-list?non-determination=false">Task list (regular)</a></li>
+                      <li><a href="/lpa-questionnaire/v{{version}}/task-list?non-determination=true">Task list (non-determination)</a></li>
                     </ul>
 
                   </div>

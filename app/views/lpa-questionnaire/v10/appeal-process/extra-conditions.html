@@ -1,0 +1,63 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Extra conditions
+  </h1>
+  <p>You need to tell us about any extra conditions that you&rsquo;d like the inspector to apply if they allow the appeal.</p>
+
+  <p>If you choose to not tell us about them now, you have until{{ '168' | daysInFuture }} to do so.</p>
+
+  <p>To submit extra conditions after the questionnaire, email <a href=:mailto:CaseOfficers@planninginspectorate.gov.uk">CaseOfficers@planninginspectorate.gov.uk</a>.</p>
+
+  <p>You do not need to tell us about standard conditions.</p>
+
+  {% set standardConditions %}
+    <p>The development hereby permitted shall begin not later than 3 years from the date of this decision.</p>
+
+    <p>The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building.</p>
+
+    <p>The development hereby permitted shall be carried out in accordance with the approved plans.</p>
+  {% endset -%}
+  {{ govukDetails({
+    summaryHtml: 'Standard conditions',
+    html: standardConditions
+  }) }}
+
+  {% set extraConditions %}
+    {{ govukTextarea({
+      name: 'extra-conditions',
+      id: 'extra-conditions',
+      value: data['extra-conditions'],
+      rows: '3',
+      label: {
+        html: 'What are your extra conditions?'
+      }
+    }) }}
+  {% endset -%}
+  {{ govukRadios({
+    idPrefix: 'extra-conditions-check',
+    name: 'extra-conditions-check',
+    fieldset: {
+      legend: {
+        html: 'Do you want to tell us about any extra conditions?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('extra-conditions-check','Yes'),
+        conditional: {
+          html: extraConditions
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('statement-of-case','No')
+      }
+    ]
+  }) }}
+{% endblock %}

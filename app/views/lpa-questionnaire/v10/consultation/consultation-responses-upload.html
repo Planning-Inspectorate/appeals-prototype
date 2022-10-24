@@ -1,0 +1,52 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Upload the consultation responses and standing advice
+  </h1>
+
+  {% set uploadHtml %}
+    {{ govukFileUpload({
+      id: 'consultation-responses-upload',
+      name: 'consultation-responses-upload',
+      classes: 'moj-multi-file-upload__input',
+      label: {
+        text: 'Upload files',
+        classes: 'govuk-label--m',
+        isPageHeading: true
+      },
+      hint: {
+        text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
+      },
+      attributes: { multiple: '' }
+    }) }}
+
+    {{govukButton({
+      text: 'Upload file',
+      classes: 'govuk-button--secondary moj-multi-file-upload__button'
+    })}}
+  {% endset %}
+
+  {{ mojMultiFileUpload({
+    uploadedFiles: {
+      heading: { text: 'Files added' },
+      items: []
+    },
+    uploadHtml: uploadHtml
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
+    $('form').submit(function(e) {
+      e.preventDefault();
+
+      $('.moj-multi-file-upload__filename').each(function() {
+        $('<input name="consultation-responses-upload" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+      });
+
+      $(this).unbind('submit').submit();
+    })
+  </script>
+{% endblock %}

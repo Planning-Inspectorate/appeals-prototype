@@ -1,0 +1,27 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'screening-env-statement-check',
+    name: 'screening-env-statement-check',
+    fieldset: {
+      legend: {
+        html: 'Did your screening opinion say the development needed an environmental statement?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('screening-env-statement-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('screening-env-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}
