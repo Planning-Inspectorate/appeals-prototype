@@ -1,0 +1,82 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'development-desc',
+    name: 'development-desc',
+    fieldset: {
+      legend: {
+        html: 'Description of development',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Agriculture and aquaculture',
+        value: 'Agriculture and aquaculture',
+        checked: checked('development-desc','Agriculture and aquaculture')
+      },
+      {
+        html: 'Changes and extensions',
+        value: 'Changes and extensions',
+        checked: checked('development-desc','Changes and extensions')
+      },
+      {
+        html: 'Chemical industry (unless included in Schedule 1)',
+        value: 'Chemical industry (unless included in Schedule 1)',
+        checked: checked('development-desc','Chemical industry (unless included in Schedule 1)')
+      },
+      {
+        html: 'Energy industry',
+        value: 'Energy industry',
+        checked: checked('development-desc','Energy industry')
+      },
+      {
+        html: 'Extractive industry',
+        value: 'Extractive industry',
+        checked: checked('development-desc','Extractive industry')
+      },
+      {
+        html: 'Food industry',
+        value: 'Food industry',
+        checked: checked('development-desc','Food industry')
+      },
+      {
+        html: 'Infrastructure projects',
+        value: 'Infrastructure projects',
+        checked: checked('development-desc','Infrastructure projects')
+      },
+      {
+        html: 'Mineral industry',
+        value: 'Mineral industry',
+        checked: checked('development-desc','Mineral industry')
+      },
+      {
+        html: 'Other projects',
+        value: 'Other projects',
+        checked: checked('development-desc','Other projects')
+      },
+      {
+        html: 'Production and processing of metals',
+        value: 'Production and processing of metals',
+        checked: checked('development-desc','Production and processing of metals')
+      },
+      {
+        html: 'Rubber industry',
+        value: 'Rubber industry',
+        checked: checked('development-desc','Rubber industry')
+      },
+      {
+        html: 'Textile, leather, wood and paper industries',
+        value: 'Textile, leather, wood and paper industries',
+        checked: checked('development-desc','Textile, leather, wood and paper industries')
+      },
+      {
+        html: 'Tourism and leisure',
+        value: 'Tourism and leisure',
+        checked: checked('development-desc','Tourism and leisure')
+      }
+    ]
+  }) }}
+{% endblock %}
