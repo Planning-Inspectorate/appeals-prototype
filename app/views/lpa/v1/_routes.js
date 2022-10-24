@@ -10,7 +10,7 @@ router.get('*', function(req, res, next){
 
 // enter code
 router.post('/enter-code', function (req, res) {
-  res.redirect('/lpa-questionnaire/v10')
+  res.redirect('https://pins-appeals.herokuapp.com/lpa-questionnaire/v10/task-list')
 })
 
 // give access
@@ -20,7 +20,7 @@ router.post('/give-access', function (req, res) {
 
 // check email
 router.post('/check-email', function (req, res) {
-  res.redirect('access?action=added')
+  res.redirect('access?action=added&shared=yes')
 })
 
 // confirm remove

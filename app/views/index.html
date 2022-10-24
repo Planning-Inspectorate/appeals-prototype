@@ -28,6 +28,50 @@
 
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
 
+          <!-- LPA account and questionnaire -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-finalcomments">
+                  LPA account and questionnaire
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-finalcomments" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-finalcomments">
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  <div class="govuk-inset-text govuk-!-margin-top-0">
+                    <h3 class="govuk-heading-s">
+                      LPA account
+                      {{ govukTag({
+                        classes: "govuk-tag--red govuk-!-margin-left-1",
+                        text: "In progress"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/lpa/v1/request-for-information">Invite to complete questionnaire</a>
+                      </li>
+                      <li>
+                        <a href="/lpa/v1/appeals">Manage your appeals</a>
+                      </li>
+                      <li>
+                        <a href="/lpa/v1/access?action=&shared=1">People who can view and edit these appeals</a>
+                      </li>
+                    </ul>
+
+                    <a href="https://pins-ds.atlassian.net/browse/AS-5512">AS-5512 Design - LPA account</a></li>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <!-- service down page -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">

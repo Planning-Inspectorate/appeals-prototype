@@ -1,9 +1,9 @@
 {% set pageref = "" %}
 {% extends "layout.html" %}
 
-{% set serviceName = "Manage Planning Inspectorate appeals" %}
+{% set serviceName = "Manage your planning inspectorate appeals" %}
 
-{% set title = "Planning appeals" %}
+{% set title = "Manage your planning appeals" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -17,10 +17,10 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
-  {{ govukBackLink({
+  {# {{ govukBackLink({
     text: "Back",
     href: "javascript:history.go(-1);"
-  }) }}
+  }) }} #}
 {% endblock %}
 
 {% block content %}
@@ -28,13 +28,13 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <label class="govuk-label govuk-label--l" for="email">
+    <h1 class="govuk-heading-l">
       {{ title }}
-    </label>
+    </h1>
 
     <p class="govuk-body">
       <a href="access" class="govuk-link">
-        Who has access to these appeals?
+        People who can view and edit these appeals
       </a>
     </p>
 
@@ -46,20 +46,18 @@
 
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Application number</th>
+          <th scope="col" class="govuk-table__header">Application number</th>
           {# <th scope="col" class="govuk-table__header">Type of application</th> #}
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Appeal reference</th>
-          <th scope="col" class="govuk-table__header">Statements deadline</th>
-          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header">Appeal reference</th>
+          <th scope="col" class="govuk-table__header">Due date</th>
+          <th scope="col" class="govuk-table__header">Action</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
 
           <th scope="row" class="govuk-table__cell">
-            <a href="/lpa-questionnaire/v1/task-list?appeal=1021222" class="govuk-link govuk-link--no-visited-state">
-              APP/01/22/0119871
-            </a>
+            APP/01/22/0119871
           </th>
           {# <td class="govuk-table__cell">Full planning</td> #}
           <td class="govuk-table__cell">1021222</td>
@@ -68,29 +66,29 @@
             {{ 20 | daysInFuture }}
           </td>
           <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--blue">
-              New
-            </strong>
+            <a href="/lpa-questionnaire/v10/task-list?appeal=1021222" class="govuk-link govuk-link--no-visited-state">
+              Complete questionnaire
+            </a>
           </td>
         </tr>
 
         <tr class="govuk-table__row">
 
           <th scope="row" class="govuk-table__cell">
-            <a href="/lpa-questionnaire/v1/task-list?appeal=1287330" class="govuk-link govuk-link--no-visited-state">
-              APP/03/22/0120039
-            </a>
+            APP/03/22/0120039
           </th>
           {# <td class="govuk-table__cell">Full planning</td> #}
-          <td class="govuk-table__cell">1287330</td>
+          <td class="govuk-table__cell">
+            1287330
+          </td>
 
           <td class="govuk-table__cell">
             {{ 15 | daysInFuture }}
           </td>
           <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--yellow">
-              In progress
-            </strong>
+            <a href="/lpa-questionnaire/v10/task-list?appeal=1287330" class="govuk-link govuk-link--no-visited-state">
+              Complete questionnaire
+            </a>
           </td>
         </tr>
 
