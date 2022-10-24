@@ -1,9 +1,21 @@
 {% extends "layout.html" %}
 
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    html: 'Back to your planning appeals',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-xl">
+      <h1 class="govuk-heading-l">
         Appeal questionnaire
       </h1>
 
@@ -21,21 +33,9 @@
         }
       </style>
 
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
-        Questionnaire incomplete
-      </h2>
-
       {{ govukSummaryList({
-        classes: 'appeal-details govuk-summary-list--no-border',
+        classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
         rows: [
-          {
-            key: {
-              text: 'Deadline'
-            },
-            value: {
-              text: '168' | daysInFuture
-            }
-          },
           {
             key: {
               text: 'Appeal reference'
@@ -50,6 +50,14 @@
             },
             value: {
               text: '21/05058/FUL'
+            }
+          },
+          {
+            key: {
+              text: 'Deadline'
+            },
+            value: {
+              text: '168' | daysInFuture
             }
           }
         ]
@@ -75,14 +83,19 @@
         }
       } #}
 
-      <p class="govuk-!-margin-bottom-0">
+      {# <p class="govuk-!-margin-bottom-0">
         <a href="save-and-return/saved" class="govuk-link--no-visited-state">Save and come back later</a>.
-      </p>
+      </p> #}
 
     </div>
 
     <div class="govuk-grid-column-three-quarters-from-desktop">
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+        Questionnaire incomplete
+      </h2>
+      <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 8 sections.</p>
 
       {# Tweak the task list so we can merge the CYA in #}
       <style>

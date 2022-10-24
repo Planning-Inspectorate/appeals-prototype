@@ -17,6 +17,20 @@ router.post('*', function(req, res, next){
   }
 })
 
+router.get('/task-list', function(req, res, next){
+  let count = 0
+  if (req.session.data['constraints-completed'] == 'true') { count++ }
+  if (req.session.data['env-impact-completed'] == 'true') { count++ }
+  if (req.session.data['notified-completed'] == 'true') { count++ }
+  if (req.session.data['consultation-completed'] == 'true') { count++ }
+  if (req.session.data['po-report-completed'] == 'true') { count++ }
+  if (req.session.data['site-access-completed'] == 'true') { count++ }
+  if (req.session.data['appeal-process-completed'] == 'true') { count++ }
+
+  res.locals.count = count
+  next()
+})
+
 
 
 
