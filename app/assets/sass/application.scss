@@ -14,6 +14,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
+@import "patterns/internal";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
@@ -236,34 +237,4 @@ aside.notes {
 		top: calc(50% - 3px);
 		transform: translateY(-50%) rotate(-45deg);
 	}
-}
-
-
-
-
-.internal {
-	// Remove the GOV.UK logo
-	.govuk-header__logo {
-		display: none;
-	}
-		// Remove the service name padding so its flush with the container
-		.govuk-header__content {
-			padding-left: 0;
-		}
-		// Bump up the service name size to match the removed GOV.UK logo
-		.govuk-header__link--service-name {
-			font-size: 30px;
-			line-height: 1;
-		}
-
-	// Hide the OGL licence
-	.govuk-footer__licence-logo,
-	.govuk-footer__licence-description {
-		display: none;
-	}
-		// Remove margin so links line up now we've removed the OLG
-		.govuk-footer__inline-list,
-		.govuk-footer__inline-list-item {
-			margin-bottom: 0;
-		}
 }
