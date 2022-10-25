@@ -44,7 +44,27 @@
 
                   <div class="govuk-inset-text govuk-!-margin-top-0">
                     <h3 class="govuk-heading-s">
-                      LPA account
+                      LPA service invitation, manage team access
+                      {{ govukTag({
+                        classes: "govuk-tag--red govuk-!-margin-left-1",
+                        text: "In progress"
+                      }) }}
+                    </h3>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>
+                        <a href="/lpa/v1/service-invite">Invite to service / manage team</a>
+                      </li>
+                      <li>
+                        <a href="/lpa/v1/access-no-appeals">Manage your team</a>
+                      </li>
+                    </ul>
+
+                    <div class="govuk-!-margin-bottom-4">
+                      <a href="https://pins-ds.atlassian.net/browse/AS-5512">AS-5512 Design - LPA account</a></li>
+                    </div>
+
+                    <h3 class="govuk-heading-s">
+                      LPA questionnaire
                       {{ govukTag({
                         classes: "govuk-tag--red govuk-!-margin-left-1",
                         text: "In progress"
@@ -55,6 +75,9 @@
                         <a href="/lpa/v1/request-for-information">Invite to complete questionnaire</a>
                       </li>
                       <li>
+                        <a href="/lpa-questionnaire/v10/task-list">Questionnaire task list</a>
+                      </li>
+                      <li>
                         <a href="/lpa/v1/appeals">Manage your appeals</a>
                       </li>
                       <li>
@@ -62,7 +85,9 @@
                       </li>
                     </ul>
 
-                    <a href="https://pins-ds.atlassian.net/browse/AS-5512">AS-5512 Design - LPA account</a></li>
+                    <div class="govuk-!-margin-bottom-4">
+                      <a href="https://pins-ds.atlassian.net/browse/AS-5394">AS-5512 Design - LPA questionnaire</a></li>
+                    </div>
 
                   </div>
 

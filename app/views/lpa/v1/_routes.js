@@ -20,7 +20,7 @@ router.post('/use-code', function (req, res) {
 
 // enter code
 router.post('/enter-code', function (req, res) {
-  res.redirect('https://pins-appeals.herokuapp.com/lpa-questionnaire/v10/task-list')
+  res.redirect('/lpa-questionnaire/v10/task-list')
 })
 
 // give access
