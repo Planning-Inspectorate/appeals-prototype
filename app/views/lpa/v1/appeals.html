@@ -33,8 +33,8 @@
     </h1>
 
     <p class="govuk-body">
-      <a href="access?action=" class="govuk-link">
-        People who can view and edit these appeals
+      <a href="access?action=&shared=1" class="govuk-link">
+        People who can manage these appeals
       </a>
     </p>
 
@@ -53,24 +53,29 @@
           <th scope="col" class="govuk-table__header">Action</th>
         </tr>
       </thead>
+
       <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
 
-          <th scope="row" class="govuk-table__cell">
-            APP/01/22/0119871
-          </th>
-          {# <td class="govuk-table__cell">Full planning</td> #}
-          <td class="govuk-table__cell">1021222</td>
+        {% if data['quest-status'] == "finished" %}
+        {% else %}
+          <tr class="govuk-table__row">
 
-          <td class="govuk-table__cell">
-            {{ 20 | daysInFuture }}
-          </td>
-          <td class="govuk-table__cell">
-            <a href="/lpa-questionnaire/v10/task-list?non-determination=false" class="govuk-link govuk-link--no-visited-state">
-              Complete questionnaire
-            </a>
-          </td>
-        </tr>
+            <th scope="row" class="govuk-table__cell">
+              APP/01/22/0119871
+            </th>
+            {# <td class="govuk-table__cell">Full planning</td> #}
+            <td class="govuk-table__cell">1021222</td>
+
+            <td class="govuk-table__cell">
+              {{ 6 | daysInFuture }}
+            </td>
+            <td class="govuk-table__cell">
+              <a href="/lpa-questionnaire/v10/task-list?non-determination=false" class="govuk-link govuk-link--no-visited-state">
+                Complete questionnaire
+              </a>
+            </td>
+          </tr>
+        {% endif %}
 
         <tr class="govuk-table__row">
 
@@ -83,7 +88,7 @@
           </td>
 
           <td class="govuk-table__cell">
-            {{ 15 | daysInFuture }}
+            {{ 7 | daysInFuture }}
           </td>
           <td class="govuk-table__cell">
             <a href="/lpa-questionnaire/v10/task-list?non-determination=true" class="govuk-link govuk-link--no-visited-state">
@@ -94,6 +99,22 @@
 
       </tbody>
     </table>
+  </div>
+
+  {# <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">
+      Closed appeals
+    </h2>
+  </div> #}
+
+    <!-- this is a prototype only link -->
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+      <p class="govuk-body-s pins-prototype-only">
+        <a href="no-appeals?appeals=">
+          Empty the table
+        </a>
+      </p>
+    </div>
 
   </div>
 </div>

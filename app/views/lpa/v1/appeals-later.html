@@ -1,0 +1,192 @@
+{% set pageref = "" %}
+{% extends "layout.html" %}
+
+{% set serviceName = "Manage your planning inspectorate appeals" %}
+
+{% set title = "Manage your planning appeals" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {# {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }} #}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      <a href="access?action=&shared=1" class="govuk-link">
+        People who can manage these appeals
+      </a>
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {# <p class="govuk-body">
+      There are 2 questionnaires due.
+    </p> #}
+
+  </div>
+
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#questionnaire">
+            Questionnaire (2)
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#final-comments">
+            Final comments (7)
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#submitted">
+            Submitted appeals
+          </a>
+        </li>
+      </ul>
+
+      <div class="govuk-tabs__panel" id="questionnaire">
+        <h2 class="govuk-heading-l">Questionnaire</h2>
+        <table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Application number</th>
+              {# <th scope="col" class="govuk-table__header">Type of application</th> #}
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Due date</th>
+              <th scope="col" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+
+              <th scope="row" class="govuk-table__cell">
+                APP/01/22/0119871
+              </th>
+              {# <td class="govuk-table__cell">Full planning</td> #}
+              <td class="govuk-table__cell">1021222</td>
+
+              <td class="govuk-table__cell">
+                {{ 6 | daysInFuture }}
+              </td>
+              <td class="govuk-table__cell">
+                <a href="/lpa-questionnaire/v10/task-list?non-determination=false" class="govuk-link govuk-link--no-visited-state">
+                  Complete questionnaire
+                </a>
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+
+              <th scope="row" class="govuk-table__cell">
+                APP/03/22/0120039
+              </th>
+              {# <td class="govuk-table__cell">Full planning</td> #}
+              <td class="govuk-table__cell">
+                1287330
+              </td>
+
+              <td class="govuk-table__cell">
+                {{ 7 | daysInFuture }}
+              </td>
+              <td class="govuk-table__cell">
+                <a href="/lpa-questionnaire/v10/task-list?non-determination=true" class="govuk-link govuk-link--no-visited-state">
+                  Complete questionnaire
+                </a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+
+
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="final-comments">
+        <h2 class="govuk-heading-l">Final comments</h2>
+        <table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Application number</th>
+              {# <th scope="col" class="govuk-table__header">Type of application</th> #}
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Due date</th>
+              <th scope="col" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="submitted">
+        <h2 class="govuk-heading-l">Submitted appeals</h2>
+        <table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Application number</th>
+              {# <th scope="col" class="govuk-table__header">Type of application</th> #}
+              <th scope="col" class="govuk-table__header">Appeal reference</th>
+              <th scope="col" class="govuk-table__header">Due date</th>
+              <th scope="col" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+
+          </tbody>
+        </table>
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- this is a prototype only link -->
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+      <p class="govuk-body-s pins-prototype-only">
+        <a href="no-appeals">
+          Empty the table
+        </a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
