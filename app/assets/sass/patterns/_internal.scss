@@ -1,0 +1,66 @@
+.internal {
+
+  // Remove the GOV.UK logo
+  .govuk-header__logo {
+    display: none;
+  }
+
+  .govuk-header__content {
+    padding-left: 0;
+  }
+
+  .govuk-header__link--service-name {
+    font-size: 18px;
+    font-weight: normal;
+    margin-left: 55px;
+
+    @include govuk-media-query($from: tablet) {
+      font-size: 24px;
+      margin-left: 0;
+    }
+
+    &:before {
+      display: block;
+      content: "";
+      background-image: url(/public/images/crest.svg);
+      background-size: 50px 50px;
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      top: 7px;
+      left: 0;
+
+      @include govuk-media-query($from: tablet) {
+        background-size: 40px 40px;
+        height: 40px;
+        width: 40px;
+        top: 5px;
+      }
+    }
+  }
+
+  .dept {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 11px;
+
+    @include govuk-media-query($from: tablet) {
+      display: initial;
+      margin-left: 45px;
+
+      &:after {
+        display: inline-block;
+        content: "";
+        background-color: #fff;
+        width: 1px;
+        height: 25px;
+        position: relative;
+        top: 5px;
+        left: 9px;
+      }
+    }
+
+
+  }
+}
