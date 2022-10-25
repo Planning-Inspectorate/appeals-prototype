@@ -8,6 +8,16 @@ router.get('*', function(req, res, next){
   next()
 })
 
+// email
+router.post('/email', function (req, res) {
+  res.redirect('use-code')
+})
+
+// use code
+router.post('/use-code', function (req, res) {
+  res.redirect('appeals')
+})
+
 // enter code
 router.post('/enter-code', function (req, res) {
   res.redirect('https://pins-appeals.herokuapp.com/lpa-questionnaire/v10/task-list')
