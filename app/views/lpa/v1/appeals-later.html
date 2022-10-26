@@ -1,5 +1,5 @@
 {% set pageref = "" %}
-{% extends location+"_layout.html" %}
+{% extends "layout.html" %}
 
 {% set serviceName = "Manage your planning inspectorate appeals" %}
 
@@ -170,23 +170,14 @@
 
       </div>
 
-
-    </div>
-
-
-
-
-
-    <!-- this is a prototype only link -->
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
-      <p class="govuk-body-s pins-prototype-only">
-        <a href="no-appeals">
-          Empty the table
-        </a>
-      </p>
     </div>
 
   </div>
 </div>
 
 {% endblock %}
+
+{% set prototypeLinks = [{
+  href: 'no-appeals?appeals=',
+  text: 'Empty the table'}]
+%}
