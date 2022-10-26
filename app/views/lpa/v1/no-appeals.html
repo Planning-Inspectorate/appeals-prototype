@@ -1,5 +1,5 @@
 {% set pageref = "" %}
-{% extends location+"_layout.html" %}
+{% extends "layout.html" %}
 
 {% set serviceName = "Manage your planning inspectorate appeals" %}
 
@@ -52,33 +52,11 @@
 
   </div>
 
-  <div class="govuk-grid-column-full">
-    {# <table class="govuk-table">
-
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Application number</th>
-          <th scope="col" class="govuk-table__header">Appeal reference</th>
-          <th scope="col" class="govuk-table__header">Due date</th>
-          <th scope="col" class="govuk-table__header">Action</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-
-
-      </tbody>
-    </table> #}
-
-    <!-- this is a prototype only link -->
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
-      <p class="govuk-body-s pins-prototype-only">
-        <a href="appeals?quest-status=new&appeals=yes">
-          Some time later appeals have been added
-        </a>
-      </p>
-    </div>
-
-  </div>
 </div>
 
 {% endblock %}
+
+{% set prototypeLinks = [{
+  href: 'appeals?quest-status=new&appeals=yes',
+  text: 'Some time later appeals have been added'}]
+%}

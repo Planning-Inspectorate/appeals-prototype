@@ -143,19 +143,16 @@
       </tbody>
     </table>
 
-    {% if data['shared'] %}
-    {% else %}
-      <!-- this is a prototype only link -->
-      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
-        <p class="govuk-body-s pins-prototype-only">
-          <a href="access?action=newuser&shared=1">
-            User accepts an invite
-          </a>
-        </p>
-      </div>
-    {% endif %}
-
   </div>
 </div>
 
 {% endblock %}
+
+{% if data['shared'] %}
+
+{% else %}
+  {% set prototypeLinks = [{
+    href: 'access?action=newuser&shared=1',
+    text: 'User accepts an invite'}]
+  %}
+{% endif %}
