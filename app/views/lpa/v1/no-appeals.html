@@ -1,9 +1,9 @@
 {% set pageref = "" %}
-{% extends location+"_layout.html" %}
+{% extends "layout.html" %}
 
 {% set serviceName = "Manage your planning inspectorate appeals" %}
 
-{% set title = "Manage your planning appeals" %}
+{% set title = "Leeds planning appeals" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -32,15 +32,23 @@
       {{ title }}
     </h1>
 
-    <p class="govuk-body">
+    <p class="govuk-body-m">
+      Planning appeals will be shown here. All users will be notified by email when a new appeal is added.
+    </p>
+
+    <p class="govuk-body-m">
+      You can <a href="access?action=" class="govuk-link">add and remove account users</a>.
+    </p>
+
+    {# <p class="govuk-body">
       <a href="access?action=" class="govuk-link">
         People who can manage these appeals
       </a>
-    </p>
+    </p> #}
 
-    <p class="govuk-body">
+    {# <p class="govuk-body">
       No questionnaires are due.
-    </p>
+    </p> #}
 
   </div>
 
