@@ -28,8 +28,13 @@ router.post('/enter-code', function (req, res) {
   }
 })
 
-// Add a user
+// confirm remove
 router.post('/give-access', function (req, res) {
+  res.redirect('check-email')
+})
+
+// Add a user
+router.post('/check-email', function (req, res) {
   // Check if the email input has been filled in, if not add example
   if (req.session.data['email']) {
     newEmail = req.session.data['email']
@@ -60,57 +65,10 @@ router.post('/confirm-remove', function (req, res) {
     res.redirect('access?action=removed');
 })
 
-
-// when the email is ok, add a new user
-// router.post('/check-email', function (req, res) {
-//
-//   // make variables from the session data
-//   let users = req.session.data['users']
-//   let allUsers = req.session.data['allUsers']
-//   let email = req.session.data['email']
-//
-//   // make an object to hold the data
-//   let lastUserData = {
-//     email
-//   };
-//
-//   // add the data to an object
-//   allUsers.push(lastUserData);
-//
-//   // increment licence numbers
-//   if (users === 1) {
-//     req.session.data.users = 2;
-//   } else if (users === 2) {
-//     req.session.data.users = 3;
-//   } else if (users === 3) {
-//     req.session.data.users = 4;
-//   } else if (users > 3) {
-//     req.session.data.users = 5; // hardcoded max of 5
-//   } else {
-//     req.session.data.users = 1;
-//   }
-//
-//   // loop back to the list
-//   res.redirect('access?action=added')
-//
-// })
-
-
 // confirm remove
 router.post('/confirm-remove', function (req, res) {
-  res.redirect('access?action=removed&shared=')
+  res.redirect('access?action=removed')
 })
-
-
-
-
-
-
-
-
-
-
-
 
 // Add your routes above the module.exports line
 module.exports = router

@@ -33,11 +33,22 @@
         {{ title }}
       </h1>
 
-      <p>When you remove a user, the email address will not have access to manage appeals and will not receive appeal notifications.</p>
+      <p class="govuk-body-l">
+        {# Confirm that you want to remove #}
+        {% if data['email'] %}
+          {{ data['email'] }}
+        {% else %}
+          example@leeds.gov.uk
+        {% endif %}
+      </p>
 
-      {{ govukInsetText({
+      <p>
+        When you remove a user, the email address will not have access to manage appeals and will not receive appeal notifications.
+      </p>
+
+      {# {{ govukInsetText({
         html: 'Confirm that you want to remove '+data['email']
-      }) }}
+      }) }} #}
 
       {{ govukButton({
         text: "Remove user"
