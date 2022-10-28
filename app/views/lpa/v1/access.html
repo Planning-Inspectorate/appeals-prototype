@@ -28,131 +28,108 @@
       href: "no-appeals"
     }) }}
   {% endif %}
-
 {% endblock %}
 
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    {% set added %}
-      <mark role="alert">
-        <h3 class="govuk-notification-banner__heading">
-          {% if data['email'] %}
-            {{ data['email']+"@leeds.gov.uk" }}
-          {% else %}
-            sam.aye@leeds.gov.uk
-          {% endif %} has been added to the account
-        </h3>
-        <p class="govuk-body">They will receive an email with a link to the service.</p>
-      </mark>
-    {% endset %}
-
-    {% set removed %}
-      <mark role="alert">
-        <h3 class="govuk-notification-banner__heading">
-          {% if data['email'] %}
-            {{ data['email']+"@leeds.gov.uk" }}
-          {% else %}
-            sam.aye@leeds.gov.uk
-          {% endif %} has been removed
-        </h3>
-        {# <p class="govuk-body">If they accept the invite they will appear in the list below and will be able to access all appeals.</p> #}
-      </mark>
-    {% endset %}
-
-    {% if data['action'] == "added" %}
-      {{ govukNotificationBanner({
-        html: added,
-        type: 'success'
-      }) }}
-    {% endif %}
-
-    {% if data['action'] == "removed" %}
-      {{ govukNotificationBanner({
-        html: removed,
-        type: 'success'
-      }) }}
-    {% endif %}
-
-    <label class="govuk-label govuk-label--l" for="email">
-      {{ title }}
-    </label>
-
-    <p class="govuk-body">
-      Account users can add information to appeals. All users will receive email notifications about new appeals.
-    </p>
-
-    <p class="govuk-body">
-      <a href="give-access" class="govuk-link">
-        Add a user
-      </a>
-    </p>
-  </div>
-
-  <div class="govuk-grid-column-one-half">
-
-    <table class="govuk-table">
-
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">User</th>
-          <th scope="col" class="govuk-table__header govuk-table__cell--numeric govuk-!-width-one-quarter"></th>
-        </tr>
-      </thead>
-
-      <tbody class="govuk-table__body">
-
-        {% if data['shared'] %}
-
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              {% if data['email'] %}
-                {{ data['email']+"@leeds.gov.uk" }}
-              {% else %}
-                sam.aye@leeds.gov.uk
-              {% endif %}
-            </td>
-
-            <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a href="confirm-remove" class="govuk-link govuk-link--no-visited-state">
-                Remove<span class="visually-hidden"> this user</span>
-              </a>
-            </td>
-          </tr>
-
-        {% endif %}
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            {% if data['myemail'] %}
-              {{ data['myemail'] }}
+      {# {% if data['users'] > 0 %}
+        <div class="govuk-inset-text">
+          <p class="govuk-l">
+            {% if data['users'] == 1 %}
+              You have added {{ data['users'] }} user </a>
             {% else %}
-              your.name@leeds.gov.uk
+              You have added {{ data['users'] }} users </a>
             {% endif %}
-          </td>
+          </p>
+        </div>
+      {% endif %} #}
 
-          <td class="govuk-table__cell">
-            {# <a href="confirm-remove" class="govuk-link govuk-link--no-visited-state">
-              Remove<span class="visually-hidden"> this user</span>
-            </a> #}
-          </td>
-        </tr>
+      {% set added %}
+        <mark role="alert">
+          <h3 class="govuk-notification-banner__heading">
+            {{ data['email']+'@leeds.gov.uk' or 'example' }} has been added to the account
+          </h3>
+          <p>They will receive an email with a link to the service.</p>
+        </mark>
+      {% endset %}
 
-      </tbody>
-    </table>
+      {% set removed %}
+        <mark role="alert">
+          <h3 class="govuk-notification-banner__heading">
+            {{ data['email'] or 'example@leeds.gov.uk' }} has been removed
+          </h3>
+        </mark>
+      {% endset %}
 
+      {% if data['action'] == "added" %}
+        {{ govukNotificationBanner({
+          html: added,
+          type: 'success'
+        }) }}
+      {% endif %}
+
+      {% if data['action'] == "removed" %}
+        {{ govukNotificationBanner({
+          html: removed,
+          type: 'success'
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+{#
+      {% from "moj/components/page-header-actions/macro.njk" import mojPageHeaderActions %}
+
+      {{ mojPageHeaderActions({
+        heading: {
+          text: title,
+          classes: 'govuk-heading-l govuk-!-margin-bottom-0'
+        },
+        items: [
+          {
+            text: 'Add a user',
+            href: 'give-access'
+          }
+        ],
+        classes: 'govuk-!-margin-bottom-6'
+      }) }} #}
+
+      <p class="govuk-body">
+        All users can add information to appeals and will receive email notifications about new appeals.
+      </p>
+
+      <p class="govuk-body">
+        <a href="give-access">
+          Add a user
+        </a>
+      </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+      <dl class="govuk-summary-list">
+        {% for user in data['users'] %}
+          {% if user != null %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{ user.email }}
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                {% if loop.last != true %}
+                <a href="confirm-remove?id={{ loop.index0 }}&email={{ user.email }}">
+                  Remove<span class="govuk-visually-hidden"> {{ user.email }}</span>
+                </a>
+                {% endif %}
+              </dd>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </dl>
+
+    </div>
   </div>
-</div>
-
 {% endblock %}
-
-{% if data['shared'] %}
-
-{% else %}
-  {% set prototypeLinks = [{
-    href: 'access?action=newuser&shared=1',
-    text: 'User accepts an invite'}]
-  %}
-{% endif %}

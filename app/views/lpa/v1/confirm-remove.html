@@ -29,22 +29,26 @@
   <div class="govuk-grid-column-two-thirds">
 
     <form method="post">
-      <label class="govuk-label govuk-label--l" for="email">
+      <h1 class="govuk-heading-l">
         {{ title }}
-      </label>
+      </h1>
 
-      <p class="govuk-body">
-        When you remove a user, the email address will not have access to manage appeals and will not receive appeal notifcations.
-      </p>
-
-      <p class="govuk-body">
-        Confirm that you want to remove
+      <p class="govuk-body-l">
+        {# Confirm that you want to remove #}
         {% if data['email'] %}
-          {{ data['email']+"@leeds.gov.uk" }}
+          {{ data['email'] }}
         {% else %}
-          sam.aye@leeds.gov.uk
+          example@leeds.gov.uk
         {% endif %}
       </p>
+
+      <p>
+        When you remove a user, the email address will not have access to manage appeals and will not receive appeal notifications.
+      </p>
+
+      {# {{ govukInsetText({
+        html: 'Confirm that you want to remove '+data['email']
+      }) }} #}
 
       {{ govukButton({
         text: "Remove user"

@@ -35,12 +35,16 @@
       </label>
 
       <p class="govuk-body-l">
-        {% if data['email'] %}
+        Add {% if data['email'] %}
           {{ data['email']+"@leeds.gov.uk" }}
         {% else %}
-          sam.aye@leeds.gov.uk
+          example@leeds.gov.uk
         {% endif %}
       </p>
+
+      {# {{ govukInsetText({
+        html: data['email']
+      }) }} #}
 
       {{ govukButton({
         text: "Add user"

@@ -23,50 +23,37 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
       <form method="post">
 
-        <span class="govuk-caption-l">{{ subServiceName }}</span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
 
-        <div class="govuk-form-group">
+        <p>You can add a user to manage appeals. They must have a local authority email address.</p>
 
-          <label class="govuk-label govuk-label--l" for="email">
-            {{ title }}
-          </label>
+        <p>Enter their email address to add them.</p>
 
-          <p class="govuk-body">
-            You can add a user to manage appeals. They must have a local authority email address.
-          </p>
-
-          <p class="govuk-body">
-            Enter their email address to add them.
-          </p>
-
-          <div class="govuk-form-group">
-            <input class="govuk-input govuk-!-width-one-half" id="email" name="email" type="text" spellcheck="false" autocomplete=none value=""><span class="govuk-body" style="margin-left: 0.4rem">@leeds.gov.uk</span>
-          </div>
-
-        </div>
+        {{ govukInput({
+          id: 'email',
+          name: 'email',
+          classes: 'govuk-!-width-two-thirds',
+          label: {
+            html: 'What is their email address?',
+            classes: 'govuk-label--m'
+          },
+          suffix: {
+            text: '@leeds.gov.uk'
+          },
+          spellcheck: false
+        }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Add user"
         }) }}
 
       </form>
-
-      <!-- this is a prototype only link -->
-      {# <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
-        <p class="govuk-body-s pins-prototype-only">
-          <a href="lpa-questionnaire/v10">
-            To the questionnaire
-          </a>
-        </p>
-      </div> #}
-
     </div>
   </div>
-
 {% endblock %}
