@@ -107,7 +107,7 @@
                 {{ user.email }}
               </dt>
               <dd class="govuk-summary-list__actions">
-                {% if loop.index0 != 0 %}
+                {% if loop.last != true %}
                 <a href="confirm-remove?id={{ loop.index0 }}&email={{ user.email }}">
                   Remove<span class="govuk-visually-hidden"> {{ user.email }}</span>
                 </a>

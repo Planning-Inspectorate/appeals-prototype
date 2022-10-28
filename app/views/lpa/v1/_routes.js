@@ -42,7 +42,7 @@ router.post('/give-access', function (req, res) {
   })
 
   // Pass the above object into the array
-  req.session.data['users'].push(newUser)
+  req.session.data['users'].unshift(newUser)
 
   // Confirmation page
   res.redirect('access?action=added');
