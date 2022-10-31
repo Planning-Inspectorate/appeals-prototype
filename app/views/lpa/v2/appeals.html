@@ -28,7 +28,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    
+
 
     <h1 class="govuk-heading-l">
       {{ title }}
@@ -63,6 +63,54 @@
       </thead>
 
       <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+
+          <th scope="row" class="govuk-table__cell">
+            APP/Q9999/D/21/1287330
+          </th>
+
+          {% if data['appealref'] == true %}
+            <td class="govuk-table__cell">
+              22/0120024/FUL
+            </td>
+          {% endif %}
+
+          <td class="govuk-table__cell">
+            {{ 1 | daysInFuture }}
+          </td>
+          <td class="govuk-table__cell">
+            <a href="/lpa-final-comments/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
+              Final comments
+            </a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+
+          <th scope="row" class="govuk-table__cell">
+            APP/Q9999/D/21/1287330
+          </th>
+
+          {% if data['appealref'] == true %}
+            <td class="govuk-table__cell">
+              22/0120024/FUL
+            </td>
+          {% endif %}
+
+          <td class="govuk-table__cell">
+            {{ 2 | daysInFuture }}
+          </td>
+          <td class="govuk-table__cell">
+            {# <a href="/lpa-questionnaire/v10/task-list?non-determination=true" class="govuk-link govuk-link--no-visited-state">
+              Complete questionnaire
+            </a><br> #}
+            <a href="/lpa-final-comments/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
+              Final comments
+            </a>
+          </td>
+        </tr>
+
 
         {% if data['quest-status'] == "finished" %}
         {% else %}
