@@ -1,0 +1,78 @@
+{% extends "layout-email.html" %}
+
+{% block pageTitle %}
+  Submit questionnaire for ENF13579F
+{% endblock %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> 11 Bradling Avenue, Sampleford, BS17 2PP - Submit questionnaire
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['lpa-email'] or 'planningappeals@leeds.gov.uk'}}<br>
+    <strong>From:</strong> info@planninginspectorate.gov.uk
+  </p>
+  <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
+  </p>
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      Appeal reference: ENF13579F
+    </p>
+
+    {# <p class="govuk-body">
+      Appeal site: 11 Bradling Avenue, Sampleford, BS17 2PP
+    </p> #}
+
+    <p class="govuk-body">
+      Dear Leeds City Council
+    </p>
+
+    <p class="govuk-body">
+      This appeal has been validated and you can now submit your questionnaire.
+    </p>
+
+    <p class="govuk-body">
+      This is due by {{ 7 | daysInFuture }}
+    </p>
+
+    <p class="govuk-body">
+      You can complete your questionnaire online in our new ‘Manage your planning inspectorate appeals’ service.
+    </p>
+
+    <p class="govuk-body">
+      To complete your questionnaire, you need to click the link to receive a secure code. We’ll send you a code to sign into your account with. You can then view, edit, share and submit the questionnaire online.
+    </p>
+
+    <p class="govuk-body">
+      Go to the link to receive a code:<br>
+      <a href="enter-code?start=questionnaire" class="govuk-link">www.gov.uk/manage-planning-inspectorate-appeals/lpa/v1/enter-code?app=d81vW7td12s4t5gff728y29</a>
+    </p>
+
+    {# <ol class="govuk-list govuk-list--number">
+      <li>
+        Go to the link to receive a code:<br><a href="enter-code" class="govuk-link">www.gov.uk/manage-planning-inspectorate-appeals/lpa/v1/enter-code?app=d81vW7td12s4t5gff728y29</a>
+      </li>
+      <li>
+        Enter the code we send in an email to you.
+      </li>
+    </ol> #}
+
+    <p class="govuk-body">
+      Thank you,
+    </p>
+
+    <p class="govuk-body">
+      The Planning Inspectorate
+    </p>
+
+  </div>
+</div>
+{% endblock %}
