@@ -6,16 +6,16 @@
 {% set title = "Leeds planning appeals" %}
 
 {% block pageTitle %}
-  {{ title }} - {{serviceName}} - GOV.UK
+  {{ title }} - {{ serviceName | striptags }} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
+  {# {{ govukPhaseBanner({
     tag: {
       text: "Beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+  }) }} #}
 
   {# {{ govukBackLink({
     text: "Back",
@@ -105,7 +105,7 @@
             {# <a href="/lpa-questionnaire/v10/task-list?non-determination=true" class="govuk-link govuk-link--no-visited-state">
               Complete questionnaire
             </a><br> #}
-            {# <a href="/lpa-statement/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
+            {# <a href="/lpa-statement/v1/enter-statement" class="govuk-link govuk-link--no-visited-state">
               Submit statement
             </a><br> #}
             <a href="/lpa-final-comments/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
@@ -209,7 +209,7 @@
             {{ 8 | daysInFuture }}
           </td>
           <td class="govuk-table__cell">
-            <a href="/lpa-statement/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
+            <a href="/lpa-statement/v1/enter-statement" class="govuk-link govuk-link--no-visited-state">
               Submit statement
             </a><br>
             <a href="/lpa-final-comments/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
@@ -234,7 +234,7 @@
             {{ 12 | daysInFuture }}
           </td>
           <td class="govuk-table__cell">
-            <a href="/lpa-statement/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
+            <a href="/lpa-statement/v1/enter-statement" class="govuk-link govuk-link--no-visited-state">
               Submit statement
             </a><br>
             <a href="/lpa-final-comments/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
@@ -281,7 +281,7 @@
             {{ 20 | daysInFuture }}
           </td>
           <td class="govuk-table__cell">
-            <a href="/lpa-statement/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
+            <a href="/lpa-statement/v1/enter-statement" class="govuk-link govuk-link--no-visited-state">
               Submit statement
             </a><br>
             <a href="/lpa-final-comments/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
@@ -350,7 +350,7 @@
             {{ 22 | daysInFuture }}
           </td>
           <td class="govuk-table__cell">
-            <a href="/lpa-statement/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
+            <a href="/lpa-statement/v1/enter-statement" class="govuk-link govuk-link--no-visited-state">
               Submit statement
             </a><br>
             <a href="/lpa-final-comments/v1/enter-code" class="govuk-link govuk-link--no-visited-state">
