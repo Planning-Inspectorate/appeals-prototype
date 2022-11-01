@@ -9,38 +9,7 @@
 
   <p>If you refer to any documents in your appeal statement, for example photographs, you can upload them in the next step.</p>
 
-  {% set uploadHtml %}
-    {{ govukFileUpload({
-      id: "appeal-statement",
-      name: "appeal-statement",
-      classes: 'moj-multi-file-upload__input',
-      label: {
-        text: "Upload a file",
-        classes: 'govuk-label--m'
-      },
-      hint: {
-        text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
-      }
-    }) }}
-
-    {{govukButton({
-      text: 'Upload file',
-      classes: 'govuk-button--secondary moj-multi-file-upload__button'
-    })}}
-  {% endset %}
-
-  {{ mojMultiFileUpload({
-    uploadedFiles: {
-      heading: { text: 'File added' },
-      items: []
-    },
-    uploadHtml: uploadHtml
-  }) }}
-
-
-
-
-  <h2 class="govuk-heading-m govuk-!-margin-top-9">
+  <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
     Sensitive information
   </h2>
 
@@ -73,6 +42,34 @@
   {{ govukDetails({
     summaryHtml: 'What is sensitive information?',
     html: sensitiveHTML
+  }) }}
+
+  {% set uploadHtml %}
+    {{ govukFileUpload({
+      id: "appeal-statement",
+      name: "appeal-statement",
+      classes: 'moj-multi-file-upload__input',
+      label: {
+        text: "Upload a file",
+        classes: 'govuk-label--m'
+      },
+      hint: {
+        text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
+      }
+    }) }}
+
+    {{govukButton({
+      text: 'Upload file',
+      classes: 'govuk-button--secondary moj-multi-file-upload__button'
+    })}}
+  {% endset %}
+
+  {{ mojMultiFileUpload({
+    uploadedFiles: {
+      heading: { text: 'File added' },
+      items: []
+    },
+    uploadHtml: uploadHtml
   }) }}
 
   {{ govukCheckboxes({

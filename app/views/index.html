@@ -179,13 +179,23 @@
                     <h3 class="govuk-heading-s">
                       Final comments v3
                       {{ govukTag({
-                        classes: "govuk-tag--blue govuk-!-margin-left-1",
-                        text: "In progress"
+                        classes: "govuk-tag--green govuk-!-margin-left-1",
+                        text: "Ready for dev"
                       }) }}
                     </h3>
                     <ul class="govuk-list govuk-list--bullet">
                       <li>
-                        <a href="/final-comments/v3/submit/start-email">
+                        <a href="/final-comments/v3/submit/appellant-email">
+                          Appellant email
+                        </a>
+                      </li>
+                      <li>
+                        {# <a href="/final-comments/v3/submit/lpa-email"> #}
+                          LPA email (tbc)
+                        {# </a> #}
+                      </li>
+                      <li>
+                        <a href="/final-comments/v3/submit/final-comments">
                           Submit comments journey
                         </a>
 
@@ -199,7 +209,7 @@
                       </li>
                       <li>
                         <a href="/final-comments/v3/create-link/appeal-search">
-                          Create link journey
+                          Create link journey (should no longer be needed)
                         </a>
                       </li>
                     </ul>
@@ -3126,7 +3136,7 @@
             </div>
           </div>
 
-          <div class="govuk-accordion__section">
+          {# <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-finalcomments">
@@ -3204,7 +3214,7 @@
               </div>
 
             </div>
-          </div>
+          </div> #}
 
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
