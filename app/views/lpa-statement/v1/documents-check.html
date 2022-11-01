@@ -1,0 +1,27 @@
+{% extends location+"_layout.html" %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'adding-documents',
+    name: 'adding-documents',
+    fieldset: {
+      legend: {
+        html: 'Do you have additional documents to support your appeal statement?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('adding-documents','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('adding-documents','No')
+      }
+    ]
+  }) }}
+{% endblock %}
