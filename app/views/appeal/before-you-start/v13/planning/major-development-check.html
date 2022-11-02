@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-main.html' %}
+{% set prototypeLinks = [{href: '../errors/no-major', text: 'Yes: no major developments'}] %}
+
+{% set title = 'Was your planning application for a major development?' %}
+
+{% block questions %}
+	{{ govukRadios({
+		idPrefix: 'major-development-check',
+		name: 'major-development-check',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		items: [
+			{
+				html: 'Yes',
+				value: 'Yes',
+				checked: checked('major-development-check','Yes')
+			},
+			{
+				html: 'No',
+				value: 'No',
+				checked: checked('major-development-check','No')
+			}
+		]
+	}) }}
+
+
+
+	{% set majorDevelopment %}
+		<p class="govuk-!-margin-bottom-2">A housing development is major if it has either:</p>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>10 or more houses</li>
+			<li>a site area of 0.5 hectares or more, and an unknown number of houses</li>
+		</ul>
+
+		<p>A travelling and caravan pitch development is major if it has 10 or more pitches</p>
+
+		<p class="govuk-!-margin-bottom-2">Any other type of development is major if it either:</p>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>creates 1000 square metres of floor space or more</li>
+			<li>has a site area of 1 hectare or more</li>
+		</ul>
+	{% endset -%}
+
+	{{ govukDetails({
+		summaryHtml: 'What is a major development?',
+		html: majorDevelopment
+	}) }}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% from '_components/header/macro.njk' import appHeader %}
+{% block header %}
+{# Use the PINS header and set service name
+Add nav, remove on pages that don't need it with:
+{% set nav = false %} #}
+	{{ appHeader({
+		serviceName: {
+			text: serviceName
+		},
+		navigation: {
+			label: 'Primary navigation',
+			items: [
+				{
+					text: data['username'] or 'Chris Armstrong',
+					href: '#0'
+				},
+				{
+					text: 'Sign out',
+					href: '/sign-out'
+				}
+			]
+		} if nav != false
+	}) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
+
+			<form method="post">
+
+				{% block questions %}{% endblock %}
+
+				{% block buttons %}
+					{{ govukButton({
+						text: 'Continue'
+					}) }}
+				{% endblock %}
+
+			</form>
+
+		</div>
+	</div>
+{% endblock %}
