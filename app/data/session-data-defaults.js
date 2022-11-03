@@ -18,7 +18,6 @@ Example usage:
 */
 
 module.exports = {
-  "full-name": "Sarah Philips",
   "lpas": [
     "Buckinghamshire Council",
     "Buckinghamshire County Council",
