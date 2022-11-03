@@ -10,8 +10,8 @@
   {# Include all of the LPA's which are set in default data #}
   {% for lpa in data['lpas'] %}
     {% set lpaList = lpaList | push ({
-      value: lpa['official-name'],
-      text: lpa['official-name']
+      value: lpa,
+      text: lpa
     }) %}
   {% endfor %}
 
@@ -19,9 +19,10 @@
   {{ govukSelect({
     id: 'lpa',
     name: 'lpa',
+    classes: 'js-autocomplete',
     label: {
       html: title,
-      classes: 'govuk-label--l',
+      classes: 'govuk-label--xl',
       isPageHeading: true
     },
     items: lpaList,
@@ -29,16 +30,4 @@
       'data-default-value': data['lpa']
     }
   }) }}
-{% endblock %}
-
-{% block pageScripts %}
-  {# Enhance the select to a typeahead #}
-  <script>
-    let selectElement = document.querySelector('#lpa')
-
-    accessibleAutocomplete.enhanceSelectElement({
-      defaultValue: selectElement.getAttribute('data-default-value'),
-      selectElement: selectElement
-    })
-  </script>
 {% endblock %}

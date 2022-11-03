@@ -10,3 +10,8 @@ addFilter('formatMonth', function(number){
 		return ""
 	}
 })
+
+addFilter('push', (array, item) => {
+	array.push(item)
+	return array
+})
