@@ -1,10 +1,10 @@
-
 # Node.js ignores
 node_modules/
 
 # Prototype ignores - per-user
+.tmp/
 .env
-public/
+usage-data-config.json
 
 # General ignores
 .DS_Store
