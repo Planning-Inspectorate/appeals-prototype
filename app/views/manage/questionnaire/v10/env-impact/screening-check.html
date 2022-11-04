@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'screening-check',
+    name: 'screening-check',
+    fieldset: {
+      legend: {
+        html: 'Have you issued a screening opinion?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('screening-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('screening-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

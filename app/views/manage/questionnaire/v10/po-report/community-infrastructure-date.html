@@ -1,0 +1,35 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {{ govukDateInput({
+    id: 'community-infrastructure-date',
+    namePrefix: 'community-infrastructure-date',
+    fieldset: {
+      legend: {
+        html: 'When was the community infrastructure levy formally adopted?' if data['community-infrastructure-adopted'] == 'Yes' else 'When do you expect to formally adopt the community infrastructure levy?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'For example, 31 3 2022'
+    },
+    items: [
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: data['community-infrastructure-date-day']
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2',
+        value: data['community-infrastructure-date-month']
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4',
+        value: data['community-infrastructure-date-year']
+      }
+    ]
+  }) }}
+{% endblock %}

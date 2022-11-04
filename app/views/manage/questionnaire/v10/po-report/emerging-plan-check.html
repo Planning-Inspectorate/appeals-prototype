@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {% set hintText %}
+    <p class="govuk-!-margin-bottom-2">Tell us if you have a:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-hint">
+      <li>development plan document that has been submitted for examination, or has been examined and found sound or met its basic conditions</li>
+      <li>neighbourhood plan that is awaiting or has passed a referendum</li>
+    </ul>
+  {% endset -%}
+  {{ govukRadios({
+    idPrefix: 'emerging-plan-check',
+    name: 'emerging-plan-check',
+    fieldset: {
+      legend: {
+        html: 'Do you have an emerging plan that&rsquo;s relevant to this appeal?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('emerging-plan-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('emerging-plan-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

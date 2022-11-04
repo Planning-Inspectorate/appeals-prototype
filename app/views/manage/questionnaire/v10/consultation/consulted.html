@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {% set bodies %}
+    {{ govukTextarea({
+      name: 'bodies-consulted',
+      id: 'bodies-consulted',
+      value: data['bodies-consulted'],
+      rows: '3',
+      label: {
+        html: 'Which bodies did you consult?'
+      }
+    }) }}
+  {% endset -%}
+
+  {{ govukRadios({
+    idPrefix: 'consulted',
+    name: 'consulted',
+    fieldset: {
+      legend: {
+        html: 'Did you consult all the relevant statutory consultees about the development?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('consulted','Yes'),
+        conditional: {
+          html: bodies
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('consulted','No')
+      }
+    ]
+  }) }}
+{% endblock %}

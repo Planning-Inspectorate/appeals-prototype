@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'affected-listed-building-check',
+    name: 'affected-listed-building-check',
+    fieldset: {
+      legend: {
+        html: 'Would the development affect the setting of a listed building?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('affected-listed-building-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('affected-listed-building-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

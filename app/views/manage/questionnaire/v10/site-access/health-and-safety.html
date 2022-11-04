@@ -1,0 +1,65 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+
+  {% set textareaHTML %}
+    {{ govukTextarea({
+      name: 'health-and-safety__details',
+      id: 'health-and-safety__details',
+      value: data['health-and-safety__details'],
+      rows: '',
+      label: {
+        html: 'Tell us about the health and safety issues'
+      }
+    }) }}
+  {% endset -%}
+
+  <h1 class="govuk-heading-l">
+    Health and safety issues
+  </h1>
+
+  <p>Understanding any health and safety issues will help an inspector carry out a site visit.</p>
+
+  <p class="govuk-!-margin-bottom-2">For example:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>animals at the site, for example pets or livestock</li>
+    <li>poor mobile signal at the site</li>
+    <li>access issues for people with limited mobility</li>
+    <li>overgrown vegetation that could restrict access to the site</li>
+    <li>building works or other operations taking place on the site</li>
+    <li>site-specific safety arrangements that are in place</li>
+    <li>areas of the site that require specialist equipment or training for access, for example heights or confined spaces</li>
+    <li>requirements to view the site from a height, for example from a roof or balcony</li>
+    <li>risk of exposure to chemicals, asbestos or radiation</li>
+    <li>unmarked changes in level or missing fittings</li>
+  </ul>
+
+  {{ govukRadios({
+    idPrefix: 'health-and-safety',
+    name: 'health-and-safety',
+    fieldset: {
+      legend: {
+        html: 'Are there any health and safety issues on the appeal site?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('health-and-safety','Yes'),
+        conditional: {
+          html: textareaHTML
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('health-and-safety','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

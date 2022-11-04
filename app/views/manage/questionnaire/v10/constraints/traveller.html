@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'traveller',
+    name: 'traveller',
+    fieldset: {
+      legend: {
+        html: 'Does the development relate to anyone claiming to be a Gypsy or Traveller?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('traveller','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('traveller','No')
+      }
+    ]
+  }) }}
+{% endblock %}

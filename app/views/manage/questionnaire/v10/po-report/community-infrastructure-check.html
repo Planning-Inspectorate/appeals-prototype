@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'community-infrastructure-check',
+    name: 'community-infrastructure-check',
+    fieldset: {
+      legend: {
+        html: 'Do you have a community infrastructure levy?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'Tell us about any levy that is formally adopted or due to be adopted'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('community-infrastructure-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('community-infrastructure-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

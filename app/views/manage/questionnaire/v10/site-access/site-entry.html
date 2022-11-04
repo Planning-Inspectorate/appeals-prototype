@@ -1,0 +1,45 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {% set detailsHTML %}
+    {{ govukTextarea({
+      name: 'site-entry__details',
+      id: 'site-entry__details',
+      value: data['site-entry__details'],
+      rows: '3',
+      label: {
+        html: 'Tell us why the inspector will need to enter the appeal site'
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    idPrefix: 'site-entry',
+    name: 'site-entry',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: 'Will the inspector need to enter the appeal site?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('site-entry','Yes'),
+        conditional: {
+          html: detailsHTML
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('site-entry','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'other-parties-check',
+    name: 'other-parties-check',
+    fieldset: {
+      legend: {
+        html: 'Did you receive representations from any other parties?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('other-parties-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('other-parties-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

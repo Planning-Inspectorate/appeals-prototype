@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block questions %}
+  {{ govukCheckboxes({
+    idPrefix: 'notified-how',
+    name: 'notified-how',
+    fieldset: {
+      legend: {
+        html: 'How did you notify people about the planning application?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'A site notice',
+        value: 'A site notice',
+        checked: checked('notified-how','A site notice')
+      },
+      {
+        html: 'Letters to the neighbours',
+        value: 'Letters to the neighbours',
+        checked: checked('notified-how','Letters to the neighbours')
+      },
+      {
+        html: 'A press advert',
+        value: 'A press advert',
+        checked: checked('notified-how','A press advert')
+      }
+    ]
+  }) }}
+{% endblock %}
