@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Will the inspector need to enter the appeal site?' %}
+
 {% block questions %}
   {% set detailsHTML %}
     {{ govukTextarea({
@@ -19,7 +21,7 @@
     classes: '',
     fieldset: {
       legend: {
-        html: 'Will the inspector need to enter the appeal site?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

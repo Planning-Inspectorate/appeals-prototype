@@ -1,12 +1,9 @@
 {% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Appeal questionnaire' %}
 {% set prototypeLinks = [{href: 'confirmation', text: 'Skip to confirmation'}] %}
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: { text: 'Beta' },
-    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
-  }) }}
-
+{% block backLink %}
   {{ govukBackLink({
     html: 'Back to your planning appeals',
     href: '/lpa/v1/appeals'
@@ -17,7 +14,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">
-        Appeal questionnaire
+        {{ title }}
       </h1>
 
       {# Tweak the summary list to be smaller #}

@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Do you have an emerging plan that&rsquo;s relevant to this appeal?' %}
+
 {% block questions %}
   {% set hintText %}
     <p class="govuk-!-margin-bottom-2">Tell us if you have a:</p>
@@ -13,7 +15,7 @@
     name: 'emerging-plan-check',
     fieldset: {
       legend: {
-        html: 'Do you have an emerging plan that&rsquo;s relevant to this appeal?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

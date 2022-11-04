@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Do you have a community infrastructure levy?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'community-infrastructure-check',
     name: 'community-infrastructure-check',
     fieldset: {
       legend: {
-        html: 'Do you have a community infrastructure levy?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

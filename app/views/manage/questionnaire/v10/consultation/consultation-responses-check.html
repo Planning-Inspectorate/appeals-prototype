@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Do you have any consultation responses or standing advice from statutory consultees to upload?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'consultation-responses-check',
     name: 'consultation-responses-check',
     fieldset: {
       legend: {
-        html: 'Do you have any consultation responses or standing advice from statutory consultees to upload?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

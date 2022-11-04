@@ -1,8 +1,10 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Statement of case' %}
+
 {% block questions %}
   <h1 class="govuk-heading-l">
-    Statement of case
+    {{ title }}
   </h1>
   <p>The deadline to submit a statement of case is {{ '6' | daysInFuture }}.</p>
 

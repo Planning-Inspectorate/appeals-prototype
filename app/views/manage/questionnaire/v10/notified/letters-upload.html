@@ -1,8 +1,10 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Upload your letter to the neighbours, and their addresses' %}
+
 {% block questions %}
   <h1 class="govuk-heading-l">
-    Upload your letter to the neighbours, and their addresses
+    {{ title }}
   </h1>
 
   {% set uploadHtml %}
@@ -12,8 +14,7 @@
       classes: 'moj-multi-file-upload__input',
       label: {
         text: 'Upload a file',
-        classes: 'govuk-label--m',
-        isPageHeading: true
+        classes: 'govuk-label--m'
       },
       hint: {
         text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'

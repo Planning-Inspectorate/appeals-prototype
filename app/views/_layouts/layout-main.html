@@ -16,12 +16,15 @@
 		html: 'This is not a real service, it is only for testing ideas.'
 	}) }}
 
-	{# Add a javascript back link, remove on pages that don't need it with:
-	{% set back = false %} #}
-	{{ govukBackLink({
-		html: 'Back',
-		href: 'javascript:history.back()'
-	}) if back != false }}
+	{# Add a back link block to just override that and not the phase banner #}
+	{% block backLink %}
+		{# Add a javascript back link, remove on pages that don't need it with:
+		{% set back = false %} #}
+		{{ govukBackLink({
+			html: 'Back',
+			href: 'javascript:history.back()'
+		}) if back != false }}
+	{% endblock %}
 {% endblock %}
 
 {# Setup form question pages by default, override by using content block if not needed #}
@@ -40,6 +43,17 @@
 					{{ govukButton({
 						text: 'Continue'
 					}) }}
+
+					{# Option to add a return to task list link
+					Add on pages that with:
+						{% set return = true %}
+
+					or add for whole prototype in routes.js with:
+						res.locals['return'] = true
+					#}
+					{% if return == true %}
+						<p><a href="../task-list" class="govuk-link--no-visited-state">Return to task list</a></p>
+					{% endif %}
 				{% endblock %}
 
 			</form>

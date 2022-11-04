@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Is the development in, partly in, or likely to affect a sensitive area?' %}
+
 {% block questions %}
   {% set details %}
     {{ govukTextarea({
@@ -17,7 +19,7 @@
     name: 'sensitive-area',
     fieldset: {
       legend: {
-        html: 'Is the development in, partly in, or likely to affect a sensitive area?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

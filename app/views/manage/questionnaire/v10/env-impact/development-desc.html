@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Description of development' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'development-desc',
     name: 'development-desc',
     fieldset: {
       legend: {
-        html: 'Description of development',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

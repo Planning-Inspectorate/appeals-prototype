@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Is the appeal site in or next to a conservation area?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'conservation-check',
     name: 'conservation-check',
     fieldset: {
       legend: {
-        html: 'Is the appeal site in or next to a conservation area?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Health and safety issues' %}
+
 {% block questions %}
 
   {% set textareaHTML %}
@@ -15,7 +17,7 @@
   {% endset -%}
 
   <h1 class="govuk-heading-l">
-    Health and safety issues
+    {{ title }}
   </h1>
 
   <p>Understanding any health and safety issues will help an inspector carry out a site visit.</p>

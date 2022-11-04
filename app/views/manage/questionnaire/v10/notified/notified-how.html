@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'How did you notify people about the planning application?' %}
+
 {% block questions %}
   {{ govukCheckboxes({
     idPrefix: 'notified-how',
     name: 'notified-how',
     fieldset: {
       legend: {
-        html: 'How did you notify people about the planning application?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Did any supplementary planning documents inform the outcome of the application?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'supplementary-check',
     name: 'supplementary-check',
     fieldset: {
       legend: {
-        html: 'Did any supplementary planning documents inform the outcome of the application?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

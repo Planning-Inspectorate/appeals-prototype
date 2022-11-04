@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Which procedure do you think is most appropriate for this appeal?' %}
+
 {% block questions %}
   {% set inquiryDays %}
     {{ govukInput({
@@ -17,7 +19,7 @@
     name: 'procedure',
     fieldset: {
       legend: {
-        html: 'Which procedure do you think is most appropriate for this appeal?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

@@ -1,8 +1,10 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Upload the emerging plan and supporting information' %}
+
 {% block questions %}
   <h1 class="govuk-heading-l">
-    Upload the emerging plan and supporting information
+    {{ title }}
   </h1>
 
   <p class="govuk-!-margin-bottom-2">For each relevant plan, you must upload:</p>
@@ -38,8 +40,7 @@
       classes: 'moj-multi-file-upload__input',
       label: {
         text: 'Upload files',
-        classes: 'govuk-label--m',
-        isPageHeading: true
+        classes: 'govuk-label--m'
       },
       hint: {
         text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'

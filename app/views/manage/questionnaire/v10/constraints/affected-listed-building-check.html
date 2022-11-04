@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Would the development affect the setting of a listed building?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'affected-listed-building-check',
     name: 'affected-listed-building-check',
     fieldset: {
       legend: {
-        html: 'Would the development affect the setting of a listed building?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

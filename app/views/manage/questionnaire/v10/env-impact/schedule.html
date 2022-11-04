@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Is the development a schedule 1 or schedule 2 development?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'schedule',
     name: 'schedule',
     fieldset: {
       legend: {
-        html: 'Is the development a schedule 1 or schedule 2 development?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

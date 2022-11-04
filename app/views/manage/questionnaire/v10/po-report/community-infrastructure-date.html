@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'When was the community infrastructure levy formally adopted?' if data['community-infrastructure-adopted'] == 'Yes' else 'When do you expect to formally adopt the community infrastructure levy?' %}
+
 {% block questions %}
   {{ govukDateInput({
     id: 'community-infrastructure-date',
     namePrefix: 'community-infrastructure-date',
     fieldset: {
       legend: {
-        html: 'When was the community infrastructure levy formally adopted?' if data['community-infrastructure-adopted'] == 'Yes' else 'When do you expect to formally adopt the community infrastructure levy?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

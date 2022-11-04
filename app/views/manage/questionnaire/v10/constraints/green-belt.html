@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Is the appeal site in a green belt?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'green-belt',
     name: 'green-belt',
     fieldset: {
       legend: {
-        html: 'Is the appeal site in a green belt?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

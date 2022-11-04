@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Does the proposed development involve a listed building?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'listed-building-check',
     name: 'listed-building-check',
     fieldset: {
       legend: {
-        html: 'Does the proposed development involve a listed building?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

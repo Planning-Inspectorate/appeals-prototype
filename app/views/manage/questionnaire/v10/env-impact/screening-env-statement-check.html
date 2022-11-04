@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Did your screening opinion say the development needed an environmental statement?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'screening-env-statement-check',
     name: 'screening-env-statement-check',
     fieldset: {
       legend: {
-        html: 'Did your screening opinion say the development needed an environmental statement?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

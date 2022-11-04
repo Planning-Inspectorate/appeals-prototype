@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Does the development meet or exceed the threshold or criteria in column 2?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'column-two',
     name: 'column-two',
     fieldset: {
       legend: {
-        html: 'Does the development meet or exceed the threshold or criteria in column 2?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

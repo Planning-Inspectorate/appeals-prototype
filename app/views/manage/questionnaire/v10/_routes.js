@@ -1,12 +1,15 @@
 const express = require('express')
 const router = new express.Router()
 
-// router.get('*', function(req, res, next){
-//   // Change the service name for this feature
-//   res.locals['serviceName'] = 'Manage Planning Inspectorate appeals'
-//
-//   next()
-// })
+router.get('*', function(req, res, next){
+  // Change the service name for this feature
+  res.locals['serviceName'] = 'Manage appeals'
+
+  // Add return to task list
+  res.locals['return'] = true
+
+  next()
+})
 
 router.post('*', function(req, res, next){
   if (req.session.data['cya']) {

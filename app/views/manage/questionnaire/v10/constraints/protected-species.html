@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Would the development affect a protected species?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'protected-species',
     name: 'protected-species',
     fieldset: {
       legend: {
-        html: 'Would the development affect a protected species?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

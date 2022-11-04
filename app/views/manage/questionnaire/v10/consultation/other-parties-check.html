@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Did you receive representations from any other parties?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'other-parties-check',
     name: 'other-parties-check',
     fieldset: {
       legend: {
-        html: 'Did you receive representations from any other parties?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

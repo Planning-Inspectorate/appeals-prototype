@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Have you issued a screening opinion?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'screening-check',
     name: 'screening-check',
     fieldset: {
       legend: {
-        html: 'Have you issued a screening opinion?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

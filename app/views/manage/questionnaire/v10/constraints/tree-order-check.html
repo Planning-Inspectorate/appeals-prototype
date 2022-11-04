@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Does a tree preservation order apply to any part of the appeal site?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'tree-order-check',
     name: 'tree-order-check',
     fieldset: {
       legend: {
-        html: 'Does a tree preservation order apply to any part of the appeal site?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

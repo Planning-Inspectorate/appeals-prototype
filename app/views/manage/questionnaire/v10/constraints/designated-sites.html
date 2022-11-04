@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Is the development in, near or likely to affect any designated sites?' %}
+
 {% block questions %}
   {% set other %}
     {{ govukInput({
@@ -16,7 +18,7 @@
     name: 'designated-sites',
     fieldset: {
       legend: {
-        html: 'Is the development in, near or likely to affect any designated sites?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

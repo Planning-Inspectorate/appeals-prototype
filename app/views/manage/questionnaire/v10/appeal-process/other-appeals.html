@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Are there any other appeals adjacent or close to the site still being considered?' %}
+
 {% block questions %}
   {% set appealRefs %}
     {{ govukInput({
@@ -19,7 +21,7 @@
     name: 'other-appeals',
     fieldset: {
       legend: {
-        html: 'Are there any other appeals adjacent or close to the site still being considered?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

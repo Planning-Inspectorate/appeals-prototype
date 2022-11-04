@@ -1,18 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: { text: 'Beta' },
-    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
-  }) }}
-{% endblock %}
+{% set title = 'Questionnaire submitted' %}
+{% set back = false %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       {{ govukPanel({
-        titleHtml: 'Questionnaire submitted'
+        titleHtml: title
       }) }}
 
       <p>We&rsquo;ve sent you a confirmation email with a link to download a copy of your questionnaire.</p>
@@ -28,11 +24,9 @@
       <p>We&rsquo;ll review your evidence and will be in touch if we need any further information.</p>
 
       <p>
-        <a href="/lpa/v1/appeals?quest-status=finished" class="govuk-link--no-visited-state">Back to your planning appeals</a>
+        <a href="/lpa/v1/appeals?quest-status=finished" class="govuk-link--no-visited-state">View your planning appeals</a>
       </p>
 
     </div>
   </div>
 {% endblock %}
-
-{% block pageScripts %}{% endblock %}

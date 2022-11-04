@@ -1,12 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Did the applicant submit an environmental statement?' %}
+
 {% block questions %}
   {{ govukRadios({
     idPrefix: 'applicant-env-statement-check',
     name: 'applicant-env-statement-check',
     fieldset: {
       legend: {
-        html: 'Did the applicant submit an environmental statement?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }

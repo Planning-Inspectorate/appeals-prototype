@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set title = 'Did you consult all the relevant statutory consultees about the development?' %}
+
 {% block questions %}
   {% set bodies %}
     {{ govukTextarea({
@@ -18,7 +20,7 @@
     name: 'consulted',
     fieldset: {
       legend: {
-        html: 'Did you consult all the relevant statutory consultees about the development?',
+        html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }
