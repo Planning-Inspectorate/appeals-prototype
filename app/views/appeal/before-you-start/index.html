@@ -3,6 +3,13 @@
 {% set nav = false %}
 {% set title = 'Before you start' %}
 
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">

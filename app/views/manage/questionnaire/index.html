@@ -3,6 +3,13 @@
 {% set nav = false %}
 {% set title = 'Questionnaire' %}
 
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#manage'
+  }) }}
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
