@@ -1,0 +1,24 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Declaration' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-!-margin-bottom-2">By submitting the questionnaire, you confirm you understand that:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>this is your only opportunity to submit the questionnaire</li>
+    <li>if you have not included all the information we’ve requested, we may not be able to progress your questionnaire</li>
+  </ul>
+
+  <p>You also confirm that, to the best of your knowledge, the details you are providing are correct.</p>
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Accept and send',
+    href: 'confirmation'
+  }) }}
+{% endblock %}
