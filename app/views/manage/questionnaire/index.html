@@ -1,0 +1,47 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Questionnaire' %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% set version = "10" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--orange govuk-!-margin-left-2',
+        text: 'Researched'
+      }) }}
+    </h2>
+
+    <p><a href="https://miro.com/app/board/uXjVPJrQJJo=/">View the research outputs on Miro</a>.</p>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Updated work done by previous team to bring layout and design direction inline with latest work.</li>
+      <li>Merged the task list and check your answers so that users can get an overview of all questions and jump between them if they can&rsquo;t answer everything at once.</li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/task-list',
+      isStartButton: true
+    }) }}
+
+    <p class="govuk-!-margin-bottom-2">Jump to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="v{{version}}/task-list?non-determination=false">task list (regular)</a></li>
+      <li><a href="v{{version}}/task-list?non-determination=true">task list (non-determination)</a></li>
+      <li><a href="v{{version}}/declaration">declaration</a></li>
+      <li><a href="v{{version}}/confirmation">confirmation</a></li>
+    </ul>
+
+  </div>
+</div>
+{% endblock %}

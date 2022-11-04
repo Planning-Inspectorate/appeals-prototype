@@ -1,56 +1,21 @@
-/* global $ */
-
-// Warn about using the kit in production
-if (window.console && window.console.info) {
-  window.console.info('GOV.UK Prototype Kit - do not use for production')
-}
-
-$(document).ready(function () {
-  window.GOVUKFrontend.initAll()
+window.GOVUKPrototypeKit.documentReady(() => {
   window.MOJFrontend.initAll()
+
+
+  // Upgrade any select with `.js-autocomplete` class
+  let autocomplete = document.querySelector('.js-autocomplete')
+
+  accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: autocomplete.getAttribute('data-default-value'),
+    selectElement: autocomplete
+  })
 })
 
-// Read more links
-jQuery(function() {
-  var shortening_text = $(".long-answers .govuk-summary-list__value");
-
-  shortening_text.each(function() {
-    var txt = $(this).html();
-    if (txt.length < 500) return;
-    $(this).html(
-      txt.slice(0, 500) +
-        '<span>... </span><a href="#" class="show">Read more</a>' +
-        '<span style="display:none;">' +
-        txt.slice(800, txt.length) +
-        ' <a href="#" class="less">Close</a></span>'
-    );
-  });
-
-  $("a.show", shortening_text).click(function(event) {
-    event.preventDefault();
-    $(this)
-      .hide()
-      .prev()
-      .hide();
-    $(this)
-      .next()
-      .show();
-  });
-
-  $("a.less", shortening_text).click(function(event) {
-    event.preventDefault();
-    $(this)
-      .parent()
-      .hide()
-      .prev()
-      .show()
-      .prev()
-      .show();
-  });
-});
 
 
 
+
+// Setup the MOJ multi file upload, we've made some minor changes to get things working
 if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJFrontend.fileApiSupported()) {
   MOJFrontend.MultiFileUpload = function(params) {
     this.defaultParams = {
@@ -223,5 +188,3 @@ if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
     container: $('.moj-multi-file-upload')
   });
 }
-
-
