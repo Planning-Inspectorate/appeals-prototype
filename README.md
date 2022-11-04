@@ -6,5 +6,5 @@ Includes prototypes for the 3 services in PINS appeals, `Appeal a planning decis
 
 The prototype has been updated to the beta of v13 of the prototype kit which has a new start command.
 
-Install pacakges with `npm install`
-Run prototype with `npm run dev`
+- Install pacakges with `npm install`
+- Run prototype with `npm run dev`
