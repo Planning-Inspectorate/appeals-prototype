@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Questionnaire submitted' %}
+{% set back = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleHtml: title
+      }) }}
+
+      <p>We&rsquo;ve sent you a confirmation email with a link to download a copy of your questionnaire.</p>
+
+      {{ govukInsetText({
+        html: '<p>You need to email a copy of your questionnaire to the appellant. This must include a copy of any documents you uploaded.</p>'
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>We&rsquo;ll review your evidence and will be in touch if we need any further information.</p>
+
+      <p>
+        <a href="/lpa/v1/appeals?quest-status=finished" class="govuk-link--no-visited-state">View your planning appeals</a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'What is their email address?' %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'add-user-email',
+    name: 'add-user-email',
+    classes: 'govuk-!-width-two-thirds',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    suffix: {
+      html: data['lpa-email']
+    },
+    spellcheck: false
+  }) }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-main.html' %}
+{% set prototypeLinks = [{href: '../errors/no-enforcement', text: 'Yes: no enforcement appeals yet'}] %}
+
+{% set title = 'Have you received an enforcement notice?' %}
+
+{% block questions %}
+	{{ govukRadios({
+		idPrefix: 'enforcement-check',
+		name: 'enforcement-check',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		items: [
+			{
+				html: 'Yes',
+				value: 'Yes',
+				checked: checked('enforcement-check','Yes')
+			},
+			{
+				html: 'No',
+				value: 'No',
+				checked: checked('enforcement-check','No')
+			}
+		]
+	}) }}
+{% endblock %}

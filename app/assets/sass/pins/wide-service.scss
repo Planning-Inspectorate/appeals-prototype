@@ -1,9 +1,0 @@
-.app-width-wide .govuk-width-container {
-  @include govuk-width-container(1400px);
-}
-
-
-/*
-To use this, drop it after the layout call in the html
-{% set htmlClasses = 'app-width-wide' %}
-*/

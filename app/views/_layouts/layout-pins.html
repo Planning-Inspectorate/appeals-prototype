@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% block header %}
+	{# Change the header for PINS apps, eg LPA product #}
+
+	{# Add nav, remove on pages that don't need it with:
+	{% set nav = false %} #}
+	{{ appHeader({
+		serviceName: {
+			text: serviceName
+		},
+		navigation: {
+			label: 'Primary navigation',
+			items: [
+				{
+					text: data['username'] or 'Chris Armstrong',
+					href: '#0'
+				},
+				{
+					text: 'Sign out',
+					href: '/sign-out'
+				}
+			]
+		} if nav != false
+	}) }}
+{% endblock %}

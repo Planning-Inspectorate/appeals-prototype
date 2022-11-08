@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did the applicant submit an environmental statement?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'applicant-env-statement-check',
+    name: 'applicant-env-statement-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('applicant-env-statement-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('applicant-env-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does the development meet or exceed the threshold or criteria in column 2?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'column-two',
+    name: 'column-two',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('column-two','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('column-two','No')
+      }
+    ]
+  }) }}
+{% endblock %}
