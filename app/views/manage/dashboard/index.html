@@ -1,12 +1,12 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = false %}
-{% set title = 'Before you start' %}
+{% set title = 'Dashboard' %}
 
 {% block backLink %}
   {{ govukBackLink({
     html: 'Back to all prototypes',
-    href: '/#appeal'
+    href: '/#manage'
   }) }}
 {% endblock %}
 
@@ -15,22 +15,25 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">
-      Appeal a planning decision
+      Manage LPA appeals
     </span>
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
 
-    {% set version = "13" %}
+    {% set version = "2" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--blue govuk-!-margin-left-2',
-        text: 'Ready for review'
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
       }) }}
     </h2>
 
-    <p>An updated before you start with all pages in. You can pass in a variable to use it across other prototypes, if viewing from here it will end at the check your answers.</p>
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Dashboard layout.</li>
+    </ul>
 
     {{ govukButton({
       html: 'View prototype',
