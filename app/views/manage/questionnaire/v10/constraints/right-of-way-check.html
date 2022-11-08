@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Would a public right of way need to be removed or diverted?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'right-of-way-check',
+    name: 'right-of-way-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('right-of-way-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('right-of-way-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

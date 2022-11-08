@@ -1,0 +1,19 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Confirm you want to remove this user' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body-l">{{ data['remove-email'] }}</p>
+
+  <p>When you remove a user, the email address will not have access to manage appeals and will not receive appeal notifications.</p>
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Remove user'
+  }) }}
+{% endblock %}

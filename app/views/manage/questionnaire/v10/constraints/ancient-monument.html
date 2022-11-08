@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Would the development affect an ancient monument?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'ancient-monument',
+    name: 'ancient-monument',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('ancient-monument','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('ancient-monument','No')
+      }
+    ]
+  }) }}
+{% endblock %}

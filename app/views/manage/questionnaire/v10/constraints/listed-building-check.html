@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does the proposed development involve a listed building?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'listed-building-check',
+    name: 'listed-building-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('listed-building-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('listed-building-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

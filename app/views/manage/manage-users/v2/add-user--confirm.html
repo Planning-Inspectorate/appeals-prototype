@@ -1,0 +1,17 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Confirm you want to add this user' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body-l">{{ data['add-user-email'] or 'example' }}{{ data['lpa-email'] }}</p>
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Add user'
+  }) }}
+{% endblock %}
