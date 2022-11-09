@@ -30,22 +30,16 @@
         </mark>
       {% endset %}
 
-      {% if data['action'] == "added" %}
+      {% if notification %}
         {{ govukNotificationBanner({
-          html: added,
-          type: 'success'
-        }) }}
-      {% endif %}
-
-      {% if data['action'] == "removed" %}
-        {{ govukNotificationBanner({
-          html: removed,
+          html: added if notification == 'added' else removed,
           type: 'success'
         }) }}
       {% endif %}
 
       <h1 class="govuk-heading-l">
         {{ title }}
+        test: {{notification}}
       </h1>
 
       <p>All users can add information to appeals and will receive email notifications about new appeals.</p>

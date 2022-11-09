@@ -8,6 +8,20 @@ router.get('*', function(req, res, next){
   next()
 })
 
+router.get('/', function(req, res, next){
+  let current = (res.locals.currentURL).replace(/^\//g, '')+'index'
+
+  if (req.session.data['action'] == 'added') {
+    delete req.session.data['action']
+    res.render(current, { notification: 'added' })
+  } else if (req.session.data['action'] == 'removed') {
+    delete req.session.data['action']
+    res.render(current, { notification: 'removed' })
+  } else {
+    next()
+  }
+})
+
 router.post('/add-user', function (req, res) {
   res.redirect('add-user--confirm')
 })
@@ -27,8 +41,10 @@ router.post('/add-user--confirm', function (req, res) {
   // Pass the above object into the array
   req.session.data['users'].unshift(newUser)
 
+  req.session.data['action'] = 'added'
+
   // Confirmation page
-  res.redirect('./?action=added');
+  res.redirect('./');
 })
 
 // Remove a user
@@ -40,7 +56,9 @@ router.post('/remove-user', function (req, res) {
     // delete the item from the array
     delete users[user]
 
-    res.redirect('./?action=removed');
+    req.session.data['action'] = 'removed'
+
+    res.redirect('./');
 })
 
 
