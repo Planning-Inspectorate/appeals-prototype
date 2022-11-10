@@ -36,6 +36,52 @@
       isStartButton: true
     }) }}
 
+    {% set lpaForm %}
+      <form method="get" action="v{{version}}/">
+
+        {{ govukInput({
+          id: 'dashboard-lpa',
+          name: 'dashboard-lpa',
+          value: data['dashboard-lpa'],
+          label: {
+            html: 'LPA&rsquo;s name'
+          },
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          id: 'lpa-email',
+          name: 'lpa-email',
+          value: data['lpa-email'],
+          label: {
+            html: 'LPA&rsquo;s email'
+          },
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          id: 'user-account',
+          name: 'users[0][email]',
+          value: data['users']['0']['email'],
+          label: {
+            html: 'LPA&rsquo;s email'
+          },
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+          text: 'Add to URL',
+          classes: 'govuk-!-margin-bottom-0'
+        }) }}
+
+      </form>
+    {% endset -%}
+
+    {{ govukDetails({
+      summaryHtml: 'Change LPA details',
+      html: lpaForm
+    }) }}
+
   </div>
 </div>
 {% endblock %}
