@@ -1,0 +1,28 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Enter your statement" %}
+
+{% set nav = false %}
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to your planning appeals',
+    href: 'manage/#manage'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+
+  {{ govukTextarea({
+    name: "appeal-statement",
+    id: "appeal-statement",
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Do not include personal or financial information, like National Insurance numbers or credit card details."
+    }
+  }) }}
+
+{% endblock %}

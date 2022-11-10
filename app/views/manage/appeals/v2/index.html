@@ -1,0 +1,176 @@
+{% extends '_layouts/layout-pins.html' %}
+{% set prototypeLinks = [{href: './?no-appeals=true', text: 'No appeals'}] if data['no-appeals'] != 'true' else [{href: './?no-appeals=false&questionnaire=&finalcomments=', text: 'Show appeals'}] %}
+
+{% set serviceName = "Manage appeals" %}
+
+{% set nav = false %}
+{% set back = false %}
+{% set title = 'Planning appeals' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">
+        {{ data['dashboard-lpa'] }}
+        <span class="govuk-visually-hidden"> - </span>
+      </span>
+      {{ title }}
+    </h1>
+
+    <p>{{ 'Planning appeals will be shown here. ' if data['no-appeals'] == 'true' }}All users will be notified by email when a new appeal is added.</p>
+
+    <p><a href="../../manage-users/v2/" class="govuk-link--no-visited-state">Add and remove account users</a></p>
+  </div>
+
+  {% if data['no-appeals'] != 'true' %}
+    <div class="govuk-grid-column-full">
+      {{ govukTable({
+        classes: 'govuk-!-margin-top-3',
+        caption: 'Current appeals',
+        captionClasses: 'govuk-table__caption--m govuk-!-padding-top-6 app-border-top-big',
+        firstCellIsHeader: true,
+        head: [
+          {
+            html: 'Application number'
+          },
+          {
+            html: 'Appeal reference'
+          },
+          {
+            html: 'Due date'
+          },
+          {
+            html: 'Days left'
+          },
+          {
+            html: '<span class="govuk-visually-hidden">Actions</span>',
+            format: 'numeric'
+          }
+        ],
+        rows: [
+          [
+            {
+              html: 'APP/Q9999/D/22/1345264'
+            },
+            {
+              html: '22/05058/FUL'
+            },
+            {
+              html: '3' | daysInFuture
+            },
+            {
+              html: '3 days'
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Complete questionnaire</a>',
+              format: 'numeric'
+            }
+          ] if data['questionnaire'] != 'complete',
+          [
+            {
+              html: 'APP/Q9999/D/22/1345127'
+            },
+            {
+              html: '22/03021/FUL'
+            },
+            {
+              html: '4' | daysInFuture
+            },
+            {
+              html: '4 days'
+            },
+            {
+              html: '<a href="/manage/final-comments/v1/add-comments">Add final comments</a>',
+              format: 'numeric'
+            }
+          ] if data['finalcomments'] != 'complete',
+          [
+            {
+              html: 'APP/Q9999/D/21/1345260'
+            },
+            {
+              html: '21/02939/FUL'
+            },
+            {
+              html: '7' | daysInFuture
+            },
+            {
+              html: '7 days'
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Complete questionnaire</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: 'APP/Q9999/D/21/1345264'
+            },
+            {
+              html: '21/05057/FUL'
+            },
+            {
+              html: '25' | daysInFuture
+            },
+            {
+              html: '25 days'
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Complete questionnaire</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: 'APP/Q9999/D/21/1345264'
+            },
+            {
+              html: '21/04625/FUL'
+            },
+            {
+              html: '27' | daysInFuture
+            },
+            {
+              html: '27 days'
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Add appeal statement</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: 'APP/Q9999/D/22/1345264'
+            },
+            {
+              html: '22/05058/FUL'
+            },
+            {
+              html: '31' | daysInFuture
+            },
+            {
+              html: '31 days'
+            },
+            {
+              html: '<a href="/manage/statement/v1/enter-statement">Add appeal statement</a>',
+              format: 'numeric'
+            }
+          ] if data['questionnaire'] == 'complete'
+        ]
+      }) }}
+
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

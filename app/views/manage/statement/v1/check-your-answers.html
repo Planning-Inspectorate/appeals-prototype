@@ -1,0 +1,77 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Do you have additional documents to support your appeal statement?" %}
+
+{% set nav = false %}
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    Check your answers and submit your final comments
+  </h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: 'Appeal statement'
+        },
+        value: {
+          html: data['appeal-statement'] or 'Appeal statement goes here etc etc'
+        },
+        actions: {
+          items: [
+            {
+              href: 'enter-statement',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Add supporting documents'
+        },
+        value: {
+          html: data['adding-documents'] or 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'documents-check',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Supporting documents'
+        },
+        value: {
+          html: data['final-documents'] or 'example.pdf'
+        },
+        actions: {
+          items: [
+            {
+              href: 'documents-upload',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['adding-documents'] == 'Yes'
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Submit appeal statement',
+    href: 'confirmation'
+  }) }}
+{% endblock %}
