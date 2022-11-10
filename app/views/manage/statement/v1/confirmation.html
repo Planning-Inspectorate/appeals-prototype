@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Do you have additional documents to support your appeal statement?" %}
+
+{% set nav = false %}
+{% set back = false %}
+
+{% block questions %}
+
+    {{ govukPanel({
+      titleHtml: 'Appeal statement submitted'
+    }) }}
+
+    <p>We&rsquo;ve sent you a confirmation email.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p>We&rsquo;ll check you&rsquo;ve submitted everything we need to progress your appeal. We&rsquo;ll contact you once we&rsquo;ve done this.</p>
+
+    <p class="govuk-!-margin-bottom-5">
+      <a href="/manage/appeals/v2/">Back to appeals</a>
+    </p>
+
+    <p>
+      <a href="#0">What did you think of this service?</a> (takes 30 seconds)
+    </p>
+
+{% endblock %}

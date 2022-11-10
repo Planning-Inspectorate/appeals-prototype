@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = false %}
-{% set title = 'Manage users' %}
+{% set title = 'Appeal statement' %}
 
 {% block backLink %}
   {{ govukBackLink({
@@ -21,7 +21,7 @@
       {{ title }}
     </h1>
 
-    {% set version = "2" %}
+    {% set version = "1" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -30,16 +30,16 @@
       }) }}
     </h2>
 
-    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>Moved version 2 of this here (<a href="https://pins-appeals.herokuapp.com/lpa/v1/access?action=" class="govuk-link govuk-link--no-visited-state" title="Link to version 1">see version 1</a>)</li>
       <li>Now you can add more than one person</li>
       <li>Small UI update</li>
-    </ul>
+    </ul> -->
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'v'+version+'/',
+      href: 'v'+version+'/enter-statement',
       isStartButton: true
     }) }}
 

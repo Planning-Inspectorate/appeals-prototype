@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Do you have additional documents to support your appeal statement?" %}
+
+{% set nav = false %}
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'adding-documents',
+    name: 'adding-documents',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('adding-documents','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('adding-documents','No')
+      }
+    ]
+  }) }}
+{% endblock %}
