@@ -1,28 +1,101 @@
 {% extends '_layouts/layout-pins.html' %}
 
+{% set serviceName = "Manage appeals" %}
+{% set nav = true %}
+
 {% set title = "Enter your statement" %}
 
-{% set nav = false %}
-{% block backLink %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
   {{ govukBackLink({
     html: 'Back to your planning appeals',
     href: 'manage/#manage'
   }) }}
 {% endblock %}
 
-{% block questions %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
 
-  {{ govukTextarea({
-    name: "appeal-statement",
-    id: "appeal-statement",
-    label: {
-      text: title,
-      classes: "govuk-label--l",
-      isPageHeading: true
-    },
-    hint: {
-      text: "Do not include personal or financial information, like National Insurance numbers or credit card details."
-    }
-  }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    {# Tweak the summary list to be smaller #}
+    <style>
+      .appeal-details .govuk-summary-list__key,
+      .appeal-details .govuk-summary-list__value,
+      .appeal-details .govuk-summary-list__actions {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      /* Give some space for the tag being inline now */
+      .app-task-list__section {
+        padding-right: 140px
+      }
+    </style>
+    {{ govukSummaryList({
+      classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
+      rows: [
+        {
+          key: {
+            text: 'Appeal reference'
+          },
+          value: {
+            text: 'APP/Q9999/D/21/1345264'
+          }
+        },
+        {
+          key: {
+            text: 'Planning application number'
+          },
+          value: {
+            text: '21/05058/FUL'
+          }
+        },
+        {
+          key: {
+            text: 'Deadline'
+          },
+          value: {
+            text: '6' | daysInFuture
+          }
+        }
+      ]
+    }) }}
+
+  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+    <form method="post" action="">
+
+      <p>
+        Do not include personal or financial information, like National Insurance numbers or credit card details.
+      </p>
+
+      {{ govukTextarea({
+        name: "appeal-statement",
+        id: "appeal-statement",
+        label: {
+          html: 'Your appeal statement',
+          classes: 'govuk-label--m'
+        }
+      }) }}
+
+      {{ govukButton({
+        html: 'Continue'
+      }) }}
+
+    </form>
 
 {% endblock %}

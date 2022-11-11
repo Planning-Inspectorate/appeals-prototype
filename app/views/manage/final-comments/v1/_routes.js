@@ -4,7 +4,6 @@ const router = new express.Router()
 router.get('*', function(req, res, next){
   // Change the service name for this feature
   res.locals['serviceName'] = 'Manage appeals'
-
   next()
 })
 
@@ -23,12 +22,6 @@ router.post('/documents-check', function (req, res) {
 router.post('/documents-upload', function (req, res) {
   res.redirect('check-your-answers')
 })
-
-
-
-
-
-
 
 // Add your routes above the module.exports line
 module.exports = router

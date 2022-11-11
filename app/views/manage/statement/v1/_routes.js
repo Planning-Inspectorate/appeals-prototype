@@ -1,6 +1,10 @@
 const express = require('express')
 const router = new express.Router()
-
+router.get('*', function(req, res, next){
+  // Change the service name for this feature
+  res.locals['serviceName'] = 'Manage appeals'
+  next()
+})
 // enter code
 router.post('/enter-code', function (req, res) {
   res.redirect('enter-statement')
