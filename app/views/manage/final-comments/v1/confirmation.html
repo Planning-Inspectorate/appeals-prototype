@@ -1,7 +1,17 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set back = false %}
 {% set title = 'Final comments submitted' %}
+
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">

@@ -2,6 +2,21 @@
 
 {% set title = 'Upload your new supporting documents' %}
 
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
 {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}

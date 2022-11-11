@@ -6,7 +6,7 @@
 {% block backLink %}
   {{ govukBackLink({
     html: 'Back to your planning appeals',
-    href: 'javascript:history.back()'
+    href: '/manage/appeals/v2'
   }) }}
 {% endblock %}
 
@@ -60,6 +60,7 @@
           }
         ]
       }) }}
+
       {# We might want to add these back in later
       ,
       {
@@ -79,7 +80,7 @@
         value: {
           text: 'Manish Sharma'
         }
-      } #}
+      }
 
       {# <p class="govuk-!-margin-bottom-0">
         <a href="save-and-return/saved" class="govuk-link--no-visited-state">Save and come back later</a>.

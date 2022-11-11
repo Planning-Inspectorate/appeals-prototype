@@ -2,9 +2,8 @@
 {% set prototypeLinks = [{href: './?no-appeals=true', text: 'No appeals'}] if data['no-appeals'] != 'true' else [{href: './?no-appeals=false&questionnaire=&finalcomments=', text: 'Show appeals'}] %}
 
 {% set serviceName = "Manage appeals" %}
+{% set nav = true %}
 
-{% set nav = false %}
-{% set back = false %}
 {% set title = 'Planning appeals' %}
 
 {% block beforeContent %}
