@@ -2,7 +2,13 @@
 
 {% set title = 'Manage account users' %}
 
-{% block backLink %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
   {{ govukBackLink({
     html: 'Back to planning appeals',
     href: '../../appeals/v2/'
@@ -39,14 +45,17 @@
 
       <h1 class="govuk-heading-l">
         {{ title }}
-        test: {{notification}}
       </h1>
 
-      <p>All users can add information to appeals and will receive email notifications about new appeals.</p>
+      <p>
+        All users can add information to appeals. When a new appeal is added and a task is submitted, an email notification will be sent to all account users.
+      </p>
 
-      <p><a href="add-user" class="govuk-link--no-visited-state">Add a user</a></p>
-
-
+      <p>
+        <a href="add-user" class="govuk-link--no-visited-state">
+          Add a user
+        </a>
+      </p>
 
       <h2 class="govuk-heading-m app-border-top-big govuk-!-padding-top-6 govuk-!-margin-top-6">
         Current users

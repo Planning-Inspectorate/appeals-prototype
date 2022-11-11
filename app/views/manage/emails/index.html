@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = true %}
-{% set title = 'Planning appeals' %}
+{% set title = 'Emails to the LPA' %}
 
 {% block backLink %}
   {{ govukBackLink({
@@ -21,7 +21,7 @@
       {{ title }}
     </h1>
 
-    {% set version = "2" %}
+    {% set version = "1" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -30,21 +30,21 @@
       }) }}
     </h2>
 
-    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <p class="govuk-!-margin-bottom-2">
+
+    </p>
+
     <ul class="govuk-list govuk-list--bullet">
-      <li>moved the work to the new prototype (<a href="https://pins-appeals.herokuapp.com/lpa/v1/no-appeals" class="govuk-link govuk-link--no-visited-state" title="Link to version 1">see version 1</a>)</li>
-      <li>changed to one link per task</li>
-      <li>appeal statement link not shown till questionnaire is done</li>
-      <li>completed questionnaire drops to the foot of the list with statement action</li>
-      <li>completed final comments appeal in the 2nd row disappears</li>
-      <li>completed statetment appeal in the 5th row disappears</li>
+      <li><a href="v1/service-invite" class="govuk-link">Invite to the service</a></li>
+      <li><a href="v1/appeal-valid" class="govuk-link">Appeal valid, do the questionnaire</a></li>
+      <li><a href="v1/appeal-statements" class="govuk-link">Appeal statements (cross-copy)</a></li>
     </ul>
 
-    {{ govukButton({
+    <!-- {{ govukButton({
       html: 'View prototype',
       href: 'v'+version+'/',
       isStartButton: true
-    }) }}
+    }) }} -->
 
     {% set lpaForm %}
       <form method="get" action="v{{version}}/">

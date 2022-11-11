@@ -4,7 +4,7 @@ const router = new express.Router()
 router.get('*', function(req, res, next){
 
   // Change the service name for this feature
-  res.locals['serviceName'] = 'Manage appeals'
+  res.locals['serviceName'] = 'Manage your planning inspectorate appeals'
 
   // Add return to task list
   res.locals['return'] = true

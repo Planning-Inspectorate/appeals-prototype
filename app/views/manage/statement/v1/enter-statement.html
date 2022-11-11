@@ -1,9 +1,9 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set serviceName = "Manage appeals" %}
+{% set serviceName = "Manage your planning inspectorate appeals" %}
 {% set nav = true %}
 
-{% set title = "Enter your statement" %}
+{% set title = "Your appeal statement" %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -87,7 +87,7 @@
         name: "appeal-statement",
         id: "appeal-statement",
         label: {
-          html: 'Your appeal statement',
+          html: 'Enter your statement',
           classes: 'govuk-label--m'
         }
       }) }}

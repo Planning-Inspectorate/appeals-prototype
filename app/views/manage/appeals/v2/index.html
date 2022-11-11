@@ -1,7 +1,24 @@
 {% extends '_layouts/layout-pins.html' %}
-{% set prototypeLinks = [{href: './?no-appeals=true', text: 'No appeals'}] if data['no-appeals'] != 'true' else [{href: './?no-appeals=false&questionnaire=&finalcomments=', text: 'Show appeals'}] %}
+<!-- {% set prototypeLinks = [{href: './?no-appeals=true', text: 'No appeals'}] if data['no-appeals'] != 'true' else [{href: './?no-appeals=false&questionnaire=&finalcomments=&statement=', text: 'Show appeals'}]%} -->
+{% set prototypeLinks = [
+  {
+    href: './?no-appeals=true',
+    text: 'No appeals'
+  },
+  {
+    href: './?no-appeals=false&questionnaire=&statement=&finalcomments=',
+    text: 'Reset appeals'
+  }
 
-{% set serviceName = "Manage appeals" %}
+  ] if data['no-appeals'] != 'true' else [{
+    href: './?no-appeals=false&questionnaire=&finalcomments=&statement=',
+    text: 'Show appeals'
+  }]
+%}
+
+
+
+{% set serviceName = "Manage your planning inspectorate appeals" %}
 {% set nav = true %}
 
 {% set title = 'Planning appeals' %}
@@ -26,9 +43,11 @@
       {{ title }}
     </h1>
 
-    <p>{{ 'Planning appeals will be shown here. ' if data['no-appeals'] == 'true' }}All users will be notified by email when a new appeal is added.</p>
-
-    <p><a href="../../manage-users/v2/" class="govuk-link--no-visited-state">Add and remove account users</a></p>
+    <p>
+      <a href="/manage/manage-users/v2/" class="govuk-link--no-visited-state">
+        Add and remove account users
+      </a>
+    </p>
   </div>
 
   {% if data['no-appeals'] != 'true' %}
@@ -49,10 +68,11 @@
             html: 'Deadline'
           },
           {
-            html: 'Due in'
+            html: 'Due in',
+            format: 'numeric'
           },
           {
-            html: '<span class="govuk-visually-hidden">Actions</span>',
+            html: 'To do',
             format: 'numeric'
           }
         ],
@@ -68,10 +88,11 @@
               html: '3' | daysInFuture
             },
             {
-              html: '3 days'
+              html: '3 days',
+              format: 'numeric'
             },
             {
-              html: '<a href="/manage/questionnaire/v11/task-list">Complete questionnaire</a>',
+              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/questionnaire/v11/task-list">Questionnaire</a>',
               format: 'numeric'
             }
           ] if data['questionnaire'] != 'complete',
@@ -86,10 +107,11 @@
               html: '4' | daysInFuture
             },
             {
-              html: '4 days'
+              html: '4 days',
+              format: 'numeric'
             },
             {
-              html: '<a href="/manage/final-comments/v1/add-comments">Add final comments</a>',
+              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/final-comments/v1/add-comments">Final comments</a>',
               format: 'numeric'
             }
           ] if data['finalcomments'] != 'complete',
@@ -101,67 +123,71 @@
               html: '21/02939/FUL'
             },
             {
-              html: '7' | daysInFuture
+              html: '6' | daysInFuture
             },
             {
-              html: '7 days'
+              html: '6 days',
+              format: 'numeric'
             },
             {
-              html: '<a href="/manage/questionnaire/v11/task-list">Complete questionnaire</a>',
+              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/questionnaire/v11/task-list">Questionnaire</a>',
               format: 'numeric'
             }
           ],
           [
             {
-              html: 'APP/Q9999/D/21/1345264'
+              html: 'APP/Q9999/D/21/1345172'
+            },
+            {
+              html: '21/04125/FUL'
+            },
+            {
+              html: '7' | daysInFuture
+            },
+            {
+              html: '7 days',
+              format: 'numeric'
+            },
+            {
+              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/questionnaire/v11/task-list">Questionnaire</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: 'APP/Q9999/D/21/1345222'
             },
             {
               html: '21/05057/FUL'
             },
             {
-              html: '25' | daysInFuture
-            },
-            {
-              html: '25 days'
-            },
-            {
-              html: '<a href="/manage/questionnaire/v11/task-list">Complete questionnaire</a>',
-              format: 'numeric'
-            }
-          ],
-          [
-            {
-              html: 'APP/Q9999/D/21/1345264'
-            },
-            {
-              html: '21/04625/FUL'
-            },
-            {
               html: '27' | daysInFuture
             },
             {
-              html: '27 days'
+              html: '27 days',
+              format: 'numeric'
             },
             {
-              html: '<a href="/manage/statement/v1/enter-statement">Add appeal statement</a>',
+              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/statement/v1/enter-statement">Statement</a>',
               format: 'numeric'
             }
-          ],
+          ]  if data['statement'] != 'complete',
           [
             {
-              html: 'APP/Q9999/D/22/1345264'
+              html: 'APP/Q9999/D/22/1345331'
             },
             {
-              html: '22/05058/FUL'
+              html: '22/04782/FUL'
             },
             {
               html: '31' | daysInFuture
             },
             {
-              html: '31 days'
+              html: '31 days',
+              format: 'numeric'
             },
             {
-              html: '<a href="/manage/statement/v1/enter-statement">Add appeal statement</a>',
+              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/statement/v1/enter-statement">Statement</a>',
               format: 'numeric'
             }
           ] if data['questionnaire'] == 'complete'
