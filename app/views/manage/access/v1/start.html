@@ -1,9 +1,9 @@
-{% set pageref = "" %}
-{% extends location+"_layout.html" %}
+{% extends '_layouts/layout-pins.html' %}
 
 {% set serviceName = "Manage your planning inspectorate appeals" %}
+{% set nav = true %}
 
-{% set title = "View and manage planning appeals" %}
+{% set title = "Enter the code we sent to your email address" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -17,11 +17,15 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
-  {# {{ govukBackLink({
+  {{ govukBackLink({
     text: "Back",
     href: "javascript:history.go(-1);"
-  }) }} #}
+  }) }}
 {% endblock %}
+
+
+{% set title = "View and manage planning appeals" %}
+
 
 {% block content %}
 
@@ -42,6 +46,32 @@
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
+          view and manage an appeal’s progress
+        </li>
+        <li>
+          complete and submit an appeal questionnaire
+        </li>
+        <li>
+          complete and submit the:
+        </li>
+          <ol class="govuk-list govuk-list--bullet">
+            <li>
+              appeal questionnaire
+            </li>
+            <li>
+              appeal statements
+            </li>
+            <li>
+              final comments
+            </li>
+          </ol>
+
+      </ul>
+
+
+<!--
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
           view new and in progress planning appeals
         </li>
         <li>
@@ -53,7 +83,7 @@
         <li>
           add and remove users
         </li>
-      </ul>
+      </ul> -->
 
     </section>
 

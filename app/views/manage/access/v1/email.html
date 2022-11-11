@@ -1,7 +1,7 @@
-{% set pageref = "" %}
-{% extends location+"_layout.html" %}
+{% extends '_layouts/layout-pins.html' %}
 
 {% set serviceName = "Manage your planning inspectorate appeals" %}
+{% set nav = true %}
 
 {% set title = "Enter your email address" %}
 
@@ -19,41 +19,14 @@
 
 {% endblock %}
 
-{% block content %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-      <form method="post">
-
-        <span class="govuk-caption-l">{{ subServiceName }}</span>
-
-        <div class="govuk-form-group">
-
-          <label class="govuk-label govuk-label--l" for="email">
-            {{ title }}
-          </label>
-
-          <div class="govuk-form-group">
-            <input class="govuk-input" id="myemail" name="myemail" type="email" spellcheck="false" autocomplete=none value="">
-          </div>
-
-        </div>
-
-        {% include "includes/button.html" %}
-
-      </form>
-
-      <!-- this is a prototype only link -->
-      {# <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
-        <p class="govuk-body-s pins-prototype-only">
-          <a href="lpa-questionnaire/v10">
-            To the questionnaire
-          </a>
-        </p>
-      </div> #}
-
+{% block questions %}
+  <span class="govuk-caption-l">{{ subServiceName }}</span>
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-label--l" for="email">
+      {{ title }}
+    </label>
+    <div class="govuk-form-group">
+      <input class="govuk-input" id="myemail" name="myemail" type="email" spellcheck="false" autocomplete=none value="">
     </div>
   </div>
-
 {% endblock %}

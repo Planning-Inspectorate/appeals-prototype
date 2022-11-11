@@ -8,6 +8,9 @@ router.get('*', function(req, res, next){
   next()
 })
 
+router.post('/email', function (req, res) {
+  res.redirect('/manage/access/v1/enter-code?start=start')
+})
 
 router.post('/enter-code', function (req, res) {
 
@@ -15,7 +18,9 @@ router.post('/enter-code', function (req, res) {
   let start = req.session.data['start']
 
   // route depending on value
-  if (start === 'invite') {
+  if (start === 'start') {
+    res.redirect('/manage/appeals/v2/?no-appeals=')
+  } else if (start === 'invite') {
     res.redirect('/manage/appeals/v2/?no-appeals=true')
   } else if (start === 'questionnaire') {
     res.redirect('/manage/questionnaire/v11/task-list')
