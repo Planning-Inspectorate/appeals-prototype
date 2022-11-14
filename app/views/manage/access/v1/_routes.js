@@ -18,12 +18,14 @@ router.post('/enter-code', function (req, res) {
   let start = req.session.data['start']
 
   // route depending on value
-  if (start === 'start') {
+  if (start == 'start') {
     res.redirect('/manage/appeals/v2/?no-appeals=')
-  } else if (start === 'invite') {
+  } else if (start == 'invite') {
     res.redirect('/manage/appeals/v2/?no-appeals=true')
-  } else if (start === 'questionnaire') {
+  } else if (start == 'questionnaire') {
     res.redirect('/manage/questionnaire/v11/task-list')
+  } else if (start == 'statements') {
+    res.redirect('/manage/statement/v1/enter-statement')
   } else {
     res.redirect('/manage/final-comments/v1/add-comments')
   }
