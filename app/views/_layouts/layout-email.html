@@ -8,13 +8,22 @@
 		a {
 			word-wrap: break-word
 		}
+		.email-header {
+			background: #00958f;
+			padding: 10px;
+			margin-bottom: 30px;
+		}
 	</style>
 {% endblock %}
 
 {% block content %}
 	{% block emailHeader %}{% endblock %}
 
-	<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+	<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+	<div class="email-header">
+		<img src="/public/images/pins-logo-email.png" height="54">
+	</div>
 
 	{% block emailContent %}{% endblock %}
 
