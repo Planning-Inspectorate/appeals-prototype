@@ -1,0 +1,178 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You can appeal using this service' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p>Based on your answers, you can appeal using this service.</p>
+
+  <h2 class="govuk-heading-m">
+    Check your answers
+  </h2>
+
+  {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2022') %}
+  {% set decisionDate = (data['decision-due-date-day'] or '1') +' '+ (data['decision-due-date-month'] | formatMonth or 'August') +' '+ (data['decision-due-date-year'] or '2022') %}
+
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          text: 'Local planning authority'
+        },
+        value: {
+          text: data['lpa'] or 'Bradford'
+        },
+        actions: {
+          items: [
+            {
+              href: '../lpa?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Appealing'
+        },
+        value: {
+          text: 'A planning decision'
+        },
+        actions: {
+          items: [
+            {
+              href: '../appeal-type',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: data['planning-type'] or 'Full planning'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Extend an existing home' if data['planning-type'] == 'Prior approval' else 'Homeholder planning permission'
+        },
+        value: {
+          html: data['existing-home-check'] or 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'existing-home-check',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['planning-type'] == 'Prior approval' or data['planning-type'] == 'Removal or variation of conditions',
+      {
+        key: {
+          text: 'Major development'
+        },
+        value: {
+          html: 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'major-development-check',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['existing-home-check'] != 'Yes' and data['planning-type'] != 'Householder planning',
+      {
+        key: {
+          text: 'Decision'
+        },
+        value: {
+          text: data['decision'] or 'Refused'
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Decision date'
+        },
+        value: {
+          text: decisionDate
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['decision-check'] != 'I have not received a decision',
+      {
+        key: {
+          text: 'Decision due date'
+        },
+        value: {
+          text: decisionDueDate
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision-due-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['decision-check'] == 'I have not received a decision',
+      {
+        key: {
+          text: 'Enforcement notice'
+        },
+        value: {
+          html: 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'enforcement-check?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukInsetText({
+    html: 'You will not be able to change these answers later, you will have to start a new appeal.'
+  }) }}
+
+  {{ govukButton({
+    html: 'Start appeal'
+  }) }}
+{% endblock %}

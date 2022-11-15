@@ -1,0 +1,64 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Check your email' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ govukInsetText({
+    html: 'We have sent an email with a code to '+(data['email'] or 'example@email.com')
+  }) }}
+
+  <p>The email might take a few minutes to arrive. The code will expire after 30 minutes.</p>
+
+  {{ govukInput({
+    id: 'code',
+    name: 'code',
+    value: data['code'],
+    classes: 'govuk-input--width-5',
+    label: {
+      html: 'What is the 5 digit code?',
+      classes: 'govuk-label--m'
+    }
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Continue'
+  }) }}
+
+  <h2 class="govuk-heading-s">
+    If you&rsquo;re having problems
+  </h2>
+
+  <p><a href="#0">Change your email address</a> if you entered it it incorrectly.</p>
+
+  <p>Check if the email has gone to your spam or junk folder. If it&rsquo;s not there, we can <a href="#0">resend the email</a>.</p>
+
+
+  {% set customerSupport %}
+    <p>You can contact our customer support team:</p>
+
+    <p>
+      Email: <a href="#0">enquiries@planninginspectorate.gov.uk</a>
+      <br>
+      We aim to respond within 5 working days.
+    </p>
+
+    <p>
+      Telephone: 0303 444 5000
+      <br>
+      Monday to Friday, 9am to 5pm (except public holidays)
+      <br>
+      <a href="https://www.gov.uk/call-charges">Find out about call charges</a>
+    </p>
+  {% endset -%}
+  {{ govukDetails({
+    summaryHtml: 'If you&rsquo;re still having problems',
+    html: customerSupport
+  }) }}
+
+{% endblock %}

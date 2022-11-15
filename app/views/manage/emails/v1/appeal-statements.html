@@ -4,87 +4,47 @@
   Submit appeal statements for 21/04125/FUL
 {% endblock %}
 
-{% block content %}
-<!-- faux email header -->
-<section>
-    <p>
-    <strong>Subject:</strong> 21/04125/FUL - Submit appeal statements
-  </p>
+{% block emailHeader %}
+  <h1 class="govuk-heading-m">
+    21/04125/FUL - Submit appeal statements
+  </h1>
   <p>
-    <strong>To:</strong> planning.appeals{{ data['lpa-email']}}<br>
+    <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
+    <br>
     <strong>From:</strong> info@planninginspectorate.gov.uk
   </p>
-  <!-- <p>
-    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
-  </p> -->
-  <hr>
-</section>
+{% endblock %}
 
-<div class="govuk-grid-row govuk-!-margin-top-5">
-  <div class="govuk-grid-column-two-thirds">
-
-    <p class="govuk-body">
-      Appeal site: 11 Gifford Way, Sampleford, BS15 2AP
-    </p>
-
-    <p class="govuk-body">
-      Appeal reference: 21/04125/FUL
-    </p>
-
+{% block emailContent %}
+  <p>
+    Appeal site: 11 Gifford Way, Sampleford, BS15 2AP
     <br>
+    Appeal reference: 21/04125/FUL
+  </p>
 
-    <p class="govuk-body">
-      Dear {{ data['dashboard-lpa'] }},
-    </p>
+  <br>
 
-    <p class="govuk-body">
-      The appellant has submitted their appeal statements for planning application 1345172.
-    </p>
+  <p>Dear {{ data['dashboard-lpa'] }},</p>
 
-    <p class="govuk-body">
-      We've attached the statement for your information.
-    </p>
+  <p>The appellant has submitted their appeal statements for planning application 1345172.</p>
 
-    <p class="govuk-body">
-      This is due by {{ 7 | daysInFuture }}
-    </p>
+  <p>We&rsquo;ve attached the statement for your information.</p>
 
-    <h2 class="govuk-heading-m">
-      What you can do
-    </h2>
+  <p>This is due by {{ 7 | daysInFuture }}</p>
 
-    {# <p class="govuk-body">
-      You can complete your questionnaire online in our new ‘Manage your planning inspectorate appeals’ service.
-    </p> #}
+  <h2 class="govuk-heading-m">
+    What you can do
+  </h2>
 
-    <p class="govuk-body">
-      To add your statement, you need to click the link to receive a secure code. We’ll send you a code to sign into your account with.
-    </p>
+  <p>To add your statement, you need to click the link to receive a secure code. We&rsquo;ll send you a code to sign into your account with.</p>
 
-
-    <!-- there were problems with this in research when we tested it for save and return -->
-    <!-- which is why we added a numbered list -->
-    <!-- it worked a lot better -->
-
-    <!-- <p class="govuk-body">
+  <ol class="govuk-list govuk-list--number">
+    <li>
       Go to the link to receive a code:<br>
-      <a href="enter-code?start=questionnaire" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/appeal/04125/final-comments?/lpa=1vW7td12</a>
-    </p> -->
-
-    <ol class="govuk-list govuk-list--number">
-      <li>
-        Go to the link to receive a code:<br>
-        <a href="/manage/access/v1/enter-code?start=statements" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/appeal/04125/statement?/lpa=1vW7td12</a>
-      </li>
-      <li>
-        Enter the code we send in an email to you.
-      </li>
-    </ol>
-
-    <p class="govuk-body">
-      The Planning Inspectorate
-    </p>
-
-  </div>
-</div>
+      <a href="/manage/access/v1/enter-code?start=statements" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/appeal/04125/statement?/lpa=1vW7td12</a>
+    </li>
+    <li>
+      Enter the code we send in an email to you.
+    </li>
+  </ol>
 {% endblock %}

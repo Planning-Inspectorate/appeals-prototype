@@ -4,88 +4,45 @@
   Invitation to your new account
 {% endblock %}
 
-{% block content %}
-<!-- faux email header -->
-<section>
-    <p>
-    <strong>Subject:</strong> Invitation to your new account
-  </p>
+{% block emailHeader %}
+  <h1 class="govuk-heading-m">
+    Invitation to your new account
+  </h1>
   <p>
-    <strong>To:</strong> planning.appeals{{ data['lpa-email']}}<br>
+    <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
+    <br>
     <strong>From:</strong> info@planninginspectorate.gov.uk
   </p>
-  <hr>
-</section>
+{% endblock %}
 
-<div class="govuk-grid-row govuk-!-margin-top-5">
-  <div class="govuk-grid-column-two-thirds">
+{% block emailContent %}
+  <p>Dear {{ data['dashboard-lpa'] }},</p>
 
-    <p class="govuk-body">
-      Dear {{ data['dashboard-lpa'] }}
-    </p>
+  <p>The Planning Inspectorate has launched a new service for local planning authorities (LPAs) to manage appeals and has created a new account for {{ data['dashboard-lpa'] }}.</p>
 
-    <p class="govuk-body">
-      The Planning Inspectorate has launched a new service for local planning authorities (LPAs) to manage appeals and has created a new account for {{ data['dashboard-lpa'] }}.
-    </p>
+  <p>You can use the &lsquo;Manage your planning inspectorate appeals&rsquo; service to:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>view and manage an appeal&rsquo;s progress</li>
+    <li>complete and submit an appeal questionnaire</li>
+    <li>complete and submit the:</li>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>appeal questionnaire</li>
+        <li>appeal statements</li>
+        <li>final comments</li>
+      </ul>
+  </ul>
 
-    <p class="govuk-body">
-      You can use the ‘Manage your planning inspectorate appeals’ service to:
-    </p>
+  <h2 class="govuk-heading-m">
+    What you can do
+  </h2>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        view and manage an appeal’s progress
-      </li>
-      <li>
-        complete and submit an appeal questionnaire
-      </li>
-      <li>
-        complete and submit the:
-      </li>
-        <ol class="govuk-list govuk-list--bullet">
-          <li>
-            appeal questionnaire
-          </li>
-          <li>
-            appeal statements
-          </li>
-          <li>
-            final comments
-          </li>
-        </ol>
-      {# <li>
-        invite someone else to view and edit an appeal questionnaire
-      </li> #}
-
-    </ul>
-
-    <h2 class="govuk-heading-m">
-      What you can do
-    </h2>
-
-    <!-- there were problems with this in research when we tested it for save and return -->
-    <!-- which is why we added a numbered list -->
-    <!-- it worked a lot better -->
-
-    <!-- <p class="govuk-body">
-      To view your new account and add your team, follow the link to receive a secure code:<br>
-      <a href="/manage/access/enter-code?start=invite" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/service-invite?lpa=d81vW7td12s4t5gff728y29</a>
-    </p> -->
-
-    <ol class="govuk-list govuk-list--number">
-      <li>
-        Go to the link to receive a code:<br>
-        <a href="/manage/access/v1/enter-code?start=invite" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/service-invite?lpa=1vW7td12</a>
-      </li>
-      <li>
-        Enter the code we send in an email to you.
-      </li>
-    </ol>
-
-    <p class="govuk-body">
-      The Planning Inspectorate
-    </p>
-
-  </div>
-</div>
+  <ol class="govuk-list govuk-list--number">
+    <li>
+      Go to the link to receive a code:<br>
+      <a href="/manage/access/v1/enter-code?start=invite" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/service-invite?lpa=1vW7td12</a>
+    </li>
+    <li>
+      Enter the code we send in an email to you.
+    </li>
+  </ol>
 {% endblock %}
