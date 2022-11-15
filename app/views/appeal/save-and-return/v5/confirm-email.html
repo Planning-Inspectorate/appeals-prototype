@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Confirm your email address' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p>You need to provide an email address to appeal a planning decision using this service.</p>
+
+  <p>This is so we can save your progress and you can return to your appeal later. We&rsquo;ll also use this to contact you about your appeal.</p>
+
+  {{ govukInput({
+    id: 'email',
+    name: 'email',
+    value: data['email'],
+    label: {
+      html: 'What is your email address?',
+      classes: 'govuk-label--m'
+    },
+    hint: {
+      html: 'We&rsquo;ll send you a code to confirm you have access to the email address'
+    },
+    type: 'email',
+    autocomplete: 'email',
+    spellcheck: false
+  }) }}
+{% endblock %}

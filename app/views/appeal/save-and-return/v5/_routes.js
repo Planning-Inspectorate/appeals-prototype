@@ -11,6 +11,32 @@ router.get('*', function(req, res, next){
   next()
 })
 
+router.post('/return-check', function (req, res) {
+  if (req.session.data['return-check'] == 'Return to a saved appeal') {
+    res.redirect('return-email');
+  } else {
+    res.redirect('before-you-start');
+  }
+})
+
+router.post('/before-you-start', function (req, res) {
+  res.redirect('before-you-start--cya');
+})
+
+router.post('/before-you-start--cya', function (req, res) {
+  res.redirect('confirm-email');
+})
+
+router.post('/confirm-email', function (req, res) {
+  res.redirect('enter-code');
+})
+
+router.post('/return-email', function (req, res) {
+  res.redirect('enter-code');
+})
+
+
+
 
 
 
