@@ -1,0 +1,167 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your appeals' %}
+{% set back = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p>
+        Continue with your current appeals, or <a href="#0" class="govuk-link--no-visited-state">start a new appeal</a>.
+      </p>
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% set ref = 9876 %}
+      <style>
+        .govuk-table__header {
+          font-variant-numeric: tabular-nums;
+        }
+      </style>
+      {{ govukTable({
+        classes: 'govuk-!-margin-top-3',
+        caption: 'Unsubmitted appeals',
+        captionClasses: 'govuk-table__caption--m govuk-!-padding-top-6 app-border-top-big',
+        firstCellIsHeader: true,
+        head: [
+          {
+            html: 'Draft reference'
+          },
+          {
+            html: 'Appeal type'
+          },
+          {
+            html: 'Deadline'
+          },
+          {
+            html: 'Last updated'
+          },
+          {
+            html: '<span class="govuk-visually-hidden">Action</span>',
+            format: 'numeric'
+          }
+        ],
+        rows: [
+          [
+            {
+              html: ref+123
+            },
+            {
+              html: 'Planning application'
+            },
+            {
+              html: '3' | daysInFuture
+            },
+            {
+              html: '3' | daysInPast
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Continue</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: ref+234
+            },
+            {
+              html: 'Enforcement notice'
+            },
+            {
+              html: 'Not applicable'
+            },
+            {
+              html: '6' | daysInPast
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Continue</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: ref+567
+            },
+            {
+              html: 'Planning application'
+            },
+            {
+              html: '7' | daysInFuture
+            },
+            {
+              html: '7' | daysInPast
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Continue</a>',
+              format: 'numeric'
+            }
+          ]
+        ]
+      }) }}
+
+
+
+
+      {% set ref = 1234567 %}
+      {{ govukTable({
+        classes: 'govuk-!-margin-top-9',
+        caption: 'Appeals that need your attention',
+        captionClasses: 'govuk-table__caption--m',
+        firstCellIsHeader: true,
+        head: [
+          {
+            html: 'Appeal reference'
+          },
+          {
+            html: 'Appeal type'
+          },
+          {
+            html: 'Deadline'
+          },
+          {
+            html: '<span class="govuk-visually-hidden">Action</span>',
+            format: 'numeric'
+          }
+        ],
+        rows: [
+          [
+            {
+              html: ref+12345
+            },
+            {
+              html: 'Planning application'
+            },
+            {
+              html: '3' | daysInFuture
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Add final comments</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: ref+23456
+            },
+            {
+              html: 'Enforcement notice'
+            },
+            {
+              html: '6' | daysInPast
+            },
+            {
+              html: '<a href="/manage/questionnaire/v11/task-list">Provide statement</a>',
+              format: 'numeric'
+            }
+          ]
+        ]
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
