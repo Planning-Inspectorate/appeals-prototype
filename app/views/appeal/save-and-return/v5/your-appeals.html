@@ -17,7 +17,7 @@
     </div>
 
     <div class="govuk-grid-column-full">
-      {% set ref = 9876 %}
+      {% set ref = 123 %}
       <style>
         .govuk-table__header {
           font-variant-numeric: tabular-nums;
@@ -30,7 +30,7 @@
         firstCellIsHeader: true,
         head: [
           {
-            html: 'Draft reference'
+            html: 'Draft ID'
           },
           {
             html: 'Appeal type'
@@ -49,7 +49,7 @@
         rows: [
           [
             {
-              html: ref+123
+              html: 'DRAFT-'+(ref+12)
             },
             {
               html: 'Planning application'
@@ -67,7 +67,7 @@
           ],
           [
             {
-              html: ref+234
+              html: 'DRAFT-'+(ref+34)
             },
             {
               html: 'Enforcement notice'
@@ -85,7 +85,7 @@
           ],
           [
             {
-              html: ref+567
+              html: 'DRAFT-'+(ref+56)
             },
             {
               html: 'Planning application'
