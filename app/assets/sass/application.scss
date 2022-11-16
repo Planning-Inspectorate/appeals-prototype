@@ -6,11 +6,16 @@
 
 // Top border for headers to draw attention to areas
 .app-border-top-big {
-	border-top: 5px solid govuk-colour("turquoise");
+	border-top: 5px solid $govuk-brand-colour;
 	padding-top: 15px;
 }
 
 .app-border-bottom-big {
-	border-bottom: 5px solid govuk-colour("turquoise");
+	border-bottom: 5px solid $govuk-brand-colour;
 	padding-bottom: 15px;
+}
+
+.internal .app-border-top-big,
+.internal .app-border-bottom-big {
+	border-color: govuk-colour("turquoise");
 }

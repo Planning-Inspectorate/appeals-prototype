@@ -35,6 +35,10 @@ router.post('/return-email', function (req, res) {
   res.redirect('enter-code');
 })
 
+router.post('/enter-code', function (req, res) {
+  res.redirect('your-appeals');
+})
+
 
 
 

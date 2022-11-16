@@ -17,6 +17,11 @@ addFilter('daysInFuture', (number) => {
 	return date
 })
 
+addFilter('daysInPast', (number) => {
+	var date = moment().subtract(number,"days").format("D MMMM YYYY")
+	return date
+})
+
 addFilter('push', (array, item) => {
 	array.push(item)
 	return array
