@@ -4,7 +4,7 @@
 {% set title = 'Check your email' %}
 
 {% block questions %}
-  {% set resent %}
+  {% set resentNotification %}
     <mark role="alert">
       <h3 class="govuk-notification-banner__heading">
         Email resent
@@ -13,9 +13,9 @@
     </mark>
   {% endset %}
 
-  {% if data['resend'] %}
+  {% if resent %}
     {{ govukNotificationBanner({
-      html: resent,
+      html: resentNotification,
       type: 'success'
     }) }}
   {% endif %}
@@ -53,8 +53,8 @@
 
   <p><a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it it incorrectly.</p>
 
-  {% if not data['resend'] %}
-  <p>Check if the email has gone to your spam or junk folder. If it&rsquo;s not there, we can <a href="?resend=true">resend the email</a>.</p>
+  {% if not resent %}
+  <p>Check if the email has gone to your spam or junk folder. If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.</p>
   {% endif %}
 
   {% set customerSupport %}
