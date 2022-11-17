@@ -39,6 +39,12 @@ router.post('/enter-code', function (req, res) {
   res.redirect('your-appeals');
 })
 
+router.get('/resend-code', function (req, res) {
+  let path = req.baseUrl.replace(/^\//g, '')
+
+  res.render(path+'/enter-code', { resent: true })
+})
+
 
 
 

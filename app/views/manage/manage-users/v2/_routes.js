@@ -9,14 +9,14 @@ router.get('*', function(req, res, next){
 })
 
 router.get('/', function(req, res, next){
-  let current = (res.locals.currentURL).replace(/^\//g, '')+'index'
+  let path = req.baseUrl.replace(/^\//g, '')+'/index'
 
   if (req.session.data['action'] == 'added') {
     delete req.session.data['action']
-    res.render(current, { notification: 'added' })
+    res.render(path, { notification: 'added' })
   } else if (req.session.data['action'] == 'removed') {
     delete req.session.data['action']
-    res.render(current, { notification: 'removed' })
+    res.render(path, { notification: 'removed' })
   } else {
     next()
   }
