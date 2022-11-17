@@ -4,6 +4,22 @@
 {% set title = 'Check your email' %}
 
 {% block questions %}
+  {% set resent %}
+    <mark role="alert">
+      <h3 class="govuk-notification-banner__heading">
+        Email resent
+      </h3>
+      <p>We&rsquo;ve resent a code to your email address, it might take a few minutes to arrive.</p>
+    </mark>
+  {% endset %}
+
+  {% if data['resend'] %}
+    {{ govukNotificationBanner({
+      html: resent,
+      type: 'success'
+    }) }}
+  {% endif %}
+
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -35,10 +51,11 @@
     If you&rsquo;re having problems
   </h2>
 
-  <p><a href="#0">Change your email address</a> if you entered it it incorrectly.</p>
+  <p><a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it it incorrectly.</p>
 
-  <p>Check if the email has gone to your spam or junk folder. If it&rsquo;s not there, we can <a href="#0">resend the email</a>.</p>
-
+  {% if not data['resend'] %}
+  <p>Check if the email has gone to your spam or junk folder. If it&rsquo;s not there, we can <a href="?resend=true">resend the email</a>.</p>
+  {% endif %}
 
   {% set customerSupport %}
     <p>You can contact our customer support team:</p>
@@ -59,7 +76,8 @@
   {% endset -%}
   {{ govukDetails({
     summaryHtml: 'If you&rsquo;re still having problems',
-    html: customerSupport
+    html: customerSupport,
+    classes: 'govuk-!-margin-top-7'
   }) }}
 
 {% endblock %}
