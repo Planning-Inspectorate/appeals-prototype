@@ -1,0 +1,123 @@
+{% extends '_layouts/layout-main.html' %}
+<!-- {% set prototypeLinks = [{href: 'errors/certain-types', text: 'Advertisement and DN not included yet'}] %} -->
+
+{% set serviceName = "Find and comment on planning appeals" %}
+
+{% set title = "Guidance" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        This is a service for searching, viewing and commenting on planning appeals.
+      </p>
+
+      <p class="govuk-body">
+        You can use this service to:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          view appeals that are open for comments and submit your comments
+        </li>
+
+        <li>
+          view appeals that are closed for comments
+        </li>
+
+        <li>
+          view appeals that are complete and view the decision for those appeals
+        </li>
+
+      </ul>
+
+      <p class="govuk-body">
+        If you want to comment on an appeal, you'll need:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          the 7-digit reference number that can be found on your letter from the local planning department. This can also be found on the local planning department's website
+        </li>
+
+        <li>
+          an email address so we can contact you if we have any questions
+        </li>
+
+        <li>
+          your comments saved in a document
+        </li>
+
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Guidance about your comments
+      </h2>
+
+      <p class="govuk-body">
+        Any previous comments that you submitted as part of an application will be considered by the Planning Inspector. The local planning department shares these with the Planning Inspectorate, so there is no need to submit repeat comments.
+      </p>
+
+      <p class="govuk-body">
+        You should avoid including sensitive information (also called special category information) if it's not relevant to the appeal. Any sensitive information you share may be shared publicly if the Planning Inspector agrees that it's relevant to your appeal.
+      </p>
+
+      <p>
+        Your comments must not include inflammatory or abusive language.
+      </p>
+
+      {% include "_includes/sensitive-information-list.html" %}
+
+
+      <!-- <p class="govuk-body">
+        If you include any personal information that's not relevant, we'll ask you to resubmit. This could mean that you miss the deadline to submit comments.
+      </p>
+
+      <p class="govuk-body">
+        Your comments must not include inflammatory or abusive language.
+      </p> -->
+
+      {{ govukButton({
+        href: "find-appeal",
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/public/javascripts/autocomplete/accessible-autocomplete.min.js"></script>
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#appealsub-{{version}}-beforeyoustart-planningdepartment')
+    })
+  </script>
+{% endblock %}
