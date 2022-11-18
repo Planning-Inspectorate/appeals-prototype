@@ -95,34 +95,7 @@
 
         <p>You must not include any sensitive information in your comments.</p>
 
-        {% set sensitiveHTML %}
-          <p class="govuk-!-margin-bottom-2">Sensitive information refers to:</p>
-          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-            <li>comments from children</li>
-            <li>information relating to children</li>
-            <li>information relating to health</li>
-            <li>information relating to crime</li>
-            <li>
-              any information relating to an individual&rsquo;s:
-              <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-                <li>race</li>
-                <li>ethnic origin</li>
-                <li>politics</li>
-                <li>religion</li>
-                <li>trade union membership</li>
-                <li>genetics</li>
-                <li>physical characteristics</li>
-                <li>sex life</li>
-                <li>sexual orientation</li>
-              </ul>
-            </li>
-          </ul>
-        {% endset -%}
-
-        {{ govukDetails({
-          summaryHtml: 'What is sensitive information?',
-          html: sensitiveHTML
-        }) }}
+        {% include "_includes/sensitive-information-list.html" %}
 
         {{ govukTextarea({
           name: 'final-comments',
