@@ -53,9 +53,7 @@
 
   <p><a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it it incorrectly.</p>
 
-  {% if not resent %}
-  <p>Check if the email has gone to your spam or junk folder. If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.</p>
-  {% endif %}
+  <p>Check if the email has gone to your spam or junk folder.{{ ' If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.' | safe if not resent }}</p>
 
   {% set customerSupport %}
     <p>You can contact our customer support team:</p>
