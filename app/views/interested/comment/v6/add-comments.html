@@ -1,0 +1,87 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Add your comments' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">
+        {{ caption }}
+      </span>
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <p>
+          Your comments should be…
+        </p>
+
+        <p>
+          If you want to add documents to support your comments, for example photographs, you can upload them in the next step.
+        </p>
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+          Sensitive information
+        </h2>
+
+        <p>You must not include any sensitive information in your comments.</p>
+
+        {% include "_includes/sensitive-information-list.html" %}
+
+        {{ govukTextarea({
+          name: 'comments',
+          id: 'comments',
+          value: data['comments'],
+          rows: '8',
+          label: {
+            html: 'Your comments',
+            classes: 'govuk-label--m'
+          }
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: 'appeal-statement-confirmation',
+          name: 'appeal-statement-confirmation',
+          classes: 'checkboxes-long-text',
+          items: [
+            {
+              html: 'I confirm that I have not included any sensitive information in my comments.',
+              value: 'I confirm that I have not included any sensitive information in my comments.',
+              checked: checked('appeal-statement-confirmation','I confirm that I have not included any sensitive information in my comments.')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

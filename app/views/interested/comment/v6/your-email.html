@@ -1,0 +1,51 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What’s your email address' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    {{ caption }}
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p>You need to provide an email address to appeal a planning decision using this service.</p>
+
+  <p>
+    This is so we can save your progress and you can return to your appeal later. We&rsquo;ll also use this email address to contact you about your appeal.
+  </p>
+
+  {{ govukInput({
+    id: 'email',
+    name: 'email',
+    value: data['email'],
+    type: 'email',
+    autocomplete: 'email',
+    spellcheck: false
+  }) }}
+
+  <!-- label: {
+    html: 'What is your email address?',
+    classes: 'govuk-label--m'
+  },
+  hint: {
+    html: 'We&rsquo;ll send you a code to confirm you have access to the email address'
+  }, -->
+
+{% endblock %}
