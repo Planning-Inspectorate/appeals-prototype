@@ -56,7 +56,7 @@
         classes: 'govuk-!-margin-top-3',
         caption: 'Current appeals',
         captionClasses: 'govuk-table__caption--m govuk-!-padding-top-6 app-border-top-big',
-        firstCellIsHeader: true,
+        firstCellIsHeader: false,
         head: [
           {
             html: 'Application number'
@@ -79,10 +79,10 @@
         rows: [
           [
             {
-              html: 'APP/Q9999/D/22/1345264'
+              html: '22/05058/FUL'
             },
             {
-              html: '22/05058/FUL'
+              html: 'APP/Q9999/D/22/1345264'
             },
             {
               html: '3' | daysInFuture
@@ -98,10 +98,10 @@
           ] if data['questionnaire'] != 'complete',
           [
             {
-              html: 'APP/Q9999/D/22/1345127'
+              html: '22/03021/FUL'
             },
             {
-              html: '22/03021/FUL'
+              html: 'APP/Q9999/D/22/1345127'
             },
             {
               html: '4' | daysInFuture
@@ -117,10 +117,10 @@
           ] if data['finalcomments'] != 'complete',
           [
             {
-              html: 'APP/Q9999/D/21/1345260'
+              html: '21/02939/FUL'
             },
             {
-              html: '21/02939/FUL'
+              html: 'APP/Q9999/D/21/1345260'
             },
             {
               html: '6' | daysInFuture
@@ -136,10 +136,10 @@
           ],
           [
             {
-              html: 'APP/Q9999/D/21/1345172'
+              html: '21/04125/FUL'
             },
             {
-              html: '21/04125/FUL'
+              html: 'APP/Q9999/D/21/1345172'
             },
             {
               html: '7' | daysInFuture
@@ -155,10 +155,10 @@
           ],
           [
             {
-              html: 'APP/Q9999/D/21/1345222'
+              html: '21/05057/FUL'
             },
             {
-              html: '21/05057/FUL'
+              html: 'APP/Q9999/D/21/1345222'
             },
             {
               html: '27' | daysInFuture
@@ -174,10 +174,10 @@
           ]  if data['statement'] != 'complete',
           [
             {
-              html: 'APP/Q9999/D/22/1345331'
+              html: '22/04782/FUL'
             },
             {
-              html: '22/04782/FUL'
+              html: 'APP/Q9999/D/22/1345331'
             },
             {
               html: '31' | daysInFuture
