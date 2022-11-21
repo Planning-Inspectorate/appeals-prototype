@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "@ministryofjustice/frontend": "^1.6.2",
-    "govuk-frontend": "^4.3.1",
-    "govuk-prototype-kit": "^0.0.1-beta.3",
+    "govuk-frontend": "^4.4.0",
+    "govuk-prototype-kit": "^13.0.0",
     "jquery": "^3.6.1",
     "moment": "^2.29.1"
   }
