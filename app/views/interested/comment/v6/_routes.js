@@ -1,5 +1,5 @@
-const express = require('express')
-const router = new express.Router()
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
 router.get('*', function(req, res, next){
   // Change the service name for this feature
@@ -9,11 +9,6 @@ router.get('*', function(req, res, next){
 })
 
 router.post('/your-name', function (req, res) {
-
-  let firstName = req.session.data['interested-first-name']
-  let lastName = req.session.data['interested-last-name']
-
-  res.locals['fullName'] = (firstName +' '+lastName);
   res.redirect('your-email')
 })
 
