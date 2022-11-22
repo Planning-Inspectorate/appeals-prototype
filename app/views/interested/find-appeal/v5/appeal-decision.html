@@ -1,10 +1,4 @@
-Aubrey{% extends "layout.html" %}
-
-{% set pageref = "###" %}
-{% extends "layout.html" %}
-
-{% set serviceName = "Appeal a planning decision" %}
-{% set subServiceName = "" %}
+{% extends '_layouts/layout-main.html' %}
 
 {% if data['appealCode'] != "true" %}
   {% set appealCode = "0166327" %}
