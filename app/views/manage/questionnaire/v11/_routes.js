@@ -1,5 +1,5 @@
-const express = require('express')
-const router = new express.Router()
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
 router.get('*', function(req, res, next){
 
