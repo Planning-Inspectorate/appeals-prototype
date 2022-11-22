@@ -1,5 +1,11 @@
-/* eslint-disable-next-line no-unused-vars */
-const router = require('govuk-prototype-kit').requests.setupRouter()
+//
+// For guidance on how to create routes see:
+// https://prototype-kit.service.gov.uk/docs/routes
+//
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+
 
 // Set a flag for if the proto is running locally
 router.use('/', (req, res, next) => {
