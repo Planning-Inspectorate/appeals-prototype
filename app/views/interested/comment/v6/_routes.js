@@ -17,7 +17,7 @@ router.post('/your-email', function (req, res) {
 })
 
 router.post('/add-comments', function (req, res) {
-  res.redirect('documents-check')
+  res.redirect('check-your-answers')
 })
 
 router.post('/documents-check', function (req, res) {

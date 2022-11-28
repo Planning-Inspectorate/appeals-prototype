@@ -3,6 +3,8 @@
 {% set serviceName = "Find and comment on planning appeals" %}
 {% set title = "Enter the appeal reference" %}
 
+{% set prototypeLinks = [{href: 'appeal-search-no-results', text: 'No results'}] %}
+
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
 {% endblock %}
@@ -35,7 +37,7 @@
           </label>
 
           <p class="govuk-body">
-            This can be found on the letter you received from the local planning department. If you did not receive a letter, you can find the appeal reference on the local planning department’s website.
+            This can be found on the letter you received from the local planning department.
           </p>
 
           <p class="govuk-hint">
@@ -47,8 +49,8 @@
         </div>
 
         <p class="govuk-body">
-          <a href="appeal-search-postcode?version=">
-            Search for an appeal using a postcode
+          <a href="appeal-search-address?version=">
+            I do not have an appeal reference number
           </a>
         </p>
 

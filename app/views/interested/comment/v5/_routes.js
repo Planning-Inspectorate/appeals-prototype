@@ -15,7 +15,7 @@ router.post('/find-appeal', function (req, res) {
   if (req.session.data['appeal-number'] == 'appealNumber') {
     res.redirect('appeal-search-number')
   } else {
-    res.redirect('appeal-search-postcode')
+    res.redirect('appeal-search-address')
   }
 })
 

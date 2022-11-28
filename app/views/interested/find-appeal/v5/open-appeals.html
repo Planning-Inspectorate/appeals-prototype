@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-main.html' %}
 
 {% set serviceName = "Find and comment on planning appeals" %}
-{% set title = "Appeals in progress at (postcode)" %}
+{% set title = "Appeals in progress at (address)" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -23,161 +23,210 @@
 
 {% block content %}
 
-{{ data['postcode'] }}
-
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
 
     <h1 class="govuk-heading-l">
-      {% if data['postcode'] %}
-        Appeals in progress at {{ data['postcode'] }}
+      {% if data['address'] == "postcode" %}
+        {% if data['postcode'] %}
+          Appeals in progress at {{ data['postcode'] }}
+        {% else %}
+          Appeals in progress at BS3 3EX
+        {% endif %}
       {% else %}
-        Appeals in progress at BS3 3EX
+        {% if data['eastings-input'] %}
+          Appeals in progress at eastings {{ data['eastings-input'] }} and northings {{ data['northings-input'] }}
+        {% else %}
+          Appeals in progress at Eastings 361633 and Northings 174493
+        {% endif %}
       {% endif %}
     </h1>
 
-    <p class="govuk-body govuk-!-margin-bottom-6">
+    <!-- <p class="govuk-body govuk-!-margin-bottom-6">
       Select an appeal to go to the appeal details.
-    </p>
+    </p> -->
 
-    <!-- another pattern where the postcode and link to change it is called out more -->
-
-    <!-- <h1 class="govuk-heading-l">
-      Appeals in progress
-    </h1>
-
-    <section class="govuk-!-margin-bottom-9">
-      <p class="govuk-body">
-        {% if data['postcode'] %}
-          3 appeals found at {{ data['postcode'] }}.
-        {% else %}
-          3 appeals found at BS3 3EX.
-        {% endif %}
-      </p>
-
-      <p class="govuk-body">
-        <a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
-      </p>
-    </section> -->
-
-    <h2 class="govuk-heading-m">
+    <!-- <h2 class="govuk-heading-m">
       Open for comments
-    </h2>
+    </h2> -->
 
     <!-- <p class="govuk-body">
-      {% if data['postcode'] %}
-        3 open appeals found for {{ data['postcode'] }}.<br><a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
+      {% if data['address'] == "postcode" %}
+        {% if data['postcode'] %}
+          3 open appeals found for {{ data['postcode'] }}.
+        {% else %}
+          3 open appeals found for BS3 3EX.
+        {% endif %}
+        <br><a href="appeal-search-address#postcode-search" class="govuk-link">Search by a different address</a>
       {% else %}
-        3 open appeals found for BS3 3EX.<br><a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
+        {% if data['eastings-input'] %}
+          2 open appeals found for Eastings {{ data['input-eastings'] }} and Northings {{ data['input-northings'] }}.<br><a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
+        {% else %}
+          2 open appeals found for Eastings 361633 and Northings 174493
+        {% endif %}
+        <br><a href="appeal-search-address#grid-search" class="govuk-link">Search by a different address</a>
       {% endif %}
     </p> -->
 
-  </div>
-
-  <!-- main table -->
-  <div class="govuk-grid-column-full">
-
-    {{ govukTable({
-      caption: "Open appeals",
-      captionClasses: "govuk-table__caption--m govuk-visually-hidden",
-
-      head: [
-
-        {
-          text: "Appeal site",
-          classes: 'govuk-!-width-one-half'
-        },
-        {
-          text: "Applicant",
-          classes: 'govuk-!-width-one-quarter'
-        },
-        {
-          text: "Appeal reference",
-          classes: 'govuk-!-width-one-quarter',
-          format: "numeric"
-        }
-      ],
-      rows: [
-        [
-          {
-            text: "2 Aubrey House, Aubrey Road, Bristol BS3 3EX"
-          },
-          {
-            text: "J. M. Wigstone"
-          },
-          {
-            html: '<a class="govuk-link" href="appeal-details?status=open&appealCode=0166321&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone&appealReference=0166321">0166321</a>',
-            format: "numeric"
-          }
-        ]
-      ]
-    }) }}
-
-  </div>
-
-  <div class="govuk-grid-column-two-thirds">
-
-    <h2 class="govuk-heading-m">
-      Closed for comments
+    <h2 class="govuk-visually-hidden">
+      Open appeals
     </h2>
 
-    <p class="govuk-body">
-      The deadline to comment on these appeals has passed. The Inspector will make a decision soon.
-    </p>
-
   </div>
 
   <!-- main table -->
   <div class="govuk-grid-column-full">
 
-    {{ govukTable({
-      caption: "Open appeals",
-      captionClasses: "govuk-table__caption--m govuk-visually-hidden",
+    <table class="govuk-table">
 
-      head: [
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">
+            Appeal reference
+          </th>
+          <th class="govuk-table__header govuk-!-width-one-third" scope="col">
+            Appeal site
+          </th>
+          <th class="govuk-table__header govuk-!-width-one-third" scope="col">
+            Applicant
+          </th>
 
-      {
-        text: "Appeal site",
-        classes: 'govuk-!-width-one-half'
-      },
-      {
-        text: "Applicant",
-        classes: 'govuk-!-width-one-quarter'
-      },
-      {
-        text: "Appeal reference",
-        classes: 'govuk-!-width-one-quarter',
-        format: "numeric"
-      }
-      ],
-      rows: [
-        [
-          {
-            text: "103 Aubrey Road, Bristol BS3 3EX"
-          },
-          {
-            text: "Mel Pickins"
-          },
-          {
-            html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166327&site-address=103%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Mel%20Pickins&appealReference=0166327">0166327</a>',
-            format: "numeric"
-          }
-        ],
-        [
-          {
-            text: "103 Aubrey Road, Bristol BS3 3EX"
-          },
-          {
-            text: "Mel Pickins"
-          },
-          {
-            html: '<a class="govuk-link" href="appeal-details?status=closed&appealCode=0166328&site-address=103%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Mel%20Pickins&appealReference=0166328">0166328</a>',
-            format: "numeric"
-          }
-        ]
-      ]
-    }) }}
+          <th class="govuk-table__header" scope="col">
+            Status
+          </th>
+        </tr>
+      </thead>
 
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            <a href="appeal-details?status=open&appeal=1&appealCode=012726" class="govuk-link">
+              {% if data['appeal-ref-format'] == "full" %}
+                22/012726/HAS
+              {% else %}
+                012726
+              {% endif %}
+            </a>
+          </th>
+          <td class="govuk-table__cell">
+
+            {% if data['address'] == "postcode" %}
+              {% if data['postcode'] %}
+                2 Aubrey House, Aubrey Road {{ data['postcode'] }}
+              {% else %}
+                2 Aubrey House, Aubrey Road, Bristol BS3 3EX
+              {% endif %}
+            {% else %}
+              {% if data['eastings-input'] %}
+                Eastings {{ data['eastings-input'] }}<br>
+                Northings {{ data['northings-input'] }}
+              {% else %}
+                Eastings 361633<br>
+                Northings 174493
+              {% endif %}
+            {% endif %}
+
+          </td>
+          <td class="govuk-table__cell">
+            Rachel Silver
+          </td>
+
+          <td class="govuk-table__cell">
+            {{govukTag({
+              text: "Open",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+        </tr>
+
+        {% if data['address'] == "postcode" %}
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              <a href="appeal-details?status=closed&appeal=2&appealCode=014512" class="govuk-link">
+                {% if data['appeal-ref-format'] == "full" %}
+                  22/014512/FUL
+                {% else %}
+                  014512
+                {% endif %}
+              </a>
+            </th>
+            <td class="govuk-table__cell">
+              103 Aubrey Road, Bristol BS3 3EX
+            </td>
+            <td class="govuk-table__cell">
+              Maisha Zamora
+            </td>
+
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Closed",
+                classes: "govuk-tag--grey"
+              })}}
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              <a href="appeal-details?status=closed&appeal=3&appealCode=014513" class="govuk-link">
+                {% if data['appeal-ref-format'] == "full" %}
+                  21/014513/FUL
+                {% else %}
+                  014513
+                {% endif %}
+              </a>
+            </th>
+            <td class="govuk-table__cell">
+              103 Aubrey Road, Bristol BS3 3EX
+            </td>
+            <td class="govuk-table__cell">
+              Maisha Zamora
+            </td>
+
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Closed",
+                classes: "govuk-tag--grey"
+              })}}
+            </td>
+          </tr>
+
+        {% else %}
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              <a href="appeal-details?status=closed&appeal=4&appealCode=012078" class="govuk-link">
+                {% if data['appeal-ref-format'] == "full" %}
+                  21/012078/HAS
+                {% else %}
+                  012078
+                {% endif %}
+              </a>
+            </th>
+            <td class="govuk-table__cell">
+              {% if data['eastings-input'] %}
+                Eastings {{ data['eastings-input'] }}<br>
+                Northings {{ data['northings-input'] }}
+              {% else %}
+                Eastings 361633<br>
+                Northings 174493
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              Rachel Silver
+            </td>
+            <td class="govuk-table__cell">
+              {{govukTag({
+                text: "Closed",
+                classes: "govuk-tag--grey"
+              })}}
+            </td>
+          </tr>
+
+        {% endif %}
+
+      </tbody>
+    </table>
   </div>
 
   <div class="govuk-grid-column-two-thirds">

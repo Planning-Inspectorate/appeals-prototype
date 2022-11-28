@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "Search for an appeal using a postcode" %}
+{% set title = "Search for an appeal using a grid reference" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -44,20 +44,6 @@
         {% endif %}
 
       </div>
-
-      {% if data['version'] == "address-filter" %}
-
-        <div class="govuk-form-group govuk-!-margin-bottom-6">
-
-          <label class="govuk-label" for="postcode">
-            House number or name (optional)
-          </label>
-
-          <input class="govuk-input govuk-input--width-20" id="postcode-input" name="postcode" type="text">
-
-        </div>
-
-      {% endif %}
 
       <p class="govuk-body">
         <a href="appeal-search-number?version=">
