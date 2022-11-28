@@ -79,44 +79,13 @@
                   }
                 ]
               }
-            },
-            {
-              key: {
-                text: 'Add supporting documents'
-              },
-              value: {
-                html: data['adding-documents'] or 'No'
-              },
-              actions: {
-                items: [
-                  {
-                    href: 'documents-check',
-                    text: 'Change'
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: 'Supporting documents'
-              },
-              value: {
-                html: data['final-documents'] or 'example.pdf'
-              },
-              actions: {
-                items: [
-                  {
-                    href: 'documents-upload',
-                    text: 'Change'
-                  }
-                ]
-              }
-            } if data['adding-documents'] == 'Yes'
+            }
+
           ]
         }) }}
 
         {{ govukButton({
-          html: 'Continue'
+          html: 'Submit comments'
         }) }}
 
       </form>

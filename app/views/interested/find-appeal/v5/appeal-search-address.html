@@ -1,0 +1,123 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Search for an appeal" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- tabs -->
+    <div class="govuk-tabs" data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">
+          Address search
+        </h2>
+        <ul class="govuk-tabs__list">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#postcode-search">
+              Postcode
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#grid-search">
+              Grid reference
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-tabs__panel" id="postcode-search">
+
+          <form action="open-appeals?address=postcode" method="post">
+
+            <div class="govuk-form-group">
+
+              <label class="govuk-label govuk-label--l" for="postcode">
+                Search with a postcode
+              </label>
+
+              <p class="govuk-hint">
+                For example, BS1 6PN
+              </p>
+
+              {% if data['postcode'] %}
+                <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text" value="{{ data['postcode'] }}">
+              {% else %}
+                <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text">
+              {% endif %}
+
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+
+        </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="grid-search">
+          <form action="open-appeals?address=grid" method="post">
+
+            <div class="govuk-form-group">
+
+              <label class="govuk-label govuk-label--l" for="postcode">
+                Search with a grid reference
+              </label>
+
+              <p class="govuk-hint">
+                For example, eastings 359608 and northings 172607
+              </p>
+
+              <label class="govuk-label" for="eastings-input">
+                Eastings
+              </label>
+
+              {% if data['eastings'] %}
+                <input class="govuk-input govuk-input--width-5 govuk-!-margin-bottom-3" id="eastings-input" name="eastings" type="text" value="{{ data['eastings'] }}"><br>
+              {% else %}
+                <input class="govuk-input govuk-input--width-5 govuk-!-margin-bottom-3" id="eastings-input" name="eastings" type="text"><br>
+              {% endif %}
+
+              <label class="govuk-label" for="northings-input">
+                Northings
+              </label>
+
+              {% if data['northings'] %}
+                <input class="govuk-input govuk-input--width-5" id="northings-input" name="northings" type="text" value="{{ data['northings'] }}"><br>
+              {% else %}
+                <input class="govuk-input govuk-input--width-5" id="northings-input" name="northings" type="text"><br>
+              {% endif %}
+
+            </div>
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+          </form>
+
+        </div>
+
+
+      </div>
+
+  </div>
+</div>
+
+{% endblock %}
