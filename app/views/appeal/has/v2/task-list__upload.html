@@ -1,0 +1,150 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span> Upload documents
+    {% if data['upload-documents-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['upload-documents-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Application form'
+        },
+        value: {
+          html: data['application'] | join('<br>') if data['application'] else 'application.pdf'
+        }
+        if data['application-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/application?cya=true',
+              html: 'Change'
+            }
+            if data['application-complete'] else
+            {
+              href: 'upload-documents/application',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Decision letter'
+        },
+        value: {
+          html: data['decision-letter'] | join('<br>') if data['decision-letter'] else 'decision-letter.pdf'
+        }
+        if data['decision-letter-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/decision-letter?cya=true',
+              html: 'Change'
+            }
+            if data['decision-letter-complete'] else
+            {
+              href: 'upload-documents/decision-letter',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Appeal statement'
+        },
+        value: {
+          html: data['appeal-statement'] | join('<br>') if data['appeal-statement'] else 'appeal-statement.pdf'
+        }
+        if data['appeal-statement-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/appeal-statement?cya=true',
+              html: 'Change'
+            }
+            if data['appeal-statement-complete'] else
+            {
+              href: 'upload-documents/appeal-statement',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Add new supporting documents'
+        },
+        value: {
+          html: data['other-check'] or 'No'
+        }
+        if data['other-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/other-check?cya=true',
+              html: 'Change'
+            }
+            if data['other-check-complete'] else
+            {
+              href: 'upload-documents/other-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'New supporting documents'
+        },
+        value: {
+          html: data['other'] | join('<br>') if data['other'] else 'other.pdf'
+        }
+        if data['other-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/other?cya=true',
+              html: 'Change'
+            }
+            if data['other-complete'] else
+            {
+              href: 'upload-documents/other',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['other-check'] == 'Yes'
+    ]
+  }) }}
+</li>
