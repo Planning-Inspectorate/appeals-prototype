@@ -147,6 +147,56 @@
       },
       {
         key: {
+          html: 'Site fully owned'
+        },
+        value: {
+          html: data['ownership'] or 'Yes'
+        }
+        if data['ownership-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/ownership?cya=true',
+              html: 'Change'
+            }
+            if data['ownership-complete'] else
+            {
+              href: 'prepare-appeal/ownership',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Other owners informed'
+        },
+        value: {
+          html: data['owners-notified'] or 'Yes'
+        }
+        if data['owners-notified-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-notified?cya=true',
+              html: 'Change'
+            }
+            if data['owners-notified-complete'] else
+            {
+              href: 'prepare-appeal/owners-notified',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['ownership'] == 'No',
+      {
+        key: {
           html: 'Visibility'
         },
         value: {

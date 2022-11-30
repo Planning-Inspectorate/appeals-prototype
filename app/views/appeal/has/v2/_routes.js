@@ -82,6 +82,18 @@ router.post('/prepare-appeal/lpa-reference', function (req, res) {
 })
 
 router.post('/prepare-appeal/address', function (req, res) {
+  res.redirect('ownership')
+})
+
+router.post('/prepare-appeal/ownership', function (req, res) {
+  if (req.session.data['ownership'] == 'No') {
+    res.redirect('owners-notified')
+  } else {
+    res.redirect('site-visibility')
+  }
+})
+
+router.post('/prepare-appeal/owners-notified', function (req, res) {
   res.redirect('site-visibility')
 })
 
