@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Have you told the other owners that you&rsquo;re appealing?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'owners-notified',
+    name: 'owners-notified',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'If the site has more than one owner, you must tell the other owners that you&rsquo;re appealing'
+    },
+    items: [
+      {
+        html: 'Yes, I have already told the other owners',
+        value: 'Yes',
+        checked: checked('owners-notified','Yes')
+      },
+      {
+        html: 'No, but I understand I have to inform them',
+        value: 'No',
+        checked: checked('owners-notified','No')
+      }
+    ]
+  }) }}
+{% endblock %}

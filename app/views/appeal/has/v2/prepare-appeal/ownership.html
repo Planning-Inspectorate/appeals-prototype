@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Do you own the whole appeal site?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'ownership',
+    name: 'ownership',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('ownership','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('ownership','No')
+      }
+    ]
+  }) }}
+{% endblock %}
