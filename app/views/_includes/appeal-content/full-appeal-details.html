@@ -1,0 +1,134 @@
+<h2 class="govuk-heading-m">
+  Appeal submission
+</h2>
+
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-half">
+      Procedure
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Written representations
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Draft statement of common ground
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="#" class="govuk-link">Stament of common ground 11.08.2022.doc</a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Appeal statement
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="#" class="govuk-class">{{ data["appealsub-"+version+"-appealdocs-appealstatement"] or 'Appeal-statement.pdf' }}</a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Plans or drawings
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="javascript:preventDefault();" class="govuk-link">
+        {{ data["appealsub-"+version+"-appealdocs-plansdrawings"] or 'Appeal-outline.pdf' }}
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Planning obligation
+    </dt>
+    <dd class="govuk-summary-list__value">
+      No
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row pins-summary-list__row--last">
+    <dt class="govuk-summary-list__key">
+    Supporting documents
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="javascript:preventDefault();" class="govuk-link">
+        {{ data["appealsub-"+version+"-appealdocs-supportingdocuments"] or 'Local petition for development.pdf'}}
+          {% if data["appealsub-"+version+"-appealdocs-supportingdocuments"] != false %}
+            <br>Site orientation.png
+          {% endif %}
+        <br>
+      </a>
+    </dd>
+  </div>
+
+</dl>
+
+<h2 class="govuk-heading-m">
+  Planning application
+</h2>
+
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-half">
+      Description of development
+    </dt>
+    <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+      Loft conversion of roof to existing dwelling
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Planning application number
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["appealsub-"+version+"-applicationdocs-applicationnumber"] or '22/065313/FUL' }}
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+      Application decision notice
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="#" class="govuk-link">
+        Application decision 02.06.2022.doc
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+      Application
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="#" class="govuk-class">{{ data["appealsub-"+version+"-applicationdocs-applicationform"] or 'Planning application 2022.pdf' }}</a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Plans, drawings and supporting documents
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="#" class="govuk-class">
+        {{ data["appealsub-"+version+"-applicationdocs-plansdrawings"] or 'Aubrey House plans.pdf' }}
+      </a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row pins-summary-list__row--last">
+    <dt class="govuk-summary-list__key">
+      Design and access statement
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="#" class="govuk-class">
+        {{ data["appealsub-"+version+"-applicationdocs-designaccess"] or 'Aubrey House DA.pdf' }}
+      </a>
+    </dd>
+  </div>
+
+</dl>

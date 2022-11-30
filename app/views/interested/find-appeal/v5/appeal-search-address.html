@@ -27,95 +27,99 @@
 
     <!-- tabs -->
     <div class="govuk-tabs" data-module="govuk-tabs">
-        <h2 class="govuk-tabs__title">
-          Address search
-        </h2>
-        <ul class="govuk-tabs__list">
-          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-            <a class="govuk-tabs__tab" href="#postcode-search">
-              Postcode
-            </a>
-          </li>
-          <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#grid-search">
-              Grid reference
-            </a>
-          </li>
-        </ul>
-        <div class="govuk-tabs__panel" id="postcode-search">
+      <h2 class="govuk-tabs__title">
+        Address search
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#postcode-search">
+            Postcode
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#grid-search">
+            Grid reference
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel" id="postcode-search">
 
-          <form action="open-appeals?address=postcode" method="post">
+        <form action="open-appeals?address=postcode" method="post">
 
-            <div class="govuk-form-group">
+          <div class="govuk-form-group">
 
-              <label class="govuk-label govuk-label--l" for="postcode">
-                Search with a postcode
-              </label>
+            <label class="govuk-label govuk-label--l" for="postcode">
+              Search with a postcode
+            </label>
 
-              <p class="govuk-hint">
-                For example, BS1 6PN
-              </p>
+            <p class="govuk-hint">
+              For example, BS1 6PN
+            </p>
 
-              {% if data['postcode'] %}
-                <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text" value="{{ data['postcode'] }}">
-              {% else %}
-                <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text">
-              {% endif %}
+            {% if data['postcode'] %}
+              <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text" value="{{ data['postcode'] }}">
+            {% else %}
+              <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text">
+            {% endif %}
 
-            </div>
+          </div>
 
-            {{ govukButton({
-              text: "Continue"
-            }) }}
-          </form>
-
-        </div>
-
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="grid-search">
-          <form action="open-appeals?address=grid" method="post">
-
-            <div class="govuk-form-group">
-
-              <label class="govuk-label govuk-label--l" for="postcode">
-                Search with a grid reference
-              </label>
-
-              <p class="govuk-hint">
-                For example, eastings 359608 and northings 172607
-              </p>
-
-              <label class="govuk-label" for="eastings-input">
-                Eastings
-              </label>
-
-              {% if data['eastings'] %}
-                <input class="govuk-input govuk-input--width-5 govuk-!-margin-bottom-3" id="eastings-input" name="eastings" type="text" value="{{ data['eastings'] }}"><br>
-              {% else %}
-                <input class="govuk-input govuk-input--width-5 govuk-!-margin-bottom-3" id="eastings-input" name="eastings" type="text"><br>
-              {% endif %}
-
-              <label class="govuk-label" for="northings-input">
-                Northings
-              </label>
-
-              {% if data['northings'] %}
-                <input class="govuk-input govuk-input--width-5" id="northings-input" name="northings" type="text" value="{{ data['northings'] }}"><br>
-              {% else %}
-                <input class="govuk-input govuk-input--width-5" id="northings-input" name="northings" type="text"><br>
-              {% endif %}
-
-            </div>
-
-            {{ govukButton({
-              text: "Continue"
-            }) }}
-
-          </form>
-
-        </div>
-
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
 
       </div>
+
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="grid-search">
+        <form action="open-appeals?address=grid" method="post">
+
+          <div class="govuk-form-group">
+
+            <label class="govuk-label govuk-label--l" for="postcode">
+              Search with a grid reference
+            </label>
+
+            <p class="govuk-hint">
+              For example, eastings 359608 and northings 172607
+            </p>
+
+            <label class="govuk-label" for="eastings-input">
+              Eastings
+            </label>
+
+            {% if data['eastings'] %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-bottom-3" id="eastings-input" name="eastings" type="text" value="{{ data['eastings'] }}"><br>
+            {% else %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-bottom-3" id="eastings-input" name="eastings" type="text"><br>
+            {% endif %}
+
+            <label class="govuk-label" for="northings-input">
+              Northings
+            </label>
+
+            {% if data['northings'] %}
+              <input class="govuk-input govuk-input--width-5" id="northings-input" name="northings" type="text" value="{{ data['northings'] }}"><br>
+            {% else %}
+              <input class="govuk-input govuk-input--width-5" id="northings-input" name="northings" type="text"><br>
+            {% endif %}
+
+          </div>
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+
+    <p class="govuk-body">
+      <a href="appeal-search-number?version=">
+        Search with an appeal reference
+      </a>
+    </p>
 
   </div>
 </div>

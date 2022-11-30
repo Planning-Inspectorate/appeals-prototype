@@ -1,0 +1,111 @@
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Appeal site
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p>
+        {% if data['appeal'] == 1 %}
+          2 Aubrey House, Aubrey Road, BS3 3EX
+        {% elif data['appeal'] == 2 %}
+          103 Aubrey Road, Bristol BS3 3EX
+        {% elif data['appeal'] == 3 %}
+          103 Aubrey Road, Bristol BS3 3EX
+        {% elif data['appeal'] == 4 %}
+          {% if data['eastings-input'] %}
+            Eastings {{ data['eastings-input'] }}<br>
+            Northings {{ data['northings-input'] }}
+          {% else %}
+            Eastings 361633<br>
+            Northings 174493
+          {% endif %}
+        {% endif %}
+      </p>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key ">
+      Applicant
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if data['appeal'] == 1 or data['appeal'] == 4 %}
+        Rachel Silver
+      {% elif data['appeal'] == 2 or data['appeal'] == 3 %}
+        Maisha Zamora
+      {% endif %}
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
+      Local planning department
+    </dt>
+    <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+      Bristol City Council
+    </dd>
+  </div>
+
+  <!-- work out if this is the last table row -->
+  {% if data['status'] != "completed" %}
+  <div class="govuk-summary-list__row pins-summary-list__row--last">
+  {% else %}
+  <div class="govuk-summary-list__row">
+  {% endif %}
+  <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
+    Appeal type
+  </dt>
+  <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+    Full planning
+  </dd>
+</div>
+
+  <!-- more summary if the appeal is decided -->
+  {% if data['status'] == "completed" %}
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Inspector
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p>
+          C J Agenue BA (Hons) BTP MRTPI
+        </p>
+      </dd>
+    </div>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Decision date
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p>
+          2 February 2022
+        </p>
+      </dd>
+    </div>
+
+    <div class="govuk-summary-list__row govuk-summary-list__row pins-summary-list__row--last">
+      <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
+        Decision
+      </dt>
+      <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+        {% if data['decision'] == "allowed" %}
+          Allowed
+        {% elseif data['decision'] == "disallowed" %}
+          Disallowed
+        {% elseif data['decision'] == "split" %}
+          Split decision
+        {% elseif data['decision'] == "invalid" %}
+          Invalid
+        {% else %}
+          Allowed
+        {% endif %}
+
+      </dd>
+    </div>
+
+  {% endif %}
+
+</dl>
