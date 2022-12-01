@@ -1,4 +1,13 @@
-{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+{% extends '_layouts/layout-main.html' %}
+
+{# Add a body class to override things if needed #}
+{% set bodyClasses = 'internal' %}
+
+{% set serviceName = "" %}
+
+{% block beforeContent %}
+
+{% endblock %}
 
 {% from 'govuk/components/inset-text/macro.njk'          import govukInsetText %}
 
@@ -21,7 +30,9 @@
 {% block content %}
 	{% block emailHeader %}{% endblock %}
 
-	<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+	<div class="govuk-!-margin-bottom-9">
+		<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+	</div>
 
 	<div class="email-header">
 		<img src="/public/images/pins-logo-email.png" height="54">

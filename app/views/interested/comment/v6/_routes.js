@@ -3,7 +3,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 router.get('*', function(req, res, next){
   // Change the service name for this feature
-  res.locals['serviceName'] = 'Find and comment on planning appeals',
+  res.locals['serviceName'] = 'Comment on planning appeals',
   res.locals['caption'] = 'Comment on a planning appeal'
   next()
 })

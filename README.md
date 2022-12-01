@@ -1,6 +1,6 @@
 # Appeals prototypes
 
-Includes prototypes for the 3 services in PINS appeals, `Appeal a planning decision` for appellants and agents, `Manage your planning inspectorate appeals` for LPAs, and `Find and comment on an appeal` for interested parties.
+Includes prototypes for the 3 services in PINS appeals, `Appeal a planning decision` for appellants and agents, `Manage your planning inspectorate appeals` for LPAs, and `Comment on a planning appeal` for interested parties.
 
 ## Usage
 
