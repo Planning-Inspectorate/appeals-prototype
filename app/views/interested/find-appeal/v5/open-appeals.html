@@ -1,7 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set serviceName = "Find and comment on planning appeals" %}
-{% set title = "Appeals in progress at (address)" %}
+{% set title = "Appeals at (address)" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -29,15 +28,15 @@
     <h1 class="govuk-heading-l">
       {% if data['address'] == "postcode" %}
         {% if data['postcode'] %}
-          Appeals in progress at {{ data['postcode'] }}
+          Appeals at {{ data['postcode'] }}
         {% else %}
-          Appeals in progress at BS3 3EX
+          Appeals at BS3 3EX
         {% endif %}
       {% else %}
         {% if data['eastings-input'] %}
-          Appeals in progress at eastings {{ data['eastings-input'] }} and northings {{ data['northings-input'] }}
+          Appeals at eastings {{ data['eastings-input'] }} and northings {{ data['northings-input'] }}
         {% else %}
-          Appeals in progress at Eastings 361633 and Northings 174493
+          Appeals at Eastings 361633 and Northings 174493
         {% endif %}
       {% endif %}
     </h1>
@@ -92,7 +91,7 @@
           </th>
 
           <th class="govuk-table__header" scope="col">
-            Status
+            Comments
           </th>
         </tr>
       </thead>
