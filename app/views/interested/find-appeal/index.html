@@ -14,9 +14,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l">
-      Manage LPA appeals
-    </span>
+    <!-- <span class="govuk-caption-l">
+      Comment on planning appeals
+    </span> -->
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
@@ -26,8 +26,8 @@
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'In progress'
+        classes: 'govuk-tag--blue govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
 
@@ -41,8 +41,11 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>moved the work to the new prototype (<a href="https://pins-appeals.herokuapp.com/interested-party/v4/guidance" class="govuk-link govuk-link--no-visited-state">see version 4</a>)</li>
-      <li>updated the colour of the appeal tags to align them with GDS style</li>
-      <li>iteration to follow to update some of the patterns here</li>
+      <li>invite to comment and GOVUK guidance entry points</li>
+      <li>updated to align with newer service</li>
+      <li>updated tag colours to align them with GDS style</li>
+      <li>leads with address search</li>
+      <li>added confirmation email</li>
     </ul>
 
     {{ govukButton({

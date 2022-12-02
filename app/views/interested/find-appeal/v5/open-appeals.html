@@ -2,6 +2,8 @@
 
 {% set title = "Appeals at (address)" %}
 
+{% set prototypeLinks = [{href: 'appeal-search-no-results', text: 'No results'}] %}
+
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
 {% endblock %}
@@ -80,16 +82,15 @@
 
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">
-            Appeal reference
-          </th>
           <th class="govuk-table__header govuk-!-width-one-third" scope="col">
             Appeal site
           </th>
           <th class="govuk-table__header govuk-!-width-one-third" scope="col">
             Applicant
           </th>
-
+          <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">
+            Appeal reference
+          </th>
           <th class="govuk-table__header" scope="col">
             Comments
           </th>
@@ -98,17 +99,8 @@
 
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">
-            <a href="appeal-details?status=open&appeal=1&appealCode=012726" class="govuk-link">
-              {% if data['appeal-ref-format'] == "full" %}
-                22/012726/HAS
-              {% else %}
-                012726
-              {% endif %}
-            </a>
-          </th>
-          <td class="govuk-table__cell">
 
+          <th scope="row" class="govuk-table__header">
             {% if data['address'] == "postcode" %}
               {% if data['postcode'] %}
                 2 Aubrey House, Aubrey Road {{ data['postcode'] }}
@@ -124,10 +116,20 @@
                 Northings 174493
               {% endif %}
             {% endif %}
+          </th>
 
-          </td>
           <td class="govuk-table__cell">
             Rachel Silver
+          </td>
+
+          <td class="govuk-table__cell">
+            <a href="appeal-details?status=open&appeal=1&appealCode=012726" class="govuk-link">
+              {% if data['appeal-ref-format'] == "full" %}
+                22/012726/HAS
+              {% else %}
+                012726
+              {% endif %}
+            </a>
           </td>
 
           <td class="govuk-table__cell">
@@ -141,20 +143,23 @@
         {% if data['address'] == "postcode" %}
 
           <tr class="govuk-table__row">
+
             <th scope="row" class="govuk-table__header">
-              <a href="appeal-details?status=closed&appeal=2&appealCode=014512" class="govuk-link">
-                {% if data['appeal-ref-format'] == "full" %}
-                  22/014512/FUL
-                {% else %}
-                  014512
-                {% endif %}
-              </a>
-            </th>
-            <td class="govuk-table__cell">
               103 Aubrey Road, Bristol BS3 3EX
-            </td>
+            </th>
+
             <td class="govuk-table__cell">
               Maisha Zamora
+            </td>
+
+            <td scope="row" class="govuk-table__cell">
+              <a href="appeal-details?status=closed&appeal=3&appealCode=014513" class="govuk-link">
+                {% if data['appeal-ref-format'] == "full" %}
+                  21/014513/FUL
+                {% else %}
+                  014513
+                {% endif %}
+              </a>
             </td>
 
             <td class="govuk-table__cell">
@@ -166,20 +171,23 @@
           </tr>
 
           <tr class="govuk-table__row">
+
             <th scope="row" class="govuk-table__header">
-              <a href="appeal-details?status=closed&appeal=3&appealCode=014513" class="govuk-link">
-                {% if data['appeal-ref-format'] == "full" %}
-                  21/014513/FUL
-                {% else %}
-                  014513
-                {% endif %}
-              </a>
-            </th>
-            <td class="govuk-table__cell">
               103 Aubrey Road, Bristol BS3 3EX
-            </td>
+            </th>
+
             <td class="govuk-table__cell">
               Maisha Zamora
+            </td>
+
+            <td scope="row" class="govuk-table__cell">
+              <a href="appeal-details?status=closed&appeal=2&appealCode=014512" class="govuk-link">
+                {% if data['appeal-ref-format'] == "full" %}
+                  22/014512/FUL
+                {% else %}
+                  014512
+                {% endif %}
+              </a>
             </td>
 
             <td class="govuk-table__cell">
@@ -193,34 +201,38 @@
         {% else %}
 
           <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">
-              <a href="appeal-details?status=closed&appeal=4&appealCode=012078" class="govuk-link">
-                {% if data['appeal-ref-format'] == "full" %}
-                  21/012078/HAS
-                {% else %}
-                  012078
-                {% endif %}
-              </a>
-            </th>
-            <td class="govuk-table__cell">
-              {% if data['eastings-input'] %}
-                Eastings {{ data['eastings-input'] }}<br>
-                Northings {{ data['northings-input'] }}
+          <th scope="row" class="govuk-table__header">
+
+            {% if data['eastings-input'] %}
+              Eastings {{ data['eastings-input'] }}<br>
+              Northings {{ data['northings-input'] }}
+            {% else %}
+              Eastings 361633<br>
+              Northings 174493
+            {% endif %}
+          </th>
+          <td class="govuk-table__cell">
+            Rachel Silver
+          </td>
+
+          <td class="govuk-table__cell">
+            <a href="appeal-details?status=closed&appeal=4&appealCode=012078" class="govuk-link">
+              {% if data['appeal-ref-format'] == "full" %}
+                21/012078/HAS
               {% else %}
-                Eastings 361633<br>
-                Northings 174493
+                012078
               {% endif %}
-            </td>
-            <td class="govuk-table__cell">
-              Rachel Silver
-            </td>
-            <td class="govuk-table__cell">
-              {{govukTag({
-                text: "Closed",
-                classes: "govuk-tag--grey"
-              })}}
-            </td>
-          </tr>
+            </a>
+          </td>
+
+          <td class="govuk-table__cell">
+            {{govukTag({
+              text: "Closed",
+              classes: "govuk-tag--grey"
+            })}}
+          </td>
+
+        </tr>
 
         {% endif %}
 
@@ -236,15 +248,15 @@
     </h2>
 
     <p class="govuk-body">
-      If you cannot find the appeal you're looking for, it might be complete and a decision made.
+      If you cannot find the appeal you’re looking for, it might be complete and a decision made.
     </p>
 
     <p>
       <a href="closed-appeals" class="govuk-link">
         {% if data['postcode'] %}
-          View 33 completed appeals for {{ data['postcode'] }}
+          View completed appeals for {{ data['postcode'] }}
         {% else %}
-          View 33 completed appeals for BS3 3EX
+          View completed appeals for BS3 3EX
         {% endif %}
       </a>
     </p>

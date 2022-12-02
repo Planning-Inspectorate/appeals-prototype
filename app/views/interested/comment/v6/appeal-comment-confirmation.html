@@ -1,0 +1,72 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% block pageTitle %}
+  Interested party full planning notification
+{% endblock %}
+
+{% block content %}
+
+<!-- faux email header -->
+<section>
+  <p>
+    <strong>Subject:</strong> Your comments have been submitted
+  </p>
+  <p>
+    <strong>To:</strong> example@email.com<br>
+    <strong>From:</strong> enquiries@planninginspectorate.gov.uk
+  </p>
+  <!-- <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p> -->
+  <hr class="govuk-!-margin-bottom-6">
+</section>
+
+<p class="govuk-body">
+  <strong>Appeal reference:</strong> 012726<br>
+  <strong>Appeal site address:</strong> 2 Aubrey House, Aubrey Road, BS3 3EX
+</p>
+
+<p class="govuk-body">
+  Dear (your name),
+</p>
+
+<p class="govuk-body">
+  Your comments on 012726 have been submitted.
+</p>
+
+<!-- <p class="govuk-body">
+  If you remove your comments from an appeal, they will not be considered as part of the appeal decision. You cannot remove your comments after a decision has been made.
+</p> -->
+
+<!-- <p class="govuk-body">
+  To remove your comments… (email us)
+</p> -->
+
+<!-- <p class="govuk-body">
+  <a href="appeal-details?status=open&appeal=1&appealCode=012726" class="govuk-link">
+    Here is a link to the appeal
+  </a>
+</p> -->
+
+<h2 class="govuk-heading-m">
+  What happens next
+</h2>
+
+<p class="govuk-body">
+  Once the deadline for submitting comments has passed, the planning inspector will review all the evidence submitted. They will then make their decision, it usually takes between 8 to 12 weeks.
+</p>
+
+<p class="govuk-body">
+  We will contact you by email with the final decision.
+</p>
+
+<!-- <p class="govuk-body">
+  Thank you,
+</p> -->
+
+<p class="govuk-body">
+  The Planning Inspectorate<br>
+  enquiries@planninginspectorate.gov.uk
+</p>
+
+{% endblock %}

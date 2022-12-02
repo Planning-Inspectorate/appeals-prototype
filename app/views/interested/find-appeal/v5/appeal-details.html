@@ -4,7 +4,7 @@
   {% set appealCode = "0166327" %}
 {% endif %}
 
-{% set title = "Appeal "+data['appealCode'] %}
+{% set title = "Appeal reference "+data['appealCode'] %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -31,14 +31,18 @@
 
       <span class="govuk-caption-l">{{ subServiceName }}</span>
       <h1 class="govuk-heading-l">
-        {{ title }}{% if data['status'] == "open" %}
-          is open for comments
-        {% elseif data['status'] == "closed" %}
-          is closed for comments
-        {% else %} decision made
-        {% endif %}
+        {{ title }}
       </h1>
 
+      <div class="govuk-inset-text">
+        {% if data['status'] == "open" %}
+          Open for comments
+        {% elseif data['status'] == "closed" %}
+          Closed for comments
+        {% else %}
+          Decision, allowed
+        {% endif %}
+      </div>
 
     </div>
 
@@ -66,6 +70,12 @@
           You cannot add comments.
         </p>
 
+      {% elif data['status'] == "completed" %}
+
+        <p class="govuk-body">
+          Decision date, 2 February 2022
+        </p>
+
       {% endif %}
 
     </div>
@@ -89,8 +99,8 @@
           </li>
           {% if data['status'] == "completed" %}
             <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#decision">
-                Decision
+              <a class="govuk-tabs__tab" href="#inspector-report">
+                Inspector report
               </a>
             </li>
           {% endif %}
@@ -107,7 +117,7 @@
         </div>
 
         {% if data['status'] == "completed" %}
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="decision">
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="inspector-report">
           <!-- appeal decision -->
           {% include "_includes/appeal-content/full-appeal-decision-allowed.html" %}
         </div>

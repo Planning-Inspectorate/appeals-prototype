@@ -9,6 +9,17 @@ router.get('*', function(req, res, next){
 })
 
 router.post('/your-name', function (req, res) {
+
+  // name defaults
+  let firstname = req.session.data['interested-first-name']
+  let lastname = req.session.data['interested-last-name']
+
+  // route depending on value
+  if (firstname == null ) {
+    res.locals['firstname'] = 'Sam',
+    res.locals['lastname'] = 'Fisher'
+  }
+
   res.redirect('your-email')
 })
 

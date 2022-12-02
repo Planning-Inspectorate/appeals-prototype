@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set title = "Find and comment on planning appeals" %}
+{% set title = "Comment on a planning appeal" %}
 
 {% block pageTitle %}
   {{ title }}
@@ -44,26 +44,23 @@
             Contents
           </h2>
           <ol class="app-contents-list__list">
-            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
-              Overview
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#">
+                Overview
+              </a>
             </li>
-
             <li class="app-contents-list__list-item app-contents-list__list-item--dashed app-contents-list__list-item--active">
               <a href="#">
                 When you can comment on an appeal
               </a>
             </li>
-
             <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
               <a href="#">
                 Your comments
               </a>
             </li>
-
-            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
-              <a href="#">
-                Find an appeal
-              </a>
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              Find and comment on an appeal
             </li>
           </ol>
         </nav>
@@ -77,11 +74,11 @@
     <div class="govuk-grid-column-two-thirds app-mainstream-guide-body">
 
       <h2 class="govuk-heading-m">
-        Overview
+        Find and comment on an appeal
       </h2>
 
       <p>
-        This is a service for searching, viewing and commenting on planning appeals.
+        This is a service for searching, viewing and commenting on planning appeals. Commenting on a planning appeal is also known as ‘making a representation’.
       </p>
 
       <p class="govuk-body">
@@ -105,22 +102,26 @@
       </ul>
 
       <p class="govuk-body">
-        If you want to comment on an appeal, you’ll need:
+        If you want to comment on an appeal, you'll need an email address so we can contact you if we have any questions.
+      </p>
+
+      <p class="govuk-body">
+        You will also need (one of the following):
       </p>
 
       <ul class="govuk-list govuk-list--bullet">
 
         <li>
-          an email address so we can contact you if we have any questions
+          appeal site postcode
         </li>
 
         <li>
-          the 7-digit appeal reference number that can be found on the email from the local planning department
+          appeal site grid reference
         </li>
 
-        <!-- <li>
-          your comments saved in a document
-        </li> -->
+        <li>
+          7-digital appeal reference
+        </li>
 
       </ul>
 
@@ -129,18 +130,26 @@
       </h2>
 
       <p class="govuk-body">
-        Any previous comments that you submitted as part of an application will be considered by the Planning Inspector. The local planning department shares these with the Planning Inspectorate, so there is no need to submit repeat comments.
+        Any previous comments that you submitted as part of an application will be considered by the Planning Inspector. The local planning authority shares these with the Planning Inspectorate, so there is no need to submit repeat comments.
       </p>
 
       <p class="govuk-body">
-        You must not include sensitive information (also called special category information) if it’s not relevant to the appeal. If you do include sensitive information we will ask you to remove it.
-      </p>
-
-      <p>
-        Your comments must not include inflammatory or abusive language.
+        You must not include sensitive information. If you do include sensitive information, we’ll send them back to you. Comments that include sensitive information will not be included in the appeal.
       </p>
 
       {% include "_includes/sensitive-information-list.html" %}
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Your comments must not include inflammatory or abusive language.
+        </strong>
+      </div>
+
+      <!-- <p>
+        Your comments must not include inflammatory or abusive language.
+      </p> -->
 
       <a href="/interested/find-appeal/v5/appeal-search-address" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
         Start now
