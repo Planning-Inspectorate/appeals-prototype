@@ -47,9 +47,19 @@
           Sensitive information
         </h2>
 
-        <p>You must not include any sensitive information in your comments.</p>
+        <p>
+          You must not include sensitive information. If you do include sensitive information, we’ll send them back to you. Comments that include sensitive information will not be included in the appeal.
+        </p>
 
         {% include "_includes/sensitive-information-list.html" %}
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Your comments must not include inflammatory or abusive language.
+          </strong>
+        </div>
 
         {{ govukTextarea({
           name: 'comments',

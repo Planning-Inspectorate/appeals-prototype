@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-main.html' %}
 
+{% set prototypeLinks = [{href: 'appeal-comment-confirmation', text: 'Comments confirmation'}] %}
+
 {% set title = 'Comments submitted' %}
 
 {% set nav = true %}
@@ -17,17 +19,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {{ govukPanel({
-        titleHtml: title
-      }) }}
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          {{ title }}
+        </h1>
+        <div class="govuk-panel__body">
+          Appeal reference <br><strong>012726</strong>
+        </div>
+      </div>
 
       <p>We’ve sent you a confirmation email.</p>
 
-      <!-- <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-m">
         What happens next
       </h2>
 
-      <p>We’ll check you’ve submitted everything we need to progress the appeal and will contact you if anything is missing.</p> -->
+      <p>
+        The inspector will review all the evidence and make their decision. The Planning Inspectorate will contact you by email when the final decision has been made.
+      </p>
 
       <p>
         <a href="#" class="govuk-link--no-visited-state">

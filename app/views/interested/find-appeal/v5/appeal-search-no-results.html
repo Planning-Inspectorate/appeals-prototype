@@ -2,6 +2,9 @@
 
 {% set title = "No matching appeals" %}
 
+{% set prototypeLinks = [{href: 'appeal-search-no-results?search=number', text: 'No results from reference'},
+{href: 'appeal-search-no-results?search=', text: 'No results from address'}] %}
+
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
 {% endblock %}
@@ -31,25 +34,23 @@
 
     {% if data['search'] == "number" %}
       <p class="govuk-body">
-        No appeals found using that appeal reference.
+        We have not found an appeal for this reference. This could be because there is not an appeal for this reference or the appeal has not started.
       </p>
     {% else %}
       <p class="govuk-body">
-        {% if data['postcode'] %}
-          No appeals found for {{ data['postcode'] }}. <a href="appeal-search-address?version=" class="govuk-link">Change<span class="govuk-visually-hidden"> search address</span></a>
-        {% else %}
-          No appeals found for (number or postcode).
-        {% endif %}
+        We have not found an appeal for this address. This could be because there is not an appeal for this address or the appeal has not started.
       </p>
     {% endif %}
 
-    {% if data['search'] == "number" %}
-      <a href="appeal-search-reference" class="govuk-link">
-    {% else %}
-      <a href="appeal-search-address" class="govuk-link">
-    {% endif %}
-      Search for another appeal
-    </a>
+    <p class="govuk-body">
+      {% if data['search'] == "number" %}
+        <a href="appeal-search-reference" class="govuk-link">
+      {% else %}
+        <a href="appeal-search-address" class="govuk-link">
+      {% endif %}
+        Search for another appeal
+      </a>
+    </p>
 
   </div>
 </div>

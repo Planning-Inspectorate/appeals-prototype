@@ -26,7 +26,7 @@
   </h1>
 
   <p>
-    We’ll contact you if we need to discuss your comments.
+    We’ll contact you by email if we need to discuss your comments.
   </p>
 
   {{ govukInput({
@@ -37,6 +37,12 @@
     autocomplete: 'email',
     spellcheck: false
   }) }}
+
+  <p class="govuk-body">
+    <a href="" class="govuk-link">
+      I do not have an email address
+    </a>
+  </p>
 
   <!-- label: {
     html: 'What is your email address?',

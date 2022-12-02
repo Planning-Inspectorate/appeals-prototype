@@ -50,16 +50,15 @@
       },
       {
         text: "Appeal site",
-        classes: 'govuk-!-width-one-third'
-      },
-      {
-        text: "Applicant",
-        classes: 'govuk-!-width-one-quarter'
+        classes: 'govuk-!-width-one-half'
       },
       {
         text: "Decision date",
         classes: 'govuk-!-width-one-quarter',
         format: 'numeric'
+      },
+      {
+        text: "Decision"
       }
     ],
     rows: [
@@ -72,11 +71,11 @@
           text: "102 Aubrey Road, BS3 3EX"
         },
         {
-          text: "Mel Pickins"
+          text:  '20' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "21 January 2022",
-          format: 'numeric'
+          text: "Allowed"
         }
       ],
       [
@@ -88,11 +87,11 @@
           text: "77 Aubrey Road, BS3 3EX"
         },
         {
-          text: "Nic Soonez"
+          text:  '21' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "21 January 2022",
-          format: 'numeric'
+          text: "Allowed"
         }
       ],
       [
@@ -104,11 +103,11 @@
           text: "19 Aubrey Road, BS3 3EX"
         },
         {
-          text: "Talisan Creedance"
+          text:  '34' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "12 January 2022",
-          format: 'numeric'
+          text: "Allowed"
         }
       ],
       [
@@ -120,11 +119,11 @@
           text: "2 Aubrey House, Aubrey Road, BS3 3EX"
         },
         {
-          text: "J. M. Wigstone"
+          text:  '40' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "20 December 2021",
-          format: 'numeric'
+          text: "Dismissed"
         }
       ],
 
@@ -137,11 +136,11 @@
           text: "1 Aubrey House, Aubrey Road, BS3 3EX"
         },
         {
-          text: "Jan Fish"
+          text:  '40' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "11 July 2021",
-          format: 'numeric'
+          text: "Dismissed"
         }
       ],
       [
@@ -153,11 +152,11 @@
           text: "22 Aubrey Road, BS3 3EX"
         },
         {
-          text: "P. J. Thames"
+          text:  '42' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "13 June 2021",
-          format: 'numeric'
+          text: "Dismissed"
         }
       ],
       [
@@ -169,11 +168,11 @@
           text: "155 Aubrey Road, BS3 3EX"
         },
         {
-          text: "Danny Fiakkas"
+          text:  '46' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "13 April 2021",
-          format: 'numeric'
+          text: "Allowed"
         }
       ],
       [
@@ -185,11 +184,11 @@
           text: "32 Vicarage Court, Aubrey Road, BS3 3EX"
         },
         {
-          text: "Pavarthi Sagar"
+          text:  '46' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "13 April 2021",
-          format: 'numeric'
+          text: "Dismissed"
         }
       ],
       [
@@ -201,11 +200,11 @@
           text: "8 Aubrey Road, BS3 3EX"
         },
         {
-          text: "Ash Davenant"
+          text:  '72' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "8 March 2021",
-          format: 'numeric'
+          text: "Allowed"
         }
       ],
       [
@@ -217,11 +216,11 @@
           text: "1 Vicarage Court, Aubrey Road, BS3 3EX"
         },
         {
-          text: "Charlie Agadosi"
+          text:  '78' | daysInPastShort,
+          format: 'numeric'
         },
         {
-          text: "18 February 2021",
-          format: 'numeric'
+          text: "Split-decision"
         }
       ]
     ]
