@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Do you own the whole appeal site?' %}
+{% set title = 'Do you own some the land involved in the appeal?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'ownership',
-    name: 'ownership',
+    idPrefix: 'own-some',
+    name: 'own-some',
     fieldset: {
       legend: {
         html: title,
@@ -17,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('ownership','Yes')
+        checked: checked('own-some','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('ownership','No')
+        checked: checked('own-some','No')
       }
     ]
   }) }}
