@@ -150,21 +150,21 @@
           html: 'Site fully owned'
         },
         value: {
-          html: data['ownership'] or 'Yes'
+          html: data['own-all'] or 'Yes'
         }
-        if data['ownership-complete'] else
+        if data['own-all-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'prepare-appeal/ownership?cya=true',
+              href: 'prepare-appeal/own-all?cya=true',
               html: 'Change'
             }
-            if data['ownership-complete'] else
+            if data['own-all-complete'] else
             {
-              href: 'prepare-appeal/ownership',
+              href: 'prepare-appeal/own-all',
               html: 'Answer'
             }
           ]
@@ -172,10 +172,60 @@
       },
       {
         key: {
-          html: 'Other owners informed'
+          html: 'Site partially owned'
         },
         value: {
-          html: data['owners-notified'] or 'Yes'
+          html: data['own-some'] or 'Yes'
+        }
+        if data['own-some-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/own-some?cya=true',
+              html: 'Change'
+            }
+            if data['own-some-complete'] else
+            {
+              href: 'prepare-appeal/own-some',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No',
+      {
+        key: {
+          html: 'All owners known'
+        },
+        value: {
+          html: data['own-others'] or 'Yes'
+        }
+        if data['own-others-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/own-others?cya=true',
+              html: 'Change'
+            }
+            if data['own-others-complete'] else
+            {
+              href: 'prepare-appeal/own-others',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No',
+      {
+        key: {
+          html: 'Owners told'
+        },
+        value: {
+          html: 'Yes'
         }
         if data['owners-notified-complete'] else
         {
@@ -194,7 +244,82 @@
             }
           ]
         }
-      } if data['ownership'] == 'No',
+      } if data['own-all'] == 'No' and data['own-others'] == 'Yes',
+      {
+        key: {
+          html: 'Attempted to identify owners'
+        },
+        value: {
+          html: 'Yes'
+        }
+        if data['owners-searched-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-searched?cya=true',
+              html: 'Change'
+            }
+            if data['owners-searched-complete'] else
+            {
+              href: 'prepare-appeal/owners-searched',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No' and (data['own-others'] == 'Some' or data['own-others'] == 'No'),
+      {
+        key: {
+          html: 'Advertised appeal'
+        },
+        value: {
+          html: 'Yes'
+        }
+        if data['owners-advertised-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-advertised?cya=true',
+              html: 'Change'
+            }
+            if data['owners-advertised-complete'] else
+            {
+              href: 'prepare-appeal/owners-advertised',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No' and (data['own-others'] == 'Some' or data['own-others'] == 'No'),
+      {
+        key: {
+          html: 'Owners told'
+        },
+        value: {
+          html: 'Yes'
+        }
+        if data['owners-notified-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-notified?cya=true',
+              html: 'Change'
+            }
+            if data['owners-notified-complete'] else
+            {
+              href: 'prepare-appeal/owners-notified',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No' and data['own-others'] == 'Some',
       {
         key: {
           html: 'Visibility'

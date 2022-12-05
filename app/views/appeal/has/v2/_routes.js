@@ -82,11 +82,35 @@ router.post('/prepare-appeal/lpa-reference', function (req, res) {
 })
 
 router.post('/prepare-appeal/address', function (req, res) {
-  res.redirect('ownership')
+  res.redirect('own-all')
 })
 
-router.post('/prepare-appeal/ownership', function (req, res) {
-  if (req.session.data['ownership'] == 'No') {
+router.post('/prepare-appeal/own-all', function (req, res) {
+  if (req.session.data['own-all'] == 'No') {
+    res.redirect('own-some')
+  } else {
+    res.redirect('site-visibility')
+  }
+})
+
+router.post('/prepare-appeal/own-some', function (req, res) {
+  res.redirect('own-others')
+})
+
+router.post('/prepare-appeal/own-others', function (req, res) {
+  if (req.session.data['own-others'] == 'Some' || req.session.data['own-others'] == 'No') {
+    res.redirect('owners-searched')
+  } else {
+    res.redirect('owners-notified')
+  }
+})
+
+router.post('/prepare-appeal/owners-searched', function (req, res) {
+  res.redirect('owners-advertised')
+})
+
+router.post('/prepare-appeal/owners-advertised', function (req, res) {
+  if (req.session.data['own-others'] == 'Some') {
     res.redirect('owners-notified')
   } else {
     res.redirect('site-visibility')
