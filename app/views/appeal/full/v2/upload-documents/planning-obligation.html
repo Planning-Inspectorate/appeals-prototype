@@ -1,27 +1,21 @@
-{% extends '_layouts/layout-pins.html' %}
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Upload your draft planning obligation' if data['planning-obligation-status'] == 'In draft' else 'Upload your planning obligation' %}
 
 {% block questions %}
-  {% if data['non-determination'] == 'true' %}
-    {% set title = 'Upload what your decision notice would have said' %}
-    <h1 class="govuk-heading-l">
-      {{ title }}
-    </h1>
-    <p>Upload a copy of what your decision notice would have said if you&rsquo;d decided the application.</p>
-  {% else %}
-    {% set title = 'Upload the planning officer&rsquo;s report' %}
-    <h1 class="govuk-heading-l">
-      {{ title | safe }}
-    </h1>
-    <p>Upload the planning officer&rsquo;s report to committee or delegated report on the application, and any other relevant documents or minutes.</p>
-  {% endif %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
 
+  {{ '<p>Your deadline to submit your finalised planning obligation is around 6 weeks after you submit your appeal. We&rsquo;ll tell you the exact date when we confirm your appeal.</p>' | safe if data['planning-obligation-status'] == 'In draft' }}
 
   {% set uploadHtml %}
     {{ govukFileUpload({
-      name: 'report-upload',
+      id: 'planning-obligation',
+      name: 'planning-obligation',
       classes: 'moj-multi-file-upload__input',
       label: {
-        text: 'Upload a file',
+        text: 'Upload file',
         classes: 'govuk-label--m'
       },
       hint: {
@@ -64,7 +58,7 @@
       e.preventDefault();
 
       $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="report-upload" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+        $('<input name="planning-obligation" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
       });
 
       $(this).unbind('submit').submit();
