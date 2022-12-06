@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Telling the tenants' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p>You must have told all of the tenants about the appeal.</p>
+
+  <p>You must have done this within the last 21 days using a copy of the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/994918/eHow_To_-_Planning_18_ANNEX.pdf" rel="noreferrer noopener" target="_blank">form in annexe 2A of the 'making your appeal' guidance (opens in new tab)</a>.</p>
+
+  {{ govukCheckboxes({
+    idPrefix: 'agricultural-notified',
+    name: 'agricultural-notified',
+    classes: 'checkboxes-long-text',
+    fieldset: {
+      legend: {
+        html: 'Have the tenants been told about the appeal?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'I confirm that I&rsquo;ve told all the tenants about my appeal within the last 21 days using a copy of the form in annexe 2A',
+        value: 'Yes',
+        checked: checked('agricultural-notified','Yes')
+      }
+    ]
+  }) }}
+{% endblock %}
