@@ -1,0 +1,17 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What was the site use at the time of application?' %}
+
+{% block questions %}
+  {{ govukTextarea({
+    name: 'site-usage',
+    id: 'site-usage',
+    value: data['site-usage'],
+    rows: '5',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    }
+  }) }}
+{% endblock %}

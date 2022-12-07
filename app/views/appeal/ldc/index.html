@@ -1,0 +1,102 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Lawful development certificate' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% set version = "3" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for dev'
+      }) }}
+    </h2>
+
+    <form action="v{{version}}/task-list" method="post">
+      {% call govukFieldset({
+        legend: {
+        html: 'Variations',
+        classes: 'govuk-fieldset__legend--s'
+        }
+      }) %}
+
+        {{ govukRadios({
+          idPrefix: 'decision-check',
+          name: 'decision-check',
+          classes: 'govuk-radios--small',
+          fieldset: {
+            legend: {
+              html: 'Decision'
+            }
+          },
+          items: [
+            {
+              html: 'Yes',
+              value: 'Yes',
+              checked: checked('decision-check','Yes')
+            },
+            {
+              html: 'No (non-detirmination)',
+              value: 'No',
+              checked: checked('decision-check','No')
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: 'section',
+          name: 'section',
+          classes: 'govuk-radios--small',
+          fieldset: {
+            legend: {
+              html: 'Section of law'
+            }
+          },
+          items: [
+            {
+              html: 'Section 191: the existing use, operations or activity is legal',
+              value: '191',
+              checked: checked('section','191')
+            },
+            {
+              html: 'Section 192: the proposed use, operations or activity is legal',
+              value: '192',
+              checked: checked('section','192')
+            },
+            {
+              html: 'Section 26H: the proposed work to a listed building is legal',
+              value: '26H',
+              checked: checked('section','26H')
+            }
+          ]
+        }) }}
+
+      {% endcall %}
+
+      {{ govukButton({
+        html: 'View prototype',
+        isStartButton: true
+      }) }}
+  </form>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What&rsquo;s the company name?' %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'company-name',
+    name: 'company-name',
+    value: data['company-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true or false
+    },
+    hint: {
+      html: 'This should match the name on the application to the local planning authority'
+    },
+    spellcheck: false
+  }) }}
+{% endblock %}
