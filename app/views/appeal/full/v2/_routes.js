@@ -52,14 +52,14 @@ router.get('/task-list', function(req, res, next){
       req.session.data['ownership-completed'] = 'true'
     } else if (
       req.session.data['own-others'] == 'Some'
-      && req.session.data['owners-search-complete']
+      && req.session.data['owners-searched-complete']
       && req.session.data['owners-advertised-complete']
       && req.session.data['owners-notified-complete']
     ){
       req.session.data['ownership-completed'] = 'true'
     } else if (
       req.session.data['own-others'] == 'No'
-      && req.session.data['owners-search-complete']
+      && req.session.data['owners-searched-complete']
       && req.session.data['owners-advertised-complete']
     ){
       req.session.data['ownership-completed'] = 'true'
@@ -481,7 +481,7 @@ router.post('/upload-documents/planning-obligation-check', function (req, res) {
 })
 
 router.post('/upload-documents/planning-obligation-status', function (req, res) {
-  if (req.session.data['planning-obligation-check'] == 'Finalised and ready to submit' || req.session.data['planning-obligation-check'] == 'In draft') {
+  if (req.session.data['planning-obligation-status'] == 'Finalised and ready to submit' || req.session.data['planning-obligation-status'] == 'In draft') {
     res.redirect('planning-obligation')
   } else {
     res.redirect('other-check')
