@@ -241,6 +241,9 @@ router.get('/task-list', function(req, res, next){
     res.locals.data['upload-documents-completed'] = 'false'
   }
 
+
+
+
   // Set up the section count and increase if each section is done
   let count = 0
   if (res.locals.data['prepare-appeal-completed'] == 'true') { count++ }

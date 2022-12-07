@@ -21,11 +21,107 @@ router.post('*', function(req, res, next){
 })
 
 router.get('/task-list', function(req, res, next){
-  let count = 0
-  if (req.session.data['prepare-appeal-completed'] == 'true') { count++ }
-  if (req.session.data['upload-docuemtns-completed'] == 'true') { count++ }
+  // Check if appellant questions are complete
+  if (
+    (req.session.data['appellant-check'] == 'Another individual'
+    && req.session.data['appellant-name-complete'])
+    ||
+    (req.session.data['appellant-check-complete']
+    && req.session.data['appellant-check'] != 'Another individual')
+  ){
+    req.session.data['appellant-completed'] = 'true'
+  } else {
+    req.session.data['appellant-completed'] = 'false'
+  }
 
+  // Check if ownership questions are complete
+  if (
+    req.session.data['own-all-complete']
+    && req.session.data['own-all'] != 'No'
+  ){
+    req.session.data['ownership-completed'] = 'true'
+  } else if (
+    req.session.data['own-all'] == 'No'
+    && req.session.data['own-some-complete']
+    && req.session.data['own-others-complete']
+  ){
+    if (
+      req.session.data['own-others'] == 'Yes'
+      && req.session.data['owners-notified-complete']
+    ){
+      req.session.data['ownership-completed'] = 'true'
+    } else if (
+      req.session.data['own-others'] == 'Some'
+      && req.session.data['owners-searched-complete']
+      && req.session.data['owners-advertised-complete']
+      && req.session.data['owners-notified-complete']
+    ){
+      req.session.data['ownership-completed'] = 'true'
+    } else if (
+      req.session.data['own-others'] == 'No'
+      && req.session.data['owners-searched-complete']
+      && req.session.data['owners-advertised-complete']
+    ){
+      req.session.data['ownership-completed'] = 'true'
+    } else {
+      req.session.data['ownership-completed'] = 'false'
+    }
+  } else {
+    req.session.data['ownership-completed'] = 'false'
+  }
+
+  // Check if whole prepare section is complete
+  if (
+    req.session.data['contact-details-complete']
+    && req.session.data['appellant-completed'] == 'true'
+    && req.session.data['lpa-reference-complete']
+    && req.session.data['address-complete']
+    && req.session.data['ownership-completed'] == 'true'
+    && req.session.data['site-visibility-complete']
+    && req.session.data['health-and-safety-complete']
+  ){
+    res.locals.data['prepare-appeal-completed'] = 'true'
+  } else {
+    res.locals.data['prepare-appeal-completed'] = 'false'
+  }
+
+
+
+
+
+  // Check if other upload questions are complete
+  if (
+    (req.session.data['other-check'] == 'Yes'
+    && req.session.data['other-complete'])
+    ||
+    (req.session.data['other-check-complete']
+    && req.session.data['other-check'] != 'Yes')
+  ){
+    req.session.data['other-completed'] = 'true'
+  } else {
+    req.session.data['other-completed'] = 'false'
+  }
+
+  // Check if whole upload section is complete
+  if (
+    req.session.data['application-complete']
+    && req.session.data['decision-letter-complete']
+    && req.session.data['appeal-statement-complete']
+    && req.session.data['other-check-complete']
+    && req.session.data['other-completed'] == 'true'
+  ){
+    res.locals.data['upload-documents-completed'] = 'true'
+  } else {
+    res.locals.data['upload-documents-completed'] = 'false'
+  }
+
+
+  // Set up the section count and increase if each section is done
+  let count = 0
+  if (res.locals.data['prepare-appeal-completed'] == 'true') { count++ }
+  if (res.locals.data['upload-documents-completed'] == 'true') { count++ }
   res.locals.count = count
+
   next()
 })
 
@@ -39,24 +135,6 @@ router.get('/task-list', function(req, res, next){
 router.post('/prepare-appeal/:page', function (req, res, next) {
   req.session.data['prepare-appeal-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (
-    req.session.data['contact-details-complete']
-    && req.session.data['appellant-check-complete']
-    && req.session.data['lpa-reference-complete']
-    && req.session.data['address-complete']
-    && req.session.data['site-visibility-complete']
-    && req.session.data['health-and-safety-complete']
-  ){
-    if (
-      req.session.data['appellant-check'] == 'Another individual'
-      && req.session.data['appellant-name-complete']
-    ){
-      req.session.data['prepare-appeal-completed'] = 'true'
-    } else if (req.session.data['appellant-check'] != 'Another individual') {
-      req.session.data['prepare-appeal-completed'] = 'true'
-    }
-  }
 
   next()
 })
@@ -149,22 +227,6 @@ router.get('/prepare-appeal/complete', function (req, res) {
 router.post('/upload-documents/:page', function (req, res, next) {
   req.session.data['upload-documents-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (
-    req.session.data['application-complete']
-    && req.session.data['decision-letter-complete']
-    && req.session.data['appeal-statement-complete']
-    && req.session.data['other-check-complete']
-  ){
-    if (
-      req.session.data['other-check'] == 'Yes'
-      && req.session.data['other-complete']
-    ){
-      req.session.data['upload-documents-completed'] = 'true'
-    } else if (req.session.data['other-check'] != 'Yes') {
-      req.session.data['upload-documents-completed'] = 'true'
-    }
-  }
 
   next()
 })
