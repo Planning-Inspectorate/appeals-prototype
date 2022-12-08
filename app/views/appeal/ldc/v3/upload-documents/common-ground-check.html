@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Do you have a draft statement of common ground?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'common-ground-check',
+    name: 'common-ground-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('common-ground-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('common-ground-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

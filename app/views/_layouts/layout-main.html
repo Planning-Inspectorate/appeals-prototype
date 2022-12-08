@@ -3,7 +3,7 @@
 {# Add the title(h1) to page title if it's set, add to each page with:
 {% set title = 'Example' %} #}
 {% block pageTitle %}
-	{{ title+' –' if title }} {{ serviceName }} – GOV.UK
+	{{ (title+' –') | safe if title }} {{ serviceName }} – GOV.UK
 {% endblock %}
 
 {# Add the phase banner and back link to each page #}

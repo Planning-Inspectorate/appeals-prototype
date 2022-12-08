@@ -1,0 +1,375 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">1. </span> Prepare appeal
+    {% if data['prepare-appeal-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['prepare-appeal-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Your name'
+        },
+        value: {
+          html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Jane Doe')+('<br>'+data['agency-name'] if data['agency-name'])
+        }
+        if data['contact-details-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/contact-details?cya=true',
+              html: 'Change'
+            }
+            if data['contact-details-complete'] else
+            {
+              href: 'prepare-appeal/contact-details',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Named on application'
+        },
+        value: {
+          html: data['appellant-check'] or 'You'
+        }
+        if data['appellant-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/appellant-check?cya=true',
+              html: 'Change'
+            }
+            if data['appellant-check-complete'] else
+            {
+              href: 'prepare-appeal/appellant-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Their name'
+        },
+        value: {
+          html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Joe Bloggs')
+        }
+        if data['appellant-name-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/appellant-name?cya=true',
+              html: 'Change'
+            }
+            if data['appellant-name-complete'] else
+            {
+              href: 'prepare-appeal/appellant-name?',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['appellant-check'] == 'Another individual',
+      {
+        key: {
+          html: 'Application reference'
+        },
+        value: {
+          html: data['lpa-reference'] or 'ABC123456'
+        }
+        if data['lpa-reference-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/lpa-reference?cya=true',
+              html: 'Change'
+            }
+            if data['lpa-reference-complete'] else
+            {
+              href: 'prepare-appeal/lpa-reference',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Site address'
+        },
+        value: {
+          html: (data['address-line-1'] or '1 Road Name')+('<br>'+data['address-line-2'] if data['address-line-2'])+('<br>'+(data['address-town'] or 'London'))+('<br>'+(data['address-postcode'] or 'SW1A 1AA'))
+        }
+        if data['address-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/address?cya=true',
+              html: 'Change'
+            }
+            if data['address-complete'] else
+            {
+              href: 'prepare-appeal/address',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Site fully owned'
+        },
+        value: {
+          html: data['own-all'] or 'Yes'
+        }
+        if data['own-all-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/own-all?cya=true',
+              html: 'Change'
+            }
+            if data['own-all-complete'] else
+            {
+              href: 'prepare-appeal/own-all',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Site partially owned'
+        },
+        value: {
+          html: data['own-some'] or 'Yes'
+        }
+        if data['own-some-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/own-some?cya=true',
+              html: 'Change'
+            }
+            if data['own-some-complete'] else
+            {
+              href: 'prepare-appeal/own-some',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No',
+      {
+        key: {
+          html: 'All owners known'
+        },
+        value: {
+          html: data['own-others'] or 'Yes'
+        }
+        if data['own-others-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/own-others?cya=true',
+              html: 'Change'
+            }
+            if data['own-others-complete'] else
+            {
+              href: 'prepare-appeal/own-others',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No',
+      {
+        key: {
+          html: 'Owners told'
+        },
+        value: {
+          html: 'Yes'
+        }
+        if data['owners-notified-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-notified?cya=true',
+              html: 'Change'
+            }
+            if data['owners-notified-complete'] else
+            {
+              href: 'prepare-appeal/owners-notified',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No' and data['own-others'] == 'Yes',
+      {
+        key: {
+          html: 'Attempted to identify owners'
+        },
+        value: {
+          html: 'Yes'
+        }
+        if data['owners-searched-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-searched?cya=true',
+              html: 'Change'
+            }
+            if data['owners-searched-complete'] else
+            {
+              href: 'prepare-appeal/owners-searched',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No' and (data['own-others'] == 'Some' or data['own-others'] == 'No'),
+      {
+        key: {
+          html: 'Advertised appeal'
+        },
+        value: {
+          html: 'Yes'
+        }
+        if data['owners-advertised-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-advertised?cya=true',
+              html: 'Change'
+            }
+            if data['owners-advertised-complete'] else
+            {
+              href: 'prepare-appeal/owners-advertised',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No' and (data['own-others'] == 'Some' or data['own-others'] == 'No'),
+      {
+        key: {
+          html: 'Owners told'
+        },
+        value: {
+          html: 'Yes'
+        }
+        if data['owners-notified-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/owners-notified?cya=true',
+              html: 'Change'
+            }
+            if data['owners-notified-complete'] else
+            {
+              href: 'prepare-appeal/owners-notified',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['own-all'] == 'No' and data['own-others'] == 'Some',
+      {
+        key: {
+          html: 'Visibility'
+        },
+        value: {
+          html: 'No<br>'+data['site-visibility__details'] if data['site-visibility'] == 'No' else 'Yes'
+        }
+        if data['site-visibility-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/site-visibility?cya=true',
+              html: 'Change'
+            }
+            if data['site-visibility-complete'] else
+            {
+              href: 'prepare-appeal/site-visibility',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Site health and safety issues'
+        },
+        value: {
+          html: 'Yes<br>'+data['health-and-safety__details'] if data['health-and-safety'] == 'Yes' else 'No'
+        }
+        if data['health-and-safety-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/health-and-safety?cya=true',
+              html: 'Change'
+            }
+            if data['health-and-safety-complete'] else
+            {
+              href: 'prepare-appeal/health-and-safety',
+              html: 'Answer'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+</li>

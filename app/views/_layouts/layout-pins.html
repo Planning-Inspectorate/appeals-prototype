@@ -6,7 +6,7 @@
 {# Add the title(h1) to page title if it's set, add to each page with:
 {% set title = 'Example' %} #}
 {% block pageTitle %}
-	{{ title+' –' if title }} {{ serviceName }} – Planning Inspectorate
+	{{ (title+' –') | safe if title }} {{ serviceName }} – Planning Inspectorate
 {% endblock %}
 
 {% block header %}

@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Has an enforcement notice been issued for this site?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'enforcemnet-notice',
+    name: 'enforcemnet-notice',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('enforcemnet-notice','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('enforcemnet-notice','No')
+      }
+    ]
+  }) }}
+{% endblock %}

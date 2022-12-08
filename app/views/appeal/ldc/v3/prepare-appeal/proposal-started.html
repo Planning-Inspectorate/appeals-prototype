@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'In the case of a proposal, had it been started before the application to the local planning authority was made?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'proposal-started',
+    name: 'proposal-started',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('proposal-started','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('proposal-started','No')
+      }
+    ]
+  }) }}
+{% endblock %}
