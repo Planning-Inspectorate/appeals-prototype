@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = 'Has the local planning authority given you a decision?' %}
+{% set prototypeLinks = [{href: '../errors/lpa-has-more-time', text: 'No: LPA has time to respond'}] %}
+
+{% block questions %}
+	<h1 class="govuk-heading-l">
+		Sorry, the service is unavailable
+	</h1>
+	<p class="govuk-body">
+		On Tuesday 13 December between 6-8pm, the appeal a planning decision service will be unavailable due to maintenance.
+	</p>
+	<p class="govuk-body">
+		We have not saved your answers. When the service is available, you will need to start again.
+	</p>
+
+	<p class="govuk-body">
+		We apologise for any inconvenience this causes.
+	</p>
+
+{% endblock %}
+
+{% block buttons %}
+{% endblock %}
