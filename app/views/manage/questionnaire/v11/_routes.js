@@ -4,7 +4,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 router.get('*', function(req, res, next){
 
   // Change the service name for this feature
-  res.locals['serviceName'] = 'Manage your planning inspectorate appeals'
+  res.locals['serviceName'] = 'Manage your appeals'
 
   // Add return to task list
   res.locals['return'] = true
