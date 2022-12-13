@@ -4,122 +4,101 @@
   Interested party full planning notification
 {% endblock %}
 
-Dear [IP NAME]Site detailsSite Address:[INSERT HERE]Description of development:[INSERT HERE]Application reference:[INSERT HERE]An appeal has been made against the decision of [LPD]to [insert reason for appeal, i.e. refuse to grant planning permission].[The appeal will be determined on the basis of written representations.][The appeal will be determined on the basis of a hearing.] [The appeal will be determined on the basis of an inquiry.] Interested individuals that want to take part in the Inquiry can do so by applying for Rule 6 status.Rule 6 status means that you would be able to present your evidence on a formal basis and cross examine the evidence of others.You can learn more about Rule 6 at:https://www.gov.uk/government/publications/apply-for-rule-6-status-on-a-planning-appeal-or-called-in-applicationWhat happens next** TO BE ADDED **Thank you,The Planning Inspectorate
-
 {% block content %}
 
-<img src="{{ asset_path }}images/bcc-logo.png" width="150" class="govuk-!-margin-bottom-6" />
+<!-- faux email header -->
+<section>
+  <p>
+    <strong>Subject:</strong> You are invited to comment on a planning appeal
+  </p>
+  <p>
+    <strong>To:</strong> example@email.com<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <!-- <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p> -->
+  <hr class="govuk-!-margin-bottom-6">
+</section>
 
 <p class="govuk-body">
-  Bristol City Council planning authority, Atlas Buildings<br>
-  Sedgemore Road, Bristol BS1 6XN
+  <strong>Appeal reference:</strong> 012726<br>
+  <strong>Appeal site address:</strong> 2 Aubrey House, Aubrey Road, BS3 3EX
 </p>
 
 <p class="govuk-body">
-  <strong>[Your name]</strong><br>
-  Atlas Buildings<br>
-  Sedgemore Road<br>
-  Bristol<br>
-  BS1 6XN
+  Dear [Your name],
 </p>
 
 <p class="govuk-body">
-  <strong>Appeal reference</strong><br>
-  0166327
+  Rachel Silver is appealing Bristol City Council’s decision to refuse planning application 22/065313/FUL.
 </p>
 
 <p class="govuk-body">
-  <strong>Appeal site</strong><br>
-  1 Aubrey House
-  Aubrey Road
-  Bristol BS3 3EX
-</p>
-
-<hr class="govuk-!-margin-top-9 govuk-!-margin-bottom-9">
-
-<!-- <p class="govuk-body">Planning appeal reference: A/1234567</p> -->
-<p class="govuk-body">Dear [Your name],</p>
-<!-- <p class="govuk-body">We’ve started a full appeal against the refusal of planning application <strong>A/10112454</strong>.</p> -->
-
-<p class="govuk-body">
-  J.M. Wigstone is appealing Bristol City Council's decision to refuse planning application A/10112454.
+  The decision on the appeal is based on evidence given by Rachel Silver, Bristol City Council and anyone who is affected by this appeal (also known as an ‘interested party’).
 </p>
 
 <p class="govuk-body">
-  Planning appeals are decided by the Planning Inspectorate.
+  Planning appeals are decided by The Planning Inspectorate.
 </p>
 
 <p class="govuk-body">
-  The Planning Inspectorate is an independent, impartial body that decides appeals on planning applications.
-</p>
-
-<p class="govuk-body">
-  The Planning Inspectorate makes a decision based on written statements from the applicant, Bristol City Council, and interested parties.
+  The Planning Inspectorate is independent of Bristol City Council.
 </p>
 
 <h2 class="govuk-heading-m">
   What you can do
 </h2>
 
-<h3 class="govuk-heading-s">
-  Comment on the appeal
-</h3>
-
 <p class="govuk-body">
-  You can comment on the appeal until 11.59pm on 4 May 2022.
+  Commenting on an appeal is optional.
 </p>
 
 <p class="govuk-body">
-  We’ve already sent your original comments to the Inspector. You do not need to repeat this information again.
+  If you made a comment on the application, they have been sent to the planning inspector. You do not need to send them again.
+</p>
+
+<!-- <p class="govuk-body">
+  You can submit a new comment, relevant to the appeal, by following the link.
+</p> -->
+
+<p class="govuk-body">
+  <a href="appeal-details?status=open&appeal=1&appealCode=012726" class="govuk-link">
+    https://appeals.planninginspectorate.gov.uk/appeals/012726?sc=935336894d43c80fa548fc4a01af3488
+  </a>
 </p>
 
 <p class="govuk-body">
-  You can submit any new comments to the Planning Inspectorate at <a href="appeal-search-number" class="govuk-body">https://www.gov.uk/appeal-planning-decision/comment-on-an-appeal/appeal-search</a>
+  You must submit your comment by 11:59pm on {{ '14' | daysInFuture }}.
+</p>
+
+<!-- <h2 class="govuk-heading-m">
+  Site visits
+</h2>
+
+<p class="govuk-body">
+  If a visit to the appeal site is needed, you can ask for the inspector to also view the appeal site from your property. This is usually only needed if they cannot see it from the road.
 </p>
 
 <p class="govuk-body">
-  You will need to enter the appeal reference: <strong>0166327</strong>.
+  If they agree, they’ll visit your property with Rachel Silver.
 </p>
-
-<h3 class="govuk-heading-s">
-  Request a site visit
-</h3>
 
 <p class="govuk-body">
-  You can request for the Planning Inspector to view the appeal site from your property. You can request this by emailing enquiries@planninginspectorate.gov.uk
-</p>
-
-<h3 class="govuk-heading-s">
-  Withdraw comments
-</h3>
-
-<p class="govuk-body">
-  You can withdraw any comments you've made in the past. You can do this by emailing <a href="mailto:enquiries@planninginspectorate.gov.uk" class="govuk-link">enquiries@planninginspectorate.gov.uk</a> by 11.59pm on 4 May 2022.
-</p>
-
-<h3 class="govuk-heading-s">
-  View the appeal details
-</h3>
-
-<p class="govuk-body">
-  You can view the appeal details of the planning application at <a href="https://www.bristol.gov.uk/planning-and-building-regulations/search-and-track-planning-application">https://www.bristol.gov.uk/planning-and-building-regulations/search-and-track-planning-application</a>
-</p>
+  You can request a site visit at your property by emailing us.
+</p> -->
 
 <h2 class="govuk-heading-m">
   What happens next
 </h2>
 
 <p class="govuk-body">
-  The Planning Inspectorate will look at the evidence from the applicant and the local planning authority, conduct a site visit, and make the final decision on the appeal.
+  The inspector will review all the evidence and make their decision on the appeal. The Planning Inspectorate will send you an email explaining the final decision.
 </p>
 
 <p class="govuk-body">
-  The Planning Inspectorate will publish the decision online at <a href="https://www.bristol.gov.uk/planning-and-building-regulations/search-and-track-planning-applications">https://www.bristol.gov.uk/planning-and-building-regulations/search-and-track-planning-applications</a>
-</p>
-
-<p class="govuk-body">
-  Thank you,​<br>
-  Bristol City Council planning authority<br>
+  The Planning Inspectorate<br>
+  enquiries@planninginspectorate.gov.uk
 </p>
 
 {% endblock %}

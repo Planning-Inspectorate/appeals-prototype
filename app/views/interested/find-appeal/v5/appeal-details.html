@@ -36,9 +36,9 @@
 
       <div class="govuk-inset-text">
         {% if data['status'] == "open" %}
-          Open for comments
+          Open for comment
         {% elseif data['status'] == "closed" %}
-          Closed for comments
+          Closed for comment
         {% else %}
           Decision, allowed
         {% endif %}
@@ -49,10 +49,10 @@
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
 
       {% if data['status'] == "open" %}
-        <!-- comments are open -->
+        <!-- comment are open -->
         <!-- <section class="govuk-!-margin-bottom-3">
           <strong class="govuk-tag govuk-tag--blue">
-            Open for comments
+            Open for comment
           </strong>
         </section> -->
 
@@ -63,11 +63,11 @@
       {% elif data['status'] == "closed" %}
 
         <p class="govuk-body">
-          The deadline for comments was 4 January 2022.
+          The deadline for comment was 4 January 2022.
         </p>
 
         <p class="govuk-body">
-          You cannot add comments.
+          You cannot add comment.
         </p>
 
       {% elif data['status'] == "completed" %}
@@ -80,6 +80,8 @@
 
     </div>
 
+
+    {% if data['status'] == "completed" %}
     <div class="govuk-grid-column-full">
 
       <div class="govuk-tabs" data-module="govuk-tabs">
@@ -123,10 +125,17 @@
         </div>
         {% endif %}
 
-    </div>
+      </div>
 
+      {% else %}
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">Appeal summary</h2>
+          {% include "_includes/appeal-content/full-appeal-summary.html" %}
+          {% include "_includes/appeal-content/full-appeal-details.html" %}
+        </div>
+      {% endif %}
 
-    </div>
   </div>
+</div>
 
 {% endblock %}
