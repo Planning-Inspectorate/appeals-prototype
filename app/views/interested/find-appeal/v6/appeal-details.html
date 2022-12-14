@@ -29,22 +29,52 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+
+      <!-- SECTION -->
+      <!-- title and decision if there is one -->
+
+
+
       <h1 class="govuk-heading-l">
-        {{ title }}
+        {% if data['status'] == "open" %}
+          Appeal open for comment
+        {% elseif data['status'] == "closed" %}
+          Appeal closed for comment
+        {% else %}
+          Appeal decision
+        {% endif %}
       </h1>
 
-      <div class="govuk-inset-text">
-        {% if data['status'] == "open" %}
-          Open for comment
-        {% elseif data['status'] == "closed" %}
-          Closed for comment
-        {% else %}
-          Decision, allowed
+      {% if data['status'] == "completed" %}
+
+        {% if data['decision'] == "allowed" %}
+          <h2 class="govuk-heading-m">
+            Allowed
+          </h2>
+        {% elif data['decision'] == "refused" %}
+          <h2 class="govuk-heading-m">
+            Refused
+          </h2>
+        {% elif data['decision'] == "split" %}
+          <h2 class="govuk-heading-m">
+            Allowed with conditions
+          </h2>
+          <p class="govuk-body">
+            A split decision is…
+          </p>
         {% endif %}
-      </div>
+
+      {% endif %}
 
     </div>
+
+
+
+    <!-- SECTION -->
+    <!-- text about what you can or can't do -->
+
+
 
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
 
@@ -60,6 +90,8 @@
           <a href="/interested/comment/v6/your-name?checking=">Comment on this appeal</a> until 11:59pm on 4 May 2022.
         </p>
 
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
       {% elif data['status'] == "closed" %}
 
         <p class="govuk-body">
@@ -70,6 +102,8 @@
           You cannot add comment.
         </p>
 
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
       {% elif data['status'] == "completed" %}
 
         <p class="govuk-body">
@@ -78,10 +112,23 @@
 
       {% endif %}
 
+
+
     </div>
 
 
+
+    <!-- SECTION -->
+    <!-- text about what you can or can't do -->
+
+
+
     {% if data['status'] == "completed" %}
+
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+      {% include "_includes/appeal-content/full-appeal-meta.html" %}
+    </div>
+
     <div class="govuk-grid-column-full">
 
       <div class="govuk-tabs" data-module="govuk-tabs">
@@ -91,51 +138,36 @@
         <ul class="govuk-tabs__list">
           <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
             <a class="govuk-tabs__tab" href="#summary">
-              Summary
-            </a>
-          </li>
-          <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#details">
               Appeal details
             </a>
           </li>
-          {% if data['status'] == "completed" %}
-            <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#inspector-report">
-                Inspector report
-              </a>
-            </li>
-          {% endif %}
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#inspector-report">
+              Inspector report
+            </a>
+          </li>
         </ul>
+
         <div class="govuk-tabs__panel" id="summary">
-          <h2 class="govuk-visually-hidden">Appeal summary</h2>
           <!-- appeal details and documents -->
-          {% include "_includes/appeal-content/full-appeal-summary.html" %}
+          {% include "_includes/appeal-content/full-appeal-data.html" %}
         </div>
 
-        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="details">
-          <!-- appeal details and documents -->
-          {% include "_includes/appeal-content/full-appeal-details.html" %}
-        </div>
-
-        {% if data['status'] == "completed" %}
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="inspector-report">
           <!-- appeal decision -->
           {% include "_includes/appeal-content/full-appeal-decision-allowed.html" %}
         </div>
-        {% endif %}
 
       </div>
 
-      {% else %}
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Appeal summary</h2>
-          {% include "_includes/appeal-content/full-appeal-summary.html" %}
-          {% include "_includes/appeal-content/full-appeal-details.html" %}
-        </div>
-      {% endif %}
+    {% else %}
+      <div class="govuk-grid-column-full">
+        {% include "_includes/appeal-content/full-appeal-meta.html" %}
+        {% include "_includes/appeal-content/full-appeal-data.html" %}
+      </div>
+    {% endif %}
+    </div>
 
   </div>
-</div>
 
 {% endblock %}
