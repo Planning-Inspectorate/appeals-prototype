@@ -1,0 +1,104 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% block pageTitle %}
+  Interested party full planning notification
+{% endblock %}
+
+{% block content %}
+
+<!-- faux email header -->
+<section>
+  <p>
+    <strong>Subject:</strong> You are invited to comment on a planning appeal
+  </p>
+  <p>
+    <strong>To:</strong> example@email.com<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <!-- <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p> -->
+  <hr class="govuk-!-margin-bottom-6">
+</section>
+
+<p class="govuk-body">
+  <strong>Appeal reference:</strong> 012726<br>
+  <strong>Appeal site address:</strong> 2 Aubrey House, Aubrey Road, BS3 3EX
+</p>
+
+<p class="govuk-body">
+  Dear [Your name],
+</p>
+
+<p class="govuk-body">
+  Rachel Silver is appealing Bristol City Council’s decision to refuse planning application 22/065313/FUL.
+</p>
+
+<p class="govuk-body">
+  The decision on the appeal is based on evidence given by Rachel Silver, Bristol City Council and anyone who is affected by this appeal (also known as an ‘interested party’).
+</p>
+
+<p class="govuk-body">
+  Planning appeals are decided by The Planning Inspectorate.
+</p>
+
+<p class="govuk-body">
+  The Planning Inspectorate is independent of Bristol City Council.
+</p>
+
+<h2 class="govuk-heading-m">
+  What you can do
+</h2>
+
+<p class="govuk-body">
+  Commenting on an appeal is optional.
+</p>
+
+<p class="govuk-body">
+  If you made a comment on the application, they have been sent to the planning inspector. You do not need to send them again.
+</p>
+
+<!-- <p class="govuk-body">
+  You can submit a new comment, relevant to the appeal, by following the link.
+</p> -->
+
+<p class="govuk-body">
+  <a href="appeal-details?status=open&appeal=1&appealCode=012726" class="govuk-link">
+    https://appeals.planninginspectorate.gov.uk/appeals/012726?sc=935336894d43c80fa548fc4a01af3488
+  </a>
+</p>
+
+<p class="govuk-body">
+  You must submit your comment by 11:59pm on {{ '14' | daysInFuture }}.
+</p>
+
+<!-- <h2 class="govuk-heading-m">
+  Site visits
+</h2>
+
+<p class="govuk-body">
+  If a visit to the appeal site is needed, you can ask for the inspector to also view the appeal site from your property. This is usually only needed if they cannot see it from the road.
+</p>
+
+<p class="govuk-body">
+  If they agree, they’ll visit your property with Rachel Silver.
+</p>
+
+<p class="govuk-body">
+  You can request a site visit at your property by emailing us.
+</p> -->
+
+<h2 class="govuk-heading-m">
+  What happens next
+</h2>
+
+<p class="govuk-body">
+  The inspector will review all the evidence and make their decision on the appeal. The Planning Inspectorate will send you an email explaining the final decision.
+</p>
+
+<p class="govuk-body">
+  The Planning Inspectorate<br>
+  enquiries@planninginspectorate.gov.uk
+</p>
+
+{% endblock %}
