@@ -1,0 +1,103 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Check your answers and submit your comments' %}
+
+<!-- {% set nav = true %} -->
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{ caption }}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <form method="post">
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: 'Your name'
+              },
+              value: {
+                html: data['fullName'] or 'Sam Jones'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-name',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Your email'
+              },
+              value: {
+                html: data['email'] or 'sample@test.com'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-email',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Your comments'
+              },
+              value: {
+                html: data['comments'] or 'Your comments go here etc etc'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'add-comments',
+                    text: 'Change'
+                  }
+                ]
+              }
+            }
+
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Submit comments'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Submit your comments',
+    href: 'confirmation'
+  }) }}
+{% endblock %}

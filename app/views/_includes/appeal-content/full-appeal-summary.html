@@ -1,15 +1,6 @@
 <dl class="govuk-summary-list">
 
   <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-      Appeal reference
-    </dt>
-    <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
-      0166321
-    </dd>
-  </div>
-
-  <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Appeal site
     </dt>
@@ -36,7 +27,7 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key ">
-      Appellant
+      Applicant
     </dt>
     <dd class="govuk-summary-list__value">
       {% if data['appeal'] == 1 or data['appeal'] == 4 %}
@@ -70,7 +61,7 @@
     </dd>
   </div>
 
-  <div class="govuk-summary-list__row">
+  <div class="govuk-summary-list__row pins-summary-list__row--last">
     <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-half">
       Procedure
     </dt>
@@ -78,76 +69,5 @@
       Written representations
     </dd>
   </div>
-
-  <div class="govuk-summary-list__row pins-summary-list__row--last">
-    <dt class="govuk-summary-list__key">
-      Appeal statement
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <a href="#" class="govuk-class">{{ data["appealsub-"+version+"-appealdocs-appealstatement"] or 'Appeal-statement.pdf' }}</a>
-    </dd>
-  </div>
-
-
-
-  <h2 class="govuk-heading-m">
-    Appeal submission
-  </h2>
-
-  <dl class="govuk-summary-list">
-
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
-        Draft statement of common ground
-      </dt>
-      <dd class="govuk-summary-list__value">
-        <a href="#" class="govuk-link">Stament of common ground 11.08.2022.doc</a>
-      </dd>
-    </div>
-
-    <!-- <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-        Appeal statement
-      </dt>
-      <dd class="govuk-summary-list__value">
-        <a href="#" class="govuk-class">{{ data["appealsub-"+version+"-appealdocs-appealstatement"] or 'Appeal-statement.pdf' }}</a>
-      </dd>
-    </div> -->
-
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-      Plans or drawings
-      </dt>
-      <dd class="govuk-summary-list__value">
-        <a href="javascript:preventDefault();" class="govuk-link">
-          {{ data["appealsub-"+version+"-appealdocs-plansdrawings"] or 'Appeal-outline.pdf' }}
-        </a>
-      </dd>
-    </div>
-
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-        Planning obligation
-      </dt>
-      <dd class="govuk-summary-list__value">
-        No
-      </dd>
-    </div>
-
-    <div class="govuk-summary-list__row pins-summary-list__row--last">
-      <dt class="govuk-summary-list__key">
-      Supporting documents
-      </dt>
-      <dd class="govuk-summary-list__value">
-        <a href="javascript:preventDefault();" class="govuk-link">
-          {{ data["appealsub-"+version+"-appealdocs-supportingdocuments"] or 'Local petition for development.pdf'}}
-            {% if data["appealsub-"+version+"-appealdocs-supportingdocuments"] != false %}
-              <br>Site orientation.png
-            {% endif %}
-          <br>
-        </a>
-      </dd>
-    </div>
-
 
 </dl>
