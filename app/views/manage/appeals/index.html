@@ -21,14 +21,52 @@
       {{ title }}
     </h1>
 
+
+    <section class="govuk-!-margin-bottom-6">
+
+      {% set version = "3" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+          text: 'Work in progress'
+        }) }}
+      </h2>
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>addition of notify interested parties journey</li>
+        <li>some content updates</li>
+        <li>adding metadata</li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/',
+        isStartButton: true
+      }) }}
+
+    </section>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
     {% set version = "2" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'Work in progress'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Researched'
       }) }}
     </h2>
+
+    <p class="govuk-!-margin-bottom-2">
+      <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1074954255/Uganda+Usability+Testing+-+Discussion+guide+draft" class="govuk-link">
+        Discussion guide for research
+      </a><br>
+      <a href="https://miro.com/app/board/uXjVP-SH1uo=/" class="govuk-link">
+        Miro board for UR feedback
+      </a>
+    </p>
 
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -43,7 +81,8 @@
     {{ govukButton({
       html: 'View prototype',
       href: 'v'+version+'/',
-      isStartButton: true
+      classes: "govuk-button--secondary",
+      isStartButton: false
     }) }}
 
     {% set lpaForm %}

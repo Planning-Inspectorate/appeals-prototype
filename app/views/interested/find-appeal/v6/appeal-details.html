@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-main.html' %}
 
 {% if data['appealCode'] != "true" %}
-  {% set appealCode = "0166327" %}
+  {% set appealCode = "1345172" %}
 {% endif %}
 
 {% set title = "Appeal reference "+data['appealCode'] %}
@@ -26,53 +26,68 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {% if data['status'] == "open" %}
+        Appeal open for comment
+      {% elseif data['status'] == "closed" %}
+        Appeal closed for comment
+      {% else %}
+        Appeal decision
+      {% endif %}
+    </h1>
+
+  </div>
+</div>
+
+<!-- SECTION -->
+<!-- appeal metadata -->
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+    {% include "_includes/appeal-content/full-appeal-meta.html" %}
+  </div>
+</div>
+
+<!-- SECTION -->
+<!-- appeal metadata -->
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
 
 
+    {% if data['status'] == "completed" %}
 
-      <!-- SECTION -->
-      <!-- title and decision if there is one -->
-
-
-
-      <h1 class="govuk-heading-l">
-        {% if data['status'] == "open" %}
-          Appeal open for comment
-        {% elseif data['status'] == "closed" %}
-          Appeal closed for comment
-        {% else %}
-          Appeal decision
-        {% endif %}
-      </h1>
-
-      {% if data['status'] == "completed" %}
-
-        {% if data['decision'] == "allowed" %}
-          <h2 class="govuk-heading-m">
-            Allowed
-          </h2>
-        {% elif data['decision'] == "refused" %}
-          <h2 class="govuk-heading-m">
-            Refused
-          </h2>
-        {% elif data['decision'] == "split" %}
-          <h2 class="govuk-heading-m">
-            Allowed with conditions
-          </h2>
-          <p class="govuk-body">
-            A split decision is…
-          </p>
-        {% endif %}
-
+      {% if data['decision'] == "allowed" %}
+        <h2 class="govuk-heading-m">
+          Allowed
+        </h2>
+      {% elif data['decision'] == "refused" %}
+        <h2 class="govuk-heading-m">
+          Refused
+        </h2>
+      {% elif data['decision'] == "split" %}
+        <h2 class="govuk-heading-m">
+          Allowed with conditions
+        </h2>
+        <p class="govuk-body">
+          A split decision is…
+        </p>
       {% endif %}
 
-    </div>
+    {% endif %}
+
+  </div>
 
 
+  <!-- SECTION -->
+  <!-- text about what you can or can't do -->
 
-    <!-- SECTION -->
-    <!-- text about what you can or can't do -->
 
 
 
@@ -87,7 +102,7 @@
         </section> -->
 
         <p class="govuk-body">
-          <a href="/interested/comment/v6/your-name?checking=">Comment on this appeal</a> until 11:59pm on 4 May 2022.
+          <a href="/interested/comment/v7/your-name?checking=">Comment on this appeal</a> until 11:59pm on 4 May 2022.
         </p>
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -125,10 +140,6 @@
 
     {% if data['status'] == "completed" %}
 
-    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
-      {% include "_includes/appeal-content/full-appeal-meta.html" %}
-    </div>
-
     <div class="govuk-grid-column-full">
 
       <div class="govuk-tabs" data-module="govuk-tabs">
@@ -143,7 +154,7 @@
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#inspector-report">
-              Inspector report
+              Inspector summary
             </a>
           </li>
         </ul>
@@ -162,7 +173,7 @@
 
     {% else %}
       <div class="govuk-grid-column-full">
-        {% include "_includes/appeal-content/full-appeal-meta.html" %}
+
         {% include "_includes/appeal-content/full-appeal-data.html" %}
       </div>
     {% endif %}

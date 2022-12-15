@@ -4,12 +4,14 @@
   Interested party full planning notification
 {% endblock %}
 
+{% set appealref = "1345172" %}
+
 {% block content %}
 
 <!-- faux email header -->
 <section>
   <p>
-    <strong>Subject:</strong> You are invited to comment on a planning appeal
+    <strong>Subject:</strong> Have your say on a refused planning application
   </p>
   <p>
     <strong>To:</strong> example@email.com<br>
@@ -22,28 +24,34 @@
 </section>
 
 <p class="govuk-body">
-  <strong>Appeal reference:</strong> 012726<br>
+  <strong>Appeal reference:</strong> {{ appealref }}<br>
   <strong>Appeal site address:</strong> 2 Aubrey House, Aubrey Road, BS3 3EX
 </p>
 
 <p class="govuk-body">
-  Dear [Your name],
+  Dear householder,
 </p>
 
 <p class="govuk-body">
-  Rachel Silver is appealing Bristol City Council’s decision to refuse planning application 22/065313/FUL.
+  Rachel Silver is appealing Bristol City Council’s decision to refuse their planning application.
 </p>
 
 <p class="govuk-body">
-  The decision on the appeal is based on evidence given by Rachel Silver, Bristol City Council and anyone who is affected by this appeal (also known as an ‘interested party’).
+  Planning application number: {{ appealref }}
+  <br>Proposal: Loft dormer conversion (flat and pitched roof)
+  <br>Appeal start date: {{ 7 | daysInFuture }}
 </p>
 
 <p class="govuk-body">
-  Planning appeals are decided by The Planning Inspectorate.
+  As you may have an interest in this planning decision, you can have your say and add a comment to the appeal (this is also known as a ‘written representation’).
 </p>
 
+<h2 class="govuk-heading-m">
+  Who we are
+</h2>
+
 <p class="govuk-body">
-  The Planning Inspectorate is independent of Bristol City Council.
+  The Planning Inspectorate is an independent organisation who review all the evidence and make the final decision.
 </p>
 
 <h2 class="govuk-heading-m">
@@ -51,20 +59,28 @@
 </h2>
 
 <p class="govuk-body">
-  Commenting on an appeal is optional.
+  You can use our website to submit a comment on this appeal. If you commented on the original application, it has already been sent to us and will be considered as part of this appeal.
+</p>
+
+<p class="govuk-body">
+  You must submit your comment on the appeal by 11:59pm on {{ 7 | daysInFuture }}.
 </p>
 
 <p class="govuk-body">
   If you made a comment on the application, they have been sent to the planning inspector. You do not need to send them again.
 </p>
 
-<!-- <p class="govuk-body">
-  You can submit a new comment, relevant to the appeal, by following the link.
-</p> -->
+<h2 class="govuk-heading-m">
+  View and comment on this appeal
+</h2>
 
 <p class="govuk-body">
-  <a href="appeal-details?status=open&appeal=1&appealCode=012726" class="govuk-link">
-    https://appeals.planninginspectorate.gov.uk/appeals/012726?sc=935336894d43c80fa548fc4a01af3488
+  Follow the link to view and comment on this appeal.
+</p>
+
+<p class="govuk-body">
+  <a href="appeal-details?status=open&appeal=1&appealCode={{ appealref }}" class="govuk-link">
+    https://appeals.planninginspectorate.gov.uk/appeals/{{ appealref }}?sc=935336894d43c80fa548fc4a01af3488
   </a>
 </p>
 
@@ -72,28 +88,12 @@
   You must submit your comment by 11:59pm on {{ '14' | daysInFuture }}.
 </p>
 
-<!-- <h2 class="govuk-heading-m">
-  Site visits
-</h2>
-
-<p class="govuk-body">
-  If a visit to the appeal site is needed, you can ask for the inspector to also view the appeal site from your property. This is usually only needed if they cannot see it from the road.
-</p>
-
-<p class="govuk-body">
-  If they agree, they’ll visit your property with Rachel Silver.
-</p>
-
-<p class="govuk-body">
-  You can request a site visit at your property by emailing us.
-</p> -->
-
 <h2 class="govuk-heading-m">
   What happens next
 </h2>
 
 <p class="govuk-body">
-  The inspector will review all the evidence and make their decision on the appeal. The Planning Inspectorate will send you an email explaining the final decision.
+  The inspector will review all the evidence and make their decision. We will publish the decision on our website.
 </p>
 
 <p class="govuk-body">
