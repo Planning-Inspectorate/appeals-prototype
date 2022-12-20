@@ -26,10 +26,6 @@
       </h1>
     </div>
 
-    <div class="govuk-grid-column-full govuk-!-margin-bottom-6">
-      {% include "_includes/appeal-content/appeal-lpa-metadata.html" %}
-    </div>
-
     <div class="govuk-grid-column-two-thirds">
       <form method="post">
 
@@ -42,13 +38,11 @@
           items: [
             {
               html: 'Email',
-              value: 'email',
-              checked: checked('sendby','email')
+              value: 'email'
             },
             {
               html: 'Letters by post',
-              value: 'letters',
-              checked: checked('sendby','letters')
+              value: 'letters'
             }
           ]
         }) }}

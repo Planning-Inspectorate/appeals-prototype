@@ -1,0 +1,91 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% if data['appealCode'] != "true" %}
+  {% set appealCode = "1345264" %}
+{% endif %}
+
+{% set title = "Appeal reference "+data['appealCode'] %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['action'] == 'notified' %}
+
+      {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+          Interested parties notified
+        </h3>
+        <p class="govuk-body">
+          Notice for this appeal has been sent to 3 recipients.
+        </p>
+      {% endset %}
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+    {% endif %}
+
+    <h1 class="govuk-heading-l">
+      Appeal open for comment
+    </h1>
+
+  </div>
+</div>
+
+<!-- SECTION -->
+<!-- appeal metadata -->
+
+<div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-full">
+    {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- actions -->
+    <p class="govuk-body">
+      <a href="/manage/notify/v1/send-new?from=appeal">
+        Notify interested parties
+      </a>
+      <br>
+      <a href="/manage/questionnaire/v11/task-list">
+        Submit questionnaire
+      </a>
+    </p>
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  </div>
+
+  <div class="govuk-grid-column-full">
+    {% include "_includes/appeal-content/full-appeal-data.html" %}
+  </div>
+
+</div>
+
+{% endblock %}

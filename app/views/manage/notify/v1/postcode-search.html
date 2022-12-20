@@ -1,0 +1,54 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set back = true %}
+{% set title = 'Find addresses with a postcode' %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" action="">
+
+      <p>
+        You can add multiple addresses.
+      </p>
+
+      <!-- <div class="govuk-form-group">
+        <label class="govuk-label" for="address-id">
+          Building number or name
+        </label>
+        <div id="event-name-hint" class="govuk-hint">
+          For example, 47, Flat 2a or Rose Cottage
+        </div>
+        <input class="govuk-input govuk-input--width-10" id="address-id" name="address-id" type="text">
+      </div> -->
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="address-postcode">
+          Postcode
+        </label>
+        <div id="event-name-hint" class="govuk-hint">
+          For example, BS5 7FQ
+        </div>
+        <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+      </div>
+
+      {{ govukButton({
+        html: 'Continue'
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Select any addresses you want to add' %}
+
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+
+  {{ govukCheckboxes({
+    name: "addresses",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "Select all that apply."
+    },
+    items: [
+      {
+        value: "address1",
+        text: "22 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+      },
+      {
+        value: "address2",
+        text: "23 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+      },
+      {
+        value: "address3",
+        text: "24 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+      },
+      {
+        value: "address4",
+        text: "25 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+      },
+      {
+        value: "address5",
+        text: "26 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+      },
+      {
+        value: "address7",
+        text: "27 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+      }
+    ]
+  }) }}
+
+{% endblock %}

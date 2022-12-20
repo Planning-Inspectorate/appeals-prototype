@@ -1,19 +1,23 @@
 {% extends '_layouts/layout-pins.html' %}
-<!-- {% set prototypeLinks = [{href: './?no-appeals=true', text: 'No appeals'}] if data['no-appeals'] != 'true' else [{href: './?no-appeals=false&questionnaire=&finalcomments=&statement=', text: 'Show appeals'}]%} -->
+
+{% set prototypeLinks = [] %}
+
 {% set prototypeLinks = [
   {
     href: './?no-appeals=true',
     text: 'No appeals'
   },
   {
-    href: './?no-appeals=false&questionnaire=&statement=&finalcomments=',
+    href: '/interested/find-appeal/v6/appeal-notice-email-full',
+    text: 'Appeal notice'
+  },
+  {
+    href: './?no-appeals=false&questionnaire=&statement=&finalcomments=&action=',
     text: 'Reset appeals'
-  }
-
-  ] if data['no-appeals'] != 'true' else [{
-    href: './?no-appeals=false&questionnaire=&finalcomments=&statement=',
+  }] if data['no-appeals'] != 'true' else [{
+    href: './?no-appeals=false&questionnaire=&finalcomments=&statement=&action=',
     text: 'Show appeals'
-  }]
+    }]
 %}
 
 {% set serviceName = "Manage your planning inspectorate appeals" %}
@@ -33,6 +37,24 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
+    {% if data['action'] == 'notified' %}
+
+      {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+          Interested parties notified
+        </h3>
+        <p class="govuk-body">
+          Notice for appeal 04125 has been sent to 3 recipients.
+        </p>
+      {% endset %}
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+    {% endif %}
+
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">
         {{ data['dashboard-lpa'] }}
@@ -57,10 +79,10 @@
         firstCellIsHeader: false,
         head: [
           {
-            html: 'Application number'
+            html: 'Appeal reference'
           },
           {
-            html: 'Appeal reference'
+            html: 'Application number'
           },
           {
             html: 'Deadline'
@@ -77,10 +99,10 @@
         rows: [
           [
             {
-              html: '22/05058/FUL'
+              html: '<a href="appeal-details">1345264</a>'
             },
             {
-              html: 'APP/Q9999/D/22/1345264'
+              html: '21/04125/FUL'
             },
             {
               html: '3' | daysInFuture
@@ -90,16 +112,17 @@
               format: 'numeric'
             },
             {
-              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/questionnaire/v11/task-list">Questionnaire</a>',
+              html: '<a href="/manage/notify/v1/send-new?from=appeals">Notify interested parties</a>
+              <br><a href="/manage/questionnaire/v11/task-list"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
               format: 'numeric'
             }
           ] if data['questionnaire'] != 'complete',
           [
             {
-              html: '22/03021/FUL'
+              html: '<a href="appeal-details">1345127</a>'
             },
             {
-              html: 'APP/Q9999/D/22/1345127'
+              html: '22/03021/FUL'
             },
             {
               html: '4' | daysInFuture
@@ -115,10 +138,10 @@
           ] if data['finalcomments'] != 'complete',
           [
             {
-              html: '21/02939/FUL'
+              html: '<a href="appeal-details">1345260</a>'
             },
             {
-              html: 'APP/Q9999/D/21/1345260'
+              html: '21/02939/FUL'
             },
             {
               html: '6' | daysInFuture
@@ -128,16 +151,17 @@
               format: 'numeric'
             },
             {
-              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/questionnaire/v11/task-list">Questionnaire</a>',
+              html: '<a href="/manage/notify/v1/send-new?from=appeals">Notify interested parties</a>
+              <br><a href="/manage/questionnaire/v11/task-list"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
               format: 'numeric'
             }
           ],
           [
             {
-              html: '21/04125/FUL'
+              html: '<a href="appeal-details">1345172</a>'
             },
             {
-              html: 'APP/Q9999/D/21/1345172'
+              html: '21/04125/FUL'
             },
             {
               html: '7' | daysInFuture
@@ -147,16 +171,17 @@
               format: 'numeric'
             },
             {
-              html: '<span class="govuk-visually-hidden">Submit </span><a href="/manage/questionnaire/v11/task-list">Questionnaire</a><br><a href="/manage/notify/v1/send-new">Notify interested parties</a>',
+              html: '<a href="/manage/notify/v1/send-new?from=appeals">Notify interested parties</a>
+              <br><a href="/manage/questionnaire/v11/task-list"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
               format: 'numeric'
             }
           ],
           [
             {
-              html: '21/05057/FUL'
+              html: '<a href="appeal-details">1345222</a>'
             },
             {
-              html: 'APP/Q9999/D/21/1345222'
+              html: '21/05057/FUL'
             },
             {
               html: '27' | daysInFuture
@@ -172,10 +197,10 @@
           ]  if data['statement'] != 'complete',
           [
             {
-              html: '22/04782/FUL'
+              html: '<a href="appeal-details">1345331</a>'
             },
             {
-              html: 'APP/Q9999/D/22/1345331'
+              html: '22/04782/FUL'
             },
             {
               html: '31' | daysInFuture
