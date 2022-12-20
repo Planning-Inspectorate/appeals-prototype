@@ -162,6 +162,7 @@
         <div class="govuk-tabs__panel" id="summary">
           <!-- appeal details and documents -->
           {% include "_includes/appeal-content/full-appeal-data.html" %}
+          {% include "_includes/appeal-content/full-application-data.html" %}
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="inspector-report">
@@ -173,8 +174,8 @@
 
     {% else %}
       <div class="govuk-grid-column-full">
-
         {% include "_includes/appeal-content/full-appeal-data.html" %}
+        {% include "_includes/appeal-content/full-application-data.html" %}
       </div>
     {% endif %}
     </div>

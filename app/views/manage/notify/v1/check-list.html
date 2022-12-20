@@ -1,0 +1,54 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set back = true %}
+{% set title = 'Check the recipients and send this notice' %}
+
+{% block questions %}
+
+  {{ govukTable({
+    classes: "govuk-!-width-three-quarters",
+    caption: title,
+    captionClasses: "govuk-heading-l",
+    firstCellIsHeader: false,
+    head: [
+      {
+        text: "Month you apply"
+      },
+      {
+        text: "Action"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "sam1983@peterboroughchampions.com"
+        },
+        {
+          html: '<a class="govuk-link" href="#">Remove</a> <span class="govuk-visually-hidden"> sam1983@gmail.com</span>'
+        }
+      ],
+      [
+        {
+          text: "janinebaxter@gmail.com"
+        },
+        {
+          html: '<a class="govuk-link" href="#">Remove</a> <span class="govuk-visually-hidden"> janinebaxter@gmail.com</span>'
+        }
+      ],
+      [
+        {
+          text: "jimmie123@live.com"
+        },
+        {
+          html: '<a class="govuk-link" href="#">Remove</a> <span class="govuk-visually-hidden"> jimmie123@live.com</span>'
+        }
+      ]
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Send notices'
+  }) }}
+{% endblock %}
