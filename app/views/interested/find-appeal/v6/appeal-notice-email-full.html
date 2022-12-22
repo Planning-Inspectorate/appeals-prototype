@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% set appealref = "1345172" %}
+{% set applicationRef = "21/04125/FUL" %}
 
 {% block content %}
 
 <!-- faux email header -->
 <section>
   <p>
-    <strong>Subject:</strong> Have your say on a refused planning application
+    <strong>Subject:</strong> Have your say on a refused planning decision
   </p>
   <p>
     <strong>To:</strong> example@email.com<br>
@@ -37,7 +38,7 @@
 </p>
 
 <p class="govuk-body">
-  Planning application number: {{ appealref }}
+  Planning application number: {{ applicationRef }}
   <br>Proposal: Loft dormer conversion (flat and pitched roof)
   <br>Appeal start date: {{ 7 | daysInFuture }}
 </p>
