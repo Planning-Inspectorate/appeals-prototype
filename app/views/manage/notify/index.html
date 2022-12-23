@@ -1,0 +1,52 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Notices for interested parties' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#manage'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Manage LPA appeals
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% set version = "1" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Minor copy tweaks</li>
+    </ul> -->
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/send-new',
+      isStartButton: true
+    }) }}
+
+    <p class="govuk-!-margin-bottom-2">Jump to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="v{{version}}/send-email">add email notices</a></li>
+      <li><a href="v{{version}}/postcode-search">add postal notices</a></li>
+    </ul>
+
+  </div>
+</div>
+{% endblock %}
