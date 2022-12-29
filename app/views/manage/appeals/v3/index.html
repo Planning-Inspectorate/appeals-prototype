@@ -45,13 +45,32 @@
           Interested parties notified
         </h3>
         <p class="govuk-body">
-          Notice for appeal 1345264 has been sent to 3 recipients.
+          {% if data['email'] and data['post'] %}
+            Notice for appeal 1345264 has been sent to 6 recipients.
+          {% else %}
+            Notice for appeal 1345264 has been sent to 3 recipients.
+          {% endif %}
         </p>
       {% endset %}
       {{ govukNotificationBanner({
         html: html,
         type: 'success'
       }) }}
+
+    {% elif data['action'] == 'printed' %}
+
+    {% set html %}
+      <h3 class="govuk-notification-banner__heading">
+        Printable notice sent
+      </h3>
+      <p class="govuk-body">
+        Notice for appeal 1345264 was sent to your email.
+      </p>
+    {% endset %}
+    {{ govukNotificationBanner({
+      html: html,
+      type: 'success'
+    }) }}
 
     {% endif %}
 
