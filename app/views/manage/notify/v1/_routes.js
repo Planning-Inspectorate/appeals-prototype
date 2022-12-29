@@ -11,13 +11,15 @@ router.get('*', function(req, res, next){
 router.post('/send-new', function (req, res) {
   if (req.session.data['sendby'] == 'letters') {
     res.redirect('postcode-search')
+  } else if (req.session.data['sendby'] == 'print') {
+    res.redirect('/manage/appeals/v3/?action=printed')
   } else {
     res.redirect('send-email')
   }
 })
 
 router.post('/send-email', function (req, res) {
-  res.redirect('check-list')
+  res.redirect('check-list?email=1')
 })
 
 router.post('/check-list', function (req, res) {
@@ -26,7 +28,6 @@ router.post('/check-list', function (req, res) {
   } else {
     res.redirect('/manage/appeals/v3/?action=notified')
   }
-
 })
 
 router.post('/postcode-search', function (req, res) {
@@ -34,7 +35,7 @@ router.post('/postcode-search', function (req, res) {
 })
 
 router.post('/select-address', function (req, res) {
-  res.redirect('address-list')
+  res.redirect('check-list?post=1')
 })
 
 router.post('/address-list', function (req, res) {

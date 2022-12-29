@@ -1,54 +1,136 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set back = true %}
+{% set back = false %}
 {% set title = 'Check the recipients and send this notice' %}
 
-{% block questions %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  {{ govukTable({
-    classes: "govuk-!-width-three-quarters",
-    caption: title,
-    captionClasses: "govuk-heading-l",
-    firstCellIsHeader: false,
-    head: [
-      {
-        text: "Month you apply"
-      },
-      {
-        text: "Action"
-      }
-    ],
-    rows: [
-      [
-        {
-          text: "sam1983@peterboroughchampions.com"
-        },
-        {
-          html: '<a class="govuk-link" href="#">Remove</a> <span class="govuk-visually-hidden"> sam1983@gmail.com</span>'
-        }
-      ],
-      [
-        {
-          text: "janinebaxter@gmail.com"
-        },
-        {
-          html: '<a class="govuk-link" href="#">Remove</a> <span class="govuk-visually-hidden"> janinebaxter@gmail.com</span>'
-        }
-      ],
-      [
-        {
-          text: "jimmie123@live.com"
-        },
-        {
-          html: '<a class="govuk-link" href="#">Remove</a> <span class="govuk-visually-hidden"> jimmie123@live.com</span>'
-        }
-      ]
-    ]
-  }) }}
-{% endblock %}
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+  </div>
+</div>
 
-{% block buttons %}
-  {{ govukButton({
-    html: 'Send notices'
-  }) }}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+  {% if data['email'] %}
+
+  <h2 class="govuk-heading-m">
+    Email
+  </h2>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <!-- <dt class="govuk-summary-list__key">
+        Name
+      </dt> -->
+      <dd class="govuk-summary-list__value">
+        sam1983@peterboroughchampions.com
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="#">
+          Remove<span class="govuk-visually-hidden"> sam1983@peterboroughchampions.com</span>
+        </a>
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <!-- <dt class="govuk-summary-list__key">
+        Date of birth
+      </dt> -->
+      <dd class="govuk-summary-list__value">
+        janinebaxter@gmail.com
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="#">
+          Remove<span class="govuk-visually-hidden"> janinebaxter@gmail.com</span>
+        </a>
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row pins-summary-list__row--last">
+      <!-- <dt class="govuk-summary-list__key">
+        Address
+      </dt> -->
+      <dd class="govuk-summary-list__value">
+        jimmie123@live.com
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="#">
+          Remove<span class="govuk-visually-hidden"> jimmie123@live.com</span>
+        </a>
+      </dd>
+    </div>
+
+  </dl>
+
+  {% endif %}
+
+  {% if data['post'] %}
+
+  <h2 class="govuk-heading-m">
+    Letters by post
+  </h2>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <!-- <dt class="govuk-summary-list__key">
+        Name
+      </dt> -->
+      <dd class="govuk-summary-list__value">
+        22 Cheers Drive, Speedwell, Bristol BS5 7FQ
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="#">
+          Change<span class="govuk-visually-hidden"> name</span>
+        </a>
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <!-- <dt class="govuk-summary-list__key">
+        Date of birth
+      </dt> -->
+      <dd class="govuk-summary-list__value">
+        23 Cheers Drive, Speedwell, Bristol BS5 7FQ
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="#">
+          Change<span class="govuk-visually-hidden"> date of birth</span>
+        </a>
+      </dd>
+    </div>
+
+    <div class="govuk-summary-list__row pins-summary-list__row--last">
+      <!-- <dt class="govuk-summary-list__key">
+        Address
+      </dt> -->
+      <dd class="govuk-summary-list__value">
+        24 Cheers Drive, Speedwell, Bristol BS5 7FQ
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="#">
+          Change<span class="govuk-visually-hidden"> address</span>
+        </a>
+      </dd>
+    </div>
+
+  </dl>
+
+  {% endif %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+    <a href="postcode-search">
+      Add more addresses to the list
+    </a>
+  </p>
+
+  <form method="post" action="">
+
+    {{ govukButton({
+      html: 'Send notices'
+    }) }}
+
+  </form>
+
 {% endblock %}
