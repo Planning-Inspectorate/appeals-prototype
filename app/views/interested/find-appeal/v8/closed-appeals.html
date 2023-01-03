@@ -1,0 +1,240 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Completed appeals" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {% if data['postcode'] %}
+        33 completed appeals found for {{ data['postcode'] }}
+      {% else %}
+        33 completed appeals found for BS3 3EX
+      {% endif %}
+    </h1>
+
+  </div>
+
+  <!-- main table -->
+  <div class="govuk-grid-column-full">
+
+  {{ govukTable({
+    caption: "1 to 10 of completed appeals",
+    captionClasses: "govuk-table__caption--m",
+
+    head: [
+
+      {
+        text: "Appeal site",
+        classes: 'govuk-!-width-one-thirds'
+      },
+      {
+        text: "Appeal reference",
+        format: 'numeric'
+      },
+      {
+        text: "Decision date",
+        format: 'numeric'
+      },
+      {
+        text: "Decision"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "102 Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0166002&site-address=102%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Mel%20Pickins">0166002</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '20' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Allowed"
+        }
+      ],
+      [
+        {
+          text: "77 Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0141289&site-address=77%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Nic%20Soonez">0141289</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '21' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Allowed"
+        }
+      ],
+      [
+        {
+          text: "19 Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0165971&site-address=19%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Talisan%20Creedance">0165971</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '34' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Allowed"
+        }
+      ],
+      [
+        {
+          text: "2 Aubrey House, Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0165791&site-address=2%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=J.%20M.%20Wigstone">0165791</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '40' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Dismissed"
+        }
+      ],
+
+      [
+        {
+          text: "1 Aubrey House, Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0166241&site-address=1%20Aubrey%20House%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Jan%20Fish">0166241</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '40' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Dismissed"
+        }
+      ],
+      [
+        {
+          text: "22 Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0166111&site-address=22%20Aubrey%20Road%2C%20BS3%203EX&appellantName=P.%20J.%20Thames">0166111</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '42' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Dismissed"
+        }
+      ],
+      [
+        {
+          text: "155 Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0166102&site-address=155%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Danny%20Fiakkas">0166102</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '46' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Allowed"
+        }
+      ],
+      [
+        {
+          text: "32 Vicarage Court, Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0165854&site-address=32%20Vicarage%20Court%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Pavarthi%20Sagar">0165854</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '46' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Dismissed"
+        }
+      ],
+      [
+        {
+          text: "8 Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0165921&site-address=8%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Ash%20Davenant">0165921</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '72' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Allowed"
+        }
+      ],
+      [
+        {
+          text: "1 Vicarage Court, Aubrey Road, BS3 3EX"
+        },
+        {
+          html: '<a class="govuk-link" href="appeal-details?status=completed&appealCode=0166013&site-address=1%20Vicarage%20Court%2C%20Aubrey%20Road%2C%20BS3%203EX&appellantName=Charlie%20Agadosi">0166013</a>',
+          format: 'numeric'
+        },
+        {
+          text:  '78' | daysInPastShort,
+          format: 'numeric'
+        },
+        {
+          text: "Split-decision"
+        }
+      ]
+    ]
+  }) }}
+
+  <ul class="govuk-list">
+    <li>
+      <!-- <p class="govuk-body-l"> -->
+        <a class="govuk-link" href="#">
+          Next 10 closed appeals
+        </a>
+      <!-- </p> -->
+    </li>
+  </ul>
+
+</div>
+
+{% endblock %}

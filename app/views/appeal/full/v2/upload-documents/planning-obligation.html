@@ -7,7 +7,7 @@
     {{ title }}
   </h1>
 
-  {{ '<p>Your deadline to submit your finalised planning obligation is around 6 weeks after you submit your appeal. We&rsquo;ll tell you the exact date when we confirm your appeal.</p>' | safe if data['planning-obligation-status'] == 'In draft' }}
+  {{ '<p class="govuk-body">Your deadline to submit your finalised planning obligation is around 6 weeks after you submit your appeal. We&rsquo;ll tell you the exact date when we confirm your appeal.</p>' | safe if data['planning-obligation-status'] == 'In draft' }}
 
   {% set uploadHtml %}
     {{ govukFileUpload({

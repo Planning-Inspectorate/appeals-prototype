@@ -8,7 +8,7 @@
   <h1 class="govuk-heading-m">
     Your appeal has been saved
   </h1>
-  <p>
+  <p class="govuk-body">
     <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
     <br>
     <strong>From:</strong> info@planninginspectorate.gov.uk
@@ -16,9 +16,9 @@
 {% endblock %}
 
 {% block emailContent %}
-  <p>You have until {{ 20 | daysInFuture }} to submit your appeal.</p>
+  <p class="govuk-body">You have until {{ 20 | daysInFuture }} to submit your appeal.</p>
 
-  <p>
+  <p class="govuk-body">
     To continue with your appeal, follow the link:
     <br>
     <a href="enter-code">https://appeal-planning-decision.service.gov.uk/full-appeal/submit-appeal/enter-code/9c05c1c6-ab45-4fc3-a1e4-5b38f749a39e</a>

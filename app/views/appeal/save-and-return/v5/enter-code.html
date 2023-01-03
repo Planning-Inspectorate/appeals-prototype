@@ -9,7 +9,7 @@
       <h3 class="govuk-notification-banner__heading">
         Email resent
       </h3>
-      <p>We&rsquo;ve resent a code to your email address, it might take a few minutes to arrive.</p>
+      <p class="govuk-body">We&rsquo;ve resent a code to your email address, it might take a few minutes to arrive.</p>
     </mark>
   {% endset %}
 
@@ -28,7 +28,7 @@
     html: 'We&rsquo;ve sent a code to '+(data['email'] or 'example@email.com')
   }) }}
 
-  <p>The email might take a few minutes to arrive. The code will expire after 30 minutes.</p>
+  <p class="govuk-body">The email might take a few minutes to arrive. The code will expire after 30 minutes.</p>
 
   {{ govukInput({
     id: 'code',
@@ -51,20 +51,20 @@
     If you&rsquo;re having problems
   </h2>
 
-  <p><a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it it incorrectly.</p>
+  <p class="govuk-body"><a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it it incorrectly.</p>
 
-  <p>Check if the email has gone to your spam or junk folder.{{ ' If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.' | safe if not resent }}</p>
+  <p class="govuk-body">Check if the email has gone to your spam or junk folder.{{ ' If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.' | safe if not resent }}</p>
 
   {% set customerSupport %}
-    <p>You can contact our customer support team:</p>
+    <p class="govuk-body">You can contact our customer support team:</p>
 
-    <p>
+    <p class="govuk-body">
       Email: <a href="#0">enquiries@planninginspectorate.gov.uk</a>
       <br>
       We aim to respond within 5 working days.
     </p>
 
-    <p>
+    <p class="govuk-body">
       Telephone: 0303 444 5000
       <br>
       Monday to Friday, 9am to 5pm (except public holidays)

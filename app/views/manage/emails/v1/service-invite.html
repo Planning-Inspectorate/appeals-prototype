@@ -8,7 +8,7 @@
   <h1 class="govuk-heading-m">
     Invitation to your new account
   </h1>
-  <p>
+  <p class="govuk-body">
     <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
     <br>
     <strong>From:</strong> info@planninginspectorate.gov.uk
@@ -16,11 +16,11 @@
 {% endblock %}
 
 {% block emailContent %}
-  <p>Dear {{ data['dashboard-lpa'] }},</p>
+  <p class="govuk-body">Dear {{ data['dashboard-lpa'] }},</p>
 
-  <p>The Planning Inspectorate has launched a new service for local planning authorities (LPAs) to manage appeals and has created a new account for {{ data['dashboard-lpa'] }}.</p>
+  <p class="govuk-body">The Planning Inspectorate has launched a new service for local planning authorities (LPAs) to manage appeals and has created a new account for {{ data['dashboard-lpa'] }}.</p>
 
-  <p>You can use the &lsquo;Manage your planning inspectorate appeals&rsquo; service to:</p>
+  <p class="govuk-body">You can use the &lsquo;Manage your planning inspectorate appeals&rsquo; service to:</p>
   <ul class="govuk-list govuk-list--bullet">
     <li>view and manage an appeal&rsquo;s progress</li>
     <li>complete and submit an appeal questionnaire</li>

@@ -8,7 +8,7 @@
   <h1 class="govuk-heading-m">
     21/02939/FUL - Submit questionnaire
   </h1>
-  <p>
+  <p class="govuk-body">
     <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
     <br>
     <strong>From:</strong> info@planninginspectorate.gov.uk
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block emailContent %}
-  <p>
+  <p class="govuk-body">
     Appeal site: 11 Gifford Way, Sampleford, BS15 2AP
     <br>
     Appeal reference: 1345260
@@ -24,19 +24,19 @@
 
   <br>
 
-  <p>Dear {{ data['dashboard-lpa'] }},</p>
+  <p class="govuk-body">Dear {{ data['dashboard-lpa'] }},</p>
 
-  <p>The appeal for application 21/04125/FUL has been validated and you can now submit your questionnaire.</p>
+  <p class="govuk-body">The appeal for application 21/04125/FUL has been validated and you can now submit your questionnaire.</p>
 
-  <p>This is due by {{ 7 | daysInFuture }}</p>
+  <p class="govuk-body">This is due by {{ 7 | daysInFuture }}</p>
 
   <h2 class="govuk-heading-m">
     What you can do
   </h2>
 
-  <p>You can complete your questionnaire online in our new ‘Manage your appeals’ service.</p>
+  <p class="govuk-body">You can complete your questionnaire online in our new ‘Manage your appeals’ service.</p>
 
-  <p>To complete your questionnaire, you need to click the link to receive a secure code. We&rsquo;ll send you a code to sign in to your account. You can then view, edit and submit the questionnaire online.</p>
+  <p class="govuk-body">To complete your questionnaire, you need to click the link to receive a secure code. We&rsquo;ll send you a code to sign in to your account. You can then view, edit and submit the questionnaire online.</p>
 
   <ol class="govuk-list govuk-list--number">
     <li>

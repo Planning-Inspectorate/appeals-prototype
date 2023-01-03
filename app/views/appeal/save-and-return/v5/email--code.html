@@ -8,7 +8,7 @@
   <h1 class="govuk-heading-m">
     Your security code
   </h1>
-  <p>
+  <p class="govuk-body">
     <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
     <br>
     <strong>From:</strong> info@planninginspectorate.gov.uk
@@ -16,12 +16,12 @@
 {% endblock %}
 
 {% block emailContent %}
-  <p>Use this 5 digit code to confirm your email address and return to your appeal.</p>
+  <p class="govuk-body">Use this 5 digit code to confirm your email address and return to your appeal.</p>
 
-  <p>Security code:</p>
+  <p class="govuk-body">Security code:</p>
   {{ govukInsetText({
     html: '12345'
   }) }}
 
-  <p>The code is valid for 30 minutes.</p>
+  <p class="govuk-body">The code is valid for 30 minutes.</p>
 {% endblock %}

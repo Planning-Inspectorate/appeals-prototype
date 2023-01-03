@@ -21,7 +21,11 @@
       {{ title }}
     </h1>
 
-    {% set version = "6" %}
+    <p class="govuk-body">
+      This is the on-going design work for interested parties, finding and commenting on an appeal. Includes appeals at different stages, open, closed and completed.
+    </p>
+
+    {% set version = "8" %}
 
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -32,8 +36,58 @@
     </h2>
 
     <p class="govuk-body">
-      This is the on-going design work for interested parties, finding and commenting on an appeal. Includes appeals at different stages, open, closed and completed.
+      Changes:
     </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>content updates</li>
+      <li>comment screen has more positive guidance on comments</li>
+      <li>synced up find/comments version folders</li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'find-appeal/v'+version+'/guidance',
+      isStartButton: true
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {% set version = "7" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-body">
+      Changes:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>small content updates</li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'find-appeal/v'+version+'/guidance',
+      isStartButton: true
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {% set version = "6" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
 
     <p class="govuk-body">
       Changes:

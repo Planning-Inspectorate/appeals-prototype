@@ -6,9 +6,9 @@
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
-  <p>The deadline to submit a statement of case is {{ '6' | daysInFuture }}.</p>
+  <p class="govuk-body">The deadline to submit a statement of case is {{ '6' | daysInFuture }}.</p>
 
-  <p>To submit your statement, email <a href=:mailto:CaseOfficers@planninginspectorate.gov.uk">CaseOfficers@planninginspectorate.gov.uk</a>.</p>
+  <p class="govuk-body">To submit your statement, email <a href=:mailto:CaseOfficers@planninginspectorate.gov.uk">CaseOfficers@planninginspectorate.gov.uk</a>.</p>
 
   {{ govukRadios({
     idPrefix: 'statement-of-case',

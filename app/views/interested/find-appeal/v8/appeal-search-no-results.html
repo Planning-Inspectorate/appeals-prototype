@@ -1,0 +1,58 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "No matching appeals" %}
+
+{% set prototypeLinks = [{href: 'appeal-search-no-results?search=number', text: 'No results from reference'},
+{href: 'appeal-search-no-results?search=', text: 'No results from address'}] %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% if data['search'] == "number" %}
+      <p class="govuk-body">
+        We have not found an appeal for this reference. This could be because there is not an appeal for this reference or the appeal has not started.
+      </p>
+    {% else %}
+      <p class="govuk-body">
+        We have not found an appeal for this address. This could be because there is not an appeal for this address or the appeal has not started.
+      </p>
+    {% endif %}
+
+    <p class="govuk-body">
+      {% if data['search'] == "number" %}
+        <a href="appeal-search-reference" class="govuk-link">
+      {% else %}
+        <a href="appeal-search-address" class="govuk-link">
+      {% endif %}
+        Search for another appeal
+      </a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

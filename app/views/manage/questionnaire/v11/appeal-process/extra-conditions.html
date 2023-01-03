@@ -6,18 +6,18 @@
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
-  <p>You need to tell us about any extra conditions you want the inspector to apply if they allow the appeal.</p>
+  <p class="govuk-body">You need to tell us about any extra conditions you want the inspector to apply if they allow the appeal.</p>
 
-  <p>If you choose to not tell us about them now, you must email <a href=:mailto:CaseOfficers@planninginspectorate.gov.uk">CaseOfficers@planninginspectorate.gov.uk</a> by {{ '6' | daysInFuture }}.</p>
+  <p class="govuk-body">If you choose to not tell us about them now, you must email <a href=:mailto:CaseOfficers@planninginspectorate.gov.uk">CaseOfficers@planninginspectorate.gov.uk</a> by {{ '6' | daysInFuture }}.</p>
 
-  <p>You do not need to tell us about standard conditions.</p>
+  <p class="govuk-body">You do not need to tell us about standard conditions.</p>
 
   {% set standardConditions %}
-    <p>The development hereby permitted shall begin not later than 3 years from the date of this decision.</p>
+    <p class="govuk-body">The development hereby permitted shall begin not later than 3 years from the date of this decision.</p>
 
-    <p>The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building.</p>
+    <p class="govuk-body">The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building.</p>
 
-    <p>The development hereby permitted shall be carried out in accordance with the approved plans.</p>
+    <p class="govuk-body">The development hereby permitted shall be carried out in accordance with the approved plans.</p>
   {% endset -%}
   {{ govukDetails({
     summaryHtml: 'Standard conditions',

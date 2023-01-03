@@ -1,0 +1,155 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Add your comments' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <p class="govuk-body">
+          Let us know why you do, or do not, support this appeal against a local authority’s planning decision.
+        </p>
+
+        <p class="govuk-body">
+          You must be over 18 to comment on an appeal.
+        </p>
+
+        <p class="govuk-body">
+          Your comment should:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            be simple and concise
+          </li>
+          <li>
+            be based on facts related to the planning application
+          </li>
+          <li>
+            reference relevant planning policies, for example, your Neighbourhood Plan, local district plans, community plans, environmental policies – you will find these on your local authority’s website
+          </li>
+        </ul>
+
+        <p class="govuk-body">
+          Your comment should not:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            include personal opinion or rumour
+          </li>
+          <li>
+            use offensive language
+          </li>
+          <li>
+            include information that is not related to planning law, for example, criminal behaviour or someone’s personal characteristics
+          </li>
+        </ul>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Examples of personal characteristics
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <!-- <p class="govuk-body">
+              Personal charachertistics include:
+            </p> -->
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                race
+              </li>
+              <li>
+                ethnic origin
+              </li>
+              <li>
+                politics
+              </li>
+              <li>
+                religion
+              </li>
+              <li>
+                trade union membership
+              </li>
+              <li>
+                genetics
+              </li>
+              <li>
+                physical characteristics
+              </li>
+              <li>
+                sex life
+              </li>
+              <li>
+                sexual orientation
+              </li>
+            </ul>
+          </div>
+        </details>
+
+        <p class="govuk-body">
+          Any comment submitted that does not meet our criteria will be returned to you and you will be asked to resubmit it. This delay may cause you to miss the deadline to comment.
+        </p>
+
+
+        {{ govukTextarea({
+          name: 'comments',
+          id: 'comments',
+          value: data['comments'],
+          rows: '8',
+          label: {
+            html: 'Your comments',
+            classes: 'govuk-label--m'
+          }
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: 'appeal-statement-confirmation',
+          name: 'appeal-statement-confirmation',
+          classes: 'checkboxes-long-text',
+          items: [
+            {
+              html: 'I confirm that I have not included any sensitive information in my comments.',
+              value: 'I confirm that I have not included any sensitive information in my comments.',
+              checked: checked('appeal-statement-confirmation','I confirm that I have not included any sensitive information in my comments.')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

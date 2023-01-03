@@ -8,7 +8,7 @@
   <h1 class="govuk-heading-m">
     21/04125/FUL - Submit appeal statements
   </h1>
-  <p>
+  <p class="govuk-body">
     <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
     <br>
     <strong>From:</strong> info@planninginspectorate.gov.uk
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block emailContent %}
-  <p>
+  <p class="govuk-body">
     Appeal site: 11 Gifford Way, Sampleford, BS15 2AP
     <br>
     Appeal reference: 21/04125/FUL
@@ -24,19 +24,19 @@
 
   <br>
 
-  <p>Dear {{ data['dashboard-lpa'] }},</p>
+  <p class="govuk-body">Dear {{ data['dashboard-lpa'] }},</p>
 
-  <p>The appellant has submitted their appeal statements for planning application 1345172.</p>
+  <p class="govuk-body">The appellant has submitted their appeal statements for planning application 1345172.</p>
 
-  <p>We&rsquo;ve attached the statement for your information.</p>
+  <p class="govuk-body">We&rsquo;ve attached the statement for your information.</p>
 
-  <p>This is due by {{ 7 | daysInFuture }}</p>
+  <p class="govuk-body">This is due by {{ 7 | daysInFuture }}</p>
 
   <h2 class="govuk-heading-m">
     What you can do
   </h2>
 
-  <p>To add your statement, you need to click the link to receive a secure code. We&rsquo;ll send you a code to sign into your account with.</p>
+  <p class="govuk-body">To add your statement, you need to click the link to receive a secure code. We&rsquo;ll send you a code to sign into your account with.</p>
 
   <ol class="govuk-list govuk-list--number">
     <li>
