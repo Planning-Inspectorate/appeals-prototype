@@ -19,6 +19,10 @@ router.post('/find-appeal', function (req, res) {
   }
 })
 
+router.post('/appeal-search-number', function (req, res) {
+  res.redirect('appeal-details?status=open')
+})
+
 router.post('/documents-upload', function (req, res) {
   res.redirect('check-your-answers')
 })

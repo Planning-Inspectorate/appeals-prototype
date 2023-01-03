@@ -10,17 +10,14 @@ router.get('*', function(req, res, next){
 
 router.post('/your-name', function (req, res) {
 
-  // name defaults
-  let firstname = req.session.data['interested-first-name']
-  let lastname = req.session.data['interested-last-name']
-
-  // route depending on value
-  if (firstname == null ) {
-    res.locals['firstname'] = 'Sam',
-    res.locals['lastname'] = 'Fisher'
+  if (req.session.data['interested-first-name']) {
+    res.redirect('your-email')
+  } else {
+    res.locals['interested-first-name'] = 'Sam',
+    res.locals['interested-last-name'] = 'Fisher'
+    res.redirect('your-email?interested-first-name=Sam&interested-last-name=Fisher')
   }
 
-  res.redirect('your-email')
 })
 
 router.post('/your-email', function (req, res) {

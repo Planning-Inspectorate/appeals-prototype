@@ -1,14 +1,14 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% if data['appealCode'] != "true" %}
-  {% set appealCode = "1345172" %}
-{% endif %}
-
 {% set title = "Appeal reference "+data['appealCode'] %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
 {% endblock %}
+
+{% if data['appealCode'] == null %}
+  {% set appealCode = "177722" %}
+{% endif %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
