@@ -43,34 +43,8 @@
       {% endif %}
     </h1>
 
-    <!-- <p class="govuk-body govuk-!-margin-bottom-6">
-      Select an appeal to go to the appeal details.
-    </p> -->
-
-    <!-- <h2 class="govuk-heading-m">
-      Open for comment
-    </h2> -->
-
-    <!-- <p class="govuk-body">
-      {% if data['address'] == "postcode" %}
-        {% if data['postcode'] %}
-          3 open appeals found for {{ data['postcode'] }}.
-        {% else %}
-          3 open appeals found for BS3 3EX.
-        {% endif %}
-        <br><a href="appeal-search-address#postcode-search" class="govuk-link">Search by a different address</a>
-      {% else %}
-        {% if data['eastings-input'] %}
-          2 open appeals found for Eastings {{ data['input-eastings'] }} and Northings {{ data['input-northings'] }}.<br><a href="appeal-search-address?version=" class="govuk-link">Search by a different postcode</a>
-        {% else %}
-          2 open appeals found for Eastings 361633 and Northings 174493
-        {% endif %}
-        <br><a href="appeal-search-address#grid-search" class="govuk-link">Search by a different address</a>
-      {% endif %}
-    </p> -->
-
-    <h2 class="govuk-visually-hidden">
-      Open appeals
+    <h2 class="govuk-heading-m">
+      Current appeals
     </h2>
 
   </div>
@@ -100,7 +74,7 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
 
-          <th scope="row" class="govuk-table__header">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">
             {% if data['address'] == "postcode" %}
               {% if data['postcode'] %}
                 2 Aubrey House, Aubrey Road {{ data['postcode'] }}
@@ -144,7 +118,7 @@
 
           <tr class="govuk-table__row">
 
-            <th scope="row" class="govuk-table__header">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">
               103 Aubrey Road, Bristol BS3 3EX
             </th>
 
@@ -172,7 +146,7 @@
 
           <tr class="govuk-table__row">
 
-            <th scope="row" class="govuk-table__header">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">
               103 Aubrey Road, Bristol BS3 3EX
             </th>
 
