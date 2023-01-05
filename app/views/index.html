@@ -143,27 +143,24 @@
 
     {% endset -%}
 
-
-
-
     {{ govukTabs({
       items: [
         {
-          label: 'Appeal a planning decision',
+          label: 'Main appeal service',
           id: 'appeal',
           panel: {
             html: appealHTML
           }
         },
         {
-          label: 'Manage LPA appeals',
+          label: 'LPA service',
           id: 'manage',
           panel: {
             html: manageHTML
           }
         },
         {
-          label: 'Comment on a planning appeal',
+          label: 'Search and comment',
           id: 'comment',
           panel: {
             html: commentHTML
