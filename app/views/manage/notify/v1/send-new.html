@@ -2,6 +2,8 @@
 
 {% set title = 'Choose to notify interested parties by email or post' %}
 
+{% set prototypeLinks = [{href: 'send-new?from=appeals', text: 'Reset the list of options'} if data['from'] == 'checklist' ] %}
+
 {% set nav = true %}
 
 {% block beforeContent %}
@@ -18,46 +20,55 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        {{ title }}
-      </h1>
-    </div>
-
-    <div class="govuk-grid-column-two-thirds">
-      <form method="post">
-
-        {{ govukRadios({
-          idPrefix: 'sendby',
-          name: 'sendby',
-          fieldset: {
-
-          },
-          items: [
-            {
-              html: 'Email',
-              value: 'email'
-            },
-            {
-              html: 'Letters by post',
-              value: 'letters'
-            },
-            {
-              html: 'Print a notice',
-              value: 'print'
-            } if data['addresses'] != true
-          ]
-        }) }}
-
-        {{ govukButton({
-          text: 'Continue'
-        }) }}
-
-      </form>
-    </div>
-
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
   </div>
+
+  <div class="govuk-grid-column-full">
+    {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+  </div>
+
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+    <form method="post">
+
+      {{ govukRadios({
+        idPrefix: 'sendby',
+        name: 'sendby',
+        fieldset: {
+
+        },
+        items: [
+          {
+            html: 'Email',
+            value: 'email'
+          },
+          {
+            html: 'Letters by post',
+            value: 'letters'
+          },
+          {
+            html: 'Print a notice',
+            value: 'print'
+          } if data['from'] != 'checklist'
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+
+    </form>
+  </div>
+
+</div>
 
 {% endblock %}

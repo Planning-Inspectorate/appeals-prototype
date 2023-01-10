@@ -20,13 +20,15 @@ router.post('/send-new', function (req, res) {
 
 router.post('/send-email', function (req, res) {
   res.redirect('check-list?email=1')
+  // email is set to true to help the checklist page know what to show
 })
 
 router.post('/check-list', function (req, res) {
+  // return user to the place where they started the notify action
   if (req.session.data['from'] == 'appeal') {
-    res.redirect('/manage/appeals/v3/appeal-details')
+    res.redirect('/manage/appeals/v3/appeal-details?action=notified&post=&email=')
   } else {
-    res.redirect('/manage/appeals/v3/?action=notified')
+    res.redirect('/manage/appeals/v3/?action=notified&post=&email=')
   }
 })
 
@@ -36,6 +38,7 @@ router.post('/postcode-search', function (req, res) {
 
 router.post('/select-address', function (req, res) {
   res.redirect('check-list?post=1')
+  // post is set to true to help the checklist page know what to show
 })
 
 router.post('/address-list', function (req, res) {

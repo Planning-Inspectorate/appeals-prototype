@@ -17,46 +17,73 @@
   }) }}
 {% endblock %}
 
-{% block questions %}
+{% block content %}
+<div class="govuk-grid-row">
 
-  {{ govukCheckboxes({
-    name: "addresses",
-    fieldset: {
-      legend: {
-        text: title,
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--l"
-      }
-    },
-    hint: {
-      text: "Select all that apply."
-    },
-    items: [
-      {
-        value: "address1",
-        text: "22 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+  </div>
+
+  <div class="govuk-grid-column-full">
+    {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+  </div>
+</div>
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+    {{ govukCheckboxes({
+      name: "addresses",
+      fieldset: {
+        legend: {
+          text: 'Select all that apply',
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
       },
-      {
-        value: "address2",
-        text: "23 Cheers Drive, Speedwell, Bristol BS5 7FQ"
-      },
-      {
-        value: "address3",
-        text: "24 Cheers Drive, Speedwell, Bristol BS5 7FQ"
-      },
-      {
-        value: "address4",
-        text: "25 Cheers Drive, Speedwell, Bristol BS5 7FQ"
-      },
-      {
-        value: "address5",
-        text: "26 Cheers Drive, Speedwell, Bristol BS5 7FQ"
-      },
-      {
-        value: "address7",
-        text: "27 Cheers Drive, Speedwell, Bristol BS5 7FQ"
-      }
-    ]
-  }) }}
+      items: [
+        {
+          value: "address1",
+          text: "22 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+        },
+        {
+          value: "address2",
+          text: "23 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+        },
+        {
+          value: "address3",
+          text: "24 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+        },
+        {
+          value: "address4",
+          text: "25 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+        },
+        {
+          value: "address5",
+          text: "26 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+        },
+        {
+          value: "address7",
+          text: "27 Cheers Drive, Speedwell, Bristol BS5 7FQ"
+        }
+      ]
+    }) }}
+
+    <form method="post" action="">
+
+      {{ govukButton({
+        html: 'Send notices'
+      }) }}
+
+    </form>
+
+  </div>
+</div>
 
 {% endblock %}

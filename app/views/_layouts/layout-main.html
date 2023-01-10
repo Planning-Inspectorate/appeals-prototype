@@ -63,7 +63,7 @@
 	{# Add prototype links if set in page, use with:
 	{% set prototypeLinks = [{href: '#0', text: 'Link to this page'}] %} #}
 
-	{# Add link to Railway app if running locally #}
+	{# Add link to Heroku app if running locally #}
 	{{ govukFooter({
 		navigation: [
 			{
@@ -81,8 +81,8 @@
 					text: 'Clear data'
 				},
 				{
-					href: 'https://appeals-prototypes.up.railway.app' + currentURL,
-					text: "View page on Railway (opens in new tab)",
+					href: 'https://appeals-prototype.herokuapp.com/' + currentURL,
+					text: "View page on Heroku (opens in new tab)",
 					attributes: {
 						target: 'blank'
 					}

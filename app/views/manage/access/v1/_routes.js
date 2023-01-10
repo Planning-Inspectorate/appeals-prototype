@@ -19,9 +19,9 @@ router.post('/enter-code', function (req, res) {
 
   // route depending on value
   if (start == 'start') {
-    res.redirect('/manage/appeals/v2/?no-appeals=')
+    res.redirect('/manage/appeals/v3/?no-appeals=')
   } else if (start == 'invite') {
-    res.redirect('/manage/appeals/v2/?no-appeals=true')
+    res.redirect('/manage/appeals/v3/?no-appeals=true')
   } else if (start == 'questionnaire') {
     res.redirect('/manage/questionnaire/v11/task-list')
   } else if (start == 'statements') {
