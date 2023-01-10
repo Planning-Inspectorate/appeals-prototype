@@ -4,7 +4,7 @@
   {% set appealCode = "1345264" %}
 {% endif %}
 
-{% set title = "Appeal reference "+data['appealCode'] %}
+{% set title = "Appeal "+data['appealCode']+" details" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -39,9 +39,14 @@
           Interested parties notified
         </h3>
         <p class="govuk-body">
-          Notice for this appeal has been sent to 3 recipients.
+          {% if data['email'] and data['post'] %}
+            Notice for appeal 1345264 has been sent to 6 recipients.
+          {% else %}
+            Notice for appeal 1345264 has been sent to 3 recipients.
+          {% endif %}
         </p>
       {% endset %}
+
       {{ govukNotificationBanner({
         html: html,
         type: 'success'
@@ -50,7 +55,7 @@
     {% endif %}
 
     <h1 class="govuk-heading-l">
-      Appeal 1345264
+      {{ title }}
     </h1>
 
   </div>
@@ -60,25 +65,23 @@
 <!-- appeal metadata -->
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
-    {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
-  </div>
-
   <div class="govuk-grid-column-two-thirds">
+    {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+
     <!-- actions -->
     <p class="govuk-body">
       <a href="/manage/notify/v1/send-new?from=appeal">
         Notify interested parties
+      </a><br>
+      <a href="appeal-notice">
+        View and print the notice
       </a>
-      <br>
+    </p>
+    <p class="govuk-body">
       <a href="/manage/questionnaire/v11/task-list">
         Submit questionnaire
       </a>
     </p>
-
-  </div>
-
-  <div class="govuk-grid-column-two-thirds">
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
   </div>
 
