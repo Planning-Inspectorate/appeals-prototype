@@ -1,0 +1,66 @@
+{# Tweak the summary list to be smaller #}
+
+<style>
+  .appeal-details .govuk-summary-list__key govuk-!-font-weight-regular,
+  .appeal-details .govuk-summary-list__value govuk-!-font-weight-bold,
+  .appeal-details .govuk-summary-list__actions {
+    padding-top: .2rem;
+    padding-bottom: 0;
+  }
+  /* Give some space for the tag being inline now */
+  .app-task-list__section {
+    padding-right: 140px
+  }
+</style>
+
+<dl class="govuk-summary-list appeal-details govuk-summary-list--no-border">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+      Appeal type
+    </dt>
+    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+      Full appeal
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+      Appeal site
+    </dt>
+    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+      21 Cheers Drive, Speedwell, Bristol BS5 7FQ
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+      Proposal
+    </dt>
+    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+      Loft dormer conversion (flat and pitched roof)
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+      Application number
+    </dt>
+    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+      21/04125/FUL
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+      Appeal start date
+    </dt>
+    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+      {{ 1 | daysAgo }}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+      Comment deadline
+    </dt>
+    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+      11:59pm on {{ 3 | daysInFuture }}
+    </dd>
+  </div>
+
+</dl>

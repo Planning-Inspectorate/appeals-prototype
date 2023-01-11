@@ -1,9 +1,5 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% if data['appealCode'] != "true" %}
-  {% set appealCode = "1345264" %}
-{% endif %}
-
 {% set title = "Appeal "+data['appealCode']+" details" %}
 
 {% block pageTitle %}
@@ -65,9 +61,10 @@
 <!-- appeal metadata -->
 
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
-
+  </div>  
+  <div class="govuk-grid-column-two-thirds">
     <!-- actions -->
     <p class="govuk-body">
       <a href="/manage/notify/v1/send-new?from=appeal">
@@ -78,9 +75,7 @@
       </a>
     </p>
     <p class="govuk-body">
-      <a href="/manage/questionnaire/v11/task-list">
-        Submit questionnaire
-      </a>
+      <a href="/manage/questionnaire/v11/task-list">Submit questionnaire</a> before 11:59pm on {{ 3 | daysInFuture }}.
     </p>
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
   </div>
