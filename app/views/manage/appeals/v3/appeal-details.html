@@ -36,9 +36,9 @@
         </h3>
         <p class="govuk-body">
           {% if data['email'] and data['post'] %}
-            Notice for appeal 1345264 has been sent to 6 recipients.
+            Notice for this appeal has been sent to 6 recipients.
           {% else %}
-            Notice for appeal 1345264 has been sent to 3 recipients.
+            Notice for this appeal has been sent to 3 recipients.
           {% endif %}
         </p>
       {% endset %}
@@ -63,20 +63,33 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
     {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
-  </div>  
+  </div>
+
   <div class="govuk-grid-column-two-thirds">
-    <!-- actions -->
-    <p class="govuk-body">
-      <a href="/manage/notify/v1/send-new?from=appeal">
-        Notify interested parties
-      </a><br>
-      <a href="appeal-notice">
-        View and print the notice
-      </a>
-    </p>
-    <p class="govuk-body">
-      <a href="/manage/questionnaire/v11/task-list">Submit questionnaire</a> before 11:59pm on {{ 3 | daysInFuture }}.
-    </p>
+    <h2 class="govuk-heading-m">
+      Your action is required
+    </h2>
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Warning</span>
+        You have until 11:59pm on {{ 3 | daysInFuture }}, to complete the following actions.
+      </strong>
+    </div>
+
+    <ul class="govuk-list">
+      <li>
+        <a href="appeal-notice">View and print the appeal notice</a>
+      </li>
+      <li>
+        <a href="/manage/notify/v2/send-new?from=appeal">Notify interested parties</a>
+      </li>
+      <li>
+        <a href="/manage/questionnaire/v11/task-list">Submit questionnaire</a>
+      </li>
+    </ul>
+
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
   </div>
 

@@ -21,6 +21,27 @@
       {{ title }}
     </h1>
 
+    {% set version = "2" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Content updates</li>
+      <li>Notification counter fix</li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/send-new',
+      isStartButton: true
+    }) }}
+
     {% set version = "1" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -35,6 +56,7 @@
       <li>Added a print option</li>
       <li>Combined check recipients list</li>
       <li>Dummy counting logic for sent notices</li>
+      <li>Preview of the comment on the appeal notice</li>
     </ul>
 
     {{ govukButton({
