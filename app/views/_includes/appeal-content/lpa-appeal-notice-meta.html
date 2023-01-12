@@ -1,8 +1,8 @@
 {# Tweak the summary list to be smaller #}
 
 <style>
-  .appeal-details .govuk-summary-list__key govuk-!-font-weight-regular,
-  .appeal-details .govuk-summary-list__value govuk-!-font-weight-bold,
+  .appeal-details .govuk-summary-list__key,
+  .appeal-details .govuk-summary-list__value,
   .appeal-details .govuk-summary-list__actions {
     padding-top: .2rem;
     padding-bottom: 0;
@@ -11,54 +11,57 @@
   .app-task-list__section {
     padding-right: 140px
   }
+  .appeal-details .govuk-summary-list__key {
+    font-wight: 300;
+  }
 </style>
 
 <dl class="govuk-summary-list appeal-details govuk-summary-list--no-border">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+  <!-- <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
       Appeal type
     </dt>
-    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+    <dd class="govuk-summary-list__value">
       Full appeal
     </dd>
-  </div>
+  </div> -->
   <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+    <dt class="govuk-summary-list__key">
       Appeal site
     </dt>
-    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+    <dd class="govuk-summary-list__value">
       21 Cheers Drive, Speedwell, Bristol BS5 7FQ
     </dd>
   </div>
   <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
-      Proposal
+    <dt class="govuk-summary-list__key">
+      Description
     </dt>
-    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+    <dd class="govuk-summary-list__value">
       Loft dormer conversion (flat and pitched roof)
     </dd>
   </div>
   <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+    <dt class="govuk-summary-list__key">
       Application number
     </dt>
-    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+    <dd class="govuk-summary-list__value">
       21/04125/FUL
     </dd>
   </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+  <!-- <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
       Appeal start date
     </dt>
-    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+    <dd class="govuk-summary-list__value">
       {{ 1 | daysAgo }}
     </dd>
-  </div>
+  </div>-->
   <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
-      Comment deadline
+    <dt class="govuk-summary-list__key">
+      Deadline
     </dt>
-    <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+    <dd class="govuk-summary-list__value">
       11:59pm on {{ 17 | daysInFuture }}
     </dd>
   </div>

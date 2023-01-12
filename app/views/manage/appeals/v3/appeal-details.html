@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "Appeal "+data['appealCode']+" details" %}
+{% set title = "Appeal "+data['appealCode'] %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -15,8 +15,8 @@
   }) }}
 
   {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.go(-1);"
+    text: "Back to planning appeals",
+    href: "/manage/appeals/v3/?action="
   }) }}
 {% endblock %}
 
@@ -55,12 +55,7 @@
     </h1>
 
   </div>
-</div>
 
-<!-- SECTION -->
-<!-- appeal metadata -->
-
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
     {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
   </div>
@@ -70,23 +65,16 @@
       Your action is required
     </h2>
 
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Warning</span>
-        You have until 11:59pm on {{ 3 | daysInFuture }}, to complete the following actions.
-      </strong>
-    </div>
+    <p class="govuk-body">
+      You have until 11:59pm on {{ 3 | daysInFuture }}, to complete the following actions:
+    </p>
 
-    <ul class="govuk-list">
+    <ul class="govuk-list govuk-list--bullet">
       <li>
-        <a href="appeal-notice">View and print the appeal notice</a>
+        <a href="/manage/notify/v2/notify-interested-parties?action=">Notify interested parties</a>
       </li>
       <li>
-        <a href="/manage/notify/v2/send-new?from=appeal">Notify interested parties</a>
-      </li>
-      <li>
-        <a href="/manage/questionnaire/v11/task-list">Submit questionnaire</a>
+        <a href="/manage/questionnaire/v11/task-list&action=">Submit questionnaire</a>
       </li>
     </ul>
 

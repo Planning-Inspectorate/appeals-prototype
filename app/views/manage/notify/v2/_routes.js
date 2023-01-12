@@ -24,12 +24,7 @@ router.post('/send-email', function (req, res) {
 })
 
 router.post('/check-list', function (req, res) {
-  // return user to the place where they started the notify action
-  if (req.session.data['from'] == 'appeal') {
-    res.redirect('/manage/appeals/v3/appeal-details?action=notified')
-  } else {
-    res.redirect('/manage/appeals/v3/?action=notified')
-  }
+  res.redirect('notify-interested-parties?action=notified')
 })
 
 router.post('/postcode-search', function (req, res) {

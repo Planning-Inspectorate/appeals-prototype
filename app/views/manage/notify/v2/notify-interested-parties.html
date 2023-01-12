@@ -1,0 +1,182 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Notify interested parties' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {% if data['action'] == 'notified' %}
+    {{ govukBackLink({
+      text: "Back to planning appeals",
+      href: "/manage/appeals/v3/?action="
+    }) }}
+  {% else %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:history.go(-1);"
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['action'] == 'notified' %}
+
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Interested parties notified
+          </h3>
+          <p class="govuk-body">
+            {% if data['email'] and data['post'] %}
+              Notice for this appeal has been sent to 6 recipients.
+            {% else %}
+              Notice for this appeal has been sent to 3 recipients.
+            {% endif %}
+          </p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+    </div>
+    <div class="govuk-grid-column-full">
+      {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">
+        <a href="/manage/appeals/v3/appeal-notice?from=notify&action=" class="govuk-link--no-visited-state">
+          View and print the appeal notice
+        </a>
+      </p>
+      <p class="govuk-body">
+        <a href="send-new?from=appeal&action=" class="govuk-link--no-visited-state">
+          Create and send appeal notice by letter or email
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <h2 class="govuk-heading-m">
+        {% if data['email'] %}
+          {% if data['post'] %}
+            6 notices sent
+          {% else %}
+            3 notices sent
+          {% endif %}
+        {% elseif data['post'] %}
+          3 notices sent
+        {% else %}
+          0 notices sent
+        {% endif %}
+      </h2>
+
+      {% if data['email'] %}
+
+      <h3 class="govuk-heading-s">
+        Emailed
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <!-- <dt class="govuk-summary-list__key">
+            Name
+          </dt> -->
+          <dd class="govuk-summary-list__value">
+            sam1983@peterboroughchampions.com
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> sam1983@peterboroughchampions.com</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <!-- <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt> -->
+          <dd class="govuk-summary-list__value">
+            janinebaxter@gmail.com
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> janinebaxter@gmail.com</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
+          <!-- <dt class="govuk-summary-list__key">
+            Address
+          </dt> -->
+          <dd class="govuk-summary-list__value">
+            jimmie123@live.com
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> jimmie123@live.com</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      {% endif %}
+
+      {% if data['post'] %}
+
+      <h3 class="govuk-heading-s">
+        Posted
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dd class="govuk-summary-list__value">
+            22 Cheers Drive, Speedwell, Bristol BS5 7FQ
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> 22 Cheers Drive, Speedwell, Bristol BS5 7FQ</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dd class="govuk-summary-list__value">
+            23 Cheers Drive, Speedwell, Bristol BS5 7FQ
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> 23 Cheers Drive, Speedwell, Bristol BS5 7FQ</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
+          <dd class="govuk-summary-list__value">
+            24 Cheers Drive, Speedwell, Bristol BS5 7FQ
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> 24 Cheers Drive, Speedwell, Bristol BS5 7FQ</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      {% endif %}
+    </div>
+
+  </div>
+{% endblock %}

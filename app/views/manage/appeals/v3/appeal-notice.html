@@ -1,14 +1,14 @@
 {% extends '_layouts/layout-main.html' %}
 
 {% block pageTitle %}
-  Interested party full planning notification
+  Interested party full planning notification - Appeal a planning decision - GOV.UK
 {% endblock %}
 
 {% if data['appealCode'] != "true" %}
   {% set appealCode = "1345264" %}
 {% endif %}
 
-{% set title = "Interested party notice for appeal "+data['appealCode'] %}
+{% set title = "Notice of a planning appeal" %}
 
 {% set applicationRef = "21/04125/FUL" %}
 
@@ -41,75 +41,68 @@
       </p> -->
 
       <p class="govuk-body">
-        Rachel Silver is appealing Bristol City Council’s decision to refuse their planning application.
+        An appeal has been made to The Secretary of State. It will be dealt with by The Planning Inspectorate.
       </p>
 
-      <p class="govuk-body">
+      <!-- <p class="govuk-body">
         As you may have an interest in this planning decision, you can have your say and add a comment to the appeal (this is also known as a ‘written representation’).
-      </p>
+      </p> -->
 
-      <h2 class="govuk-heading-m">
+      <!-- <h2 class="govuk-heading-m">
         Who we are
       </h2>
 
       <p class="govuk-body">
         The Planning Inspectorate is an independent organisation who review all the evidence and make the final decision.
-      </p>
+      </p> -->
 
       <h2 class="govuk-heading-m">
         What you can do
       </h2>
 
       <p class="govuk-body">
-        You can use our website to submit a comment on this appeal. If you commented on the original application, it has already been sent to us and will be considered as part of this appeal.
+        You can have your say and add a comment to the appeal (this is also known as a ‘written representation’).
       </p>
 
       <p class="govuk-body">
-        You must submit your comment on the appeal by 11:59pm on {{ 7 | daysInFuture }}.
+        You must submit your comment by 11:59pm on {{ 7 | daysInFuture }}.
       </p>
-
+<!--
       <p class="govuk-body">
         If you made a comment on the application, they have been sent to the planning inspector. You do not need to send them again.
-      </p>
+      </p> -->
 
       <h2 class="govuk-heading-m">
-        View and comment on this appeal
+        How to comment on the appeal
       </h2>
 
       <p class="govuk-body">
-        Go to the website below and search for 1345264 to view and comment on this appeal.
+        You can use the Planning Inspectorate’s website to submit a comment on this appeal. If you commented on the original application, it has already been sent to the planning inspector.
       </p>
 
-      <p class="govuk-body">
-        <a href="appeal-details?status=open&appeal=1&appealCode={{ appealref }}" class="govuk-link">
+      <ol class="govuk-list govuk-list--number">
+        <li>Go to <span class="govuk-!-font-weight-bold" style="text-decoration: underline;">
           https://comment-on-planning-appeals.service.gov.uk/
-        </a>
-      </p>
+        </span></li>
+        <li>Search for application number <span class="govuk-!-font-weight-bold">{{ appealCode }}</span>.</li>
+        <li>View more details and add your comment.</li>
+      </ol>
 
-      <p class="govuk-body">
+      <!-- <p class="govuk-body">
         You must submit your comment by 11:59pm on {{ '14' | daysInFuture }}.
-      </p>
+      </p> -->
 
       <h2 class="govuk-heading-m">
         What happens next
       </h2>
 
       <p class="govuk-body">
-        The inspector will review all the evidence and make their decision. We will publish the decision on our website.
+        The Planning Inspectorate will review all the information from the application, comments on the appeal and may do a site visit. They will then make their decision. We will publish the decision on our website.
       </p>
 
       <p class="govuk-body">
-        The Planning Inspectorate<br>
-        <!-- enquiries@planninginspectorate.gov.uk -->
+        Bristol City Council<br>
       </p>
-
-      <!-- <h2 class="govuk-heading-m">
-        Find more information
-      </h2>
-
-      <p class="govuk-body">
-        The inspector will review all the evidence and make their decision. We will publish the decision on our website.
-      </p> -->
 
     </section>
 
