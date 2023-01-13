@@ -40,15 +40,16 @@
 
     {% if data['action'] == 'notified' %}
 
+      <!-- notification about notices -->
       {% set html %}
         <h3 class="govuk-notification-banner__heading">
           Interested parties notified
         </h3>
         <p class="govuk-body">
           {% if data['email'] and data['post'] %}
-            Notice for appeal 1345264 has been sent to 6 recipients.
+            Notice for appeal 1345264 has been sent to 6 addresses.
           {% else %}
-            Notice for appeal 1345264 has been sent to 3 recipients.
+            Notice for appeal 1345264 has been sent to 3 addresses.
           {% endif %}
         </p>
       {% endset %}
@@ -59,18 +60,19 @@
 
     {% elif data['action'] == 'printed' %}
 
-    {% set html %}
-      <h3 class="govuk-notification-banner__heading">
-        Printable notice sent
-      </h3>
-      <p class="govuk-body">
-        Notice for appeal 1345264 was sent to your email.
-      </p>
-    {% endset %}
-    {{ govukNotificationBanner({
-      html: html,
-      type: 'success'
-    }) }}
+      <!-- notification about print -->
+      {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+          Printable notice sent
+        </h3>
+        <p class="govuk-body">
+          Notice for appeal 1345264 was sent to your email.
+        </p>
+      {% endset %}
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
 
     {% endif %}
 
@@ -131,7 +133,7 @@
               format: 'numeric'
             },
             {
-              html: '<a href="/manage/notify/v2/notify-interested-parties?from=appeals">Notify interested parties</a><br><a href="/manage/questionnaire/v11/task-list?action=&email=&post="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+              html: '<a href="/manage/notify/v2/send-new?from=appeals">Notify interested parties</a><br><a href="/manage/questionnaire/v11/task-list?action=&email=&post="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
               format: 'numeric'
             }
           ] if data['questionnaire'] != 'complete',
@@ -169,7 +171,7 @@
               format: 'numeric'
             },
             {
-              html: '<a href="/manage/notify/v2/notify-interested-parties?from=appeals">Notify interested parties</a><br><a href="/manage/questionnaire/v11/task-list?action=&email=&post="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+              html: '<a href="/manage/notify/v2/send-new?from=appeals">Notify interested parties</a><br><a href="/manage/questionnaire/v11/task-list?action=&email=&post="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
               format: 'numeric'
             }
           ],
@@ -178,7 +180,7 @@
               html: '<a href="appeal-details?appealCode=1345172&action=&email=&post=">1345172</a>'
             },
             {
-              html: '21/04125/FUL'
+              html: '21/04122/FUL'
             },
             {
               html: '7' | daysInFuture
@@ -188,7 +190,7 @@
               format: 'numeric'
             },
             {
-              html: '<a href="/manage/notify/v2/notify-interested-parties?from=appeals">Notify interested parties</a><br><a href="/manage/questionnaire/v11/task-list?action=&email=&post="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+              html: '<a href="/manage/notify/v2/send-new?from=appeals">Notify interested parties</a><br><a href="/manage/questionnaire/v11/task-list?action=&email=&post="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
               format: 'numeric'
             }
           ],

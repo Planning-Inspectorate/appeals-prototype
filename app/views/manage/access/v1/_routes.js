@@ -19,7 +19,7 @@ router.post('/enter-code', function (req, res) {
 
   // route depending on value
   if (start == 'start') {
-    res.redirect('/manage/appeals/v3/?no-appeals=')
+    res.redirect('/manage/appeals/v3/?no-appeals=&action=')
   } else if (start == 'invite') {
     res.redirect('/manage/appeals/v3/?no-appeals=true')
   } else if (start == 'questionnaire') {

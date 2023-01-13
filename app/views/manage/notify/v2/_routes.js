@@ -24,7 +24,11 @@ router.post('/send-email', function (req, res) {
 })
 
 router.post('/check-list', function (req, res) {
-  res.redirect('notify-interested-parties?action=notified')
+  if (req.session.data['from'] == 'appeals') {
+    res.redirect('/manage/appeals/v3/?action=notified')
+  } else {
+    res.redirect('/manage/appeals/v3/appeal-details?action=notified')
+  }
 })
 
 router.post('/postcode-search', function (req, res) {
