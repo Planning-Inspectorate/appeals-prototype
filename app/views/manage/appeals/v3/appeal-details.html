@@ -36,27 +36,13 @@
           Interested parties notified
         </h3>
         <p class="govuk-body">
+          <a href="#notify">
           {% if data['email'] and data['post'] %}
-            Notice for appeal 1345264 has been sent to 6 addresses.
+            Notice for appeal 1345264 has been sent to 6 interested parties.
           {% else %}
-            Notice for appeal 1345264 has been sent to 3 addresses.
+            Notice for appeal 1345264 has been sent to 3 interested parties.
           {% endif %}
-        </p>
-      {% endset %}
-      {{ govukNotificationBanner({
-        html: html,
-        type: 'success'
-      }) }}
-
-    {% elif data['action'] == 'printed' %}
-
-      <!-- notification about print -->
-      {% set html %}
-        <h3 class="govuk-notification-banner__heading">
-          Printable notice sent
-        </h3>
-        <p class="govuk-body">
-          Notice for appeal 1345264 was sent to your email.
+          </a>
         </p>
       {% endset %}
       {{ govukNotificationBanner({
@@ -77,10 +63,10 @@
           You have until 11:59pm on {{ 3 | daysInFuture }} to:
           <ul class="govuk-list govuk-list--bullet">
             <li>
-              <a href="/manage/notify/v2/send-new?action=">Notify interested parties</a>
+              <a href="#notify">Notify interested parties</a>
             </li>
             <li>
-              <a href="/manage/questionnaire/v11/task-list?action=&email=&post=">Submit questionnaire</a>
+              <a href="/manage/questionnaire/v11/task-list?action=">Submit questionnaire</a>
             </li>
           </ul>
         </p>
@@ -100,23 +86,23 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    <h2 class="govuk-heading-m">
+    <h2 class="govuk-heading-m" id="notify">
       Notified interested parties
     </h2>
 
-    <p class="govuk-body">
-      {% if data['email'] %}
-        {% if data['post'] %}
-          {% include "_includes/appeal-content/lpa-table-notified-6.html" %}
-        {% else %}
-          {% include "_includes/appeal-content/lpa-table-notified-3-email.html" %}
-        {% endif %}
-      {% elseif data['post'] %}
-        {% include "_includes/appeal-content/lpa-table-notified-3-post.html" %}
+    {% if data['email'] %}
+      {% if data['post'] %}
+        {% include "_includes/appeal-content/lpa-table-notified-6.html" %}
       {% else %}
-        0 notices sent
+        {% include "_includes/appeal-content/lpa-table-notified-3-email.html" %}
       {% endif %}
-    </p>
+    {% elseif data['post'] %}
+      {% include "_includes/appeal-content/lpa-table-notified-3-post.html" %}
+    {% else %}
+      <p class="govuk-body">
+        No notices sent.
+      </p>
+    {% endif %}
 
     <p class="govuk-body">
       <a href="/manage/appeals/v3/appeal-notice?from=notify&action=" class="govuk-link--no-visited-state">

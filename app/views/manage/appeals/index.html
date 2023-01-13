@@ -21,23 +21,25 @@
       {{ title }}
     </h1>
 
-
     <section class="govuk-!-margin-bottom-6">
 
       {% set version = "3" %}
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
-          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-          text: 'Work in progress'
+          classes: 'govuk-tag--green govuk-!-margin-left-2',
+          text: 'Ready for research'
         }) }}
       </h2>
 
       <p class="govuk-!-margin-bottom-2">Changes:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>addition of notify interested parties journey</li>
-        <li>some content updates</li>
         <li>adding metadata</li>
+        <li>adding <a href='https://design-system.service.gov.uk/components/notification-banner/' class='govuk-link'>notification banners</a></li>
+        <li>adding appeal notice</li>
+        <li>content updates</li>
+        <li>anchor links from notification banners</li>
       </ul>
 
       {{ govukButton({
