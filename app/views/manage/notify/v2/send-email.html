@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set back = true %}
-{% set title = 'Add a list of email addresses' %}
+{% set title = 'Add email addresses' %}
 
 
 {% block content %}
@@ -19,7 +19,11 @@
     <form method="post" action="">
 
       <p class="govuk-body">
-        Add email addresses below. Separate them with commas or by placing on a new line.
+        Add one or more email addresses. You need to separate the addresses with a comma. For example: john@email.com, name@email.com
+      </p>
+
+      <p class="govuk-body">
+        Or you can put each address on a separate line.
       </p>
 
       {{ govukTextarea({
