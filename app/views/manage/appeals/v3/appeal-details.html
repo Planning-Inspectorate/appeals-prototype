@@ -37,11 +37,11 @@
         </h3>
         <p class="govuk-body">
           <a href="#notify">
-          {% if data['email'] and data['post'] %}
-            Notice for appeal 1345264 has been sent to 6 interested parties.
-          {% else %}
-            Notice for appeal 1345264 has been sent to 3 interested parties.
-          {% endif %}
+            {% if data['notice'] == '6' %}
+              Notice for appeal 1345264 has been sent to 6 addresses.
+            {% else %}
+              Notice for appeal 1345264 has been sent to 3 addresses.
+            {% endif %}
           </a>
         </p>
       {% endset %}
@@ -90,13 +90,18 @@
       Notified interested parties
     </h2>
 
-    {% if data['email'] %}
-      {% if data['post'] %}
+    <!-- <p>
+      Posted = {{ data['posted'] }}
+      Emailed = {{ data['emailed'] }}
+    </p> -->
+
+    {% if data['emailed'] %}
+      {% if data['posted'] %}
         {% include "_includes/appeal-content/lpa-table-notified-6.html" %}
       {% else %}
         {% include "_includes/appeal-content/lpa-table-notified-3-email.html" %}
       {% endif %}
-    {% elseif data['post'] %}
+    {% elseif data['posted'] %}
       {% include "_includes/appeal-content/lpa-table-notified-3-post.html" %}
     {% else %}
       <p class="govuk-body">
@@ -105,7 +110,7 @@
     {% endif %}
 
     <p class="govuk-body">
-      <a href="/manage/appeals/v3/appeal-notice?from=notify&action=" class="govuk-link--no-visited-state">
+      <a href="/manage/appeals/v3/appeal-notice?from=appeal&action=" class="govuk-link--no-visited-state">
         View and print appeal notice
       </a>
     </p>

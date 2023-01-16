@@ -24,12 +24,37 @@ router.post('/send-email', function (req, res) {
 })
 
 router.post('/check-list', function (req, res) {
-  if (req.session.data['from'] == 'appeals') {
-    res.redirect('/manage/appeals/v3/?action=notified')
+
+  // reset values and show new
+  if (req.session.data['email'] == 1) {
+  // email is true
+    if (req.session.data['post'] == 1) {
+      // both post and email
+      if (req.session.data['from'] == 'appeals') {
+        res.redirect('/manage/appeals/v3/?action=notified&emailed=1&posted=1&notice=6&post=&email=')
+      } else {
+        res.redirect('/manage/appeals/v3/appeal-details?action=notified&emailed=1&posted=1&notice=6&post=&email=')
+      }
+    } else {
+      // email only
+      if (req.session.data['from'] == 'appeals') {
+        res.redirect('/manage/appeals/v3/?action=notified&emailed=1&notice=3&post=&email=')
+      } else {
+        res.redirect('/manage/appeals/v3/appeal-details?action=notified&emailed=1&notice=3&post=&email=')
+      }
+    }
+
   } else {
-    res.redirect('/manage/appeals/v3/appeal-details?action=notified')
+    // post only
+    if (req.session.data['from'] == 'appeals') {
+      res.redirect('/manage/appeals/v3/?action=notified&posted=1&notice=3&post=&email=')
+    } else {
+      res.redirect('/manage/appeals/v3/appeal-details?action=notified&posted=1&notice=3&post=&email=')
+    }
+
   }
-})
+
+  })
 
 router.post('/postcode-search', function (req, res) {
   res.redirect('select-address')
