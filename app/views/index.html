@@ -1,190 +1,47 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set back = false %}
 {% set nav = false %}
-{% set title = 'Appeal service prototypes' %}
+{% set title = 'Design patterns' %}
+
+{% block beforeContent %}
+{% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- <span class="govuk-caption-l">
+      Manage LPA appeals
+    </span> -->
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
 
-    {% set appealHTML %}
-      <h2 class="govuk-heading-m">
-        Appeal a planning decision
-      </h2>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-        Common journeys and patterns
-      </h3>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="appeal/before-you-start/">Before you start</a>
-        </li>
-        <li>
-          <a href="appeal/save-and-return/">Save and return</a>
-        </li>
-        <li>
-          <a href="/appeal/service/">Planned maintenance</a>
-        </li>
-        <li>
-          GOV.UK guidance (needs review)
-        </li>
-        <li>
-          Service offline (needs review)
-        </li>
-
-      </ul>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-        Appeal types
-      </h3>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/appeal/has/">Householder</a>
-        </li>
-        <li>
-          <a href="/appeal/full/">Full planning</a>
-        </li>
-        <li>
-          Enforcement (needs review)
-        </li>
-        <li>
-          <a href="/appeal/ldc/">Lawful development certificate</a>
-        </li>
-      </ul>
-    {% endset -%}
-
-    {% set manageHTML %}
-      <h2 class="govuk-heading-m">
-        Manage LPA appeals
-      </h2>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-        Service start points
-      </h3>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/manage/emails/">Communication with the LPA</a>
-        </li>
-        <li>
-          <a href="manage/access/">Service start page</a>
-        </li>
-        <li>
-          <a href="manage/appeals/?questionnaire=&statement=&finalcomments=">Planning appeals (list of appeals)</a>
-        </li>
-        <li>
-          <a href="manage/manage-users/">Manage users</a>
-        </li>
-      </ul>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-        Appeal tasks
-      </h3>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="manage/notify/">Notify interested parties</a>
-        </li>
-        <li>
-          <a href="manage/questionnaire/">Questionnaire</a>
-        </li>
-        <li>
-          <a href="manage/statement/">Appeal statement</a>
-        </li>
-        <li>
-          <a href="manage/final-comments/">Final comments</a>
-        </li>
-      </ul>
-    {% endset -%}
-
-    {% set commentHTML %}
-      <h2 class="govuk-heading-m">
-        Interested parties
-      </h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-
-        <li>
-          <a href="/interested/" class="govuk-link govuk-link--no-visited-state">Comment on a planning appeal (summary of progress)</a>
-        </li>
-        <br>
-        <li>
-          <a href="interested/find-appeal/v8/appeal-notice-email-full">Notice of an appeal from LPA</a>
-        </li>
-        <li>
-          <a href="interested/find-appeal/v8/guidance">Guidance: Comment on a planning appeal</a>
-        </li>
-        <li>
-          <a href="interested/find-appeal/v8/appeal-search-address">Find an appeal</a>
-        </li>
-        <li>
-          <a href="interested/comment/v8/your-name">Comment on an appeal</a>
-        </li>
-      </ul>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-        Appeal states
-      </h3>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="interested/find-appeal/v8/appeal-details?status=open&appeal=1&appealCode=012726">Appeal open for comments</a>
-        </li>
-        <li>
-          <a href="interested/find-appeal/v8/appeal-details?status=closed&appeal=1&appealCode=011362">Appeal closed for comments</a>
-        </li>
-        <li>
-          <a href="interested/find-appeal/v8/appeal-details?status=completed&appeal=1&appealCode=010234">Decided appeal</a>
-        </li>
-      </ul>
-
-    {% endset -%}
-
-    {{ govukTabs({
-      items: [
-        {
-          label: 'Main appeal service',
-          id: 'appeal',
-          panel: {
-            html: appealHTML
-          }
-        },
-        {
-          label: 'LPA service',
-          id: 'manage',
-          panel: {
-            html: manageHTML
-          }
-        },
-        {
-          label: 'Search and comment',
-          id: 'comment',
-          panel: {
-            html: commentHTML
-          }
-        }
-      ]
-    }) }}
-
-  </div>
-
-
-
-  <div class="govuk-grid-column-two-thirds">
-
+    {% set version = "1" %}
     <h2 class="govuk-heading-m">
-      Prototype archive
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
     </h2>
 
-    <p class="govuk-body">
-      The previous prototype is hosted in another place as it uses a differemt version of the prototype kit.
-    </p>
-    <p class="govuk-body">
-      <a href="https://appealz.up.railway.app/">View the archive</a> (username is tim, password is password)
-    </p>
+    <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>first version</li>
+    </ul> -->
+
+    <p class="govuk-!-margin-bottom-2">Jump to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <!-- <li><a href="file-upload/file-upload">service headers</a></li>
+      <li><a href="file-upload/file-upload">H1 scale</a></li> -->
+      <li><a href="patterns/input/name">name input</a></li>
+      <li><a href="patterns/input/address">address input</a></li>
+      <li><a href="patterns/file-upload/file-upload">file upload</a></li>
+      <li><a href="patterns/file-upload/documents-check">check for file upload</a></li>
+    </ul>
+
 
   </div>
 </div>
