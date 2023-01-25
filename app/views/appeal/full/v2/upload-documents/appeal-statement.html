@@ -7,15 +7,81 @@
     {{ title }}
   </h1>
 
-  <p class="govuk-body">Your appeal statement explains why you disagree with the local planning authority&rsquo;s decision. </p>
+  <p class="govuk-body">
+    Your appeal statement explains why you disagree with the local planning authority&rsquo;s decision.
+  </p>
 
-  <p class="govuk-body">If you refer to any documents in your appeal statement, for example photographs, you can upload them in the next step.</p>
+  <p class="govuk-body">
+    If you refer to any documents in your appeal statement, for example photographs, you can upload them in the next step.
+  </p>
+
+  <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+    Claiming costs
+  </h2>
+
+  <p class="govuk-body">
+    You may be able to claim costs associated with this appeal. Costs should be added as part of your statement and uploaded below.
+  </p>
+
+  {% set costsHTML %}
+
+    <p class="govuk-body">
+      Costs may be claimed if someone involved in your appeal behaves in the following ways:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        not co-operating with you or others
+      </li>
+      <li>
+        missed deadlines
+      </li>
+      <li>
+        not co-operating with you or others
+      </li>
+      <li>
+        not turning up to a site visit, hearing or inquiry
+      </li>
+      <li>
+        gave information that was wrong or declared after the deadline
+      </li>
+    </ul>
+
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+      What costs you can claim
+    </h2>
+
+    <p class="govuk-body">
+      You can claim for costs directly related to your appeal, for example:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        the use of consultants to provide detailed technical advice
+      </li>
+      <li>
+        witnesses if you need to pay them
+      </li>
+    </ul>
+
+    <p class="govuk-body">
+      You cannot claim for costs relating to your original planning application.
+    </p>
+
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'What are costs?',
+    html: costsHTML
+  }) }}
 
   <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
     Sensitive information
   </h2>
 
-  <p class="govuk-body">You cannot include any sensitive information in your statement. If you do, you&rsquo;ll be asked to resubmit, which will delay your appeal.</p>
+  <p class="govuk-body">
+    You cannot include any sensitive information in your statement. If you do, you&rsquo;ll be asked to resubmit, which will delay your appeal.
+  </p>
 
   {% set sensitiveHTML %}
     <p class="govuk-!-margin-bottom-2">Sensitive information refers to:</p>
