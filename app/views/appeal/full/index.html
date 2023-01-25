@@ -21,16 +21,43 @@
       {{ title }}
     </h1>
 
+    {% set version = "3" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        adding guidance about costs on the <a href="v3/upload-documents/appeal-statement?action=" class="govuk-link">upload statement page</a>
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/task-list',
+      isStartButton: true
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
     {% set version = "2" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'In progress'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
 
-    <p class="govuk-body">Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release.</p>
+    <p class="govuk-body">
+      Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release.
+    </p>
 
     {{ govukInsetText({
       html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVP-GI0CQ=/?share_link_id=633705051384">Design Miro board</a> with notes from review of live and changes.</p>'
