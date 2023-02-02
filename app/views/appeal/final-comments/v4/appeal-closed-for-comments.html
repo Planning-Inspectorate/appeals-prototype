@@ -1,0 +1,22 @@
+{% extends location+"_layout.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Appeal closed for comments
+      </h1>
+
+      <p>The appeal you&rsquo;re trying to access is closed for comments.</p>
+
+    </div>
+  </div>
+{% endblock %}
