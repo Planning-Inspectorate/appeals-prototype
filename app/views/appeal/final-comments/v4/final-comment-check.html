@@ -1,29 +1,29 @@
 {% extends '_layouts/layout-main.html' %}
 
+
+{% block backLink %}{% endblock %}
+
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'adding-documents',
-    name: 'adding-documents',
+    idPrefix: 'adding-comment',
+    name: 'adding-comment',
     fieldset: {
       legend: {
-        html: 'Do you have additional documents to support your final comments?',
+        html: 'Do you want to make a final comment?',
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }
-    },
-    hint: {
-      text: 'You must not add new evidence to your appeal'
     },
     items: [
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('adding-documents','Yes')
+        checked: checked('adding-comment','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('adding-documents','No')
+        checked: checked('adding-comment','No')
       }
     ]
   }) }}

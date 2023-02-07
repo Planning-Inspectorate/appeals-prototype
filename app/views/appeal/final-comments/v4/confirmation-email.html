@@ -1,0 +1,56 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> We’ve received your final comments
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['email'] or 'sam@mac.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <!-- <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
+  </p> -->
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p>Appeal reference: 0123456
+    <br>
+      Appeal site: 11 Bradling Avenue, Sampleford, BS17 2PP</p>
+
+    <p>Dear Sam Avo,</p>
+
+    <p>
+      We've received your final comments for appeal 0123456.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      File submitted
+    </h2>
+
+    {{ govukInsetText({
+      html: "Filename_01.pdf<br>
+      Filename_02.pdf"
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p>
+      We’ll review your comments and forward them to Sampleford Planning Authority.
+    </p>
+
+    <p>
+      Then the inspector will arrange a site visit. We'll contact you if you need to give them access.
+    </p>
+
+    <p>The Planning Inspectorate<br>
+  </div>
+</div>
+{% endblock %}

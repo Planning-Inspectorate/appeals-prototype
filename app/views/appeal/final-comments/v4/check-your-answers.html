@@ -1,4 +1,4 @@
-{% extends location+"_layout.html" %}
+{% extends '_layouts/layout-main.html' %}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
@@ -22,7 +22,23 @@
             }
           ]
         }
-      },
+      } if data['adding-comment'] == 'Yes',
+      {
+        key: {
+          text: 'Final comments'
+        },
+        value: {
+          html: 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'final-comment-check',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['adding-comment'] == 'No',
       {
         key: {
           text: 'Add supporting documents'
@@ -38,7 +54,7 @@
             }
           ]
         }
-      },
+      } if data['adding-comment'] == 'Yes',
       {
         key: {
           text: 'Supporting documents'
@@ -54,7 +70,7 @@
             }
           ]
         }
-      } if data['adding-documents'] == 'Yes'
+      } if data['final-documents']
     ]
   }) }}
 {% endblock %}

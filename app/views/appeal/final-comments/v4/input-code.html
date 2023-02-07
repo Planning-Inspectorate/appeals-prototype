@@ -1,4 +1,4 @@
-{% extends location+"_layout.html" %}
+{% extends '_layouts/layout-main.html' %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -29,7 +29,7 @@
 {% block buttons %}
   {{ govukButton({
     html: 'Continue',
-    href: 'final-comments'
+    href: 'final-comment-check'
   }) }}
 
   <p><a href="#0">Not received the code?</a></p>

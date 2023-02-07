@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = false %}
-{% set title = 'Full planning' %}
+{% set title = 'Final comments for full planning' %}
 
 {% block backLink %}
   {{ govukBackLink({
@@ -21,7 +21,7 @@
       {{ title }}
     </h1>
 
-    {% set version = "3" %}
+    {% set version = "4" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -34,43 +34,24 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        changed 'consultancy name' to 'company name'
+        moved to the new prototype
       </li>
       <li>
-        adding guidance about costs on the <a href="v3/upload-documents/appeal-statement?action=" class="govuk-link">upload statement page</a>
+        added question for adding comments
       </li>
     </ul>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'v'+version+'/task-list',
+      href: 'v'+version+'/lpa-email',
       isStartButton: true
     }) }}
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
-    {% set version = "2" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
-        text: 'Ready for research'
-      }) }}
-    </h2>
-
     <p class="govuk-body">
-      Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release.
+      <a href="https://appeals-prototype-archive.herokuapp.com/final-comments/v3/submit/appellant-email" class="govuk-link">Previous version of final comments</a> (in the prototype archive)
     </p>
-
-    {{ govukInsetText({
-      html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVP-GI0CQ=/?share_link_id=633705051384">Design Miro board</a> with notes from review of live and changes.</p>'
-    }) }}
-
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/task-list',
-      isStartButton: true
-    }) }}
 
   </div>
 </div>

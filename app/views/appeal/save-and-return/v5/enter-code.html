@@ -56,22 +56,9 @@
   <p class="govuk-body">Check if the email has gone to your spam or junk folder.{{ ' If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.' | safe if not resent }}</p>
 
   {% set customerSupport %}
-    <p class="govuk-body">You can contact our customer support team:</p>
-
-    <p class="govuk-body">
-      Email: <a href="#0">enquiries@planninginspectorate.gov.uk</a>
-      <br>
-      We aim to respond within 5 working days.
-    </p>
-
-    <p class="govuk-body">
-      Telephone: 0303 444 5000
-      <br>
-      Monday to Friday, 9am to 5pm (except public holidays)
-      <br>
-      <a href="https://www.gov.uk/call-charges">Find out about call charges</a>
-    </p>
+    {% include "_includes/contact-cst.html" %}
   {% endset -%}
+  
   {{ govukDetails({
     summaryHtml: 'If you&rsquo;re still having problems',
     html: customerSupport,

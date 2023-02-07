@@ -1,4 +1,4 @@
-{% extends location+"_layout.html" %}
+{% extends '_layouts/layout-main.html' %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -7,15 +7,23 @@
   }) }}
 {% endblock %}
 
+{% set prototypeLinks = [{
+    href: 'confirmation-email',
+    text: 'Confirmation email'
+  }]
+%}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       {{ govukPanel({
-        titleHtml: 'Final comments submitted'
+        titleHtml: 'Final comments submitted',
+        html: "Your reference number<br><strong>0123456</strong>"
       }) }}
 
-      <p>We&rsquo;ve sent you a confirmation email.
+      <p>
+        We&rsquo;ve sent you a confirmation email.
       </p>
 
       <h2 class="govuk-heading-m">
