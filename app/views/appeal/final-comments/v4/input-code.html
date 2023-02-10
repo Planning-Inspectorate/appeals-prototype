@@ -22,12 +22,14 @@
 {% endblock %}
 
 {% block buttons %}
+
   {{ govukButton({
     html: 'Continue',
     href: 'final-comment-check'
   }) }}
 
-  <p><a href="#0">Not received the code?</a></p>
+  <p><a href="?retry=1">Not received the code?</a></p>
+
 {% endblock %}
 
 {% block pageScripts %}{% endblock %}

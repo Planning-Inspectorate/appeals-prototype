@@ -12,10 +12,10 @@ router.get('*', function(req, res, next){
 })
 
 router.post('/final-comment-check', function (req, res) {
-  if (req.session.data['adding-comment'] == 'Yes') {
-    res.redirect('final-comments')
-  } else {
+  if (req.session.data['adding-comment'] == 'No') {
     res.redirect('check-your-answers')
+  } else {
+    res.redirect('final-comments')
   }
 })
 
@@ -24,10 +24,10 @@ router.post('/final-comments', function (req, res) {
 })
 
 router.post('/documents-check', function (req, res) {
-  if (req.session.data['adding-documents'] == 'Yes') {
-    res.redirect('documents-upload')
-  } else {
+  if (req.session.data['adding-documents'] == 'No') {
     res.redirect('check-your-answers')
+  } else {
+    res.redirect('documents-upload')
   }
 })
 
