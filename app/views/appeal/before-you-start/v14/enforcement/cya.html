@@ -1,0 +1,94 @@
+{% extends location+"common/cya.html" %}
+
+{% block questions %}
+  {{ super() }}
+
+  {% set issueDate = (data['issue-date-day'] or '1') +' '+ (data['issue-date-month'] | formatMonth or 'July') +' '+ (data['issue-date-year'] or '2022') %}
+  {% set effectiveDate = (data['effective-date-day'] or '1') +' '+ (data['effective-date-month'] | formatMonth or 'August') +' '+ (data['effective-date-year'] or '2022') %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          text: 'Local planning authority'
+        },
+        value: {
+          text: data['lpa'] or 'Bradford'
+        },
+        actions: {
+          items: [
+            {
+              href: '../lpa?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Appealing'
+        },
+        value: {
+          text: 'An enforcement notice'
+        },
+        actions: {
+          items: [
+            {
+              href: '../appeal-type',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Listed building'
+        },
+        value: {
+          text: data['listed-building-check'] or 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'listed-building-check?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Issue date'
+        },
+        value: {
+          text: issueDate
+        },
+        actions: {
+          items: [
+            {
+              href: 'issue-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Effective date'
+        },
+        value: {
+          text: effectiveDate
+        },
+        actions: {
+          items: [
+            {
+              href: 'effective-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

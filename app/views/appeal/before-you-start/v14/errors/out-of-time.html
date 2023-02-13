@@ -1,0 +1,15 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You cannot appeal' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">Your deadline to appeal has passed.</p>
+
+  <p class="govuk-body">Your deadline was [eg 31 July 2022]. This is [appeal type window, eg 6 months] from the decision date.</p>
+{% endblock %}
+
+{% block buttons %}{% endblock %}
