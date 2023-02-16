@@ -1,23 +1,55 @@
-{% extends '_layouts/layout-main.html' %}
+{% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Before you start' %}
+{% set nav = false %}
+{% set title = 'Service messages' %}
 
-
-{% block questions %}
-
-  {% set html %}
-    <p class="govuk-notification-banner__heading">
-      On Tuesday 13 December between 6-8pm, the appeal a planning decision service will be unavailable due to planned maintenance.
-    </p>
-  {% endset %}
-  {{ govukNotificationBanner({
-    html: html
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
   }) }}
+{% endblock %}
 
-  <h1 class="govuk-heading-l">
-    {{title}}
-  </h1>
-  <p class="govuk-body">This is a new service. Before you start, we&rsquo;ll check if you can use this service by asking some questions about your appeal.</p>
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  <p class="govuk-body">If you cannot use this service, you can still appeal using the existing service.</p>
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <section class="govuk-!-margin-bottom-6">
+
+      {% set version = "1" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--blue govuk-!-margin-left-2',
+          text: 'Ready for review'
+        }) }}
+      </h2>
+
+      <!-- <p class="govuk-!-margin-bottom-2">
+        Changes:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          added routes for listed building appeals
+        </li>
+      </ul> -->
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/planned-maintenance-soon',
+        isStartButton: true
+      }) }}
+
+    </section>
+
+  </div>
+</div>
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = 'Sorry, there is a problem with the service' %}
+
+{% block questions %}
+	<h1 class="govuk-heading-l">
+		{{ title }}
+	</h1>
+
+	<p class="govuk-body">
+		Our team is aware of the issue and is in the process of fixing it.
+	</p>
+
+	<p class="govuk-body">
+		Contact the Planning Inspectorate customer service helpline if you have any questions.
+	</p>
+
+	<p class="govuk-body">
+		We apologise for any inconvenience this causes.
+	</p>
+
+	{% include "_includes/contact-cst.html" %}
+
+{% endblock %}
+
+{% block buttons %}
+{% endblock %}

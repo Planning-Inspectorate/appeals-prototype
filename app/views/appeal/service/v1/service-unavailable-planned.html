@@ -2,8 +2,12 @@
 
 {% set serviceName = "Appeal a planning decision" %}
 
-{% set title = 'Has the local planning authority given you a decision?' %}
-{% set prototypeLinks = [{href: '../errors/lpa-has-more-time', text: 'No: LPA has time to respond'}] %}
+{% set title = 'Sorry, the service is unavailable' %}
+
+{% set prototypeLinks = [{
+  href: 'service-unavailable',
+  text: 'Service is unavailable (unexpected)'
+}] %}
 
 {% block questions %}
 	<h1 class="govuk-heading-l">
