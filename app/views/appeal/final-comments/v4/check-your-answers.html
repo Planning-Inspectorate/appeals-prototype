@@ -14,17 +14,33 @@
           text: 'Final comments'
         },
         value: {
-          html: data['final-comments'] or 'Final comments go here etc etc'
+          html: 'Yes'
         },
         actions: {
           items: [
             {
-              href: 'final-comments',
+              href: 'final-comment-check',
               text: 'Change'
             }
           ]
         }
       } if data['adding-comment'] != 'No',
+      {
+        key: {
+          text: 'Final comments'
+        },
+        value: {
+          html: data['final-comments'] or 'Final comments go here etc etc'
+        },
+        actions: {
+          items: [
+            {
+              href: 'final-comment',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['adding-comment'] == 'Yes',
       {
         key: {
           text: 'Final comments'
