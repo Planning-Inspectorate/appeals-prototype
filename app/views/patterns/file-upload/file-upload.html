@@ -1,7 +1,8 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set title = 'File upload' %}
-{% set nav = false %}
+
+{% set nav = true %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -13,17 +14,32 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
 
-    <p>
+    <p class="govuk-body">
+      Users of the service are expected to upload several files when they use the service.
     </p>
 
-    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+    <p class="govuk-body">
+      In research we found that showing information on the page about file types and size limits is useful.
+    </p>
+
+    <p class="govuk-body">
+      We have been using a component based on the <a href="https://design-patterns.service.justice.gov.uk/components/multi-file-upload/" class="govuk-link">MOJ multi-file upload component</a>.
+    </p>
+
+    <p class="govuk-body">
+      <a href="https://github.com/Planning-Inspectorate/appeals-prototype/tree/main/app/views/patterns/code/file-upload" class="govuk-link">
+        View the code on GitHub
+      </a>
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
 
     {% set uploadHtml %}
+
       {{ govukFileUpload({
         id: "final-documents",
         name: "final-documents",
@@ -42,23 +58,16 @@
         text: 'Upload file',
         classes: 'govuk-button--secondary moj-multi-file-upload__button'
       })}}
+
     {% endset %}
 
     {{ mojMultiFileUpload({
-      uploadedFiles: {
+    uploadedFiles: {
         heading: { text: 'Files added' },
         items: []
       },
       uploadHtml: uploadHtml
     }) }}
-
-    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
-
-    <p class="govuk-body">
-      <a href="https://github.com/Planning-Inspectorate/appeals-prototype/blob/main/app/views/patterns/final-comments/v1/documents-upload.html" class="govuk-link">
-        Go to the GitHub code
-      </a>
-    </p>
 
   </div>
 </div>
