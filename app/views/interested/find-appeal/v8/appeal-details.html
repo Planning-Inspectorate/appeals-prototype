@@ -102,8 +102,13 @@
         </section> -->
 
         <p class="govuk-body">
-          <a href="/interested/comment/v8/your-name?checking=">Comment on this appeal</a> until 11:59pm on 4 May 2022.
+          You can comment on this appeal until 11:59pm on 4 May 2022.
         </p>
+
+        {{ govukButton({
+          text: "Comment on this appeal",
+          classes: "govuk-button--secondary"
+        }) }}
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 

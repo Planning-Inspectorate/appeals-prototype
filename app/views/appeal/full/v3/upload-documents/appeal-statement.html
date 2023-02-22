@@ -20,31 +20,31 @@
   </h2> -->
 
   <p class="govuk-body">
-    If you would like to claim costs associated with this appeal plese visit GOV.UK for guidance and information.
+    If you need to claim for costs during this appeal, visit GOV.UK for guidance and information.
   </p>
 
   {% set costsHTML %}
 
     <p class="govuk-body">
-      Costs may be claimed if someone involved in your appeal behaves in the following ways:
+      A cost is a loss of money during the appeal because someone:
     </p>
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        not co-operating with you or others
+        did not co-operate with you or others
       </li>
       <li>
         missed deadlines
       </li>
       <li>
-        not turning up to a site visit, hearing or inquiry
+        did not turn up to a site visit, hearing or inquiry
       </li>
       <li>
         gave information that was wrong or declared after the deadline
       </li>
     </ul>
 
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+    <!-- <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
       What costs you can claim
     </h2>
 
@@ -59,7 +59,12 @@
       <li>
         witnesses if you need to pay them
       </li>
-    </ul>
+    </ul> -->
+
+    {{ govukWarningText({
+      text: "People can claim for costs against you if you act unreasonably or intentionally delay the appeal process",
+      iconFallbackText: "Warning"
+    }) }}
 
     <p class="govuk-body">
       You cannot claim for costs relating to your original planning application.
@@ -68,7 +73,7 @@
   {% endset -%}
 
   {{ govukDetails({
-    summaryHtml: 'What are costs?',
+    summaryHtml: 'What is a cost?',
     html: costsHTML
   }) }}
 
