@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Does your appeal include a listed building?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'lbcStatus',
+    name: 'lbcStatus',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes, my appeal includes a listed building',
+        value: 'Yes',
+        checked: checked('lbcStatus','My appeal is related to or includes a listed building')
+      },
+      {
+        html: 'No, my appeal does not include a listed building',
+        value: 'No',
+        checked: checked('lbcStatus','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

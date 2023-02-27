@@ -23,6 +23,41 @@
 
     <section class="govuk-!-margin-bottom-6">
 
+      {% set version = "15" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--blue govuk-!-margin-left-2',
+          text: 'Ready for review'
+        }) }}
+      </h2>
+
+      <p class="govuk-!-margin-bottom-2">
+        Changes:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          new routing for listed building consent appeals
+        </li>
+        <li>
+          removed listed building questions from other appeal routes
+        </li>
+        <li>
+          listed buidling appeal only shows when there is a relation to a listed building
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/',
+        isStartButton: true
+      }) }}
+
+    </section>
+
+    <section class="govuk-!-margin-bottom-6">
+
       {% set version = "14" %}
       <h2 class="govuk-heading-m">
         Version {{version}}
