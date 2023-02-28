@@ -30,7 +30,7 @@ w{% extends location+"common/cya.html" %}
           text: 'Related to a listed building'
         },
         value: {
-          text: data['lbcStatus'] or 'No'
+          text: 'Yes' if data['lbcStatus'] == 'Yes' else 'No'
         },
         actions: {
           items: [
@@ -46,7 +46,7 @@ w{% extends location+"common/cya.html" %}
           text: 'Listed building consent appeal only'
         },
         value: {
-          text: data['lbcConsent'] or 'No'
+          text: data['lbcConsent']
         },
         actions: {
           items: [
@@ -56,13 +56,13 @@ w{% extends location+"common/cya.html" %}
             }
           ]
         }
-      } if data['lbcStatus'] != 'No',
+      } if data['lbcStatus'] == 'Yes',
       {
         key: {
           text: 'Appealing'
         },
         value: {
-          text: 'A planning decision' if data['lbcConsent'] != 'Yes' else 'A listed building consent'
+          text: 'A listed building consent' if data['lbcConsent'] == 'Yes' else 'A planning decision'
         },
         actions: {
           items: [

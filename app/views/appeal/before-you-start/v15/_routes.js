@@ -43,7 +43,7 @@ router.post('/listed-building-consent', function (req, res) {
   if (req.session.data['lbcConsent'] == 'Yes') {
     res.redirect('planning/decision?type=lbc');
   } else {
-    res.redirect('appeal-type');
+    res.redirect('appeal-type?lbcConsent=No');
   }
 
 })
