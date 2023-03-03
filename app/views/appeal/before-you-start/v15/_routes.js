@@ -47,7 +47,23 @@ router.post('/listed-building-appeal', function (req, res) {
 })
 
 router.post('/listed-building-options', function (req, res) {
-  res.redirect('planning/type');
+
+  const data = req.session.data
+  let lbcOption = req.session.data['appeal-option']
+
+  if (! lbcOption.length) {
+    res.redirect('listed-building-options')
+  }
+  else if (lbcOption.includes('more')) {
+    res.redirect('errors/certain-types')
+  }
+  else {
+    if (! lbcOption.includes('planning')) {
+      res.redirect('planning/decision?type=section20')
+    } else {
+      res.redirect('planning/type')
+    }
+  }
 })
 
 router.post('/listed-building-consent', function (req, res) {
