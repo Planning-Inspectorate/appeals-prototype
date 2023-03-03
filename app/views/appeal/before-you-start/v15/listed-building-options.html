@@ -1,0 +1,33 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What do you want to appeal?' %}
+
+{% block questions %}
+  {{ govukCheckboxes({
+    name: "appeal-option",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "Select all that apply."
+    },
+    items: [
+      {
+        value: "lbc",
+        text: "Listed building decision"
+      },
+      {
+        value: "planning",
+        text: "Planning decision"
+      },
+      {
+        value: "more",
+        text: "Something else"
+      }
+    ]
+  }) }}
+{% endblock %}

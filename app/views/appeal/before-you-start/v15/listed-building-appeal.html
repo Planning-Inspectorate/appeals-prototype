@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Does your appeal include a listed building?' %}
+{% set title = 'Does your appeal involve a listed building, including already approved listed building consent (LBC)?' %}
 
 {% block questions %}
 
@@ -15,14 +15,17 @@
         isPageHeading: true
       }
     },
+    hint: {
+      text: "This includes changing your last name or spelling your name differently."
+    },
     items: [
       {
-        html: 'Yes, my appeal includes a listed building',
+        html: 'Yes, a listed building is involved as part of this appeal',
         value: 'Yes',
-        checked: checked('lbcStatus','My appeal is related to or includes a listed building')
+        checked: checked('lbcStatus','Yes')
       },
       {
-        html: 'No, my appeal does not include a listed building',
+        html: 'No, a listed building is not involved as part of this appeal',
         value: 'No',
         checked: checked('lbcStatus','No')
       }

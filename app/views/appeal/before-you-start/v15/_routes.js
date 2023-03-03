@@ -27,16 +27,27 @@ router.post('/', function (req, res) {
 })
 
 router.post('/lpa', function (req, res) {
-  res.redirect('listed-building-appeal')
+  res.redirect('enforcement')
+})
+
+router.post('/enforcement', function (req, res) {
+  if (req.session.data['enforcementStatus'] == 'No') {
+    res.redirect('listed-building-appeal')
+  } else {
+    res.redirect('errors/no-enforcement');
+  }
 })
 
 router.post('/listed-building-appeal', function (req, res) {
-
   if (req.session.data['lbcStatus'] == 'Yes') {
-    res.redirect('listed-building-consent')
+    res.redirect('listed-building-options')
   } else {
     res.redirect('appeal-type');
   }
+})
+
+router.post('/listed-building-options', function (req, res) {
+  res.redirect('planning/type');
 })
 
 router.post('/listed-building-consent', function (req, res) {
