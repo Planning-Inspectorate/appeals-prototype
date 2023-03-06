@@ -51,18 +51,20 @@ router.post('/listed-building-options', function (req, res) {
   const data = req.session.data
   let lbcOption = req.session.data['appeal-option']
 
-  if (! lbcOption.length) {
+
+
+  if (! lbcOption.length) {                                   // no option given
     res.redirect('listed-building-options')
-  }
-  else if (lbcOption.includes('more')) {
+  } else if (lbcOption.includes('more')) {                    // otherwise, if it includes 'more'
     res.redirect('errors/certain-types')
-  }
-  else {
-    if (! lbcOption.includes('planning')) {
-      res.redirect('planning/decision?type=section20')
+  } else if (lbcOption.includes('planning')) {                // otherwise, if it contains 'planning'
+    if (lbcOption.includes('lbc')) {                          // …and 'lbc'
+      res.redirect('planning/type?type=both')
     } else {
-      res.redirect('planning/type')
+      res.redirect('planning/type?type=planning')             // otherwise it's planning related to lbc
     }
+  } else {                                                    // if no planning and no more
+    res.redirect('planning/decision?type=section20')          // this is lbc only
   }
 })
 
@@ -154,23 +156,18 @@ router.post('/planning/decision', function (req, res) {
   }
 })
 
-router.post('/planning/decision*date', function (req, res) {
-  res.redirect('enforcement-check')
+router.post('/planning/decision-date', function (req, res) {
+  // res.redirect('enforcement-check')
+  res.redirect('cya')
 })
 
-router.post('/planning/enforcement-check', function (req, res) {
-  if (req.session.data['enforcement-check'] == 'Yes') {
-    res.redirect('../errors/no-enforcement');
-  } else {
-    res.redirect('cya')
-  }
-})
-
-
-
-
-
-
+// router.post('/planning/enforcement-check', function (req, res) {
+//   if (req.session.data['enforcement-check'] == 'Yes') {
+//     res.redirect('../errors/no-enforcement');
+//   } else {
+//     res.redirect('cya')
+//   }
+// })
 
 // LAWFUL DEVELOPMENT CERTIFICATE
 

@@ -43,26 +43,10 @@ w{% extends location+"common/cya.html" %}
       },
       {
         key: {
-          text: 'Listed building consent appeal only'
-        },
-        value: {
-          text: data['lbcConsent']
-        },
-        actions: {
-          items: [
-            {
-              href: 'type',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['lbcStatus'] == 'Yes',
-      {
-        key: {
           text: 'Appealing'
         },
         value: {
-          text: 'A listed building consent' if data['lbcConsent'] == 'Yes' else 'A planning decision'
+          text: 'A listed building consent and a related planning appeal'
         },
         actions: {
           items: [
@@ -72,7 +56,23 @@ w{% extends location+"common/cya.html" %}
             }
           ]
         }
-      },
+      } if data['type'] == 'both' and data['lbcStatus'] == 'Yes',
+      {
+        key: {
+          text: 'Appealing'
+        },
+        value: {
+          text: 'A listed building consent'
+        },
+        actions: {
+          items: [
+            {
+              href: '../appeal-type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['type'] == 'section20',
       {
         key: {
           text: 'Application type'
@@ -88,7 +88,7 @@ w{% extends location+"common/cya.html" %}
             }
           ]
         }
-      },
+      } if data['appeal-option'] != 'lbc',
       {
         key: {
           text: 'Extend an existing home' if data['planning-type'] == 'Prior approval' else 'Homeholder planning permission'
@@ -105,7 +105,6 @@ w{% extends location+"common/cya.html" %}
           ]
         }
       } if data['planning-type'] == 'Prior approval' or data['planning-type'] == 'Removal or variation of conditions',
-
       {
         key: {
           text: 'Major development'
