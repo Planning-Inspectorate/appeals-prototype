@@ -128,10 +128,6 @@ router.post('/planning/listed-building', function (req, res) {
   }
 })
 
-
-
-
-
 router.post('/planning/existing-home-check', function (req, res) {
   if (req.session.data['existing-home-check'] == 'No') {
     res.redirect('major-development-check');
@@ -157,17 +153,8 @@ router.post('/planning/decision', function (req, res) {
 })
 
 router.post('/planning/decision-date', function (req, res) {
-  // res.redirect('enforcement-check')
   res.redirect('cya')
 })
-
-// router.post('/planning/enforcement-check', function (req, res) {
-//   if (req.session.data['enforcement-check'] == 'Yes') {
-//     res.redirect('../errors/no-enforcement');
-//   } else {
-//     res.redirect('cya')
-//   }
-// })
 
 // LAWFUL DEVELOPMENT CERTIFICATE
 
@@ -191,13 +178,15 @@ router.post('/ldc/decision-date', function (req, res) {
   res.redirect('cya')
 })
 
-
-
-
-
-
-
 // ENFORCEMENT
+
+router.post('/planning/enforcement-check', function (req, res) {
+  if (req.session.data['enforcementStatus'] == 'No') {
+    res.redirect('listed-building-appeal')
+  } else {
+    res.redirect('errors/no-enforcement');
+  }
+})
 
 router.post('/enforcement/listed-building-check', function (req, res) {
   res.redirect('issue-date')
@@ -213,9 +202,6 @@ router.post('/enforcement/effective-date', function (req, res) {
 
 
 
-
-
-
 // CHECK YOUR ANSWERS
 
 router.post('*/cya', function (req, res) {
@@ -225,13 +211,6 @@ router.post('*/cya', function (req, res) {
     res.redirect('cya');
   }
 })
-
-
-
-
-
-
-
 
 
 // Add your routes above the module.exports line

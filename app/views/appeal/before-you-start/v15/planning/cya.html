@@ -27,6 +27,22 @@ w{% extends location+"common/cya.html" %}
       },
       {
         key: {
+          text: 'Enforcement notice'
+        },
+        value: {
+          html: 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'enforcement-check?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
           text: 'Related to a listed building'
         },
         value: {
@@ -41,44 +57,13 @@ w{% extends location+"common/cya.html" %}
           ]
         }
       },
-      {
-        key: {
-          text: 'Appealing'
-        },
-        value: {
-          text: 'A listed building consent and a related planning appeal'
-        },
-        actions: {
-          items: [
-            {
-              href: '../appeal-type',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['type'] == 'both' and data['lbcStatus'] == 'Yes',
-      {
-        key: {
-          text: 'Appealing'
-        },
-        value: {
-          text: 'A listed building consent'
-        },
-        actions: {
-          items: [
-            {
-              href: '../appeal-type',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['type'] == 'section20',
+
       {
         key: {
           text: 'Application type'
         },
         value: {
-          text: 'Full planning' if data['planning-type'] != 'enforcement notice' else 'Enforcement notice'
+          text: 'Full planning'
         },
         actions: {
           items: [
@@ -88,7 +73,76 @@ w{% extends location+"common/cya.html" %}
             }
           ]
         }
-      } if data['appeal-option'] != 'lbc',
+      } if data['type'] == 'planning' and data['lbcStatus'] == 'Yes',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: 'Listed building consent'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['type'] == 'lbc',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          html: 'Full planning<br>Listed building consent'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['type'] == 'both' and data['lbcStatus'] == 'Yes',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: 'Listed building consent'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['appeal-option'] == 'lbc' and data['lbcStatus'] == 'Yes',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: 'Full planning'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['lbcStatus'] == 'No',
+
       {
         key: {
           text: 'Extend an existing home' if data['planning-type'] == 'Prior approval' else 'Homeholder planning permission'
@@ -168,23 +222,8 @@ w{% extends location+"common/cya.html" %}
             }
           ]
         }
-      } if data['decision-check'] == 'I have not received a decision',
-      {
-        key: {
-          text: 'Enforcement notice'
-        },
-        value: {
-          html: 'No'
-        },
-        actions: {
-          items: [
-            {
-              href: 'enforcement-check?cya=true',
-              text: 'Change'
-            }
-          ]
-        }
-      }
+      } if data['decision-check'] == 'I have not received a decision'
+
     ]
   }) }}
 {% endblock %}
