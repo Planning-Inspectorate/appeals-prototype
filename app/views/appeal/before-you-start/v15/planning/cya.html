@@ -7,7 +7,7 @@ w{% extends location+"common/cya.html" %}
   {% set decisionDate = (data['decision-due-date-day'] or '1') +' '+ (data['decision-due-date-month'] | formatMonth or 'August') +' '+ (data['decision-due-date-year'] or '2022') %}
 
   {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
+    classes: 'govuk-!-margin-bottom-6',
     rows: [
       {
         key: {

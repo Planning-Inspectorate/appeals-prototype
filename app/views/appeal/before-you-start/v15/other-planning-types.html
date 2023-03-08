@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Do you want to appeal any of these?' %}
+{% set title = 'Do you want to appeal a planning decision on any of the following?' %}
 
 {% block questions %}
 
@@ -12,10 +12,14 @@
         </h1>
       </legend>
 
+      <p class="govuk-hint">
+        You can check this on your planning application form
+      </p>
+
       <ul class="govuk-list govuk-list--bullet">
-        <li>A lawful development certificate (LDC)</li>
-        <li>An advertisement application</li>
-        <li>A discontinuance notice (DN)</li>
+        <li>Lawful Development Certificate (LDC)</li>
+        <li>Advertisement consent application</li>
+        <li>Discontinuance notice</li>
       </ul>
 
       <div class="govuk-radios" data-module="govuk-radios">

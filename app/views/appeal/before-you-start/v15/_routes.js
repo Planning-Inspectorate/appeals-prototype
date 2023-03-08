@@ -61,10 +61,8 @@ router.post('/listed-building-options', function (req, res) {
   const data = req.session.data
   let lbcOption = req.session.data['appeal-option']
 
-  if (! lbcOption.length) {                                   // no option given
-    res.redirect('listed-building-options')
-  } else if (lbcOption.includes('more')) {                    // otherwise, if it includes 'more'
-    res.redirect('errors/certain-types')
+  if (! lbcOption) {                                          // no option given
+    res.redirect('listed-building-options?error=true')
   } else if (lbcOption.includes('planning')) {                // otherwise, if it contains 'planning'
     if (lbcOption.includes('lbc')) {                          // …and 'lbc'
       res.redirect('planning/type?type=both')
