@@ -143,9 +143,6 @@ router.get('/task-list', function(req, res, next){
   }
 
 
-
-
-
   // Check if ownership upload questions are complete
   if (
     (req.session.data['ownership-certificate-check'] == 'Yes'
@@ -243,11 +240,9 @@ router.get('/task-list', function(req, res, next){
 
 
 
-
   // Set up the section count and increase if each section is done
   let count = 0
   if (res.locals.data['prepare-appeal-completed'] == 'true') { count++ }
-  if (res.locals.data['upload-documents-completed'] == 'true') { count++ }
   if (res.locals.data['upload-documents-completed'] == 'true') { count++ }
   res.locals.count = count
 
@@ -368,8 +363,12 @@ router.post('/prepare-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
     res.redirect('procedure--reason')
   } else {
-    res.redirect('complete')
+    res.redirect('statement')
   }
+})
+
+router.post('/prepare-appeal/statement', function (req, res) {
+  res.redirect('complete')
 })
 
 router.post('/prepare-appeal/procedure--reason', function (req, res) {
@@ -395,9 +394,6 @@ router.get('/prepare-appeal/complete', function (req, res) {
     res.redirect('../task-list')
   }
 })
-
-
-
 
 
 

@@ -1,0 +1,37 @@
+{# Tweak the summary list to be smaller #}
+
+<style>
+  .appeal-details .govuk-summary-list__key,
+  .appeal-details .govuk-summary-list__value,
+  .appeal-details .govuk-summary-list__actions {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  /* Give some space for the tag being inline now */
+  .app-task-list__section {
+    padding-right: 140px
+  }
+</style>
+
+{{ govukSummaryList({
+  classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
+  rows: [
+
+    {
+      key: {
+        text: 'Local planning authority'
+      },
+      value: {
+        text: data['lpa'] or 'Bradford'
+      }
+    },
+    {
+      key: {
+        text: 'Appeal type'
+      },
+      value: {
+        text: 'Listed building consent'
+      }
+    }
+  ]
+}) }}

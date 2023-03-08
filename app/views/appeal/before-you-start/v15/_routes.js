@@ -32,26 +32,34 @@ router.post('/lpa', function (req, res) {
 
 router.post('/enforcement', function (req, res) {
   if (req.session.data['enforcementStatus'] == 'No') {
-    res.redirect('listed-building-appeal')
+    res.redirect('other-planning-types')
   } else {
     res.redirect('errors/no-enforcement');
   }
 })
 
-router.post('/listed-building-appeal', function (req, res) {
-  if (req.session.data['lbcStatus'] == 'Yes') {
-    res.redirect('listed-building-options')
+router.post('/other-planning-types', function (req, res) {
+  if (req.session.data['unsupported-appeals'] == 'No') {
+    res.redirect('listed-building-appeal');
   } else {
-    res.redirect('appeal-type');
+    res.redirect('errors/certain-types')
+  }
+})
+
+router.post('/listed-building-appeal', function (req, res) {
+  if (req.session.data['lbcStatus'] == 'No') {
+    res.redirect('planning/type')
+  } else {
+    res.redirect('listed-building-options')
   }
 })
 
 router.post('/listed-building-options', function (req, res) {
 
+  // removed the 'more' option in the form - code still works
+
   const data = req.session.data
   let lbcOption = req.session.data['appeal-option']
-
-
 
   if (! lbcOption.length) {                                   // no option given
     res.redirect('listed-building-options')
@@ -209,6 +217,37 @@ router.post('*/cya', function (req, res) {
     res.redirect(req.session.data['bys-next']);
   } else {
     res.redirect('cya');
+  }
+})
+
+
+
+// CYA continue button (not working right now)
+// Need to link this to the various appeal submission journeys
+router.post('/planning/cya', function (req, res) {
+  let type = req.session.data['planning-type']
+
+  switch (type) {
+    case 'Full planning':
+      res.redirect('/full/v3/tasklist?type=full');
+      break;
+    case 'Householder planning':
+      res.redirect('/has/v2/tasklist?type=full');
+      break;
+    case 'Listed building consent':
+      if (req.session.data['type'] == 'both') {
+        res.redirect(req.session.data['both']);
+      } else {
+        res.redirect('cya');
+      }
+      res.redirect('lbc/v1/task-list');
+      break;
+    case 'Prior approval':
+    case 'Removal or variation of conditions':
+      res.redirect('existing-home-check');
+      break;
+    default:
+      res.redirect('major-development-check');
   }
 })
 

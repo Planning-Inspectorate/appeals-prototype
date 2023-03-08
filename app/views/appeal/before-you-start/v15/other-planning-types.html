@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Do you want to appeal any of these?' %}
+
+{% block questions %}
+
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          {{ title }}
+        </h1>
+      </legend>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>A lawful development certificate (LDC)</li>
+        <li>An advertisement application</li>
+        <li>A discontinuance notice (DN)</li>
+      </ul>
+
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="unsupported-appeals" name="unsupported-appeals" type="radio" value="Yes">
+          <label class="govuk-label govuk-radios__label" for="unsupported-appeals">
+            Yes
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="unsupported-appeals-2" name="unsupported-appeals" type="radio" value="No">
+          <label class="govuk-label govuk-radios__label" for="unsupported-appeals-2">
+            No
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+{% endblock %}

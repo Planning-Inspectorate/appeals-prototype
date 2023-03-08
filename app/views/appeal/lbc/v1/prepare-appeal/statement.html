@@ -1,0 +1,140 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What is your appeal statement?' %}
+
+{% set return = false %}
+{% set back = true %}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Your appeal statement explains why you disagree with the local planning authority’s decision.
+  </p>
+
+  <p class="govuk-body">
+    If you refer to any documents in your appeal statement, for example photographs, you can upload them later.
+  </p>
+
+  <p class="govuk-body">
+    If you need to claim for costs during this appeal, visit GOV.UK for guidance and information.
+  </p>
+
+  {% set costsHTML %}
+
+    <p class="govuk-body">
+      A cost is a loss of money during the appeal because someone:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        did not co-operate with you or others
+      </li>
+      <li>
+        missed deadlines
+      </li>
+      <li>
+        did not turn up to a site visit, hearing or inquiry
+      </li>
+      <li>
+        gave information that was wrong or declared after the deadline
+      </li>
+    </ul>
+
+    <!-- <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+      What costs you can claim
+    </h2>
+
+    <p class="govuk-body">
+      You can claim for costs directly related to your appeal, for example:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        the use of consultants to provide detailed technical advice
+      </li>
+      <li>
+        witnesses if you need to pay them
+      </li>
+    </ul> -->
+
+    {{ govukWarningText({
+      text: "People can claim for costs against you if you act unreasonably or intentionally delay the appeal process",
+      iconFallbackText: "Warning"
+    }) }}
+
+    <p class="govuk-body">
+      You cannot claim for costs relating to your original planning application.
+    </p>
+
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'What is a cost?',
+    html: costsHTML
+  }) }}
+
+  <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+    Sensitive information
+  </h2>
+
+  <p class="govuk-body">
+    You cannot include any sensitive information in your statement. If you do, you&rsquo;ll be asked to resubmit, which will delay your appeal.
+  </p>
+
+  {% set sensitiveHTML %}
+    <p class="govuk-!-margin-bottom-2">Sensitive information refers to:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+      <li>comments from children</li>
+      <li>information relating to children</li>
+      <li>information relating to health</li>
+      <li>information relating to crime</li>
+      <li>
+        any information relating to an individual&rsquo;s:
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+          <li>race</li>
+          <li>ethnic origin</li>
+          <li>politics</li>
+          <li>religion</li>
+          <li>trade union membership</li>
+          <li>genetics</li>
+          <li>physical characteristics</li>
+          <li>sex life</li>
+          <li>sexual orientation</li>
+        </ul>
+      </li>
+    </ul>
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'What is sensitive information?',
+    html: sensitiveHTML
+  }) }}
+
+  {{ govukTextarea({
+    name: 'appeal-statement',
+    id: 'appeal-statement',
+    value: data['appeal-statement'],
+    rows: '8',
+    label: {
+      html: 'Your appeal statement',
+      classes: 'govuk-label--m'
+    }
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: 'appeal-statement-confirmation',
+    name: 'appeal-statement-confirmation',
+    classes: 'checkboxes-long-text',
+    items: [
+      {
+        html: 'I confirm that I have not included any sensitive information in my final comment.',
+        value: 'I confirm that I have not included any sensitive information in my final comment.',
+        checked: checked('appeal-statement-confirmation','I confirm that I have not included any sensitive information in my final comments.')
+      }
+    ]
+  }) }}
+{% endblock %}
