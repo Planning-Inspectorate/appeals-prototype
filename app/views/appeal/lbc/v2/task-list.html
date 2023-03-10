@@ -1,0 +1,257 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your appeal' %}
+{% set back = false %}
+{% set prototypeLinks = [{href: 'declaration', text: 'Skip to declaration'}] %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <!-- appeal metadata -->
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-full">
+
+          {# Tweak the summary list to be smaller #}
+
+          <style>
+            .appeal-details .govuk-summary-list__key,
+            .appeal-details .govuk-summary-list__value,
+            .appeal-details .govuk-summary-list__actions {
+              padding-top: 0;
+              padding-bottom: 0;
+            }
+            /* Give some space for the tag being inline now */
+            .app-task-list__section {
+              padding-right: 140px
+            }
+          </style>
+
+
+          {% if data['lbc'] %}
+            {{ govukSummaryList({
+              classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
+              rows: [
+
+                {
+                  key: {
+                    text: 'Local planning authority'
+                  },
+                  value: {
+                    text: data['lpa'] or 'Bradford'
+                  }
+                },
+                {
+                  key: {
+                    text: 'Appeal type'
+                  },
+                  value: {
+                    html: 'Listed building consent<br>Full planning'
+                  }
+                }
+              ]
+            }) }}
+
+          {% else %}
+
+            {{ govukSummaryList({
+              classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
+              rows: [
+
+                {
+                  key: {
+                    text: 'Local planning authority'
+                  },
+                  value: {
+                    text: data['lpa'] or 'Bradford'
+                  }
+                },
+                {
+                  key: {
+                    text: 'Appeal type'
+                  },
+                  value: {
+                    text: 'Listed building consent'
+                  }
+                }
+              ]
+            }) }}
+
+          {% endif %}
+
+        </div>
+      </div>
+
+      <!-- deadline -->
+      <p class="govuk-body">Your deadline to submit this appeal is {{ '6' | daysInFuture }}.</p>
+
+      <p>
+        <a href="#0" class="govuk-link--no-visited-state">Save and come back later</a>.
+      </p>
+
+    </div>
+
+    <!-- progress -->
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 4 of 5 sections.</p>
+
+      <!-- tasks -->
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> Tell us about you
+          </h2>
+
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="eligibility-status">
+                  Your contact details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Tell us about the site
+          </h2>
+
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="eligibility-status">
+                  Site address
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="site-status">
+                  Access to the site
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="site-status">Completed</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Tell us about the appeal
+          </h2>
+
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="eligibility-status">
+                  Appeal procedure
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="eligibility-status">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="site-status">
+                  Appeal statement
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="site-status">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="site-status">
+                  Appeal documents
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="site-status">Completed</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">4. </span> Tell us about the application
+          </h2>
+
+          <ul class="app-task-list__items">
+            {% if data['lbc'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              Listed building consent
+            </h2>
+            {% endif %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="company-information-status">
+                  Application reference
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag" id="company-information-status">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="contact-details-status">
+                  Upload documents
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">
+                In progress
+              </strong>
+            </li>
+            {% if data['lbc'] %}
+              <h2 class="govuk-heading-s govuk-!-margin-top-3 govuk-!-margin-bottom-0">
+                Full planning
+              </h2>
+
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <a href="#" aria-describedby="company-information-status">
+                    Application reference
+                  </a>
+                </span>
+                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">
+                  In progress
+                </strong>
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <a href="#" aria-describedby="contact-details-status">
+                    Upload documents
+                  </a>
+                </span>
+                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">In progress</strong>
+              </li>
+            {% endif %}
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">5. </span> Submit your appeal
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                Agree to declaration and submit appeal
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-pay-status">Cannot start yet</strong>
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+
+{% endblock %}

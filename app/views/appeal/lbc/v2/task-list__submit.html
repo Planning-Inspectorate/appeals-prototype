@@ -1,0 +1,38 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">4. </span> Submit
+    {% if
+      data['prepare-appeal-completed'] == 'true'
+      and data['upload-documents-completed'] == 'true'
+    %}
+      {{ govukTag({
+        html: 'Ready to submit',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Cannot start yet',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Accept declaration and submit',
+          classes: 'govuk-!-width-full'
+        },
+        actions: {
+          items: [
+            {
+              href: 'declaration',
+              html: 'Continue'
+            }
+          ]
+        } if data['prepare-appeal-completed'] == 'true' and data['upload-documents-completed'] == 'true'
+      }
+    ]
+  }) }}
+</li>

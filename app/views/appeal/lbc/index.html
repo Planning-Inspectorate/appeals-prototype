@@ -21,12 +21,39 @@
       {{ title }}
     </h1>
 
+    <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
+
+    {% set version = "2" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'Work in progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        the task list is closer to the GDS pattern (grouped questions)
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/task-list?lbc=1',
+      isStartButton: true
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
     {% set version = "1" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
-        text: 'Ready for research'
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'Work in progress'
       }) }}
     </h2>
 
