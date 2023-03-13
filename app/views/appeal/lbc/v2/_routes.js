@@ -254,8 +254,9 @@ router.get('/task-list', function(req, res, next){
 
 
 //
-// PREPARE APPEAL
-//
+// ABOUT YOU
+/////////////////////////////
+
 router.post('/prepare-appeal/:page', function (req, res, next) {
   req.session.data['prepare-appeal-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
@@ -263,31 +264,36 @@ router.post('/prepare-appeal/:page', function (req, res, next) {
   next()
 })
 
-router.post('/prepare-appeal/contact-details', function (req, res) {
+router.post('/about-you/contact-details', function (req, res) {
   res.redirect('appellant-check')
 })
 
-router.post('/prepare-appeal/appellant-check', function (req, res) {
+router.post('/about-you/appellant-check', function (req, res) {
   if (req.session.data['appellant-check'] == 'Another individual') {
     res.redirect('appellant-name')
   } else {
-    res.redirect('lpa-reference')
+    res.redirect('../about-the-site/address')
   }
 })
 
-router.post('/prepare-appeal/appellant-name', function (req, res) {
-  res.redirect('lpa-reference')
+router.post('/about-you/appellant-name', function (req, res) {
+  res.redirect('../about-the-site/address')
 })
 
-router.post('/prepare-appeal/lpa-reference', function (req, res) {
-  res.redirect('address')
-})
+// router.post('/about-you/lpa-reference', function (req, res) {
+//   res.redirect('address')
+// })
 
-router.post('/prepare-appeal/address', function (req, res) {
+
+//
+// ABOUT THE SITE
+/////////////////////////////
+
+router.post('/about-the-site/address', function (req, res) {
   res.redirect('own-all')
 })
 
-router.post('/prepare-appeal/own-all', function (req, res) {
+router.post('/about-the-site/own-all', function (req, res) {
   if (req.session.data['own-all'] == 'No') {
     res.redirect('own-some')
   } else {
@@ -295,11 +301,11 @@ router.post('/prepare-appeal/own-all', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/own-some', function (req, res) {
+router.post('/about-the-site/own-some', function (req, res) {
   res.redirect('own-others')
 })
 
-router.post('/prepare-appeal/own-others', function (req, res) {
+router.post('/about-the-site/own-others', function (req, res) {
   if (req.session.data['own-others'] == 'Some' || req.session.data['own-others'] == 'No') {
     res.redirect('owners-searched')
   } else {
@@ -307,11 +313,11 @@ router.post('/prepare-appeal/own-others', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/owners-searched', function (req, res) {
+router.post('/about-the-site/owners-searched', function (req, res) {
   res.redirect('owners-advertised')
 })
 
-router.post('/prepare-appeal/owners-advertised', function (req, res) {
+router.post('/about-the-site/owners-advertised', function (req, res) {
   if (req.session.data['own-others'] == 'Some') {
     res.redirect('owners-notified')
   } else {
@@ -319,11 +325,11 @@ router.post('/prepare-appeal/owners-advertised', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/owners-notified', function (req, res) {
+router.post('/about-the-site/owners-notified', function (req, res) {
   res.redirect('agricultural-holding')
 })
 
-router.post('/prepare-appeal/agricultural-holding', function (req, res) {
+router.post('/about-the-site/agricultural-holding', function (req, res) {
   if (req.session.data['agricultural-holding'] == 'Yes') {
     res.redirect('agricultural-tenant')
   } else {
@@ -331,7 +337,7 @@ router.post('/prepare-appeal/agricultural-holding', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/agricultural-tenant', function (req, res) {
+router.post('/about-the-site/agricultural-tenant', function (req, res) {
   if (req.session.data['agricultural-tenant'] == 'Yes') {
     res.redirect('agricultural-others')
   } else {
@@ -339,7 +345,7 @@ router.post('/prepare-appeal/agricultural-tenant', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/agricultural-others', function (req, res) {
+router.post('/about-the-site/agricultural-others', function (req, res) {
   if (req.session.data['agricultural-others'] == 'Yes') {
     res.redirect('agricultural-notified')
   } else {
@@ -347,19 +353,23 @@ router.post('/prepare-appeal/agricultural-others', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/agricultural-notified', function (req, res) {
+router.post('/about-the-site/agricultural-notified', function (req, res) {
   res.redirect('site-visibility')
 })
 
-router.post('/prepare-appeal/site-visibility', function (req, res) {
+router.post('/about-the-site/site-visibility', function (req, res) {
   res.redirect('health-and-safety')
 })
 
-router.post('/prepare-appeal/health-and-safety', function (req, res) {
-  res.redirect('procedure')
+router.post('/about-the-site/health-and-safety', function (req, res) {
+  res.redirect('../about-the-appeal/procedure')
 })
 
-router.post('/prepare-appeal/procedure', function (req, res) {
+//
+// THE APPEAL
+/////////////////////////////
+
+router.post('/about-the-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
     res.redirect('procedure--reason')
   } else {
@@ -367,11 +377,7 @@ router.post('/prepare-appeal/procedure', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/statement', function (req, res) {
-  res.redirect('complete')
-})
-
-router.post('/prepare-appeal/procedure--reason', function (req, res) {
+router.post('/about-the-appeal/procedure--reason', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry') {
     res.redirect('procedure--length')
   } else {
@@ -379,15 +385,76 @@ router.post('/prepare-appeal/procedure--reason', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/procedure--length', function (req, res) {
+router.post('/about-the-appeal/procedure--length', function (req, res) {
   res.redirect('procedure--witnesses')
 })
 
-router.post('/prepare-appeal/procedure--witnesses', function (req, res) {
-  res.redirect('complete')
+router.post('/about-the-appeal/procedure--witnesses', function (req, res) {
+  res.redirect('appeal-statement')
 })
 
-router.get('/prepare-appeal/complete', function (req, res) {
+router.post('/about-the-appeal/statement', function (req, res) {
+  // res.redirect('complete')
+  res.redirect('common-ground')
+})
+
+router.post('/about-the-appeal/appeal-statement', function (req, res) {
+  if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
+    res.redirect('common-ground')
+  } else {
+    res.redirect('new-plans-check')
+  }
+})
+
+router.post('/about-the-appeal/common-ground', function (req, res) {
+  res.redirect('new-plans-check')
+})
+
+router.post('/about-the-appeal/new-plans-check', function (req, res) {
+  if (req.session.data['new-plans-check'] == 'Yes') {
+    res.redirect('new-plans')
+  } else {
+    res.redirect('planning-obligation-check')
+  }
+})
+
+router.post('/about-the-appeal/new-plans', function (req, res) {
+  res.redirect('planning-obligation-check')
+})
+
+router.post('/about-the-appeal/planning-obligation-check', function (req, res) {
+  if (req.session.data['planning-obligation-check'] == 'Yes') {
+    res.redirect('planning-obligation-status')
+  } else {
+    res.redirect('other-check')
+  }
+})
+
+router.post('/about-the-appeal/planning-obligation-status', function (req, res) {
+  if (req.session.data['planning-obligation-status'] == 'Finalised and ready to submit' || req.session.data['planning-obligation-status'] == 'In draft') {
+    res.redirect('planning-obligation')
+  } else {
+    res.redirect('other-check')
+  }
+})
+
+router.post('/about-the-appeal/planning-obligation', function (req, res) {
+  res.redirect('other-check')
+})
+
+router.post('/about-the-appeal/other-check', function (req, res) {
+  if (req.session.data['other-check'] == 'Yes') {
+    res.redirect('other')
+  } else {
+    res.redirect('../task-list')
+  }
+})
+
+router.post('/about-the-appeal/other', function (req, res) {
+  res.redirect('../about-the-application/application-reference')
+})
+
+router.get('/about-the-appeal/complete', function (req, res) {
   if (!res.locals.data['upload-documents-completed']) {
     res.redirect('../upload-documents/application')
   } else {
@@ -397,30 +464,36 @@ router.get('/prepare-appeal/complete', function (req, res) {
 
 
 
+//
+// THE APPLICATION
+/////////////////////////////
 
-//
-// UPLOAD DOCUMENTS
-//
-router.post('/upload-documents/:page', function (req, res, next) {
+
+// ??
+router.post('/about-the-application/:page', function (req, res, next) {
   req.session.data['upload-documents-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
-
   next()
 })
 
-router.post('/upload-documents/application', function (req, res) {
+
+router.post('/about-the-application/application-reference', function (req, res) {
+  res.redirect('application')
+})
+
+router.post('/about-the-application/application', function (req, res) {
   res.redirect('application-desc-correct')
 })
 
-router.post('/upload-documents/application-desc-correct', function (req, res) {
+router.post('/about-the-application/application-desc-correct', function (req, res) {
   res.redirect('plans')
 })
 
-router.post('/upload-documents/plans', function (req, res) {
+router.post('/about-the-application/plans', function (req, res) {
   res.redirect('ownership-certificate-check')
 })
 
-router.post('/upload-documents/ownership-certificate-check', function (req, res) {
+router.post('/about-the-application/ownership-certificate-check', function (req, res) {
   if (req.session.data['ownership-certificate-check'] == 'Yes') {
     res.redirect('ownership-certificate')
   } else {
@@ -428,11 +501,11 @@ router.post('/upload-documents/ownership-certificate-check', function (req, res)
   }
 })
 
-router.post('/upload-documents/ownership-certificate', function (req, res) {
+router.post('/about-the-application/ownership-certificate', function (req, res) {
   res.redirect('design-access-check')
 })
 
-router.post('/upload-documents/design-access-check', function (req, res) {
+router.post('/about-the-application/design-access-check', function (req, res) {
   if (req.session.data['design-access-check'] == 'Yes') {
     res.redirect('design-access')
   } else {
@@ -440,73 +513,74 @@ router.post('/upload-documents/design-access-check', function (req, res) {
   }
 })
 
-router.post('/upload-documents/design-access', function (req, res) {
+router.post('/about-the-application/design-access', function (req, res) {
   res.redirect('decision-letter')
 })
 
-router.post('/upload-documents/decision-letter', function (req, res) {
-  res.redirect('appeal-statement')
-})
-
-router.post('/upload-documents/appeal-statement', function (req, res) {
-  if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
-    res.redirect('common-ground')
-  } else {
-    res.redirect('new-plans-check')
-  }
-})
-
-router.post('/upload-documents/common-ground', function (req, res) {
-  res.redirect('new-plans-check')
-})
-
-router.post('/upload-documents/new-plans-check', function (req, res) {
-  if (req.session.data['new-plans-check'] == 'Yes') {
-    res.redirect('new-plans')
-  } else {
-    res.redirect('planning-obligation-check')
-  }
-})
-
-router.post('/upload-documents/new-plans', function (req, res) {
-  res.redirect('planning-obligation-check')
-})
-
-router.post('/upload-documents/planning-obligation-check', function (req, res) {
-  if (req.session.data['planning-obligation-check'] == 'Yes') {
-    res.redirect('planning-obligation-status')
-  } else {
-    res.redirect('other-check')
-  }
-})
-
-router.post('/upload-documents/planning-obligation-status', function (req, res) {
-  if (req.session.data['planning-obligation-status'] == 'Finalised and ready to submit' || req.session.data['planning-obligation-status'] == 'In draft') {
-    res.redirect('planning-obligation')
-  } else {
-    res.redirect('other-check')
-  }
-})
-
-router.post('/upload-documents/planning-obligation', function (req, res) {
-  res.redirect('other-check')
-})
-
-router.post('/upload-documents/other-check', function (req, res) {
-  if (req.session.data['other-check'] == 'Yes') {
-    res.redirect('other')
+router.post('/about-the-application/decision-letter', function (req, res) {
+  if (req.session.data['lbc']) {
+    res.redirect('../about-second-application/application-reference')
   } else {
     res.redirect('../task-list')
   }
 })
 
-router.post('/upload-documents/other', function (req, res) {
-  res.redirect('../task-list')
+
+//
+// THE SECOND APPLICATION
+/////////////////////////////
+
+
+// ??
+router.post('/about-second-application/:page', function (req, res, next) {
+  req.session.data['upload-documents-started'] = 'true'
+  req.session.data[`${req.params.page}-complete`] = 'true'
+  next()
 })
 
+router.post('/about-second-application/application-reference', function (req, res) {
+  res.redirect('application')
+})
 
+router.post('/about-second-application/application', function (req, res) {
+  res.redirect('application-desc-correct')
+})
 
+router.post('/about-second-application/application-desc-correct', function (req, res) {
+  res.redirect('plans')
+})
 
+router.post('/about-second-application/plans', function (req, res) {
+  res.redirect('ownership-certificate-check')
+})
+
+router.post('/about-second-application/ownership-certificate-check', function (req, res) {
+  if (req.session.data['ownership-certificate-check'] == 'Yes') {
+    res.redirect('ownership-certificate')
+  } else {
+    res.redirect('design-access-check')
+  }
+})
+
+router.post('/about-second-application/ownership-certificate', function (req, res) {
+  res.redirect('design-access-check')
+})
+
+router.post('/about-second-application/design-access-check', function (req, res) {
+  if (req.session.data['design-access-check'] == 'Yes') {
+    res.redirect('design-access')
+  } else {
+    res.redirect('decision-letter')
+  }
+})
+
+router.post('/about-second-application/design-access', function (req, res) {
+  res.redirect('decision-letter')
+})
+
+router.post('/about-second-application/decision-letter', function (req, res) {
+  res.redirect('../task-list')
+})
 
 
 
