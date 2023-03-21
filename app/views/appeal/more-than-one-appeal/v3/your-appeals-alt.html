@@ -1,0 +1,307 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your appeals' %}
+{% set back = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        Manage your appeals or <a href="#0" class="govuk-link--no-visited-state">start a new appeal</a>.
+      </p>
+
+    </div>
+
+    {% set ref = 123 %}
+
+    <div class="govuk-grid-column-full">
+
+      <style>
+        .govuk-table__header {
+          font-variant-numeric: tabular-nums;
+        }
+      </style>
+
+      <div class="govuk-tabs" data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">
+          Contents
+        </h2>
+        <ul class="govuk-tabs__list">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#actionable">
+              Appeals to action
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#progressing">
+              Appeals being processed
+            </a>
+          </li>
+        </ul>
+
+
+        <div class="govuk-tabs__panel" id="actionable">
+          <h2 class="govuk-visually-hidden">Appeals to action</h2>
+
+            {{ govukTable({
+              classes: 'govuk-!-margin-top-0',
+              caption: 'Unsubmitted appeals',
+              captionClasses: 'govuk-table__caption--m govuk-!-padding-top-0',
+              firstCellIsHeader: false,
+              head: [
+                {
+                  text: 'Local planning department'
+                },
+                {
+                  html: 'Appeal type',
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  html: 'Due'
+                },
+                {
+                  html: '<span class="govuk-visually-hidden">Action</span>',
+                  format: 'numeric'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    html: 'Householder planning'
+                  },
+                  {
+                    html: '20' | daysInFutureShort
+                  },
+                  {
+                    html: '<a href="#0">Continue</a>',
+                    format: 'numeric'
+                  }
+                ],
+                [
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    html: 'Enforcement notice'
+                  },
+                  {
+                    html: '27' | daysInFutureShort
+                  },
+                  {
+                    html: '<a href="#0">Continue</a>',
+                    format: 'numeric'
+                  }
+                ],
+                [
+                  {
+                    text: 'Greater Manchester Combined Authority'
+                  },
+                  {
+                    html: 'Lawful development certificate: Section 26H'
+                  },
+                  {
+                    html: 'Not applicable'
+                  },
+                  {
+                    html: '<a href="#0">Continue</a>',
+                    format: 'numeric'
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              classes: 'govuk-!-margin-top-9',
+              caption: 'Appeals in progress',
+              captionClasses: 'govuk-table__caption--m',
+              firstCellIsHeader: true,
+              head: [
+                {
+                  html: 'Appeal number'
+                },
+                {
+                  html: 'Local planning authority',
+                  classes: 'govuk-!-width-one-quarter'
+                },
+                {
+                  html: 'Appeal type',
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  html: 'Due',
+                  classes: 'govuk-!-width-one-quarter'
+                },
+                {
+                  html: '<span class="govuk-visually-hidden">Action</span>',
+                  format: 'numeric'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    html: ref+22225
+                  },
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    html: 'Listed building consent'
+                  },
+                  {
+                    html: '7' | daysInFutureShort
+                  },
+                  {
+                    html: '<a href="#0">Add final comments</a>',
+                    format: 'numeric'
+                  }
+                ],
+                [
+                  {
+                    html: ref+21116
+                  },
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    html: 'Full planning'
+                  },
+                  {
+                    html: '16' | daysInFutureShort
+                  },
+                  {
+                    html: '<a href="#0">Provide statement</a>',
+                    format: 'numeric'
+                  }
+                ]
+              ]
+            }) }}
+
+        </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="progressing">
+          <h2 class="govuk-visually-hidden">Appeals being processed</h2>
+
+            {{ govukTable({
+              classes: 'govuk-!-margin-top-0',
+              caption: 'Appeals being processed',
+              captionClasses: 'govuk-table__caption--m',
+              firstCellIsHeader: true,
+              head: [
+                {
+                  html: 'Appeal number',
+                  classes: 'govuk-!-width-one-quarter'
+                },
+                {
+                  html: 'Local planning authority',
+                  classes: 'govuk-!-width-one-third'
+                },
+                {
+                  html: 'Appeal type',
+                  classes: 'govuk-!-width-one-quarter'
+                },
+                {
+                  html: 'Due',
+                  classes: 'govuk-!-width-one-third'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    html: ref+19005
+                  },
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    html: 'Full planning'
+                  },
+                  {
+                    html: '33' | daysInFutureShort
+                  }
+                ]
+              ]
+            }) }}
+
+        </div>
+      </div>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Completed appeals
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+
+          {{ govukTable({
+            classes: 'govuk-!-margin-top-3',
+            caption: 'Completed appeals',
+            captionClasses: 'govuk-table__caption--m',
+            firstCellIsHeader: true,
+            head: [
+              {
+                html: 'Appeal number'
+              },
+              {
+                html: 'Local planning authority',
+                classes: 'govuk-!-width-one-third'
+              },
+              {
+                html: 'Appeal type',
+                classes: 'govuk-!-width-one-third'
+              },
+              {
+                html: 'Decision made',
+                classes: 'govuk-!-width-one-third'
+              }
+            ],
+            rows: [
+              [
+                {
+                  html: ref+12345
+                },
+                {
+                  text: 'Bradford Council'
+                },
+                {
+                  html: 'Full planning'
+                },
+                {
+                  html: '26' | daysInFutureShort
+                }
+              ],
+              [
+                {
+                  html: ref+11234
+                },
+                {
+                  text: 'Bradford Council'
+                },
+                {
+                  html: 'Full planning'
+                },
+                {
+                  html: '46' | daysInFutureShort
+                }
+              ]
+            ]
+          }) }}
+
+        </div>
+      </details>
+
+
+
+    </div>
+  </div>
+{% endblock %}
