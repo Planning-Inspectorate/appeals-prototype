@@ -25,6 +25,31 @@
       <a href="https://miro.com/app/board/uXjVPi74MOw=/" class="govuk-body">Miro board</a>
     </p>
 
+    {% set version = "4" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'Ready for review'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Using 3 tabs to split out appeal stages
+      </li>
+      <li>
+        Using tags for decision status
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/your-appeals',
+      isStartButton: true
+    }) }}
+
     {% set version = "3" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
