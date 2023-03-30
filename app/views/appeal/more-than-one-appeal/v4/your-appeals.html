@@ -38,11 +38,14 @@
               In progress
             </a>
           </li>
+          {% if data['decided'] == false %}
+          {% else %}
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#allappeals">
               Decided
             </a>
           </li>
+          {% endif %}
         </ul>
 
         <div class="govuk-tabs__panel" id="new">
@@ -52,199 +55,220 @@
               <a href="/appeal/before-you-start/v15/lpa" class="govuk-link--no-visited-state">Start a new appeal</a>
             </p>
 
-            {{ govukTable({
-              classes: 'govuk-!-margin-top-6',
-              caption: 'In progress',
-              captionClasses: 'govuk-table__caption--m govuk-!-padding-top-0',
-              firstCellIsHeader: false,
-              head: [
-                {
-                  text: 'Local planning department'
-                },
-                {
-                  html: 'Appeal type',
-                  classes: 'govuk-!-width-one-half'
-                },
-                {
-                  html: 'Due'
-                },
-                {
-                  html: '<span class="govuk-visually-hidden">Action</span>',
-                  format: 'numeric'
-                }
-              ],
-              rows: [
-                [
+            {% if data['newappeals'] == false %}
+
+              {# no new appeals #}
+
+            {% else %}
+
+              {{ govukTable({
+                classes: 'govuk-!-margin-top-6',
+                caption: 'New appeals',
+                captionClasses: 'govuk-table__caption--m govuk-!-padding-top-0',
+                firstCellIsHeader: false,
+                head: [
                   {
-                    text: 'Bradford Council'
+                    text: 'Local planning department'
                   },
                   {
-                    html: 'Householder planning'
+                    html: 'Appeal type',
+                    classes: 'govuk-!-width-one-half'
                   },
                   {
-                    html: '20' | daysInFutureShort
+                    html: 'Due'
                   },
                   {
-                    html: '<a href="#0">Continue</a>',
+                    html: '<span class="govuk-visually-hidden">Action</span>',
                     format: 'numeric'
                   }
                 ],
-                [
-                  {
-                    text: 'Bradford Council'
-                  },
-                  {
-                    html: 'Enforcement notice'
-                  },
-                  {
-                    html: '27' | daysInFutureShort
-                  },
-                  {
-                    html: '<a href="#0">Continue</a>',
-                    format: 'numeric'
-                  }
-                ],
-                [
-                  {
-                    text: 'Greater Manchester Combined Authority'
-                  },
-                  {
-                    html: 'Lawful development certificate: Section 26H'
-                  },
-                  {
-                    html: 'Not applicable'
-                  },
-                  {
-                    html: '<a href="#0">Continue</a>',
-                    format: 'numeric'
-                  }
+                rows: [
+                  [
+                    {
+                      text: 'Bradford Council'
+                    },
+                    {
+                      html: 'Householder planning'
+                    },
+                    {
+                      html: '20' | daysInFutureShort
+                    },
+                    {
+                      html: '<a href="#0">Continue</a>',
+                      format: 'numeric'
+                    }
+                  ],
+                  [
+                    {
+                      text: 'Bradford Council'
+                    },
+                    {
+                      html: 'Enforcement notice'
+                    },
+                    {
+                      html: '27' | daysInFutureShort
+                    },
+                    {
+                      html: '<a href="#0">Continue</a>',
+                      format: 'numeric'
+                    }
+                  ],
+                  [
+                    {
+                      text: 'Greater Manchester Combined Authority'
+                    },
+                    {
+                      html: 'Lawful development certificate: Section 26H'
+                    },
+                    {
+                      html: 'Not applicable'
+                    },
+                    {
+                      html: '<a href="#0">Continue</a>',
+                      format: 'numeric'
+                    }
+                  ]
                 ]
-              ]
-            }) }}
+              }) }}
+
+            {% endif %}
 
         </div>
 
         <div class="govuk-tabs__panel" id="inprogress">
           <h2 class="govuk-visually-hidden">Appeals in progress</h2>
 
+          {% if data['validation'] == false %}
 
-          <!-- <h2 class="govuk-heading-m">
-            To be validated
-          </h2>
+            {# no appeals #}
 
-          <p class='govuk-body-l'>
-            There are no appeals awaiting validation
-          </p> -->
+          {% else %}
 
-          {{ govukTable({
-            classes: 'govuk-!-margin-bottom-9',
-            caption: 'Awaiting validation',
-            captionClasses: 'govuk-table__caption--m',
-            firstCellIsHeader: false,
-            head: [
-              {
-                html: 'Site address',
-                classes: 'govuk-!-width-one-half'
-              },
-              {
-                html: 'Local planning authority',
-                classes: 'govuk-!-width-one-third'
-              },
-              {
-                html: 'Appeal type',
-                classes: 'govuk-!-width-one-third'
-              }
-            ],
-            rows: [
-              [
+            {{ govukTable({
+              classes: 'govuk-!-margin-bottom-9',
+              caption: 'Awaiting validation',
+              captionClasses: 'govuk-table__caption--m',
+              firstCellIsHeader: false,
+              head: [
                 {
-                  html: '1 Sandwich Close, Warbingham, BT7 4DR'
+                  html: 'Site address',
+                  classes: 'govuk-!-width-one-half'
                 },
                 {
-                  text: 'Bradford Council'
+                  html: 'Local planning authority',
+                  classes: 'govuk-!-width-one-third'
                 },
                 {
-                  text: 'Full planning'
+                  html: 'Appeal type',
+                  classes: 'govuk-!-width-one-third'
                 }
+              ],
+              rows: [
+                [
+                  {
+                    html: '<a href="" class="govuk-link">1 Sandwich Close, Warbingham, BT7 4DR</a>'
+                  },
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    text: 'Full planning'
+                  }
+                ]
               ]
-            ]
-          }) }}
+            }) }}
+
+          {% endif %}
 
 
-          {{ govukTable({
-            caption: 'Appeals in progress',
-            captionClasses: 'govuk-table__caption--m',
-            firstCellIsHeader: false,
-            head: [
-              {
-                html: 'Appeal number'
-              },
-              {
-                html: 'Site address',
-                classes: 'govuk-!-width-one-half'
-              },
-              {
-                html: 'Local planning authority',
-                classes: 'govuk-!-width-one-third'
-              },
-              {
-                html: 'Appeal type',
-                classes: 'govuk-!-width-one-third'
-              },
-              {
-                html: 'Due',
-                classes: 'govuk-!-width-one-quarter'
-              },
-              {
-                html: 'Action',
-                format: 'numeric'
-              }
-            ],
-            rows: [
-              [
+          {% if data['inprogress'] == false %}
+
+            <h2 class="govuk-heading-m">
+              Appeals in progress
+            </h2>
+
+            <p class="govuk-body">
+              There are no appeals in progress
+            </p>
+
+          {% else %}
+
+            {{ govukTable({
+              caption: 'Appeals in progress',
+              captionClasses: 'govuk-table__caption--m',
+              firstCellIsHeader: false,
+              head: [
                 {
-                  html: "<a href='' class='govuk-link'>0201525</a>"
+                  html: 'Appeal number'
                 },
                 {
-                  html: '2 Bridford Avenue, Warbingham, BR11 2PT'
+                  html: 'Site address',
+                  classes: 'govuk-!-width-one-half'
                 },
                 {
-                  text: 'Bradford Council'
+                  html: 'Local planning authority',
+                  classes: 'govuk-!-width-one-third'
                 },
                 {
-                  html: 'Listed building consent'
+                  html: 'Appeal type',
+                  classes: 'govuk-!-width-one-third'
                 },
                 {
-                  html: '7' | daysInFutureShort
+                  html: 'Due',
+                  classes: 'govuk-!-width-one-quarter'
                 },
                 {
-                  html: '<a href="#0">Add final comments</a>',
+                  html: 'Action',
                   format: 'numeric'
                 }
               ],
-              [
-                {
-                  html: "<a href='' class='govuk-link'>0201532</a>"
-                },
-                {
-                  html: '77 Peanqueue Way, Warbingham, BR22 1PQ'
-                },
-                {
-                  text: 'Bradford Council'
-                },
-                {
-                  html: 'Full planning'
-                },
-                {
-                  html: '16' | daysInFutureShort
-                },
-                {
-                  html: '<a href="#0">Provide statement</a>',
-                  format: 'numeric'
-                }
+              rows: [
+                [
+                  {
+                    html: "<a href='' class='govuk-link'>0201525</a>"
+                  },
+                  {
+                    html: '2 Bridford Avenue, Warbingham, BR11 2PT'
+                  },
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    html: 'Listed building consent'
+                  },
+                  {
+                    html: '7' | daysInFutureShort
+                  },
+                  {
+                    html: '<a href="#0">Add final comments</a>',
+                    format: 'numeric'
+                  }
+                ],
+                [
+                  {
+                    html: "<a href='' class='govuk-link'>0201532</a>"
+                  },
+                  {
+                    html: '77 Peanqueue Way, Warbingham, BR22 1PQ'
+                  },
+                  {
+                    text: 'Bradford Council'
+                  },
+                  {
+                    html: 'Full planning'
+                  },
+                  {
+                    html: '16' | daysInFutureShort
+                  },
+                  {
+                    html: '<a href="#0">Provide statement</a>',
+                    format: 'numeric'
+                  }
+                ]
               ]
-            ]
-          }) }}
+            }) }}
+
+          {% endif %}
 
         </div>
 
