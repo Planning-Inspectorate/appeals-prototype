@@ -22,7 +22,7 @@
     rows: [
       {
         key: {
-          html: 'Site visible'
+          html: 'Site visibility'
         },
         value: {
           html: data['site-visibility'] or 'No'
@@ -47,7 +47,7 @@
       },
       {
         key: {
-          html: 'Inspector will need to enter the appeal site'
+          html: 'Inspector access'
         },
         value: {
           html: 'Yes<br>'+data['site-entry__details'] if data['site-entry'] == 'Yes' else 'No'
@@ -72,7 +72,7 @@
       },
       {
         key: {
-          html: 'Site health and safety issues'
+          html: 'Health and safety issues'
         },
         value: {
           html: 'Yes<br>'+data['health-and-safety__details'] if data['health-and-safety'] == 'Yes' else 'No'
