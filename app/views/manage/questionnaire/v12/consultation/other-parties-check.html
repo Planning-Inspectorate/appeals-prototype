@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?' %}
+{% set title = 'Did you receive representations from any other parties?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'tree-order-check',
-    name: 'tree-order-check',
+    idPrefix: 'other-parties-check',
+    name: 'other-parties-check',
     fieldset: {
       legend: {
         html: title,
@@ -17,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('tree-order-check','Yes')
+        checked: checked('other-parties-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('tree-order-check','No')
+        checked: checked('other-parties-check','No')
       }
     ]
   }) }}

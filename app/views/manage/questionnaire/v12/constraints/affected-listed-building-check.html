@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?' %}
+{% set title = 'Does the proposed development affect the setting of listed buildings?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'tree-order-check',
-    name: 'tree-order-check',
+    idPrefix: 'affected-listed-building-check',
+    name: 'affected-listed-building-check',
     fieldset: {
       legend: {
         html: title,
@@ -17,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('tree-order-check','Yes')
+        checked: checked('affected-listed-building-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('tree-order-check','No')
+        checked: checked('affected-listed-building-check','No')
       }
     ]
   }) }}

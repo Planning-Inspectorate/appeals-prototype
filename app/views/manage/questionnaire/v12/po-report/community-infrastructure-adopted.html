@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?' %}
+{% set title = 'Is the community infrastructure levy formally adopted?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'tree-order-check',
-    name: 'tree-order-check',
+    idPrefix: 'community-infrastructure-adopted',
+    name: 'community-infrastructure-adopted',
     fieldset: {
       legend: {
         html: title,
@@ -17,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('tree-order-check','Yes')
+        checked: checked('community-infrastructure-adopted','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('tree-order-check','No')
+        checked: checked('community-infrastructure-adopted','No')
       }
     ]
   }) }}

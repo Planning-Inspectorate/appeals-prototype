@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?' %}
+{% set title = 'Did the applicant submit an environmental statement?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'tree-order-check',
-    name: 'tree-order-check',
+    idPrefix: 'applicant-env-statement-check',
+    name: 'applicant-env-statement-check',
     fieldset: {
       legend: {
         html: title,
@@ -17,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('tree-order-check','Yes')
+        checked: checked('applicant-env-statement-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('tree-order-check','No')
+        checked: checked('applicant-env-statement-check','No')
       }
     ]
   }) }}

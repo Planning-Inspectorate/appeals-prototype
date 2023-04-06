@@ -21,6 +21,26 @@
       {{ title }}
     </h1>
 
+    {% set version = "12" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>changes to listed building questions to ask for Heritage England list entry numbers</li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/task-list',
+      isStartButton: true
+    }) }}
+
     {% set version = "11" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -32,7 +52,7 @@
 
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>Minor copy tweaks.</li>
+      <li>minor copy updates</li>
     </ul>
 
     {{ govukButton({
@@ -47,10 +67,6 @@
       <li><a href="v{{version}}/task-list?non-determination=true">task list (non-determination)</a></li>
       <li><a href="v{{version}}/confirmation">confirmation</a></li>
     </ul>
-
-
-
-
 
 
     {% set v10HTML %}

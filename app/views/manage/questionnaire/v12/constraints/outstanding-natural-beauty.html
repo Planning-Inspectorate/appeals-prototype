@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?' %}
+{% set title = 'Is the appeal site in an area of outstanding natural beauty?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'tree-order-check',
-    name: 'tree-order-check',
+    idPrefix: 'outstanding-natural-beauty',
+    name: 'outstanding-natural-beauty',
     fieldset: {
       legend: {
         html: title,
@@ -17,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('tree-order-check','Yes')
+        checked: checked('outstanding-natural-beauty','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('tree-order-check','No')
+        checked: checked('outstanding-natural-beauty','No')
       }
     ]
   }) }}

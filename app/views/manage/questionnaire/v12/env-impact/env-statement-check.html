@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did you do the environmental statement?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'env-statement-check',
+    name: 'env-statement-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes, we did the environmental statement',
+        value: 'Yes',
+        checked: checked('env-statement-check','Yes')
+      },
+      {
+        html: 'No, we have a negative screening direction',
+        value: 'No',
+        checked: checked('env-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

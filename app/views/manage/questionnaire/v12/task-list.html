@@ -1,0 +1,105 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Appeal questionnaire' %}
+{% set prototypeLinks = [{href: 'confirmation', text: 'Skip to confirmation'}] %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to your planning appeals',
+    href: '/manage/appeals/v3?action='
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      {# Tweak the summary list to be smaller #}
+
+      <style>
+        .appeal-details .govuk-summary-list__key,
+        .appeal-details .govuk-summary-list__value,
+        .appeal-details .govuk-summary-list__actions {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        /* Give some space for the tag being inline now */
+        .app-task-list__section {
+          padding-right: 140px
+        }
+      </style>
+
+      {{ govukSummaryList({
+        classes: 'appeal-details govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: 'Appeal reference'
+            },
+            value: {
+              text: 'APP/Q9999/D/21/1345264'
+            }
+          },
+          {
+            key: {
+              text: 'Planning application number'
+            },
+            value: {
+              text: '21/05058/FUL'
+            }
+          },
+          {
+            key: {
+              text: 'Deadline'
+            },
+            value: {
+              text: '6' | daysInFuture
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <h2 class="govuk-heading-s">
+        Complete the questionnaire
+      </h2>
+      <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 8 sections.</p>
+
+      {# Tweak the task list so we can merge the CYA in #}
+      <style>
+        .app-task-list>li {
+          position: relative;
+        }
+        .app-task-list__section .govuk-tag {
+          position: absolute;
+          top: 3px;
+          right: 0;
+        }
+        .app-task-list .govuk-summary-list {
+          border-top: 1px solid #b1b4b6;
+        }
+      </style>
+
+      <ol class="app-task-list">
+
+        {% include "./task-list__constraints.html" %}
+        {% include "./task-list__env-impact.html" %}
+        {% include "./task-list__notified.html" %}
+        {% include "./task-list__consultation.html" %}
+        {% include "./task-list__po-report.html" %}
+        {% include "./task-list__site-access.html" %}
+        {% include "./task-list__appeal-process.html" %}
+        {% include "./task-list__submit.html" %}
+
+      </ol>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Listed Building Number' %}
+
+{% block questions %}
+
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="listedplanning">
+        {{ title }}
+      </label>
+    </h1>
+    <p class='govuk-body'>
+      Enter the Historic England list numbers for the buildings.
+    </p>
+
+    <p class='govuk-body'>
+      A list entry number is 7 digits.
+    </p>
+
+    <div id="listedplanning-hint" class="govuk-hint">
+      You can enter more than one, separated by commas. For example, 1234561, 1234562, 1234563
+    </div>
+    <textarea class="govuk-textarea" id="listedplanning" name="listedplanning" rows="3" aria-describedby="listedplanning-hint"></textarea>
+  </div>
+
+{% endblock %}

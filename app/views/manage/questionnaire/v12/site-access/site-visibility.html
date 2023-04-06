@@ -1,11 +1,12 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?' %}
+{% set title = 'Can the inspector see the subject of the appeal from a public road or footpath?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'tree-order-check',
-    name: 'tree-order-check',
+    idPrefix: 'site-visibility',
+    name: 'site-visibility',
+    classes: '',
     fieldset: {
       legend: {
         html: title,
@@ -17,13 +18,15 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('tree-order-check','Yes')
+        checked: checked('site-visibility','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('tree-order-check','No')
+        checked: checked('site-visibility','No')
       }
     ]
   }) }}
 {% endblock %}
+
+{% block pageScripts %}{% endblock %}
