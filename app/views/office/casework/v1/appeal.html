@@ -1,0 +1,576 @@
+{% extends '_layouts/layout-casework.html' %}
+
+{% set title = 'Appeal details' %}
+{% set prototypeLinks = [{href: 'confirmation', text: 'Skip to confirmation'}] %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to appeals',
+    href: '#?'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+
+      <!-- <span class="govuk-caption-l">APP/Q999/D/21/1012668</span> -->
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-3">
+        Awaiting statement
+      </strong>
+
+      {# Tweak the summary list to be smaller #}
+
+      <style>
+        .appeal-details .govuk-summary-list__key,
+        .appeal-details .govuk-summary-list__value,
+        .appeal-details .govuk-summary-list__actions {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        /* Give some space for the tag being inline now */
+        .app-task-list__section {
+          padding-right: 140px
+        }
+      </style>
+
+      <h2 class="govuk-visually-hidden">
+        Appeal summary
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'appeal-details govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: 'Received on'
+            },
+            value: {
+              text: '6' | daysAgo
+            }
+          },
+          {
+            key: {
+              text: 'Local planning authority'
+            },
+            value: {
+              text: 'Bradford council'
+            }
+          },
+          {
+            key: {
+              text: 'Appeal site'
+            },
+            value: {
+              html: '21 The Pavement<br>Wandsworth<br>SW4 0HY'
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    <!-- </div>
+    <div class="govuk-grid-column-two-thirds"> -->
+
+      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                Appeal information
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+            <!-- <p class='govuk-body'>This is the content for Writing well for the web.</p> -->
+
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Appeal number"
+                  },
+                  value: {
+                    text: "APP/Q9999/D/21/101668"
+                  }
+                },
+                {
+                  key: {
+                    text: "Linked appeals"
+                  },
+                  value: {
+                    html: "<a href='#'>APP/Q9999/D/21/725284</a>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "linked appeals"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Appeal type"
+                  },
+                  value: {
+                    html: "Householder appeal"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "appeal type"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Received"
+                  },
+                  value: {
+                    html: '5' | daysAgo
+                  }
+                },
+                {
+                  key: {
+                    text: "Case procedure"
+                  },
+                  value: {
+                    text: "Written"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "case procedure"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Local planning authority"
+                  },
+                  value: {
+                    text: "Bradford Council"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "local planning authority"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Allocation details"
+                  },
+                  value: {
+                    text: "F / General allocation"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "allocation details"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "LPA reference"
+                  },
+                  value: {
+                    text: "22/00118/FULL"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "LPA reference"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Site address"
+                  },
+                  value: {
+                    html: "21 The Pavement,<br>Wandsworth,<br>SW4 0HY"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "site address"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Development type"
+                  },
+                  value: {
+                    text: "Minor dwellings"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "development type"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Site full owned"
+                  },
+                  value: {
+                    text: "Yes"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "site ownership"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Visibility"
+                  },
+                  value: {
+                    text: "No"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "visibility"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Site health and safety issues"
+                  },
+                  value: {
+                    text: "No"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "site health and safety issues"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Appellant name"
+                  },
+                  value: {
+                    text: "Fiona Shall"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "appellant name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Agent name"
+                  },
+                  value: {
+                    text: "Naomi Johnson"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "agent name"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                Case timetable
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+            <!-- <p class='govuk-body'>This is the content for Writing well for specialists.</p> -->
+
+            {% if data['caseStarted'] %}
+
+            {% else %}
+
+              {{ govukInsetText({
+                html: "Case not started<br><a href=''>Add start date</a>"
+              }) }}
+
+            {% endif %}
+
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                Appeal documentation
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+            <!-- <p class='govuk-body'>This is the content for Know your audience.</p> -->
+
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Appellant case"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--yellow'>Incomplete</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "questionnaire"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "LPA questionnaire"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--green'>Complete</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "questionnaire"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Statement and proofs"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--green'>Complete</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "statement and proofs"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Interested parties"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--green'>Complete</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "interested parties"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Final comments"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--grey'>Not started</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "final comments"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Costs"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--grey'>None</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "costs"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Planning obligation"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--grey'>None</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "planning obligation"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Statement of common ground"
+                  },
+                  value: {
+                    html: "<strong class='govuk-tag govuk-tag--grey'>None</strong>"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Review",
+                        visuallyHiddenText: "statement of common ground"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+
+
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                Case team
+              </span>
+            </h2>
+          </div>
+          <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+            <!-- <p class='govuk-body'>This is the content for How people read.</p> -->
+
+            {{ govukSummaryList({
+              classes: 'pins-summary-list__row--last pins-govuk-table__row--last',
+              rows: [
+                {
+                  key: {
+                    text: "Case Officer"
+                  },
+                  value: {
+                    html: "Robert Ribeiro<br><a href='#'>robert.ribeiro@planninginspectorate.gov.uk
+</a><br>0300 027 1289"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "linked appeals"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Inspector"
+                  },
+                  value: {
+                    text: "Not allocated"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "inspector allocation"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

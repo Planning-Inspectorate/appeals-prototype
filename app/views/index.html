@@ -59,9 +59,6 @@
           <a href="/appeal/lbc/">Listed building consent</a>
         </li>
         <li>
-          <a href="/appeal/full/">Full planning</a>
-        </li>
-        <li>
           Enforcement (needs review)
         </li>
         <li>
@@ -155,7 +152,23 @@
 
     {% endset -%}
 
+    {% set officeHTML %}
 
+      <h2 class="govuk-heading-m">
+        Back office appeals
+      </h2>
+
+      <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+        Service start points
+      </h3> -->
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="/office/casework/">Appeal casework</a>
+        </li>
+      </ul>
+
+    {% endset -%}
 
 
     {{ govukTabs({
@@ -179,6 +192,13 @@
           id: 'comment',
           panel: {
             html: commentHTML
+          }
+        },
+        {
+          label: 'Back office',
+          id: 'office',
+          panel: {
+            html: officeHTML
           }
         }
       ]

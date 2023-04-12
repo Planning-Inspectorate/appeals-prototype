@@ -122,24 +122,24 @@
       } if data['affected-listed-building-check'] == 'Yes',
       {
         key: {
-          html: 'Affects an ancient monument'
+          html: 'Affects a scheduled monument'
         },
         value: {
-          html: data['ancient-monument'] or 'No'
+          html: data['scheduled-monument'] or 'No'
         }
-        if data['ancient-monument-complete'] else
+        if data['scheduled-monument-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'constraints/ancient-monument?cya=true',
+              href: 'constraints/scheduled-monument?cya=true',
               html: 'Change'
             }
-            if data['ancient-monument-complete'] else
+            if data['scheduled-monument-complete'] else
             {
-              href: 'constraints/ancient-monument',
+              href: 'constraints/scheduled-monument',
               html: 'Answer'
             }
           ]
