@@ -327,7 +327,8 @@
                         visuallyHiddenText: "agent name"
                       }
                     ]
-                  }
+                  },
+                  classes: "govuk-summary-list__row--no-border"
                 }
               ]
             }) }}
@@ -504,7 +505,8 @@
                         visuallyHiddenText: "statement of common ground"
                       }
                     ]
-                  }
+                  },
+                  classes: "govuk-summary-list__row--no-border"
                 }
               ]
             }) }}
@@ -525,15 +527,13 @@
             <!-- <p class='govuk-body'>This is the content for How people read.</p> -->
 
             {{ govukSummaryList({
-              classes: 'pins-summary-list__row--last pins-govuk-table__row--last',
               rows: [
                 {
                   key: {
                     text: "Case Officer"
                   },
                   value: {
-                    html: "Robert Ribeiro<br><a href='#'>robert.ribeiro@planninginspectorate.gov.uk
-</a><br>0300 027 1289"
+                    html: "Robert Ribeiro<br><a href='#'>robert.ribeiro@planninginspectorate.gov.uk</a><br>0300 027 1289"
                   },
                   actions: {
                     items: [
@@ -547,7 +547,8 @@
                 },
                 {
                   key: {
-                    text: "Inspector"
+                    text: "Inspector",
+                    classes: "govuk-summary-list__row--no-border"
                   },
                   value: {
                     text: "Not allocated"
@@ -560,7 +561,8 @@
                         visuallyHiddenText: "inspector allocation"
                       }
                     ]
-                  }
+                  },
+                  classes: "govuk-summary-list__row--no-border"
                 }
               ]
             }) }}
