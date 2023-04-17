@@ -21,12 +21,32 @@
       {{ title }}
     </h1>
 
-    {% set version = "2" %}
+    {% set version = "3" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
         classes: 'govuk-tag--green govuk-!-margin-left-2',
         text: 'Ready for research'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Content updates</li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/',
+      isStartButton: true
+    }) }}
+
+    {% set version = "2" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Researched'
       }) }}
     </h2>
 

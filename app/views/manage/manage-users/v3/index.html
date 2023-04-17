@@ -1,0 +1,85 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Manage users' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back to appeals',
+    href: '../../appeals/v2/'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set added %}
+        <mark role="alert">
+          <h3 class="govuk-notification-banner__heading">
+            {{ data['add-user-email'] or 'example' }}{{ data['lpa-email'] }} has been added to the account
+          </h3>
+          <p class="govuk-body">They will receive an email with a link to the service.</p>
+        </mark>
+      {% endset %}
+
+      {% set removed %}
+        <mark role="alert">
+          <h3 class="govuk-notification-banner__heading">
+            {{ data['remove-email'] }} has been removed
+          </h3>
+        </mark>
+      {% endset %}
+
+      {% if notification %}
+        {{ govukNotificationBanner({
+          html: added if notification == 'added' else removed,
+          type: 'success'
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        All users can add information to appeals. When a new appeal is added and a task is submitted, an email notification will be sent to all users.
+      </p>
+
+      <p class="govuk-body">
+        <a href="add-user" class="govuk-link--no-visited-state">
+          Add a user
+        </a>
+      </p>
+
+      <h2 class="govuk-heading-m app-border-top-big govuk-!-padding-top-6 govuk-!-margin-top-6">
+        Current users
+      </h2>
+
+      <dl class="govuk-summary-list">
+        {% for user in data['users'] %}
+          {% if user != null %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-three-quarters">
+                {{ user.email }}
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                {% if loop.last != true %}
+                <a href="remove-user?id={{ loop.index0 }}&remove-email={{ user.email }}">
+                  Remove<span class="govuk-visually-hidden"> {{ user.email }}</span>
+                </a>
+                {% endif %}
+              </dd>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </dl>
+    </div>
+
+  </div>
+{% endblock %}

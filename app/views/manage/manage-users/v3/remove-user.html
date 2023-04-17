@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Confirm you want to remove this user' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body-l">{{ data['remove-email'] }}</p>
+
+  <p class="govuk-body">When you remove a user, the email address will not have access to manage appeals and will not receive appeal notifications.</p>
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Remove user'
+  }) }}
+{% endblock %}

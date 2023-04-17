@@ -12,9 +12,21 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+    <div class="govuk-grid-column-two-thirds">
 
-      <!-- <span class="govuk-caption-l">APP/Q999/D/21/1012668</span> -->
+
+      {% set html %}
+        <p class="govuk-notification-banner__heading">
+          LPA questionnaire is ready for review.<br>
+          <a class="govuk-notification-banner__link" href="#">Review project documentation</a>
+        </p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+      <span class="govuk-caption-l">1012668</span>
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
@@ -22,6 +34,9 @@
       <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-3">
         Awaiting statement
       </strong>
+
+    </div>
+    <div class="govuk-grid-column-three-quarters">
 
       {# Tweak the summary list to be smaller #}
 
@@ -41,6 +56,10 @@
       <h2 class="govuk-visually-hidden">
         Appeal summary
       </h2>
+
+      <!-- </div>
+      <div class="govuk-grid-column-two-thirds"> -->
+
 
       {{ govukSummaryList({
         classes: 'appeal-details govuk-summary-list--no-border',
@@ -97,7 +116,7 @@
                     text: "Appeal number"
                   },
                   value: {
-                    text: "APP/Q9999/D/21/101668"
+                    text: "1012668"
                   }
                 },
                 {
@@ -105,7 +124,7 @@
                     text: "Linked appeals"
                   },
                   value: {
-                    html: "<a href='#'>APP/Q9999/D/21/725284</a>"
+                    html: "<a href='#'>725284</a>"
                   },
                   actions: {
                     items: [
@@ -139,7 +158,7 @@
                     text: "Received"
                   },
                   value: {
-                    html: '5' | daysAgo
+                    html: '6' | daysAgo
                   }
                 },
                 {
