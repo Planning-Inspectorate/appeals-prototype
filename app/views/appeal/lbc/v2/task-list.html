@@ -13,6 +13,15 @@
         {{ title }}
       </h1>
 
+      <p class="govuk-inset-text">
+        Contact details {{ data['contact-details-status'] }}<br>
+        Site address {{ data['site-address-status'] }}<br>
+        Procedure {{ data['procedure-status'] }}<br>
+        Appeal statement {{ data['appeal-statement-status'] }}<br>
+        Appeal documents {{ data['appeal-documents-status'] }}<br>
+        All tasks done {{ data['tasksdone'] }}
+      </p>
+
       <!-- appeal metadata -->
       <div class="govuk-grid-row govuk-!-margin-bottom-6">
         <div class="govuk-grid-column-full">
@@ -100,7 +109,7 @@
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 4 of 5 sections.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ data['count'] }} of 5 sections.</p>
 
       <!-- tasks -->
       <ol class="app-task-list">
@@ -112,11 +121,29 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-you/contact-details" aria-describedby="your-contact-details">
+
+                <a href="about-you/contact-details?contact-details-status=started" aria-describedby="contact-details-status">
                   Your contact details
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="your-contact-details">Completed</strong>
+
+              {% if data['contact-details-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['contact-details-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
           </ul>
         </li>
@@ -129,19 +156,53 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-the-site/address" aria-describedby="site-address">
+                <a href="about-the-site/address?site-address-status=started" aria-describedby="site-address-status">
                   Site address
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="site-address">Completed</strong>
+
+              {% if data['site-address-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['site-address-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-the-site/site-visibility" aria-describedby="site-access">
+                <a href="about-the-site/site-visibility?site-access-status=started" aria-describedby="site-access-status">
                   Access to the site
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="site-access">Completed</strong>
+
+              {% if data['site-access-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['site-access-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
           </ul>
         </li>
@@ -154,27 +215,78 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-the-appeal/procedure" aria-describedby="procedure">
+                <a href="about-the-appeal/procedure?procedure-status=started" aria-describedby="procedure-status">
                   Appeal procedure
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="procedure">Completed</strong>
+
+              {% if data['procedure-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['procedure-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-the-appeal/appeal-statement" aria-describedby="appeal-statement">
+                <a href="about-the-appeal/appeal-statement?appeal-statement-status=started" aria-describedby="appeal-statement-status">
                   Appeal statement
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="appeal-statement">Completed</strong>
+
+              {% if data['appeal-statement-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['appeal-statement-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-the-appeal/common-ground" aria-describedby="appeal-documents">
+                <a href="about-the-appeal/common-ground?appeal-documents-status=started" aria-describedby="appeal-documents-status">
                   Appeal documents
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="appeal-documents">Completed</strong>
+
+              {% if data['appeal-documents-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['appeal-documents-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
           </ul>
         </li>
@@ -193,22 +305,62 @@
             {% endif %}
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-the-application/application-reference" aria-describedby="application-reference">
+                <a href="about-the-application/application-reference?application-reference-status=started" aria-describedby="application-reference-status">
                   Application reference
                 </a>
               </span>
-              <strong class="govuk-tag app-task-list__tag" id="application-reference">Completed</strong>
+
+              {% if data['application-reference-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['application-reference-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="about-the-application/application" aria-describedby="application-form">
+                <a href="about-the-application/application?application-documents-status=started" aria-describedby="application-form-status">
                   Upload documents
                 </a>
               </span>
-              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="application-form">
-                In progress
-              </strong>
+
+              {% if data['application-documents-status'] == 'started' %}
+                {{ govukTag({
+                  html: 'In progress',
+                  classes: 'app-task-list__tag govuk-tag--blue'
+                }) }}
+              {% elif data['application-documents-status'] == 'completed' %}
+                {{ govukTag({
+                  html: 'Completed',
+                  classes: 'app-task-list__tag'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  html: 'Not started',
+                  classes: 'app-task-list__tag govuk-tag--grey'
+                }) }}
+              {% endif %}
+
             </li>
+
+
+
+
+
+            <!-- second application -->
+
+
             {% if data['lbc'] %}
               <h2 class="govuk-heading-s govuk-!-margin-top-3 govuk-!-margin-bottom-0">
                 Full planning
@@ -216,21 +368,50 @@
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                  <a href="about-second-application/application-reference" aria-describedby="company-information-status">
+                  <a href="about-second-application/application-reference?second-application-reference-status=started" aria-describedby="application-reference-status">
                     Application reference
                   </a>
                 </span>
-                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">
-                  In progress
-                </strong>
+                {% if data['second-application-reference-status'] == 'started' %}
+                  {{ govukTag({
+                    html: 'In progress',
+                    classes: 'app-task-list__tag govuk-tag--blue'
+                  }) }}
+                {% elif data['second-application-reference-status'] == 'completed' %}
+                  {{ govukTag({
+                    html: 'Completed',
+                    classes: 'app-task-list__tag'
+                  }) }}
+                {% else %}
+                  {{ govukTag({
+                    html: 'Not started',
+                    classes: 'app-task-list__tag govuk-tag--grey'
+                  }) }}
+                {% endif %}
+
               </li>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                  <a href="about-second-application/application" aria-describedby="contact-details-status">
+                  <a href="about-second-application/application?second-upload-documents-status=started" aria-describedby="upload-documents-status">
                     Upload documents
                   </a>
                 </span>
-                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="contact-details-status">In progress</strong>
+                {% if data['second-upload-documents-status'] == 'started' %}
+                  {{ govukTag({
+                    html: 'In progress',
+                    classes: 'app-task-list__tag govuk-tag--blue'
+                  }) }}
+                {% elif data['second-upload-documents-status'] == 'completed' %}
+                  {{ govukTag({
+                    html: 'Completed',
+                    classes: 'app-task-list__tag'
+                  }) }}
+                {% else %}
+                  {{ govukTag({
+                    html: 'Not started',
+                    classes: 'app-task-list__tag govuk-tag--grey'
+                  }) }}
+                {% endif %}
               </li>
             {% endif %}
           </ul>
@@ -243,9 +424,21 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                Agree to declaration and submit appeal
+                {% if data['tasksdone'] != 'true' %}
+                  Agree to declaration and submit appeal
+                {% else %}
+                  <a href='check-answers'>
+                    Agree to declaration and submit appeal
+                  </a>
+                {% endif %}
+
+
               </span>
-              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-pay-status">Cannot start yet</strong>
+              {% if data['tasksdone'] == 'true' %}
+                <strong class="govuk-tag app-task-list__tag" id="tasks-done-status">Ready to submit</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="tasks-done-status">Cannot start yet</strong>
+              {% endif %}
             </li>
           </ul>
         </li>

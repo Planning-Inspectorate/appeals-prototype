@@ -21,224 +21,17 @@ router.post('*', function(req, res, next){
 })
 
 router.get('/task-list', function(req, res, next){
-  // Check if appellant questions are complete
-  if (
-    (req.session.data['appellant-check'] == 'Another individual'
-    && req.session.data['appellant-name-complete'])
-    ||
-    (req.session.data['appellant-check-complete']
-    && req.session.data['appellant-check'] != 'Another individual')
-  ){
-    req.session.data['appellant-completed'] = 'true'
-  } else {
-    req.session.data['appellant-completed'] = 'false'
-  }
 
-  // Check if ownership questions are complete
-  if (
-    req.session.data['own-all-complete']
-    && req.session.data['own-all'] != 'No'
-  ){
-    req.session.data['ownership-completed'] = 'true'
-  } else if (
-    req.session.data['own-all'] == 'No'
-    && req.session.data['own-some-complete']
-    && req.session.data['own-others-complete']
-  ){
-    if (
-      req.session.data['own-others'] == 'Yes'
-      && req.session.data['owners-notified-complete']
-    ){
-      req.session.data['ownership-completed'] = 'true'
-    } else if (
-      req.session.data['own-others'] == 'Some'
-      && req.session.data['owners-searched-complete']
-      && req.session.data['owners-advertised-complete']
-      && req.session.data['owners-notified-complete']
-    ){
-      req.session.data['ownership-completed'] = 'true'
-    } else if (
-      req.session.data['own-others'] == 'No'
-      && req.session.data['owners-searched-complete']
-      && req.session.data['owners-advertised-complete']
-    ){
-      req.session.data['ownership-completed'] = 'true'
-    } else {
-      req.session.data['ownership-completed'] = 'false'
-    }
-  } else {
-    req.session.data['ownership-completed'] = 'false'
-  }
-
-  // Check if agricultural questions are complete
-  if (
-    req.session.data['agricultural-holding-complete']
-    && req.session.data['agricultural-holding'] != 'No'
-  ){
-    req.session.data['agricultural-completed'] = 'true'
-  } else if (req.session.data['agricultural-holding'] == 'No'){
-    if (
-      req.session.data['agricultural-tenant'] == 'Yes'
-      && req.session.data['agricultural-others'] == 'No'
-    ){
-      req.session.data['agricultural-completed'] = 'true'
-    } else if (
-      req.session.data['agricultural-tenant'] == 'Yes'
-      && req.session.data['agricultural-others'] == 'Yes'
-      && req.session.data['agricultural-notified-complete']
-    ){
-      req.session.data['agricultural-completed'] = 'true'
-    } else if (
-      req.session.data['agricultural-tenant'] == 'No'
-      && req.session.data['agricultural-notified-complete']
-    ){
-      req.session.data['agricultural-completed'] = 'true'
-    } else {
-      req.session.data['agricultural-completed'] = 'false'
-    }
-  } else {
-    req.session.data['agricultural-completed'] = 'false'
-  }
-
-  // Check if procedure questions are complete
-  if (
-    req.session.data['procedure'] == 'Written representations' || (
-      req.session.data['procedure-complete']
-      && req.session.data['procedure'] != 'Hearing'
-      && req.session.data['procedure'] != 'Inquiry'
-    )
-  ){
-    req.session.data['procedure-completed'] = 'true'
-  } else if (
-    req.session.data['procedure'] == 'Hearing'
-    && req.session.data['procedure--reason-complete']
+  // check if all sections are completed
+  if (req.session.data['contact-details-status'] == 'completed'
+    && req.session.data['site-address-status'] == 'completed'
+    && req.session.data['site-access-status'] == 'completed'
+    && req.session.data['procedure-status'] == 'completed'
+    && req.session.data['appeal-statement-status'] == 'completed'
+    && req.session.data['appeal-documents-status'] == 'completed'
   ) {
-    req.session.data['procedure-completed'] = 'true'
-  } else if (
-    req.session.data['procedure'] == 'Inquiry'
-    && req.session.data['procedure--reason-complete']
-    && req.session.data['procedure--length-complete']
-    && req.session.data['procedure--witnesses-complete']
-  ) {
-    req.session.data['procedure-completed'] = 'true'
-  } else {
-    req.session.data['procedure-completed'] = 'false'
+    res.locals.data['tasksdone'] = 'true'
   }
-
-  // Check if whole prepare section is complete
-  if (
-    req.session.data['contact-details-complete']
-    && req.session.data['appellant-completed'] == 'true'
-    && req.session.data['lpa-reference-complete']
-    && req.session.data['address-complete']
-    && req.session.data['ownership-completed'] == 'true'
-    && req.session.data['agricultural-completed'] == 'true'
-    && req.session.data['site-visibility-complete']
-    && req.session.data['health-and-safety-complete']
-    && req.session.data['procedure-completed'] == 'true'
-  ){
-    res.locals.data['prepare-appeal-completed'] = 'true'
-  } else {
-    res.locals.data['prepare-appeal-completed'] = 'false'
-  }
-
-
-  // Check if ownership upload questions are complete
-  if (
-    (req.session.data['ownership-certificate-check'] == 'Yes'
-    && req.session.data['ownership-certificate-complete'])
-    ||
-    (req.session.data['ownership-certificate-check-complete']
-    && req.session.data['ownership-certificate-check'] != 'Yes')
-  ){
-    req.session.data['ownership-cert-completed'] = 'true'
-  } else {
-    req.session.data['ownership-cert-completed'] = 'false'
-  }
-
-  // Check if design access upload questions are complete
-  if (
-    (req.session.data['design-access-check'] == 'Yes'
-    && req.session.data['design-access-complete'])
-    ||
-    (req.session.data['design-access-check-complete']
-    && req.session.data['design-access-check'] != 'Yes')
-  ){
-    req.session.data['design-access-completed'] = 'true'
-  } else {
-    req.session.data['design-access-completed'] = 'false'
-  }
-
-  // Check if new plan upload questions are complete
-  if (
-    (req.session.data['new-plans-check'] == 'Yes'
-    && req.session.data['new-plans-complete'])
-    ||
-    (req.session.data['new-plans-check-complete']
-    && req.session.data['new-plans-check'] != 'Yes')
-  ){
-    req.session.data['new-plans-completed'] = 'true'
-  } else {
-    req.session.data['new-plans-completed'] = 'false'
-  }
-
-  // Check if obligation upload questions are complete
-  if (
-    req.session.data['planning-obligation-check'] == 'Yes'
-  ){
-    if (
-      (req.session.data['planning-obligation-status'] == 'Finalised and ready to submit'
-      && req.session.data['planning-obligation-complete'])
-      ||
-      (req.session.data['planning-obligation-status'] == 'In draft'
-      && req.session.data['planning-obligation-complete'])
-      ||
-      (req.session.data['planning-obligation-check-complete']
-      && req.session.data['planning-obligation-check'] != ('Finalised and ready to submit' || 'In draft'))
-    ){
-     req.session.data['obligation-completed'] = 'true'
-    }
-  } else if (
-    req.session.data['planning-obligation-check-complete']
-    && req.session.data['planning-obligation-check'] != 'Yes'
-  ){
-    req.session.data['obligation-completed'] = 'true'
-  } else {
-    req.session.data['obligation-completed'] = 'false'
-  }
-
-  // Check if other upload questions are complete
-  if (
-    (req.session.data['other-check'] == 'Yes'
-    && req.session.data['other-complete'])
-    ||
-    (req.session.data['other-check-complete']
-    && req.session.data['other-check'] != 'Yes')
-  ){
-    req.session.data['other-completed'] = 'true'
-  } else {
-    req.session.data['other-completed'] = 'false'
-  }
-
-  // Check if whole upload section is complete
-  if (
-    req.session.data['application-complete']
-    && req.session.data['application-desc-correct-complete']
-    && req.session.data['plans-complete']
-    && req.session.data['ownership-cert-completed'] == 'true'
-    && req.session.data['design-access-completed'] == 'true'
-    && req.session.data['decision-letter-complete']
-    && req.session.data['appeal-statement-complete']
-    && req.session.data['new-plans-completed'] == 'true'
-    && req.session.data['obligation-completed'] == 'true'
-    && req.session.data['other-completed'] == 'true'
-  ){
-    res.locals.data['upload-documents-completed'] = 'true'
-  } else {
-    res.locals.data['upload-documents-completed'] = 'false'
-  }
-
-
 
   // Set up the section count and increase if each section is done
   let count = 0
@@ -272,12 +65,12 @@ router.post('/about-you/appellant-check', function (req, res) {
   if (req.session.data['appellant-check'] == 'Another individual') {
     res.redirect('appellant-name')
   } else {
-    res.redirect('../about-the-site/address')
+    res.redirect('../about-the-site/address?contact-details-status=completed')
   }
 })
 
 router.post('/about-you/appellant-name', function (req, res) {
-  res.redirect('../about-the-site/address')
+  res.redirect('../about-the-site/address?contact-details-status=completed')
 })
 
 // router.post('/about-you/lpa-reference', function (req, res) {
@@ -333,7 +126,7 @@ router.post('/about-the-site/agricultural-holding', function (req, res) {
   if (req.session.data['agricultural-holding'] == 'Yes') {
     res.redirect('agricultural-tenant')
   } else {
-    res.redirect('site-visibility')
+    res.redirect('site-visibility?site-address-status=completed')
   }
 })
 
@@ -349,12 +142,12 @@ router.post('/about-the-site/agricultural-others', function (req, res) {
   if (req.session.data['agricultural-others'] == 'Yes') {
     res.redirect('agricultural-notified')
   } else {
-    res.redirect('site-visibility')
+    res.redirect('site-visibility?site-address-status=completed')
   }
 })
 
 router.post('/about-the-site/agricultural-notified', function (req, res) {
-  res.redirect('site-visibility')
+  res.redirect('site-visibility?site-address-status=completed')
 })
 
 router.post('/about-the-site/site-visibility', function (req, res) {
@@ -362,7 +155,7 @@ router.post('/about-the-site/site-visibility', function (req, res) {
 })
 
 router.post('/about-the-site/health-and-safety', function (req, res) {
-  res.redirect('../about-the-appeal/procedure')
+  res.redirect('../about-the-appeal/procedure?site-access-status=completed')
 })
 
 //
@@ -373,7 +166,7 @@ router.post('/about-the-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
     res.redirect('procedure--reason')
   } else {
-    res.redirect('statement')
+    res.redirect('statement?procedure-status=completed')
   }
 })
 
@@ -381,7 +174,7 @@ router.post('/about-the-appeal/procedure--reason', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry') {
     res.redirect('procedure--length')
   } else {
-    res.redirect('complete')
+    res.redirect('statement?procedure-status=completed')
   }
 })
 
@@ -390,19 +183,19 @@ router.post('/about-the-appeal/procedure--length', function (req, res) {
 })
 
 router.post('/about-the-appeal/procedure--witnesses', function (req, res) {
-  res.redirect('appeal-statement')
+  res.redirect('appeal-statement?procedure-status=completed')
 })
 
 router.post('/about-the-appeal/statement', function (req, res) {
   // res.redirect('complete')
-  res.redirect('common-ground')
+  res.redirect('common-ground?appeal-statement-status=completed')
 })
 
 router.post('/about-the-appeal/appeal-statement', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
-    res.redirect('common-ground')
+    res.redirect('common-ground?appeal-statement-status=completed')
   } else {
-    res.redirect('new-plans-check')
+    res.redirect('new-plans-check?appeal-statement-status=completed')
   }
 })
 
@@ -446,23 +239,21 @@ router.post('/about-the-appeal/other-check', function (req, res) {
   if (req.session.data['other-check'] == 'Yes') {
     res.redirect('other')
   } else {
-    res.redirect('../task-list')
+    res.redirect('../about-the-application/application-reference?appeal-documents-status=completed')
   }
 })
 
 router.post('/about-the-appeal/other', function (req, res) {
-  res.redirect('../about-the-application/application-reference')
+  res.redirect('../about-the-application/application-reference?appeal-documents-status=completed')
 })
 
-router.get('/about-the-appeal/complete', function (req, res) {
-  if (!res.locals.data['upload-documents-completed']) {
-    res.redirect('../upload-documents/application')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
+// router.get('/about-the-appeal/complete', function (req, res) {
+//   if (!res.locals.data['upload-documents-completed']) {
+//     res.redirect('../upload-documents/application')
+//   } else {
+//     res.redirect('../task-list')
+//   }
+// })
 
 //
 // THE APPLICATION
@@ -470,15 +261,15 @@ router.get('/about-the-appeal/complete', function (req, res) {
 
 
 // ??
-router.post('/about-the-application/:page', function (req, res, next) {
-  req.session.data['upload-documents-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-  next()
-})
+// router.post('/about-the-application/:page', function (req, res, next) {
+//   req.session.data['upload-documents-started'] = 'true'
+//   req.session.data[`${req.params.page}-complete`] = 'true'
+//   next()
+// })
 
 
 router.post('/about-the-application/application-reference', function (req, res) {
-  res.redirect('application')
+  res.redirect('application?application-reference-status=completed')
 })
 
 router.post('/about-the-application/application', function (req, res) {
@@ -521,7 +312,7 @@ router.post('/about-the-application/decision-letter', function (req, res) {
   if (req.session.data['lbc']) {
     res.redirect('../about-second-application/application-reference')
   } else {
-    res.redirect('../task-list')
+    res.redirect('../task-list?application-documents-status=completed')
   }
 })
 
@@ -579,7 +370,7 @@ router.post('/about-second-application/design-access', function (req, res) {
 })
 
 router.post('/about-second-application/decision-letter', function (req, res) {
-  res.redirect('../task-list')
+  res.redirect('../task-list?application-documents-status=complete')
 })
 
 
