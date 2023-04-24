@@ -4,6 +4,14 @@
 {% set back = false %}
 {% set prototypeLinks = [{href: 'declaration', text: 'Skip to declaration'}] %}
 
+
+<!-- need to get the counter working -->
+
+<!-- need to add check answers -->
+
+<!-- need to add a link to quickly complete the task list -->
+
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -13,14 +21,14 @@
         {{ title }}
       </h1>
 
-      <p class="govuk-inset-text">
+      <!-- <p class="govuk-inset-text">
         Contact details {{ data['contact-details-status'] }}<br>
         Site address {{ data['site-address-status'] }}<br>
         Procedure {{ data['procedure-status'] }}<br>
         Appeal statement {{ data['appeal-statement-status'] }}<br>
         Appeal documents {{ data['appeal-documents-status'] }}<br>
         All tasks done {{ data['tasksdone'] }}
-      </p>
+      </p> -->
 
       <!-- appeal metadata -->
       <div class="govuk-grid-row govuk-!-margin-bottom-6">
@@ -109,7 +117,7 @@
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Appeal incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ data['count'] }} of 5 sections.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ data['count'] or '0'}} of 5 sections.</p>
 
       <!-- tasks -->
       <ol class="app-task-list">

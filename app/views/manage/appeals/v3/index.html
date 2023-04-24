@@ -20,18 +20,12 @@
     }]
 %}
 
-{% set serviceName = "Manage your planning inspectorate appeals" %}
 {% set nav = true %}
 
 {% set title = 'Manage appeals' %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -75,6 +69,9 @@
       }) }}
 
     {% endif %}
+
+  </div>
+  <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">
@@ -120,7 +117,7 @@
         rows: [
           [
             {
-              html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
+              html: '<a href="v3/appeal-details?appealCode=1345264&action=">1345264</a>'
             },
             {
               html: '21/04125/FUL'
@@ -139,7 +136,7 @@
           ] if data['questionnaire'] != 'complete',
           [
             {
-              html: '<a href="appeal-details?appealCode=1345127&action=">1345127</a>'
+              html: '<a href="v3/appeal-details?appealCode=1345127&action=">1345127</a>'
             },
             {
               html: '22/03021/FUL'
@@ -158,7 +155,7 @@
           ] if data['finalcomments'] != 'complete',
           [
             {
-              html: '<a href="appeal-details?appealCode=1345260&action=">1345260</a>'
+              html: '<a href="v3/appeal-details?appealCode=1345260&action=">1345260</a>'
             },
             {
               html: '21/02939/FUL'
@@ -177,7 +174,7 @@
           ],
           [
             {
-              html: '<a href="appeal-details?appealCode=1345172&action=">1345172</a>'
+              html: '<a href="v3/appeal-details?appealCode=1345172&action=">1345172</a>'
             },
             {
               html: '21/04122/FUL'
@@ -196,7 +193,7 @@
           ],
           [
             {
-              html: '<a href="appeal-details?appealCode=1345222&action=">1345222</a>'
+              html: '<a href="v3/appeal-details?appealCode=1345222&action=">1345222</a>'
             },
             {
               html: '21/05057/FUL'
@@ -215,7 +212,7 @@
           ]  if data['statement'] != 'complete',
           [
             {
-              html: '<a href="appeal-details?appealCode=1345331&action=">1345331</a>'
+              html: '<a href="v3/appeal-details?appealCode=1345331&action=">1345331</a>'
             },
             {
               html: '22/04782/FUL'
