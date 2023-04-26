@@ -3,10 +3,12 @@
 {% set title = 'Upload your draft statement of common ground' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the appeal
+  </span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
-
   {% set uploadHtml %}
     {{ govukFileUpload({
       id: 'common-ground',

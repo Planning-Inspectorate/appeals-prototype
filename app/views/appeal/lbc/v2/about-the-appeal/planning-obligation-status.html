@@ -3,6 +3,9 @@
 {% set title = 'What is the status of your planning obligation?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the appeal
+  </span>
   {{ govukRadios({
     idPrefix: 'planning-obligation-status',
     name: 'planning-obligation-status',

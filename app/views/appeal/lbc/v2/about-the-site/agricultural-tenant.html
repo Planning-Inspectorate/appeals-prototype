@@ -3,6 +3,9 @@
 {% set title = 'Are you a tenant of the agricultural holding?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the site
+  </span>
   {{ govukRadios({
     idPrefix: 'agricultural-tenant',
     name: 'agricultural-tenant',

@@ -3,7 +3,9 @@
 {% set title = 'How would you prefer us to decide your appeal?' %}
 
 {% block questions %}
-
+  <span class="govuk-caption-l">
+    Tell us about the appeal
+  </span>
   {{ govukRadios({
     idPrefix: 'procedure',
     name: 'procedure',

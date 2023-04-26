@@ -3,6 +3,9 @@
 {% set title = 'Do you have any new plans or drawings that support your appeal?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the appeal
+  </span>
   {{ govukRadios({
     idPrefix: 'new-plans-check',
     name: 'new-plans-check',

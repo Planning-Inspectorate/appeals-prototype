@@ -3,6 +3,9 @@
 {% set title = 'Did you submit a design and access statement with your application?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the application
+  </span>
   {{ govukRadios({
     idPrefix: 'design-access-check',
     name: 'design-access-check',

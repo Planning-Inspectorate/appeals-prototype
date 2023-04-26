@@ -3,6 +3,9 @@
 {% set title = 'Is the description of development on your application form still correct?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the application
+  </span>
   {% set newDesc %}
     {{ govukTextarea({
       name: 'application-desc-new',

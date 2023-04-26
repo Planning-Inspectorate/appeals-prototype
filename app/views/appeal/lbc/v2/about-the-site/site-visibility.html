@@ -3,6 +3,9 @@
 {% set title = 'Is the subject of the appeal visible from a public road or footpath?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the site
+  </span>
   {% set detailsHTML %}
     {{ govukTextarea({
       name: 'site-visibility__details',

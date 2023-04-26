@@ -3,6 +3,9 @@
 {% set title = 'Do you plan to submit a planning obligation to support your appeal?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the appeal
+  </span>
   {{ govukRadios({
     idPrefix: 'planning-obligation-check',
     name: 'planning-obligation-check',

@@ -3,7 +3,9 @@
 {% set title = 'Health and safety issues' %}
 
 {% block questions %}
-
+  <span class="govuk-caption-l">
+    Tell us about the site
+  </span>
   {% set textareaHTML %}
     {{ govukTextarea({
       name: 'health-and-safety__details',

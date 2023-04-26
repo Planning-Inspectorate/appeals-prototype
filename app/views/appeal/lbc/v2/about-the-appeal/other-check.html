@@ -3,6 +3,9 @@
 {% set title = 'Do you have any other new documents that support your appeal?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    Tell us about the appeal
+  </span>
   {{ govukRadios({
     idPrefix: 'other-check',
     name: 'other-check',
