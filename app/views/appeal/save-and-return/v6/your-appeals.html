@@ -1,0 +1,157 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your appeals' %}
+{% set back = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        Manage your appeals or <a href="#0" class="govuk-link--no-visited-state">start a new appeal</a>.
+      </p>
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% set ref = 123 %}
+      <style>
+        .govuk-table__header {
+          font-variant-numeric: tabular-nums;
+        }
+      </style>
+      {{ govukTable({
+        classes: 'govuk-!-margin-top-3',
+        caption: 'Unsubmitted appeals',
+        captionClasses: 'govuk-table__caption--m govuk-!-padding-top-6 app-border-top-big',
+        firstCellIsHeader: true,
+        head: [
+          {
+            html: 'Temporary ID'
+          },
+          {
+            html: 'Appeal type',
+            classes: 'govuk-!-width-one-half'
+          },
+          {
+            html: 'Deadline'
+          },
+          {
+            html: '<span class="govuk-visually-hidden">Action</span>',
+            format: 'numeric'
+          }
+        ],
+        rows: [
+          [
+            {
+              html: 'TEMP-'+(ref+12)
+            },
+            {
+              html: 'Planning application: Householder planning'
+            },
+            {
+              html: '20' | daysInFutureShort
+            },
+            {
+              html: '<a href="#0">Continue</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: 'TEMP-'+(ref+56)
+            },
+            {
+              html: 'Enforcement notice'
+            },
+            {
+              html: '27' | daysInFutureShort
+            },
+            {
+              html: '<a href="#0">Continue</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: 'TEMP-'+(ref+34)
+            },
+            {
+              html: 'Lawful development certificate: Section 26H'
+            },
+            {
+              html: 'Not applicable'
+            },
+            {
+              html: '<a href="#0">Continue</a>',
+              format: 'numeric'
+            }
+          ]
+        ]
+      }) }}
+
+
+
+
+      {% set ref = 1234567 %}
+      {{ govukTable({
+        classes: 'govuk-!-margin-top-9',
+        caption: 'Appeals to action',
+        captionClasses: 'govuk-table__caption--m',
+        firstCellIsHeader: true,
+        head: [
+          {
+            html: 'Appeal reference'
+          },
+          {
+            html: 'Appeal type',
+            classes: 'govuk-!-width-one-half'
+          },
+          {
+            html: 'Deadline'
+          },
+          {
+            html: '<span class="govuk-visually-hidden">Action</span>',
+            format: 'numeric'
+          }
+        ],
+        rows: [
+          [
+            {
+              html: ref+12345
+            },
+            {
+              html: 'Planning application: Listed building consent'
+            },
+            {
+              html: '7' | daysInFutureShort
+            },
+            {
+              html: '<a href="#0">Add final comments</a>',
+              format: 'numeric'
+            }
+          ],
+          [
+            {
+              html: ref+23456
+            },
+            {
+              html: 'Planning application: Full planning'
+            },
+            {
+              html: '16' | daysInFutureShort
+            },
+            {
+              html: '<a href="#0">Provide statement</a>',
+              format: 'numeric'
+            }
+          ]
+        ]
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

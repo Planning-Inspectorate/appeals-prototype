@@ -1,0 +1,70 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Confirm your email address' %}
+
+{% set prototypeLinks = [{href: '/appeal/save-and-return/v6/appellant-email--phone', text: 'Checking my email on antother device'}] %}
+
+{% block questions %}
+  {% set resentNotification %}
+    <mark role="alert">
+      <h3 class="govuk-notification-banner__heading">
+        Email sent
+      </h3>
+      <p class="govuk-body">
+        We&rsquo;ve sent a new email to {{ data['email'] or 'example@email.com'}}, it might take a few minutes to arrive.
+      </p>
+    </mark>
+  {% endset %}
+
+  {% if resent %}
+    {{ govukNotificationBanner({
+      html: resentNotification,
+      type: 'success'
+    }) }}
+  {% endif %}
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ govukInsetText({
+    html: 'We&rsquo;ve sent an email to '+(data['email'] or 'example@email.com')
+  }) }}
+
+  <p class="govuk-body">
+    Go to your inbox to confirm your email address. The link in the email will expire after 30 minutes.
+  </p>
+
+  <p class="govuk-body govuk-!-margin-bottom-7">
+    <a href="https://appeals-prototype-archive.herokuapp.com/enforcement/v8/before-you-continue">
+      I have confirmed my email address
+    </a>
+  </p>
+
+  <section>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </section>
+
+{% endblock %}
+
+{% block buttons %}
+
+  <h2 class="govuk-heading-s">
+    If you&rsquo;re having problems
+  </h2>
+
+  <p class="govuk-body"><a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it incorrectly.</p>
+
+  <p class="govuk-body">Check if the email has gone to your spam or junk folder.{{ ' If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.' | safe if not resent }}</p>
+
+  {% set customerSupport %}
+    {% include "_includes/contact-cst.html" %}
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'If you&rsquo;re still having problems',
+    html: customerSupport,
+    classes: 'govuk-!-margin-top-7'
+  }) }}
+
+{% endblock %}

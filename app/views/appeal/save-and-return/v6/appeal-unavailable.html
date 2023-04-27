@@ -1,0 +1,15 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Appeal unavailable' %}
+{% set back = false %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">The appeal you are trying to access is not available. It might have been submitted or the deadline to appeal might have passed. If it has been submitted, we&rsquo;ll contact you about the next steps.</p>
+
+  <p class="govuk-body"><a href="#0" class="govuk-link--no-visited-state">Start a new appeal</a></p>
+{% endblock %}
+{% block buttons %}{% endblock %}

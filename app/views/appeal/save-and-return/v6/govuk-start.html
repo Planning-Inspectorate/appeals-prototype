@@ -1,0 +1,284 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Appeal a planning decision' %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: '',
+    items: [
+      {
+        html: 'Home',
+        href: '#0'
+      },
+      {
+        html: 'Housing and local services',
+        href: '#0'
+      },
+      {
+        html: 'Planning permission and building regulations',
+        href: '#0'
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      <aside class="app-mainstream-guide-contents-list" role="complementary">
+        <nav class="app-contents-list" aria-label="Pages in this guide" role="navigation">
+          <h2 class="app-contents-list__title">
+            Contents
+          </h2>
+          <ol class="app-contents-list__list">
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed app-contents-list__list-item--active">
+              <a href="#0">
+                Overview
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed app-contents-list__list-item--active">
+              <a href="#0">
+                How long you have to appeal
+              </a>
+            </li>
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              Make an appeal
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#0">
+                Comment on an appeal
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#0">
+                After you appeal
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="#0">
+                If you think the appeal decision is legally incorrect
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds app-mainstream-guide-body">
+
+      <h2 class="govuk-heading-m">
+        Make an appeal
+      </h2>
+
+      <p class="govuk-body">If someone else owns land or property that&rsquo;s included in your appeal, you must tell them before you start your appeal.</p>
+
+      <p class="govuk-body">You should also make sure you have all the documents you need.</p>
+
+      {{ govukButton({
+        html: 'Make an appeal',
+        href: 'return-check',
+        isStartButton: true
+      }) }}
+
+
+
+      <h2 class="govuk-heading-m">
+        Fees
+      </h2>
+
+      <p class="govuk-body">There&rsquo;s no fee for appealing.</p>
+
+
+
+      <h2 class="govuk-heading-m">
+        Documents you need
+      </h2>
+
+      <h3 class="govuk-heading-s">
+        Your appeal statement
+      </h3>
+
+      <p class="govuk-body">You&rsquo;ll need to create an appeal statement. This is a document that explains why you&rsquo;re appealing.</p>
+
+      <p class="govuk-body">It&rsquo;s sometimes called a statement of case. <a href="#0">Find out how to make a statement of case</a>.</p>
+
+
+      <h3 class="govuk-heading-s">
+        Copies
+      </h3>
+
+      <p class="govuk-body">You&rsquo;ll need to submit copies of:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your planning application form</li>
+        <li>the decision letter from the local planning authority (LPA), if you have one</li>
+        <li>all plans, drawings and documents you sent to the LPA in your application</li>
+        <li>the site plan for your appeal site</li>
+        <li>the ownership certificate document, if you submitted one separately as part of your application</li>
+      </ul>
+
+
+      <h3 class="govuk-heading-s">
+        If you&rsquo;re requesting a hearing or public inquiry
+      </h3>
+
+      <p class="govuk-body">You also need to <a href="#0">create a draft statement of common ground</a>. This is a document explaining the parts of your planning application that you believe the local planning authority will not disagree with.</p>
+
+
+      <h3 class="govuk-heading-s">
+        Preparing your documents
+      </h3>
+
+      <p class="govuk-body">You can submit the documents as any of these file types, as long as they&rsquo;re smaller than 15MB:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>DOC or DOCX</li>
+        <li>JPG or JPEG</li>
+        <li>PDF</li>
+        <li>PNG</li>
+        <li>TIF or TIFF</li>
+      </ul>
+
+      <p class="govuk-body">Make sure all documents are fully readable without any redacted text.</p>
+
+
+
+      <h2 class="govuk-heading-m">
+        If someone else owns land or property that&rsquo;s involved in your appeal
+      </h2>
+
+      <p class="govuk-body">You must tell them that you intend to appeal.</p>
+
+      {{ govukInsetText({
+        html: '<p class="govuk-body">Example 1:</p>
+        <p class="govuk-body">Your appeal is about building a house on a field you own. You do not have to tell anybody else, because you own the whole field.</p>
+
+        <p class="govuk-body">Example 2:</p>
+        <p class="govuk-body">Your appeal is about a decision that applies to a whole estate of houses. To appeal that decision, you&rsquo;d have to tell other homeowners on the estate.</p>'
+      }) }}
+
+
+
+      <h3 class="govuk-heading-s">
+        If you know who the owners are
+      </h3>
+
+      <p class="govuk-body"><a href="#0">Complete the form in annexe 2A or 2B of the planning appeals guidance</a> and send it to them to tell them you&rsquo;re appealing.</p>
+
+
+      <h3 class="govuk-heading-s">
+        If you do not know who the owners are
+      </h3>
+
+      <p class="govuk-body">You must try to find them.</p>
+
+      <p class="govuk-body">To do this, you can:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="#0">search the land registry</a></li>
+        <li>put up a site notice at the appeal site, asking them to contact you</li>
+      </ul>
+
+      <p class="govuk-body">To make a site notice, <a href="#0">complete the form in annexe 2A or 2B of the planning appeals guidance</a> and use it as the notice.</p>
+
+
+      <h3 class="govuk-heading-s">
+        If you cannot find the owners
+      </h3>
+
+      <p class="govuk-body">You must advertise your appeal, for example in a local newspaper.</p>
+
+      <p class="govuk-body"><a href="#0">Complete the form in annexe 2A or 2B of the planning appeals guidance</a> and use it as the advertisement.</p>
+
+      <h2 class="govuk-heading-m">
+        Get help using the online service
+      </h2>
+
+      <p class="govuk-body">Contact the Planning Inspectorate&rsquo;s customer support team if you need help using the online service.</p>
+
+      <p class="govuk-body">They&rsquo;ll aim to respond to emails within 5 working days.</p>
+
+      {{ govukInsetText({
+        html: 'Email: <a href="#0">enquiries@planninginspectorate.gov.uk</a><br>
+        Telephone: 0303 444 5000<br>
+        Monday to Friday, 9am to 12pm (except public holidays)<br>
+        <a href="#0">Find out about call charges</a>'
+      }) }}
+
+      <nav class="app-pagination" role="navigation" aria-label="Pagination">
+        <ul class="app-pagination__list">
+          <li class="app-pagination__item app-pagination__item--previous">
+            <a href="#0" class="govuk-link app-pagination__link" rel="prev">
+              <span class="app-pagination__link-title">
+                <svg class="app-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                  <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                </svg>
+                <span class="app-pagination__link-text">
+                  Previous
+                </span>
+              </span>
+              <span class="app-pagination__link-divider visually-hidden">:</span>
+              <span class="app-pagination__link-label">
+                How long you have to appeal
+              </span>
+            </a>
+          </li>
+          <li class="app-pagination__item app-pagination__item--next">
+            <a href="#0" class="govuk-link app-pagination__link" rel="next">
+              <span class="app-pagination__link-title">
+                <svg class="app-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                  <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                </svg>
+                <span class="app-pagination__link-text">
+                  Next
+                </span>
+              </span>
+              <span class="app-pagination__link-divider visually-hidden">:</span>
+              <span class="app-pagination__link-label">
+                Comment on an appeal
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <p class="govuk-body">
+        <a href="#0">
+          View a printable version of the whole guide
+        </a>
+      </p>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#0">
+                Planning appeals: procedural guide
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                Planning appeals: how to complete your appeal form
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

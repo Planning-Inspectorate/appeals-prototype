@@ -21,6 +21,34 @@
       {{ title }}
     </h1>
 
+    {% set version = "6" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'Ready for review'
+      }) }}
+    </h2>
+
+    <!-- <p class="govuk-body">Improvements to the feature that was developed and released, some functionality was missing or didn&rsquo;t work as intended and some changes to try and improve the process.</p>
+
+    {{ govukInsetText({
+      html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVPD6q8IM=/?share_link_id=504329325803">Design Miro board</a> with notes from review of live and suggestions to changes.</p>'
+    }) }} -->
+
+    <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        updates to help users who verify their email on a second device
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/govuk-start',
+      isStartButton: true
+    }) }}
+
     {% set version = "5" %}
     <h2 class="govuk-heading-m">
       Version {{version}}

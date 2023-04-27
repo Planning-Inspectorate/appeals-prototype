@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> Confirm your email address
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['email'] or 'example@email.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+
+  <hr>
+</section>
+
+<section class="govuk-!-margin-top-5">
+
+    <p>Dear name</p>
+
+    <p>
+      You must confirm your email address so we can contact you if we have any questions about your appeal.
+    </p>
+
+    <p>
+      Go to the link to confirm your email address:<br>
+      <a href="email-confirmed--phone" class="govuk-link">http://www.gov.uk/appeal-a-planning-decision/check-email</a>
+    </p>
+
+    <p>
+      This link will expire after 30 minutes.
+    </p>
+
+    <p>
+      From The Planning Inspectorate
+    </p>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What is your email address' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    We’ll use this email address to contact you about your appeal.
+  </p>
+
+  <!-- <p class="govuk-body">
+    You can also save your progress.
+  </p> -->
+
+  {{ govukInput({
+    id: 'email',
+    name: 'email',
+    value: data['email'],
+    type: 'email',
+    autocomplete: 'email',
+    spellcheck: false
+  }) }}
+{% endblock %}
