@@ -36,7 +36,7 @@ router.post('/return-email', function (req, res) {
 })
 
 router.post('/enter-code', function (req, res) {
-  res.redirect('your-appeals');
+  res.redirect('https://appeals-prototype.herokuapp.com/appeal/lbc/v2/task-list?lbc=');
 })
 
 router.get('/resend-code', function (req, res) {

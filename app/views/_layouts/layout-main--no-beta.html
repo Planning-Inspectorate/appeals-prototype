@@ -8,15 +8,13 @@
 
 {# Add the phase banner and back link to each page #}
 {% block beforeContent %}
-
-	{% block betaBanner %}
-		{{ govukPhaseBanner({
-			tag: { text: 'Beta' },
-			html: 'This is a new service – your <a class="govuk-link--no-visited-state" href="#feedback">feedback</a> will help us to improve it.'
-		}) if beta != false }}
-	{% endblock %}
+	{{ govukPhaseBanner({
+		tag: { text: 'Beta' },
+		html: 'This is a new service – your <a class="govuk-link--no-visited-state" href="#feedback">feedback</a> will help us to improve it.'
+	}) }}
 
 	{# Add a back link block to just override that and not the phase banner #}
+
 	{% block backLink %}
 		{# Add a javascript back link, remove on pages that don't need it with:
 		{% set back = false %} #}
@@ -25,7 +23,7 @@
 			href: 'javascript:history.back()'
 		}) if back != false }}
 	{% endblock %}
-
+	
 {% endblock %}
 
 {# Setup form question pages by default, override by using content block if not needed #}
