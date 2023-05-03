@@ -43,8 +43,9 @@ router.get('/task-list', function(req, res, next){
 })
 
 
-
-
+router.post('before-you-continue', function (req, res) {
+  res.redirect('task-list?lbc=1')
+})
 
 //
 // ABOUT YOU

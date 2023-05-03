@@ -1,0 +1,18 @@
+{% extends '_layouts/layout-main.html' %}
+
+
+{% set title = 'Link has expired' %}
+{% set back = false %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">
+    The link you are using has expired. You need to <a href="check-email?back=false" class="govuk-link">get a new link</a>.
+  </p>
+
+{% endblock %}
+
+{% block buttons %}{% endblock %}

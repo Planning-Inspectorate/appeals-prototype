@@ -1,5 +1,7 @@
 {% extends '_layouts/layout-email.html' %}
 
+{% set prototypeLinks = [{href: 'link-expired', text: 'Clicking the link after 30 minutes'}] %}
+
 {% block content %}
 <!-- faux email header -->
 <section>
@@ -16,15 +18,17 @@
 
 <section class="govuk-!-margin-top-5">
 
-    <p>Dear name</p>
+    <p>
+      Dear [first name] [last name]
+    </p>
 
     <p>
-      You must confirm your email address so we can contact you if we have any questions about your appeal.
+      You need to confirm you email address to continue with your appeal. We will use this email to contact you if we have any questions about the appeal.
     </p>
 
     <p>
       Go to the link to confirm your email address:<br>
-      <a href="input-code" class="govuk-link">http://www.gov.uk/appeal-a-planning-decision/check-email</a>
+      <a href="enter-code" class="govuk-link">http://www.gov.uk/appeal-a-planning-decision/confirm-email</a>
     </p>
 
     <p>

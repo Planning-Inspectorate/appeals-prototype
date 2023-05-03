@@ -35,9 +35,17 @@
     Go to your inbox to confirm your email address. The link in the email will expire after 30 minutes.
   </p>
 
+  <h2 class="govuk-heading-m">
+    Confirm your email on another device
+  </h2>
+
+  <p class="govuk-body">
+    Go to your other device and confirm your email address. Once it is confirmed, return to this device to continue.
+  </p>
+
   <p class="govuk-body govuk-!-margin-bottom-7">
     <a href="https://appeals-prototype-archive.herokuapp.com/enforcement/v8/before-you-continue">
-      I have confirmed my email address
+      I’ve confirmed my email address on another device
     </a>
   </p>
 
@@ -50,12 +58,16 @@
 {% block buttons %}
 
   <h2 class="govuk-heading-s">
-    If you&rsquo;re having problems
+    If you’re having problems
   </h2>
 
-  <p class="govuk-body"><a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it incorrectly.</p>
+  <p class="govuk-body">
+    <a href="{{ 'return-email' if data['return-check'] == 'Return to a saved appeal' else 'confirm-email' }}">Change your email address</a> if you entered it incorrectly.
+  </p>
 
-  <p class="govuk-body">Check if the email has gone to your spam or junk folder.{{ ' If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.' | safe if not resent }}</p>
+  <p class="govuk-body">
+    Check if the email has gone to your spam or junk folder.{{ ' If it&rsquo;s not there, we can <a href="resend-code">resend the email</a>.' | safe if not resent }}
+  </p>
 
   {% set customerSupport %}
     {% include "_includes/contact-cst.html" %}

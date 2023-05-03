@@ -1,0 +1,59 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You will need to submit some documents with your appeal' %}
+
+{% set back = false %}
+{% set return = false %}
+
+
+{% extends '_layouts/layout-main.html' %}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">
+    You will need your:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      appeal statement
+    </li>
+    <li>
+      planning application form
+    </li>
+    <li>
+      site plan for the appeal site
+    </li>
+    <li>
+      plans, drawings and supporting documents for your application
+    </li>
+    <li>
+      design and access statement, if you have one
+    </li>
+    <li>
+      application decision letter from your local authority, if you have one
+    </li>
+    <li>
+      draft statement of common ground, if you need one
+    </li>
+  </ul>
+
+  <p class="govuk-body">
+    From now, you’re able to save and come back to your appeal later.
+  </p>
+
+{% endblock %}
+
+{% block buttons %}
+
+  {{ govukButton({
+    text: 'Continue'
+  }) }}
+
+  <p class="govuk-body"><a href="#" class="govuk-link--no-visited-state">Save and come back later</a></p>
+
+{% endblock %}
