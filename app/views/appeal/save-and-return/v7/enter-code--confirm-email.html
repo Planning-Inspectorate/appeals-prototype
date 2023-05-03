@@ -1,0 +1,57 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Enter the code we sent to your email address' %}
+{% set back = false %}
+
+
+{% set prototypeLinks = [
+  {
+    href: 'email--code',
+    text: 'Email with code'
+  }
+] %}
+
+
+
+{% block questions %}
+
+{% set resentNotification %}
+  <mark role="alert" class="govuk-!-margin-bottom-0">
+    <h3 class="govuk-notification-banner__heading">
+      Code resent
+    </h3>
+    <p class="govuk-body">We&rsquo;ve resent a code to your email address, it might take a few minutes to arrive.</p>
+  </mark>
+{% endset %}
+
+{% if data['newcode'] %}
+  {{ govukNotificationBanner({
+    html: resentNotification,
+    type: 'success'
+  }) }}
+{% endif %}
+
+  <div class="govuk-form-group">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <input class="govuk-input govuk-input--width-5" id="securecode" name="securecode" type="number" spellcheck="false" autocomplete="none" value="" style="text-transform:uppercase">
+
+  </div>
+
+{% endblock %}
+
+{% block buttons %}
+
+  {{ govukButton({
+    text: 'Continue'
+  }) }}
+
+  <p class="govuk-body">
+    <a href="?newcode=true" class="govuk-link--no-visited-state">
+      Send a new code
+    </a>
+  </p>
+
+{% endblock %}
