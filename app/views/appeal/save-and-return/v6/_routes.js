@@ -49,6 +49,10 @@ router.post('/resend-code', function (req, res) {
   res.redirect('your-appeals');
 })
 
+router.post('/email-confirmed', function (req, res) {
+  res.redirect('/appeal/lbc/v2/before-you-continue');
+})
+
 
 // Add your routes above the module.exports line
 module.exports = router
