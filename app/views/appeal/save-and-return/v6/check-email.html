@@ -4,6 +4,17 @@
 
 {% set prototypeLinks = [{href: '/appeal/save-and-return/v6/appellant-email--phone', text: 'Checking my email on antother device'}] %}
 
+{% set prototypeLinks = [
+  {
+    href: '/appeal/save-and-return/v6/appellant-email',
+    text: 'Check my email on this device'
+  },
+  {
+    href: '/appeal/save-and-return/v6/appellant-email--phone',
+    text: 'Check my email on another device'
+  }
+] %}
+
 {% block questions %}
   {% set resentNotification %}
     <mark role="alert">
@@ -35,7 +46,7 @@
     Go to your inbox to confirm your email address. The link in the email will expire after 30 minutes.
   </p>
 
-  <h2 class="govuk-heading-m">
+  <!-- <h2 class="govuk-heading-m">
     Confirm your email on another device
   </h2>
 
@@ -47,7 +58,24 @@
     <a href="https://appeals-prototype-archive.herokuapp.com/enforcement/v8/before-you-continue">
       I’ve confirmed my email address on another device
     </a>
+  </p> -->
+
+  <h2 class="govuk-heading-m">
+    Can I confirm my email on another device?
+  </h2>
+
+  <p class="govuk-body">
+    You can confirm your email using another device but you need to return to this page to continue with your appeal.
   </p>
+
+  <p class="govuk-body govuk-!-margin-bottom-7">
+    <a href="https://appeals-prototype-archive.herokuapp.com/enforcement/v8/before-you-continue">
+      I’ve confirmed my email address on another device - continue
+    </a>
+  </p>
+
+
+
 
   <section>
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
