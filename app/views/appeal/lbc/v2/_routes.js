@@ -42,10 +42,10 @@ router.get('/task-list', function(req, res, next){
   next()
 })
 
-
-router.post('before-you-continue', function (req, res) {
-  res.redirect('task-list?lbc=1')
-})
+// HARD CODED IN THE PAGE
+// router.post('before-you-continue', function (req, res) {
+//   res.redirect('task-list?lbc=1')
+// })
 
 //
 // ABOUT YOU

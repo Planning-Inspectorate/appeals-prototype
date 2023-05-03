@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your appeal has been saved' %}
+
+{% set prototypeLinks = [{href: 'email--saved', text: 'Appeal saved email'}] %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">
+    Follow the link in the email we sent you to continue with your appeal.
+  </p>
+
+  {{ govukInsetText({
+    text: "You have until 3 April 2022 to submit your appeal."
+  }) }}
+
+{% endblock %}
+{% block buttons %}{% endblock %}

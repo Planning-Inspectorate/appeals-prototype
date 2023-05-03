@@ -51,9 +51,10 @@
 {% block buttons %}
 
   {{ govukButton({
-    text: 'Continue'
+    text: 'Continue',
+    href: 'task-list?lbc=1'
   }) }}
 
-  <p class="govuk-body"><a href="#" class="govuk-link--no-visited-state">Save and come back later</a></p>
+  <p class="govuk-body"><a href="/appeal/save-and-return/v6/appeal-saved" class="govuk-link--no-visited-state">Save and come back later</a></p>
 
 {% endblock %}
