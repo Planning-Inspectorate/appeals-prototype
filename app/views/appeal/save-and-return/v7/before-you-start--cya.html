@@ -12,9 +12,8 @@
     Check your answers
   </h2>
 
-  {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2022') %}
-  {% set decisionDate = (data['decision-due-date-day'] or '1') +' '+ (data['decision-due-date-month'] | formatMonth or 'August') +' '+ (data['decision-due-date-year'] or '2022') %}
-
+  {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2023') %}
+  {% set decisionDate = (data['decision-due-date-day'] or '1') +' '+ (data['decision-due-date-month'] | formatMonth or 'August') +' '+ (data['decision-due-date-year'] or '2023') %}
 
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
