@@ -66,12 +66,12 @@ router.post('/about-you/appellant-check', function (req, res) {
   if (req.session.data['appellant-check'] == 'Another individual') {
     res.redirect('appellant-name')
   } else {
-    res.redirect('../about-the-site/address?contact-details-status=completed')
+    res.redirect('../about-the-site/address?contact-details-status=completed&count=1')
   }
 })
 
 router.post('/about-you/appellant-name', function (req, res) {
-  res.redirect('../about-the-site/address?contact-details-status=completed')
+  res.redirect('../about-the-site/address?contact-details-status=completed&count=1')
 })
 
 // router.post('/about-you/lpa-reference', function (req, res) {
@@ -156,7 +156,7 @@ router.post('/about-the-site/site-visibility', function (req, res) {
 })
 
 router.post('/about-the-site/health-and-safety', function (req, res) {
-  res.redirect('../about-the-appeal/procedure?site-access-status=completed')
+  res.redirect('../about-the-appeal/procedure?site-access-status=completed&count=2')
 })
 
 //
@@ -240,12 +240,12 @@ router.post('/about-the-appeal/other-check', function (req, res) {
   if (req.session.data['other-check'] == 'Yes') {
     res.redirect('other')
   } else {
-    res.redirect('../about-the-application/application-reference?appeal-documents-status=completed')
+    res.redirect('../about-the-application/application-reference?appeal-documents-status=completed&count=3')
   }
 })
 
 router.post('/about-the-appeal/other', function (req, res) {
-  res.redirect('../about-the-application/application-reference?appeal-documents-status=completed')
+  res.redirect('../about-the-application/application-reference?appeal-documents-status=completed&count=3')
 })
 
 // router.get('/about-the-appeal/complete', function (req, res) {
@@ -313,7 +313,7 @@ router.post('/about-the-application/decision-letter', function (req, res) {
   if (req.session.data['lbc']) {
     res.redirect('../about-second-application/application-reference')
   } else {
-    res.redirect('../task-list?application-documents-status=completed')
+    res.redirect('../task-list?application-documents-status=completed&count=4')
   }
 })
 
