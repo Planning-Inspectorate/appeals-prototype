@@ -29,6 +29,9 @@ router.get('/task-list', function(req, res, next){
     && req.session.data['procedure-status'] == 'completed'
     && req.session.data['appeal-statement-status'] == 'completed'
     && req.session.data['appeal-documents-status'] == 'completed'
+    && req.session.data['application-reference-status'] == 'completed'
+    && req.session.data['application-documents-status'] == 'completed'
+
   ) {
     res.locals.data['tasksdone'] = 'true'
   }
@@ -316,6 +319,7 @@ router.post('/about-the-application/decision-letter', function (req, res) {
     res.redirect('../task-list?application-documents-status=completed&count=4')
   }
 })
+
 
 
 //
