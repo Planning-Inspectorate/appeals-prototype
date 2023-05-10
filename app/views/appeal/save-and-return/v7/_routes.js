@@ -54,7 +54,7 @@ router.post('/resend-code', function (req, res) {
 })
 
 router.post('/email-confirmed', function (req, res) {
-  res.redirect('/appeal/lbc/v2/before-you-continue');
+  res.redirect('/appeal/lbc/v2/before-you-continue?lbc=');
 })
 
 
