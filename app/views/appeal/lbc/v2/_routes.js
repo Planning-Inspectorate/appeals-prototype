@@ -37,6 +37,8 @@ router.get('/task-list', function(req, res, next){
   }
 
   // Set up the section count and increase if each section is done
+  // The following code needs to be reinstated for a more accurate and flexible version of the counter
+  // at the moment it is 'quick n dirty' - the last route for each section sets the counter
   let count = 0
   if (res.locals.data['prepare-appeal-completed'] == 'true') { count++ }
   if (res.locals.data['upload-documents-completed'] == 'true') { count++ }
