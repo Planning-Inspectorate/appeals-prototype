@@ -50,19 +50,28 @@
     }) }}
 
     {{ govukInput({
-      id: 'address-postcode',
-      name: 'address-postcode',
-      value: data['address-postcode'],
+      id: 'address-eastings',
+      name: 'address-eastings',
+      value: data['address-eastings'],
       classes: 'govuk-input--width-10',
       label: {
-        html: 'Postcode'
-      },
-      autocomplete: 'postal-code'
+        html: 'Grid reference Easting'
+      }
+    }) }}
+
+    {{ govukInput({
+      id: 'address-northings',
+      name: 'address-northings',
+      value: data['address-northings'],
+      classes: 'govuk-input--width-10',
+      label: {
+        html: 'Grid reference Northing'
+      }
     }) }}
 
     <p class="govuk-body govuk-!-margin-bottom-6">
-      <a href="address--grid-reference">
-        Tell us the address using grid references instead
+      <a href="address">
+        Tell us the address using a postcode address
       </a>
     </p>
 
