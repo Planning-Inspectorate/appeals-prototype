@@ -13,9 +13,13 @@
     Follow the link in the email we sent you to continue with your appeal.
   </p>
 
-  {{ govukInsetText({
-    text: "You have until 3 April 2022 to submit your appeal."
-  }) }}
+  <!-- {{ govukInsetText({
+    html: "You have until " + (6 | daysInFuture) +" to submit your appeal."
+  }) }} -->
+
+  <div class="govuk-inset-text">
+    You have until {{ 6 | daysInFuture }} to submit your appeal.
+  </div>
 
 {% endblock %}
 {% block buttons %}{% endblock %}

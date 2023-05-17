@@ -1,21 +1,9 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Check your answers and submit your comments' %}
+{% set title = 'Check your answers before submitting your appeal' %}
 
-<!-- {% set nav = true %} -->
+<!-- need to add a link to quickly complete the task list -->
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-  {{ govukBackLink({
-    html: 'Back',
-    href: 'javascript:history.back()'
-  }) }}
-{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -26,6 +14,184 @@
       </h1>
 
       <form method="post">
+
+        <h2 class="govuk-heading-m">
+          Tell us about you
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: 'Your name'
+              },
+              value: {
+                html: (data['applicant-first-name'] or 'Sam') + ' ' + (data['applicant-last-name'] or 'Agent')
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-you/contact-details',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Company name'
+              },
+              value: {
+                html: data['agency-name']
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-you/contact-details',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['agency-name'],
+            {
+              key: {
+                text: 'Appellant'
+              },
+              value: {
+                html: data['appellant-first-name'] + ' ' + (data['appellant-last-name'] or 'Appellant')
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'add-comments',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['appellant-first-name']
+
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Tell us about the site
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: 'Your name'
+              },
+              value: {
+                html: data['interested-first-name'] + ' ' + data['interested-last-name']
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-name',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Your email'
+              },
+              value: {
+                html: data['email'] or 'sample@test.com'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-email',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Your comments'
+              },
+              value: {
+                html: data['comments'] or 'Your comments go here etc etc'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'add-comments',
+                    text: 'Change'
+                  }
+                ]
+              }
+            }
+
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Tell us about the appeal
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: 'Your name'
+              },
+              value: {
+                html: data['interested-first-name'] + ' ' + data['interested-last-name']
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-name',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Your email'
+              },
+              value: {
+                html: data['email'] or 'sample@test.com'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-email',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Your comments'
+              },
+              value: {
+                html: data['comments'] or 'Your comments go here etc etc'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'add-comments',
+                    text: 'Change'
+                  }
+                ]
+              }
+            }
+
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Tell us about the application
+        </h2>
 
         {{ govukSummaryList({
           rows: [
