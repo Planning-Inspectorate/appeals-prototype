@@ -81,15 +81,18 @@
           rows: [
             {
               key: {
-                text: 'Your name'
+                text: 'Site address'
               },
               value: {
-                html: data['interested-first-name'] + ' ' + data['interested-last-name']
+                html: (data['address-line-1'] or '3 Cheers Drive')
+                     +('<br>'+data['address-line-2'] if data['address-line-2'])
+                     +('<br>'+(data['address-town'] or 'Bristol'))
+                     +('<br>'+(data['address-postcode'] or 'BS5 7FQ'))
               },
               actions: {
                 items: [
                   {
-                    href: 'your-name',
+                    href: 'about-the-site/address',
                     text: 'Change'
                   }
                 ]
@@ -97,15 +100,15 @@
             },
             {
               key: {
-                text: 'Your email'
+                text: 'Owns all the land'
               },
               value: {
-                html: data['email'] or 'sample@test.com'
+                html: data['own-all'] or 'Yes'
               },
               actions: {
                 items: [
                   {
-                    href: 'your-email',
+                    href: 'about-the-site/own-all',
                     text: 'Change'
                   }
                 ]
@@ -113,20 +116,229 @@
             },
             {
               key: {
-                text: 'Your comments'
+                text: 'Owns some of the land'
               },
               value: {
-                html: data['comments'] or 'Your comments go here etc etc'
+                html: data['own-some'] or 'Yes'
               },
               actions: {
                 items: [
                   {
-                    href: 'add-comments',
+                    href: 'about-the-site/own-some',
                     text: 'Change'
                   }
                 ]
               }
-            }
+            } if data['own-all'] == 'No',
+            {
+              key: {
+                text: 'Knows other land owners'
+              },
+              value: {
+                html: data['own-others'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/own-others',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['own-all'] == 'No',
+            {
+              key: {
+                text: 'Other owners notified'
+              },
+              value: {
+                html: 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/owners-notified',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['own-others'] == 'Yes',
+            {
+              key: {
+                text: 'Other owners searched'
+              },
+              value: {
+                html: 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/owners-notified',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['own-others'] != 'Yes',
+            {
+              key: {
+                text: 'Appeal advertised'
+              },
+              value: {
+                html: data['owners-searched'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/owners-notified',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['own-others'] != 'Yes',
+            {
+              key: {
+                text: 'Other owners notified'
+              },
+              value: {
+                html: 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/owners-notified',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['own-others'] == 'Some',
+            {
+              key: {
+                text: 'Agricultural holding'
+              },
+              value: {
+                html: data['agricultural-holding'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/agricultural-holding',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Agricultural tenant'
+              },
+              value: {
+                html: data['agricultural-tenant'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/agricultural-tenant',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['agricultural-holding'] == 'Yes',
+            {
+              key: {
+                text: 'Other agricultural tenants'
+              },
+              value: {
+                html: data['agricultural-others'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/agricultural-tenant',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['agricultural-tenant'] == 'Yes',
+            {
+              key: {
+                text: 'Other agricultural tenants have been notified'
+              },
+              value: {
+                html: 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/agricultural-notified',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['agricultural-others'] == 'Yes',
+            {
+              key: {
+                text: 'Site visibility'
+              },
+              value: {
+                html: data['site-visibility'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/site-visibility',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Site visibility details'
+              },
+              value: {
+                html: data['site-visibility__details'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/site-visibility',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['site-visibility'] == 'No',
+            {
+              key: {
+                text: 'Health and safety issues'
+              },
+              value: {
+                html: data['health-and-safety'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/health-and-safety',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Health and safety details'
+              },
+              value: {
+                html: data['health-and-safety__details'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-site/health-and-safety',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['health-and-safety'] == 'Yes'
+
 
           ]
         }) }}
@@ -142,7 +354,7 @@
                 text: 'Your name'
               },
               value: {
-                html: data['interested-first-name'] + ' ' + data['interested-last-name']
+                html: data['interested-first-name'] + '<br>' + data['interested-last-name']
               },
               actions: {
                 items: [
