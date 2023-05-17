@@ -70,12 +70,18 @@ router.post('/about-you/contact-details', function (req, res) {
 router.post('/about-you/appellant-check', function (req, res) {
   if (req.session.data['appellant-check'] == 'Another individual') {
     res.redirect('appellant-name')
+  } else if (req.session.data['appellant-check'] == 'A company') {
+    res.redirect('company-name')
   } else {
     res.redirect('../about-the-site/address?contact-details-status=completed&count=1')
   }
 })
 
 router.post('/about-you/appellant-name', function (req, res) {
+  res.redirect('../about-the-site/address?contact-details-status=completed&count=1')
+})
+
+router.post('/about-you/company-name', function (req, res) {
   res.redirect('../about-the-site/address?contact-details-status=completed&count=1')
 })
 
