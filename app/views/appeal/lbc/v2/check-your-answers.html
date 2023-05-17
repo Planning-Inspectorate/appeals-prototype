@@ -55,6 +55,22 @@
             } if data['agency-name'],
             {
               key: {
+                text: 'The applicant'
+              },
+              value: {
+                html: data['appellant-check']
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-you/appellant-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
                 text: 'Appellant'
               },
               value: {
@@ -63,12 +79,28 @@
               actions: {
                 items: [
                   {
-                    href: 'add-comments',
+                    href: 'about-you/appellant-name',
                     text: 'Change'
                   }
                 ]
               }
-            } if data['appellant-first-name']
+            } if data['appellant-check'] == 'Another individual',
+            {
+              key: {
+                text: 'Company name'
+              },
+              value: {
+                html: data['appellant-company-name']
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-you/company-name',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['appellant-check'] == 'A company'
 
           ]
         }) }}
