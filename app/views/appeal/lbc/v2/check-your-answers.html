@@ -58,7 +58,7 @@
                 text: 'The applicant'
               },
               value: {
-                html: data['appellant-check']
+                html: data['appellant-check'] or 'You'
               },
               actions: {
                 items: [
@@ -379,19 +379,32 @@
           Tell us about the appeal
         </h2>
 
+
+        <!--
+
+
+        new-plans-check
+        new-plans
+        planning-obligation-check
+        planning-obligation-status
+        planning-obligation
+        other-check
+        other
+        -->
+
         {{ govukSummaryList({
           rows: [
             {
               key: {
-                text: 'Your name'
+                text: 'Preferred procedure'
               },
               value: {
-                html: data['interested-first-name'] + '<br>' + data['interested-last-name']
+                html: data['procedure'] or 'Written representations'
               },
               actions: {
                 items: [
                   {
-                    href: 'your-name',
+                    href: 'about-the-appeal/procedure',
                     text: 'Change'
                   }
                 ]
@@ -399,15 +412,63 @@
             },
             {
               key: {
-                text: 'Your email'
+                text: 'Procedure reason'
               },
               value: {
-                html: data['email'] or 'sample@test.com'
+                html: data['procedure-reason'] or 'Because we want more scrunity for this appeal.'
               },
               actions: {
                 items: [
                   {
-                    href: 'your-email',
+                    href: 'about-the-appeal/procedure--reason',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['procedure'] != 'Written representations',
+            {
+              key: {
+                html: 'Expected number of days for the '+data['procedure']+' to last'
+              },
+              value: {
+                html: data['procedure-lenth'] or '3'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/procedure--reason',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['procedure'] != 'Written representations',
+            {
+              key: {
+                html: 'Witnesses expected to give evidence'
+              },
+              value: {
+                html: data['procedure-witnesses'] or '2'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/procedure--witnesses',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['procedure'] != 'Written representations',
+            {
+              key: {
+                text: 'Appeal statement'
+              },
+              value: {
+                html: data['appeal-statement'] or 'CD-2023-Appeal-statement.doc '
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/appeal-statement',
                     text: 'Change'
                   }
                 ]
@@ -415,20 +476,141 @@
             },
             {
               key: {
-                text: 'Your comments'
+                text: 'Statement of common ground'
               },
               value: {
-                html: data['comments'] or 'Your comments go here etc etc'
+                html: data['common-ground'] or 'CD-2023-Common-ground.doc'
               },
               actions: {
                 items: [
                   {
-                    href: 'add-comments',
+                    href: 'about-the-appeal/common-ground',
                     text: 'Change'
                   }
                 ]
               }
-            }
+            },
+            {
+              key: {
+                text: 'Upload new plans'
+              },
+              value: {
+                  html: data['new-plans-check'] or 'No'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/new-plans-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Uploaded new plans'
+              },
+              value: {
+                  html: data['new-plans'] or 'CD-2023-New-plans.doc'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/new-plans',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['new-plans-check'] == 'Yes',
+            {
+              key: {
+                text: 'Including a planning obligation'
+              },
+              value: {
+                  html: data['planning-obligation-check'] or 'No'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/planning-obligation-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Planning obligation status'
+              },
+              value: {
+                  html: data['planning-obligation-status'] or 'Not started yet'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/planning-obligation-status',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['planning-obligation-check'] == 'Yes',
+            {
+              key: {
+                text: 'Planning obligation'
+              },
+              value: {
+                  html: data['planning-obligation'] or 'CD-2023-Planning-obligation.doc'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/planning-obligation',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if (data['planning-obligation-status'] != 'Not started yet') and data['planning-obligation-check'] == 'Yes',
+            {
+              key: {
+                text: 'Including other new supporting documents'
+              },
+              value: {
+                  html: data['other-check'] or 'No'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/other-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'New supporting documents'
+              },
+              value: {
+                  html: data['other'] or
+                  'CD-2023-photo-front.jpg<br>
+                   CD-2023-photo-side.jpg<br>
+                   CD-2023-photo-notes.doc<br>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/other',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['other-check'] == 'Yes'
+
+
+
+
+
+
 
           ]
         }) }}
