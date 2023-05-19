@@ -39,7 +39,7 @@
             },
             {
               key: {
-                text: 'Company name'
+                html: 'Company name'
               },
               value: {
                 html: data['agency-name']
@@ -87,10 +87,10 @@
             } if data['appellant-check'] == 'Another individual',
             {
               key: {
-                text: 'Company name'
+                html: 'Company name'
               },
               value: {
-                html: data['appellant-company-name']
+                html: data['appellant-company-name'] or 'Good Times Ltd.'
               },
               actions: {
                 items: [
@@ -379,19 +379,6 @@
           Tell us about the appeal
         </h2>
 
-
-        <!--
-
-
-        new-plans-check
-        new-plans
-        planning-obligation-check
-        planning-obligation-status
-        planning-obligation
-        other-check
-        other
-        -->
-
         {{ govukSummaryList({
           rows: [
             {
@@ -609,9 +596,6 @@
 
 
 
-
-
-
           ]
         }) }}
 
@@ -623,15 +607,15 @@
           rows: [
             {
               key: {
-                text: 'Your name'
+                text: 'Application number'
               },
               value: {
-                html: data['interested-first-name'] + ' ' + data['interested-last-name']
+                html: data['lpa-reference'] or 'S22/S2234/FUL'
               },
               actions: {
                 items: [
                   {
-                    href: 'your-name',
+                    href: 'about-the-application/application-reference',
                     text: 'Change'
                   }
                 ]
@@ -639,15 +623,15 @@
             },
             {
               key: {
-                text: 'Your email'
+                text: 'Uploaded application'
               },
               value: {
-                html: data['email'] or 'sample@test.com'
+                html: data['application'] or 'CD-2023-Planning-application.doc'
               },
               actions: {
                 items: [
                   {
-                    href: 'your-email',
+                    href: 'about-the-application/application',
                     text: 'Change'
                   }
                 ]
@@ -655,23 +639,142 @@
             },
             {
               key: {
-                text: 'Your comments'
+                text: 'Application description is correct'
               },
               value: {
-                html: data['comments'] or 'Your comments go here etc etc'
+                html: data['application-desc-correct'] or 'Yes'
               },
               actions: {
                 items: [
                   {
-                    href: 'add-comments',
+                    href: 'about-the-application/application-desc-correct',
                     text: 'Change'
                   }
                 ]
               }
-            }
+            },
+            {
+              key: {
+                text: 'New application description'
+              },
+              value: {
+                html: data['application-desc-new'] or 'Alterations to existing boundary treatment to increase overall height from 1.5m to 1.8m across all of the boundary.'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-application/application-desc-correct',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['application-desc-correct'] != 'Yes',
+            {
+              key: {
+                text: 'Plans, drawings and supporting documents submitted with the application'
+              },
+              value: {
+                html: data['plans'] or
+                'CD-2023-Main-plan.doc<br>
+                 CD-2023-Materials.doc<br>
+                 CD-2023-Detailed plan.doc<br>
+                 CD-2023-Orthographic elevations.doc<br>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-application/plans',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Separate ownership certificate and agricultural land declaration'
+              },
+              value: {
+                  html: data['ownership-certificate-check'] or 'No'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/ownership-certificate-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Ownership certificate'
+              },
+              value: {
+                  html: data['ownership-certificate'] or 'CD-2023-Ownership-certificate.pdf'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/ownership-certificate',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['ownership-certificate-check'] == 'Yes',
+            {
+              key: {
+                text: 'Design and access statement submitted'
+              },
+              value: {
+                  html: data['design-access-check'] or 'No'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/design-access-check',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Design and access statement'
+              },
+              value: {
+                  html: data['design-access'] or 'CD-2023-Design-and-access-statement.doc'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/design-access',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['design-access-check'] == 'Yes',
+            {
+              key: {
+                text: 'Decision letter'
+              },
+              value: {
+                  html: data['decision-letter'] or 'CD-2023-Decesion.pdf'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'about-the-appeal/decision-letter',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['design-access-check'] == 'Yes'
+
 
           ]
+
         }) }}
+
 
         {{ govukButton({
           html: 'Submit comments'
