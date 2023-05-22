@@ -12,6 +12,10 @@ router.post('/email', function (req, res) {
   res.redirect('/manage/access/v1/enter-code?start=start')
 })
 
+router.post('/access-email', function (req, res) {
+  res.redirect('enter-code?start=access-email')
+})
+
 router.post('/enter-code', function (req, res) {
 
   // find out where the journey started
@@ -26,6 +30,8 @@ router.post('/enter-code', function (req, res) {
     res.redirect('/manage/questionnaire/v11/task-list')
   } else if (start == 'statements') {
     res.redirect('/manage/statement/v1/enter-statement')
+  } else if (start == 'access-email') {
+    res.redirect('/manage/appeals/v3/?no-appeals=')
   } else {
     res.redirect('/manage/final-comments/v1/add-comments')
   }

@@ -22,6 +22,7 @@
     </h1>
 
     {% set version = "2" %}
+
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -30,19 +31,47 @@
       }) }}
     </h2>
 
-    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <p class="govuk-!-margin-bottom-2">
+      Changes:
+    </p>
+
     <ul class="govuk-list govuk-list--bullet">
-      <li>content update</li>
+      <li>
+        content updates
+      </li>
+      <li>
+        email template changes
+      </li>
+      <li>
+        save and return re-use
+      </li>
     </ul>
 
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/start',
-      isStartButton: true
-    }) }}
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+      Access to the service
+    </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="/manage/access/v1/service-invite">
+          Invite to the service
+        </a>
+      </li>
+      <li>
+        <a href="/manage/access/v1/access-email">
+          Accessing the LPA service (visiting the service with no session)
+        </a>
+      </li>
+      <li>
+        <a href="/manage/access/v1/email--code">
+          Email with secure code
+        </a>
+      </li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
     {% set version = "1" %}
-    <h2 class="govuk-heading-m">
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">
       Version {{version}}
       {{ govukTag({
         classes: 'govuk-tag--green govuk-!-margin-left-2',
