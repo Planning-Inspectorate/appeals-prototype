@@ -2,7 +2,17 @@
 
 {% set title = 'Your appeal' %}
 {% set back = false %}
-{% set prototypeLinks = [{href: 'declaration', text: 'Skip to declaration'}] %}
+{% set prototypeLinks = [
+  {
+    href: 'check-your-answers',
+    text: 'Check your answers'
+  },
+  {
+    href: 'declaration',
+    text: 'Skip to declaration'
+  }
+
+  ] %}
 
 
 <!-- need to get the counter working better -->
@@ -435,8 +445,8 @@
                 {% if data['tasksdone'] != 'true' %}
                   Agree to declaration and submit appeal
                 {% else %}
-                  <a href='declaration'>
-                    Agree to declaration and submit appeal
+                  <a href='check-your-answers'>
+                    Check your answers and submit appeal
                   </a>
                 {% endif %}
 

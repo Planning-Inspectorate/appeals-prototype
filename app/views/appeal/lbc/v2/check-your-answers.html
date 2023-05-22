@@ -7,7 +7,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l">
         {{ title }}
@@ -598,6 +598,199 @@
 
           ]
         }) }}
+
+
+
+
+
+
+
+
+
+
+        {% if data['lbc'] %}
+
+          <h2 class="govuk-heading-m">
+            Tell us about the listed building consent application
+          </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: 'Application number'
+                },
+                value: {
+                  html: data['lpa-reference'] or '22/00663/LBC'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-application/application-reference',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: 'Uploaded application'
+                },
+                value: {
+                  html: data['application'] or 'CD-2023-LBC-application.doc'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-application/application',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: 'Application description is correct'
+                },
+                value: {
+                  html: data['application-desc-correct'] or 'Yes'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-application/application-desc-correct',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: 'New application description'
+                },
+                value: {
+                  html: data['application-desc-new'] or ' Proposed installation of internal glazed screens at the edge of the reception, affecting the ground floor and first floor mezzanine. '
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-application/application-desc-correct',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              } if data['application-desc-correct'] != 'Yes',
+              {
+                key: {
+                  text: 'Plans, drawings and supporting documents submitted with the application'
+                },
+                value: {
+                  html: data['plans'] or
+                  'CD-2023-Officer-report.doc<br>
+                   CD-2023-Historic-England-Comments.doc<br>
+                   CD-2023-Windows-double-glazed-plan.doc<br>
+                   CD-2023-Photographic-record.doc<br>'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-application/plans',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: 'Separate ownership certificate and agricultural land declaration'
+                },
+                value: {
+                    html: data['ownership-certificate-check'] or 'No'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-appeal/ownership-certificate-check',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: 'Ownership certificate'
+                },
+                value: {
+                    html: data['ownership-certificate'] or 'CD-2023-Ownership-certificate.pdf'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-appeal/ownership-certificate',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              } if data['ownership-certificate-check'] == 'Yes',
+              {
+                key: {
+                  text: 'Design and access statement submitted'
+                },
+                value: {
+                    html: data['design-access-check'] or 'No'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-appeal/design-access-check',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: 'Design and access statement'
+                },
+                value: {
+                    html: data['design-access'] or 'CD-2023-Design-and-access-statement.doc'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-appeal/design-access',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              } if data['design-access-check'] == 'Yes',
+              {
+                key: {
+                  text: 'Decision letter'
+                },
+                value: {
+                    html: data['decision-letter'] or 'CD-2023-Decesion.pdf'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: 'about-the-appeal/decision-letter',
+                      text: 'Change'
+                    }
+                  ]
+                }
+              } if data['design-access-check'] == 'Yes'
+
+
+            ]
+
+          }) }}
+
+        {% endif %}
+
+
+        <!-- this is the main planning Application -->
+        <!-- it shows whether or not there is a listed building consent -->
 
         <h2 class="govuk-heading-m">
           Tell us about the application
