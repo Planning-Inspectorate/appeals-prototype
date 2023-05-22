@@ -388,6 +388,10 @@ router.post('/about-second-application/decision-letter', function (req, res) {
 
 
 
+router.post('/check-your-answers', function (req, res) {
+  res.redirect('declaration')
+})
+
 
 // Add your routes above the module.exports line
 module.exports = router
