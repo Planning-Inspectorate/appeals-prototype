@@ -21,6 +21,29 @@
       {{ title }}
     </h1>
 
+    {% set version = "13" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        changes to listed building questions to ask for Historic England list entry numbers, returning records from Historic England to check and add
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/task-list',
+      isStartButton: true
+    }) }}
+
+
     {% set version = "12" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -33,7 +56,7 @@
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        changes to listed building questions to ask for Heritage England list entry numbers
+        changes to listed building questions to ask for Historic England list entry numbers
       </li>
       <li>
         updated ‘ancient’ monument to ‘scheduled’ monument

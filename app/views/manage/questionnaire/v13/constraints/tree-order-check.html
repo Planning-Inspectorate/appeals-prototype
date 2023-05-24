@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'tree-order-check',
+    name: 'tree-order-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('tree-order-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('tree-order-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}
