@@ -9,8 +9,9 @@
         {{ title }}
       </label>
     </h1>
+
     <p class='govuk-body'>
-      Enter the Historic England list numbers for buildings where the setting is affected.
+      Enter a Historic England list number for one of the buildings where the setting is affected.
     </p>
 
     <p class='govuk-body'>
@@ -18,8 +19,18 @@
     </p>
 
     <div id="listedplanning-hint" class="govuk-hint">
-      You can enter more than one, separated by commas. For example, 1234561, 1234562, 1234563
+      You can add more buildings later.
     </div>
-    <textarea class="govuk-textarea" id="listedplanning" name="listedplanning" rows="3" aria-describedby="listedplanning-hint"></textarea>
+
+    {{ govukInput({
+      label: {
+        text: "Historic England number"
+      },
+      classes: "govuk-input--width-10",
+      id: "historicenglandsearchnumber",
+      name: "historicenglandsearchnumber"
+    }) }}
+
+
   </div>
 {% endblock %}

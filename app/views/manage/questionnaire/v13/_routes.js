@@ -102,7 +102,23 @@ router.post('/constraints/affected-listed-building-check', function (req, res) {
 })
 
 router.post('/constraints/affected-listed-building-details', function (req, res) {
-  res.redirect('scheduled-monument')
+  res.redirect('affected-listed-building-building')
+})
+
+router.post('/constraints/affected-listed-building-building', function (req, res) {
+  if (req.session.data['affected-listed-building-building'] != 'Yes') {
+    res.redirect('affected-listed-building-details');
+  } else {
+    res.redirect('affected-listed-buildings');
+  }
+})
+
+router.post('/constraints/affected-listed-buildings', function (req, res) {
+  if (req.session.data['affected-listed-buildings'] == 'Yes') {
+    res.redirect('affected-listed-building-details?extrabuildingsaffected=yes');
+  } else {
+    res.redirect('scheduled-monument')
+  }
 })
 
 router.post('/constraints/scheduled-monument', function (req, res) {

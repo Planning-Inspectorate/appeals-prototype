@@ -19,36 +19,35 @@
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
   <div class="govuk-grid-column-full">
 
+    {{ govukSummaryList({
+      classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+      rows: [
 
-      {{ govukSummaryList({
-        classes: 'appeal-details govuk-!-margin-bottom-0',
-        rows: [
-
-            {
-              key: {
-                text: 'Listed building'
-              },
-              value: {
-                html: (data['historicenglandsearchnumber'] or '1282038')+
-                      '<br>Grade II listed building'+
-                      '<br>138-142, York Road, Bedminster, Bristol, BS3 4AL'
-              }
+          {
+            key: {
+              text: 'Listed building'
             },
-            {
-              key: {
-                text: 'Listed building'
-              },
-              value: {
-                html: (data['historicenglandsearchnumber'] or '1282032')+
-                      '<br>Grade II listed building'+
-                      '<br>155, York Road, Bedminster, Bristol, BS3 4AL'
-              }
-            } if data['extrabuildings'] == 'yes'
+            value: {
+              html: (data['historicenglandsearchnumber'] or '1282038')+
+                    '<br>Grade II listed building'+
+                    '<br>138-142, York Road, Bedminster, Bristol, BS3 4AL'
+            }
+          },
+          {
+            key: {
+              text: 'Listed building'
+            },
+            value: {
+              html: (data['historicenglandsearchnumber'] or '1282032')+
+                    '<br>Grade II listed building'+
+                    '<br>155, York Road, Bedminster, Bristol, BS3 4AL'
+            }
+          } if data['extrabuildings'] == 'yes'
 
 
 
-        ]
-      }) }}
+      ]
+    }) }}
 
   </div>
 </div>
