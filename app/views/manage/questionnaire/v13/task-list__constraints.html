@@ -50,7 +50,9 @@
           html: 'Listed buiding details'
         },
         value: {
-          html: (data['listing-grade'] or 'Grade I')+('<br>Description: ')+(data['listed-building-desc'] or 'listing-description.pdf')
+          html: ('1282032')
+               +('<br>Grade II listed building')
+               +('<br>138-142, York Road, Bedminster, Bristol, BS3 4AL')
         }
         if data['listed-building-details-complete'] else
         {
@@ -100,7 +102,9 @@
           html: 'Affected listed buiding details'
         },
         value: {
-          html: (data['affected-listing-grade'] or 'Grade I')+('<br>Description: ')+(data['affected-listed-building-desc'] or 'listing-description.pdf')
+          html: ('1282050')
+               +('<br>Grade II listed building')
+               +('<br>155, York Road, Bedminster, Bristol, BS3 4AL')
         }
         if data['affected-listed-building-details-complete'] else
         {

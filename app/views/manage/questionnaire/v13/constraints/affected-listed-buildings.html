@@ -25,22 +25,42 @@
 
         {
           key: {
-            text: 'Listed building'
+            text: 'Listed building',
+            visuallyHiddenText: '155, York Road, Bedminster, Bristol, BS3 4AL'
           },
           value: {
-            html: (data['historicenglandsearchnumber'] or '1282038')+
+            html: (data['historicenglandsearchnumber'] or '1282050')+
                   '<br>Grade II listed building'+
-                  '<br>138-142, York Road, Bedminster, Bristol, BS3 4AL'
+                  '<br>155, York Road, Bedminster, Bristol, BS3 4AL'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Remove",
+                visuallyHiddenText: '155, York Road, Bedminster, Bristol, BS3 4AL'
+              }
+            ]
           }
         },
         {
           key: {
-            text: 'Listed building'
+            text: 'Listed building',
+            visuallyHiddenText: '155, York Road, Bedminster, Bristol, BS3 4AL'
           },
           value: {
-            html: (data['historicenglandsearchnumber'] or '1282032')+
+            html: (data['historicenglandsearchnumber'] or '1282051')+
                   '<br>Grade II listed building'+
-                  '<br>155, York Road, Bedminster, Bristol, BS3 4AL'
+                  '<br>156, York Road, Bedminster, Bristol, BS3 4AL'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Remove",
+                visuallyHiddenText: '156, York Road, Bedminster, Bristol, BS3 4AL'
+              }
+            ]
           }
         } if data['extrabuildingsaffected'] == 'yes'
 
