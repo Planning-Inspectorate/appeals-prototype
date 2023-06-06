@@ -1,12 +1,18 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Is this a listed building affected by development?' %}
+{% set title = 'Listed building found' %}
 
 {% block questions %}
 
-<!-- appeal metadata -->
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+        {{ title }}
+      </h1>
+    </div>
+
+    <div class="govuk-grid-column-full">
 
     {# Tweak the summary list to be smaller #}
 
@@ -22,6 +28,8 @@
         padding-right: 140px
       }
     </style>
+
+    <div class="govuk-inset-text">
 
       {{ govukSummaryList({
         classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
@@ -52,31 +60,32 @@
           }
         ]
       }) }}
+    </div>
 
   </div>
 </div>
 
-  {{ govukRadios({
-    idPrefix: 'affected-listed-building-building',
-    name: 'affected-listed-building-building',
-    fieldset: {
-      legend: {
-        html: title,
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
-      }
+{{ govukRadios({
+  idPrefix: 'affected-listed-building-building',
+  name: 'affected-listed-building-building',
+  fieldset: {
+    legend: {
+      html: 'Is this a listed building affected by development?',
+      classes: 'govuk-fieldset__legend--m',
+      isPageHeading: false
+    }
+  },
+  items: [
+    {
+      html: 'Yes',
+      value: 'Yes',
+      checked: checked('affected-listed-building-building','Yes')
     },
-    items: [
-      {
-        html: 'Yes',
-        value: 'Yes',
-        checked: checked('affected-listed-building-building','Yes')
-      },
-      {
-        html: 'No',
-        value: 'No',
-        checked: checked('affected-listed-building-building','No')
-      }
-    ]
-  }) }}
+    {
+      html: 'No',
+      value: 'No',
+      checked: checked('affected-listed-building-building','No')
+    }
+  ]
+}) }}
 {% endblock %}

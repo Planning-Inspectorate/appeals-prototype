@@ -1,71 +1,77 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Is this a listed building being changed?' %}
-
-
+{% set title = 'Listed building found' %}
 
 {% block questions %}
 
-<!-- appeal metadata -->
-<div class="govuk-grid-row govuk-!-margin-bottom-6">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-row">
 
-    {# Tweak the summary list to be smaller #}
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+        {{ title }}
+      </h1>
+    </div>
 
-    <style>
-      .appeal-details .govuk-summary-list__key,
-      .appeal-details .govuk-summary-list__value,
-      .appeal-details .govuk-summary-list__actions {
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-      /* Give some space for the tag being inline now */
-      .app-task-list__section {
-        padding-right: 140px
-      }
-    </style>
+    <div class="govuk-grid-column-full">
 
-      {{ govukSummaryList({
-        classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
-        rows: [
+      {# Tweak the summary list to be smaller #}
 
-            {
+      <style>
+        .appeal-details .govuk-summary-list__key,
+        .appeal-details .govuk-summary-list__value,
+        .appeal-details .govuk-summary-list__actions {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        /* Give some space for the tag being inline now */
+        .app-task-list__section {
+          padding-right: 140px
+        }
+      </style>
+
+      <div class="govuk-inset-text">
+        {{ govukSummaryList({
+          classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
+          rows: [
+
+              {
+                key: {
+                  text: 'List Entry Number'
+                },
+                value: {
+                  text: data['historicenglandsearchnumber'] or '1282038'
+                }
+              },          {
               key: {
-                text: 'List Entry Number'
+                text: 'Building grade'
               },
               value: {
-                text: data['historicenglandsearchnumber'] or '1282038'
+                text: 'Grade II listed building'
               }
-            },          {
-            key: {
-              text: 'Building grade'
             },
-            value: {
-              text: 'Grade II listed building'
+            {
+              key: {
+                text: 'Building address'
+              },
+              value: {
+                text: '138-142, York Road, Bedminster, Bristol, BS3 4AL'
+              }
             }
-          },
-          {
-            key: {
-              text: 'Building address'
-            },
-            value: {
-              text: '138-142, York Road, Bedminster, Bristol, BS3 4AL'
-            }
-          }
-        ]
-      }) }}
+          ]
+        }) }}
+      </div>
 
+    </div>
   </div>
-</div>
 
   {{ govukRadios({
     idPrefix: 'listed-building-building',
     name: 'listed-building-building',
     fieldset: {
       legend: {
-        html: title,
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
+        html: 'Is this a listed building being changed?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
       }
     },
     items: [
