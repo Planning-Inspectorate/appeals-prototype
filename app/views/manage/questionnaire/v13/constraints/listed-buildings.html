@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Do you want to add any more listed buildings?' %}
+{% set title = 'You have added a listed building' %}
 
 {% set prototypeLinks = [
   {
@@ -17,6 +17,20 @@
 
 <!-- appeal metadata -->
 <div class="govuk-grid-row govuk-!-margin-bottom-6">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['extrabuildingsaffected'] %}
+      <h1 class="govuk-heading-l">
+        You have added 2 isted buildings
+      </h1>
+    {% else %}
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+    {% endif %}
+
+  </div>
+
   <div class="govuk-grid-column-full">
 
     {{ govukSummaryList({
@@ -36,7 +50,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "listed-building-details",
                   text: "Remove",
                   visuallyHiddenText: '138-142, York Road, Bedminster, Bristol, BS3 4AL'
                 }
@@ -56,7 +70,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "?extrabuildings=",
                   text: "Remove",
                   visuallyHiddenText: '144, York Road, Bedminster, Bristol, BS3 4AL'
                 }
@@ -75,9 +89,9 @@
     name: 'listed-buildings',
     fieldset: {
       legend: {
-        html: title,
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
+        html: 'Do you want to add any more listed buildings?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
       }
     },
     items: [
