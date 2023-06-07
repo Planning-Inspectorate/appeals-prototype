@@ -32,7 +32,7 @@
 
       </div>
 
-      <div class="govuk-grid-column-full">
+      <div class="govuk-grid-column-two-thirds">
 
         {{ govukSummaryList({
           classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
@@ -40,12 +40,13 @@
 
               {
                 key: {
-                  text: 'Listed building',
-                  visuallyHiddenText: '138-142, York Road, Bedminster, Bristol, BS3 4AL'
+                  visuallyHiddenText: 'Listed building ',
+                  text: (data['historicenglandsearchnumber'] or '1282038')
+
                 },
                 value: {
-                  html: (data['historicenglandsearchnumber'] or '1282038')+
-                        '<br>Grade II listed building'+
+                  html:
+                        'Grade II listed building'+
                         '<br>138-142, York Road, Bedminster, Bristol, BS3 4AL'
                 },
                 actions: {
@@ -60,12 +61,11 @@
               },
               {
                 key: {
-                  text: 'Listed building',
-                  visuallyHiddenText: '144, York Road, Bedminster, Bristol, BS3 4AL'
+                  visuallyHiddenText: 'Listed building',
+                  text: (data['historicenglandsearchnumber'] or '1282032')
                 },
                 value: {
-                  html: (data['historicenglandsearchnumber'] or '1282032')+
-                        '<br>Grade II listed building'+
+                  html: 'Grade II listed building'+
                         '<br>144, York Road, Bedminster, Bristol, BS3 4AL'
                 },
                 actions: {
