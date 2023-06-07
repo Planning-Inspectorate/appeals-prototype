@@ -1,0 +1,36 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Affected Listed Building Number' %}
+
+{% block questions %}
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="listedplanning">
+        {{ title }}
+      </label>
+    </h1>
+
+    <p class='govuk-body'>
+      Enter a Historic England list number for one of the buildings where the setting is affected.
+    </p>
+
+    <p class='govuk-body'>
+      A list entry number is 7 digits.
+    </p>
+
+    <div id="listedplanning-hint" class="govuk-hint">
+      You can add more buildings later.
+    </div>
+
+    {{ govukInput({
+      label: {
+        text: "Historic England number"
+      },
+      classes: "govuk-input--width-10",
+      id: "historicenglandsearchnumber",
+      name: "historicenglandsearchnumber"
+    }) }}
+
+
+  </div>
+{% endblock %}

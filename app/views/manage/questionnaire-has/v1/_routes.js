@@ -74,7 +74,15 @@ router.post('/constraints/listed-building-check', function (req, res) {
 })
 
 router.post('/constraints/listed-building-details', function (req, res) {
-  res.redirect('listed-buildings');
+  res.redirect('listed-building-building')
+})
+
+router.post('/constraints/listed-building-building', function (req, res) {
+  if (req.session.data['listed-building-building'] != 'Yes') {
+    res.redirect('listed-building-details');
+  } else {
+    res.redirect('listed-buildings');
+  }
 })
 
 router.post('/constraints/listed-buildings', function (req, res) {
@@ -94,7 +102,15 @@ router.post('/constraints/affected-listed-building-check', function (req, res) {
 })
 
 router.post('/constraints/affected-listed-building-details', function (req, res) {
-  res.redirect('affected-listed-buildings');
+  res.redirect('affected-listed-building-building')
+})
+
+router.post('/constraints/affected-listed-building-building', function (req, res) {
+  if (req.session.data['affected-listed-building-building'] != 'Yes') {
+    res.redirect('affected-listed-building-details');
+  } else {
+    res.redirect('affected-listed-buildings');
+  }
 })
 
 router.post('/constraints/affected-listed-buildings', function (req, res) {
