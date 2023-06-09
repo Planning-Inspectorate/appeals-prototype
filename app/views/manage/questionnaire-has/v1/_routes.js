@@ -65,119 +65,49 @@ router.post('/constraints/:page', function (req, res, next) {
   next()
 })
 
-router.post('/constraints/listed-building-check', function (req, res) {
-  if (req.session.data['listed-building-check'] == 'Yes') {
-    res.redirect('listed-building-details');
-  } else {
-    res.redirect('affected-listed-building-check');
-  }
-})
-
-router.post('/constraints/listed-building-details', function (req, res) {
-  res.redirect('listed-building-building')
-})
-
-router.post('/constraints/listed-building-building', function (req, res) {
-  if (req.session.data['listed-building-building'] != 'Yes') {
-    res.redirect('listed-building-details');
-  } else {
-    res.redirect('listed-buildings');
-  }
-})
-
-router.post('/constraints/listed-buildings', function (req, res) {
-  if (req.session.data['listed-buildings'] == 'Yes') {
-    res.redirect('listed-building-details?extrabuildings=yes');
-  } else {
-    res.redirect('affected-listed-building-check');
-  }
-})
-
 router.post('/constraints/affected-listed-building-check', function (req, res) {
   if (req.session.data['affected-listed-building-check'] == 'Yes') {
     res.redirect('affected-listed-building-details');
   } else {
-    res.redirect('scheduled-monument');
+    res.redirect('conservation-check')
   }
 })
 
 router.post('/constraints/affected-listed-building-details', function (req, res) {
-  res.redirect('affected-listed-building-building')
-})
-
-router.post('/constraints/affected-listed-building-building', function (req, res) {
-  if (req.session.data['affected-listed-building-building'] != 'Yes') {
-    res.redirect('affected-listed-building-details');
-  } else {
-    res.redirect('affected-listed-buildings');
-  }
+  res.redirect('affected-listed-buildings')
 })
 
 router.post('/constraints/affected-listed-buildings', function (req, res) {
   if (req.session.data['affected-listed-buildings'] == 'Yes') {
     res.redirect('affected-listed-building-details?extrabuildingsaffected=yes');
   } else {
-    res.redirect('scheduled-monument')
+    res.redirect('conservation-check')
   }
-})
-
-router.post('/constraints/scheduled-monument', function (req, res) {
-  res.redirect('conservation-check')
 })
 
 router.post('/constraints/conservation-check', function (req, res) {
   if (req.session.data['conservation-check'] == 'In a conservation area' || req.session.data['conservation-check'] == 'Next to a conservation area') {
     res.redirect('conservation-upload');
   } else {
-    res.redirect('protected-species');
+    res.redirect('green-belt')
   }
 })
 
 router.post('/constraints/conservation-upload', function (req, res) {
-  res.redirect('protected-species')
-})
-
-router.post('/constraints/protected-species', function (req, res) {
   res.redirect('green-belt')
 })
 
 router.post('/constraints/green-belt', function (req, res) {
-  res.redirect('outstanding-natural-beauty')
+  res.redirect('../notified/notified-how')
 })
 
-router.post('/constraints/outstanding-natural-beauty', function (req, res) {
-  res.redirect('designated-sites')
-})
 
-router.post('/constraints/designated-sites', function (req, res) {
-  res.redirect('tree-order-check')
-})
 
-router.post('/constraints/tree-order-check', function (req, res) {
-  if (req.session.data['tree-order-check'] == 'Yes') {
-    res.redirect('tree-order-upload');
-  } else {
-    res.redirect('traveller');
-  }
-})
 
-router.post('/constraints/tree-order-upload', function (req, res) {
-  res.redirect('traveller')
-})
 
-router.post('/constraints/traveller', function (req, res) {
-  res.redirect('right-of-way-check')
-})
+// I need to understand this next bit
 
-router.post('/constraints/right-of-way-check', function (req, res) {
-  if (req.session.data['right-of-way-check'] == 'Yes') {
-    req.session.data['constraints-completed'] = 'false'
-    res.redirect('right-of-way-upload');
-  } else {
-    res.redirect('complete');
-  }
-})
-
+/*
 router.post('/constraints/right-of-way-upload', function (req, res) {
   res.redirect('complete')
 })
@@ -422,6 +352,8 @@ router.post('/notified/:page', function (req, res, next) {
   next()
 })
 
+*/
+
 router.post('/notified/notified-how', function (req, res) {
   if (req.session.data['notified-how']?.includes('A site notice')) {
     res.redirect('site-notice-upload');
@@ -440,7 +372,8 @@ router.post('/notified/site-notice-upload', function (req, res) {
     res.redirect('press-advert-upload');
   } else {
     req.session.data['notified-completed'] = 'true'
-    res.redirect('complete');
+    // res.redirect('complete');
+    res.redirect('../consultation/other-parties-check');
   }
 })
 
@@ -449,14 +382,23 @@ router.post('/notified/letters-upload', function (req, res) {
     res.redirect('press-advert-upload');
   } else {
     req.session.data['notified-completed'] = 'true'
-    res.redirect('complete');
+    // res.redirect('complete');
+    res.redirect('../consultation/other-parties-check');
+
   }
 })
 
 router.post('/notified/press-advert-upload', function (req, res) {
   req.session.data['notified-completed'] = 'true'
-  res.redirect('complete');
+  // res.redirect('complete');
+  res.redirect('../consultation/other-parties-check');
+
 })
+
+
+/* complex code follows
+
+
 
 router.get('/notified/complete', function (req, res) {
   if (!req.session.data['consultation-completed']) {
@@ -517,6 +459,17 @@ router.post('/consultation/:page', function (req, res, next) {
   next()
 })
 
+
+*/
+
+
+
+
+
+
+
+/* removed consultation section
+
 router.post('/consultation/consulted', function (req, res) {
   res.redirect('consultation-responses-check')
 })
@@ -533,6 +486,9 @@ router.post('/consultation/consultation-responses-check', function (req, res) {
 router.post('/consultation/consultation-responses-upload', function (req, res) {
   res.redirect('other-parties-check');
 })
+
+*/
+
 
 router.post('/consultation/other-parties-check', function (req, res) {
   if (req.session.data['other-parties-check'] == 'Yes') {

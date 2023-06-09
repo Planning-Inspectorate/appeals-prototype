@@ -1,6 +1,6 @@
 <li>
   <h2 class="app-task-list__section">
-    <span class="app-task-list__section-number">4. </span> Consultation responses and representations
+    <span class="app-task-list__section-number">3. </span> Consultation responses and representations
     {% if data['consultation-completed'] == 'true' %}
       {{ govukTag({
         html: 'Completed'
@@ -20,56 +20,7 @@
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
-      {
-        key: {
-          html: 'Statutory consultees'
-        },
-        value: {
-          html: data['consulted'] or 'No'
-        }
-        if data['consulted-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'consultation/consulted?cya=true',
-              html: 'Change'
-            }
-            if data['consulted-complete'] else
-            {
-              href: 'consultation/consulted',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Responses or standing advice to upload'
-        },
-        value: {
-          html: data['consultation-responses-check'] or 'No'
-        }
-        if data['consultation-responses-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'consultation/consultation-responses-check?cya=true',
-              html: 'Change'
-            }
-            if data['consultation-responses-check-complete'] else
-            {
-              href: 'consultation/consultation-responses-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
+
       {
         key: {
           html: 'Upload consultation responses and standing advice'

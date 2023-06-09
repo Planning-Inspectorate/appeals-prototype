@@ -13,105 +13,92 @@
   }
 ] %}
 
-{% block content %}
+{% block questions %}
 
-  <form method="post">
-    <!-- appeal metadata -->
-    <div class="govuk-grid-row govuk-!-margin-bottom-6">
-      <div class="govuk-grid-column-two-thirds">
+  <section class="govuk-!-margin-bottom-6">
 
-        {% if data['extrabuildingsaffected'] %}
-          <h1 class="govuk-heading-l">
-            You have added 2 isted buildings
-          </h1>
-        {% else %}
-          <h1 class="govuk-heading-l">
-            {{ title }}
-          </h1>
-        {% endif %}
+      {% if data['extrabuildingsaffected'] %}
+        <h1 class="govuk-heading-l">
+          You have added 2 listed buildings
+        </h1>
+      {% else %}
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+      {% endif %}
 
-      </div>
+      {{ govukSummaryList({
+        classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+        rows: [
 
-      <div class="govuk-grid-column-two-thirds">
+            {
+              key: {
+                visuallyHiddenText: 'Listed building ',
+                text: (data['historicenglandsearchnumber'] or '1282038')
 
-        {{ govukSummaryList({
-          classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
-          rows: [
-
-              {
-                key: {
-                  visuallyHiddenText: 'Listed building ',
-                  text: (data['historicenglandsearchnumber'] or '1282038')
-
-                },
-                value: {
-                  html:
-                        'Grade II listed building'+
-                        '<br>138-142, York Road, Bedminster, Bristol, BS3 4AL'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "listed-building-details",
-                      text: "Remove",
-                      visuallyHiddenText: '138-142, York Road, Bedminster, Bristol, BS3 4AL'
-                    }
-                  ]
-                }
               },
-              {
-                key: {
-                  visuallyHiddenText: 'Listed building',
-                  text: (data['historicenglandsearchnumber'] or '1282032')
-                },
-                value: {
-                  html: 'Grade II listed building'+
-                        '<br>144, York Road, Bedminster, Bristol, BS3 4AL'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "?extrabuildings=",
-                      text: "Remove",
-                      visuallyHiddenText: '144, York Road, Bedminster, Bristol, BS3 4AL'
-                    }
-                  ]
-                }
-              } if data['extrabuildings'] == 'yes'
+              value: {
+                html:
+                      'Grade II listed building'+
+                      '<br>138-142, York Road, Bedminster, Bristol, BS3 4AL'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "listed-building-details",
+                    text: "Remove",
+                    visuallyHiddenText: '138-142, York Road, Bedminster, Bristol, BS3 4AL'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                visuallyHiddenText: 'Listed building',
+                text: (data['historicenglandsearchnumber'] or '1282032')
+              },
+              value: {
+                html: 'Grade II listed building'+
+                      '<br>144, York Road, Bedminster, Bristol, BS3 4AL'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "?extrabuildings=",
+                    text: "Remove",
+                    visuallyHiddenText: '144, York Road, Bedminster, Bristol, BS3 4AL'
+                  }
+                ]
+              }
+            } if data['extrabuildings'] == 'yes'
 
-          ]
-        }) }}
-
-      </div>
-    </div>
-
-      {{ govukRadios({
-        idPrefix: 'listed-buildings',
-        name: 'listed-buildings',
-        fieldset: {
-          legend: {
-            html: 'Do you want to add any more listed buildings?',
-            classes: 'govuk-fieldset__legend--m',
-            isPageHeading: false
-          }
-        },
-        items: [
-          {
-            html: 'Yes',
-            value: 'Yes',
-            checked: checked('listed-buildings','Yes')
-          },
-          {
-            html: 'No',
-            value: 'No',
-            checked: checked('listed-buildings','No')
-          }
         ]
       }) }}
 
-      {{ govukButton({
-        html: 'Continue'
-      }) }}
+  </section>
 
-  </form>
+  {{ govukRadios({
+    idPrefix: 'listed-buildings',
+    name: 'listed-buildings',
+    fieldset: {
+      legend: {
+        html: 'Do you want to add another listed building?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('listed-buildings','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('listed-buildings','No')
+      }
+    ]
+  }) }}
+
 {% endblock %}

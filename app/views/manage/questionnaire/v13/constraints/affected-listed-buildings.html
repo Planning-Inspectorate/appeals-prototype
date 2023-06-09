@@ -13,105 +13,92 @@
   }
 ] %}
 
-{% block content %}
+{% block questions %}
 
-  <form method="post">
+  <!-- appeal metadata -->
+  <section class="govuk-!-margin-bottom-6">
 
-    <!-- appeal metadata -->
-    <div class="govuk-grid-row govuk-!-margin-bottom-6">
-      <div class="govuk-grid-column-two-thirds">
+    {% if data['extrabuildingsaffected'] %}
+      <h1 class="govuk-heading-l">
+        You have added 2 affected listed buildings
+      </h1>
+    {% else %}
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+    {% endif %}
 
-        {% if data['extrabuildingsaffected'] %}
-          <h1 class="govuk-heading-l">
-            You have added 2 affected listed buildings
-          </h1>
-        {% else %}
-          <h1 class="govuk-heading-l">
-            {{ title }}
-          </h1>
-        {% endif %}
+    {{ govukSummaryList({
+      classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+      rows: [
 
-      </div>
-      <div class="govuk-grid-column-two-thirds">
-
-        {{ govukSummaryList({
-          classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
-          rows: [
-
-            {
-              key: {
-                visuallyHiddenText: 'Listed building ',
-                html: (data['historicenglandsearchnumber'] or '1282050')
-
-              },
-              value: {
-                html: 'Grade II listed building'+
-                      '<br>155, York Road, Bedminster, Bristol, BS3 4AL'
-              },
-              actions: {
-                items: [
-                  {
-                    href: "affected-listed-building-details",
-                    text: "Remove",
-                    visuallyHiddenText: '155, York Road, Bedminster, Bristol, BS3 4AL'
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                visuallyHiddenText: 'Listed building ',
-                text: (data['historicenglandsearchnumber'] or '1282051')
-              },
-              value: {
-                html: 'Grade II listed building'+
-                      '<br>156, York Road, Bedminster, Bristol, BS3 4AL'
-              },
-              actions: {
-                items: [
-                  {
-                    href: "?extrabuildingsaffected=",
-                    text: "Remove",
-                    visuallyHiddenText: '156, York Road, Bedminster, Bristol, BS3 4AL'
-                  }
-                ]
-              }
-            } if data['extrabuildingsaffected'] == 'yes'
-
-          ]
-        }) }}
-
-      </div>
-    </div>
-
-    {{ govukRadios({
-      idPrefix: 'affected-listed-buildings',
-      name: 'affected-listed-buildings',
-      fieldset: {
-        legend: {
-          html: 'Do you want to add any more listed buildings?',
-          classes: 'govuk-fieldset__legend--m',
-          isPageHeading: false
-        }
-      },
-      items: [
         {
-          html: 'Yes',
-          value: 'Yes',
-          checked: checked('affected-listed-buildings','Yes')
+          key: {
+            visuallyHiddenText: 'Listed building ',
+            html: (data['historicenglandsearchnumber'] or '1282050')
+
+          },
+          value: {
+            html: 'Grade II listed building'+
+                  '<br>155, York Road, Bedminster, Bristol, BS3 4AL'
+          },
+          actions: {
+            items: [
+              {
+                href: "affected-listed-building-details",
+                text: "Remove",
+                visuallyHiddenText: '155, York Road, Bedminster, Bristol, BS3 4AL'
+              }
+            ]
+          }
         },
         {
-          html: 'No',
-          value: 'No',
-          checked: checked('affected-listed-buildings','No')
-        }
+          key: {
+            visuallyHiddenText: 'Listed building ',
+            text: (data['historicenglandsearchnumber'] or '1282051')
+          },
+          value: {
+            html: 'Grade II listed building'+
+                  '<br>156, York Road, Bedminster, Bristol, BS3 4AL'
+          },
+          actions: {
+            items: [
+              {
+                href: "?extrabuildingsaffected=",
+                text: "Remove",
+                visuallyHiddenText: '156, York Road, Bedminster, Bristol, BS3 4AL'
+              }
+            ]
+          }
+        } if data['extrabuildingsaffected'] == 'yes'
+
       ]
     }) }}
 
-    {{ govukButton({
-      html: 'Continue'
-    }) }}
+  </section>
 
-  </form>
+  {{ govukRadios({
+    idPrefix: 'affected-listed-buildings',
+    name: 'affected-listed-buildings',
+    fieldset: {
+      legend: {
+        html: 'Do you want to add another listed building?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('affected-listed-buildings','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('affected-listed-buildings','No')
+      }
+    ]
+  }) }}
 
 {% endblock %}
