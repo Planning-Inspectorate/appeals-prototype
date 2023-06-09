@@ -49,57 +49,8 @@
             }
           ]
         }
-      },
-      {
-        key: {
-          html: 'Supplementary planning documents'
-        },
-        value: {
-          html: data['supplementary-check'] or 'No'
-        }
-        if data['supplementary-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/supplementary-check?cya=true',
-              html: 'Change'
-            }
-            if data['supplementary-check-complete'] else
-            {
-              href: 'po-report/supplementary-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Upload supplementary planning documents'
-        },
-        value: {
-          html: data['supplementary-upload'] or 'supplementary.pdf'
-        }
-        if data['supplementary-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/supplementary-upload?cya=true',
-              html: 'Change'
-            }
-            if data['supplementary-upload-complete'] else
-            {
-              href: 'po-report/supplementary-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['supplementary-check'] == 'Yes'
+      }
+      
     ]
   }) }}
 </li>
