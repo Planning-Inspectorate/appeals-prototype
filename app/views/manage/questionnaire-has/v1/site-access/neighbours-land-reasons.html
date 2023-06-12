@@ -1,0 +1,51 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'What reasons might the Inspector need access to a neighbour’s land?' %}
+
+{% block questions %}
+  {{ govukCheckboxes({
+    name: "neighbours-land-reasons",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "Select all that apply."
+    },
+    items: [
+      {
+        value: "light",
+        text: "Loss of sunlight or daylight"
+      },
+      {
+        value: "outlook",
+        text: "Loss of outlook"
+      },
+      {
+        value: "overbearing",
+        text: "Overbearing or impact to visual amenity"
+      },
+      {
+        value: "outlook",
+        text: "Overlooking or loss of privacy"
+      },
+      {
+        value: "noise",
+        text: "Potential noise impacts"
+      },
+      {
+        value: "smell",
+        text: "Exposure to odour, fumes or dust"
+      },
+      {
+        value: "health",
+        text: "Health fears"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

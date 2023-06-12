@@ -72,6 +72,53 @@
       },
       {
         key: {
+          html: 'Would the Inspector need access to a neighbour’s land?'
+        },
+        value: {
+          html: 'Yes' if data['neighbours-land'] == 'Yes' else 'No'
+        }
+        if data['site-entry-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'site-access/neighbours-land?cya=true',
+              html: 'Change'
+            }
+            if data['site-entry-complete'] else
+            {
+              href: 'site-access/neighbours-land',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'What is the neighbour’s address?'
+        },
+        value: {
+          html: (data['neighbours-address-line-1'] or '22 Cheers Drive')+('<br>'+data['neighbours-address-line-2'] if data['neighbours-address-line-2'])+('<br>'+(data['neighbours-address-town'] or 'Bristol'))+('<br>'+(data['neighbours-address-postcode'] or 'BS5 7FQ'))
+        },
+        
+        actions: {
+          items: [
+            {
+              href: 'site-access/neighbours-land?cya=true',
+              html: 'Change'
+            }
+            if data['site-entry-complete'] else
+            {
+              href: 'site-access/neighbours-land',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['neighbours-land'] == 'Yes',
+      {
+        key: {
           html: 'Health and safety issues'
         },
         value: {

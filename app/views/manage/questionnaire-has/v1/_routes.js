@@ -646,6 +646,22 @@ router.post('/site-access/site-visibility', function (req, res) {
 })
 
 router.post('/site-access/site-entry', function (req, res) {
+  res.redirect('neighbours-land')
+})
+
+router.post('/site-access/neighbours-land', function (req, res) {
+  if (req.session.data['neighbours-land'] == 'Yes') {
+    res.redirect('neighbours-land-reasons');
+  } else {
+    res.redirect('health-and-safety')
+  }
+})
+
+router.post('/site-access/neighbours-land-reasons', function (req, res) {
+  res.redirect('neighbours-address');
+})
+
+router.post('/site-access/neighbours-address', function (req, res) {
   res.redirect('health-and-safety')
 })
 
