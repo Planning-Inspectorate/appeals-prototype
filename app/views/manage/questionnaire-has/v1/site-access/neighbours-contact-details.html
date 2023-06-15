@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'What are the neighbour’s contact details' %}
+{% set title = 'Add neighbours details' %}
 
 {% block questions %}
-  <span class="govuk-caption-l">
+  <!-- <span class="govuk-caption-l">
     Tell us about you
-  </span>
+  </span> -->
 
   {% call govukFieldset({
     legend: {
@@ -52,7 +52,7 @@
       name: 'neighbour-contact-email',
       value: data['neighbour-contact-email'],
       label: {
-        html: 'Contact email (optional)'
+        html: 'Email (optional)'
       }
     }) }}
 
@@ -62,7 +62,7 @@
       value: data['neighbour-contact-phone'],
       classes: "govuk-input--width-10",
       label: {
-        html: 'Contact phone number (optional)'
+        html: 'Phone (optional)'
       }
     }) }}
 

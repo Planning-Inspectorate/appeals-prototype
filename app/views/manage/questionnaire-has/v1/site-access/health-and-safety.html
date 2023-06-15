@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Health and safety issues' %}
+{% set title = 'Does the site have potential safety risks?' %}
 
 {% block questions %}
 
@@ -11,7 +11,7 @@
       value: data['health-and-safety__details'],
       rows: '',
       label: {
-        html: 'Tell us about the health and safety issues'
+        html: 'Add details of the potential risk and what the inspector might need'
       }
     }) }}
   {% endset -%}
@@ -20,20 +20,24 @@
     {{ title }}
   </h1>
 
-  <p class="govuk-body">Understanding any health and safety issues will help an inspector carry out a site visit.</p>
+  <p class="govuk-body">
+    Inspectors need to know how to prepare for a visit and what to bring.
+  </p>
 
-  <p class="govuk-!-margin-bottom-2">For example:</p>
+  <p class="govuk-!-margin-bottom-2">For example, tell us about:</p>
   <ul class="govuk-list govuk-list--bullet">
-    <li>animals at the site, for example pets or livestock</li>
-    <li>poor mobile signal at the site</li>
-    <li>access issues for people with limited mobility</li>
-    <li>overgrown vegetation that could restrict access to the site</li>
-    <li>building works or other operations taking place on the site</li>
-    <li>site-specific safety arrangements that are in place</li>
-    <li>areas of the site that require specialist equipment or training for access, for example heights or confined spaces</li>
-    <li>requirements to view the site from a height, for example from a roof or balcony</li>
-    <li>risk of exposure to chemicals, asbestos or radiation</li>
-    <li>unmarked changes in level or missing fittings</li>
+    <li>
+      the potential for hazardous materials on site, such as asbestos
+    </li>
+    <li>
+      if ladders or other access equipment is needed
+    </li>
+    <li>
+      the need to wear high-visibility clothes or a hard hat
+    </li>
+    <li>
+      blocked access to areas, for example because of debris or overgrown vegetation
+    </li>
   </ul>
 
   {{ govukRadios({
@@ -41,7 +45,7 @@
     name: 'health-and-safety',
     fieldset: {
       legend: {
-        html: 'Are there any health and safety issues on the appeal site?',
+        html: 'Do you want to add any potential safety issues?',
         classes: 'govuk-fieldset__legend--m'
       }
     },

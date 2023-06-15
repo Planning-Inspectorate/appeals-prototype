@@ -651,7 +651,11 @@ router.post('/site-access/site-entry', function (req, res) {
 
 router.post('/site-access/neighbours-land', function (req, res) {
   if (req.session.data['neighbours-land'] == 'Yes') {
-    res.redirect('neighbours-land-reasons');
+    if (req.session.data['neighbours-land--version'] != 'short') {
+      res.redirect('neighbours-land-reasons');
+    } else {
+      res.redirect('neighbours-contact-details');
+    }
   } else {
     res.redirect('health-and-safety')
   }

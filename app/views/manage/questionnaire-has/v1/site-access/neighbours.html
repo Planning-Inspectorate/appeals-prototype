@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Affected neighbours' %}
+{% set title = 'Neighbouring site' %}
 
 {% set prototypeLinks = [
   {
@@ -21,15 +21,9 @@
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-two-thirds">
 
-        {% if data['affectedneighbours'] %}
-          <h1 class="govuk-heading-l">
-            You have added 2 affected neighbours
-          </h1>
-        {% else %}
-          <h1 class="govuk-heading-l">
-            {{ title }}
-          </h1>
-        {% endif %}
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
 
       </div>
       <div class="govuk-grid-column-full">
@@ -40,8 +34,8 @@
 
             {
               key: {
-                text: 'Affected neighbour',
-                visuallyHiddenText: 'at 172, York Road, Bedminster, Bristol, BS3 4AL'
+                text: 'Neighbour’s details',
+                visuallyHiddenText: 'for 172, York Road, Bedminster, Bristol, BS3 4AL'
               },
               value: {
                 html: (data['neighbour-first-name'] or 'Sam') + ' ' + (data['neighbour-last-name'] or 'Fisher')+
@@ -88,7 +82,7 @@
       name: 'add-neighbours',
       fieldset: {
         legend: {
-          html: 'Do you want to add any more affected neighbours?',
+          html: 'Do you want to add another neighbouring site?',
           classes: 'govuk-fieldset__legend--m',
           isPageHeading: false
         }

@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'What reasons might the Inspector need access to a neighbour’s land?' %}
+{% set title = 'How might it be affected?' %}
 
 {% block questions %}
   {{ govukCheckboxes({
@@ -17,32 +17,20 @@
     },
     items: [
       {
-        value: "light",
-        text: "Loss of sunlight or daylight"
+        value: "privacy",
+        text: "Affect outlook or privacy"
       },
       {
-        value: "outlook",
-        text: "Loss of outlook"
+        value: "surround",
+        text: "Detract from site surroundings"
       },
       {
-        value: "overbearing",
-        text: "Overbearing or impact to visual amenity"
+        value: "nuisance",
+        text: "Cause a nuisance, such as noise, smells or dust"
       },
       {
-        value: "outlook",
-        text: "Overlooking or loss of privacy"
-      },
-      {
-        value: "noise",
-        text: "Potential noise impacts"
-      },
-      {
-        value: "smell",
-        text: "Exposure to odour, fumes or dust"
-      },
-      {
-        value: "health",
-        text: "Health fears"
+        value: "safety",
+        text: "Affect the health or safety of neighbours"
       }
     ]
   }) }}
