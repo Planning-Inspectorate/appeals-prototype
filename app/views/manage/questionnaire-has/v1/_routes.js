@@ -654,7 +654,7 @@ router.post('/site-access/neighbours-land', function (req, res) {
     if (req.session.data['neighbours-land--version'] != 'short') {
       res.redirect('neighbours-land-reasons');
     } else {
-      res.redirect('neighbours-contact-details');
+      res.redirect('neighbours-address');
     }
   } else {
     res.redirect('health-and-safety')
@@ -662,20 +662,22 @@ router.post('/site-access/neighbours-land', function (req, res) {
 })
 
 router.post('/site-access/neighbours-land-reasons', function (req, res) {
+  res.redirect('neighbours-address');
+})
+
+
+router.post('/site-access/neighbours-address', function (req, res) {
   res.redirect('neighbours-contact-details');
 })
 
 router.post('/site-access/neighbours-contact-details', function (req, res) {
-  res.redirect('neighbours-address');
-})
-
-router.post('/site-access/neighbours-address', function (req, res) {
   res.redirect('neighbours')
 })
 
+
 router.post('/site-access/neighbours', function (req, res) {
   if (req.session.data['add-neighbours'] == 'Yes') {
-    res.redirect('neighbours-contact-details');
+    res.redirect('neighbours-address?affectedneighbours=yes');
   } else {
     res.redirect('health-and-safety')
   }
