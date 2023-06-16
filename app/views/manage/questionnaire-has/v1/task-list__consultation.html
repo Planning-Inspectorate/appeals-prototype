@@ -17,35 +17,11 @@
       }) }}
     {% endif %}
   </h2>
+
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
 
-      {
-        key: {
-          html: 'Upload consultation responses and standing advice'
-        },
-        value: {
-          html: data['consultation-responses-upload'] or 'consultation-responses.pdf'
-        }
-        if data['consultation-responses-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'consultation/consultation-responses-upload?cya=true',
-              html: 'Change'
-            }
-            if data['consultation-responses-upload-complete'] else
-            {
-              href: 'consultation/consultation-responses-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['consultation-responses-check'] == 'Yes',
       {
         key: {
           html: 'Representations from other parties'
@@ -53,7 +29,7 @@
         value: {
           html: data['other-parties-check'] or 'No'
         }
-        if data['other-parties-check-complete'] else
+        if data['other-parties-checked'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
@@ -63,7 +39,7 @@
               href: 'consultation/other-parties-check?cya=true',
               html: 'Change'
             }
-            if data['other-parties-check-complete'] else
+            if data['other-parties-checked'] else
             {
               href: 'consultation/other-parties-check',
               html: 'Answer'
@@ -78,7 +54,7 @@
         value: {
           html: data['other-parties-upload'] or 'other-parties.pdf'
         }
-        if data['other-parties-upload-complete'] else
+        if data['other-parties-uploaded'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
@@ -88,7 +64,7 @@
               href: 'consultation/other-parties-upload?cya=true',
               html: 'Change'
             }
-            if data['other-parties-upload-complete'] else
+            if data['other-parties-uploaded'] else
             {
               href: 'consultation/other-parties-upload',
               html: 'Upload'

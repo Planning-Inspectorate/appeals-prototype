@@ -32,7 +32,7 @@
         value: {
           html: data['report-upload'] or 'report.pdf'
         }
-        if data['report-upload-complete'] else
+        if data['po-report-uploaded'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
@@ -42,7 +42,7 @@
               href: 'po-report/report-upload?cya=true',
               html: 'Change'
             }
-            if data['report-upload-complete'] else
+            if data['po-report-uploaded'] else
             {
               href: 'po-report/report-upload',
               html: 'Upload'
@@ -50,7 +50,7 @@
           ]
         }
       }
-      
+
     ]
   }) }}
 </li>

@@ -365,7 +365,11 @@ router.post('/notified/notified-how', function (req, res) {
   }
 })
 
+/* checkbox routing */
+
 router.post('/notified/site-notice-upload', function (req, res) {
+  req.session.data['site-notice-uploaded'] = 'true'
+
   if (req.session.data['notified-how']?.includes('Letters to the neighbours')) {
     res.redirect('letters-upload');
   } else if (req.session.data['notified-how']?.includes('A press advert')) {
@@ -378,6 +382,8 @@ router.post('/notified/site-notice-upload', function (req, res) {
 })
 
 router.post('/notified/letters-upload', function (req, res) {
+  req.session.data['letters-uploaded'] = 'true'
+
   if (req.session.data['notified-how']?.includes('A press advert')) {
     res.redirect('press-advert-upload');
   } else {
@@ -389,6 +395,8 @@ router.post('/notified/letters-upload', function (req, res) {
 })
 
 router.post('/notified/press-advert-upload', function (req, res) {
+  req.session.data['advert-uploaded'] = 'true'
+
   req.session.data['notified-completed'] = 'true'
   // res.redirect('complete');
   res.redirect('../consultation/other-parties-check');
@@ -491,6 +499,9 @@ router.post('/consultation/consultation-responses-upload', function (req, res) {
 
 
 router.post('/consultation/other-parties-check', function (req, res) {
+
+  req.session.data['other-parties-checked'] = 'true'
+
   if (req.session.data['other-parties-check'] == 'Yes') {
     req.session.data['consultation-completed'] = 'false'
     res.redirect('other-parties-upload');
@@ -501,7 +512,9 @@ router.post('/consultation/other-parties-check', function (req, res) {
 })
 
 router.post('/consultation/other-parties-upload', function (req, res) {
-  // res.redirect('complete');
+
+  req.session.data['other-parties-uploaded'] = 'true'
+
   res.redirect('../po-report/report-upload');
 
 })
@@ -549,6 +562,9 @@ router.post('/consultation/other-parties-upload', function (req, res) {
 // })
 
 router.post('/po-report/report-upload', function (req, res) {
+
+  req.session.data['po-report-uploaded'] = 'true'
+
   // res.redirect('policies-upload')
   res.redirect('../site-access/site-visibility')
 
