@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'How did you notify people about the planning application?' %}
+{% set title = 'How did you notify people about the application?' %}
 
 {% block questions %}
   {{ govukCheckboxes({
@@ -18,19 +18,19 @@
     },
     items: [
       {
-        html: 'A site notice',
-        value: 'A site notice',
+        html: 'Site notice',
+        value: 'Site notice',
         checked: checked('notified-how','A site notice')
       },
       {
-        html: 'Letter/email to interested parties',
-        value: 'Letters to the neighbours',
-        checked: checked('notified-how','Letters to the neighbours')
+        html: 'Letters or email to neighbours',
+        value: 'Letters or email to neighbours',
+        checked: checked('notified-how','Letters or email to neighbours')
       },
       {
-        html: 'A press advert',
-        value: 'A press advert',
-        checked: checked('notified-how','A press advert')
+        html: 'Advertisement',
+        value: 'Advertisement',
+        checked: checked('notified-how','Advertisement')
       }
     ]
   }) }}

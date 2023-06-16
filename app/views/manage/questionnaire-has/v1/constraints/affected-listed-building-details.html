@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Affected Listed Building Number' %}
+{% set title = 'Add the listed entry number' %}
 
 {% block questions %}
   <div class="govuk-form-group">
@@ -11,20 +11,28 @@
     </h1>
 
     <p class='govuk-body'>
-      Enter a Historic England list number for one of the buildings where the setting is affected.
+      Add the Historic England listed entry number for the building or site.
+    </p>
+
+    <p class='govuk-body'>
+      <a href='https://historicengland.org.uk/listing/the-list/advanced-search?searchType=nhleadvancedsearch' class='govuk-link'>Search the list</a> if you do not have it.
+    </p>
+
+    <p class='govuk-body'>
+      You can add another building or site later, if needed.
     </p>
 
     <p class='govuk-body'>
       A list entry number is 7 digits.
     </p>
 
-    <div id="listedplanning-hint" class="govuk-hint">
+    <!-- <div id="listedplanning-hint" class="govuk-hint">
       You can add more buildings later.
-    </div>
+    </div> -->
 
     {{ govukInput({
       label: {
-        text: "Historic England number"
+        text: "Listed entry number"
       },
       classes: "govuk-input--width-10",
       id: "historicenglandsearchnumber",

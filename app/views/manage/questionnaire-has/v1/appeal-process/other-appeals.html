@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Are there any other appeals next to or close to the site still being considered?' %}
+{% set title = 'Are there any other ongoing appeals near the site?' %}
 
 {% block questions %}
   {% set appealRefs %}
@@ -9,10 +9,10 @@
       name: 'appeal-refs',
       value: data['appeal-refs'],
       label: {
-        html: 'Appeal reference number(s)'
+        html: 'Add appeal reference number'
       },
       hint: {
-        html: 'You can enter more than one, separated by commas'
+        html: 'Use commas to separate reference numbers if adding several'
       }
     }) }}
   {% endset -%}
