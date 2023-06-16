@@ -49,6 +49,25 @@
 
       {
         key: {
+          html: 'Listed buildings'
+        },
+        value: {
+          html: '<a href="#">'+(data['historicenglandsearchnumber'] or '1282050')+'</a>'+
+                '<br>Grade II listed building'+
+                '<br>155, York Road, Bedminster, Bristol, BS3 4AL'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/affected-listed-building-details?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      } if data['listed-building'] == yes,
+
+      {
+        key: {
           html: 'Conservation area'
         },
         value: {

@@ -74,7 +74,7 @@ router.post('/constraints/affected-listed-building-check', function (req, res) {
 })
 
 router.post('/constraints/affected-listed-building-details', function (req, res) {
-  res.redirect('affected-listed-buildings')
+  res.redirect('affected-listed-buildings?listed-building=yes')
 })
 
 router.post('/constraints/affected-listed-buildings', function (req, res) {

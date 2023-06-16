@@ -72,12 +72,12 @@
       },
       {
         key: {
-          html: 'Would the Inspector need access to a neighbour’s land?'
+          html: 'Could a neighbouring site be affected?'
         },
         value: {
           html: 'Yes' if data['neighbours-land'] == 'Yes' else 'No'
         }
-        if data['site-entry-complete'] else
+        if data['neighbours-land'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
@@ -87,7 +87,7 @@
               href: 'site-access/neighbours-land?cya=true',
               html: 'Change'
             }
-            if data['site-entry-complete'] else
+            if data['neighbours-land'] else
             {
               href: 'site-access/neighbours-land',
               html: 'Answer'
@@ -95,14 +95,37 @@
           ]
         }
       },
+
       {
         key: {
-          html: 'What is the neighbour’s address?'
+          html: 'How might neighbouring sites be affected?'
         },
         value: {
-          html: (data['neighbours-address-line-1'] or '22 Cheers Drive')+('<br>'+data['neighbours-address-line-2'] if data['neighbours-address-line-2'])+('<br>'+(data['neighbours-address-town'] or 'Bristol'))+('<br>'+(data['neighbours-address-postcode'] or 'BS5 7FQ'))
+          html: 'Affect outlook or privacy<br>Detract from site surroundings'
         },
-        
+        actions: {
+          items: [
+            {
+              href: 'site-access/site-entry?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      } if data['neighbours-land'] == 'Yes',
+
+      {
+        key: {
+          html: 'Neighbouring site address and contact'
+        },
+        value: {
+          html: ('Sam Fisher')+
+                ('<br>01179123456')+
+                ('<br>172, York Road')+
+                ('<br>'+data['neighbours-address-line-2'] if data['neighbours-address-line-2'])+
+                ('<br>'+(data['neighbours-address-town'] or 'Bristol'))+
+                ('<br>'+(data['neighbours-address-postcode'] or 'BS3 4AL'))
+        },
+
         actions: {
           items: [
             {
@@ -117,9 +140,10 @@
           ]
         }
       } if data['neighbours-land'] == 'Yes',
+
       {
         key: {
-          html: 'Health and safety issues'
+          html: 'Potential safety risks'
         },
         value: {
           html: 'Yes<br>'+data['health-and-safety__details'] if data['health-and-safety'] == 'Yes' else 'No'
