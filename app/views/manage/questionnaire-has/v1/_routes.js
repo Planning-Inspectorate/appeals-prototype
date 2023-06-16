@@ -355,12 +355,12 @@ router.post('/notified/:page', function (req, res, next) {
 */
 
 router.post('/notified/notified-how', function (req, res) {
-  if (req.session.data['notified-how']?.includes('A site notice')) {
+  if (req.session.data['notified-how']?.includes('Site notice')) {
     res.redirect('site-notice-upload');
-  } else if (req.session.data['notified-how']?.includes('Letters to the neighbours')) {
+  } else if (req.session.data['notified-how']?.includes('Letters to neighbours')) {
     res.redirect('letters-upload');
   } else {
-    req.session.data['notified-how'] = 'A press advert'
+    req.session.data['notified-how'] = 'Advertisement'
     res.redirect('press-advert-upload');
   }
 })
@@ -370,9 +370,9 @@ router.post('/notified/notified-how', function (req, res) {
 router.post('/notified/site-notice-upload', function (req, res) {
   req.session.data['site-notice-uploaded'] = 'true'
 
-  if (req.session.data['notified-how']?.includes('Letters to the neighbours')) {
+  if (req.session.data['notified-how']?.includes('Letters to neighbours')) {
     res.redirect('letters-upload');
-  } else if (req.session.data['notified-how']?.includes('A press advert')) {
+  } else if (req.session.data['notified-how']?.includes('Advertisement')) {
     res.redirect('press-advert-upload');
   } else {
     req.session.data['notified-completed'] = 'true'
@@ -384,7 +384,7 @@ router.post('/notified/site-notice-upload', function (req, res) {
 router.post('/notified/letters-upload', function (req, res) {
   req.session.data['letters-uploaded'] = 'true'
 
-  if (req.session.data['notified-how']?.includes('A press advert')) {
+  if (req.session.data['notified-how']?.includes('Advertisement')) {
     res.redirect('press-advert-upload');
   } else {
     req.session.data['notified-completed'] = 'true'
@@ -566,7 +566,7 @@ router.post('/po-report/report-upload', function (req, res) {
   req.session.data['po-report-uploaded'] = 'true'
 
   // res.redirect('policies-upload')
-  res.redirect('../site-access/site-visibility')
+  res.redirect('../site-access/site-entry')
 
 })
 
@@ -657,9 +657,9 @@ router.post('/site-access/:page', function (req, res, next) {
 
 */
 
-router.post('/site-access/site-visibility', function (req, res) {
-  res.redirect('site-entry')
-})
+// router.post('/site-access/site-visibility', function (req, res) {
+//   res.redirect('site-entry')
+// })
 
 router.post('/site-access/site-entry', function (req, res) {
   res.redirect('neighbours-land')

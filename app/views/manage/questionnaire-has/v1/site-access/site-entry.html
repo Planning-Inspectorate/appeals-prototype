@@ -1,19 +1,8 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Will the inspector need to enter the appeal site?' %}
+{% set title = "Might the inspector need access to the appellant’s land or property?" %}
 
 {% block questions %}
-  {% set detailsHTML %}
-    {{ govukTextarea({
-      name: 'site-entry__details',
-      id: 'site-entry__details',
-      value: data['site-entry__details'],
-      rows: '3',
-      label: {
-        html: 'Tell us why the inspector will need to enter the appeal site'
-      }
-    }) }}
-  {% endset %}
 
   {{ govukRadios({
     idPrefix: 'site-entry',
@@ -30,10 +19,7 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('site-entry','Yes'),
-        conditional: {
-          html: detailsHTML
-        }
+        checked: checked('site-entry','Yes')
       },
       {
         html: 'No',
