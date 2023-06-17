@@ -16,9 +16,10 @@
       }
     }) }}
   {% endset -%}
+
   {{ govukRadios({
-    idPrefix: 'other-appeals',
-    name: 'other-appeals',
+    idPrefix: 'other-appeals-radio',
+    name: 'other-appeals-radio',
     fieldset: {
       legend: {
         html: title,
@@ -30,7 +31,7 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('other-appeals','Yes'),
+        checked: checked('other-appeals-radio','Yes'),
         conditional: {
           html: appealRefs
         }
@@ -38,7 +39,7 @@
       {
         html: 'No',
         value: 'No',
-        checked: checked('other-appeals','No')
+        checked: checked('other-appeals-radio','No')
       }
     ]
   }) }}

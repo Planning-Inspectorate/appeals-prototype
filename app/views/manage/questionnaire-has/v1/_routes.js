@@ -86,7 +86,7 @@ router.post('/constraints/affected-listed-buildings', function (req, res) {
 })
 
 router.post('/constraints/conservation-check', function (req, res) {
-  if (req.session.data['conservation-check'] == 'In a conservation area' || req.session.data['conservation-check'] == 'Next to a conservation area') {
+  if (req.session.data['conservation-check'] == 'yes') {
     res.redirect('conservation-upload');
   } else {
     res.redirect('green-belt')
@@ -743,11 +743,13 @@ router.post('/appeal-process/:page', function (req, res, next) {
 */
 
 router.post('/appeal-process/procedure', function (req, res) {
+
+  req.session.data['procedure-complete'] = 'true'
   res.redirect('other-appeals')
 })
 
 router.post('/appeal-process/other-appeals', function (req, res) {
-  // res.redirect('statement-of-case')
+  req.session.data['other-appeals-complete'] = 'true'
   res.redirect('extra-conditions');
 })
 
@@ -764,6 +766,7 @@ router.post('/appeal-process/statement-of-case', function (req, res) {
 */
 
 router.post('/appeal-process/extra-conditions', function (req, res) {
+  req.session.data['extra-conditions-complete'] = 'true'
   res.redirect('../task-list')
 })
 

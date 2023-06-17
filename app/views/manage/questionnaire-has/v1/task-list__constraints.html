@@ -72,7 +72,7 @@
           html: 'Conservation area'
         },
         value: {
-          html: data['conservation-check'] or 'Not in or next to a conservation area'
+          html: data['conservation-check'] or 'No'
         }
         if data['conservation-check-complete'] else
         {
@@ -116,7 +116,7 @@
             }
           ]
         }
-      } if data['conservation-check'] in ['In a conservation area', 'Next to a conservation area'],
+      } if data['conservation-check'] == 'Yes',
       {
         key: {
           html: 'Green belt'
