@@ -3,6 +3,7 @@
 {% set title = 'How did you notify people about the application?' %}
 
 {% block questions %}
+
   {{ govukCheckboxes({
     idPrefix: 'notified-how',
     name: 'notified-how',
@@ -34,4 +35,5 @@
       }
     ]
   }) }}
+
 {% endblock %}
