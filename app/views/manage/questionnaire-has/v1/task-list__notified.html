@@ -25,7 +25,7 @@
           html: 'How you notified people'
         },
         value: {
-          html: data['notified-how'] | e | replace(',', '<br>') or 'A press advert'
+          html: '<a href="#">'+data['notified-how'] | e | replace(',', '<br>') or 'A press advert'
         }
         if data['notified-how'] else
         {

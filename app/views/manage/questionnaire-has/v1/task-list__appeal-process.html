@@ -27,7 +27,7 @@
         },
         value: {
           html: (data['procedure'] or 'Written representations')+
-                ('<br>'+data['procedure-lenth']+' days' if data['procedure'] == 'Inquiry')
+                ('<br>'+(data['procedure-lenth'] or '3')+' days' if data['procedure'] == 'Inquiry')
         }
         if data['procedure-complete'] else
         {

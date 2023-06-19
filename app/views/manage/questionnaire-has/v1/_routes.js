@@ -43,28 +43,28 @@ router.get('/task-list', function(req, res, next){
 // CONSTRAINTS
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-router.post('/constraints/:page', function (req, res, next) {
-  req.session.data['constraints-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (
-    req.session.data['listed-building-check-complete']
-    && req.session.data['affected-listed-building-check-complete']
-    && req.session.data['scheduled-monument-complete']
-    && req.session.data['conservation-check-complete']
-    && req.session.data['protected-species-complete']
-    && req.session.data['green-belt-complete']
-    && req.session.data['outstanding-natural-beauty-complete']
-    && req.session.data['designated-sites-complete']
-    && req.session.data['tree-order-check-complete']
-    && req.session.data['traveller-complete']
-    && req.session.data['right-of-way-check-complete']
-  ){
-    req.session.data['constraints-completed'] = 'true'
-  }
-
-  next()
-})
+// router.post('/constraints/:page', function (req, res, next) {
+//   req.session.data['constraints-started'] = 'true'
+//   req.session.data[`${req.params.page}-complete`] = 'true'
+//
+//   if (
+//     req.session.data['listed-building-check-complete']
+//     && req.session.data['affected-listed-building-check-complete']
+//     && req.session.data['scheduled-monument-complete']
+//     && req.session.data['conservation-check-complete']
+//     && req.session.data['protected-species-complete']
+//     && req.session.data['green-belt-complete']
+//     && req.session.data['outstanding-natural-beauty-complete']
+//     && req.session.data['designated-sites-complete']
+//     && req.session.data['tree-order-check-complete']
+//     && req.session.data['traveller-complete']
+//     && req.session.data['right-of-way-check-complete']
+//   ){
+//     req.session.data['constraints-completed'] = 'true'
+//   }
+//
+//   next()
+// })
 
 router.post('/constraints/affected-listed-building-check', function (req, res) {
   if (req.session.data['affected-listed-building-check'] == 'Yes') {
@@ -79,6 +79,7 @@ router.post('/constraints/affected-listed-building-details', function (req, res)
 })
 
 router.post('/constraints/affected-listed-buildings', function (req, res) {
+  req.session.data['affected-listed-buildings-complete'] = 'true'
   if (req.session.data['affected-listed-buildings'] == 'Yes') {
     res.redirect('affected-listed-building-details?extrabuildingsaffected=yes');
   } else {
@@ -87,7 +88,8 @@ router.post('/constraints/affected-listed-buildings', function (req, res) {
 })
 
 router.post('/constraints/conservation-check', function (req, res) {
-  if (req.session.data['conservation-check'] == 'yes') {
+  req.session.data['conservation-check-complete'] = 'true'
+  if (req.session.data['conservation-check'] == 'Yes') {
     res.redirect('conservation-upload');
   } else {
     res.redirect('green-belt')
@@ -95,6 +97,7 @@ router.post('/constraints/conservation-check', function (req, res) {
 })
 
 router.post('/constraints/conservation-upload', function (req, res) {
+  req.session.data['conservation-upload-complete'] = 'true'
   res.redirect('green-belt')
 })
 
@@ -198,7 +201,7 @@ router.post('/site-access/site-entry', function (req, res) {
 })
 
 router.post('/site-access/neighbours-land', function (req, res) {
-  req.session.data['neighbours-land-checked'] = 'true'
+  req.session.data['neighbours-land-complete'] = 'true'
   if (req.session.data['neighbours-land'] == 'Yes') {
     if (req.session.data['neighbours-land--version'] != 'short') {
       res.redirect('neighbours-land-reasons');
@@ -211,14 +214,17 @@ router.post('/site-access/neighbours-land', function (req, res) {
 })
 
 router.post('/site-access/neighbours-land-reasons', function (req, res) {
+  req.session.data['neighbours-reasons-complete'] = 'true'
   res.redirect('neighbours-address');
 })
 
 router.post('/site-access/neighbours-address', function (req, res) {
+  req.session.data['neighbours-address-complete'] = 'true'
   res.redirect('neighbours-contact-details');
 })
 
 router.post('/site-access/neighbours-contact-details', function (req, res) {
+  req.session.data['neighbours-contact-complete'] = 'true'
   res.redirect('neighbours')
 })
 
