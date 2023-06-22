@@ -1,0 +1,46 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Add new condition requests' %}
+
+{% block questions %}
+
+  {% set extraConditions %}
+    {{ govukTextarea({
+      name: 'extra-conditions',
+      id: 'extra-conditions',
+      value: data['extra-conditions'],
+      rows: '3',
+      label: {
+        html: 'Add request details'
+      }
+    }) }}
+  {% endset -%}
+  {{ govukRadios({
+    idPrefix: 'extra-conditions-check',
+    name: 'extra-conditions-check',
+    fieldset: {
+      legend: {
+        html: 'Do you want to request new conditions?',
+        classes: 'govuk-fieldset__legend--l'
+      }
+    },
+    hint: {
+      text: "You do not need to tell us about standard conditions."
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('extra-conditions-check','Yes'),
+        conditional: {
+          html: extraConditions
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('extra-conditions','No')
+      }
+    ]
+  }) }}
+{% endblock %}

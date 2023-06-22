@@ -18,9 +18,36 @@
     {% endif %}
   </h2>
 
-  {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
-    rows: [
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+
+      {
+        key: {
+          html: 'Is this appeal type appriopriate?'
+        },
+        value: {
+          html: data['appropriate'] or 'Yes'
+        }
+        if data['appropriate-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/appropriate?cya=true',
+              html: 'Change'
+            }
+            if data['appropriate-complete'] else
+            {
+              href: 'constraints/appropriate',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+
       {
         key: {
           html: 'Affects a listed building'

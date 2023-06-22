@@ -1,0 +1,155 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span> Notifying people about the application
+    {% if data['notified-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['notified-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+      {
+        key: {
+          html: 'Who was notified'
+        },
+        value: {
+          html: '<a href="#">'+(data['notified-who'] or 'Notified list.pdf')+'</a>'
+        }
+        if data['notified-who-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/notified-who?cya=true',
+              html: 'Change'
+            }
+            if data['notified-who-complete'] else
+            {
+              href: 'notified/notified-who',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          html: 'How you notified people'
+        },
+        value: {
+          html: data['notified-how'] | e | replace(',', '<br>') or 'A press advert'
+        }
+        if data['notified-how'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+
+            {
+              href: 'notified/notified-how?cya=true',
+              html: 'Change'
+            } if data['notified-how'] else
+
+            {
+              href: 'notified/notified-how',
+              html: 'Answer'
+            }
+
+          ]
+        }
+      },
+
+      {
+        key: {
+          html: 'Site notice'
+        },
+        value: {
+          html: '<a href="">'+(data['site-notice-upload'] or 'site-notice.pdf')+'</a>'
+        }
+        if data['site-notice-uploaded'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/site-notice-upload?cya=true',
+              html: 'Change'
+            }
+            if data['site-notice-uploaded'] else
+            {
+              href: 'notified/site-notice-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('Site notice'),
+      {
+        key: {
+          html: 'Letters to neighbours'
+        },
+        value: {
+          html: '<a href="">'+(data['letters-upload'] or 'letter.pdf')+'</a>'
+        }
+        if data['letters-uploaded'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/letters-upload?cya=true',
+              html: 'Change'
+            }
+            if data['letters-uploaded'] else
+            {
+              href: 'notified/letters-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('Letters to neighbours'),
+      {
+        key: {
+          html: 'Advertisement'
+        },
+        value: {
+          html: '<a href="">'+(data['press-advert-upload'] or 'press-advert.pdf')+'</a>'
+        }
+        if data['advert-uploaded'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/press-advert-upload?cya=true',
+              html: 'Change'
+            }
+            if data['advert-uploaded'] else
+            {
+              href: 'notified/press-advert-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('Advertisement')
+    ]
+  }) }}
+</li>

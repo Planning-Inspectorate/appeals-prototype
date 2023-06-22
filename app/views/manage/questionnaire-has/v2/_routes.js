@@ -66,6 +66,12 @@ router.get('/task-list', function(req, res, next){
 //   next()
 // })
 
+router.post('/constraints/appropriate', function (req, res) {
+  req.session.data['appropriate-complete'] = 'true'
+  req.session.data['constraints-completed'] = 'true'
+  res.redirect('affected-listed-building-check')
+})
+
 router.post('/constraints/affected-listed-building-check', function (req, res) {
   if (req.session.data['affected-listed-building-check'] == 'Yes') {
     res.redirect('affected-listed-building-details');
@@ -104,14 +110,23 @@ router.post('/constraints/conservation-upload', function (req, res) {
 router.post('/constraints/green-belt', function (req, res) {
   req.session.data['green-belt-complete'] = 'true'
   req.session.data['constraints-completed'] = 'true'
-  res.redirect('../notified/notified-how')
+  res.redirect('../notified/notified-who')
 })
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 // NOTIFIED PEOPLE
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
+router.post('/notified/notified-who', function (req, res) {
+  req.session.data['notified-started'] = 'true'
+  req.session.data['notified-who-complete'] = 'true'
+
+  res.redirect('../notified/notified-how')
+})
+
 router.post('/notified/notified-how', function (req, res) {
+
+  req.session.data['notified-how-complete'] = 'true'
 
   if (req.session.data['notified-how']?.includes('Site notice')) {
     res.redirect('site-notice-upload');
@@ -139,12 +154,13 @@ router.post('/notified/site-notice-upload', function (req, res) {
 
 router.post('/notified/letters-upload', function (req, res) {
   req.session.data['letters-uploaded'] = 'true'
-  req.session.data['notified-completed'] = 'true'
 
   if (req.session.data['notified-how']?.includes('Advertisement')) {
     res.redirect('press-advert-upload');
   } else {
+    req.session.data['notified-completed'] = 'true'
     res.redirect('../consultation/other-parties-check');
+
   }
 })
 
@@ -202,19 +218,10 @@ router.post('/site-access/site-entry', function (req, res) {
 router.post('/site-access/neighbours-land', function (req, res) {
   req.session.data['neighbours-land-complete'] = 'true'
   if (req.session.data['neighbours-land'] == 'Yes') {
-    if (req.session.data['neighbours-land--version'] != 'short') {
-      res.redirect('neighbours-land-reasons');
-    } else {
-      res.redirect('neighbours-address');
-    }
+    res.redirect('neighbours-address');
   } else {
     res.redirect('health-and-safety')
   }
-})
-
-router.post('/site-access/neighbours-land-reasons', function (req, res) {
-  req.session.data['neighbours-reasons-complete'] = 'true'
-  res.redirect('neighbours-address');
 })
 
 router.post('/site-access/neighbours-address', function (req, res) {
@@ -253,7 +260,17 @@ router.post('/site-access/health-and-safety', function (req, res) {
 router.post('/appeal-process/procedure', function (req, res) {
   req.session.data['procedure-complete'] = 'true'
   req.session.data['appeal-process-started'] = 'true'
-  res.redirect('other-appeals')
+  if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
+    res.redirect('procedure--reason');
+  } else {
+    res.redirect('other-appeals');
+  }
+
+})
+
+router.post('/appeal-process/procedure--reason', function (req, res) {
+  req.session.data['procedure-reason-complete'] = 'true'
+  res.redirect('other-appeals');
 })
 
 router.post('/appeal-process/other-appeals', function (req, res) {
@@ -266,7 +283,6 @@ router.post('/appeal-process/extra-conditions', function (req, res) {
   req.session.data['appeal-process-completed'] = 'true'
   res.redirect('../task-list')
 })
-
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 // SAVE AND RETURN
