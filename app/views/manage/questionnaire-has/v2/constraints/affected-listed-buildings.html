@@ -21,15 +21,9 @@
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-two-thirds">
 
-        {% if data['extrabuildingsaffected'] %}
-          <h1 class="govuk-heading-l">
-            You have added 2 affected listed buildings
-          </h1>
-        {% else %}
-          <h1 class="govuk-heading-l">
-            {{ title }}
-          </h1>
-        {% endif %}
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
 
       </div>
       <div class="govuk-grid-column-full">
@@ -40,7 +34,7 @@
 
             {
               key: {
-                text: 'Listed building',
+                text: 'Listed building 1',
                 visuallyHiddenText: '155, York Road, Bedminster, Bristol, BS3 4AL'
               },
               value: {
@@ -60,7 +54,7 @@
             },
             {
               key: {
-                text: 'Listed building',
+                text: 'Listed building 2',
                 visuallyHiddenText: '155, York Road, Bedminster, Bristol, BS3 4AL'
               },
               value: {

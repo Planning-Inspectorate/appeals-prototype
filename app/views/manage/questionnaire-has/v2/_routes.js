@@ -248,7 +248,7 @@ router.post('/site-access/health-and-safety', function (req, res) {
   req.session.data['health-and-safety-complete'] = 'true'
   req.session.data['site-access-completed'] = 'true'
 
-  res.redirect('../appeal-process/procedure')
+  res.redirect('../appeal-process/other-appeals');
 })
 
 

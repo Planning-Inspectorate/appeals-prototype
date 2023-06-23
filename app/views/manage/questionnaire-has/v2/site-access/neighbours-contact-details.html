@@ -1,4 +1,4 @@
-{% extends '_layouts/layout-main.html' %}
+{% extends '_layouts/layout-pins.html' %}
 
 {% set title = 'Add contact details' %}
 
@@ -14,57 +14,78 @@
     isPageHeading: true
     }
   }) %}
-    <!-- <p class="govuk-hint">This should match the name on the application to the local planning authority</p> -->
 
-    {{ govukInput({
-      id: 'neighbour-first-name',
-      name: 'neighbour-first-name',
-      value: data['neighbour-first-name'],
-      classes: 'govuk-!-width-three-quarters',
-      label: {
-        html: 'First name'
-      },
-      spellcheck: false
-    }) }}
+  <p class="govuk-body">
+    Add all the contact information you know.
+  </p>
 
-    {{ govukInput({
-      id: 'neighbour-last-name',
-      name: 'neighbour-last-name',
-      value: data['neighbour-last-name'],
-      classes: 'govuk-!-width-three-quarters',
-      label: {
-        html: 'Last name'
-      },
-      spellcheck: false
-    }) }}
+  {{ govukInput({
+    id: 'neighbour-first-name',
+    name: 'neighbour-first-name',
+    value: data['neighbour-first-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'First name'
+    },
+    spellcheck: false
+  }) }}
 
-    <!-- {{ govukInput({
-      id: 'agency-name',
-      name: 'agency-name',
-      value: data['agency-name'],
-      label: {
-        html: 'Company name (optional)'
-      }
-    }) }} -->
+  {{ govukInput({
+    id: 'neighbour-last-name',
+    name: 'neighbour-last-name',
+    value: data['neighbour-last-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Last name'
+    },
+    spellcheck: false
+  }) }}
 
-    {{ govukInput({
-      id: 'neighbour-contact-email',
-      name: 'neighbour-contact-email',
-      value: data['neighbour-contact-email'],
-      label: {
-        html: 'Email (optional)'
-      }
-    }) }}
 
-    {{ govukInput({
-      id: 'neighbour-contact-phone',
-      name: 'neighbour-contact-phone',
-      value: data['neighbour-contact-phone'],
-      classes: "govuk-input--width-10",
-      label: {
-        html: 'Phone (optional)'
-      }
-    }) }}
+  <p class="govuk-body">
+    Or
+  </p>
+
+  {{ govukInput({
+    id: 'company-name',
+    name: 'company-name',
+    value: data['company-name'],
+    label: {
+      html: 'Company name'
+    }
+  }) }}
+
+  <section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+  </section>
+
+  <!-- {{ govukInput({
+    id: 'agency-name',
+    name: 'agency-name',
+    value: data['agency-name'],
+    label: {
+      html: 'Company name (optional)'
+    }
+  }) }} -->
+
+  {{ govukInput({
+    id: 'neighbour-contact-email',
+    name: 'neighbour-contact-email',
+    value: data['neighbour-contact-email'],
+    label: {
+      html: 'Email'
+    }
+  }) }}
+
+  {{ govukInput({
+    id: 'neighbour-contact-phone',
+    name: 'neighbour-contact-phone',
+    value: data['neighbour-contact-phone'],
+    classes: "govuk-input--width-10",
+    label: {
+      html: 'Phone'
+    }
+  }) }}
 
   {% endcall %}
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Add site address' %}
+{% set title = 'Add neighbouring site address' %}
 
 {% block questions %}
 
@@ -9,15 +9,6 @@
   <h1 class='govuk-heading-l'>
     {{ title }}
   </h1>
-
-  {{ govukInput({
-    id: 'company-name',
-    name: 'company-name',
-    value: data['company-name'],
-    label: {
-      html: 'Company name (optional)'
-    }
-  }) }}
 
   {{ govukInput({
     id: 'neighbours-address-line-1',
