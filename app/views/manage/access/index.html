@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = true %}
-{% set title = 'Service start page' %}
+{% set title = 'Accessing the LPA account' %}
 
 {% block backLink %}
   {{ govukBackLink({
@@ -40,10 +40,10 @@
         content updates
       </li>
       <li>
-        email template changes
+        help for not receiving the code
       </li>
       <li>
-        save and return re-use
+        change of service name
       </li>
     </ul>
 
@@ -52,20 +52,25 @@
     </h3>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        <a href="/manage/access/v1/service-invite">
+        <a href="/manage/access/v2/service-invite">
           Invite to the service
         </a>
       </li>
       <li>
-        <a href="/manage/access/v1/access-email">
-          Accessing the LPA service (visiting the service with no session)
+        <a href="/manage/access/v2/access-email">
+          Enter your email address - accessing the LPA service (visiting the service with no session)
         </a>
       </li>
       <li>
-        <a href="/manage/access/v1/email--code">
-          Email with secure code
+        <a href="/manage/access/v2/enter-code?start=access-email">
+          Enter your code
         </a>
       </li>
+      <!-- <li>
+        <a href="/manage/access/v2/email--code">
+          Email with secure code
+        </a>
+      </li> -->
     </ul>
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">

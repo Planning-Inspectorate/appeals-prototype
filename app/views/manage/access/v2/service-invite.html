@@ -1,0 +1,48 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% block pageTitle %}
+  Invitation to your new account
+{% endblock %}
+
+{% block emailHeader %}
+  <h1 class="govuk-heading-m">
+    Invitation to your new account
+  </h1>
+  <p class="govuk-body">
+    <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
+    <br>
+    <strong>From:</strong> info@planninginspectorate.gov.uk
+  </p>
+{% endblock %}
+
+{% block emailContent %}
+  <p class="govuk-body">Dear {{ data['dashboard-lpa'] }},</p>
+
+  <p class="govuk-body">The Planning Inspectorate has launched a new service for local planning authorities (LPAs) to manage appeals and has created a new account for {{ data['dashboard-lpa'] }}.</p>
+
+  <p class="govuk-body">You can use the &lsquo;Manage your planning inspectorate appeals&rsquo; service to:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>view and manage an appeal&rsquo;s progress</li>
+    <li>complete and submit an appeal questionnaire</li>
+    <li>complete and submit the:</li>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>appeal questionnaire</li>
+        <li>appeal statements</li>
+        <li>final comments</li>
+      </ul>
+  </ul>
+
+  <h2 class="govuk-heading-m">
+    What you can do
+  </h2>
+
+  <ol class="govuk-list govuk-list--number">
+    <li>
+      Go to the link to receive a code:<br>
+      <a href="/manage/access/v1/enter-code?start=invite" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/service-invite?lpa=1vW7td12</a>
+    </li>
+    <li>
+      Enter the code we send in an email to you.
+    </li>
+  </ol>
+{% endblock %}

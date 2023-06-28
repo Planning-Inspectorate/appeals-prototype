@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Enter your email address' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'email--code',
+    text: 'Email with a code'
+  }
+] %}
+
+{% set back = false %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'email',
+    name: 'email',
+    value: data['email'],
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    hint: {
+      html: 'We’ll send an access code to this address, if you have an account.'
+    },
+    type: 'email',
+    autocomplete: 'email',
+    spellcheck: false
+  }) }}
+{% endblock %}
