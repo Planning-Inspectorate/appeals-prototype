@@ -28,7 +28,6 @@ router.post('*', function(req, res, next){
 router.get('/task-list', function(req, res, next){
   let count = 0
   if (req.session.data['constraints-completed'] == 'true') { count++ }
-  if (req.session.data['env-impact-completed'] == 'true') { count++ }
   if (req.session.data['notified-completed'] == 'true') { count++ }
   if (req.session.data['consultation-completed'] == 'true') { count++ }
   if (req.session.data['po-report-completed'] == 'true') { count++ }
@@ -68,11 +67,12 @@ router.get('/task-list', function(req, res, next){
 
 router.post('/constraints/appropriate', function (req, res) {
   req.session.data['appropriate-complete'] = 'true'
-  req.session.data['constraints-completed'] = 'true'
+  req.session.data['constraints-started'] = 'true'
   res.redirect('affected-listed-building-check')
 })
 
 router.post('/constraints/affected-listed-building-check', function (req, res) {
+  req.session.data['affected-listed-building-check-complete'] = 'true'
   if (req.session.data['affected-listed-building-check'] == 'Yes') {
     res.redirect('affected-listed-building-details');
   } else {
@@ -107,9 +107,41 @@ router.post('/constraints/conservation-upload', function (req, res) {
   res.redirect('green-belt')
 })
 
+// Final question in this section
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 router.post('/constraints/green-belt', function (req, res) {
+
+  // Mark all constraints answers as complete
+  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+  // Is the appeal appropriate
+  // ░░░░░░░░░░░░░░░░░░░░░░░░░
+  req.session.data['appropriate-complete'] = 'true'
+
+  // Listed buildings
+  // ░░░░░░░░░░░░░░░░
+  req.session.data['affected-listed-building-check-complete'] = 'true'
+  if (req.session.data['affected-listed-building-check'] == 'Yes') {
+    req.session.data['affected-listed-buildings-complete'] = 'true'
+  }
+
+  // Conservation check
+  // ░░░░░░░░░░░░░░░░░░
+  req.session.data['conservation-check-complete'] = 'true'
+  if (req.session.data['conservation-check'] == 'Yes') {
+    req.session.data['conservation-upload-complete'] = 'true'
+  }
+
+  // Green belt
+  // ░░░░░░░░░░
   req.session.data['green-belt-complete'] = 'true'
+
+  // Mark the constraints section as complete
+  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
   req.session.data['constraints-completed'] = 'true'
+
+  // Next stection
+  // ░░░░░░░░░░░░░
   res.redirect('../notified/notified-who')
 })
 
@@ -246,8 +278,28 @@ router.post('/site-access/neighbours', function (req, res) {
 router.post('/site-access/health-and-safety', function (req, res) {
 
   req.session.data['health-and-safety-complete'] = 'true'
+
+  // Mark all site access answers as complete
+  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+  // Site entry
+  // ░░░░░░░░░░
+  req.session.data['site-entry-complete'] = 'true'
+
+  // Neighbours land
+  // ░░░░░░░░░░░░░░░
+  req.session.data['neighbours-land-complete'] = 'true'
+  if (req.session.data['neighbours-land'] == 'Yes') {
+    req.session.data['neighbours-address-complete'] = 'true'
+    req.session.data['neighbours-contact-complete'] = 'true'
+  }
+
+  // Mark the site access section as complete
+  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
   req.session.data['site-access-completed'] = 'true'
 
+  // Next stection
+  // ░░░░░░░░░░░░░
   res.redirect('../appeal-process/other-appeals');
 })
 
@@ -257,21 +309,21 @@ router.post('/site-access/health-and-safety', function (req, res) {
 // APPEAL PROCESS
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-router.post('/appeal-process/procedure', function (req, res) {
-  req.session.data['procedure-complete'] = 'true'
-  req.session.data['appeal-process-started'] = 'true'
-  if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
-    res.redirect('procedure--reason');
-  } else {
-    res.redirect('other-appeals');
-  }
-
-})
-
-router.post('/appeal-process/procedure--reason', function (req, res) {
-  req.session.data['procedure-reason-complete'] = 'true'
-  res.redirect('other-appeals');
-})
+// router.post('/appeal-process/procedure', function (req, res) {
+//   req.session.data['procedure-complete'] = 'true'
+//   req.session.data['appeal-process-started'] = 'true'
+//   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
+//     res.redirect('procedure--reason');
+//   } else {
+//     res.redirect('other-appeals');
+//   }
+//
+// })
+//
+// router.post('/appeal-process/procedure--reason', function (req, res) {
+//   req.session.data['procedure-reason-complete'] = 'true'
+//   res.redirect('other-appeals');
+// })
 
 router.post('/appeal-process/other-appeals', function (req, res) {
   req.session.data['other-appeals-complete'] = 'true'
@@ -279,8 +331,19 @@ router.post('/appeal-process/other-appeals', function (req, res) {
 })
 
 router.post('/appeal-process/extra-conditions', function (req, res) {
+
   req.session.data['extra-conditions-complete'] = 'true'
+
+  // Mark all site access answers as complete
+  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+  req.session.data['other-appeals-complete'] = 'true'
+
+  // Mark the appeal process section as complete
+  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
   req.session.data['appeal-process-completed'] = 'true'
+
+  // Next stection
+  // ░░░░░░░░░░░░░
   res.redirect('../task-list')
 })
 
