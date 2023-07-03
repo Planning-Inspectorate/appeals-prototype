@@ -1,0 +1,23 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Enter an appeal reference' %}
+
+{% block questions %}
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    classes: "govuk-input--width-10",
+    hint: {
+      text: "An appeal reference number is 7 digits, you can add more later"
+    },
+    id: "other-appeal-reference",
+    name: "other-appeal-reference",
+    inputmode: "numeric",
+    spellcheck: false
+  }) }}
+
+{% endblock %}

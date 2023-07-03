@@ -300,7 +300,7 @@ router.post('/site-access/health-and-safety', function (req, res) {
 
   // Next stection
   // ░░░░░░░░░░░░░
-  res.redirect('../appeal-process/other-appeals');
+  res.redirect('../appeal-process/other-appeals-check');
 })
 
 
@@ -325,9 +325,35 @@ router.post('/site-access/health-and-safety', function (req, res) {
 //   res.redirect('other-appeals');
 // })
 
+router.post('/appeal-process/other-appeals-check', function (req, res) {
+  req.session.data['other-appeals-check-complete'] = 'true'
+  if (req.session.data['other-appeals-radio'] == 'Yes') {
+    res.redirect('other-appeal-reference');
+  } else {
+    res.redirect('extra-conditions');
+  }
+})
+
+router.post('/appeal-process/other-appeal-reference', function (req, res) {
+  req.session.data['other-appeal-reference-complete'] = 'true'
+  res.redirect('other-appeals');
+})
+
 router.post('/appeal-process/other-appeals', function (req, res) {
   req.session.data['other-appeals-complete'] = 'true'
-  res.redirect('extra-conditions');
+  if (req.session.data['other-appeals'] == 'Yes') {
+    res.redirect('other-appeal-reference?extraotherappeal=yes');
+  } else {
+    res.redirect('extra-conditions');
+  }
+})
+
+
+
+
+router.post('/site-access/neighbours-contact-details', function (req, res) {
+  req.session.data['neighbours-contact-complete'] = 'true'
+  res.redirect('neighbours')
 })
 
 router.post('/appeal-process/extra-conditions', function (req, res) {
