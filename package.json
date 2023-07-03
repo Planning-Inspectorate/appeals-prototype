@@ -10,6 +10,7 @@
     "govuk-frontend": "^4.4.0",
     "govuk-prototype-kit": "^13.0.0",
     "jquery": "^3.6.1",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "radio-button-redirect": "^1.2.0"
   }
 }

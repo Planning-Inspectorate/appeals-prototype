@@ -35,3 +35,8 @@ router.use("/:service/v:version", (req, res, next) => {
 		next()
 	}
 })
+
+// Easy routing by Craig Abbott - https://github.com/abbott567/radio-button-redirect
+// Added for simple branching
+const radioButtonRedirect = require('radio-button-redirect')
+router.use(radioButtonRedirect)
