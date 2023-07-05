@@ -1,0 +1,131 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Appeal "+data['appealCode'] %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back to appeals",
+    href: "/manage/appeals/v3/?action="
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['action'] == 'notified' %}
+
+      <!-- notification about notices -->
+      {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+          Interested parties notified
+        </h3>
+        <p class="govuk-body">
+          <a href="#notify">
+            {% if data['notice'] == '6' %}
+              Notice for appeal 1345264 has been sent to 6 addresses.
+            {% else %}
+              Notice for appeal 1345264 has been sent to 3 addresses.
+            {% endif %}
+          </a>
+        </p>
+      {% endset %}
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+    {% endif %}
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          You have until 11:59pm on {{ 3 | daysInFuture }} to:
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a href="#notify">Notify interested parties</a>
+            </li>
+            <li>
+              <a href="/manage/questionnaire/v11/task-list?action=">Submit questionnaire</a>
+            </li>
+          </ul>
+        </p>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-l">
+      Appeal {{ data['appealCode'] or '1345264' }}
+    </h1>
+
+  </div>
+
+  <div class="govuk-grid-column-full">
+    {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m" id="notify">
+      Notified interested parties
+    </h2>
+
+    <!-- <p>
+      Posted = {{ data['posted'] }}
+      Emailed = {{ data['emailed'] }}
+    </p> -->
+
+    {% if data['emailed'] %}
+      {% if data['posted'] %}
+        {% include "_includes/appeal-content/lpa-table-notified-6.html" %}
+      {% else %}
+        {% include "_includes/appeal-content/lpa-table-notified-3-email.html" %}
+      {% endif %}
+    {% elseif data['posted'] %}
+      {% include "_includes/appeal-content/lpa-table-notified-3-post.html" %}
+    {% else %}
+      <p class="govuk-body">
+        No notices sent.
+      </p>
+    {% endif %}
+
+    <p class="govuk-body">
+      <a href="/manage/appeals/v3/appeal-notice?from=appeal&action=" class="govuk-link--no-visited-state">
+        View and print appeal notice
+      </a>
+    </p>
+
+    {{ govukButton({
+      html: 'Notify interested parties',
+      href: '/manage/notify/v2/send-new?from=appeal&action=',
+      classes: 'govuk-button--secondary'
+    }) }}
+
+  </div>
+
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+    {% include "_includes/appeal-content/lpa-table-full-submission.html" %}
+  </div>
+
+</div>
+
+{% endblock %}

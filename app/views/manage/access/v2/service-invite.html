@@ -6,7 +6,7 @@
 
 {% block emailHeader %}
   <h1 class="govuk-heading-m">
-    Invitation to your new account
+    Invitation to join the service
   </h1>
   <p class="govuk-body">
     <strong>To:</strong> planning.appeals{{ data['lpa-email']}}
@@ -18,18 +18,23 @@
 {% block emailContent %}
   <p class="govuk-body">Dear {{ data['dashboard-lpa'] }},</p>
 
-  <p class="govuk-body">The Planning Inspectorate has launched a new service for local planning authorities (LPAs) to manage appeals and has created a new account for {{ data['dashboard-lpa'] }}.</p>
+  <p class="govuk-body">
+    The Planning Inspectorate would like to invite you to join their service for managing planning appeals.
+  </p>
 
-  <p class="govuk-body">You can use the &lsquo;Manage your planning inspectorate appeals&rsquo; service to:</p>
+  <p class="govuk-body">
+    You can use the service to:
+  </p>
   <ul class="govuk-list govuk-list--bullet">
-    <li>view and manage an appeal&rsquo;s progress</li>
-    <li>complete and submit an appeal questionnaire</li>
-    <li>complete and submit the:</li>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>appeal questionnaire</li>
-        <li>appeal statements</li>
-        <li>final comments</li>
-      </ul>
+    <li>
+      view and manage planning inspectorate appeals that are in progress
+    </li>
+    <li>
+      complete and submit an appeal questionnaire
+    </li>
+    <li>
+      add statements, documentation and comments to a case
+    </li>
   </ul>
 
   <h2 class="govuk-heading-m">
@@ -38,11 +43,14 @@
 
   <ol class="govuk-list govuk-list--number">
     <li>
-      Go to the link to receive a code:<br>
+      Go to the link and get a code:<br>
       <a href="/manage/access/v1/enter-code?start=invite" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/service-invite?lpa=1vW7td12</a>
     </li>
     <li>
-      Enter the code we send in an email to you.
+      The code will be sent to your email address
+    </li>
+    <li>
+      We will tell you how to use this code to verify your account for the service
     </li>
   </ol>
 {% endblock %}
