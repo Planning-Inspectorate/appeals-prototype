@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'File upload' %}
+{% set title = 'Single file upload' %}
 
 {% set nav = true %}
 
@@ -19,7 +19,7 @@
     </h1>
 
     <p class="govuk-body">
-      Users of the service are expected to upload several files when they use the service.
+      Users of the service are sometimes asked to upload a single file.
     </p>
 
     <p class="govuk-body">
@@ -27,47 +27,27 @@
     </p>
 
     <p class="govuk-body">
-      We have been using a component based on the <a href="https://design-patterns.service.justice.gov.uk/components/multi-file-upload/" class="govuk-link">MOJ multi-file upload component</a>.
+      We have been using the standard <a href="https://design-system.service.gov.uk/components/file-upload/" class="govuk-link">GDS file upload component</a>.
     </p>
 
     <p class="govuk-body">
-      <a href="https://github.com/Planning-Inspectorate/appeals-prototype/tree/main/app/views/patterns/file-upload" class="govuk-link">
+      <a href="https://github.com/Planning-Inspectorate/appeals-prototype/tree/main/app/views/patterns/single-file-upload" class="govuk-link">
         View the code on GitHub
       </a>
     </p>
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
 
-    {% set uploadHtml %}
-
-      {{ govukFileUpload({
-        id: "final-documents",
-        name: "final-documents",
-        classes: 'moj-multi-file-upload__input',
-        label: {
-          text: "Upload files",
-          classes: 'govuk-label--m'
-        },
-        hint: {
-          text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
-        },
-        attributes: { multiple: '' }
-      }) }}
-
-      {{govukButton({
-        text: 'Upload file',
-        classes: 'govuk-button--secondary moj-multi-file-upload__button'
-      })}}
-
-    {% endset %}
-
-    {{ mojMultiFileUpload({
-    uploadedFiles: {
-        heading: { text: 'Files added' },
-        items: []
+    {{ govukFileUpload({
+      id: "file-upload-1",
+      name: "file-upload-1",
+      hint: {
+        text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
       },
-      uploadHtml: uploadHtml
-    }) }}
+      label: {
+        text: "Upload a file"
+      }
+    })}}
 
   </div>
 </div>
