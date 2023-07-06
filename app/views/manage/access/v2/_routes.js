@@ -3,7 +3,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 router.get('*', function(req, res, next){
   // Change the service name for this feature
-  res.locals['serviceName'] = 'Manage your planning inspectorate appeals'
+  res.locals['serviceName'] = 'Manage my appeals'
 
   next()
 })
@@ -23,15 +23,15 @@ router.post('/enter-code', function (req, res) {
 
   // route depending on value
   if (start == 'start') {
-    res.redirect('/manage/appeals/v3/?no-appeals=&action=')
+    res.redirect('/manage/appeals/v4/?no-appeals=&action=')
   } else if (start == 'invite') {
-    res.redirect('/manage/appeals/v3/?no-appeals=true')
+    res.redirect('/manage/appeals/v4/?no-appeals=false')
   } else if (start == 'questionnaire') {
     res.redirect('/manage/questionnaire/v11/task-list')
   } else if (start == 'statements') {
     res.redirect('/manage/statement/v1/enter-statement')
   } else if (start == 'access-email') {
-    res.redirect('/manage/appeals/v3/?no-appeals=')
+    res.redirect('/manage/appeals/v4/?no-appeals=')
   } else {
     res.redirect('/manage/final-comments/v1/add-comments')
   }

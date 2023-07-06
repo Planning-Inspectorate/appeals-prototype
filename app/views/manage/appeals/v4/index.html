@@ -32,35 +32,15 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data['action'] == 'notified' %}
+    {% if data['questionnaire'] == 'complete' %}
 
       <!-- notification about notices -->
       {% set html %}
         <h3 class="govuk-notification-banner__heading">
-          Interested parties notified
+          Questionnaire complete
         </h3>
         <p class="govuk-body">
-          {% if data['notice'] == '6' %}
-            Notice for appeal 1345264 has been sent to 6 addresses.
-          {% else %}
-            Notice for appeal 1345264 has been sent to 3 addresses.
-          {% endif %}
-        </p>
-      {% endset %}
-      {{ govukNotificationBanner({
-        html: html,
-        type: 'success'
-      }) }}
-
-    {% elif data['action'] == 'printed' %}
-
-      <!-- notification about print -->
-      {% set html %}
-        <h3 class="govuk-notification-banner__heading">
-          Printable notice sent
-        </h3>
-        <p class="govuk-body">
-          Notice for appeal 1345264 was sent to your email.
+          Questionnaire for appeal 1345264 has been <a href="#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>submitted<span class="govuk-visually-hidden"> appeals</span></a>.
         </p>
       {% endset %}
       {{ govukNotificationBanner({
@@ -123,7 +103,7 @@
                 html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
               },
               {
-                html: '21/04125/FUL'
+                html: '23/04125/FUL'
               },
               {
                 html: '3' | daysInFuture
@@ -206,7 +186,7 @@
                 html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
               },
               {
-                html: '21/04125/FUL'
+                html: '23/04125/FUL'
               },
               {
                 html: '3' | daysInFuture
@@ -216,7 +196,7 @@
                          Waiting
                        </strong>'
               }
-            ] if data['questionnaire'] != 'complete',
+            ] if data['questionnaire'] == 'complete',
             [
               {
                 html: '<a href="appeal-details?appealCode=1345260&action=">1345260</a>'
