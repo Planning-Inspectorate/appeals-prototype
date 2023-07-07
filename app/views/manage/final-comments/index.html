@@ -25,8 +25,8 @@
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'In progress'
+        classes: 'govuk-tag--blue govuk-!-margin-left-2',
+        text: 'Researched'
       }) }}
     </h2>
 
@@ -35,6 +35,13 @@
       href: 'v'+version+'/add-comments',
       isStartButton: true
     }) }}
+
+    <p>
+      Researched November 2022<br>
+      <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1066336287" class="govuk-link">
+        Confluence user research notes
+      </a>
+    </p>
 
     {% set lpaForm %}
       <form method="get" action="v{{version}}/add-comments">

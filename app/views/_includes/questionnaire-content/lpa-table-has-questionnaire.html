@@ -1,0 +1,222 @@
+<h2 class="govuk-heading-l">
+  Appeal questionnaire
+</h2>
+
+<h3 class="govuk-heading-m">
+  Constraints, designations and other issues
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Is the appeal type appropriate?',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Affects a listed building'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Listed buildings'
+      },
+      value: {
+        html: '<a href="#">1282050</a><br>
+               Grade II listed building<br>
+               155, York Road, Bedminster, Bristol, BS3 4AL'
+      }
+    },
+    {
+      key: {
+        html: 'Conservation area'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Conservation area map and guidance'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">BS3 4AL Conservation-map.pdf</a><br>
+               <a href="#" class="govuk-link">BS3 4AL Conservation-guidance.doc</a><br>'
+      }
+    },
+    {
+      key: {
+        html: 'Green belt'
+      },
+      value: {
+        html: 'No'
+      }
+    }
+
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">
+  Notifying people about the application
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Who was notified',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">York Rd - notified neighbours.odt</a><br>
+               <a href="#" class="govuk-link">Your Rd - internal consultees.odt</a>'
+      }
+    },
+    {
+      key: {
+        html: 'How you notified people'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">155 York Rd site notice 2023.pdf</a><br>
+               <a href="#" class="govuk-link">155 York Rd appeal advert 2023.pdf</a>'
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">
+  Consultation responses and representations
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+
+    {
+      key: {
+        html: 'Representations from other parties',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Upload representations from other parties'
+      },
+      value: {
+        html: '<a href="" class="govuk-link">155 York Rd representations 2023.pdf</a>'
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">
+  Planning officer’s report and supplementary documents
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Planning officer’s report',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: '<a href="" class="govuk-body">155 York Rd PO report 2023.pdf</a>'
+      }
+    }
+
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">
+  Site access
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9 pins-govuk-table__row--last',
+  rows: [
+    {
+      key: {
+        html: 'Inspector access',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Could a neighbouring site be affected?'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Neighbouring site 1'
+      },
+      value: {
+        html: 'Sam Fisher<br>
+               01179123456<br>
+               172 York Road<br>
+               Bristol<br>
+               BS3 4AL'
+      }
+    },
+    {
+      key: {
+        html: 'Neighbouring site 2'
+      },
+      value: {
+        html: 'Screwfix<br>
+               170, York Road<br>
+               Bristol<br>
+               BS3 4AL'
+      }
+    },
+    {
+      key: {
+        html: 'Potential safety risks'
+      },
+      value: {
+        html: 'Yes<br>
+               Dogs on site'
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-m">
+  Appeal process
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9 pins-govuk-table__row--last',
+  rows: [
+    {
+      key: {
+        html: 'Request new conditions',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'Some new conditions'
+      }
+    }
+
+  ]
+}) }}

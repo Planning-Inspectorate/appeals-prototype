@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = false %}
-{% set title = 'Notices for interested parties' %}
+{% set title = 'Notifying interested parties' %}
 
 {% block backLink %}
   {{ govukBackLink({
@@ -45,34 +45,54 @@
       isStartButton: true
     }) }}
 
-    {% set version = "1" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'In progress'
+    {% set v1HTML %}
+
+      {% set version = "1" %}
+
+      <p>
+        Researched January 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1088356353" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p>
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Added a print option</li>
+        <li>Combined check recipients list</li>
+        <li>Dummy counting logic for sent notices</li>
+        <li>Preview of the comment on the appeal notice</li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/send-new',
+        isStartButton: true
       }) }}
-    </h2>
 
-    <p class="govuk-!-margin-bottom-2">Changes:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Added a print option</li>
-      <li>Combined check recipients list</li>
-      <li>Dummy counting logic for sent notices</li>
-      <li>Preview of the comment on the appeal notice</li>
-    </ul>
+      <p class="govuk-!-margin-bottom-2">Jump to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="v{{version}}/send-email">add email notices</a></li>
+        <li><a href="v{{version}}/postcode-search">add postal notices</a></li>
+      </ul>
 
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/send-new',
-      isStartButton: true
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
     }) }}
-
-    <p class="govuk-!-margin-bottom-2">Jump to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li><a href="v{{version}}/send-email">add email notices</a></li>
-      <li><a href="v{{version}}/postcode-search">add postal notices</a></li>
-    </ul>
 
   </div>
 </div>

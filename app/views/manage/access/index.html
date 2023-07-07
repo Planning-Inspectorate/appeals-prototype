@@ -75,25 +75,47 @@
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
-    {% set version = "1" %}
-    <h2 class="govuk-heading-m govuk-!-margin-top-6">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
-        text: 'Researched'
+
+    {% set v1HTML %}
+
+      {% set version = "1" %}
+
+      <p class="govuk-body">
+        Researched November 2022<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1066336287" class="govuk-link">
+          Link to Confluence research notes
+        </a>
+      </p>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/start',
+        isStartButton: true
       }) }}
-    </h2>
 
-    <p class="govuk-!-margin-bottom-2">Changes:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>content update</li>
-    </ul>
+    {% endset -%}
 
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/start',
-      isStartButton: true
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
     }) }}
+
+
+
+
+
+
 
     {% set lpaForm %}
       <form method="get" action="v{{version}}/">
