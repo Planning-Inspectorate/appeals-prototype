@@ -27,8 +27,8 @@
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
-          classes: 'govuk-tag--blue govuk-!-margin-left-2',
-          text: 'Ready for review'
+          classes: 'govuk-tag--green govuk-!-margin-left-2',
+          text: 'Ready for research'
         }) }}
       </h2>
 
@@ -68,16 +68,11 @@
 
     </section>
 
+    {% set v14HTML %}
+
     <section class="govuk-!-margin-bottom-6">
 
       {% set version = "14" %}
-      <h2 class="govuk-heading-m">
-        Version {{version}}
-        {{ govukTag({
-          classes: 'govuk-tag--blue govuk-!-margin-left-2',
-          text: 'Ready for review'
-        }) }}
-      </h2>
 
       <p class="govuk-!-margin-bottom-2">
         Changes:
@@ -100,21 +95,44 @@
 
     </section>
 
-    {% set version = "13" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--blue govuk-!-margin-left-2',
-        text: 'Ready for review'
+    {% endset -%}
+
+    {% set v13HTML %}
+
+      {% set version = "13" %}
+
+      <p class="govuk-body">An updated ‘Before you start’ with all pages in. You can pass in a variable to use it across other prototypes, if viewing from here it will end at the check your answers.</p>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/',
+        isStartButton: true
       }) }}
-    </h2>
 
-    <p class="govuk-body">An updated before you start with all pages in. You can pass in a variable to use it across other prototypes, if viewing from here it will end at the check your answers.</p>
+    {% endset -%}
 
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/',
-      isStartButton: true
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+
+        {
+          heading: {
+            html: 'Version 14 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v14HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 13 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v13HTML
+          }
+        }
+      ]
     }) }}
 
   </div>

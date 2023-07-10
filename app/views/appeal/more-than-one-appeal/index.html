@@ -21,16 +21,12 @@
       {{ title }}
     </h1>
 
-    <p class="govuk-body">
-      <a href="https://miro.com/app/board/uXjVPi74MOw=/" class="govuk-body">Miro board</a>
-    </p>
-
     {% set version = "4" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'Ready for review'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
 
@@ -44,64 +40,85 @@
       </li>
     </ul>
 
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/your-appeals',
-      isStartButton: true
-    }) }}
-
-    {% set version = "3" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'Ready for review'
-      }) }}
-    </h2>
-
-    <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        Removing the temp code
-      </li>
-      <li>
-        Include appeals that can not be actioned
-      </li>
-      <li>
-        Show submitted appeals
-      </li>
-    </ul>
-
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/your-appeals',
-      isStartButton: true
-    }) }}
-
-    {% set version = "2" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'Ready for review'
-      }) }}
-    </h2>
-
-    <p class="govuk-body">
-      A place for users with more than one appeal to manage their appeals.
+    <p class="govuk-body govuk-!-margin-bottom-6">
+      <a href="https://miro.com/app/board/uXjVPi74MOw=/?moveToWidget=3458764549839563837&cot=14" class="govuk-body">Miro board</a>
     </p>
 
-    <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        Updates based on UR feedback
-      </li>
-    </ul>
-
     {{ govukButton({
       html: 'View prototype',
       href: 'v'+version+'/your-appeals',
       isStartButton: true
+    }) }}
+
+    {% set v3HTML %}
+
+      {% set version = "3" %}
+
+      <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Removing the temp code
+        </li>
+        <li>
+          Include appeals that can not be actioned
+        </li>
+        <li>
+          Show submitted appeals
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/your-appeals',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {% set v2HTML %}
+
+      {% set version = "2" %}
+
+      <p class="govuk-body">
+        A place for users with more than one appeal to manage their appeals.
+      </p>
+
+      <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Updates based on UR feedback
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/your-appeals',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+        {
+          heading: {
+            html: 'Version 3 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v3HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 2 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v2HTML
+          }
+        }
+      ]
     }) }}
 
   </div>

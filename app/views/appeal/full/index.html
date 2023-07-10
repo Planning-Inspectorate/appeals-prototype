@@ -34,7 +34,7 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        changed 'consultancy name' to 'company name'
+        changed ‘consultancy name’ to ‘company name’
       </li>
       <li>
         adding guidance about costs on the <a href="v3/upload-documents/appeal-statement?action=" class="govuk-link">upload statement page</a>
@@ -47,29 +47,39 @@
       isStartButton: true
     }) }}
 
-    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+    {% set v2HTML %}
 
-    {% set version = "2" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
-        text: 'Ready for research'
+      {% set version = "2" %}
+
+      <p class="govuk-body">
+        Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release.
+      </p>
+
+      {{ govukInsetText({
+        html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVP-GI0CQ=/?share_link_id=633705051384">Design Miro board</a> with notes from review of live and changes.</p>'
       }) }}
-    </h2>
 
-    <p class="govuk-body">
-      Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release.
-    </p>
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list',
+        isStartButton: true
+      }) }}
 
-    {{ govukInsetText({
-      html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVP-GI0CQ=/?share_link_id=633705051384">Design Miro board</a> with notes from review of live and changes.</p>'
-    }) }}
+    {% endset -%}
 
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/task-list',
-      isStartButton: true
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+        {
+          heading: {
+            html: 'Version 2 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v2HTML
+          }
+        }
+      ]
     }) }}
 
   </div>

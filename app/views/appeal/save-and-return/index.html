@@ -22,19 +22,25 @@
     </h1>
 
     {% set version = "7" %}
+
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'Ready for review'
+        classes: 'govuk-tag--blue govuk-!-margin-left-2',
+        text: 'Researched'
       }) }}
     </h2>
 
-    <!-- <p class="govuk-body">Improvements to the feature that was developed and released, some functionality was missing or didn&rsquo;t work as intended and some changes to try and improve the process.</p>
+    <p class="govuk-body">
+      Improvements to the feature that was developed and released, some functionality was missing or didn’t work as intended and some changes to try and improve the process.
+    </p>
 
-    {{ govukInsetText({
-      html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVPD6q8IM=/?share_link_id=504329325803">Design Miro board</a> with notes from review of live and suggestions to changes.</p>'
-    }) }} -->
+    <p>
+      Researched May 2023<br>
+      <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1184858113" class="govuk-link">
+        Confluence user research notes
+      </a>
+    </p>
 
     <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -49,89 +55,108 @@
       isStartButton: true
     }) }}
 
-    {% set version = "6" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'Ready for review'
+    {% set v6HTML %}
+
+      {% set version = "6" %}
+
+      <!-- <p>
+        Researched May 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1184858113" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p> -->
+
+      <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          updates to help users who verify their email on a second device
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/govuk-start',
+        isStartButton: true
       }) }}
-    </h2>
 
-    <!-- <p class="govuk-body">Improvements to the feature that was developed and released, some functionality was missing or didn&rsquo;t work as intended and some changes to try and improve the process.</p>
+    {% endset -%}
 
-    {{ govukInsetText({
-      html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVPD6q8IM=/?share_link_id=504329325803">Design Miro board</a> with notes from review of live and suggestions to changes.</p>'
-    }) }} -->
+    {% set v5HTML %}
 
-    <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        updates to help users who verify their email on a second device
-      </li>
-    </ul>
+      {% set version = "5" %}
 
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/govuk-start',
-      isStartButton: true
-    }) }}
+      <p class="govuk-body">Improvements to the feature that was developed and released, some functionality was missing or didn&rsquo;t work as intended and some changes to try and improve the process.</p>
 
-    {% set version = "5" %}
-    <h2 class="govuk-heading-m">
-      Version {{version}}
-      {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'Ready for review'
+      {{ govukInsetText({
+        html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVPD6q8IM=/?share_link_id=504329325803">Design Miro board</a> with notes from review of live and suggestions to changes.</p>'
       }) }}
-    </h2>
 
-    <p class="govuk-body">Improvements to the feature that was developed and released, some functionality was missing or didn&rsquo;t work as intended and some changes to try and improve the process.</p>
+      <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>refactor save and return so it isn't reliant on browser storage, allowing the user to move between devices</li>
+        <li>build the missing multiple appeals dashboard</li>
+        <li>add a route in from before you start to return to your appeals</li>
+        <li>
+          change email confirmation journey to also use a security code rather than a link in the email
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>change resend function</li>
+            <li>remove confirmed page</li>
+          </ul>
+        </li>
+        <li>remove save button on question pages and add link to return to task list</li>
+        <li>
+          move save button on task list to top (also change to link)
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>would be nice to refactor the HAS and Full task lists too…</li>
+          </ul>
+        </li>
+        <li>
+          copy and UI changes throughout
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>error message review</li>
+          </ul>
+        </li>
+      </ul>
 
-    {{ govukInsetText({
-      html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVPD6q8IM=/?share_link_id=504329325803">Design Miro board</a> with notes from review of live and suggestions to changes.</p>'
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="v{{version}}/email--saved">Email: Your appeal has been saved</a></li>
+        <li><a href="v{{version}}/email--code">Email: Your security code</a></li>
+        <li><a href="v{{version}}/appeal-unavailable">Appeal unavailable</a></li>
+        <li><a href="v{{version}}/no-appeals">No appeals</a></li>
+        <li><a href="v{{version}}/your-appeals">Your appeals</a></li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/govuk-start',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+
+        {
+          heading: {
+            html: 'Version 6 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v6HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 5 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v5HTML
+          }
+        }
+      ]
     }) }}
-
-    <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>refactor save and return so it isn't reliant on browser storage, allowing the user to move between devices</li>
-      <li>build the missing multiple appeals dashboard</li>
-      <li>add a route in from before you start to return to your appeals</li>
-      <li>
-        change email confirmation journey to also use a security code rather than a link in the email
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-          <li>change resend function</li>
-          <li>remove confirmed page</li>
-        </ul>
-      </li>
-      <li>remove save button on question pages and add link to return to task list</li>
-      <li>
-        move save button on task list to top (also change to link)
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-          <li>would be nice to refactor the HAS and Full task lists too…</li>
-        </ul>
-      </li>
-      <li>
-        copy and UI changes throughout
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-          <li>error message review</li>
-        </ul>
-      </li>
-    </ul>
-
-    {{ govukButton({
-      html: 'View prototype',
-      href: 'v'+version+'/govuk-start',
-      isStartButton: true
-    }) }}
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li><a href="v{{version}}/email--saved">Email: Your appeal has been saved</a></li>
-      <li><a href="v{{version}}/email--code">Email: Your security code</a></li>
-      <li><a href="v{{version}}/appeal-unavailable">Appeal unavailable</a></li>
-      <li><a href="v{{version}}/no-appeals">No appeals</a></li>
-      <li><a href="v{{version}}/your-appeals">Your appeals</a></li>
-    </ul>
 
   </div>
 </div>
