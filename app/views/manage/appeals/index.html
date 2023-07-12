@@ -34,14 +34,51 @@
 
       <p class="govuk-!-margin-bottom-2">Changes:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>new tab for submitted appeals</li>
+        <li>
+          new tab for submitted appeals
+        </li>
+        <li>
+          list for received appeals
+        </li>
       </ul>
 
-      {{ govukButton({
-        html: 'View prototype',
-        href: 'v'+version+'/?action=',
-        isStartButton: true
-      }) }}
+      <h3 class="govuk-heading-s">
+        Planning appeals
+      </h3>
+
+      <p class="govuk-!-margin-bottom-2">Different states:</p>
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>
+          <a href="v4/?action=&current-appeals=yes&received-appeals=yes">
+            Appeals to action and received appeals
+          </a>
+        </li>
+
+        <li>
+          <a href="v4/?no-appeals=&current-appeals=yes&received-appeals=no">
+            Appeals to action, no received appeals
+          </a>
+        </li>
+
+        <li>
+          <a href="v4/?action=&submitted-appeals=yes&received-appeals=yes&current-appeals=yes#submitted-appeals">
+            Submitted appeals
+          </a>
+        </li>
+
+        <li>
+          <a href="v4/?action=&submitted-appeals=no&received-appeals=yes&current-appeals=yes#submitted-appeals">
+            No Submitted appeals
+          </a>
+        </li>
+
+        <li>
+          <a href="v4/?no-appeals=true">
+            Empty dashboard, no appeals
+          </a>
+        </li>
+      </ul>
 
     </section>
 
