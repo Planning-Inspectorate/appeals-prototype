@@ -46,6 +46,12 @@
         Planning appeals
       </h3>
 
+      {{ govukButton({
+        html: 'View full dashboard',
+        href: 'v4/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&received-appeals=yes',
+        isStartButton: true
+      }) }}
+
       <p class="govuk-!-margin-bottom-2">Different states:</p>
       <ul class="govuk-list govuk-list--bullet">
 
