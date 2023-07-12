@@ -22,7 +22,7 @@
 
 {% set nav = true %}
 
-{% set title = 'manage your appeals' %}
+{% set title = 'Manage your appeals' %}
 
 {% block beforeContent %}
 
@@ -53,8 +53,8 @@
   </div>
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">
         {{ data['dashboard-lpa'] }}
         <span class="govuk-visually-hidden"> - </span>
       </span>
@@ -78,8 +78,8 @@
 
           {{ govukTable({
             classes: 'govuk-!-margin-top-3',
-            caption: 'Current appeals',
-            captionClasses: 'govuk-table__caption--m',
+            caption: 'Appeals in progress',
+            captionClasses: 'govuk-table__caption--l',
             firstCellIsHeader: false,
             head: [
               {
@@ -163,7 +163,7 @@
 
         {% else %}
 
-          <h2 class="govuk-heading-m">
+          <h2 class="govuk-heading-l">
             Current appeals
           </h2>
 
@@ -177,7 +177,7 @@
 
           {{ govukTable({
             classes: 'govuk-!-margin-top-3',
-            caption: 'Received appeals',
+            caption: 'New appeals received',
             captionClasses: 'govuk-table__caption--m',
             firstCellIsHeader: false,
             head: [
@@ -239,8 +239,8 @@
 
           {{ govukTable({
             classes: 'govuk-!-margin-top-3',
-            caption: 'Submitted appeals',
-            captionClasses: 'govuk-table__caption--m',
+            caption: 'Appeals you have returned',
+            captionClasses: 'govuk-table__caption--l',
             firstCellIsHeader: false,
             head: [
               {
@@ -269,7 +269,7 @@
                 },
                 {
                   html: '<strong class="govuk-tag govuk-tag--yellow">
-                           Waiting
+                           Queued for checking
                          </strong>'
                 }
               ] if data['questionnaire'] == 'complete',
@@ -285,7 +285,7 @@
                 },
                 {
                   html: '<strong class="govuk-tag govuk-tag--blue">
-                           In progress
+                           With case officer
                          </strong>'
                 }
               ]
@@ -316,7 +316,7 @@
             }
           },
           {
-            label: "Submitted appeals",
+            label: "Returned appeals",
             id: "submitted-appeals",
             panel: {
               html: submittedAppealsList
