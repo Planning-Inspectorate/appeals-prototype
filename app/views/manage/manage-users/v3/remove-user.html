@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Confirm you want to remove this user' %}
+{% set title = 'Confirm that you want to remove this user' %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -22,7 +22,9 @@
 
   <p class="govuk-body-l">{{ data['remove-email'] }}</p>
 
-  <p class="govuk-body">When you remove a user, the email address will not have access to manage appeals and will not receive appeal notifications.</p>
+  <p class="govuk-body">
+    They will not be able to manage appeals, or get progress updates.
+  </p>
 {% endblock %}
 
 {% block buttons %}

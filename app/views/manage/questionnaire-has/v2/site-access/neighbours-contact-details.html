@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Add contact details' %}
+{% set title = 'Provide contact details for this neighbour' %}
 
 {% block questions %}
   <!-- <span class="govuk-caption-l">
@@ -16,7 +16,7 @@
   }) %}
 
   <p class="govuk-body">
-    Add all the contact information you know.
+    Supply as much information as you can.
   </p>
 
   {{ govukInput({
@@ -73,7 +73,7 @@
     name: 'neighbour-contact-email',
     value: data['neighbour-contact-email'],
     label: {
-      html: 'Email'
+      html: 'Email address'
     }
   }) }}
 
@@ -83,7 +83,7 @@
     value: data['neighbour-contact-phone'],
     classes: "govuk-input--width-10",
     label: {
-      html: 'Phone'
+      html: 'Telephone number'
     }
   }) }}
 

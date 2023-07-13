@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Add new condition requests' %}
+{% set title = 'Do you want to add new planning conditions to this appeal?' %}
 
 {% block questions %}
 
@@ -11,7 +11,7 @@
       value: data['extra-conditions'],
       rows: '3',
       label: {
-        html: 'Add request details'
+        html: 'Tell us about the new conditions'
       }
     }) }}
   {% endset -%}
@@ -20,12 +20,12 @@
     name: 'extra-conditions-check',
     fieldset: {
       legend: {
-        html: 'Do you want to request new conditions?',
+        html: 'Do you want to add new planning conditions to this appeal?',
         classes: 'govuk-fieldset__legend--l'
       }
     },
     hint: {
-      text: "You do not need to tell us about standard conditions."
+      text: "You do not need to tell us about standard conditions"
     },
     items: [
       {

@@ -24,7 +24,7 @@
 
       {
         key: {
-          html: 'Other appeals'
+          html: 'Appeals near the site'
         },
         value: {
           html: data['appeal-refs'] | e | replace(',', '<br>') or '0123456'
@@ -51,7 +51,7 @@
       if data['other-appeals-radio'] == 'Yes' else
       {
         key: {
-          html: 'Other appeals'
+          html: 'Appeals near the site'
         },
         value: {
           html: 'No'
@@ -77,7 +77,7 @@
       },
       {
         key: {
-          html: 'Request new conditions'
+          html: 'Add new conditions'
         },
         value: {
           html: data['extra-conditions'] or 'Some new conditions'
@@ -104,7 +104,7 @@
       if data['extra-conditions-check'] == 'Yes' else
       {
         key: {
-          html: 'Request new conditions'
+          html: 'Add new conditions'
         },
         value: {
           html: 'No'
