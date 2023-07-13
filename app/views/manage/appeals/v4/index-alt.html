@@ -1,0 +1,364 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set prototypeLinks = [] %}
+
+{% set prototypeLinks = [
+  {
+    href: './?no-appeals=true',
+    text: 'No appeals'
+  },
+  {
+    href: '/interested/find-appeal/v6/appeal-notice-email-full',
+    text: 'Appeal notice'
+  },
+  {
+    href: './?no-appeals=false&questionnaire=&statement=&finalcomments=&action=',
+    text: 'Reset appeals'
+  }] if data['no-appeals'] != 'true' else [{
+    href: './?no-appeals=false&questionnaire=&finalcomments=&statement=&action=',
+    text: 'Show appeals'
+    }]
+%}
+
+{% set nav = true %}
+
+{% set title = 'Manage your appeals' %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['questionnaire'] == 'complete' %}
+
+      <!-- notification about notices -->
+      {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+          Questionnaire complete
+        </h3>
+        <p class="govuk-body">
+          Questionnaire for appeal 1345264 has been <a href="#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>returned<span class="govuk-visually-hidden"> appeals</span></a>.
+        </p>
+      {% endset %}
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+    {% endif %}
+
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">
+        {{ data['dashboard-lpa'] }}
+        <span class="govuk-visually-hidden"> - </span>
+      </span>
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
+        Add and remove users
+      </a>
+    </p>
+
+  </div>
+
+  {% if data['no-appeals'] != 'true' %}
+    <div class="govuk-grid-column-full">
+
+      {% set appealsList %}
+
+        {% if data['current-appeals'] != 'no' %}
+
+          {{ govukTable({
+            classes: 'govuk-!-margin-top-3',
+            caption: 'Appeals in progress',
+            captionClasses: 'govuk-table__caption--l',
+            firstCellIsHeader: false,
+            head: [
+              {
+                html: 'Appeal number'
+              },
+              {
+                html: 'Application number'
+              },
+              {
+                html: 'Deadline'
+              },
+              {
+                html: 'Due in',
+                format: 'numeric'
+              },
+              {
+                html: 'To do',
+                format: 'numeric'
+              }
+            ],
+            rows: [
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
+                },
+                {
+                  html: '23/04125/FUL'
+                },
+                {
+                  html: '1' | daysAgo
+                },
+                {
+                  html: "<strong class='govuk-tag govuk-tag--red'>Overdue</strong>",
+                  format: 'numeric'
+                },
+                {
+                  html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
+                },
+                {
+                  html: '23/04125/FUL'
+                },
+                {
+                  html: '3' | daysInFuture
+                },
+                {
+                  html: '3 days',
+                  format: 'numeric'
+                },
+                {
+                  html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                  format: 'numeric'
+                }
+              ] if data['questionnaire'] != 'complete',
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1345260&action=">1345260</a>'
+                },
+                {
+                  html: '22/02939/FUL'
+                },
+                {
+                  html: '6' | daysInFuture
+                },
+                {
+                  html: '6 days',
+                  format: 'numeric'
+                },
+                {
+                  html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1345172&action=">1345172</a>'
+                },
+                {
+                  html: '23/04122/FUL'
+                },
+                {
+                  html: '7' | daysInFuture
+                },
+                {
+                  html: '7 days',
+                  format: 'numeric'
+                },
+                {
+                  html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                  format: 'numeric'
+                }
+              ]
+            ]
+          }) }}
+
+        {% else %}
+
+          <h2 class="govuk-heading-l">
+            Current appeals
+          </h2>
+
+          <p class="govuk-body">
+            There are no current appeals to action
+          </p>
+
+        {% endif %}
+
+      {% endset -%}
+
+      {% set receivedAppeals %}
+
+        {% if data['received-appeals'] == 'yes' %}
+
+          {{ govukTable({
+            classes: 'govuk-!-margin-top-3',
+            caption: 'New appeals received',
+            captionClasses: 'govuk-table__caption--m',
+            firstCellIsHeader: false,
+            head: [
+              {
+                html: 'Appeal number',
+                classes: 'govuk-!-width-one-quarter'
+              },
+              {
+                html: 'Application number',
+                classes: 'govuk-!-width-one-third'
+              },
+              {
+                html: 'Received'
+              }
+            ],
+            rows: [
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1386155&action=">1386155</a>'
+                },
+                {
+                  html: '23/04253/FUL'
+                },
+                {
+                  html: '2' | daysAgo
+                }
+              ],
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1392871&action=">1392871</a>'
+                },
+                {
+                  html: '23/05009/FUL'
+                },
+                {
+                  html: '1' | daysAgo
+                }
+              ]
+            ]
+          }) }}
+
+        {% elif data['received-appeals'] == 'no' %}
+
+          <h2 class="govuk-heading-m">
+            Received appeals
+          </h2>
+
+          <p class="govuk-body">
+            There are no received appeals
+          </p>
+
+        {% endif %}
+
+      {% endset -%}
+
+      {% set submittedAppealsList %}
+
+        {% if data['submitted-appeals'] == 'yes' %}
+
+          {{ govukTable({
+            classes: 'govuk-!-margin-top-3',
+            caption: 'Appeals you have returned',
+            captionClasses: 'govuk-table__caption--l',
+            firstCellIsHeader: false,
+            head: [
+              {
+                html: 'Appeal number'
+              },
+              {
+                html: 'Application number'
+              },
+              {
+                html: 'Deadline'
+              },
+              {
+                html: 'Status'
+              }
+            ],
+            rows: [
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
+                },
+                {
+                  html: '23/04125/FUL'
+                },
+                {
+                  html: '3' | daysInFuture
+                },
+                {
+                  html: '<strong class="govuk-tag govuk-tag--yellow">
+                           Queued for checking
+                         </strong>'
+                }
+              ] if data['questionnaire'] == 'complete',
+              [
+                {
+                  html: '<a href="appeal-details?appealCode=1345260&action=">1345260</a>'
+                },
+                {
+                  html: '23/02939/FUL'
+                },
+                {
+                  html: ''
+                },
+                {
+                  html: '<strong class="govuk-tag govuk-tag--blue">
+                           With case officer
+                         </strong>'
+                }
+              ]
+            ]
+          }) }}
+
+        {% else %}
+
+          <h2 class="govuk-heading-l">
+            Submitted appeals
+          </h2>
+
+          <p class="govuk-body">
+            There are no submitted appeals
+          </p>
+
+        {% endif %}
+
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Appeals list",
+            id: "appeals-list",
+            panel: {
+              html: appealsList
+            }
+          },
+          {
+            label: "Received appeals",
+            id: "new-appeals",
+            panel: {
+              html: receivedAppeals
+            }
+          },
+          {
+            label: "Returned appeals",
+            id: "submitted-appeals",
+            panel: {
+              html: submittedAppealsList
+            }
+          }
+
+        ]
+      }) }}
+
+
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

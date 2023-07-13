@@ -86,6 +86,51 @@
         </li>
       </ul>
 
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Alternative version using 3 tabs
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+
+          <p class="govuk-!-margin-bottom-2">Different states:</p>
+          <ul class="govuk-list govuk-list--bullet">
+
+            <li>
+              <a href="v4/index-alt?action=&questionnaire=&submitted-appeals=yes&current-appeals=yes&received-appeals=yes">
+                Appeals to action and received appeals
+              </a>
+            </li>
+
+            <li>
+              <a href="v4/index-alt?no-appeals=&questionnaire=&current-appeals=yes&received-appeals=no">
+                Appeals to action, no received appeals
+              </a>
+            </li>
+
+            <li>
+              <a href="v4/index-alt?action=&submitted-appeals=yes&questionnaire=&received-appeals=yes&current-appeals=yes#submitted-appeals">
+                Submitted appeals
+              </a>
+            </li>
+
+            <li>
+              <a href="v4/index-alt?action=&submitted-appeals=no&questionnaire=&received-appeals=yes&current-appeals=yes#submitted-appeals">
+                No Submitted appeals
+              </a>
+            </li>
+
+            <li>
+              <a href="v4/index-alt?no-appeals=true">
+                Empty dashboard, no appeals
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </details>
+
     </section>
 
     {% set v3HTML %}
