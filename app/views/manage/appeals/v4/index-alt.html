@@ -182,7 +182,7 @@
 
         {% else %}
 
-          <h2 class="govuk-heading-l">
+          <h2 class="govuk-heading-l govuk-!-margin-top-3">
             Current appeals
           </h2>
 
@@ -201,7 +201,7 @@
           {{ govukTable({
             classes: 'govuk-!-margin-top-3',
             caption: 'New appeals received',
-            captionClasses: 'govuk-table__caption--m',
+            captionClasses: 'govuk-table__caption--l',
             firstCellIsHeader: false,
             head: [
               {
@@ -244,7 +244,7 @@
 
         {% elif data['received-appeals'] == 'no' %}
 
-          <h2 class="govuk-heading-m">
+          <h2 class="govuk-heading-l govuk-!-margin-top-3">
             Received appeals
           </h2>
 
@@ -317,7 +317,7 @@
 
         {% else %}
 
-          <h2 class="govuk-heading-l">
+          <h2 class="govuk-heading-l govuk-!-margin-top-3">
             Submitted appeals
           </h2>
 
