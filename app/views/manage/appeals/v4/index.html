@@ -37,7 +37,7 @@
       <!-- notification about notices -->
       {% set html %}
         <h3 class="govuk-notification-banner__heading">
-          Questionnaire complete
+          Questionnaire completed
         </h3>
         <p class="govuk-body">
           Questionnaire for appeal 1345264 has been <a href="#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>returned<span class="govuk-visually-hidden"> appeals</span></a>.
@@ -103,7 +103,7 @@
             rows: [
               [
                 {
-                  html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
+                  html: '<a href="appeal-details?appealCode=1345264&action=">1446624</a>'
                 },
                 {
                   html: '23/04125/FUL'
@@ -182,8 +182,8 @@
 
         {% else %}
 
-          <h2 class="govuk-heading-l">
-            Current appeals
+          <h2 class="govuk-heading-l govuk-!-margin-top-3">
+            Appeals in progress
           </h2>
 
           <p class="govuk-body">
@@ -192,12 +192,16 @@
 
         {% endif %}
 
+      {% endset -%}
+
+      {% set receivedAppeals %}
+
         {% if data['received-appeals'] == 'yes' %}
 
           {{ govukTable({
             classes: 'govuk-!-margin-top-3',
             caption: 'New appeals received',
-            captionClasses: 'govuk-table__caption--m',
+            captionClasses: 'govuk-table__caption--l',
             firstCellIsHeader: false,
             head: [
               {
@@ -240,7 +244,7 @@
 
         {% elif data['received-appeals'] == 'no' %}
 
-          <h2 class="govuk-heading-m">
+          <h2 class="govuk-heading-l govuk-!-margin-top-3">
             New appeals received
           </h2>
 
@@ -313,7 +317,7 @@
 
         {% else %}
 
-          <h2 class="govuk-heading-l">
+          <h2 class="govuk-heading-l govuk-!-margin-top-3">
             Appeals you have returned
           </h2>
 
@@ -329,9 +333,16 @@
         items: [
           {
             label: "Appeals list",
-            id: "new-appeals",
+            id: "appeals-list",
             panel: {
               html: appealsList
+            }
+          },
+          {
+            label: "Received appeals",
+            id: "new-appeals",
+            panel: {
+              html: receivedAppeals
             }
           },
           {
