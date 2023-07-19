@@ -22,24 +22,49 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data['questionnaire'] != 'complete' %}
-    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-      <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          Important
-        </h2>
+    {% if data['questionnaire'] == 'overdue' %}
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            This appeal was due {{ 1 | daysAgo }}
+            <!-- <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                This appeal is overdue
+              </strong>
+            </div> -->
+          </p>
+          <p class="govuk-body">
+            <a href="/manage/questionnaire-has/v2/task-list?action=">Submit questionnaire</a>
+          </p>
+        </div>
       </div>
-      <div class="govuk-notification-banner__content">
-        <p class="govuk-notification-banner__heading">
-          You have until 11:59pm on {{ 3 | daysInFuture }} to:
-          <ul class="govuk-list govuk-list--bullet">
-            <li>
-              <a href="/manage/questionnaire-has/v2/task-list?action=">Submit questionnaire</a>
-            </li>
-          </ul>
-        </p>
+    {% elif data['questionnaire'] == 'due' %}
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You have until 11:59pm on {{ 3 | daysInFuture }} to:
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                <a href="/manage/questionnaire-has/v2/task-list?action=">Submit questionnaire</a>
+              </li>
+            </ul>
+          </p>
+        </div>
       </div>
-    </div>
+    {% else %}
+      <!-- due or completed appeal does not show a notification -->
     {% endif %}
 
     <h1 class="govuk-heading-l">
