@@ -23,128 +23,75 @@
 
     <section class="govuk-!-margin-bottom-6">
 
-      {% set version = "4" %}
+      {% set version = "5" %}
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
-          classes: 'govuk-tag--blue govuk-!-margin-left-2',
-          text: 'Researched'
+          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+          text: 'In progress'
         }) }}
       </h2>
 
-      <p>
+      <!-- <p>
         Researched January 2023<br>
         <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
           Confluence user research notes
         </a>
-      </p>
+      </p> -->
 
       <p class="govuk-!-margin-bottom-2">Changes:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          new tab for submitted appeals
+          new appeals in details component
         </li>
         <li>
-          new tab for received appeals
+          content updates
         </li>
       </ul>
 
-      <h3 class="govuk-heading-s">
-        Planning appeals
-      </h3>
-
       {{ govukButton({
         html: 'View full dashboard',
-        href: 'v4/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&received-appeals=yes',
+        href: 'v5/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&new-appeals=yes',
         isStartButton: true
       }) }}
 
-      <!-- <p class="govuk-!-margin-bottom-2">Different states:</p>
-      <ul class="govuk-list govuk-list--bullet">
+      {% set v4HTML %}
 
-        <li>
-          <a href="v4/index-simple?action=&questionnaire=&submitted-appeals=yes&current-appeals=yes&received-appeals=yes">
-            No extra tabs (MVP)
+        {% set version = "4" %}
+        <h2 class="govuk-heading-m">
+          Version {{version}}
+          {{ govukTag({
+            classes: 'govuk-tag--blue govuk-!-margin-left-2',
+            text: 'Researched'
+          }) }}
+        </h2>
+
+        <p>
+          Researched January 2023<br>
+          <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+            Confluence user research notes
           </a>
-        </li>
+        </p>
 
-        <li>
-          <a href="v4/?action=&questionnaire=&submitted-appeals=yes&current-appeals=yes&received-appeals=yes">
-            Appeals to action and received appeals
-          </a>
-        </li>
+        <p class="govuk-!-margin-bottom-2">Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            new tab for submitted appeals
+          </li>
+          <li>
+            new tab for received appeals
+          </li>
+        </ul>
 
-        <li>
-          <a href="v4/?no-appeals=&questionnaire=&current-appeals=yes&received-appeals=no">
-            Appeals to action, no received appeals
-          </a>
-        </li>
+        {{ govukButton({
+          html: 'View full dashboard',
+          href: 'v4/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&received-appeals=yes',
+          isStartButton: true
+        }) }}
 
-        <li>
-          <a href="v4/?action=&submitted-appeals=yes&questionnaire=&received-appeals=yes&current-appeals=yes#submitted-appeals">
-            Submitted appeals
-          </a>
-        </li>
+    {% endset -%}
 
-        <li>
-          <a href="v4/?action=&submitted-appeals=no&questionnaire=&received-appeals=yes&current-appeals=yes#submitted-appeals">
-            No Submitted appeals
-          </a>
-        </li>
-
-        <li>
-          <a href="v4/?no-appeals=true">
-            Empty dashboard, no appeals
-          </a>
-        </li>
-      </ul> -->
-
-      <!-- <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Alternative version using 3 tabs
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-
-          <p class="govuk-!-margin-bottom-2">Different states:</p>
-          <ul class="govuk-list govuk-list--bullet">
-
-            <li>
-              <a href="v4/index-alt?action=&questionnaire=&submitted-appeals=yes&current-appeals=yes&received-appeals=yes">
-                Appeals to action and received appeals
-              </a>
-            </li>
-
-            <li>
-              <a href="v4/index-alt?no-appeals=&questionnaire=&current-appeals=yes&received-appeals=no">
-                Appeals to action, no received appeals
-              </a>
-            </li>
-
-            <li>
-              <a href="v4/index-alt?action=&submitted-appeals=yes&questionnaire=&received-appeals=yes&current-appeals=yes#submitted-appeals">
-                Submitted appeals
-              </a>
-            </li>
-
-            <li>
-              <a href="v4/index-alt?action=&submitted-appeals=no&questionnaire=&received-appeals=yes&current-appeals=yes#submitted-appeals">
-                No Submitted appeals
-              </a>
-            </li>
-
-            <li>
-              <a href="v4/index-alt?no-appeals=true">
-                Empty dashboard, no appeals
-              </a>
-            </li>
-          </ul>
-
-        </div>
-      </details> -->
-
-    </section>
+  </section>
 
     {% set v3HTML %}
 
@@ -213,6 +160,15 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
+
+        {
+          heading: {
+            html: 'Version 4 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v4HTML
+          }
+        },
         {
           heading: {
             html: 'Version 3 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
