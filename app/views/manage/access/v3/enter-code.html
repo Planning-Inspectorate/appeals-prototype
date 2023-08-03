@@ -1,0 +1,57 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = true %}
+
+{% set title = "Enter your code" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+
+{% block questions %}
+
+  <span class="govuk-caption-l">{{ subServiceName }}</span>
+
+  <div class="govuk-form-group">
+
+    <label class="govuk-label govuk-label--l" for="email">
+      {{ title }}
+    </label>
+
+    <p class="govuk-body">
+      Find this in the email we sent you. The email may take a few minutes to arrive.
+    </p>
+
+    <p class="govuk-body">
+      Be aware that this code will expire 30 minutes after we send it.
+    </p>
+
+    <div class="govuk-form-group">
+      <input class="govuk-input govuk-input--width-5" id="email" name="email" type="text" spellcheck="false" autocomplete=none value="" style="text-transform:uppercase">
+    </div>
+  </div>
+
+  <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      My code did not arrive or does not work
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <ul class="govuk-list govuk-list--bullet">
+      <li>you may have made a mistake with your email address</li>
+      <li>check your junk or spam folder</li>
+      <li>the code has expired</li>
+    </ul>
+    <p class="govuk-body">
+      <a href="request-code" class="govuk-!-margin-bottom-9">Get a new code</a>
+    </p>
+    <p class="govuk-body">
+      If you continue to an issue, call us on 0303 444 5000 Monday to Friday, 9am to midday (except public holidays).
+    </p>
+
+  </div>
+</details>
+
+{% endblock %}

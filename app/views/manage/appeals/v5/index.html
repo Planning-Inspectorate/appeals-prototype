@@ -153,7 +153,7 @@
           rows: [
             [
               {
-                html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
+                html: '<a href="appeal-details?appealCode=1345264&action=&questionnaire=overdue">1345264</a>'
               },
               {
                 html: '23/04125/FUL'
@@ -166,13 +166,13 @@
                 format: 'numeric'
               },
               {
-                html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                html: '<a href="/manage/questionnaire-has/v3/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
                 format: 'numeric'
               }
             ],
             [
               {
-                html: '<a href="appeal-details?appealCode=1345264&action=">1345264</a>'
+                html: '<a href="appeal-details?appealCode=1345264&action=&questionnaire=due">1345264</a>'
               },
               {
                 html: '23/04125/FUL'
@@ -185,7 +185,7 @@
                 format: 'numeric'
               },
               {
-                html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                html: '<a href="/manage/questionnaire-has/v3/task-list?action=&questionnaire=due"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
                 format: 'numeric'
               }
             ] if data['questionnaire'] != 'complete',
@@ -204,13 +204,13 @@
                 format: 'numeric'
               },
               {
-                html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                html: '<a href="/manage/questionnaire-has/v3/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
                 format: 'numeric'
               }
             ],
             [
               {
-                html: '<a href="appeal-details?appealCode=1345172&action=">1345172</a>'
+                html: '<a href="appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
               },
               {
                 html: '23/04122/FUL'
@@ -223,7 +223,7 @@
                 format: 'numeric'
               },
               {
-                html: '<a href="/manage/questionnaire-has/v2/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+                html: '<a href="/manage/questionnaire-has/v3/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
                 format: 'numeric'
               }
             ]
@@ -237,7 +237,7 @@
         </h2>
 
         <p class="govuk-body">
-          There are no appeals in progress.
+          There are currently no appeals in progress.
         </p>
 
       {% endif %}
@@ -254,7 +254,7 @@
       {% elif data['new-appeals'] == 'no' %}
 
         <p class="govuk-body">
-          There are no new appeals.
+          There are currently no new appeals.
         </p>
 
       {% endif %}
@@ -267,7 +267,7 @@
 
         {{ govukTable({
           classes: 'govuk-!-margin-top-3',
-          caption: 'Appeals you have returned',
+          caption: 'Submitted appeals',
           captionClasses: 'govuk-table__caption--l',
           firstCellIsHeader: false,
           head: [
@@ -327,7 +327,7 @@
         </h2>
 
         <p class="govuk-body">
-          There are no submitted appeals.
+          There are currently no submitted appeals.
         </p>
 
       {% endif %}

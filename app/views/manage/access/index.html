@@ -21,22 +21,22 @@
       {{ title }}
     </h1>
 
-    {% set version = "2" %}
+    {% set version = "3" %}
 
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--blue govuk-!-margin-left-2',
-        text: 'Researched'
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
       }) }}
     </h2>
 
-    <p>
+    <!-- <p>
       Researched January 2023<br>
       <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
         Confluence user research notes
       </a>
-    </p>
+    </p> -->
 
     <p class="govuk-!-margin-bottom-2">
       Changes:
@@ -44,13 +44,7 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        content updates
-      </li>
-      <li>
-        help for not receiving the code
-      </li>
-      <li>
-        change of service name
+        content updates following July research
       </li>
     </ul>
 
@@ -59,17 +53,17 @@
     </h3>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        <a href="/manage/access/v2/service-invite">
+        <a href="/manage/access/v3/service-invite">
           Invite to the service
         </a>
       </li>
       <li>
-        <a href="/manage/access/v2/access-email">
+        <a href="/manage/access/v3/access-email">
           Enter your email address - accessing the LPA service (visiting the service with no session)
         </a>
       </li>
       <li>
-        <a href="/manage/access/v2/enter-code?start=access-email">
+        <a href="/manage/access/v3/enter-code?start=access-email">
           Enter your code
         </a>
       </li>
@@ -80,8 +74,68 @@
       </li> -->
     </ul>
 
-    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+    {% set v2HTML %}
 
+      {% set version = "2" %}
+
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--blue govuk-!-margin-left-2',
+          text: 'Researched'
+        }) }}
+      </h2>
+
+      <p>
+        Researched July 2023<br>
+        <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p>
+
+      <p class="govuk-!-margin-bottom-2">
+        Changes:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          content updates
+        </li>
+        <li>
+          help for not receiving the code
+        </li>
+        <li>
+          change of service name
+        </li>
+      </ul>
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+        Access to the service
+      </h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="/manage/access/v2/service-invite">
+            Invite to the service
+          </a>
+        </li>
+        <li>
+          <a href="/manage/access/v2/access-email">
+            Enter your email address - accessing the LPA service (visiting the service with no session)
+          </a>
+        </li>
+        <li>
+          <a href="/manage/access/v2/enter-code?start=access-email">
+            Enter your code
+          </a>
+        </li>
+        <!-- <li>
+          <a href="/manage/access/v2/email--code">
+            Email with secure code
+          </a>
+        </li> -->
+      </ul>
+
+    {% endset -%}
 
     {% set v1HTML %}
 
@@ -107,6 +161,14 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
+        {
+          heading: {
+            html: 'Version 2 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v2HTML
+          }
+        },
         {
           heading: {
             html: 'Version 1 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'

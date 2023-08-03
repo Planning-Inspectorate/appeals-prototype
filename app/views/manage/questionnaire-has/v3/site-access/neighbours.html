@@ -37,8 +37,7 @@
                 text: 'Site 1 details'
               },
               value: {
-                html: (data['neighbour-first-name'] or 'Sam') + ' ' + (data['neighbour-last-name'] or 'Fisher')+
-                      '<br>172, York Road, Bedminster, Bristol, BS3 4AL'
+                html: '172, York Road, Bedminster, Bristol, BS3 4AL'
               },
               actions: {
                 items: [
@@ -55,15 +54,14 @@
                 text: 'Site 2 details'
               },
               value: {
-                html: (data['neighbour-first-name'] or 'Jan') + ' ' + (data['neighbour-last-name'] or 'Bishop')+
-                      '<br>174, York Road, Bedminster, Bristol, BS3 4AL'
+                html: '174, York Road, Bedminster, Bristol, BS3 4AL'
               },
               actions: {
                 items: [
                   {
                     href: "?affectedneighbours=",
                     text: "Remove",
-                    visuallyHiddenText: '156, York Road, Bedminster, Bristol, BS3 4AL'
+                    visuallyHiddenText: '174, York Road, Bedminster, Bristol, BS3 4AL'
                   }
                 ]
               }

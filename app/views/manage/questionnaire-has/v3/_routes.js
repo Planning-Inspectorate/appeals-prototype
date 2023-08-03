@@ -258,13 +258,13 @@ router.post('/site-access/neighbours-land', function (req, res) {
 
 router.post('/site-access/neighbours-address', function (req, res) {
   req.session.data['neighbours-address-complete'] = 'true'
-  res.redirect('neighbours-contact-details');
-})
-
-router.post('/site-access/neighbours-contact-details', function (req, res) {
-  req.session.data['neighbours-contact-complete'] = 'true'
   res.redirect('neighbours')
 })
+
+// router.post('/site-access/neighbours-contact-details', function (req, res) {
+//   req.session.data['neighbours-contact-complete'] = 'true'
+//   res.redirect('neighbours')
+// })
 
 
 router.post('/site-access/neighbours', function (req, res) {

@@ -1,11 +1,15 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Upload letters to neighbours' %}
+{% set title = 'Upload letters and emails that were sent to the neighbours' %}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
+
+  <p class="govuk-body">
+    Note: you do not need to send every individual letter.
+  </p>
 
   {% set uploadHtml %}
     {{ govukFileUpload({
