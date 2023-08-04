@@ -3,10 +3,12 @@
 {% set title = 'Upload the representations' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    3. Consultation responses and representations
+  </span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
-
   {% set uploadHtml %}
     {{ govukFileUpload({
       id: 'other-parties-upload',

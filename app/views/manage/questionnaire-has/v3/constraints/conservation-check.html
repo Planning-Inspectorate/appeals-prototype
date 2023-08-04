@@ -3,6 +3,9 @@
 {% set title = 'Is the site in, or does it affect a conservation area?' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    1. Constraints, designations and other issues
+  </span>
   {{ govukRadios({
     idPrefix: 'conservation-check',
     name: 'conservation-check',

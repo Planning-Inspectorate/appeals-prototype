@@ -4,6 +4,9 @@
 
 {% block questions %}
 
+  <span class="govuk-caption-l">
+    6. Appeal process
+  </span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -25,46 +28,42 @@
     html: standardConditions
   }) }}
 
-  <form action="/form-handler" method="post" novalidate>
+  {% set extraConditions %}
+    {{ govukTextarea({
+      name: 'extra-conditions',
+      id: 'extra-conditions',
+      value: data['extra-conditions'],
+      rows: '3',
+      label: {
+        html: 'Tell us about the new conditions'
+      }
+    }) }}
+  {% endset -%}
 
-    {% set extraConditions %}
-      {{ govukTextarea({
-        name: 'extra-conditions',
-        id: 'extra-conditions',
-        value: data['extra-conditions'],
-        rows: '3',
-        label: {
-          html: 'Tell us about the new conditions'
-        }
-      }) }}
-    {% endset -%}
-
-    {{ govukRadios({
-      idPrefix: 'extra-conditions-check',
-      name: 'extra-conditions-check',
-      fieldset: {
-        legend: {
-          html: 'Do you want to add new planning conditions to this appeal?',
-          classes: 'govuk-fieldset__legend--m'
+  {{ govukRadios({
+    idPrefix: 'extra-conditions-check',
+    name: 'extra-conditions-check',
+    fieldset: {
+      legend: {
+        html: 'Do you want to add new planning conditions to this appeal?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('extra-conditions','Yes'),
+        conditional: {
+          html: extraConditions
         }
       },
-      items: [
-        {
-          html: 'Yes',
-          value: 'Yes',
-          checked: checked('extra-conditions-check','Yes'),
-          conditional: {
-            html: extraConditions
-          }
-        },
-        {
-          html: 'No',
-          value: 'No',
-          checked: checked('extra-conditions','No')
-        }
-      ]
-    }) }}
-
-  </form>
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('extra-conditions','No')
+      }
+    ]
+  }) }}
 
 {% endblock %}

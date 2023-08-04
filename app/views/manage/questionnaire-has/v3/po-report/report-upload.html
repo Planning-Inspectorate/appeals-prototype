@@ -1,6 +1,9 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% block questions %}
+  <span class="govuk-caption-l">
+    4. Planning Officer’s report and supplementary documents
+  </span>
   {% if data['non-determination'] == 'true' %}
     {% set title = 'Upload what your decision notice would have said' %}
     <h1 class="govuk-heading-l">
