@@ -233,7 +233,7 @@
       {% else %}
 
         <h2 class="govuk-heading-l">
-          Current appeals
+          Appeals in progress
         </h2>
 
         <p class="govuk-body">
@@ -267,7 +267,7 @@
 
         {{ govukTable({
           classes: 'govuk-!-margin-top-3',
-          caption: 'Submitted appeals',
+          caption: 'Appeals you have submitted',
           captionClasses: 'govuk-table__caption--l',
           firstCellIsHeader: false,
           head: [
@@ -323,7 +323,7 @@
       {% else %}
 
         <h2 class="govuk-heading-l">
-          Submitted appeals
+          Appeals you have submitted
         </h2>
 
         <p class="govuk-body">
@@ -337,7 +337,7 @@
     {{ govukTabs({
       items: [
         {
-          label: "Appeals list",
+          label: "Appeals in progress",
           id: "new-appeals",
           panel: {
             html: appealsList
