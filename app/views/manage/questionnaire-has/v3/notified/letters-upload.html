@@ -4,7 +4,7 @@
 
 {% block questions %}
   <span class="govuk-caption-l">
-    2. Notifying relevant parties of the application
+    Notifying relevant parties of the application
   </span>
   <h1 class="govuk-heading-l">
     {{ title }}
@@ -13,6 +13,25 @@
   <p class="govuk-body">
     Note: you do not need to send every individual letter.
   </p>
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Further guidance
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="govuk-body">
+        It is the <span class="govuk-body govuk-!-font-weight-bold">content</span> of what was sent that we want to see. Not who it was sent to.
+      </p>
+      <p class="govuk-body">
+        So if you sent 20 letters that said the same thing, we would only need <span class="govuk-body govuk-!-font-weight-bold">one</span> copy.
+      </p>
+      <p class="govuk-body">
+        Names and addresses are not needed, as you have provided these on a previous screen.
+      </p>
+    </div>
+  </details>
 
   {% set uploadHtml %}
     {{ govukFileUpload({
