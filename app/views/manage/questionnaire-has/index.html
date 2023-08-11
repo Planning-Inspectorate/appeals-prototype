@@ -21,12 +21,12 @@
       {{ title }}
     </h1>
 
-    {% set version = "3" %}
+    {% set version = "4" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
-        text: 'Ready for research'
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
       }) }}
     </h2>
 
@@ -40,7 +40,7 @@
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        Content updates following user research
+        Change to neighbours addresses following research
       </li>
     </ul>
 
@@ -49,6 +49,32 @@
       href: 'v'+version+'/task-list',
       isStartButton: true
     }) }}
+
+    {% set v3HTML %}
+
+      {% set version = "3" %}
+
+      <p>
+        Researched August 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1245478913" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p>
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Content updates following user research
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v2HTML %}
 
@@ -100,6 +126,14 @@
       classes: 'govuk-!-margin-top-5',
       items: [
 
+        {
+          heading: {
+            html: 'Version 3 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v3HTML
+          }
+        },
         {
           heading: {
             html: 'Version 2 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'

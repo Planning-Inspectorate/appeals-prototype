@@ -1,0 +1,126 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">5. </span> Site access
+    {% if data['site-access-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['site-access-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+      {
+        key: {
+          html: 'Access for inspection'
+        },
+        value: {
+          html: 'Yes' if data['site-entry'] == 'Yes' else 'No'
+        }
+        if data['site-entry-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'site-access/site-entry?cya=true',
+              html: 'Change'
+            }
+            if data['site-entry-complete'] else
+            {
+              href: 'site-access/site-entry',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Do the plans affect any neighbours?'
+        },
+        value: {
+          html: 'Yes' if data['neighbours-check'] == 'Yes' else 'No'
+        }
+        if data['neighbours-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'site-access/neighbours-check?cya=true',
+              html: 'Change'
+            }
+            if data['neighbours-check-complete'] else
+            {
+              href: 'site-access/neighbours-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Uploaded list of affected neighbour addresses'
+        },
+        value: {
+          html: data['neighbour-upload'] or '2 Aubrey House neighbours.odt'
+        }
+        if data['neighbours-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'site-access/neighbours-upload?cya=true',
+              html: 'Change'
+            }
+            if data['neighbours-upload-complete'] else
+            {
+              href: 'site-access/neighbours-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['neighbours-check'] == 'Yes',
+      {
+        key: {
+          html: 'Potential safety risks'
+        },
+        value: {
+          html: 'Yes<br>'+(data['health-and-safety__details'] or 'Dogs on site') if data['health-and-safety'] == 'Yes' else 'No'
+        }
+        if data['health-and-safety-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'site-access/health-and-safety?cya=true',
+              html: 'Change'
+            }
+            if data['health-and-safety-complete'] else
+            {
+              href: 'site-access/health-and-safety',
+              html: 'Answer'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+</li>

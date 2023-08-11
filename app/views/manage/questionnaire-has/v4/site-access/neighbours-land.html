@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Do the plans affect any neighbours?' %}
+
+<!-- Will the reasons for refusal / grounds of appeal require the Inspector to access a neighbour’s land? -->
+
+{% block questions %}
+  <span class="govuk-caption-l">
+    Site access
+  </span>
+  {{ govukRadios({
+    idPrefix: 'neighbours-land',
+    name: 'neighbours-land',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('neighbours-land','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('neighbours-land','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}
