@@ -1,0 +1,28 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Declaration to withdraw the appeal' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-!-margin-bottom-2">By withdrawing the appeal, you confirm you understand that:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>if you withdraw the appeal you will not be able to make a new appeal for the application decision</li>
+    <li>when your appeal is withdrawn it will be closed and other parties will be notified</li>
+    <li>a withdrawn appeal can not be reopened</li>
+  </ul>
+
+  <p class="govuk-body">By continuing you will be withdrawing your appeal.</p>
+
+{% endblock %}
+
+{% block buttons %}
+
+  {{ govukButton({
+    text: "I wish to withdraw my appeal",
+    classes: "govuk-button--secondary"
+  }) }}
+
+{% endblock %}

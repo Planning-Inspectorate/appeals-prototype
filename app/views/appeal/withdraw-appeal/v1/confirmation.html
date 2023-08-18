@@ -1,0 +1,52 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Appeal withdrawn' %}
+{% set back = false %}
+
+{% set prototypeLinks = [
+  {
+    href: 'email--appeal-withdrawn',
+    text: 'Appeal withdrawn confirmation (appellant)'
+  },
+  {
+    href: 'email--appeal-withdrawn',
+    text: 'Appeal withdrawn confirmation (LPA)'
+  },
+  {
+    href: '#',
+    text: 'Back office appeal has changed status'
+  }
+  ]
+%}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleHtml: title
+      }) }}
+
+      <p class="govuk-body">
+        We’ve sent you a confirmation email.
+      </p>
+
+      <p class="govuk-body">
+        We will also send an email to notify your local council to tell them that the appeal has been withdrawn.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p class="govuk-body">
+        No further action will be taken for the appeal and it will be closed.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#0">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

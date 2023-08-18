@@ -1,0 +1,62 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Is this the appeal you want to withdraw?' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p class="govuk-body">Check this is the right appeal.</p>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-6',
+    rows: [
+      {
+        key: {
+          text: 'Appeal reference'
+        },
+        value: {
+          text: '0123456'
+        }
+      },
+      {
+        key: {
+          text: 'Local planning authority'
+        },
+        value: {
+          text: data['lpa'] or 'Bradford'
+        }
+      },
+      {
+        key: {
+          text: 'Address'
+        },
+        value: {
+          text: '7 Aubrey House, Aubrey Road, Bristol BS3 3EX'
+        }
+      },
+      {
+        key: {
+          text: 'Appeal type'
+        },
+        value: {
+          text: 'Householder planning appeal'
+        }
+      },
+      {
+        key: {
+          text: 'Appeal submited'
+        },
+        value: {
+          html: '1' | daysAgo
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    html: 'Continue'
+  }) }}
+{% endblock %}
