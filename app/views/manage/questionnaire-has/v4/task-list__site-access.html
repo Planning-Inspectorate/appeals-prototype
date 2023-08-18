@@ -48,24 +48,24 @@
       },
       {
         key: {
-          html: 'Do the plans affect any neighbours?'
+          html: 'Will the reasons for your decision require the Inspector to enter a neighbour’s land or property?'
         },
         value: {
-          html: 'Yes' if data['neighbours-check'] == 'Yes' else 'No'
+          html: 'Yes' if data['neighbours-land'] == 'Yes' else 'No'
         }
-        if data['neighbours-check-complete'] else
+        if data['neighbours-land-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'site-access/neighbours-check?cya=true',
+              href: 'site-access/neighbours-land?cya=true',
               html: 'Change'
             }
-            if data['neighbours-check-complete'] else
+            if data['neighbours-land-complete'] else
             {
-              href: 'site-access/neighbours-check',
+              href: 'site-access/neighbours-land',
               html: 'Answer'
             }
           ]
@@ -73,29 +73,31 @@
       },
       {
         key: {
-          html: 'Uploaded list of affected neighbour addresses'
+          html: 'Neighbour 1'
         },
         value: {
-          html: data['neighbour-upload'] or '2 Aubrey House neighbours.odt'
-        }
-        if data['neighbours-upload-complete'] else
+          html: ('172, York Road')+
+                ('<br>'+data['neighbours-address-line-2'] if data['neighbours-address-line-2'])+
+                ('<br>'+(data['neighbours-address-town'] or 'Bristol'))+
+                ('<br>'+(data['neighbours-address-postcode'] or 'BS3 4AL'))
+        } if data['neighbours-address-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'site-access/neighbours-upload?cya=true',
+              href: 'site-access/neighbours-address?cya=true',
               html: 'Change'
             }
-            if data['neighbours-upload-complete'] else
+            if data['neighbours-address-complete'] else
             {
-              href: 'site-access/neighbours-upload',
+              href: 'site-access/neighbours-address',
               html: 'Answer'
             }
           ]
         }
-      } if data['neighbours-check'] == 'Yes',
+      } if data['neighbours-land'] == 'Yes',
       {
         key: {
           html: 'Potential safety risks'

@@ -244,21 +244,21 @@ router.post('/po-report/report-upload', function (req, res) {
 router.post('/site-access/site-entry', function (req, res) {
   req.session.data['site-entry-complete'] = 'true'
   req.session.data['site-access-started'] = 'true'
-  res.redirect('neighbours-check')
+  res.redirect('neighbours-land')
 })
 
-router.post('/site-access/neighbours-check', function (req, res) {
-  req.session.data['neighbours-check-complete'] = 'true'
-  if (req.session.data['neighbours-check'] == 'Yes') {
-    res.redirect('neighbours-upload');
+router.post('/site-access/neighbours-land', function (req, res) {
+  req.session.data['neighbours-land-complete'] = 'true'
+  if (req.session.data['neighbours-land'] == 'Yes') {
+    res.redirect('neighbours-address');
   } else {
     res.redirect('health-and-safety')
   }
 })
 
-router.post('/site-access/neighbours-upload', function (req, res) {
-  req.session.data['neighbours-upload-complete'] = 'true'
-  res.redirect('health-and-safety')
+router.post('/site-access/neighbours-address', function (req, res) {
+  req.session.data['neighbours-address-complete'] = 'true'
+  res.redirect('neighbours')
 })
 
 // router.post('/site-access/neighbours-contact-details', function (req, res) {

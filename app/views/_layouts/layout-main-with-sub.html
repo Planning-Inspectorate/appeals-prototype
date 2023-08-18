@@ -18,41 +18,21 @@
 
 	{%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
 
-	{% if data['list'] == 'national' %}
-
-		{{ mojSubNavigation({
-		  label: 'Sub navigation',
-		  items: [
-			{
-		    text: 'National list',
-		    href: 'subnav-test?list=national',
-		    active: true
-		  },
-			{
-		    text: 'My tasks',
-		    href: 'subnav-test?list=personal'
-		  }
-			]
-		}) }}
-
-	{% else %}
-
-		{{ mojSubNavigation({
-			label: 'Sub navigation',
-			items: [
-			{
-				text: 'National list',
-				href: 'subnav-test?list=national'
-			},
-			{
-				text: 'My tasks',
-				href: 'subnav-test?list=personal',
-				active: true
-			}
-			]
-		}) }}
-
-	{% endif %}
+	{{ mojSubNavigation({
+	  label: 'Sub navigation',
+	  items: [
+	    {
+	    text: 'National list',
+	    href: 'subnav-test?list=national',
+	    active: data['list'] == 'national'
+	  },
+	{
+	    text: 'My tasks',
+	    href: 'subnav-test?list=personal',
+	    active: data['list'] == 'personal'
+	  }
+	    ]
+	}) }}
 
 
 	{# Add a back link block to just override that and not the phase banner #}
