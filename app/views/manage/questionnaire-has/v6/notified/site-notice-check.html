@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did you display a notice at the site?' %}
+
+{% block questions %}
+  <span class="govuk-caption-l">
+    Notifying relevant parties of the application
+  </span>
+  {{ govukRadios({
+    idPrefix: 'site-notice-check',
+    name: 'site-notice-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('site-notice-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('site-notice-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

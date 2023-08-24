@@ -21,6 +21,38 @@
       {{ title }}
     </h1>
 
+    {% set version = "6" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
+      }) }}
+    </h2>
+
+    <!-- <p>
+      Researched July 2023<br>
+      <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+        Confluence user research notes
+      </a>
+    </p> -->
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Simplifying the pattern for ‘How you notified people’ for quicker delivery (extra work for the user) - the plan is to improve this when we build the coming S78
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/task-list',
+      isStartButton: true
+    }) }}
+
+    {% set 5HTML %}
+
     {% set version = "5" %}
 
     <h2 class="govuk-heading-m">
@@ -50,6 +82,8 @@
       href: 'v'+version+'/task-list',
       isStartButton: true
     }) }}
+
+    {% endset -%}
 
     {% set v4HTML %}
 
@@ -151,6 +185,14 @@
       classes: 'govuk-!-margin-top-5',
       items: [
 
+        {
+          heading: {
+            html: 'Version 5 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v5HTML
+          }
+        },
         {
           heading: {
             html: 'Version 4 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
