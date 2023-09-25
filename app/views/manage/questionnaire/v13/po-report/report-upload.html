@@ -1,6 +1,11 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and relevant policies
+  </span>
+
   {% if data['non-determination'] == 'true' %}
     {% set title = 'Upload what your decision notice would have said' %}
     <h1 class="govuk-heading-l">

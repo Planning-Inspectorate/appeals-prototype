@@ -5,6 +5,11 @@
 {% set return = true %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
   {{ govukRadios({
     idPrefix: 'listed-building-check',
     name: 'listed-building-check',

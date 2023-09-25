@@ -3,6 +3,11 @@
 {% set title = 'Do you have any consultation responses or standing advice from statutory consultees to upload?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Consultation responses and representations
+  </span>
+
   {{ govukRadios({
     idPrefix: 'consultation-responses-check',
     name: 'consultation-responses-check',

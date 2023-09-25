@@ -3,6 +3,11 @@
 {% set title = 'Does the development meet or exceed the threshold or criteria in column 2?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+
   {{ govukRadios({
     idPrefix: 'column-two',
     name: 'column-two',

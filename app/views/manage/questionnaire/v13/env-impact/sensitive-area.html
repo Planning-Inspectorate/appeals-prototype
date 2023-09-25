@@ -3,6 +3,11 @@
 {% set title = 'Is the development in, partly in, or likely to affect a sensitive area?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+  
   {% set details %}
     {{ govukTextarea({
       name: 'sensitive-area-details',

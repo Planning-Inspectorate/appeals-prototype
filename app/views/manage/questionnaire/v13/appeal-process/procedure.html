@@ -3,6 +3,11 @@
 {% set title = 'Which procedure do you think is most appropriate for this appeal?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Appeal process
+  </span>
+
   {% set inquiryDays %}
     {{ govukInput({
       id: 'procedure-lenth',

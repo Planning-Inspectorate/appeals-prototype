@@ -3,6 +3,11 @@
 {% set title = 'How did you notify people about the planning application?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Notifying people about the application
+  </span>
+
   {{ govukCheckboxes({
     idPrefix: 'notified-how',
     name: 'notified-how',

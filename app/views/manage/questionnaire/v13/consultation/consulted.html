@@ -3,6 +3,11 @@
 {% set title = 'Did you consult all the relevant statutory consultees about the development?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Consultation responses and representations
+  </span>
+
   {% set bodies %}
     {{ govukTextarea({
       name: 'bodies-consulted',

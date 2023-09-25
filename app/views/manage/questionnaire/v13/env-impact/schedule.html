@@ -3,6 +3,11 @@
 {% set title = 'Is the development a schedule 1 or schedule 2 development?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+
   {{ govukRadios({
     idPrefix: 'schedule',
     name: 'schedule',

@@ -3,6 +3,11 @@
 {% set title = 'Have you issued a screening opinion?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+
   {{ govukRadios({
     idPrefix: 'screening-check',
     name: 'screening-check',

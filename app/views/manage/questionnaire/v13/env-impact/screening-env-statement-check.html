@@ -3,6 +3,11 @@
 {% set title = 'Did your screening opinion say the development needed an environmental statement?' %}
 
 {% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+  
   {{ govukRadios({
     idPrefix: 'screening-env-statement-check',
     name: 'screening-env-statement-check',
