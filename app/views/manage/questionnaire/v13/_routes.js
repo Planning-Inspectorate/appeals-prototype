@@ -631,7 +631,7 @@ router.post('/po-report/community-infrastructure-date', function (req, res) {
 
 router.get('/po-report/complete', function (req, res) {
   if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
+    res.redirect('../site-access/site-entry')
   } else if (!req.session.data['appeal-process-completed']) {
     res.redirect('../appeal-process/procedure')
   } else {
@@ -651,18 +651,13 @@ router.post('/site-access/:page', function (req, res, next) {
   req.session.data[`${req.params.page}-complete`] = 'true'
 
   if (
-    req.session.data['site-visibility-complete']
-    && req.session.data['site-entry-complete']
+    req.session.data['site-entry-complete']
     && req.session.data['health-and-safety-complete']
   ){
     req.session.data['site-access-completed'] = 'true'
   }
 
   next()
-})
-
-router.post('/site-access/site-visibility', function (req, res) {
-  res.redirect('site-entry')
 })
 
 router.post('/site-access/site-entry', function (req, res) {

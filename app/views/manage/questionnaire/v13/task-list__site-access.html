@@ -22,31 +22,6 @@
     rows: [
       {
         key: {
-          html: 'Site visibility'
-        },
-        value: {
-          html: data['site-visibility'] or 'No'
-        }
-        if data['site-visibility-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'site-access/site-visibility?cya=true',
-              html: 'Change'
-            }
-            if data['site-visibility-complete'] else
-            {
-              href: 'site-access/site-visibility',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
           html: 'Inspector access'
         },
         value: {

@@ -1,12 +1,8 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Health and safety issues' %}
+{% set title = 'Add potential safety risks' %}
 
 {% block questions %}
-
-  <span class="govuk-caption-l">
-    Site access
-  </span>
 
   {% set textareaHTML %}
     {{ govukTextarea({
@@ -15,29 +11,46 @@
       value: data['health-and-safety__details'],
       rows: '',
       label: {
-        html: 'Tell us about the health and safety issues'
+        html: 'Add details of the potential risk and what the inspector might need'
       }
     }) }}
   {% endset -%}
-
+  <span class="govuk-caption-l">
+    Site access
+  </span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
 
-  <p class="govuk-body">Understanding any health and safety issues will help an inspector carry out a site visit.</p>
+  <p class="govuk-body">
+    You need to tell inspectors how to prepare for a site visit and what to bring.
+  </p>
 
-  <p class="govuk-!-margin-bottom-2">For example:</p>
+  <p class="govuk-!-margin-bottom-2">
+    What you tell us might include:
+  </p>
   <ul class="govuk-list govuk-list--bullet">
-    <li>animals at the site, for example pets or livestock</li>
-    <li>poor mobile signal at the site</li>
-    <li>access issues for people with limited mobility</li>
-    <li>overgrown vegetation that could restrict access to the site</li>
-    <li>building works or other operations taking place on the site</li>
-    <li>site-specific safety arrangements that are in place</li>
-    <li>areas of the site that require specialist equipment or training for access, for example heights or confined spaces</li>
-    <li>requirements to view the site from a height, for example from a roof or balcony</li>
-    <li>risk of exposure to chemicals, asbestos or radiation</li>
-    <li>unmarked changes in level or missing fittings</li>
+    <li>
+      there is no, or limited mobile reception
+    </li>
+    <li>
+      access is blocked
+    </li>
+    <li>
+      ladders or other equipment is needed
+    </li>
+    <li>
+      site health and safety rules need to be followed (for instance, a hard hat, boots and hi visibility clothing)
+    </li>
+    <li>
+      there is livestock or other animals
+    </li>
+    <li>
+      there is dangerous debris or overgrown vegetation
+    </li>
+    <li>
+      there is potentially hazardous material, such as asbestos
+    </li>
   </ul>
 
   {{ govukRadios({
@@ -45,7 +58,7 @@
     name: 'health-and-safety',
     fieldset: {
       legend: {
-        html: 'Are there any health and safety issues on the appeal site?',
+        html: 'Are there any potential safety risks?',
         classes: 'govuk-fieldset__legend--m'
       }
     },
