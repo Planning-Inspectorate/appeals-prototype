@@ -45,17 +45,45 @@
           ]
         }
       },
+
       {
         key: {
-          html: 'Other appeals'
+          html: 'Are there appeals near the site?'
         },
         value: {
-          html: (data['other-appeals'] or 'No')+('<br>Reference(s):'+data['appeal-refs'] if data['other-appeals'] == 'Yes')
+          html: data['other-appeals-radio'] or 'No'
+        }
+        if data['other-appeals-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+
+        actions: {
+          items: [
+            {
+              href: 'appeal-process/other-appeals-check?cya=true',
+              html: 'Change'
+            }
+            if data['other-appeals-radio'] else
+            {
+              href: 'appeal-process/other-appeals-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Appeal references'
+        },
+        value: {
+          html: data['other-appeal-reference'] or '0123456'
         }
         if data['other-appeals-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
+
         actions: {
           items: [
             {
@@ -64,12 +92,13 @@
             }
             if data['other-appeals-complete'] else
             {
-              href: 'appeal-process/other-appeals',
+              href: 'appeal-process/other-appeals-check',
               html: 'Answer'
             }
           ]
         }
       },
+
       {
         key: {
           html: 'Statement of case'

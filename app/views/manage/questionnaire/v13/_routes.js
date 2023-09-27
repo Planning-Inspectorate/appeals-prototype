@@ -708,11 +708,30 @@ router.post('/appeal-process/:page', function (req, res, next) {
 })
 
 router.post('/appeal-process/procedure', function (req, res) {
-  res.redirect('other-appeals')
+  res.redirect('other-appeals-check')
+})
+
+router.post('/appeal-process/other-appeals-check', function (req, res) {
+  req.session.data['other-appeals-check-complete'] = 'true'
+  if (req.session.data['other-appeals-radio'] == 'Yes') {
+    res.redirect('other-appeal-reference');
+  } else {
+    res.redirect('statement-of-case')
+  }
+})
+
+router.post('/appeal-process/other-appeal-reference', function (req, res) {
+  req.session.data['other-appeal-reference-complete'] = 'true'
+  res.redirect('other-appeals');
 })
 
 router.post('/appeal-process/other-appeals', function (req, res) {
-  res.redirect('statement-of-case')
+  req.session.data['other-appeals-complete'] = 'true'
+  if (req.session.data['other-appeals'] == 'Yes') {
+    res.redirect('other-appeal-reference?extraotherappeal=yes');
+  } else {
+    res.redirect('statement-of-case')
+  }
 })
 
 router.post('/appeal-process/statement-of-case', function (req, res) {

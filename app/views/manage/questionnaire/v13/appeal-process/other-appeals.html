@@ -1,50 +1,112 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Are there any other appeals next to or close to the site still being considered?' %}
+{% set title = 'Nearby appeal added to the case' %}
 
-{% block questions %}
+{% set prototypeLinks = [
+  {
+    href: '?extraotherappeal=yes',
+    text: 'Add another appeal'
+  },
+  {
+    href: '?extraotherappeal=',
+    text: 'One other appeal'
+  }
+] %}
 
-  <span class="govuk-caption-l">
-    Appeal process
-  </span>
+{% block content %}
 
-  {% set appealRefs %}
-    {{ govukInput({
-      id: 'appeal-refs',
-      name: 'appeal-refs',
-      value: data['appeal-refs'],
-      label: {
-        html: 'Appeal reference number(s)'
-      },
-      hint: {
-        html: 'You can enter more than one, separated by commas'
-      }
-    }) }}
-  {% endset -%}
-  {{ govukRadios({
-    idPrefix: 'other-appeals',
-    name: 'other-appeals',
-    fieldset: {
-      legend: {
-        html: title,
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
-      }
-    },
-    items: [
-      {
-        html: 'Yes',
-        value: 'Yes',
-        checked: checked('other-appeals','Yes'),
-        conditional: {
-          html: appealRefs
+  <form method="post">
+
+    <!-- appeal metadata -->
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">
+          Appeal process
+        </span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+      </div>
+      <div class="govuk-grid-column-one-half">
+
+        {{ govukSummaryList({
+          classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+          rows: [
+
+            {
+              key: {
+                text: 'Other appeal 1'
+              },
+              value: {
+                html: (data['other-appeal-reference'] or '0176256')
+              },
+              actions: {
+                items: [
+                  {
+                    href: "other-appeal-reference",
+                    text: "Remove",
+                    visuallyHiddenText: 'appeal 0176256'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Other appeal 2'
+              },
+              value: {
+                html: '0176257'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "?extraotherappeal=",
+                    text: "Remove",
+                    visuallyHiddenText: 'appeal 0176257'
+                  }
+                ]
+              }
+            } if data['extraotherappeal'] == 'yes'
+
+          ]
+        }) }}
+
+      </div>
+    </div>
+
+    {{ govukRadios({
+      idPrefix: 'other-appeals',
+      name: 'other-appeals',
+      fieldset: {
+        legend: {
+          html: 'Add another appeal?',
+          classes: 'govuk-fieldset__legend--m',
+          isPageHeading: false
         }
       },
-      {
-        html: 'No',
-        value: 'No',
-        checked: checked('other-appeals','No')
-      }
-    ]
-  }) }}
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes'
+        },
+        {
+          html: 'No',
+          value: 'No'
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+
+  </form>
+
+  <p class="govuk-body">
+    <a href="../task-list" class="govuk-link--no-visited-state">
+      Return to questionnaire homepage
+    </a>
+  </p>
+
 {% endblock %}
