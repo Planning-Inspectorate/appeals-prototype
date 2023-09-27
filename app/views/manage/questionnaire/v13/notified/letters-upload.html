@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Upload your letter/email to interested parties and their addresses' %}
+{% set title = 'Upload letters or emails sent to interested parties with their addresses' %}
 
 {% block questions %}
 
@@ -18,7 +18,7 @@
       name: 'letters-upload',
       classes: 'moj-multi-file-upload__input',
       label: {
-        text: 'Upload a file',
+        text: 'Upload files',
         classes: 'govuk-label--m'
       },
       hint: {
@@ -27,7 +27,7 @@
     }) }}
 
     {{govukButton({
-      text: 'Upload file',
+      text: 'Upload files',
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
   {% endset %}
