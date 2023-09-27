@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Listed Building Number' %}
+{% set title = 'Tell us the list entry number' %}
 
 {% block questions %}
 
@@ -15,16 +15,16 @@
     </h1>
 
     <p class='govuk-body'>
-      Enter the Historic England list number for the listed building that will be changed by the proposed development.
+      Add the Historic England listed entry number for the building or site.
     </p>
 
     <p class='govuk-body'>
-      If more than one listed building is going to be changed, you can add more list numbers later.
+      You can add another building or site later, if needed.
     </p>
 
     {{ govukInput({
       label: {
-        text: "Historic England number"
+        text: "Seven digit number"
       },
       classes: "govuk-input--width-10",
       id: "historicenglandsearchnumber",

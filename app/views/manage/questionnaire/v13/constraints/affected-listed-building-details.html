@@ -1,13 +1,13 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Affected Listed Building Number' %}
+{% set title = 'Tell us the list entry number' %}
 
 {% block questions %}
 
   <span class="govuk-caption-l">
     Constraints, designations and other issues
   </span>
-  
+
   <div class="govuk-form-group">
     <h1 class="govuk-label-wrapper">
       <label class="govuk-label govuk-label--l" for="listedplanning">
@@ -16,16 +16,16 @@
     </h1>
 
     <p class='govuk-body'>
-      Enter the Historic England list number for the affected listed building.
+      Add the Historic England listed entry number for the building or site.
     </p>
 
     <p class='govuk-body'>
-      If more than one listed building is affected, you can add more list numbers later.
+      You can add another building or site later, if needed.
     </p>
 
     {{ govukInput({
       label: {
-        text: "Historic England number"
+        text: "Seven digit number"
       },
       classes: "govuk-input--width-10",
       id: "historicenglandsearchnumber",

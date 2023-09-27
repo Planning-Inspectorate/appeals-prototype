@@ -110,7 +110,7 @@ router.post('/constraints/scheduled-monument', function (req, res) {
 })
 
 router.post('/constraints/conservation-check', function (req, res) {
-  if (req.session.data['conservation-check'] == 'In a conservation area' || req.session.data['conservation-check'] == 'Next to a conservation area') {
+  if (req.session.data['conservation-check'] == 'Yes') {
     res.redirect('conservation-upload');
   } else {
     res.redirect('protected-species');
@@ -731,10 +731,6 @@ router.post('/appeal-process/statement-of-case', function (req, res) {
 router.post('/appeal-process/extra-conditions', function (req, res) {
   res.redirect('../task-list')
 })
-
-
-
-
 
 //
 // SAVE AND RETURN
