@@ -11,13 +11,13 @@
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
-    <p class="govuk-body">Upload a copy of what your decision notice would have said if you&rsquo;d decided the application.</p>
+    <p class="govuk-body">Upload a copy of what your decision notice would have said if you’d decided the application.</p>
   {% else %}
-    {% set title = 'Upload the planning officer&rsquo;s report' %}
+    {% set title = 'Upload the planning officer’s report' %}
     <h1 class="govuk-heading-l">
       {{ title | safe }}
     </h1>
-    <p class="govuk-body">Upload the planning officer&rsquo;s report to committee or delegated report on the application, and any other relevant documents or minutes.</p>
+    <p class="govuk-body">Upload the planning officer’s report to committee or delegated report on the application, and any other relevant documents or minutes.</p>
   {% endif %}
 
 
@@ -26,7 +26,7 @@
       name: 'report-upload',
       classes: 'moj-multi-file-upload__input',
       label: {
-        text: 'Upload a file',
+        text: 'Upload files',
         classes: 'govuk-label--m'
       },
       hint: {
@@ -35,7 +35,7 @@
     }) }}
 
     {{govukButton({
-      text: 'Upload file',
+      text: 'Upload files',
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
   {% endset %}
@@ -52,7 +52,7 @@
 {% block pageScripts %}
   <script>
     // Hacky hacky single file
-    $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop a file here or ')
+    $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop files here or ')
     $('.moj-multi-file-upload__dropzone .govuk-button').text('Select file')
     $('.moj-multi-file__uploaded-files').on('fileAdded', function() {
       $('.moj-multi-file-upload__upload').hide()

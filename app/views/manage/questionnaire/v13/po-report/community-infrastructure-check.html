@@ -8,6 +8,12 @@
     Planning officer’s report and relevant policies
   </span>
 
+  {% set hintText %}
+    <p class="govuk-!-margin-bottom-2">
+      Tell us about any levy that is formally adopted or due to be adopted.
+    </p>
+  {% endset -%}
+
   {{ govukRadios({
     idPrefix: 'community-infrastructure-check',
     name: 'community-infrastructure-check',
@@ -19,7 +25,7 @@
       }
     },
     hint: {
-      html: 'Tell us about any levy that is formally adopted or due to be adopted'
+      html: hintText
     },
     items: [
       {

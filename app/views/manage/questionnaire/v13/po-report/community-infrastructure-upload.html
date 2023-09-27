@@ -18,7 +18,7 @@
       name: 'community-infrastructure-upload',
       classes: 'moj-multi-file-upload__input',
       label: {
-        text: 'Upload file',
+        text: 'Upload files',
         classes: 'govuk-label--m'
       },
       hint: {
@@ -27,7 +27,7 @@
     }) }}
 
     {{govukButton({
-      text: 'Upload file',
+      text: 'Upload files',
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
   {% endset %}
@@ -44,7 +44,7 @@
 {% block pageScripts %}
   <script>
     // Hacky hacky single file
-    $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop a file here or ')
+    $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop files here or ')
     $('.moj-multi-file-upload__dropzone .govuk-button').text('Select file')
     $('.moj-multi-file__uploaded-files').on('fileAdded', function() {
       $('.moj-multi-file-upload__upload').hide()

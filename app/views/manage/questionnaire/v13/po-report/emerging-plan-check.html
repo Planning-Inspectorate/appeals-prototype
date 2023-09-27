@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Do you have an emerging plan that&rsquo;s relevant to this appeal?' %}
+{% set title = 'Do you have an emerging plan that is relevant to this appeal?' %}
 
 {% block questions %}
 
@@ -9,10 +9,17 @@
   </span>
 
   {% set hintText %}
-    <p class="govuk-!-margin-bottom-2">Tell us if you have a:</p>
-    <ul class="govuk-list govuk-list--bullet govuk-hint">
-      <li>development plan document that has been submitted for examination, or has been examined and found sound or met its basic conditions</li>
-      <li>neighbourhood plan that is awaiting or has passed a referendum</li>
+    <p class="govuk-!-margin-bottom-2">Tell us if:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        you have a development plan that has been submitted for examination
+      </li>
+      <li>
+        a development plan that has been examined and found to be sound or met its basic conditions
+      </li>
+      <li>
+        you have a neighbourhood plan that is awaiting, or has passed a referendum
+      </li>
     </ul>
   {% endset -%}
   {{ govukRadios({
