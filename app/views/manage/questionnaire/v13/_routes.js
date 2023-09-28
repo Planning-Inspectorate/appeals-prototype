@@ -12,6 +12,10 @@ router.get('*', function(req, res, next){
   next()
 })
 
+router.post('/access/enter-code', function (req, res) {
+  res.redirect('../task-list')
+})
+
 router.post('*', function(req, res, next){
   if (req.session.data['cya']) {
     delete req.session.data['cya']
