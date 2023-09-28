@@ -22,6 +22,31 @@
     rows: [
       {
         key: {
+          html: 'Is this the correct type of appeal?'
+        },
+        value: {
+          html: data['appropriate'] or 'Yes'
+        }
+        if data['appropriate-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/appropriate?cya=true',
+              html: 'Change'
+            }
+              if data['appropriate-complete'] else
+            {
+              href: 'constraints/appropriate',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
           html: 'Listed building'
         },
         value: {

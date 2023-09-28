@@ -48,7 +48,7 @@
 
       {
         key: {
-          html: 'Are there appeals near the site?'
+          html: 'Other appeals near the site'
         },
         value: {
           html: data['other-appeals-radio'] or 'No'
@@ -97,7 +97,7 @@
             }
           ]
         }
-      },
+      } if data['other-appeals-check-complete'],
 
       {
         key: {
