@@ -662,6 +662,7 @@ router.post('/site-access/:page', function (req, res, next) {
 
   if (
     req.session.data['site-entry-complete']
+    && req.session.data['neighbours-complete']
     && req.session.data['health-and-safety-complete']
   ){
     req.session.data['site-access-completed'] = 'true'
@@ -671,7 +672,28 @@ router.post('/site-access/:page', function (req, res, next) {
 })
 
 router.post('/site-access/site-entry', function (req, res) {
-  res.redirect('health-and-safety')
+  res.redirect('neighbours-land')
+})
+
+router.post('/site-access/neighbours-land', function (req, res) {
+  if (req.session.data['neighbours-land'] == "Yes") {
+    res.redirect('neighbours-address')
+  } else {
+    req.session.data['neighbours-complete'] = 'true'
+    res.redirect('health-and-safety')
+  }
+})
+
+router.post('/site-access/neighbours-address', function (req, res) {
+  res.redirect('neighbours')
+})
+
+router.post('/site-access/neighbours', function (req, res) {
+  if (req.session.data['add-neighbours'] == 'Yes') {
+    res.redirect('neighbours-address?addedneighbours=yes');
+  } else {
+    res.redirect('health-and-safety')
+  }
 })
 
 router.post('/site-access/health-and-safety', function (req, res) {
@@ -703,21 +725,17 @@ router.post('/appeal-process/:page', function (req, res, next) {
   if (
     req.session.data['procedure-complete']
     && req.session.data['other-appeals-complete']
+    && req.session.data['extra-conditions-complete']
     && req.session.data['statement-of-case-complete']
   ){
-    if (req.session.data['statement-of-case'] == 'No'){
-      if (req.session.data['extra-conditions-complete']){
-        req.session.data['appeal-process-completed'] = 'true'
-      }
-    } else {
-      req.session.data['appeal-process-completed'] = 'true'
-    }
+    req.session.data['appeal-process-completed'] = 'true'
   }
 
   next()
 })
 
 router.post('/appeal-process/procedure', function (req, res) {
+  req.session.data['procedure-complete'] = 'true'
   res.redirect('other-appeals-check')
 })
 
@@ -726,7 +744,8 @@ router.post('/appeal-process/other-appeals-check', function (req, res) {
   if (req.session.data['other-appeals-radio'] == 'Yes') {
     res.redirect('other-appeal-reference');
   } else {
-    res.redirect('statement-of-case')
+    req.session.data['other-appeals-complete'] = 'true'
+    res.redirect('extra-conditions');
   }
 })
 
@@ -740,20 +759,16 @@ router.post('/appeal-process/other-appeals', function (req, res) {
   if (req.session.data['other-appeals'] == 'Yes') {
     res.redirect('other-appeal-reference?extraotherappeal=yes');
   } else {
-    res.redirect('statement-of-case')
-  }
-})
-
-router.post('/appeal-process/statement-of-case', function (req, res) {
-  if (req.session.data['statement-of-case'] == 'No') {
     res.redirect('extra-conditions');
-  } else {
-    res.redirect('../task-list');
   }
 })
 
 router.post('/appeal-process/extra-conditions', function (req, res) {
-  res.redirect('../task-list')
+  res.redirect('statement-of-case')
+})
+
+router.post('/appeal-process/statement-of-case', function (req, res) {
+  res.redirect('../task-list');
 })
 
 //

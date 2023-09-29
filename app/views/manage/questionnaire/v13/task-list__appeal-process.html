@@ -64,7 +64,7 @@
               href: 'appeal-process/other-appeals-check?cya=true',
               html: 'Change'
             }
-            if data['other-appeals-radio'] else
+            if data['other-appeals-complete'] else
             {
               href: 'appeal-process/other-appeals-check',
               html: 'Answer'
@@ -92,12 +92,38 @@
             }
             if data['other-appeals-complete'] else
             {
-              href: 'appeal-process/other-appeals-check',
+              href: 'appeal-process/other-appeals',
               html: 'Answer'
             }
           ]
         }
-      } if data['other-appeals-check-complete'],
+      } if data['other-appeals-radio'] == "Yes",
+
+      {
+        key: {
+          html: 'Extra conditions'
+        },
+        value: {
+          html: (data['extra-conditions-check'] or 'No')+('<br>Conditions:'+data['extra-conditions'] if data['extra-conditions-check'] == 'Yes')
+        }
+        if data['extra-conditions-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'appeal-process/extra-conditions?cya=true',
+              html: 'Change'
+            }
+            if data['extra-conditions-complete'] else
+            {
+              href: 'appeal-process/extra-conditions',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
 
       {
         key: {
@@ -123,32 +149,7 @@
             }
           ]
         }
-      },
-      {
-        key: {
-          html: 'Extra conditions'
-        },
-        value: {
-          html: (data['extra-conditions-check'] or 'No')+('<br>Conditions:'+data['extra-conditions'] if data['extra-conditions-check'] == 'Yes')
-        }
-        if data['extra-conditions-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'appeal-process/extra-conditions?cya=true',
-              html: 'Change'
-            }
-            if data['extra-conditions-complete'] else
-            {
-              href: 'appeal-process/extra-conditions',
-              html: 'Answer'
-            }
-          ]
-        }
-      } if data['statement-of-case'] == 'No'
+      }
     ]
   }) }}
 </li>
