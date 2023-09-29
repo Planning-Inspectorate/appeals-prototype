@@ -1,6 +1,6 @@
 <li>
   <h2 class="app-task-list__section">
-    <span class="app-task-list__section-number">3. </span> Notifying people about the application
+    <span class="app-task-list__section-number">3. </span> Notifying relevant parties about the application
     {% if data['notified-completed'] == 'true' %}
       {{ govukTag({
         html: 'Completed'
@@ -22,7 +22,7 @@
     rows: [
       {
         key: {
-          html: 'How you notified people'
+          html: 'Who was notified'
         },
         value: {
           html: data['notified-how'] | e | replace(',', '<br>') or 'A press advert'
