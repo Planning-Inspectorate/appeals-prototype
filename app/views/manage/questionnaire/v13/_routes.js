@@ -51,7 +51,8 @@ router.post('/constraints/:page', function (req, res, next) {
   req.session.data[`${req.params.page}-complete`] = 'true'
 
   if (
-    req.session.data['listed-building-check-complete']
+    req.session.data['appropriate-complete']
+    && req.session.data['listed-building-check-complete']
     && req.session.data['affected-listed-building-check-complete']
     && req.session.data['scheduled-monument-complete']
     && req.session.data['conservation-check-complete']
@@ -67,6 +68,11 @@ router.post('/constraints/:page', function (req, res, next) {
   }
 
   next()
+})
+
+
+router.post('/constraints/appropriate', function (req, res) {
+  res.redirect('listed-building-check');
 })
 
 router.post('/constraints/listed-building-check', function (req, res) {
