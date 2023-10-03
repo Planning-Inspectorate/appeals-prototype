@@ -735,6 +735,15 @@ router.post('/appeal-process/:page', function (req, res, next) {
 })
 
 router.post('/appeal-process/procedure', function (req, res) {
+  if (req.session.data['procedure'] != 'Written representations') {
+    res.redirect('procedure-reason');
+  } else {
+    req.session.data['procedure-complete'] = 'true'
+    res.redirect('other-appeals-check')
+  }
+})
+
+router.post('/appeal-process/procedure-reason', function (req, res) {
   req.session.data['procedure-complete'] = 'true'
   res.redirect('other-appeals-check')
 })

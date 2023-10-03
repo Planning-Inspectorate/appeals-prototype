@@ -25,7 +25,7 @@
           html: 'Procedure type'
         },
         value: {
-          html: (data['procedure'] or 'Written representations')+('<br>Length:'+data['procedure-lenth'] if data['procedure'] == 'Inquiry')
+          html: (data['procedure'] or 'Written representations')+('<br>Length in days: '+data['procedure-length'] if data['procedure'] == 'Inquiry')
         }
         if data['procedure-complete'] else
         {
@@ -45,7 +45,31 @@
           ]
         }
       },
-
+      {
+        key: {
+          html: 'Procedure reason'
+        },
+        value: {
+          html: data['procedure-reason']
+        }
+        if data['procedure-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'appeal-process/procedure?cya=true',
+              html: 'Change'
+            }
+            if data['procedure-complete'] else
+            {
+              href: 'appeal-process/procedure',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['procedure-reason'],
       {
         key: {
           html: 'Appeals near the site'
