@@ -1,6 +1,6 @@
 <li>
   <h2 class="app-task-list__section">
-    <span class="app-task-list__section-number">3. </span> Notifying relevant parties about the application
+    <span class="app-task-list__section-number">3. </span> Notifying relevant parties of the application
     {% if data['notified-completed'] == 'true' %}
       {{ govukTag({
         html: 'Completed'
@@ -20,6 +20,31 @@
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
+      {
+        key: {
+          html: 'Who was notified'
+        },
+        value: {
+          html: '<a href="#">'+(data['notified-who'] or 'Notified list.pdf')+'</a>'
+        }
+        if data['notified-who-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/notified-who?cya=true',
+              html: 'Change'
+            }
+            if data['notified-who-complete'] else
+            {
+              href: 'notified/notified-who',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
       {
         key: {
           html: 'Type of notification'
