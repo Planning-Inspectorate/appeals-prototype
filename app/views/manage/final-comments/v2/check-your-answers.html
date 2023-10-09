@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Check your answers and submit your final comments' %}
+
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: 'Final comments'
+        },
+        value: {
+          html: data['final-comments'] or 'Final comments go here etc etc'
+        },
+        actions: {
+          items: [
+            {
+              href: 'final-comments',
+              text: 'Change',
+              visuallyHiddenText: ' your final comments'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Submit final comments',
+    href: 'confirmation'
+  }) }}
+{% endblock %}

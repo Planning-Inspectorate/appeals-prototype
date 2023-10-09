@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Final comments submitted' %}
+
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleHtml: title
+      }) }}
+
+      <p class="govuk-body">We&rsquo;ve sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p class="govuk-body">We’ll check you’ve submitted everything we need to progress the appeal and will contact you if anything is missing.</p>
+
+      <p class="govuk-body">
+        <a href="/manage/appeals/v3/?no-appeals=false&finalcomments=complete" class="govuk-link--no-visited-state">View your planning appeals</a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

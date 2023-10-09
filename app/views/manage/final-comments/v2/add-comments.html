@@ -1,0 +1,133 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set back = true %}
+{% set title = 'Add final comments' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back to manage your appeals',
+    href: '/manage/appeals/v3'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      {# Tweak the summary list to be smaller #}
+
+      <style>
+        .appeal-details .govuk-summary-list__key,
+        .appeal-details .govuk-summary-list__value,
+        .appeal-details .govuk-summary-list__actions {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        /* Give some space for the tag being inline now */
+        .app-task-list__section {
+          padding-right: 140px
+        }
+      </style>
+
+      {{ govukSummaryList({
+        classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
+        rows: [
+          {
+            key: {
+              text: 'Appeal reference'
+            },
+            value: {
+              text: '1345264'
+            }
+          },
+          {
+            key: {
+              text: 'Planning application number'
+            },
+            value: {
+              text: '21/05058/FUL'
+            }
+          },
+          {
+            key: {
+              text: 'Deadline'
+            },
+            value: {
+              text: '6' | daysInFuture
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <form method="post" action="">
+
+        <p class="govuk-body">Your final comments should only respond to the statements from the appellant or interested parties, and must not include any new evidence.</p>
+
+        <p class="govuk-body">If you want to add documents to support your comments, for example photographs, you can upload them in the next step.</p>
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+          Sensitive information
+        </h2>
+
+        <p class="govuk-body">You must not include any sensitive information in your comments.</p>
+
+        {% include "_includes/sensitive-information-list.html" %}
+
+        {{ govukTextarea({
+          name: 'final-comments',
+          id: 'final-comments',
+          value: data['final-comments'],
+          rows: '8',
+          label: {
+            html: 'What are your final comments?',
+            classes: 'govuk-label--m'
+          }
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: 'appeal-statement-confirmation',
+          name: 'appeal-statement-confirmation',
+          classes: 'checkboxes-long-text',
+          items: [
+            {
+              html: 'I confirm that I have not included any sensitive information in my final comments.',
+              value: 'I confirm that I have not included any sensitive information in my final comments.',
+              checked: checked('appeal-statement-confirmation','I confirm that I have not included any sensitive information in my final comments.')
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
