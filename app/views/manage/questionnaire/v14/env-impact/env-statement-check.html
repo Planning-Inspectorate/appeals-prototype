@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did the applicant do the environmental statement?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'env-statement-check',
+    name: 'env-statement-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('env-statement-check','Yes')
+      },
+      {
+        html: 'No, they have a negative screening direction',
+        value: 'No',
+        checked: checked('env-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

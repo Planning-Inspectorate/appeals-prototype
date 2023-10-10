@@ -21,7 +21,7 @@
       {{ title }}
     </h1>
 
-    {% set version = "13" %}
+    {% set version = "14" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -33,22 +33,7 @@
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        changes to listed building questions to ask for Historic England list entry numbers, returning records from Historic England to check and add
-      </li>
-      <li>
-        changes to nearby appeals to make the data more useful
-      </li>
-      <li>
-        additional ‘Is this appeal type approopriate’ question to align this with HAS
-      </li>
-      <li>
-        removed question about site visibility
-      </li>
-      <li>
-        added question about neighbour access
-      </li>
-      <li>
-        content updates
+        content updates following the user research
       </li>
     </ul>
 
@@ -57,6 +42,47 @@
       href: 'v'+version+'/access/email-appeal-started',
       isStartButton: true
     }) }}
+
+    {% set v13HTML %}
+
+      {% set version = "13" %}
+
+      <p class="govuk-body">
+        Researched October 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1281359873">
+          View the research outputs on Confluence
+        </a>
+      </p>
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          changes to listed building questions to ask for Historic England list entry numbers, returning records from Historic England to check and add
+        </li>
+        <li>
+          changes to nearby appeals to make the data more useful
+        </li>
+        <li>
+          additional ‘Is this appeal type approopriate’ question to align this with HAS
+        </li>
+        <li>
+          removed question about site visibility
+        </li>
+        <li>
+          added question about neighbour access
+        </li>
+        <li>
+          content updates
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/access/email-appeal-started',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v12HTML %}
 
@@ -105,11 +131,12 @@
 
     {% set v10HTML %}
       {% set version = "10" %}
+
       <p class="govuk-body">
         Researched October 2022<br>
         <a href="https://miro.com/app/board/uXjVPJrQJJo=/">
           View the research outputs on Miro
-        </a>.
+        </a>
       </p>
 
       <p class="govuk-!-margin-bottom-2">Changes:</p>
@@ -136,6 +163,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 13 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v13HTML
+          }
+        },
         {
           heading: {
             html: 'Version 12 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

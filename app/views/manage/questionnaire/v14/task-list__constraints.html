@@ -1,0 +1,454 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">1. </span> Constraints, designations and other issues
+    {% if data['constraints-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['constraints-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Is this the correct type of appeal?'
+        },
+        value: {
+          html: data['appropriate'] or 'Yes'
+        }
+        if data['appropriate-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/appropriate?cya=true',
+              html: 'Change'
+            }
+              if data['appropriate-complete'] else
+            {
+              href: 'constraints/appropriate',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Changes a listed building'
+        },
+        value: {
+          html: data['listed-building-check'] or 'No'
+        }
+        if data['listed-building-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/listed-building-check?cya=true',
+              html: 'Change'
+            }
+            if data['listed-building-check-complete'] else
+            {
+              href: 'constraints/listed-building-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Listed buiding details'
+        },
+        value: {
+          html: ('1282032')
+               +('<br>Grade II listed building')
+               +('<br>138-142, York Road, Bedminster, Bristol, BS3 4AL')
+        }
+        if data['listed-building-details-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/listed-building-details?cya=true',
+              html: 'Change'
+            }
+            if data['listed-building-details-complete'] else
+            {
+              href: 'constraints/listed-building-details',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['listed-building-check'] == 'Yes',
+      {
+        key: {
+          html: 'Affects a listed building'
+        },
+        value: {
+          html: data['affected-listed-building-check'] or 'No'
+        }
+        if data['affected-listed-building-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/affected-listed-building-check?cya=true',
+              html: 'Change'
+            }
+            if data['affected-listed-building-check-complete'] else
+            {
+              href: 'constraints/affected-listed-building-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Affected listed buiding details'
+        },
+        value: {
+          html: ('1282050')
+               +('<br>Grade II listed building')
+               +('<br>155, York Road, Bedminster, Bristol, BS3 4AL')
+        }
+        if data['affected-listed-building-details-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/affected-listed-building-details?cya=true',
+              html: 'Change'
+            }
+            if data['affected-listed-building-details-complete'] else
+            {
+              href: 'constraints/affected-listed-building-details',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['affected-listed-building-check'] == 'Yes',
+      {
+        key: {
+          html: 'Affects a scheduled monument'
+        },
+        value: {
+          html: data['scheduled-monument'] or 'No'
+        }
+        if data['scheduled-monument-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/scheduled-monument?cya=true',
+              html: 'Change'
+            }
+            if data['scheduled-monument-complete'] else
+            {
+              href: 'constraints/scheduled-monument',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Conservation area'
+        },
+        value: {
+          html: data['conservation-check'] or 'Not in or next to a conservation area'
+        }
+        if data['conservation-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/conservation-check?cya=true',
+              html: 'Change'
+            }
+            if data['conservation-check-complete'] else
+            {
+              href: 'constraints/conservation-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Conservation area map and guidance'
+        },
+        value: {
+          html: data['conservation-upload'] or 'conservation-map.pdf'
+        }
+        if data['conservation-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/conservation-upload?cya=true',
+              html: 'Change'
+            }
+            if data['conservation-upload-complete'] else
+            {
+              href: 'constraints/conservation-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['conservation-check'] in ['In a conservation area', 'Next to a conservation area'],
+      {
+        key: {
+          html: 'Protected species'
+        },
+        value: {
+          html: data['protected-species'] or 'No'
+        }
+        if data['protected-species-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/protected-species?cya=true',
+              html: 'Change'
+            }
+            if data['protected-species-complete'] else
+            {
+              href: 'constraints/protected-species',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Green belt'
+        },
+        value: {
+          html: data['green-belt'] or 'No'
+        }
+        if data['green-belt-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/green-belt?cya=true',
+              html: 'Change'
+            }
+            if data['green-belt-complete'] else
+            {
+              href: 'constraints/green-belt',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Area of outstanding natural beauty'
+        },
+        value: {
+          html: data['outstanding-natural-beauty'] or 'No'
+        }
+        if data['outstanding-natural-beauty-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/outstanding-natural-beauty?cya=true',
+              html: 'Change'
+            }
+            if data['outstanding-natural-beauty-complete'] else
+            {
+              href: 'constraints/outstanding-natural-beauty',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Designated sites'
+        },
+        value: {
+          html: (data['designated-sites'] | e | replace(',', '<br>') or 'No, it is not in, near or likely to affect any designated sites') if data['designated-sites'] != 'No, it is not in, near or likely to affect any designated sites' else 'No, it is not in, near or likely to affect any designated sites'
+        }
+        if data['designated-sites-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/designated-sites?cya=true',
+              html: 'Change'
+            }
+            if data['designated-sites-complete'] else
+            {
+              href: 'constraints/designated-sites',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Tree Preservation Order'
+        },
+        value: {
+          html: data['tree-order-check'] or 'No'
+        }
+        if data['tree-order-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/tree-order-check?cya=true',
+              html: 'Change'
+            }
+            if data['tree-order-check-complete'] else
+            {
+              href: 'constraints/tree-order-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Tree Preservation Order extent'
+        },
+        value: {
+          html: data['tree-order-upload'] or 'tree-preservation-order.pdf'
+        }
+        if data['tree-order-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/tree-order-upload?cya=true',
+              html: 'Change'
+            }
+            if data['tree-order-upload-complete'] else
+            {
+              href: 'constraints/tree-order-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['tree-order-check'] == 'Yes',
+      {
+        key: {
+          html: 'Gypsy or Traveller'
+        },
+        value: {
+          html: data['traveller'] or 'No'
+        }
+        if data['traveller-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/traveller?cya=true',
+              html: 'Change'
+            }
+            if data['traveller-complete'] else
+            {
+              href: 'constraints/traveller',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Public right of way'
+        },
+        value: {
+          html: data['right-of-way-check'] or 'No'
+        }
+        if data['right-of-way-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/right-of-way-check?cya=true',
+              html: 'Change'
+            }
+            if data['right-of-way-check-complete'] else
+            {
+              href: 'constraints/right-of-way-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Definitive map and statement extract'
+        },
+        value: {
+          html: data['right-of-way-upload'] or 'right-of-way.pdf'
+        }
+        if data['right-of-way-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/right-of-way-upload?cya=true',
+              html: 'Change'
+            }
+            if data['right-of-way-upload-complete'] else
+            {
+              href: 'constraints/right-of-way-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['right-of-way-check'] == 'Yes'
+    ]
+  }) }}
+</li>

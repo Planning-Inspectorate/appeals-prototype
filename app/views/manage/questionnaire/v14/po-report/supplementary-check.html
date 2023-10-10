@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did any supplementary planning documents inform the outcome of the application?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and relevant policies
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'supplementary-check',
+    name: 'supplementary-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('supplementary-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('supplementary-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}
