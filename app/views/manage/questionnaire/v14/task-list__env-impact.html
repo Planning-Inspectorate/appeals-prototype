@@ -195,6 +195,66 @@
           ]
         }
       } if data['screening-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Scoping opinion received'
+        },
+        value: {
+          html: data['scoping-check'] or 'No'
+        }
+        if data['scoping-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/scoping-check?cya=true',
+              html: 'Change'
+            }
+            if data['scoping-check-complete'] else
+            {
+              href: 'env-impact/scoping-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['screening-env-statement-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Scoping opinion received'
+        },
+        value: {
+          html: data['scoping-upload'] or 'scoping-opinion.pdf'
+        }
+        if data['scoping-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/scoping-upload?cya=true',
+              html: 'Change'
+            }
+            if data['scoping-upload-complete'] else
+            {
+              href: 'env-impact/scoping-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['scoping-check'] == 'Yes',
+
+
+
+
+
+
+
+
       {
         key: {
           html: 'Applicant did environmental statement'

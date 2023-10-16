@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Did the applicant do the environmental statement?' %}
+{% set title = 'Did you receive a scoping opinion?' %}
 
 {% block questions %}
 
@@ -9,8 +9,8 @@
   </span>
 
   {{ govukRadios({
-    idPrefix: 'env-statement-check',
-    name: 'env-statement-check',
+    idPrefix: 'scoping-check',
+    name: 'scoping-check',
     fieldset: {
       legend: {
         html: title,
@@ -22,12 +22,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('env-statement-check','Yes')
+        checked: checked('scoping-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('env-statement-check','No')
+        checked: checked('scoping-check','No')
       }
     ]
   }) }}

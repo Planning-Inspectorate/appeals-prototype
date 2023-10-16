@@ -345,11 +345,24 @@ router.post('/env-impact/screening-upload', function (req, res) {
 
 router.post('/env-impact/screening-env-statement-check', function (req, res) {
   if (req.session.data['screening-env-statement-check'] == 'Yes') {
-    res.redirect('env-statement-check');
+    res.redirect('scoping-check');
   } else {
     req.session.data['screening-env-statement-check'] = 'No'
     res.redirect('applicant-env-statement-check');
   }
+})
+
+router.post('/env-impact/scoping-check', function (req, res) {
+  if (req.session.data['scoping-check'] == 'Yes') {
+    res.redirect('scoping-upload');
+  } else {
+    req.session.data['scoping-check'] = 'No'
+    res.redirect('env-statement-check');
+  }
+})
+
+router.post('/env-impact/scoping-upload', function (req, res) {
+  res.redirect('env-statement-check');
 })
 
 router.post('/env-impact/env-statement-check', function (req, res) {
