@@ -35,18 +35,31 @@
       <!-- <p class="govuk-!-margin-bottom-2">
         Changes:
       </p>
+      -->
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          added routes for listed building appeals
+          <a href="v1/planned-maintenance-soon" class="govuk-link">
+            planned maintenance coming soon
+          </a>
         </li>
-      </ul> -->
+        <li>
+          <a href="v1/service-unavailable-planned" class="govuk-link">
+            service is unavailable (planned)
+          </a>
+        </li>
+        <li>
+          <a href="v1/service-unavailable" class="govuk-link">
+            service is unavailable (unexpected)
+          </a>
+        </li>
+      </ul>
 
-      {{ govukButton({
+      <!-- {{ govukButton({
         html: 'View prototype',
         href: 'v'+version+'/planned-maintenance-soon',
         isStartButton: true
-      }) }}
+      }) }} -->
 
     </section>
 

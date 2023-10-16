@@ -2,10 +2,16 @@
 
 {% set title = 'Before you start' %}
 
-{% set prototypeLinks = [{
-  href: 'service-unavailable-planned',
-  text: 'Service is unavailable (planned)'
-}] %}
+{% set prototypeLinks = [
+  {
+    href: 'service-unavailable-planned',
+    text: 'Service is unavailable (planned)'
+  },
+  {
+    href: 'service-unavailable',
+    text: 'Service is unavailable (unexpected)'
+  }
+] %}
 
 {% block questions %}
 

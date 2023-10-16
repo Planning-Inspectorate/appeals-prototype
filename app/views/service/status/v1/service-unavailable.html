@@ -4,6 +4,17 @@
 
 {% set title = 'Sorry, there is a problem with the service' %}
 
+{% set prototypeLinks = [
+  {
+    href: 'planned-maintenance-soon',
+    text: 'Service maintenance coming soon'
+  },
+  {
+    href: 'service-unavailable-planned',
+    text: 'Service is unavailable (planned)'
+  }
+] %}
+
 {% block questions %}
 	<h1 class="govuk-heading-l">
 		{{ title }}
