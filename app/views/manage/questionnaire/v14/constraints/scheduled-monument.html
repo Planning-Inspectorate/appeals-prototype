@@ -7,7 +7,7 @@
   <span class="govuk-caption-l">
     Constraints, designations and other issues
   </span>
-  
+
   {{ govukRadios({
     idPrefix: 'scheduled-monument',
     name: 'scheduled-monument',
@@ -17,6 +17,9 @@
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }
+    },
+    hint: {
+      text: "A scheduled monument is also known as an ‘ancient monument’."
     },
     items: [
       {
