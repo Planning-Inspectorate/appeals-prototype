@@ -238,7 +238,7 @@ router.post('/env-impact/:page', function (req, res, next) {
               && req.session.data['env-statement-responses-upload-complete']
               && req.session.data['site-notice-upload-complete']
             ){
-              req.session.data['env-impact'] = 'true'
+              req.session.data['env-impact-completed'] = 'true'
             }
           } else if (req.session.data['env-statement-check'] == 'No') {
             if (req.session.data['negative-screening-upload-complete']) {
@@ -340,6 +340,7 @@ router.post('/env-impact/screening-check', function (req, res) {
 })
 
 router.post('/env-impact/screening-upload', function (req, res) {
+  req.session.data['screening-upload'] = 'Yes'
   res.redirect('screening-env-statement-check')
 })
 
@@ -375,14 +376,14 @@ router.post('/env-impact/env-statement-check', function (req, res) {
 })
 
 router.post('/env-impact/env-statement-upload', function (req, res) {
-  res.redirect('env-statement-responses-upload')
-})
-
-router.post('/env-impact/env-statement-responses-upload', function (req, res) {
   res.redirect('site-notice-upload')
 })
 
 router.post('/env-impact/site-notice-upload', function (req, res) {
+  res.redirect('env-statement-responses-upload')
+})
+
+router.post('/env-impact/env-statement-responses-upload', function (req, res) {
   res.redirect('complete')
 })
 
@@ -392,7 +393,7 @@ router.post('/env-impact/negative-screening-upload', function (req, res) {
 
 router.post('/env-impact/applicant-env-statement-check', function (req, res) {
   if (req.session.data['applicant-env-statement-check'] == 'Yes') {
-    res.redirect('env-statement-responses-upload');
+    res.redirect('site-notice-upload')
   } else {
     req.session.data['applicant-env-statement-check'] = 'No'
     res.redirect('complete');

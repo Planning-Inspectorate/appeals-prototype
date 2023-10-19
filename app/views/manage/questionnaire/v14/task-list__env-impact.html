@@ -1,3 +1,14 @@
+<!-- Schedule is {{ data['schedule'] }}
+<br>Dev description {{ data['development-desc-complete'] }}
+<br>Sensitive area {{ data['sensitive-area-complete'] }}
+<br>Column 2 {{ data['column-two-complete'] }}
+<br>Screening check {{ data['screening-check'] }}
+<br>Screening upload = {{ data['screening-upload'] }}
+<br>Screeding env check {{ data['screening-env-statement-check'] }}
+<br>Env statement {{ data['env-statement-check'] }}
+<br>Env upload {{ data['env-statement-upload-complete'] }}
+<br>Env statement responses upload {{ data['env-statement-responses-upload-complete'] }}
+<br>Site notice upload {{ data['site-notice-upload-complete'] }} -->
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">2. </span> Environmental impact assessment
@@ -224,7 +235,7 @@
 
       {
         key: {
-          html: 'Scoping opinion received'
+          html: 'Upload scoping opinion'
         },
         value: {
           html: data['scoping-upload'] or 'scoping-opinion.pdf'
@@ -310,7 +321,7 @@
           html: 'Environmental statement'
         },
         value: {
-          html: data['env-statement-upload'] or 'env-stataement.pdf'
+          html: data['env-statement-upload'] or 'env-statement.pdf'
         }
         if data['env-statement-upload-complete'] else
         {
@@ -335,7 +346,7 @@
           html: 'Responses for the environmental statement'
         },
         value: {
-          html: data['env-statement-responses-upload'] or 'env-stataement-responses.pdf'
+          html: data['env-statement-responses-upload'] or 'env-statement-responses.pdf'
         }
         if data['env-statement-responses-upload-complete'] else
         {
