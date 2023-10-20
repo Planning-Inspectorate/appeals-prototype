@@ -180,7 +180,7 @@ router.get('/constraints/complete', function (req, res) {
   if (!req.session.data['env-impact-completed']) {
     res.redirect('../env-impact/schedule')
   } else if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/notified-how')
+    res.redirect('../notified/notified-who')
   } else if (!req.session.data['consultation-completed']) {
     res.redirect('../consultation/consulted')
   } else if (!req.session.data['po-report-completed']) {
@@ -402,7 +402,7 @@ router.post('/env-impact/applicant-env-statement-check', function (req, res) {
 
 router.get('/env-impact/complete', function (req, res) {
   if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/notified-how')
+    res.redirect('../notified/notified-who')
   } else if (!req.session.data['consultation-completed']) {
     res.redirect('../consultation/consulted')
   } else if (!req.session.data['po-report-completed']) {
@@ -428,6 +428,11 @@ router.post('/notified/:page', function (req, res, next) {
   req.session.data[`${req.params.page}-complete`] = 'true'
 
   next()
+})
+
+router.post('/notified/notified-who', function (req, res) {
+  req.session.data['notified-who-complete'] = 'true'
+  res.redirect('notified-how');
 })
 
 router.post('/notified/notified-how', function (req, res) {
