@@ -147,33 +147,8 @@
             }
           ]
         }
-      },
-
-      {
-        key: {
-          html: 'Statement of case'
-        },
-        value: {
-          html: data['statement-of-case'] or 'Yes'
-        }
-        if data['statement-of-case-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'appeal-process/statement-of-case?cya=true',
-              html: 'Change'
-            }
-            if data['statement-of-case-complete'] else
-            {
-              href: 'appeal-process/statement-of-case?',
-              html: 'Answer'
-            }
-          ]
-        }
       }
+
     ]
   }) }}
 </li>

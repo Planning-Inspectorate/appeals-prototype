@@ -739,7 +739,6 @@ router.post('/appeal-process/:page', function (req, res, next) {
     req.session.data['procedure-complete']
     && req.session.data['other-appeals-complete']
     && req.session.data['extra-conditions-complete']
-    && req.session.data['statement-of-case-complete']
   ){
     req.session.data['appeal-process-completed'] = 'true'
   }
@@ -786,10 +785,6 @@ router.post('/appeal-process/other-appeals', function (req, res) {
 })
 
 router.post('/appeal-process/extra-conditions', function (req, res) {
-  res.redirect('statement-of-case')
-})
-
-router.post('/appeal-process/statement-of-case', function (req, res) {
   res.redirect('../task-list');
 })
 
