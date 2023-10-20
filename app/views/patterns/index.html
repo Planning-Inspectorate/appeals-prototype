@@ -14,18 +14,35 @@
     <!-- <span class="govuk-caption-l">
       Manage LPA appeals
     </span> -->
-    <h1 class="govuk-heading-l">
+    <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
 
+    <p class="govuk-body-l">
+      Service patterns and components
+    </p>
+
+    <h2 class="govuk-heading-l">
+      Service patterns
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Jump to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/patterns/contact-details?contact-details-completed=">contact details</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-l">
+      Component patterns
+    </h2>
+
     {% set version = "1" %}
-    <h2 class="govuk-heading-m">
+    <h3 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
         classes: 'govuk-tag--yellow govuk-!-margin-left-2',
         text: 'In progress'
       }) }}
-    </h2>
+    </h3>
 
     <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
