@@ -21,23 +21,23 @@
       {{ title }}
     </h1>
 
-    {% set version = "4" %}
+    {% set version = "5" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
-        text: 'Ready for research'
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
       }) }}
     </h2>
 
     <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        Using 3 tabs to split out appeal stages
+        alignment with LPA dashboard
       </li>
-      <li>
+      <!-- <li>
         Using tags for decision status
-      </li>
+      </li> -->
     </ul>
 
     <p class="govuk-body govuk-!-margin-bottom-6">
@@ -49,6 +49,32 @@
       href: 'v'+version+'/your-appeals',
       isStartButton: true
     }) }}
+
+    {% set v4HTML %}
+
+    {% set version = "4" %}
+
+      <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Using 3 tabs to split out appeal stages
+        </li>
+        <li>
+          Using tags for decision status
+        </li>
+      </ul>
+
+      <p class="govuk-body govuk-!-margin-bottom-6">
+        <a href="https://miro.com/app/board/uXjVPi74MOw=/?moveToWidget=3458764549839563837&cot=14" class="govuk-body">Miro board</a>
+      </p>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/your-appeals',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v3HTML %}
 
@@ -102,6 +128,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 4 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v4HTML
+          }
+        },
         {
           heading: {
             html: 'Version 3 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

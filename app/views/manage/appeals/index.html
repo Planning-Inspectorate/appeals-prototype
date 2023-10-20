@@ -23,14 +23,41 @@
 
     <section class="govuk-!-margin-bottom-6">
 
-      {% set version = "5" %}
-      <h2 class="govuk-heading-m">
-        Version {{version}}
-        {{ govukTag({
-          classes: 'govuk-tag--green govuk-!-margin-left-2',
-          text: 'Ready for research'
+      {% set version = "6" %}
+        <h2 class="govuk-heading-m">
+          Version {{version}}
+          {{ govukTag({
+            classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+            text: 'In progress'
+          }) }}
+        </h2>
+
+        <!-- <p>
+          Researched January 2023<br>
+          <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+            Confluence user research notes
+          </a>
+        </p> -->
+
+        <p class="govuk-!-margin-bottom-2">Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            new appeals in main table
+          </li>
+          <li>
+            added decided appeals
+          </li>
+        </ul>
+
+        {{ govukButton({
+          html: 'View full dashboard',
+          href: 'v6/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&new-appeals=yes',
+          isStartButton: true
         }) }}
-      </h2>
+
+      {% set v5HTML %}
+
+      {% set version = "5" %}
 
       <!-- <p>
         Researched January 2023<br>
@@ -54,6 +81,8 @@
         href: 'v5/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&new-appeals=yes',
         isStartButton: true
       }) }}
+
+      {% endset -%}
 
       {% set v4HTML %}
 
@@ -161,6 +190,14 @@
       items: [
 
 
+        {
+          heading: {
+            html: 'Version 5 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v5HTML
+          }
+        },
         {
           heading: {
             html: 'Version 4 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'

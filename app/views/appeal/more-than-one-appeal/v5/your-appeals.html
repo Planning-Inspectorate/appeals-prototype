@@ -1,0 +1,523 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your appeals' %}
+{% set back = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body govuk-!-margin-bottom-6">
+        <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
+          Add and remove users
+        </a>
+      </p>
+
+    </div>
+
+    {% set ref = 123 %}
+
+
+
+    {% set appealsList %}
+
+      {% if data['current-appeals'] != 'no' %}
+
+        {{ govukTable({
+          classes: 'govuk-!-margin-top-3',
+          caption: 'Appeals in progress',
+          captionClasses: 'govuk-table__caption--l',
+          firstCellIsHeader: false,
+          head: [
+            {
+              html: 'Local planning authority'
+            },
+            {
+              html: 'Appeal number'
+            },
+            {
+              html: 'Site address'
+            },
+            {
+              html: 'Appeal type'
+            },
+            {
+              html: 'Deadline'
+            },
+            {
+              html: 'Due in',
+              format: 'numeric'
+            },
+            {
+              html: 'To do',
+              format: 'numeric'
+            }
+          ],
+          rows: [
+            [
+              {
+                html: 'Bradford Council'
+              },
+              {
+                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345260</a>'
+              },
+              {
+                html: '12a Crossley Hall, Thornton Road, Bradford BD8 OJN'
+              },
+              {
+                html: 'Householder appeal'
+              },
+              {
+                html: '6' | daysInFuture
+              },
+              {
+                html: '6 days',
+                format: 'numeric'
+              },
+              {
+                html: '<a href="/manage/questionnaire-Householder appeal/v6/task-list?action=">Statement</a>',
+                format: 'numeric'
+              }
+            ],
+            [
+              {
+                html: 'Bradford Council'
+              },
+              {
+                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345176</a>'
+              },
+              {
+                html: '93 Greenhill Lane, Leeds Road, Bradford BD3 8DZ'
+              },
+              {
+                html: 'Full appeal'
+              },
+              {
+                html: '6' | daysInFuture
+              },
+              {
+                html: '6 days',
+                format: 'numeric'
+              },
+              {
+                html: '<a href="/manage/questionnaire-Householder appeal/v6/task-list?action=">Final comment</a>',
+                format: 'numeric'
+              }
+            ],
+            [
+              {
+                html: 'Greater Manchester Combined Authority'
+              },
+              {
+                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
+              },
+              {
+                html: '72 Wash Way Road, Sale, Greater Manchester M32 8DZ'
+              },
+              {
+                html: 'Listed building consent'
+              },
+              {
+                html: '22' | daysInFuture
+              },
+              {
+                html: '22 days',
+                format: 'numeric'
+              },
+              {
+                html: '<a href="/manage/questionnaire-Householder appeal/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
+                format: 'numeric'
+              }
+            ],
+            [
+              {
+                html: 'Bradford Council'
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+                html: 'Full appeal'
+              },
+              {
+                html: '22' | daysInFuture
+              },
+              {
+                html: "<strong class='govuk-tag govuk-tag--yellow'>Draft</strong>",
+                format: 'numeric'
+              },
+              {
+                html: '<a href="">Continue<span class="govuk-visually-hidden">1345172</span></a>',
+                format: 'numeric'
+              }
+            ],
+            [
+              {
+                html: 'Greater Manchester Combined Authority'
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+                html: 'Enforcement appeal'
+              },
+              {
+                html: '22' | daysInFuture
+              },
+              {
+                html: "<strong class='govuk-tag govuk-tag--yellow'>Draft</strong>",
+                format: 'numeric'
+              },
+              {
+
+              }
+            ]
+
+          ]
+        }) }}
+
+      {% else %}
+
+        <h2 class="govuk-heading-l">
+          My appeals
+        </h2>
+
+        <p class="govuk-body">
+          There are currently no appeals in progress.
+        </p>
+
+      {% endif %}
+
+    {% endset -%}
+
+    {% set submittedAppealsList %}
+
+      {% if data['submitted-appeals'] == 'yes' %}
+
+        {{ govukTable({
+          classes: 'govuk-!-margin-top-3',
+          caption: 'Submitted appeals',
+          captionClasses: 'govuk-table__caption--l',
+          firstCellIsHeader: false,
+          head: [
+            {
+              html: 'Local planning authority'
+            },
+            {
+              html: 'Appeal number'
+            },
+            {
+              html: 'Site address'
+            },
+            {
+              html: 'Appeal type'
+            },
+            {
+              html: 'Status'
+            }
+          ],
+          rows: [
+            [
+              {
+                html: 'Bradford Council'
+              },
+              {
+                html: '<a href="v5/appeal-details?appealCode=1345264&action=">1345264</a>'
+              },
+              {
+                html: '2 Bridford Avenue, Warbingham, BR11 2PT'
+              },
+              {
+                html: 'Householder appeal'
+              },
+              {
+                html: '<strong class="govuk-tag govuk-tag--yellow">
+                         Queued for checking
+                       </strong>'
+              }
+            ] if data['questionnaire'] == 'complete',
+            [
+              {
+                html: 'Greater Manchester Combined Authority'
+              },
+              {
+                html: '<a href="v5/appeal-details?appealCode=1345260&action=">1345260</a>'
+              },
+              {
+                html: '111 Wallington Close, Brickltown, BT7 7GP'
+              },
+              {
+                html: 'Full appeal'
+              },
+              {
+                html: '<strong class="govuk-tag govuk-tag--blue">
+                         With case officer
+                       </strong>'
+              }
+            ]
+          ]
+        }) }}
+
+      {% else %}
+
+        <h2 class="govuk-heading-l">
+          Submitted appeals
+        </h2>
+
+        <p class="govuk-body">
+          There are currently no submitted appeals.
+        </p>
+
+      {% endif %}
+
+    {% endset -%}
+
+
+
+
+    {% set decidedAppeals %}
+
+      {{ govukTable({
+        classes: 'govuk-!-margin-top-0',
+        caption: 'Decided',
+        captionClasses: 'govuk-table__caption--l',
+        firstCellIsHeader: false,
+        head: [
+          {
+            html: 'Appeal number'
+          },
+          {
+            html: 'Site address',
+            classes: 'govuk-!-width-one-half'
+          },
+          {
+            html: 'Decision date'
+          },
+          {
+            html: 'Appeal type',
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            html: 'Decision',
+            classes: 'govuk-!-width-one-third'
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a href='' class='govuk-link'>0201624</a>"
+            },
+            {
+              html: '38 Tubular Way, Warbingham, BR11 7HA'
+            },
+            {
+              html: '8' | daysInPastShort
+            },
+            {
+              html: 'Full planning'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--orange">Allowed in part</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0201972</a>"
+            },
+            {
+              html: '3 Lawn Street, Giffleton, BR2 2BD'
+            },
+            {
+              html: '16' | daysInPastShort
+            },
+            {
+              html: 'Full planning'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--yellow">Dismissed</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0202120</a>"
+            },
+            {
+              html: '22 Bishop Close, Jamvillion, BX2 7PP'
+            },
+            {
+              html: '32' | daysInPastShort
+            },
+            {
+              html: 'Enforcement notice'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--orange">Notice varied and upheld</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0202331</a>"
+            },
+            {
+              html: '102 Haynesford Way, Adbridge, BR15 0PA'
+            },
+            {
+              html: '64' | daysInPastShort
+            },
+            {
+              html: 'Householder'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0212006</a>"
+            },
+            {
+              html: '9 Westley Road, Rochdale, OL11 2AN'
+            },
+            {
+              html: '128' | daysInPastShort
+            },
+            {
+              html: 'Listed building consent'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0217634</a>"
+            },
+            {
+              html: '8 Knivvol Drive, Oldham, BR17 2GH'
+            },
+            {
+              html: '222' | daysInPastShort
+            },
+            {
+              html: 'Listed building consent'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0217801</a>"
+            },
+            {
+              html: '2 Tubular Way, Warbingham, BR12 2PD'
+            },
+            {
+              html: '265' | daysInPastShort
+            },
+            {
+              html: 'Listed building consent'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0219924</a>"
+            },
+            {
+              html: '2 Porter Road, Jampton, BR8 8AA'
+            },
+            {
+              html: '301' | daysInPastShort
+            },
+            {
+              html: 'Listed building consent'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0219983</a>"
+            },
+            {
+              html: '109 Channingford Hill, Salcombe, BR2 8HH'
+            },
+            {
+              html: '322' | daysInPastShort
+            },
+            {
+              html: 'Listed building consent'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+            }
+          ],
+          [
+            {
+              html: "<a href='' class='govuk-link'>0220012</a>"
+            },
+            {
+              html: '12a Malago Road, Chamford, BR07 2PD'
+            },
+            {
+              html: '365' | daysInPastShort
+            },
+            {
+              html: 'Listed building consent'
+            },
+            {
+              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+            }
+          ]
+
+        ]
+      }) }}
+
+    {% endset -%}
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "My appeals",
+            id: "new-appeals",
+            panel: {
+              html: appealsList
+            }
+          },
+          {
+            label: "Submitted",
+            id: "submitted-appeals",
+            panel: {
+              html: submittedAppealsList
+            }
+          },
+          {
+            label: "Decided",
+            id: "decided-appeals",
+            panel: {
+              html: decidedAppeals
+            }
+          }
+
+        ]
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
