@@ -1,0 +1,68 @@
+{% if data['submitted-appeals'] == 'no' %}
+
+  <h2 class="govuk-heading-l">
+    Submitted appeals
+  </h2>
+
+  <p class="govuk-body">
+    There are currently no submitted appeals.
+  </p>
+
+{% else %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Submitted appeals',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Address'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Status'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="v5/appeal-details?appealCode=1345264&action=">1345264</a>'
+        },
+        {
+          html: '31 Thistle Grn, Swavesey, Cambridge CB24 4RJ'
+        },
+        {
+          html: 'HAS'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--yellow">
+                   Queued for checking
+                 </strong>'
+        }
+      ] if data['questionnaire'] == 'complete',
+      [
+        {
+          html: '<a href="v5/appeal-details?appealCode=1345260&action=">1345260</a>'
+        },
+        {
+          html: 'Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ]
+    ]
+  }) }}
+
+{% endif %}

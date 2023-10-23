@@ -1,0 +1,219 @@
+{% if data['current-appeals'] == 'no' %}
+
+  <h2 class="govuk-heading-l">
+    My appeals
+  </h2>
+
+  <p class="govuk-body">
+    There are currently no appeals in progress.
+  </p>
+
+{% else %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Appeals in progress',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Address'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Deadline'
+      },
+      {
+        html: 'Due in',
+        format: 'numeric'
+      },
+      {
+        html: 'To do',
+        format: 'numeric'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345264&action=&questionnaire=overdue">1345264</a>'
+        },
+        {
+          html: 'Spital House, Lensfield Rd, Cambridge CB2 1ER'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '1' | daysAgo
+        },
+        {
+          html: "<strong class='govuk-tag govuk-tag--red'>Overdue</strong>",
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345264&action=&questionnaire=due">1345264</a>'
+        },
+        {
+          html: 'Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '3' | daysInFuture
+        },
+        {
+          html: '3 days',
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has/v6/task-list?action=&questionnaire=due"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          format: 'numeric'
+        }
+      ] if data['questionnaire'] != 'complete',
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345260</a>'
+        },
+        {
+          html: '20 Bermuda Rd, Arbury, Cambridge CB4 3JX'
+        },
+        {
+          html: 'HAS'
+        },
+        {
+          html: '6' | daysInFuture
+        },
+        {
+          html: '6 days',
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345176</a>'
+        },
+        {
+          html: '22 London Rd, Six Mile Bottom, Newmarket CB8 0UE'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '6' | daysInFuture
+        },
+        {
+          html: '6 days',
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345259</a>'
+        },
+        {
+          html: 'Five Trees Garden, Cambridge CB4 1UA'
+        },
+        {
+          html: 'S39'
+        },
+        {
+          html: '16' | daysInFuture
+        },
+        {
+          html: '16 days',
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
+        },
+        {
+          html: '64 Rene Court, Coldham’s Rd, Cambridge CB1 3EW'
+        },
+        {
+          html: 'S20'
+        },
+        {
+          html: '22' | daysInFuture
+        },
+        {
+          html: '22 days',
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
+        },
+        {
+          html: 'The Old Library, 2 Wheeler St, Cambridge CB2 3QB'
+        },
+        {
+          html: 'S78'
+        },
+        {
+
+        },
+        {
+          html: "<strong class='govuk-tag govuk-tag--green'>New</strong>",
+          format: 'numeric'
+        },
+        {
+
+        }
+      ],
+      [
+        {
+          html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
+        },
+        {
+          html: 'Unnamed Road, Cambridge CB2 1PZ'
+        },
+        {
+          html: 'S174'
+        },
+        {
+
+        },
+        {
+          html: "<strong class='govuk-tag govuk-tag--green'>New</strong>",
+          format: 'numeric'
+        },
+        {
+
+        }
+      ]
+
+    ]
+  }) }}
+
+{% endif %}

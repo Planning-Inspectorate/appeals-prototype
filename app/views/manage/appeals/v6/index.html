@@ -4,20 +4,19 @@
 
 {% set prototypeLinks = [
   {
-    href: './?no-appeals=true',
-    text: 'No appeals'
+    href: './?current-appeals=no',
+    text: 'No current appeals'
+  } if data['current-appeals'] == 'yes' else
+
+  {
+    href: './?current-appeals=yes',
+    text: 'Show current appeals'
   },
   {
     href: '/interested/find-appeal/v6/appeal-notice-email-full',
     text: 'Appeal notice'
-  },
-  {
-    href: './?no-appeals=false&questionnaire=&statement=&finalcomments=&action=',
-    text: 'Reset appeals'
-  }] if data['no-appeals'] != 'true' else [{
-    href: './?no-appeals=false&questionnaire=&finalcomments=&statement=&action=',
-    text: 'Show appeals'
-    }]
+  }
+  ]
 %}
 
 {% set back = false %}
@@ -25,580 +24,80 @@
 {% set title = 'Manage appeals' %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% if data['questionnaire-banner'] == 'yes' %}
+      {% if data['questionnaire-banner'] == 'yes' %}
 
-      <!-- notification about notices -->
-      {% set html %}
-        <h3 class="govuk-notification-banner__heading">
-          Questionnaire complete
-        </h3>
-        <p class="govuk-body">
-          Questionnaire for appeal 1345264 has been <a href="?questionnaire-banner=questionnaire=complete&submitted-appeals=yes#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>submitted<span class="govuk-visually-hidden"> appeals</span></a>.
-        </p>
-      {% endset %}
-      {{ govukNotificationBanner({
-        html: html,
-        type: 'success'
-      }) }}
-
-    {% endif %}
-
-  </div>
-  <div class="govuk-grid-column-full">
-
-    <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">
-        {{ data['dashboard-lpa'] }}
-        <span class="govuk-visually-hidden"> - </span>
-      </span>
-      {{ title }}
-    </h1>
-
-    <p class="govuk-body govuk-!-margin-bottom-6">
-      <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
-        Add and remove users
-      </a>
-    </p>
-
-  </div>
-
-  <div class="govuk-grid-column-full">
-
-    {% set appealsList %}
-
-      {% if data['current-appeals'] != 'no' %}
-
-        {{ govukTable({
-          classes: 'govuk-!-margin-top-3',
-          caption: 'Appeals in progress',
-          captionClasses: 'govuk-table__caption--l',
-          firstCellIsHeader: false,
-          head: [
-            {
-              html: 'Appeal number'
-            },
-            {
-              html: 'Reference number'
-            },
-            {
-              html: 'Appeal type'
-            },
-            {
-              html: 'Deadline'
-            },
-            {
-              html: 'Due in',
-              format: 'numeric'
-            },
-            {
-              html: 'To do',
-              format: 'numeric'
-            }
-          ],
-          rows: [
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345264&action=&questionnaire=overdue">1345264</a>'
-              },
-              {
-                html: '23/04125/FUL'
-              },
-              {
-                html: 'S78'
-              },
-              {
-                html: '1' | daysAgo
-              },
-              {
-                html: "<strong class='govuk-tag govuk-tag--red'>Overdue</strong>",
-                format: 'numeric'
-              },
-              {
-                html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
-                format: 'numeric'
-              }
-            ],
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345264&action=&questionnaire=due">1345264</a>'
-              },
-              {
-                html: '23/04125/FUL'
-              },
-              {
-                html: 'S78'
-              },
-              {
-                html: '3' | daysInFuture
-              },
-              {
-                html: '3 days',
-                format: 'numeric'
-              },
-              {
-                html: '<a href="/manage/questionnaire-has/v6/task-list?action=&questionnaire=due"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
-                format: 'numeric'
-              }
-            ] if data['questionnaire'] != 'complete',
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345260</a>'
-              },
-              {
-                html: '22/02939/FUL'
-              },
-              {
-                html: 'HAS'
-              },
-              {
-                html: '6' | daysInFuture
-              },
-              {
-                html: '6 days',
-                format: 'numeric'
-              },
-              {
-                html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
-                format: 'numeric'
-              }
-            ],
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345176</a>'
-              },
-              {
-                html: '22/02924/FUL'
-              },
-              {
-                html: 'S78'
-              },
-              {
-                html: '6' | daysInFuture
-              },
-              {
-                html: '6 days',
-                format: 'numeric'
-              },
-              {
-                html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
-                format: 'numeric'
-              }
-            ],
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345260&action=">1345259</a>'
-              },
-              {
-                html: '22/02922/FUL'
-              },
-              {
-                html: 'S39'
-              },
-              {
-                html: '16' | daysInFuture
-              },
-              {
-                html: '16 days',
-                format: 'numeric'
-              },
-              {
-                html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
-                format: 'numeric'
-              }
-            ],
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
-              },
-              {
-                html: '23/04101/FUL'
-              },
-              {
-                html: 'S20'
-              },
-              {
-                html: '22' | daysInFuture
-              },
-              {
-                html: '22 days',
-                format: 'numeric'
-              },
-              {
-                html: '<a href="/manage/questionnaire-has/v6/task-list?action="><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
-                format: 'numeric'
-              }
-            ],
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
-              },
-              {
-                html: '23/03982/FUL'
-              },
-              {
-                html: 'S78'
-              },
-              {
-
-              },
-              {
-                html: "<strong class='govuk-tag govuk-tag--green'>New</strong>",
-                format: 'numeric'
-              },
-              {
-
-              }
-            ],
-            [
-              {
-                html: '<a href="/manage/appeals/v5/appeal-details?appealCode=1345172&action=&questionnaire=due">1345172</a>'
-              },
-              {
-                html: '23/04253/FUL'
-              },
-              {
-                html: 'S174'
-              },
-              {
-
-              },
-              {
-                html: "<strong class='govuk-tag govuk-tag--green'>New</strong>",
-                format: 'numeric'
-              },
-              {
-
-              }
-            ]
-
-          ]
+        <!-- notification about notices -->
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Questionnaire complete
+          </h3>
+          <p class="govuk-body">
+            Questionnaire for appeal 1345264 has been <a href="?questionnaire-banner=questionnaire=complete&submitted-appeals=yes#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>submitted<span class="govuk-visually-hidden"> appeals</span></a>.
+          </p>
+        {% endset %}
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
         }) }}
-
-      {% else %}
-
-        <h2 class="govuk-heading-l">
-          My appeals
-        </h2>
-
-        <p class="govuk-body">
-          There are currently no appeals in progress.
-        </p>
 
       {% endif %}
 
-    {% endset -%}
+    </div>
+    <div class="govuk-grid-column-full">
 
-    {% set submittedAppealsList %}
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">
+          {{ data['dashboard-lpa'] }}
+          <span class="govuk-visually-hidden"> - </span>
+        </span>
+        {{ title }}
+      </h1>
 
-      {% if data['submitted-appeals'] == 'yes' %}
+      <p class="govuk-body govuk-!-margin-bottom-6">
+        <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
+          Add and remove users
+        </a>
+      </p>
 
-        {{ govukTable({
-          classes: 'govuk-!-margin-top-3',
-          caption: 'Submitted appeals',
-          captionClasses: 'govuk-table__caption--l',
-          firstCellIsHeader: false,
-          head: [
-            {
-              html: 'Appeal number'
-            },
-            {
-              html: 'Reference number'
-            },
-            {
-              html: 'Appeal type'
-            },
-            {
-              html: 'Status'
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      {% set appealsList %}
+        {% include "/_includes/lpa/current-appeals.html" %}
+      {% endset -%}
+
+      {% set submittedAppealsList %}
+        {% include "/_includes/lpa/submitted-appeals.html" %}
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "My appeals",
+            id: "new-appeals",
+            panel: {
+              html: appealsList
             }
-          ],
-          rows: [
-            [
-              {
-                html: '<a href="v5/appeal-details?appealCode=1345264&action=">1345264</a>'
-              },
-              {
-                html: '23/04125/FUL'
-              },
-              {
-                html: 'HAS'
-              },
-              {
-                html: '<strong class="govuk-tag govuk-tag--yellow">
-                         Queued for checking
-                       </strong>'
-              }
-            ] if data['questionnaire'] == 'complete',
-            [
-              {
-                html: '<a href="v5/appeal-details?appealCode=1345260&action=">1345260</a>'
-              },
-              {
-                html: '23/02939/FUL'
-              },
-              {
-                html: 'S78'
-              },
-              {
-                html: '<strong class="govuk-tag govuk-tag--blue">
-                         With case officer
-                       </strong>'
-              }
-            ]
-          ]
-        }) }}
-
-      {% else %}
-
-        <h2 class="govuk-heading-l">
-          Submitted appeals
-        </h2>
-
-        <p class="govuk-body">
-          There are currently no submitted appeals.
-        </p>
-
-      {% endif %}
-
-    {% endset -%}
-
-
-
-    {% set decidedAppeals %}
-
-      {{ govukTable({
-        classes: 'govuk-!-margin-top-0',
-        caption: 'Decided',
-        captionClasses: 'govuk-table__caption--l',
-        firstCellIsHeader: false,
-        head: [
-          {
-            html: 'Appeal number'
           },
           {
-            html: 'Site address',
-            classes: 'govuk-!-width-one-half'
-          },
-          {
-            html: 'Decision date'
-          },
-          {
-            html: 'Appeal type',
-            classes: 'govuk-!-width-one-third'
-          },
-          {
-            html: 'Decision',
-            classes: 'govuk-!-width-one-third'
+            label: "Submitted",
+            id: "submitted-appeals",
+            panel: {
+              html: submittedAppealsList
+            }
           }
-        ],
-        rows: [
-          [
-            {
-              html: "<a href='' class='govuk-link'>0201624</a>"
-            },
-            {
-              html: '38 Tubular Way, Warbingham, BR11 7HA'
-            },
-            {
-              html: '8' | daysInPastShort
-            },
-            {
-              html: 'Full planning'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--orange">Allowed in part</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0201972</a>"
-            },
-            {
-              html: '3 Lawn Street, Giffleton, BR2 2BD'
-            },
-            {
-              html: '16' | daysInPastShort
-            },
-            {
-              html: 'Full planning'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--yellow">Dismissed</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0202120</a>"
-            },
-            {
-              html: '22 Bishop Close, Jamvillion, BX2 7PP'
-            },
-            {
-              html: '32' | daysInPastShort
-            },
-            {
-              html: 'Enforcement notice'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--orange">Notice varied and upheld</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0202331</a>"
-            },
-            {
-              html: '102 Haynesford Way, Adbridge, BR15 0PA'
-            },
-            {
-              html: '64' | daysInPastShort
-            },
-            {
-              html: 'Householder'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0212006</a>"
-            },
-            {
-              html: '9 Westley Road, Rochdale, OL11 2AN'
-            },
-            {
-              html: '128' | daysInPastShort
-            },
-            {
-              html: 'Listed building consent'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0217634</a>"
-            },
-            {
-              html: '8 Knivvol Drive, Oldham, BR17 2GH'
-            },
-            {
-              html: '222' | daysInPastShort
-            },
-            {
-              html: 'Listed building consent'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0217801</a>"
-            },
-            {
-              html: '2 Tubular Way, Warbingham, BR12 2PD'
-            },
-            {
-              html: '265' | daysInPastShort
-            },
-            {
-              html: 'Listed building consent'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0219924</a>"
-            },
-            {
-              html: '2 Porter Road, Jampton, BR8 8AA'
-            },
-            {
-              html: '301' | daysInPastShort
-            },
-            {
-              html: 'Listed building consent'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0219983</a>"
-            },
-            {
-              html: '109 Channingford Hill, Salcombe, BR2 8HH'
-            },
-            {
-              html: '322' | daysInPastShort
-            },
-            {
-              html: 'Listed building consent'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
-            }
-          ],
-          [
-            {
-              html: "<a href='' class='govuk-link'>0220012</a>"
-            },
-            {
-              html: '12a Malago Road, Chamford, BR07 2PD'
-            },
-            {
-              html: '365' | daysInPastShort
-            },
-            {
-              html: 'Listed building consent'
-            },
-            {
-              html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
-            }
-          ]
 
         ]
       }) }}
 
-    {% endset -%}
+      <p class="govuk-body">
+        <a href="decided-appeals" class="govuk-link">30 decided appeals</a>
+      </p>
 
-
-    {{ govukTabs({
-      items: [
-        {
-          label: "My appeals",
-          id: "new-appeals",
-          panel: {
-            html: appealsList
-          }
-        },
-        {
-          label: "Submitted",
-          id: "submitted-appeals",
-          panel: {
-            html: submittedAppealsList
-          }
-        },
-        {
-          label: "Decided",
-          id: "decided-appeals",
-          panel: {
-            html: decidedAppeals
-          }
-        }
-
-      ]
-    }) }}
-
-
+    </div>
   </div>
-</div>
 {% endblock %}
