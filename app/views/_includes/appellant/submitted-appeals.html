@@ -20,41 +20,59 @@
         html: 'Appeal number'
       },
       {
-        html: 'Address'
+        html: 'Site address',
+        classes: 'govuk-!-width-one-third'
       },
       {
         html: 'Appeal type'
       },
       {
-        html: 'Status'
+        html: 'Status',
+        classes: 'govuk-!-width-one-quarter'
       }
     ],
     rows: [
       [
         {
-          html: '<a href="v5/appeal-details?appealCode=1345264&action=">1345264</a>'
+          html: '<a href="v5/appeal-details?appealCode=1345264&action=">1322700</a>'
         },
         {
-          html: 'Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT'
+          html: '36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY'
         },
         {
-          html: 'S78'
+          html: 'Householder appeal'
         },
         {
           html: '<strong class="govuk-tag govuk-tag--yellow">
                    Queued for checking
                  </strong>'
         }
-      ] if data['questionnaire'] == 'complete',
+      ],
       [
         {
-          html: '<a href="v5/appeal-details?appealCode=1345260&action=">1345260</a>'
+          html: '<a href="v5/appeal-details?appealCode=1345260&action=">1321273</a>'
         },
         {
-          html: 'Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD'
+          html: '27 Buxton Rd, Hazel Grove, Stockport SK7 6AF'
         },
         {
-          html: 'S78'
+          html: 'Lawful Development Certificate'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ],
+      [
+        {
+          html: '<a href="v5/appeal-details?appealCode=1345260&action=">1307294</a>'
+        },
+        {
+          html: 'Oasis Academy Media City, Prestwood Road M6 8GG'
+        },
+        {
+          html: 'Full appeal'
         },
         {
           html: '<strong class="govuk-tag govuk-tag--blue">

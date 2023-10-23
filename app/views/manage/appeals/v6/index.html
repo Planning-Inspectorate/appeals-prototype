@@ -1,16 +1,21 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set prototypeLinks = [] %}
-
 {% set prototypeLinks = [
   {
-    href: './?current-appeals=no',
-    text: 'No current appeals'
+    href: './?current-appeals=no&submitted-appeals=no',
+    text: 'No appeals'
   } if data['current-appeals'] == 'yes' else
-
   {
-    href: './?current-appeals=yes',
-    text: 'Show current appeals'
+    href: './?current-appeals=yes&submitted-appeals=yes',
+    text: 'Show appeals'
+  },
+  {
+    href: './?questionnaire=due&questionnaire-banner=no',
+    text: 'Questionnaire to do'
+  } if data['questionnaire'] == 'complete' else
+  {
+    href: './?questionnaire=complete&questionnaire-banner=yes',
+    text: 'Questionnaire done'
   },
   {
     href: '/interested/find-appeal/v6/appeal-notice-email-full',
@@ -66,11 +71,11 @@
 
     <div class="govuk-grid-column-full">
 
-      {% set appealsList %}
+      {% set currentAppeals %}
         {% include "/_includes/lpa/current-appeals.html" %}
       {% endset -%}
 
-      {% set submittedAppealsList %}
+      {% set submittedAppeals %}
         {% include "/_includes/lpa/submitted-appeals.html" %}
       {% endset -%}
 
@@ -80,14 +85,14 @@
             label: "My appeals",
             id: "new-appeals",
             panel: {
-              html: appealsList
+              html: currentAppeals
             }
           },
           {
             label: "Submitted",
             id: "submitted-appeals",
             panel: {
-              html: submittedAppealsList
+              html: submittedAppeals
             }
           }
 
