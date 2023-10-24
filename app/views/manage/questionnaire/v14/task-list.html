@@ -18,8 +18,7 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
-
-      <span class="govuk-caption-l">Appeal 0123456</span>
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
