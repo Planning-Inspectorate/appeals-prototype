@@ -50,9 +50,8 @@
           html: 'Inspector visit to neighbour'
         },
         value: {
-          html: 'Yes' if data['neighbours-land'] == 'Yes' else 'No'
-        }
-        if data['neighbours-land-complete'] else
+          html: 'Yes<br>'+data['neighbours-land__details'] if data['neighbours-land'] == 'Yes' else 'No'
+        } if data['neighbours-land-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
