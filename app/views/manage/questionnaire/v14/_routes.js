@@ -41,8 +41,6 @@ router.get('/task-list', function(req, res, next){
 
 
 
-
-
 //
 // CONSTRAINTS
 //
@@ -187,10 +185,6 @@ router.get('/constraints/complete', function (req, res) {
     res.redirect('../task-list')
   }
 })
-
-
-
-
 
 
 
@@ -412,8 +406,6 @@ router.get('/env-impact/complete', function (req, res) {
 
 
 
-
-
 //
 // NOTIFIED
 //
@@ -478,8 +470,6 @@ router.get('/notified/complete', function (req, res) {
     res.redirect('../task-list')
   }
 })
-
-
 
 
 
@@ -568,8 +558,6 @@ router.get('/consultation/complete', function (req, res) {
 
 
 
-
-
 //
 // PO REPORT
 //
@@ -577,18 +565,17 @@ router.post('/po-report/:page', function (req, res, next) {
   req.session.data['po-report-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
 
+  if (req.session.data['other-parties-check'] == 'Yes') {
+    req.session.data['consultation-completed'] = 'false'
+    res.redirect('other-parties-upload');
+  }
+
   if (
-    req.session.data['listed-building-check-complete']
-    && req.session.data['affected-listed-building-check-complete']
-    && req.session.data['scheduled-monument-complete']
-    && req.session.data['conservation-check-complete']
-    && req.session.data['protected-species-complete']
-    && req.session.data['green-belt-complete']
-    && req.session.data['outstanding-natural-beauty-complete']
-    && req.session.data['designated-sites-complete']
-    && req.session.data['tree-order-check-complete']
-    && req.session.data['traveller-complete']
-    && req.session.data['right-of-way-check-complete']
+    req.session.data['report-upload-complete'] == 'true'
+    && req.session.data['policies-complete'] == 'true'
+    && req.session.data['emerging-plan-complete'] == 'true'
+    && req.session.data['supplementary-documents-complete'] == 'true'
+    && req.session.data['community-infrastructure-complete'] == 'true'
   ){
     req.session.data['po-report-completed'] = 'true'
   }
@@ -597,10 +584,12 @@ router.post('/po-report/:page', function (req, res, next) {
 })
 
 router.post('/po-report/report-upload', function (req, res) {
+  req.session.data['report-upload-complete'] = 'true'
   res.redirect('policies-upload')
 })
 
 router.post('/po-report/policies-upload', function (req, res) {
+  req.session.data['policies-complete'] = 'true'
   res.redirect('emerging-plan-check')
 })
 
@@ -608,15 +597,13 @@ router.post('/po-report/emerging-plan-check', function (req, res) {
   if (req.session.data['emerging-plan-check'] == 'Yes') {
     res.redirect('emerging-plan-upload');
   } else {
-    res.redirect('other-policies-upload')
+    req.session.data['emerging-plan-complete'] = 'true'
+    res.redirect('supplementary-check')
   }
 })
 
 router.post('/po-report/emerging-plan-upload', function (req, res) {
-  res.redirect('other-policies-upload')
-})
-
-router.post('/po-report/other-policies-upload', function (req, res) {
+  req.session.data['emerging-plan-complete'] = 'true'
   res.redirect('supplementary-check')
 })
 
@@ -624,11 +611,13 @@ router.post('/po-report/supplementary-check', function (req, res) {
   if (req.session.data['supplementary-check'] == 'Yes') {
     res.redirect('supplementary-upload');
   } else {
+    req.session.data['supplementary-documents-complete'] = 'true'
     res.redirect('community-infrastructure-check')
   }
 })
 
 router.post('/po-report/supplementary-upload', function (req, res) {
+  req.session.data['supplementary-documents-complete'] = 'true'
   res.redirect('community-infrastructure-check')
 })
 
@@ -636,6 +625,8 @@ router.post('/po-report/community-infrastructure-check', function (req, res) {
   if (req.session.data['community-infrastructure-check'] == 'Yes') {
     res.redirect('community-infrastructure-upload');
   } else {
+    req.session.data['community-infrastructure-complete'] = 'true'
+    req.session.data['po-report-completed'] = 'true'
     res.redirect('complete')
   }
 })
@@ -649,6 +640,8 @@ router.post('/po-report/community-infrastructure-adopted', function (req, res) {
 })
 
 router.post('/po-report/community-infrastructure-date', function (req, res) {
+  req.session.data['community-infrastructure-complete'] = 'true'
+  req.session.data['po-report-completed'] = 'true'
   res.redirect('complete')
 })
 

@@ -1,3 +1,12 @@
+<!-- <p class="govuk-body-l">
+Report {{ data['report-upload-complete'] }} <br>
+Policies {{ data['policies-complete'] }} <br>
+Emerging plan {{ data['emerging-plan-complete'] }} <br>
+Supplemetary docs {{ data['supplementary-documents-complete'] }} <br>
+Community infrastructure {{ data['community-infrastructure-complete'] }} <br>
+PO report done = {{ data['po-report-completed'] }}
+</p> -->
+
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">5. </span>
@@ -128,31 +137,6 @@
           ]
         }
       } if data['emerging-plan-check'] == 'Yes',
-      {
-        key: {
-          html: 'Upload other relevant policies'
-        },
-        value: {
-          html: data['other-policies-upload'] or 'other-policies.pdf'
-        }
-        if data['other-policies-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/other-policies-upload?cya=true',
-              html: 'Change'
-            }
-            if data['other-policies-upload-complete'] else
-            {
-              href: 'po-report/other-policies-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      },
       {
         key: {
           html: 'Supplementary planning documents'
