@@ -40,7 +40,7 @@
     rows: [
       [
         {
-          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345301&action=&questionnaire=overdue">1345301</a>'
+          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345301&action=&questionnaire=overdue&statement=due">1345301</a>'
         },
         {
           html: 'Spital House, Lensfield Rd, Cambridge CB2 1ER'
@@ -56,13 +56,14 @@
           format: 'numeric'
         },
         {
-          html: '<a href="/manage/questionnaire/v14/task-list?appealCode=1345301&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          html: '<a href="/manage/questionnaire/v14/task-list?appealCode=1345301&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>
+          <br><a href="/manage/statement/v1/enter-statement?appealCode=1345301&action="><span class="govuk-visually-hidden">Submit </span>Statement</a>',
           format: 'numeric'
         }
       ],
       [
         {
-          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345264&action=&questionnaire=due">1345264</a>'
+          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345264&action=&questionnaire=due&statement=due">1345264</a>'
         },
         {
           html: 'Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT'
@@ -78,16 +79,39 @@
           format: 'numeric'
         },
         {
-          html: '<a href="/manage/questionnaire/v14/task-list?appealCode=1345264&action=&questionnaire=due"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          html: '<a href="/manage/questionnaire/v14/task-list?appealCode=1345264&action=&questionnaire=due"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a><br>
+          <a href="/manage/statement/v1/enter-statement?appealCode=1345264&action="><span class="govuk-visually-hidden">Submit </span>Statement</a>',
           format: 'numeric'
         }
       ] if data['questionnaire'] != 'complete',
       [
         {
-          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345260&action=">1345260</a>'
+          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345273&action=&statement=due&questionnaire=">1345273</a>'
         },
         {
           html: '20 Bermuda Rd, Arbury, Cambridge CB4 3JX'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '4' | daysInFuture
+        },
+        {
+          html: '4 days',
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/statement/v1/enter-statement?appealCode=1345273&action="><span class="govuk-visually-hidden">Submit </span>Statement</a>',
+          format: 'numeric'
+        }
+      ] if data['statement'] != 'complete',
+      [
+        {
+          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345260&action=&statement=due">1345260</a>'
+        },
+        {
+          html: 'Canterbury House, Weavely, Cambridge CB2 1PT'
         },
         {
           html: 'HAS'
@@ -100,7 +124,8 @@
           format: 'numeric'
         },
         {
-          html: '<a href="/manage/questionnaire-has/v6/task-list?appealCode=1345260&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          html: '<a href="/manage/questionnaire-has/v6/task-list?appealCode=1345260&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>
+          <br><a href="/manage/statement/v1/enter-statement?appealCode=1345260&action="><span class="govuk-visually-hidden">Submit </span>Statement</a>',
           format: 'numeric'
         }
       ],

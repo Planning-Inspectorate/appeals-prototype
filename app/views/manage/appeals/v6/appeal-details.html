@@ -23,7 +23,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     {% if data['questionnaire'] == 'overdue' %}
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
         <div class="govuk-notification-banner__header">
           <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
             Important
@@ -46,7 +46,7 @@
         </div>
       </div>
     {% elif data['questionnaire'] == 'due' %}
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
         <div class="govuk-notification-banner__header">
           <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
             Important
@@ -65,6 +65,26 @@
       </div>
     {% else %}
       <!-- due or completed appeal does not show a notification -->
+    {% endif %}
+
+    {% if data['statement'] == 'due' %}
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You must submit this statement by 11:59pm on {{ 4 | daysInFuture }}
+            <ul class="govuk-list govuk-list--bullet">
+              <li>
+                <a href="/manage/statement/v1/enter-statement?action=">Submit statement</a>
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
     {% endif %}
 
     <h1 class="govuk-heading-l">
