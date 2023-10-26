@@ -2,6 +2,17 @@
 
 {% set title = 'Does the proposed development change a listed building?' %}
 
+{% set prototypeLinks = [
+  {
+    href: 'listed-building-check?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'listed-building-check?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
 {% set return = true %}
 
 {% block questions %}
@@ -10,27 +21,60 @@
     Constraints, designations and other issues
   </span>
 
-  {{ govukRadios({
-    idPrefix: 'listed-building-check',
-    name: 'listed-building-check',
-    fieldset: {
-      legend: {
-        html: title,
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
-      }
-    },
-    items: [
-      {
-        html: 'Yes',
-        value: 'Yes',
-        checked: checked('listed-building-check','Yes')
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'listed-building-check',
+      name: 'listed-building-check',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
       },
-      {
-        html: 'No',
-        value: 'No',
-        checked: checked('listed-building-check','No')
-      }
-    ]
-  }) }}
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('listed-building-check','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('listed-building-check','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+
+    {{ govukRadios({
+      idPrefix: 'listed-building-check',
+      name: 'listed-building-check',
+      fieldset: {
+        legend: {
+          html: 'Does the development change a listed building?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('listed-building-check','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('listed-building-check','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
 {% endblock %}
