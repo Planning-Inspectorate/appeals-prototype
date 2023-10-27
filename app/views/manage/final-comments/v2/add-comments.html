@@ -12,69 +12,23 @@
   }) }}
   {{ govukBackLink({
     html: 'Back to manage your appeals',
-    href: '/manage/appeals/v3'
+    href: 'javascript:history.back()'
   }) }}
 {% endblock %}
 
+
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
       <h1 class="govuk-heading-l">
         {{ title }}
       </h1>
 
     </div>
-  </div>
 
-  <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-
-      {# Tweak the summary list to be smaller #}
-
-      <style>
-        .appeal-details .govuk-summary-list__key,
-        .appeal-details .govuk-summary-list__value,
-        .appeal-details .govuk-summary-list__actions {
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-        /* Give some space for the tag being inline now */
-        .app-task-list__section {
-          padding-right: 140px
-        }
-      </style>
-
-      {{ govukSummaryList({
-        classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
-        rows: [
-          {
-            key: {
-              text: 'Appeal reference'
-            },
-            value: {
-              text: '1345264'
-            }
-          },
-          {
-            key: {
-              text: 'Planning application number'
-            },
-            value: {
-              text: '21/05058/FUL'
-            }
-          },
-          {
-            key: {
-              text: 'Deadline'
-            },
-            value: {
-              text: '6' | daysInFuture
-            }
-          }
-        ]
-      }) }}
-
+      {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
     </div>
   </div>
 

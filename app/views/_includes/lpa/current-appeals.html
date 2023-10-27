@@ -169,10 +169,10 @@
           format: 'numeric'
         },
         {
-          html: '<a href="#"><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
+          html: '<a href="/manage/final-comments/v2/add-comments?appealCode=1345259&action="><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
           format: 'numeric'
         }
-      ],
+      ] if data['final-comments'] != 'complete',
       [
         {
           html: '<a href="#">1345172</a>'
@@ -191,7 +191,7 @@
           format: 'numeric'
         },
         {
-          html: '<a href="#"><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
+          html: '<a href="/manage/final-comments/v2/add-comments?appealCode=1345259&action="><span class="govuk-visually-hidden">Submit </span>Final comment</a>',
           format: 'numeric'
         }
       ],
