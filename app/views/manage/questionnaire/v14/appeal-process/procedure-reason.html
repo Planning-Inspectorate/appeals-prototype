@@ -1,6 +1,10 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Why would you prefer a '+ (data['procedure'] | lower or 'inquiry') +'?' %}
+{% if data['procedure'] == 'Inquiry' %}
+  {% set title = 'Why would you prefer an inquiry?' %}
+{% else %}
+  {% set title = 'Why would you prefer a hearing?' %}
+{% endif %}
 
 {% block questions %}
 
