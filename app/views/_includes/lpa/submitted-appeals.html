@@ -48,7 +48,7 @@
       ] if data['final-comments'] == 'complete',
       [
         {
-          html: '<a href="/manage/appeals/v6/appeal-details?appealCode=1345273&action=">1345273</a>'
+          html: '<a href="/manage/appeals/v7/appeal-details?appealCode=1345273&action=&questionnaire=complete&statement=complete">1345273</a>'
         },
         {
           html: '20 Bermuda Rd, Arbury, Cambridge CB4 3JX'
@@ -62,22 +62,6 @@
                  </strong>'
         }
       ] if data['statement'] == 'complete',
-      [
-        {
-          html: '<a href="v5/appeal-details?appealCode=1345264&action=">1345264</a>'
-        },
-        {
-          html: 'Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT'
-        },
-        {
-          html: 'S78'
-        },
-        {
-          html: '<strong class="govuk-tag govuk-tag--yellow">
-                   Queued for checking
-                 </strong>'
-        }
-      ] if data['questionnaire'] == 'complete',
       [
         {
           html: '<a href="v5/appeal-details?appealCode=1345260&action=">1345260</a>'

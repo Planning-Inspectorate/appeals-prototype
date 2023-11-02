@@ -1,0 +1,417 @@
+<!-- <h2 class="govuk-heading-l">
+  Appeal questionnaire
+</h2> -->
+
+<h3 class="govuk-heading-l">
+  Constraints, designations and other issues
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Changes a listed building',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Affects a listed building'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Listed buildings'
+      },
+      value: {
+        html: '<a href="#">1282050</a><br>
+               Grade II listed building<br>
+               155, York Road, Bedminster, Bristol, BS3 4AL'
+      }
+    },
+    {
+      key: {
+        html: 'Affects a scheduled monument'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Conservation area'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Conservation area map and guidance'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">BS3 4AL Conservation-map.pdf</a><br>
+               <a href="#" class="govuk-link">BS3 4AL Conservation-guidance.doc</a><br>'
+      }
+    },
+    {
+      key: {
+        html: 'Protected species'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Green belt'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Area of outstanding natural beauty'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Green belt'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Designated sites'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Tree Preservation Order'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Gypsy or Traveller'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Public right of way'
+      },
+      value: {
+        html: 'No'
+      }
+    }
+
+  ]
+}) }}
+
+<h3 class="govuk-heading-l">
+  Environmental impact assessment
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Schedule type',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Issued screening opinion'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Applicant did environmental statement'
+      },
+      value: {
+        html: 'No'
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-l">
+  Notifying people about the application
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Who was notified',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">York Rd - notified neighbours.odt</a><br>
+               <a href="#" class="govuk-link">Your Rd - internal consultees.odt</a>'
+      }
+    },
+    {
+      key: {
+        html: 'Type of notification'
+      },
+      value: {
+        html: 'Press advert<br>
+               Letter sent to neighbours'
+      }
+    },
+    {
+      key: {
+        html: 'Site notice'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">155 York Rd site notice 2023.pdf</a>'
+      }
+    },
+    {
+      key: {
+        html: 'Letters to neighbours'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">155 York Rd neighbour letter template 2023.pdf</a>'
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-l">
+  Consultation responses and representations
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+
+    {
+      key: {
+        html: ' Statutory consultees',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Responses or standing advice to upload',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Representations from other parties'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Upload representations from other parties'
+      },
+      value: {
+        html: '<a href="" class="govuk-link">155 York Rd representations 2023.pdf</a>'
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-l">
+  Planning officer’s report and supplementary documents
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Planning officer’s report',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: '<a href="" class="govuk-body">155 York Rd PO report 2023.pdf</a>'
+      }
+    },
+    {
+      key: {
+        html: 'Upload policies from statutory development plan',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: '<a href="" class="govuk-body">CB23 policies 2023.pdf</a>'
+      }
+    },
+    {
+      key: {
+        html: 'Emerging plan',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Supplementary planning documents',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Community infrastructure levy',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    }
+
+  ]
+}) }}
+
+<h3 class="govuk-heading-l">
+  Site access
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9 pins-govuk-table__row--last',
+  rows: [
+    {
+      key: {
+        html: 'Access for inspection',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Reason for Inspector access',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'Site materials'
+      }
+    },
+    {
+      key: {
+        html: 'Inspector visit to neighbour'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Neighbouring site 1'
+      },
+      value: {
+        html: 'Sam Fisher<br>
+               01179123456<br>
+               172 York Road<br>
+               Bristol<br>
+               BS3 4AL'
+      }
+    },
+    {
+      key: {
+        html: 'Neighbouring site 2'
+      },
+      value: {
+        html: 'Screwfix<br>
+               170, York Road<br>
+               Bristol<br>
+               BS3 4AL'
+      }
+    },
+    {
+      key: {
+        html: 'Potential safety risks'
+      },
+      value: {
+        html: 'Yes<br>
+               Dogs on site'
+      }
+    }
+  ]
+}) }}
+
+<h3 class="govuk-heading-l">
+  Appeal process
+</h3>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9 pins-govuk-table__row--last',
+  rows: [
+    {
+      key: {
+        html: 'Appeal procedure',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'Some new conditions'
+      }
+    },
+    {
+      key: {
+        html: 'Appeals near the site',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: '0172535<br>0172526'
+      }
+    },
+    {
+      key: {
+        html: 'Extra conditions',
+        classes: 'govuk-!-width-one-half'
+      },
+      value: {
+        html: 'No'
+      }
+    }
+
+  ]
+}) }}
