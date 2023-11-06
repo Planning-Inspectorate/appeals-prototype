@@ -1,0 +1,22 @@
+<h2 class="govuk-heading-l">
+  LPA final comments
+</h2>
+
+{% set appellantStatement = 'Sed a lorem sollicitudin, dapibus lectus et, pharetra est. Sed ut sapien turpis. Nam non eros bibendum odio egestas congue condimentum eu eros. Nam sed auctor arcu. Praesent tincidunt sollicitudin ex, eu pellentesque metus. Morbi tristique fermentum dolor, et sodales ex mattis ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n\nSed sodales libero magna, eget consectetur elit malesuada ac. Aenean quis arcu at velit maximus scelerisque quis vitae felis. Mauris bibendum urna et viverra lobortis. Quisque molestie nisl eget nibh congue suscipit. Nullam blandit tincidunt tortor, sed tempor turpis scelerisque id. Fusce condimentum venenatis mi, at auctor turpis tincidunt sed. Vivamus rutrum accumsan nisl et malesuada. Nunc porttitor risus eu nibh laoreet facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\n\nSuspendisse et elit sed felis feugiat feugiat. Fusce non est est.
+  ' %}
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Final comments',
+        classes: 'govuk-!-width-one-quarter'
+      },
+      value: {
+        html: appellantStatement | nl2br
+      }
+    }
+
+  ]
+}) }}

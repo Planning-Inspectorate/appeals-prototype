@@ -134,8 +134,11 @@
           </h2>
         </div>
         <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-          <!-- add link to final comments -->
-          <p class="govuk-body">(final comments)</p>
+          {% if data['appellantComments'] %}
+            {% include "_includes/appellant/final-comments.html" %}
+          {% endif %}
+
+          {% include "_includes/lpa/final-comments.html" %}
         </div>
       </div>
       {% endif %}
@@ -159,11 +162,15 @@
         <div class="govuk-accordion__section-header">
           <h2 class="govuk-accordion__section-heading">
             <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-              Statement
+              Statements
             </span>
           </h2>
         </div>
         <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+          {% if data['appellantStatement'] %}
+            {% include "_includes/appellant/statement.html" %}
+          {% endif %}
+
           {% include "_includes/lpa/statement.html" %}
         </div>
       </div>
