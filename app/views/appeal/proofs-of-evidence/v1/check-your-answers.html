@@ -1,0 +1,86 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Check your answers and submit your proofs of evience" %}
+
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: 'Witnesses and summary of evidence'
+        },
+        value: {
+          html: data['witnesses-and-evidence'] or 'Witnesses and evidence statement goes here etc etc'
+        },
+        actions: {
+          items: [
+            {
+              href: 'witnesses-and-summary?change=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Supporting documents'
+        },
+        value: {
+
+          html: '<a href="#">'+data['inquiry-evidence'] | join('<br>')+'</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-evidence',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['inquiry-evidence'],
+      {
+        key: {
+          text: 'Supporting documents'
+        },
+        value: {
+          html: '<a href="#">example-a.pdf</a><br><a href="#">example-b.pdf</a><br><a href="#">example-c.pdf</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-evidence',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['inquiry-evidence'] == false
+
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Submit proofs of evidence',
+    href: 'confirmation'
+  }) }}
+{% endblock %}
