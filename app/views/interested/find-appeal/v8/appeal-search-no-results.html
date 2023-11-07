@@ -1,9 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "No matching appeals" %}
-
-{% set prototypeLinks = [{href: 'appeal-search-no-results?search=number', text: 'No results from reference'},
-{href: 'appeal-search-no-results?search=', text: 'No results from address'}] %}
+{% set title = "We could not find any appeals" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -32,15 +29,9 @@
       {{ title }}
     </h1>
 
-    {% if data['search'] == "number" %}
-      <p class="govuk-body">
-        We have not found an appeal for this reference. This could be because there is not an appeal for this reference or the appeal has not started.
-      </p>
-    {% else %}
-      <p class="govuk-body">
-        We have not found an appeal for this address. This could be because there is not an appeal for this address or the appeal has not started.
-      </p>
-    {% endif %}
+    <p class="govuk-body">
+      You can try searching with a different reference number, postcode or grid reference.
+    </p>
 
     <p class="govuk-body">
       {% if data['search'] == "number" %}
@@ -48,7 +39,7 @@
       {% else %}
         <a href="appeal-search-address" class="govuk-link">
       {% endif %}
-        Search for another appeal
+        Search for a planning appeal
       </a>
     </p>
 
