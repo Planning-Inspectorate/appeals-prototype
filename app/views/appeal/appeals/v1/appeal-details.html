@@ -1,0 +1,123 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Appeal "+data['appealCode'] %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back to appeals",
+    href: "/manage/appeals/v7/?action="
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Appeal {{ data['appealCode'] or '1345264' }}
+    </h1>
+
+  </div>
+
+  <div class="govuk-grid-column-full">
+    {% if data['type'] == 'has' %}
+      {% include "_includes/appellant/meta-has-appeal.html" %}
+    {% elif data['type'] == 's78' %}
+      {% include "_includes/appellant/meta-full-appeal.html" %}
+    {% elif data['type'] == 'ldc' %}
+      <p class="govuk-body-l">
+        (LDC metadata)
+      </p>
+    {% elif data['type'] == 'lbc' %}
+      <p class="govuk-body-l">
+        (LBC metadata)
+      </p>
+    {% endif %}
+  </div>
+
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+      {% if data['final-comments'] == 'complete' %}
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Final comments
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+          {% if data['appellantComments'] %}
+            {% include "_includes/appellant/final-comments.html" %}
+          {% endif %}
+
+          {% include "_includes/lpa/final-comments.html" %}
+        </div>
+      </div>
+      {% endif %}
+      {% if data['evidence'] == 'complete' %}
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+              Evidence
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+          <!-- add link to evidence -->
+          <p class="govuk-body">(list of evidence)</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if data['statement'] == 'complete' %}
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+              Statements
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+
+          {% if data['appellantStatement'] == 'complete' %}
+            {% include "_includes/appellant/statement.html" %}
+          {% endif %}
+
+          {% include "_includes/lpa/statement.html" %}
+        </div>
+      </div>
+      {% endif %}
+      {% if data['questionnaire'] == 'complete' %}
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+              Questionnaire
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+          {% include "_includes/lpa/s78-questionnaire.html" %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    {% include "_includes/appeal-content/lpa-table-has-submission.html" %}
+  </div>
+
+</div>
+
+{% endblock %}
