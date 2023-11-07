@@ -1,7 +1,7 @@
 {% if data['submitted-appeals'] == 'no' %}
 
   <h2 class="govuk-heading-l">
-    Submitted appeals
+    Waiting for review
   </h2>
 
   <p class="govuk-body">
@@ -12,7 +12,7 @@
 
   {{ govukTable({
     classes: 'govuk-!-margin-top-3',
-    caption: 'Submitted appeals',
+    caption: 'Waiting for review',
     captionClasses: 'govuk-table__caption--l',
     firstCellIsHeader: false,
     head: [

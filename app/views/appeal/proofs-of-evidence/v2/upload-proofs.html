@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Upload all evidence' %}
+{% set title = 'Upload your proof of evidence and summary' %}
 
 {% block questions %}
 
@@ -22,8 +22,35 @@
         classes: 'govuk-label--m'
       },
       hint: {
-        html: '<p class="govuk-body">You can find the date on the letter confirming your application</p>
-        <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB</p>'
+        html:'<p class="govuk-body">Your proof of evidence should:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            be one file
+          </li>
+          <li>
+            include a summary
+          </li>
+          <li>
+            include your concise opinions and arguments
+          </li>
+          <li>
+            clearly refer to supporting documents
+          </li>
+        </ul>
+
+        <p class="govuk-body">Do not include:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            any new evidence
+          </li>
+          <li>
+            national or local policy
+          </li>
+          <li>
+            biographical detail of the witness
+          </li>
+        </ul>
+        <p class="govuk-hint">Files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB</p>'
       },
       attributes: { multiple: '' }
     }) }}

@@ -22,19 +22,23 @@
     {{ title }}
   </h1>
 
+  </div>
+  <div class="govuk-grid-column-full">
+
   {{ govukSummaryList({
     rows: [
       {
         key: {
-          text: 'Witnesses and summary of evidence'
+          text: 'Your proof of evidence and summary',
+          classes: 'govuk-!-width-one-third'
         },
         value: {
-          html: data['witnesses-and-evidence'] or 'Witnesses and evidence statement goes here etc etc'
+          html: '<a href="#">Proof-of-evidence.pdf</a><br><a href="#">Evidence-reference.pdf</a><br><a href="#">Summary-of-evidence.pdf</a>'
         },
         actions: {
           items: [
             {
-              href: 'witnesses-and-summary?change=true',
+              href: 'upload-proofs?change=true',
               text: 'Change'
             }
           ]
@@ -42,27 +46,26 @@
       },
       {
         key: {
-          text: 'Supporting documents'
+          text: 'Added witnesses'
         },
         value: {
-
-          html: '<a href="#">'+data['inquiry-evidence'] | join('<br>')+'</a>'
+          html: data['witness-check'] or 'No'
         },
         actions: {
           items: [
             {
-              href: 'upload-evidence',
+              href: 'witness-check?change=true',
               text: 'Change'
             }
           ]
         }
-      } if data['inquiry-evidence'],
+      },
       {
         key: {
-          text: 'Supporting documents'
+          text: 'Witness proofs of evidence and summary'
         },
         value: {
-          html: '<a href="#">example-a.pdf</a><br><a href="#">example-b.pdf</a><br><a href="#">example-c.pdf</a>'
+          html: '<a href="#">Witness-details.pdf</a><br><a href="#">Witness-evidnce-a.pdf</a><br><a href="#">Witness-evidnce-b.pdf</a><br><a href="#">Witness-summary.pdf</a>'
         },
         actions: {
           items: [
@@ -72,7 +75,7 @@
             }
           ]
         }
-      } if data['inquiry-evidence'] == false
+      } if data['witness-check'] == 'Yes'
 
     ]
   }) }}
