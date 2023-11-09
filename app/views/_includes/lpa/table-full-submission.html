@@ -1,0 +1,55 @@
+<h3 class="govuk-heading-m">
+  Prepare appeal
+</h3>
+
+<h3 class="govuk-heading-m">
+  Documents
+</h3>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Appeal submission',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">Appeal-statement.pdf</a>'
+      }
+    },
+    {
+      key: {
+        html: 'Plans or drawings'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">Appeal-outline.pdf</a>'
+      }
+    },
+    {
+      key: {
+        html: 'Planning obligation'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Supporting documents'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">Local petition for development.pdf</a>'
+      }
+    },
+    {
+      key: {
+        html: 'Draft statement of common ground'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">Statement of common ground 11.08.2022.doc</a>'
+      }
+    }
+
+  ]
+}) }}

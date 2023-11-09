@@ -23,7 +23,8 @@
 
     <section class="govuk-!-margin-bottom-6">
 
-      {% set version = "7" %}
+      {% set version = "8" %}
+
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
@@ -50,106 +51,128 @@
       </ul>
 
       {{ govukButton({
+        html: 'View dashboard',
+        href: 'v8/?action=&questionnaire=due&questionnaire-banner=no&current-appeals=yes&submitted-appeals=yes',
+        isStartButton: true
+      }) }}
+
+    </section>
+
+    {% set v7HTML %}
+
+      {% set version = "7" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          appeals with submitted questionnaires drop down the main list
+        </li>
+        <li>
+          added procedure type in meta data
+        </li>
+      </ul>
+
+      {{ govukButton({
         html: 'View full dashboard',
         href: 'v7/?action=&questionnaire=due&questionnaire-banner=no&current-appeals=yes&submitted-appeals=yes',
         isStartButton: true
       }) }}
 
-      {% set v6HTML %}
+    {% endset -%}
 
-        {% set version = "6" %}
+    {% set v6HTML %}
 
-        <!-- <p>
-          Researched January 2023<br>
-          <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
-            Confluence user research notes
-          </a>
-        </p> -->
+      {% set version = "6" %}
 
-        <p class="govuk-!-margin-bottom-2">Changes:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            new appeals in main table
-          </li>
-          <li>
-            added decided appeals as a new view
-          </li>
-        </ul>
+      <!-- <p>
+        Researched January 2023<br>
+        <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p> -->
 
-        {{ govukButton({
-          html: 'View full dashboard',
-          href: 'v6/?action=&questionnaire=due&questionnaire-banner=no&current-appeals=yes&submitted-appeals=yes',
-          isStartButton: true
-        }) }}
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          new appeals in main table
+        </li>
+        <li>
+          added decided appeals as a new view
+        </li>
+      </ul>
 
-      {% endset -%}
-
-      {% set v5HTML %}
-
-        {% set version = "5" %}
-
-        <!-- <p>
-          Researched January 2023<br>
-          <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
-            Confluence user research notes
-          </a>
-        </p> -->
-
-        <p class="govuk-!-margin-bottom-2">Changes:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            new appeals in details component
-          </li>
-          <li>
-            content updates
-          </li>
-        </ul>
-
-        {{ govukButton({
-          html: 'View full dashboard',
-          href: 'v5/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&new-appeals=yes',
-          isStartButton: true
-        }) }}
-
-      {% endset -%}
-
-      {% set v4HTML %}
-
-        {% set version = "4" %}
-        <h2 class="govuk-heading-m">
-          Version {{version}}
-          {{ govukTag({
-            classes: 'govuk-tag--blue govuk-!-margin-left-2',
-            text: 'Researched'
-          }) }}
-        </h2>
-
-        <p>
-          Researched January 2023<br>
-          <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
-            Confluence user research notes
-          </a>
-        </p>
-
-        <p class="govuk-!-margin-bottom-2">Changes:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            new tab for submitted appeals
-          </li>
-          <li>
-            new tab for received appeals
-          </li>
-        </ul>
-
-        {{ govukButton({
-          html: 'View full dashboard',
-          href: 'v4/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&received-appeals=yes',
-          isStartButton: true
-        }) }}
+      {{ govukButton({
+        html: 'View full dashboard',
+        href: 'v6/?action=&questionnaire=due&questionnaire-banner=no&current-appeals=yes&submitted-appeals=yes',
+        isStartButton: true
+      }) }}
 
     {% endset -%}
 
-  </section>
+    {% set v5HTML %}
+
+      {% set version = "5" %}
+
+      <!-- <p>
+        Researched January 2023<br>
+        <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p> -->
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          new appeals in details component
+        </li>
+        <li>
+          content updates
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View full dashboard',
+        href: 'v5/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&new-appeals=yes',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {% set v4HTML %}
+
+      {% set version = "4" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--blue govuk-!-margin-left-2',
+          text: 'Researched'
+        }) }}
+      </h2>
+
+      <p>
+        Researched January 2023<br>
+        <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p>
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          new tab for submitted appeals
+        </li>
+        <li>
+          new tab for received appeals
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View full dashboard',
+        href: 'v4/?action=&questionnaire=complete&submitted-appeals=yes&current-appeals=yes&received-appeals=yes',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v3HTML %}
 
@@ -218,6 +241,14 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
+        {
+          heading: {
+            html: 'Version 7 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v7HTML
+          }
+        },
         {
           heading: {
             html: 'Version 6 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

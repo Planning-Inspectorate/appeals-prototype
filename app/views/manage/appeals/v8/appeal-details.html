@@ -1,0 +1,223 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Appeal "+data['appealCode'] %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% set prototypeLinks = [
+  {
+    href: '?questionnaire=due&statement=due&appellantStatement=due&final-comments=&evidence=',
+    text: 'Questionnaire stage'
+  },
+  {
+    href: '?questionnaire=complete&statement=due&appellantStatement=due&final-comments=&evidence=',
+    text: 'Questionnaire done'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellantStatement=due&final-comments=&evidence=',
+    text: 'LPA statement done'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellantStatement=complete&final-comments=&evidence=',
+    text: 'All statements done'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellantStatement=complete&final-comments=complete&evidence=',
+    text: 'Final-comments done'
+  }
+  ]
+%}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+    text: "Back to appeals",
+    href: "/manage/appeals/v7/?action="
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- notifications -->
+    <section>
+
+      {% if data['questionnaire'] == 'overdue' %}
+        <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              This questionnaire was due {{ 1 | daysAgo }}
+              <!-- <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-warning-text__assistive">Warning</span>
+                  This appeal is overdue
+                </strong>
+              </div> -->
+            </p>
+            <p class="govuk-body">
+              <a href="/manage/questionnaire/v14/task-list?action=">Submit questionnaire</a>
+            </p>
+          </div>
+        </div>
+      {% elif data['questionnaire'] == 'due' %}
+        <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Questionnaire due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must submit this questionnaire by 11:59pm on {{ 3 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/questionnaire/v14/task-list?action=">Submit questionnaire</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      {% else %}
+        <!-- due or completed appeal does not show a notification -->
+      {% endif %}
+
+      {% if data['statement'] == 'due' %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Appeal statement due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must submit this statement by 11:59pm on {{ 33 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/statement/v1/enter-statement?action=">Submit statement</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      {% endif %}
+
+    </section>
+
+    <h1 class="govuk-heading-l">
+      Appeal {{ data['appealCode'] or '1345264' }}
+    </h1>
+
+  </div>
+
+  <!-- metadata -->
+  <div class="govuk-grid-column-full">
+    {% include "_includes/lpa/meta-full-appeal.html" %}
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-m">
+      Appeal submission
+    </h2>
+
+    <p class="govuk-body">
+      <a href="submission-full">
+        View appeal submission
+      </a>
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% if data['questionnaire'] == 'complete' %}
+
+      <h2 class="govuk-heading-m">
+        Questionnaire
+      </h2>
+
+      <p class="govuk-body">
+        <a href="questionnaire-full">
+          View questionnaire
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+    {% if data['statement'] == 'complete' %}
+
+      <h2 class="govuk-heading-m">
+        Statements
+      </h2>
+
+      <p class="govuk-body">
+        <a href="lpa-statement">
+          View your statement
+        </a>
+      </p>
+
+      {% if data['appellantStatement'] == 'complete' %}
+        <p class="govuk-body">
+          <a href="#">
+            View appellant statement
+          </a>
+        </p>
+      {% endif %}
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+    {% if data['evidence'] == 'complete' %}
+
+      <h2 class="govuk-heading-m">
+        Evidence
+      </h2>
+
+      <p class="govuk-body">
+        <a href="#">
+          View evidence
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+    {% if data['final-comments'] == 'complete' %}
+
+      <h2 class="govuk-heading-m">
+        Final comments
+      </h2>
+
+      <p class="govuk-body">
+        <a href="#">
+          View final comments
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
