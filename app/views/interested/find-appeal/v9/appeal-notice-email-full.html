@@ -1,0 +1,105 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% block pageTitle %}
+  Interested party full planning notification
+{% endblock %}
+
+{% set appealref = "1345172" %}
+{% set applicationRef = "23/04125/FUL" %}
+
+{% block content %}
+
+<!-- faux email header -->
+<section>
+  <p class="govuk-body">
+    <strong>Subject:</strong> Have your say on a refused planning decision
+  </p>
+  <p class="govuk-body">
+    <strong>To:</strong> example@email.com<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <!-- <p class="govuk-body">
+    <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+  </p> -->
+  <hr class="govuk-!-margin-bottom-6">
+</section>
+
+<p class="govuk-body">
+  <strong>Appeal reference:</strong> {{ appealref }}<br>
+  <strong>Appeal site address:</strong> 2 Aubrey House, Aubrey Road, BS3 3EX
+</p>
+
+<p class="govuk-body">
+  Dear householder,
+</p>
+
+<p class="govuk-body">
+  Rachel Silver is appealing Bristol City Council’s decision to refuse their planning application.
+</p>
+
+<p class="govuk-body">
+  Planning application number: {{ applicationRef }}
+  <br>Proposal: Loft dormer conversion (flat and pitched roof)
+  <br>Appeal start date: {{ 7 | daysInFuture }}
+</p>
+
+<p class="govuk-body">
+  As you may have an interest in this planning decision, you can have your say and add a comment to the appeal (this is also known as a ‘written representation’).
+</p>
+
+<h2 class="govuk-heading-m">
+  Who we are
+</h2>
+
+<p class="govuk-body">
+  The Planning Inspectorate is an independent organisation who review all the evidence and make the final decision.
+</p>
+
+<h2 class="govuk-heading-m">
+  What you can do
+</h2>
+
+<p class="govuk-body">
+  You can use our website to submit a comment on this appeal. If you commented on the original application, it has already been sent to us and will be considered as part of this appeal.
+</p>
+
+<p class="govuk-body">
+  You must submit your comment on the appeal by 11:59pm on {{ 7 | daysInFuture }}.
+</p>
+
+<p class="govuk-body">
+  If you made a comment on the application, they have been sent to the planning inspector. You do not need to send them again.
+</p>
+
+<h2 class="govuk-heading-m">
+  View and comment on this appeal
+</h2>
+
+<p class="govuk-body">
+  Follow the link to view and comment on this appeal.
+</p>
+
+<p class="govuk-body">
+  <a href="appeal-details?status=open&appeal=1&appealCode={{ appealref }}" class="govuk-link">
+    https://appeals.planninginspectorate.gov.uk/appeals/{{ appealref }}?sc=935336894d43c80fa548fc4a01af3488
+  </a>
+</p>
+
+<p class="govuk-body">
+  You must submit your comment by 11:59pm on {{ '14' | daysInFuture }}.
+</p>
+
+<h2 class="govuk-heading-m">
+  What happens next
+</h2>
+
+<p class="govuk-body">
+  The inspector will review all the evidence and make their decision. We will publish the decision on our website.
+</p>
+
+<p class="govuk-body">
+  The Planning Inspectorate<br>
+  enquiries@planninginspectorate.gov.uk
+</p>
+
+{% endblock %}

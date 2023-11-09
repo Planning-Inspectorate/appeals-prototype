@@ -1,0 +1,200 @@
+{{ govukTable({
+  classes: 'govuk-!-margin-top-0',
+  caption: '1 to 10 decided appeals',
+  captionClasses: 'govuk-visually-hidden govuk-table__caption--l',
+  firstCellIsHeader: false,
+  head: [
+    {
+      html: 'Appeal number'
+    },
+    {
+      html: 'Site address',
+      classes: 'govuk-!-width-one-third'
+    },
+    {
+      html: 'Decision date',
+      classes: 'govuk-!-width-one-quarter'
+    },
+    {
+      html: 'Appeal type',
+      classes: 'govuk-!-width-one-quarter'
+    },
+    {
+      html: 'Decision',
+      classes: 'govuk-!-width-one-third'
+    }
+  ],
+  rows: [
+    [
+      {
+        html: "<a href='' class='govuk-link'>0201624</a>"
+      },
+      {
+        html: '102 Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '8' | daysInPastShort
+      },
+      {
+        html: 'Full planning'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--orange">Allowed in part</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0201972</a>"
+      },
+      {
+        html: '77 Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '16' | daysInPastShort
+      },
+      {
+        html: 'Full planning'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--yellow">Dismissed</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0202120</a>"
+      },
+      {
+        html: '361633, 174493'
+      },
+      {
+        html: '32' | daysInPastShort
+      },
+      {
+        html: 'Enforcement notice'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--orange">Varied and upheld</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0202331</a>"
+      },
+      {
+        html: '2 Aubrey House, Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '64' | daysInPastShort
+      },
+      {
+        html: 'Householder'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0212006</a>"
+      },
+      {
+        html: '19 Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '128' | daysInPastShort
+      },
+      {
+        html: 'Listed building consent'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0217634</a>"
+      },
+      {
+        html: '1 Aubrey House, Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '222' | daysInPastShort
+      },
+      {
+        html: 'Listed building consent'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0217801</a>"
+      },
+      {
+        html: '22 Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '265' | daysInPastShort
+      },
+      {
+        html: 'Listed building consent'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0219924</a>"
+      },
+      {
+        html: '155 Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '301' | daysInPastShort
+      },
+      {
+        html: 'Listed building consent'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0219983</a>"
+      },
+      {
+        html: '32 Vicarage Court, Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '322' | daysInPastShort
+      },
+      {
+        html: 'Listed building consent'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ],
+    [
+      {
+        html: "<a href='' class='govuk-link'>0220012</a>"
+      },
+      {
+        html: '8 Aubrey Road, BS3 3EX'
+      },
+      {
+        html: '365' | daysInPastShort
+      },
+      {
+        html: 'Listed building consent'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ]
+
+  ]
+}) }}
