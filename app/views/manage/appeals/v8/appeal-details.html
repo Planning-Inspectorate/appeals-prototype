@@ -8,24 +8,32 @@
 
 {% set prototypeLinks = [
   {
-    href: '?questionnaire=due&statement=due&appellantStatement=due&final-comments=&evidence=',
+    href: '?questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=',
     text: 'Questionnaire stage'
   },
   {
-    href: '?questionnaire=complete&statement=due&appellantStatement=due&final-comments=&evidence=',
+    href: '?questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=',
     text: 'Questionnaire done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellantStatement=due&final-comments=&evidence=',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=',
     text: 'LPA statement done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellantStatement=complete&final-comments=&evidence=',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=',
     text: 'All statements done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellantStatement=complete&final-comments=complete&evidence=',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=',
     text: 'Final-comments done'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=',
+    text: 'All final-comments done'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete',
+    text: 'Appeal decided'
   }
   ]
 %}
@@ -114,11 +122,37 @@
         </div>
       {% endif %}
 
+      {% if data['final-comments'] == 'due' %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Final comments due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You can submit final comments by 11:59pm on {{ 12 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/final-comments/v2/add-comments?action=banner">Submit final comments</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      {% endif %}
+
+
+
     </section>
 
     <h1 class="govuk-heading-l">
       Appeal {{ data['appealCode'] or '1345264' }}
     </h1>
+
+    {% if data['appeal-decided'] == 'complete' %}
+      <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-5">Dismissed</strong>
+    {% endif %}
 
   </div>
 
@@ -170,9 +204,9 @@
         </a>
       </p>
 
-      {% if data['appellantStatement'] == 'complete' %}
+      {% if data['appellant-statement'] == 'complete' %}
         <p class="govuk-body">
-          <a href="#">
+          <a href="appellant-statement">
             View appellant statement
           </a>
         </p>
@@ -205,12 +239,36 @@
       </h2>
 
       <p class="govuk-body">
-        <a href="#">
-          View final comments
+        <a href="lpa-final-comments">
+          View your final comments
         </a>
       </p>
 
+      {% if data['appellant-final-comments'] == 'complete' %}
+        <p class="govuk-body">
+          <a href="appellant-final-comments">
+            View appellant final-comments
+          </a>
+        </p>
+      {% endif %}
+
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+    {% if data['appeal-decided'] == 'complete' %}
+
+      <h2 class="govuk-heading-m">
+        Appeal decision
+      </h2>
+
+      <p class="govuk-body">
+        <a href="#">
+          View decision
+        </a>
+      </p>
+
+      <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m"> -->
 
     {% endif %}
 

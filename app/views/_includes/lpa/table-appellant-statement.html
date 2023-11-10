@@ -1,0 +1,26 @@
+{% set appellantStatement = 'Pellentesque vestibulum sed lacus vitae pellentesque. Sed non efficitur tellus.\n\nNam in pretium metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sit amet diam sit amet purus bibendum sollicitudin. Suspendisse turpis magna, tincidunt a elit vel, scelerisque facilisis metus. Curabitur ut pellentesque sapien. Aliquam arcu nisl, tempus non dictum sit amet, interdum sed metus. Aliquam sed nulla volutpat, varius elit vitae, cursus purus. Pellentesque non lacinia ligula.\n\nInteger volutpat faucibus mauris, lobortis auctor quam dapibus sed. Aliquam et lectus porttitor, rutrum nulla in, dignissim est. Aliquam a magna dignissim, molestie purus vitae, ultrices risus. Sed at ultrices elit, varius tincidunt ex. Nam fermentum eros a dui lobortis, non egestas enim blandit. Maecenas massa nibh, rhoncus sit amet magna vitae, ultrices condimentum nunc. Pellentesque fringilla nisi et nunc pulvinar feugiat. Sed a lorem sollicitudin, dapibus lectus et, pharetra est. Sed ut sapien turpis. Nam non eros bibendum odio egestas congue condimentum eu eros. Nam sed auctor arcu. Praesent tincidunt sollicitudin ex, eu pellentesque metus. Morbi tristique fermentum dolor, et sodales ex mattis ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n\nSed sodales libero magna, eget consectetur elit malesuada ac. Aenean quis arcu at velit maximus scelerisque quis vitae felis. Mauris bibendum urna et viverra lobortis. Quisque molestie nisl eget nibh congue suscipit. Nullam blandit tincidunt tortor, sed tempor turpis scelerisque id. Fusce condimentum venenatis mi, at auctor turpis tincidunt sed. Vivamus rutrum accumsan nisl et malesuada. Nunc porttitor risus eu nibh laoreet facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\n\nSuspendisse et elit sed felis feugiat feugiat. Fusce non est est. Curabitur at quam ut ex accumsan vehicula. Morbi semper risus eu tincidunt fermentum. Ut hendrerit diam sit amet lacus pretium, id maximus urna dapibus. Nullam sed bibendum nunc. In hac habitasse platea dictumst. Nulla posuere, lectus tincidunt convallis fringilla, sapien massa interdum diam, et tincidunt dui lacus sit amet risus. Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis..
+  ' %}
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Statement text',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: appellantStatement | nl2br
+      }
+    },
+    {
+      key: {
+        html: 'Added supporting documents'
+      },
+      value: {
+        html: 'No'
+      }
+    }
+
+  ]
+}) }}

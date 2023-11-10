@@ -10,10 +10,23 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
-  {{ govukBackLink({
-    html: 'Back to manage your appeals',
-    href: 'javascript:history.back()'
-  }) }}
+
+  {% if data['action'] == 'banner' %}
+
+    {{ govukBackLink({
+      html: 'Back to appeal details',
+      href: 'javascript:history.back()'
+    }) }}
+
+  {% else %}
+
+    {{ govukBackLink({
+      html: 'Back to manage your appeals',
+      href: 'javascript:history.back()'
+    }) }}
+
+  {% endif %}
+
 {% endblock %}
 
 

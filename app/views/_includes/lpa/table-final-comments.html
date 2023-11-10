@@ -1,0 +1,18 @@
+{% set appellantStatement = 'Nullam sed bibendum nunc. In hac habitasse platea dictumst. Nulla posuere, lectus tincidunt convallis fringilla, sapien massa interdum diam, et tincidunt dui lacus sit amet risus. Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
+  ' %}
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Statement text',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: appellantStatement | nl2br
+      }
+    }
+
+  ]
+}) }}
