@@ -141,9 +141,6 @@
           </div>
         </div>
       {% endif %}
-
-
-
     </section>
 
     <h1 class="govuk-heading-l">
@@ -151,7 +148,20 @@
     </h1>
 
     {% if data['appeal-decided'] == 'complete' %}
-      <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-5">Dismissed</strong>
+      <h2 class="govuk-heading-m">
+        Appeal decision
+      </h2>
+      <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
+        Dismissed
+      </strong>
+      <p class="govuk-body">
+        <a href="#">
+          Decision letter.doc
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
     {% endif %}
 
   </div>
@@ -255,25 +265,6 @@
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
     {% endif %}
-
-    {% if data['appeal-decided'] == 'complete' %}
-
-      <h2 class="govuk-heading-m">
-        Appeal decision
-      </h2>
-
-      <p class="govuk-body">
-        <a href="#">
-          View decision
-        </a>
-      </p>
-
-      <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m"> -->
-
-    {% endif %}
-
-
-
 
   </div>
 </div>
