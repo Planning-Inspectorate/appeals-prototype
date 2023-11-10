@@ -1,0 +1,50 @@
+{{ govukTable({
+  caption: "Application",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  rows: [
+    [
+      {
+        text: "Description of development",
+        classes: "govuk-!-width-one-third"
+      },
+      {
+        html: 'Loft conversion of roof to existing dwelling'
+      }
+    ],
+    [
+      {
+        text: "Application decision notice"
+      },
+      {
+        html: '<a href="#" class="govuk-link">Application decision 02.06.2022.doc</a>'
+      }
+    ],
+    [
+      {
+        text: "Application"
+      },
+      {
+        html: '<a href="#" class="govuk-class">Planning application 2022.pdf</a>'
+      }
+    ],
+    [
+      {
+        text: "Plans, drawings and supporting documents"
+      },
+      {
+        html: '<a href="#" class="govuk-class">Haggis Farm plans.pdf</a><br>
+               <a href="#" class="govuk-class">Haggis Farm site examination.pdf</a><br>
+               <a href="#" class="govuk-class">Haggis Farm topographics.pdf</a>'
+      }
+    ],
+    [
+      {
+        text: "Design and access statement"
+      },
+      {
+        html: '<a href="#" class="govuk-class">Haggis Farm DA.pdf</a>'
+      }
+    ]
+  ]
+}) }}
