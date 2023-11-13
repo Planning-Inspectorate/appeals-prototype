@@ -21,33 +21,72 @@
       {{ title }}
     </h1>
 
-    {% set version = "1" %}
+    {% set version = "2" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--blue govuk-!-margin-left-2',
-        text: 'Researched'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
 
-    <p>
+    <!-- <p>
       Researched November 2022<br>
       <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1066336287" class="govuk-link">
         Confluence user research notes
       </a>
-    </p>
+    </p> -->
 
-    <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>Moved version 2 of this here (<a href="https://pins-appeals.herokuapp.com/lpa/v1/access?action=" class="govuk-link govuk-link--no-visited-state" title="Link to version 1">see version 1</a>)</li>
-      <li>Now you can add more than one person</li>
-      <li>Small UI update</li>
-    </ul> -->
+      <li>
+        Changed the help paragraph to a hint and moved it to under the input label on the appeal submission view
+      </li>
+    </ul>
 
     {{ govukButton({
       html: 'View prototype',
       href: 'v'+version+'/enter-statement',
       isStartButton: true
+    }) }}
+
+    {% set v1HTML %}
+
+      <p>
+        Researched November 2022<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1066336287" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p>
+
+      <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Moved version 2 of this here (<a href="https://pins-appeals.herokuapp.com/lpa/v1/access?action=" class="govuk-link govuk-link--no-visited-state" title="Link to version 1">see version 1</a>)</li>
+        <li>Now you can add more than one person</li>
+        <li>Small UI update</li>
+      </ul> -->
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/enter-statement',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
     }) }}
 
   </div>

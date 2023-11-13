@@ -52,15 +52,9 @@
 
       <form method="post" action="">
 
-        <p class="govuk-body">Your final comments should only respond to the statements from the appellant or interested parties, and must not include any new evidence.</p>
-
-        <p class="govuk-body">If you want to add documents to support your comments, for example photographs, you can upload them in the next step.</p>
-
-        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
-          Sensitive information
-        </h2>
-
-        <p class="govuk-body">You must not include any sensitive information in your comments.</p>
+        <p class="govuk-body">
+          Only respond to statements from the appellant or interested parties. Do not include any new evidence or sensitive information.
+        </p>
 
         {% include "_includes/sensitive-information-list.html" %}
 
@@ -81,9 +75,9 @@
           classes: 'checkboxes-long-text',
           items: [
             {
-              html: 'I confirm that I have not included any sensitive information in my final comments.',
-              value: 'I confirm that I have not included any sensitive information in my final comments.',
-              checked: checked('appeal-statement-confirmation','I confirm that I have not included any sensitive information in my final comments.')
+              html: 'I confirm that I did not include any sensitive information in my final comments',
+              value: 'I confirm that I have not included any sensitive information in my final comments',
+              checked: checked('appeal-statement-confirmation','I confirm that I have not included any sensitive information in my final comments')
             }
           ]
         }) }}
