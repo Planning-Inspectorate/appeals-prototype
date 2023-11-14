@@ -86,6 +86,41 @@
         Manage LPA appeals
       </h2>
 
+      {{govukButton({
+        text: 'Appeals hub (dashboard)',
+        classes: 'govuk-button--secondary',
+        href: 'manage/appeals/v8/'
+      })}}
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+        LPA dashboard and manage access
+      </h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="manage/appeals/?questionnaire-banner=&statement-banner=&questionnaire=&statement=&finalcomments=">
+            Planning appeals (summary of progress)
+          </a>
+        </li>
+        <li>
+          <a href="manage/appeals/v8/?questionnaire-banner=&statement-banner=&questionnaire=&statement=&finalcomments=">
+            Planning appeals (list of appeals)
+          </a>
+        </li>
+        <li>
+          <a href="/manage/appeals/v8/?questionnaire-banner=yes&statement-banner=&questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">
+            Appeals list, questionnaire done
+          </a>
+        </li>
+        <li>
+          <a href="/manage/appeals/v8/?questionnaire-banner=&statement-banner=yes&questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">
+            Appeals list, statement done
+          </a>
+        </li>
+        <li>
+          <a href="manage/manage-users/">Manage users</a>
+        </li>
+      </ul>
+
       <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
         Appeal details
       </h3>
@@ -146,35 +181,6 @@
         </li>
         <li>
           <a href="/manage/emails/">Appeal action notifications</a>
-        </li>
-      </ul>
-
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-        LPA dashboard and manage access
-      </h3>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="manage/appeals/?questionnaire-banner=&statement-banner=&questionnaire=&statement=&finalcomments=">
-            Planning appeals (summary of progress)
-          </a>
-        </li>
-        <li>
-          <a href="manage/appeals/v8/?questionnaire-banner=&statement-banner=&questionnaire=&statement=&finalcomments=">
-            Planning appeals (list of appeals)
-          </a>
-        </li>
-        <li>
-          <a href="/manage/appeals/v8/?questionnaire-banner=yes&statement-banner=&questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">
-            Appeals list, questionnaire done
-          </a>
-        </li>
-        <li>
-          <a href="/manage/appeals/v8/?questionnaire-banner=&statement-banner=yes&questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">
-            Appeals list, statement done
-          </a>
-        </li>
-        <li>
-          <a href="manage/manage-users/">Manage users</a>
         </li>
       </ul>
 
