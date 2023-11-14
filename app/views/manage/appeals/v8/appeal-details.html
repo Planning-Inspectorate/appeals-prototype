@@ -8,31 +8,47 @@
 
 {% set prototypeLinks = [
   {
-    href: '?questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=',
+    href: '?questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
     text: 'Questionnaire stage'
   },
   {
-    href: '?questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=',
+    href: '?questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
     text: 'Questionnaire done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
     text: 'LPA statement done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
     text: 'All statements done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    text: 'Final-comments due'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
     text: 'Final-comments done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
     text: 'All final-comments done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete',
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=inquiry&proofs=due&appellant-proofs=',
+    text: 'Inquiry: Proofs due'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=inquiry&proofs=complete&appellant-proofs=',
+    text: 'Inquiry: Proofs done'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&appeal-type=inquiry&proofs=complete&appellant-proofs=complete',
+    text: 'Inquiry: All proofs done'
+  },
+  {
+    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete&appeal-type=&proofs=&appellant-proofs=',
     text: 'Appeal decided'
   }
   ]
@@ -57,7 +73,8 @@
     <section>
 
       {% if data['questionnaire'] == 'overdue' %}
-        <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <!-- notice for overdue questionnaire -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-6" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
             <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
               Important
@@ -80,7 +97,8 @@
           </div>
         </div>
       {% elif data['questionnaire'] == 'due' %}
-        <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <!-- notice for due questionnaire -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-6" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
             <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
               Questionnaire due
@@ -102,7 +120,8 @@
       {% endif %}
 
       {% if data['statement'] == 'due' %}
-        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <!-- notice for due statement -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
             <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
               Appeal statement due
@@ -122,7 +141,8 @@
       {% endif %}
 
       {% if data['final-comments'] == 'due' %}
-        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <!-- notice for due final comments -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
             <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
               Final comments due
@@ -140,14 +160,39 @@
           </div>
         </div>
       {% endif %}
+
+      {% if data['appeal-type'] == 'inquiry' %}
+        <!-- notice for proofs of evidence -->
+        {% if data['proofs'] == 'due' %}
+        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Proof of evidence and witnesses due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must submit proof of evidence by 11:59pm on {{ 7 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/proofs-of-evidence/v2/before-you-continue?action=banner">Submit proofs and witnesses</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+        {% endif %}
+      {% endif %}
+
+
     </section>
 
-    <h1 class="govuk-heading-l">
+    <h1 class="govuk-heading-xl">
       Appeal {{ data['appealCode'] or '1345264' }}
     </h1>
 
     {% if data['appeal-decided'] == 'complete' %}
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-l">
         Appeal decision
       </h2>
       <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
@@ -173,12 +218,12 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    <h2 class="govuk-heading-m">
+    <h2 class="govuk-heading-l">
       Appeal details
     </h2>
 
     <p class="govuk-body">
-      <a href="submission-full">
+      <a href="appellant-submission-full">
         View appeal details
       </a>
     </p>
@@ -187,12 +232,12 @@
 
     {% if data['questionnaire'] == 'complete' %}
 
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-l">
         Questionnaire
       </h2>
 
       <p class="govuk-body">
-        <a href="questionnaire-full">
+        <a href="lpa-questionnaire-full">
           View questionnaire
         </a>
       </p>
@@ -201,69 +246,83 @@
 
     {% endif %}
 
-    {% if data['statement'] == 'complete' %}
+    {% if data['appeal-type'] == 'inquiry' %}
 
-      <h2 class="govuk-heading-m">
-        Statements
-      </h2>
+      {% if data['proofs'] == 'complete' %}
 
-      <p class="govuk-body">
-        <a href="lpa-statement">
-          View your statement
-        </a>
-      </p>
+        <h2 class="govuk-heading-l">
+          Proofs of evidence and witness timings
+        </h2>
 
-      {% if data['appellant-statement'] == 'complete' %}
         <p class="govuk-body">
-          <a href="appellant-statement">
-            View appellant statement
+          <a href="lpa-proofs">
+            View the LPA proofs of evidence and witnesses timings
           </a>
         </p>
+
+        {% if data['appellant-proofs'] == 'complete' %}
+          <p class="govuk-body">
+            <a href="appellant-proofs">
+              View the appellant proofs of evidence and witnesses timings
+            </a>
+          </p>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
       {% endif %}
 
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+    {% else %}
 
-    {% endif %}
+      {% if data['statement'] == 'complete' %}
 
-    {% if data['evidence'] == 'complete' %}
+        <h2 class="govuk-heading-l">
+          Statements
+        </h2>
 
-      <h2 class="govuk-heading-m">
-        Evidence
-      </h2>
-
-      <p class="govuk-body">
-        <a href="#">
-          View evidence
-        </a>
-      </p>
-
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
-
-    {% endif %}
-
-    {% if data['final-comments'] == 'complete' %}
-
-      <h2 class="govuk-heading-m">
-        Final comments
-      </h2>
-
-      <p class="govuk-body">
-        <a href="lpa-final-comments">
-          View your final comments
-        </a>
-      </p>
-
-      {% if data['appellant-final-comments'] == 'complete' %}
         <p class="govuk-body">
-          <a href="appellant-final-comments">
-            View appellant final comments
+          <a href="lpa-statement">
+            View your statement
           </a>
         </p>
+
+        {% if data['appellant-statement'] == 'complete' %}
+          <p class="govuk-body">
+            <a href="appellant-statement">
+              View appellant statement
+            </a>
+          </p>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
       {% endif %}
 
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+      {% if data['final-comments'] == 'complete' %}
 
-    {% endif %}
+        <h2 class="govuk-heading-l">
+          Final comments
+        </h2>
+
+        <p class="govuk-body">
+          <a href="lpa-final-comments">
+            View your final comments
+          </a>
+        </p>
+
+        {% if data['appellant-final-comments'] == 'complete' %}
+          <p class="govuk-body">
+            <a href="appellant-final-comments">
+              View appellant final comments
+            </a>
+          </p>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+      {% endif %}
+
+    {% endif %} <!-- appeal type -->
 
   </div>
 </div>

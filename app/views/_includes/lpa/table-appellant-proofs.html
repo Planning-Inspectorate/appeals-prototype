@@ -1,0 +1,37 @@
+<h3 class="govuk-heading-l">
+  Proof of evidence
+</h3>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Your proof of evidence and summary',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">Appeals list of evidence.pdf</a><br>
+               <a href="#" class="govuk-link">Appeals summary of evidence.pdf</a><br>'
+      }
+    },
+    {
+      key: {
+        html: 'Added witnesses'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Witnesses and evidence',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">Appeals witness list and evidence.pdf</a><br>'
+      }
+    }
+
+  ]
+}) }}

@@ -12,13 +12,13 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
-    <span class="govuk-caption-l">
+    <span class="govuk-caption-xl">
       Appeal {{ data['appealCode'] or '1345264' }}
     </span>
-    <h1 class="govuk-heading-l">
-      Appeal details
+    <h1 class="govuk-heading-xl">
+      Appeallant’s proof of evidence
     </h1>
 
   </div>
@@ -30,7 +30,7 @@
 
   <div class="govuk-grid-column-full">
     <!-- appeal submission -->
-    {% include "_includes/lpa/table-full-submission.html" %}
+    {% include "_includes/lpa/table-appellant-proofs.html" %}
 
   </div>
 </div>

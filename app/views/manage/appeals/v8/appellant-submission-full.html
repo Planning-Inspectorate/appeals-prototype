@@ -18,8 +18,9 @@
       Appeal {{ data['appealCode'] or '1345264' }}
     </span>
     <h1 class="govuk-heading-xl">
-      Appellant statement
+      Appeal details
     </h1>
+
   </div>
 
   <div class="govuk-grid-column-full">
@@ -28,10 +29,10 @@
   </div>
 
   <div class="govuk-grid-column-full">
-    {% include "_includes/lpa/table-appellant-statement.html" %}
-    <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
-  </div>
+    <!-- appeal submission -->
+    {% include "_includes/lpa/table-full-submission.html" %}
 
+  </div>
 </div>
 
 {% endblock %}

@@ -1,0 +1,86 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload your proof of evidence and summary' %}
+
+{% block questions %}
+
+  <!-- <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span> -->
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {% set uploadHtml %}
+    {{ govukFileUpload({
+      id: 'inquiry-evidence',
+      name: 'inquiry-evidence',
+      classes: 'moj-multi-file-upload__input',
+      label: {
+        text: 'Upload files',
+        classes: 'govuk-label--m'
+      },
+      hint: {
+        html:'<p class="govuk-body">Your proof of evidence should:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            be one file
+          </li>
+          <li>
+            include a summary
+          </li>
+          <li>
+            include your concise opinions and arguments
+          </li>
+          <li>
+            clearly refer to supporting documents
+          </li>
+        </ul>
+
+        <p class="govuk-body">Do not include:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            any new evidence
+          </li>
+          <li>
+            national or local policy
+          </li>
+          <li>
+            biographical detail of the witness
+          </li>
+        </ul>
+        <p class="govuk-hint">Files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB</p>'
+      },
+      attributes: { multiple: '' }
+    }) }}
+
+    {{govukButton({
+      text: 'Upload file',
+      classes: 'govuk-button--secondary moj-multi-file-upload__button'
+    })}}
+  {% endset %}
+
+  {{ mojMultiFileUpload({
+    uploadedFiles: {
+      heading: { text: 'Files added' },
+      items: []
+    },
+    uploadHtml: uploadHtml
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
+    $('form').submit(function(e) {
+      e.preventDefault();
+
+      $('.moj-multi-file-upload__filename').each(function() {
+        $('<input name="inquiry-evidence" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+      });
+
+      $(this).unbind('submit').submit();
+    })
+  </script>
+{% endblock %}

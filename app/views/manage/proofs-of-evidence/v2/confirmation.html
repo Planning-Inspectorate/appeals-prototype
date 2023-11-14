@@ -1,16 +1,9 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = "Appeal statement submitted" %}
-
-{% set serviceName = "Manage your planning inspectorate appeals" %}
-{% set nav = true %}
-
 {% block beforeContent %}
   {{ govukPhaseBanner({
-    tag: {
-      text: "Beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
   }) }}
 {% endblock %}
 
@@ -19,10 +12,11 @@
     <div class="govuk-grid-column-two-thirds">
 
       {{ govukPanel({
-        titleHtml: title
+        titleHtml: 'Proofs of evidence submitted',
+        html: "Your reference number<br><strong>0123456</strong>"
       }) }}
 
-      <p class="govuk-body">
+      <p>
         We’ve sent you a confirmation email.
       </p>
 
@@ -35,7 +29,7 @@
       </p>
 
       <p class="govuk-!-margin-bottom-5">
-        <a href="/manage/appeals/v7/?statement=complete&statement-banner=yes">Back to appeals</a>
+        <a href="/manage/appeals/v8/?statement=&proofs-banner=yes">Back to appeals</a>
       </p>
 
     </div>

@@ -1,0 +1,89 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Check your answers and submit your proofs of evience" %}
+
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  </div>
+  <div class="govuk-grid-column-full">
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: 'Your proof of evidence and summary',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: '<a href="#">Proof-of-evidence.pdf</a><br><a href="#">Evidence-reference.pdf</a><br><a href="#">Summary-of-evidence.pdf</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-proofs?change=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Added witnesses'
+        },
+        value: {
+          html: data['witness-check'] or 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'witness-check?change=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Witness proofs of evidence and summary'
+        },
+        value: {
+          html: '<a href="#">Witness-details.pdf</a><br><a href="#">Witness-evidnce-a.pdf</a><br><a href="#">Witness-evidnce-b.pdf</a><br><a href="#">Witness-summary.pdf</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-evidence',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['witness-check'] == 'Yes'
+
+    ]
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Submit proofs of evidence',
+    href: 'confirmation'
+  }) }}
+{% endblock %}

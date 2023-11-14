@@ -1,0 +1,66 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your witnesses and your inquiry evidence' %}
+
+{% set back = true %}
+{% set return = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+      <!-- <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span> -->
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="">
+
+        <p class="govuk-body">
+          Tell us:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            the names of your witnesses
+          </li>
+          <li>
+            witness postnominals (the letters after their names)
+          </li>
+          <li>
+            a summary of the evidence for each witness
+          </li>
+          <li>
+            how long you expect your witnesses to sit for at the inquiry
+          </li>
+        </ul>
+
+        <p class="govuk-body">
+          Each witness should present different evidence.
+        </p>
+
+        <p class="govuk-body">
+          Do not include personal or financial information, like National Insurance numbers or credit card details.
+        </p>
+
+        {{ govukTextarea({
+          name: "witnesses-and-evidence",
+          id: "witnesses-and-evidence",
+          label: {
+            html: 'Witnesses and summary of evidence',
+            classes: 'govuk-label--m'
+          }
+        }) }}
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+
+  </div>
+
+{% endblock %}

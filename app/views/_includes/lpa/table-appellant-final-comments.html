@@ -1,4 +1,4 @@
-{% set appellantStatement = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
+{% set appellantFinalComments = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
   ' %}
 
 {{ govukSummaryList({
@@ -6,11 +6,11 @@
   rows: [
     {
       key: {
-        html: 'Statement text',
+        html: 'Final comments',
         classes: 'govuk-!-width-one-third'
       },
       value: {
-        html: appellantStatement | nl2br
+        html: appellantFinalComments | nl2br
       }
     }
 

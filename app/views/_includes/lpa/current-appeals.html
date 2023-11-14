@@ -1,7 +1,7 @@
 {% if data['current-appeals'] == 'no' %}
 
   <h2 class="govuk-heading-l">
-    Your appeals
+    To do
   </h2>
 
   <p class="govuk-body">
@@ -12,7 +12,7 @@
 
   {{ govukTable({
     classes: 'govuk-!-margin-top-3',
-    caption: 'Your appeals',
+    caption: 'To do',
     captionClasses: 'govuk-table__caption--l',
     firstCellIsHeader: false,
     head: [
@@ -40,7 +40,7 @@
     rows: [
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345301&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">1345301</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345301&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345301</a>'
         },
         {
           html: 'Spital House, Lensfield Rd, Cambridge CB2 1ER'
@@ -63,7 +63,7 @@
       ],
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345264&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">1345264</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345264&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345264</a>'
         },
         {
           html: 'Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT'
@@ -86,7 +86,7 @@
       ] if data['questionnaire'] != 'complete',
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345273&action=&questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">1345273</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345273&action=&questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345273</a>'
         },
         {
           html: '20 Bermuda Rd, Arbury, Cambridge CB4 3JX'
@@ -108,7 +108,7 @@
       ] if data['statement'] != 'complete',
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345260&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">1345260</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345260&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345260</a>'
         },
         {
           html: 'Canterbury House, Weavely, Cambridge CB2 1PT'
@@ -131,7 +131,7 @@
       ],
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345176&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">1345176</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345176&action=&questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345176</a>'
         },
         {
           html: '22 London Rd, Six Mile Bottom, Newmarket CB8 0UE'
@@ -154,7 +154,7 @@
       ],
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345259&action=&questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=">1345259</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345259&action=&questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345259</a>'
         },
         {
           html: 'Five Trees Garden, Cambridge CB4 1UA'
@@ -176,7 +176,7 @@
       ] if data['final-comments'] != 'complete',
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345172&action=&questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=">1345172</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345172&action=&questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345172</a>'
         },
         {
           html: '64 Rene Court, Coldham’s Rd, Cambridge CB1 3EW'
@@ -198,7 +198,29 @@
       ],
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345264&action=&statement=due">1345264</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345264&questionnaire=due&statement=&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=inquiry&proofs=&appellant-proofs=">1345264</a>'
+        },
+        {
+          html: 'Fripple Court Lane, Fenns Avenue, Fripple, Cambridge CB22 1TP'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '33' | daysInFuture
+        },
+        {
+          html: '33 days',
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has/v8/task-list?appealCode=1345176&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345264&action=&statement=due&final-comments=&appeal-type=&proofs=&appellant-proofs=">1345264</a>'
         },
         {
           html: 'Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT'
@@ -221,7 +243,7 @@
 
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345098&action=&questionnaire=&statement=&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">1345098</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345098&action=&questionnaire=&statement=&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345098</a>'
         },
         {
           html: 'The Old Library, 2 Wheeler St, Cambridge CB2 3QB'
@@ -242,7 +264,7 @@
       ],
       [
         {
-          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345171&action=&questionnaire=&statement=&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=">1345171</a>'
+          html: '<a href="/manage/appeals/v8/appeal-details?appealCode=1345171&action=&questionnaire=&statement=&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=">1345171</a>'
         },
         {
           html: 'Unnamed Road, Cambridge CB2 1PZ'

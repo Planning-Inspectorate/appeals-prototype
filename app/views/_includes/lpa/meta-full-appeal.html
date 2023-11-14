@@ -31,7 +31,11 @@
     </dt>
     <dd class="govuk-summary-list__value">
       <p class="govuk-body">
-        Written representations
+        {% if data['appeal-type'] != 'inquiry' %}
+          Written representations
+        {% else %}
+          Inquiry
+        {% endif %}
       </p>
     </dd>
   </div>

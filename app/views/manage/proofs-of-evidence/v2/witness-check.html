@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Do you need to add any witnesses?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'witness-check',
+    name: 'witness-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('witness-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('witness-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

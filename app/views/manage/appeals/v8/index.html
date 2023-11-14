@@ -85,6 +85,24 @@
 
       {% endif %}
 
+      {% if data['proofs-banner'] == 'yes' %}
+
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Proof of evidence complete
+          </h3>
+          <p class="govuk-body">
+            Proof of evidence for appeal {{ data['appealCode']}} has been <a href="?final-comments-banner=&final-comments=complete&submitted-appeals=yes#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>submitted<span class="govuk-visually-hidden"> appeals</span></a>.
+          </p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+      {% endif %}
+
     </div>
     <div class="govuk-grid-column-full">
 
@@ -117,7 +135,7 @@
       {{ govukTabs({
         items: [
           {
-            label: "Your appeals",
+            label: "To do",
             id: "new-appeals",
             panel: {
               html: currentAppeals

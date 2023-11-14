@@ -18,8 +18,9 @@
       Appeal {{ data['appealCode'] or '1345264' }}
     </span>
     <h1 class="govuk-heading-xl">
-      Appellant statement
+      Questionnaire
     </h1>
+
   </div>
 
   <div class="govuk-grid-column-full">
@@ -27,11 +28,11 @@
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
   </div>
 
-  <div class="govuk-grid-column-full">
-    {% include "_includes/lpa/table-appellant-statement.html" %}
-    <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
-  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <!-- appeal submission -->
+    {% include "_includes/lpa/s78-questionnaire.html" %}
 
+  </div>
 </div>
 
 {% endblock %}
