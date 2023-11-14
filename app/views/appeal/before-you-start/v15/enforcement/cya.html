@@ -3,8 +3,8 @@
 {% block questions %}
   {{ super() }}
 
-  {% set issueDate = (data['issue-date-day'] or '1') +' '+ (data['issue-date-month'] | formatMonth or 'July') +' '+ (data['issue-date-year'] or '2022') %}
-  {% set effectiveDate = (data['effective-date-day'] or '1') +' '+ (data['effective-date-month'] | formatMonth or 'August') +' '+ (data['effective-date-year'] or '2022') %}
+  {% set issueDate = (data['issue-date-day'] or '1') +' '+ (data['issue-date-month'] | formatMonth or 'July') +' '+ (data['issue-date-year'] or '2024') %}
+  {% set effectiveDate = (data['effective-date-day'] or '1') +' '+ (data['effective-date-month'] | formatMonth or 'August') +' '+ (data['effective-date-year'] or '2024') %}
 
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',

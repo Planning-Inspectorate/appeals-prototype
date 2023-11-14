@@ -21,7 +21,7 @@
     {% endif %}
   </h2>
 
-  {% set levyDate = (data['community-infrastructure-date-day'] or '1') +' '+ (data['community-infrastructure-date-month'] | formatMonth or 'July') +' '+ (data['community-infrastructure-date-year'] or '2022') %}
+  {% set levyDate = (data['community-infrastructure-date-day'] or '1') +' '+ (data['community-infrastructure-date-month'] | formatMonth or 'July') +' '+ (data['community-infrastructure-date-year'] or '2024') %}
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
