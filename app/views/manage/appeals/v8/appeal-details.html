@@ -246,6 +246,40 @@
 
     {% endif %}
 
+    {% if data['statement'] == 'complete' %}
+
+      <h2 class="govuk-heading-l">
+        Statements
+      </h2>
+
+      <p class="govuk-body">
+        <a href="lpa-statement">
+          View your statement
+        </a>
+      </p>
+
+      {% if data['appellant-statement'] == 'complete' %}
+
+        <!-- interim because the appellant’s statement is submitted a document of the appeal -->
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-font-weight-regular">
+          Appellant’s statement
+        </h3>
+        <p class="govuk-body">
+          <a href="#">Appeal statement.doc</a>
+        </p>
+
+        <!-- if the appellant’s statement is submitted as text -->
+        <!-- <p class="govuk-body">
+          <a href="appellant-statement">
+            View appellant statement
+          </a>
+        </p> -->
+      {% endif %}
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
     {% if data['appeal-type'] == 'inquiry' %}
 
       {% if data['proofs'] == 'complete' %}
@@ -273,30 +307,6 @@
       {% endif %}
 
     {% else %}
-
-      {% if data['statement'] == 'complete' %}
-
-        <h2 class="govuk-heading-l">
-          Statements
-        </h2>
-
-        <p class="govuk-body">
-          <a href="lpa-statement">
-            View your statement
-          </a>
-        </p>
-
-        {% if data['appellant-statement'] == 'complete' %}
-          <p class="govuk-body">
-            <a href="appellant-statement">
-              View appellant statement
-            </a>
-          </p>
-        {% endif %}
-
-        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
-
-      {% endif %}
 
       {% if data['final-comments'] == 'complete' %}
 
