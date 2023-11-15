@@ -1,0 +1,95 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Appeal details' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      Bringing the appeal details view from the LPA dashboard to the appellant / agent dashboard
+    </p>
+
+    {% set version = "2" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <!-- <p>
+      Researched May 2023<br>
+      <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1184858113" class="govuk-link">
+        Confluence user research notes
+      </a>
+    </p> -->
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/appeal-details',
+      isStartButton: true
+    }) }}
+
+    {% set v1HTML %}
+
+      {% set version = "1" %}
+
+      <!-- <p>
+        Researched May 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1184858113" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p> -->
+
+      <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          updates to help users who verify their email on a second device
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appeal-details',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+{% endblock %}
