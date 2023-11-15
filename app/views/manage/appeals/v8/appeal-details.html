@@ -9,51 +9,51 @@
 {% set prototypeLinks = [
 
   {
-    href: '?questionnaire=&statement=&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=&questionnaire=&statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'New appeal (not validated)'
   },
   {
-    href: '?questionnaire=due&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=due&statement=due&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'Questionnaire stage'
   },
   {
-    href: '?questionnaire=complete&statement=due&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&statement=due&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'Questionnaire done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'LPA statement done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'All statements done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'Final-comments due'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'Final-comments done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'All final-comments done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=inquiry&proofs=due&appellant-proofs=',
+    href: '?procedure=inquiry&questionnaire=complete&statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=due&appellant-proofs=',
     text: 'Inquiry: Proofs due'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&appeal-type=inquiry&proofs=complete&appellant-proofs=',
+    href: '?procedure=inquiry&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=complete&appellant-proofs=',
     text: 'Inquiry: Proofs done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&appeal-type=inquiry&proofs=complete&appellant-proofs=complete',
+    href: '?procedure=inquiry&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=complete&appellant-proofs=complete',
     text: 'Inquiry: All proofs done'
   },
   {
-    href: '?questionnaire=complete&statement=complete&appellant-statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete&appeal-type=&proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete&proofs=&appellant-proofs=',
     text: 'Appeal decided'
   }
   ]
@@ -167,7 +167,7 @@
       {% endif %}
 
       {% if data['appeal-type'] == 'inquiry' %}
-        <!-- notice for proofs of evidence -->
+        <!-- notice for proof of evidence -->
         {% if data['proofs'] == 'due' %}
         <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
@@ -217,7 +217,7 @@
 
   <!-- metadata -->
   <div class="govuk-grid-column-full">
-    {% include "_includes/lpa/meta-full-appeal.html" %}
+    {% include "/manage/appeals/v8/meta-full-appeal.html" %}
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
   </div>
 
@@ -263,24 +263,6 @@
         </a>
       </p>
 
-      {% if data['appellant-statement'] == 'complete' %}
-
-        <!-- interim because the appellant’s statement is submitted a document of the appeal -->
-        <h3 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-font-weight-regular">
-          Appellant’s statement
-        </h3>
-        <p class="govuk-body">
-          <a href="#">Appeal statement.doc</a>
-        </p>
-
-        <!-- if the appellant’s statement is submitted as text -->
-        <!-- <p class="govuk-body">
-          <a href="appellant-statement">
-            View appellant statement
-          </a>
-        </p> -->
-      {% endif %}
-
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
     {% endif %}
@@ -290,19 +272,19 @@
       {% if data['proofs'] == 'complete' %}
 
         <h2 class="govuk-heading-l">
-          Proofs of evidence and witness timings
+          Proof of evidence and witness timings
         </h2>
 
         <p class="govuk-body">
           <a href="lpa-proofs">
-            View the LPA proofs of evidence and witnesses timings
+            View the LPA proof of evidence and witnesses timings
           </a>
         </p>
 
         {% if data['appellant-proofs'] == 'complete' %}
           <p class="govuk-body">
             <a href="appellant-proofs">
-              View the appellant proofs of evidence and witnesses timings
+              View the appellant proof of evidence and witnesses timings
             </a>
           </p>
         {% endif %}
