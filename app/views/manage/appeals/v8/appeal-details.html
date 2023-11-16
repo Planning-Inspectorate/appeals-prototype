@@ -25,10 +25,6 @@
     text: 'LPA statement done'
   },
   {
-    href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
-    text: 'All statements done'
-  },
-  {
     href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
     text: 'Final-comments due'
   },
@@ -42,15 +38,15 @@
   },
   {
     href: '?procedure=inquiry&questionnaire=complete&statement=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=due&appellant-proofs=',
-    text: 'Inquiry: Proofs due'
+    text: 'Inquiry: Proof due'
   },
   {
     href: '?procedure=inquiry&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=complete&appellant-proofs=',
-    text: 'Inquiry: Proofs done'
+    text: 'Inquiry: Proof done'
   },
   {
     href: '?procedure=inquiry&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=complete&appellant-proofs=complete',
-    text: 'Inquiry: All proofs done'
+    text: 'Inquiry: All proof done'
   },
   {
     href: '?procedure=written&questionnaire=complete&statement=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete&proofs=&appellant-proofs=',
@@ -166,7 +162,7 @@
         </div>
       {% endif %}
 
-      {% if data['appeal-type'] == 'inquiry' %}
+      {% if data['procedure'] == 'inquiry' %}
         <!-- notice for proof of evidence -->
         {% if data['proofs'] == 'due' %}
         <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -267,7 +263,7 @@
 
     {% endif %}
 
-    {% if data['appeal-type'] == 'inquiry' %}
+    {% if data['procedure'] == 'inquiry' %}
 
       {% if data['proofs'] == 'complete' %}
 
