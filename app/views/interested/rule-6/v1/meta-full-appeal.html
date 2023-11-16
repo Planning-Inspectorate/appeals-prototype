@@ -24,34 +24,28 @@
       </p>
     </dd>
   </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Appeal procedure
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <p class="govuk-body">
-        {% if data['procedure'] == 'written' %}
-          Written representations
-        {% else %}
-          Inquiry
-        {% endif %}
-      </p>
-    </dd>
-  </div>
+  {% if data['procedure'] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Appeal procedure
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">
+          {% if data['procedure'] == 'written' %}
+            Written representations
+          {% else %}
+            Inquiry
+          {% endif %}
+        </p>
+      </dd>
+    </div>
+  {% endif %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Appeal site
     </dt>
     <dd class="govuk-summary-list__value">
       Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Applicant
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Mariella Bidbod
     </dd>
   </div>
   <div class="govuk-summary-list__row">

@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to manage appeals',
+    href: 'index'
+  }) }}
+{% endblock %}
+
+{% set title = 'Decided appeals' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">
+          {{ data['dashboard-lpa'] }}
+          <span class="govuk-visually-hidden"> - </span>
+        </span>
+        {{ title }}
+      </h1>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      {% include "/_includes/appellant/decided-appeals.html" %}
+
+      {{ govukPagination({
+        
+        next: {
+          href: "#"
+        },
+        items: [
+          {
+            number: 1,
+            current: true,
+            href: "#"
+          },
+          {
+            number: 2,
+            href: "#"
+          },
+          {
+            number: 3,
+            href: "#"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+{% endblock %}

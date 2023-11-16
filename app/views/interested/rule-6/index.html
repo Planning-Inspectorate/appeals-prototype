@@ -1,0 +1,52 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Rule 6 groups' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      Rule 6 status parties can take part in appeals.
+    </p>
+
+    {% set version = "1" %}
+
+    <!-- <p>
+      Researched May 2023<br>
+      <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1184858113" class="govuk-link">
+        Confluence user research notes
+      </a>
+    </p> -->
+
+    <!-- <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        updates to help users who verify their email on a second device
+      </li>
+    </ul> -->
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/interested/rule-6/'+'v'+version+'/appeal-details',
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+{% endblock %}
