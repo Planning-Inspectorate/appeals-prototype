@@ -10,14 +10,20 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">
+    <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
 
     {% set appealHTML %}
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-l">
         Appeal a planning decision
       </h2>
+
+      {{govukButton({
+        text: 'Appeals hub (dashboard)',
+        classes: 'govuk-button--secondary',
+        href: 'appeal/more-than-one-appeal/v5/your-appeals'
+      })}}
 
       <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
         Common journeys and patterns
@@ -118,7 +124,7 @@
     {% endset -%}
 
     {% set manageHTML %}
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-l">
         Manage LPA appeals
       </h2>
 
@@ -269,7 +275,7 @@
     {% endset -%}
 
     {% set commentHTML %}
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-l">
         Interested parties
       </h2>
 
@@ -346,7 +352,7 @@
 
     {% set officeHTML %}
 
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-l">
         Back office appeals
       </h2>
 
@@ -395,7 +401,7 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    <h2 class="govuk-heading-m">
+    <h2 class="govuk-heading-l">
       Design patterns
     </h2>
 
@@ -408,7 +414,7 @@
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-m">
+    <h2 class="govuk-heading-l">
       Prototype archive
     </h2>
 
