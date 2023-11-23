@@ -13,12 +13,8 @@
     text: 'New appeal (not validated)'
   },
   {
-    href: '?procedure=written&questionnaire=complete&lpa-statement=complete&complete&final-comments=&appellant-final-comments=&appeal-decided=&proofs=&lpa-proofs=',
-    text: 'LPA questionnaire and statement done'
-  },
-  {
     href: '?procedure=written&questionnaire=complete&lpa-statement=complete&complete&final-comments=due&appellant-final-comments=&appeal-decided=&proofs=&lpa-proofs=',
-    text: 'Final-comments due'
+    text: 'Statements and IP comments done / Final-comments due'
   },
   {
     href: '?procedure=written&questionnaire=complete&lpa-statement=complete&complete&final-comments=complete&appellant-final-comments=&appeal-decided=&proofs=&lpa-proofs=',
@@ -183,7 +179,26 @@
         </a>
       </p>
 
+      <p class="govuk-body">
+        <a href="r6-statement">
+          View statements from other parties
+        </a>
+      </p>
+
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+      <h2 class="govuk-heading-l">
+        Interested party comments
+      </h2>
+
+      <p class="govuk-body">
+        <a href="ip-comments">
+          View interested party comments
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
     {% endif %}
 
     {% if data['procedure'] == 'inquiry' %}
@@ -232,9 +247,14 @@
               View local planning authority final comments
             </a>
           </p>
-        {% endif %}
 
-        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+          <p class="govuk-body">
+            <a href="r6-final-comments">
+              View final comments from other parties
+            </a>
+          </p>
+
+        {% endif %}
 
       {% endif %}
 

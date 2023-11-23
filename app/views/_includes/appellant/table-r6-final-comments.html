@@ -1,0 +1,68 @@
+{% set otherPartyFinalComments1 = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
+  ' %}
+
+{% set otherPartyFinalComments2 = 'Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
+  ' %}
+
+{% set otherPartyFinalComments3 = 'Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
+  ' %}
+
+<h2 class="govuk-heading-l">
+  Other party 1
+</h2>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Final comments',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: otherPartyFinalComments1 | nl2br
+      }
+    }
+
+  ]
+}) }}
+
+<h2 class="govuk-heading-l">
+  Other party 2
+</h2>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Final comments',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: otherPartyFinalComments2 | nl2br
+      }
+    }
+
+  ]
+}) }}
+
+<h2 class="govuk-heading-l">
+  Other party 3
+</h2>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Final comments',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: otherPartyFinalComments3 | nl2br
+      }
+    }
+
+  ]
+}) }}
