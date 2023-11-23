@@ -343,31 +343,6 @@
       } if data['env-statement-check'] == 'Yes',
       {
         key: {
-          html: 'Responses for the environmental statement'
-        },
-        value: {
-          html: data['env-statement-responses-upload'] or 'env-statement-responses.pdf'
-        }
-        if data['env-statement-responses-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'env-impact/env-statement-responses-upload?cya=true',
-              html: 'Change'
-            }
-            if data['env-statement-responses-upload-complete'] else
-            {
-              href: 'env-impact/env-statement-responses-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['env-statement-check'] == 'Yes' or data['applicant-env-statement-check'] == 'Yes',
-      {
-        key: {
           html: 'Screening direction'
         },
         value: {
@@ -390,32 +365,8 @@
             }
           ]
         }
-      } if data['env-statement-check'] == 'No',
-      {
-        key: {
-          html: 'Site notice'
-        },
-        value: {
-          html: data['site-notice-upload'] or 'site-notice.pdf'
-        }
-        if data['site-notice-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'env-impact/site-notice-upload?cya=true',
-              html: 'Change'
-            }
-            if data['site-notice-upload-complete'] else
-            {
-              href: 'env-impact/site-notice-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['env-statement-check'] == 'Yes' or data['applicant-env-statement-check'] == 'Yes'
+      } if data['env-statement-check'] == 'No'
+
     ]
   }) }}
 </li>

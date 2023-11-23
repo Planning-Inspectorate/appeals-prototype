@@ -364,14 +364,6 @@ router.post('/env-impact/env-statement-check', function (req, res) {
 })
 
 router.post('/env-impact/env-statement-upload', function (req, res) {
-  res.redirect('site-notice-upload')
-})
-
-router.post('/env-impact/site-notice-upload', function (req, res) {
-  res.redirect('env-statement-responses-upload')
-})
-
-router.post('/env-impact/env-statement-responses-upload', function (req, res) {
   res.redirect('complete')
 })
 
