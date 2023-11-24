@@ -33,7 +33,7 @@
     text: 'Final-comments done'
   },
   {
-    href: '?procedure=written&questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&lpa-final-comments=complete&r6-final-comments=&appellant-final-comments=complete&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
+    href: '?procedure=written&questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&lpa-final-comments=complete&r6-final-comments=complete&appellant-final-comments=complete&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
     text: 'All final-comments done'
   },
   {
@@ -267,7 +267,7 @@
         {% if data['appellant-proofs'] == 'complete' %}
           <p class="govuk-body">
             <a href="appellant-proofs">
-              View the appellant proof of evidence and witness  timings
+              View the appellant proof of evidence and witness timings
             </a>
           </p>
         {% endif %}
@@ -275,7 +275,13 @@
         {% if data['lpa-proofs'] == 'complete' %}
           <p class="govuk-body">
             <a href="lpa-proofs">
-              View the local planning authorty proof of evidence and witness  timings
+              View the local planning authorty proof of evidence and witness timings
+            </a>
+          </p>
+
+          <p class="govuk-body">
+            <a href="r6-proofs">
+              View the other party proof of evidence and witness timings
             </a>
           </p>
         {% endif %}

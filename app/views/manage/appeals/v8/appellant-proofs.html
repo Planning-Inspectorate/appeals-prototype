@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = "Appeal "+data['appealCode'] %}
+{% set title = "Appellant proof of evidence and witnesses" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -18,7 +18,7 @@
       Appeal {{ data['appealCode'] or '1345264' }}
     </span>
     <h1 class="govuk-heading-xl">
-      Appeallant’s proof of evidence
+      {{ title }}
     </h1>
 
   </div>

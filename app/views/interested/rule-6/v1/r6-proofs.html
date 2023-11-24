@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "Appellant’s proof of evidence and witnesses" %}
+{% set title = "Other party proof of evidence and witness timings" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -24,13 +24,13 @@
   </div>
 
   <div class="govuk-grid-column-full">
-    {% include "_includes/rule-6/meta-full-appeal.html" %}
+    {% include "_includes/appellant/meta-full-appeal.html" %}
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
   </div>
 
   <div class="govuk-grid-column-full">
     <!-- appeal submission -->
-    {% include "_includes/rule-6/table-appellant-proofs.html" %}
+    {% include "_includes/rule-6/table-r6-proofs.html" %}
 
   </div>
 </div>

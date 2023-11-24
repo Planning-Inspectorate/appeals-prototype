@@ -1,0 +1,108 @@
+{% set otherPartyStatement1 = 'Praesent et odio nibh. Quisque nec nibh eu ante eleifend bibendum venenatis sed tellus. Ut posuere consequat risus. In facilisis ex eu pretium blandit. Curabitur lacinia accumsan turpis, et vestibulum magna gravida ac. Suspendisse vel enim tincidunt, tempor quam nec, elementum dui. Donec sed ligula non ligula fringilla iaculis. Integer nec sem vitae lorem pharetra scelerisque pretium eget enim. Nullam venenatis lectus non nisi sodales vestibulum. Ut tempor id mi quis finibus. Fusce cursus scelerisque justo, eu condimentum leo sagittis in.\n\nMaecenas nec dictum ligula, vitae cursus lectus. Maecenas et pulvinar velit, vel ultrices tellus. Donec ullamcorper mi vitae orci convallis, a efficitur eros dapibus. Duis tortor ligula, feugiat vitae maximus in, aliquet eu magna. Suspendisse potenti. Fusce ac est ligula. Fusce consequat massa vitae sapien placerat dapibus. Phasellus et blandit odio. Aliquam id nibh gravida massa mollis lacinia. Proin venenatis egestas augue vitae suscipit. Pellentesque vestibulum sed lacus vitae pellentesque. Sed non efficitur tellus.\n\nNam in pretium metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sit amet diam sit amet purus bibendum sollicitudin. Suspendisse turpis magna, tincidunt a elit vel, scelerisque facilisis metus. Curabitur ut pellentesque sapien. Aliquam arcu nisl, tempus non dictum sit amet, interdum sed metus. Aliquam sed nulla volutpat, varius elit vitae, cursus purus. Pellentesque non lacinia ligula.\n\nInteger volutpat faucibus mauris, lobortis auctor quam dapibus sed. Aliquam et lectus porttitor, rutrum nulla in, dignissim est. Aliquam a magna dignissim, molestie purus vitae, ultrices risus. Sed at ultrices elit, varius tincidunt ex. Nam fermentum eros a dui lobortis, non egestas enim blandit. Maecenas massa nibh, rhoncus sit amet magna vitae, ultrices condimentum nunc. Pellentesque fringilla nisi et nunc pulvinar feugiat. Sed a lorem sollicitudin, dapibus lectus et, pharetra est.
+  ' %}
+
+{% set otherPartyStatement2 = 'Fusce cursus scelerisque justo, eu condimentum leo sagittis in.\n\nMaecenas nec dictum ligula, vitae cursus lectus. Maecenas et pulvinar velit, vel ultrices tellus. Donec ullamcorper mi vitae orci convallis, a efficitur eros dapibus. Duis tortor ligula, feugiat vitae maximus in, aliquet eu magna. Suspendisse potenti. Fusce ac est ligula. Fusce consequat massa vitae sapien placerat dapibus. Phasellus et blandit odio. Aliquam id nibh gravida massa mollis lacinia. Proin venenatis egestas augue vitae suscipit. Pellentesque vestibulum sed lacus vitae pellentesque. Sed non efficitur tellus.\n\nNam in pretium metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sit amet diam sit amet purus bibendum sollicitudin. Suspendisse turpis magna, tincidunt a elit vel, scelerisque facilisis metus. Curabitur ut pellentesque sapien. Aliquam arcu nisl, tempus non dictum sit amet, interdum sed metus. Aliquam sed nulla volutpat, varius elit vitae, cursus purus. Pellentesque non lacinia ligula.\n\nInteger volutpat faucibus mauris, lobortis auctor quam dapibus sed. Aliquam et lectus porttitor, rutrum nulla in, dignissim est. Aliquam a magna dignissim, molestie purus vitae, ultrices risus. Sed at ultrices elit, varius tincidunt ex. Nam fermentum eros a dui lobortis, non egestas enim blandit. Maecenas massa nibh, rhoncus sit amet magna vitae, ultrices condimentum nunc. Pellentesque fringilla nisi et nunc pulvinar feugiat. Sed a lorem sollicitudin, dapibus lectus et, pharetra est.
+  ' %}
+
+{% set otherPartyStatement3 = 'In facilisis ex eu pretium blandit. Curabitur lacinia accumsan turpis, et vestibulum magna gravida ac. Suspendisse vel enim tincidunt, tempor quam nec, elementum dui. Donec sed ligula non ligula fringilla iaculis. Integer nec sem vitae lorem pharetra scelerisque pretium eget enim. Nullam venenatis lectus non nisi sodales vestibulum. Ut tempor id mi quis finibus. Fusce cursus scelerisque justo, eu condimentum leo sagittis in.\n\nMaecenas nec dictum ligula, vitae cursus lectus. Maecenas et pulvinar velit, vel ultrices tellus. Donec ullamcorper mi vitae orci convallis, a efficitur eros dapibus. Duis tortor ligula, feugiat vitae maximus in, aliquet eu magna. Suspendisse potenti. Fusce ac est ligula. Fusce consequat massa vitae sapien placerat dapibus. Phasellus et blandit odio. Aliquam id nibh gravida massa mollis lacinia. Proin venenatis egestas augue vitae suscipit. Pellentesque vestibulum sed lacus vitae pellentesque. Sed non efficitur tellus.\n\nNam in pretium metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sit amet diam sit amet purus bibendum sollicitudin. Suspendisse turpis magna, tincidunt a elit vel, scelerisque facilisis metus. Curabitur ut pellentesque sapien. Aliquam arcu nisl, tempus non dictum sit amet, interdum sed metus. Aliquam sed nulla volutpat, varius elit vitae, cursus purus. Pellentesque non lacinia ligula.\n\nInteger volutpat faucibus mauris, lobortis auctor quam dapibus sed. Aliquam et lectus porttitor, rutrum nulla in, dignissim est. Aliquam a magna dignissim, molestie purus vitae, ultrices risus. Sed at ultrices elit, varius tincidunt ex. Nam fermentum eros a dui lobortis, non egestas enim blandit. Maecenas massa nibh, rhoncus sit amet magna vitae, ultrices condimentum nunc. Pellentesque fringilla nisi et nunc pulvinar feugiat. Sed a lorem sollicitudin, dapibus lectus et, pharetra est.
+  ' %}
+
+<h2 class="govuk-heading-l">
+  Other party 1
+</h2>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Statement text',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: otherPartyStatement1 | nl2br
+      }
+    },
+    {
+      key: {
+        html: 'Added supporting documents'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Added supporting documents'
+      },
+      value: {
+        html: '<a href="">Haggis_farm_photos.doc</a>'
+      }
+    }
+
+  ]
+}) }}
+
+<h2 class="govuk-heading-l">
+  Other party 2
+</h2>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Statement text',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: otherPartyStatement2 | nl2br
+      }
+    },
+    {
+      key: {
+        html: 'Added supporting documents'
+      },
+      value: {
+        html: 'No'
+      }
+    }
+
+  ]
+}) }}
+
+<h2 class="govuk-heading-l">
+  Other party 3
+</h2>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Statement text',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: otherPartyStatement3 | nl2br
+      }
+    },
+    {
+      key: {
+        html: 'Added supporting documents'
+      },
+      value: {
+        html: 'Yes'
+      }
+    },
+    {
+      key: {
+        html: 'Added supporting documents'
+      },
+      value: {
+        html: '<a href="">Haggis-Farm-photos-001.jpeg</a><br><a href="">Haggis-Farm-photos-002.jpeg</a><br><a href="">Haggis-Farm-photos-003.jpeg</a><br><a href="">Haggis-Farm-photos-004.jpeg</a><br><a href="">Haggis-Farm-photos-005.jpeg</a><br><a href="">Haggis-Farm-photos-006.jpeg</a><br><a href="">Haggis-Farm-photos-007.jpeg</a><br><a href="">Haggis-Farm-photos-008.jpeg</a><br><a href="">Haggis-Farm-photos-009.jpeg</a>'
+      }
+    }
+
+  ]
+}) }}
