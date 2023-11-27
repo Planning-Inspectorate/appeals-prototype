@@ -9,52 +9,60 @@
 {% set prototypeLinks = [
 
   {
-    href: '?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'New appeal (not validated)'
   },
   {
-    href: '?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Questionnaire stage'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Questionnaire done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Your statement done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&evidence=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'All statements and comments done, final-comments due'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Your final-comments done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'All final-comments done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=due&appellant-proofs=&timings=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&proofs=&appellant-proofs=&timings=&other-timings=',
+    text: 'Appeal decided'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&evidence=&proofs=due&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Inquiry: Proof due'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=complete&appellant-proofs=&timings=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&proofs=complete&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Inquiry: Your proof done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=complete&appellant-proofs=complete&timings=due',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&proofs=complete&appellant-proofs=complete&timings=due&appeal-decided=',
     text: 'Inquiry: All proof done / witness timings due'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=complete&appellant-proofs=complete&timings=complete',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=&appeal-decided=',
     text: 'Inquiry: Timings done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete&proofs=&appellant-proofs=&timings=',
-    text: 'Appeal decided'
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=',
+    text: 'Inquiry: All timings done'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete',
+    text: 'Inquiry: Appeal decided'
   }
   ]
 %}
@@ -237,7 +245,7 @@
 
   <!-- metadata -->
   <div class="govuk-grid-column-full">
-    {% include "/manage/appeals/v8/meta-full-appeal.html" %}
+    {% include "/_includes/lpa/meta-full-appeal.html" %}
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
   </div>
 
@@ -318,7 +326,7 @@
       {% if data['proofs'] == 'complete' %}
 
         <h2 class="govuk-heading-l">
-          Proof of evidence and witness timings
+          Proof of evidence and witnesses
         </h2>
 
         <p class="govuk-body">
@@ -350,10 +358,26 @@
           </h2>
 
           <p class="govuk-body">
-            <a href="lpa-proofs">
+            <a href="lpa-timings">
               View your witness timings
             </a>
           </p>
+
+          {% if data['other-timings'] == 'complete' %}
+
+            <p class="govuk-body">
+              <a href="appellant-timings">
+                View the appellant’s witness timings
+              </a>
+            </p>
+
+            <p class="govuk-body">
+              <a href="r6-timings">
+                View witness timings for the other party
+              </a>
+            </p>
+
+          {% endif %}
 
         {% endif %}
 
