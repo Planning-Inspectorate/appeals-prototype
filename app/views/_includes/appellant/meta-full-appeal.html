@@ -24,13 +24,14 @@
       </p>
     </dd>
   </div>
+  {% if data['appeal-type'] != 'none' %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Appeal procedure
     </dt>
     <dd class="govuk-summary-list__value">
       <p class="govuk-body">
-        {% if data['procedure'] == 'written' %}
+        {% if data['appeal-type'] == 'written' %}
           Written representations
         {% else %}
           Inquiry
@@ -38,6 +39,7 @@
       </p>
     </dd>
   </div>
+  {% endif %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Appeal site
