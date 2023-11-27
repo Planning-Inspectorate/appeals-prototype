@@ -36,28 +36,31 @@
   </div>
 
   <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds">
 
-  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
-    <form method="post" action="">
+      <form method="post" action="">
 
-      {{ govukTextarea({
-        name: "appeal-statement",
-        id: "appeal-statement",
-        label: {
-          html: 'Enter your statement',
-          classes: 'govuk-label--m'
-        },
-        hint: {
-          text: 'Do not include personal or financial information, like National Insurance numbers or credit card details.'
-        }
-      }) }}
+        {{ govukTextarea({
+          name: "appeal-statement",
+          id: "appeal-statement",
+          label: {
+            html: 'Enter your statement',
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: 'Do not include personal or financial information, like National Insurance numbers or credit card details.'
+          }
+        }) }}
 
-      {{ govukButton({
-        html: 'Continue'
-      }) }}
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
 
-    </form>
+      </form>
+
+    </div>
+  </div>
 
 {% endblock %}

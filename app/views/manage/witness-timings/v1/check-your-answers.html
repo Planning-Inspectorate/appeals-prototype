@@ -1,0 +1,75 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Check your answers and submit your witness timings" %}
+
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
+
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+    </div>
+
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: 'Witness timings'
+            },
+            value: {
+              html: '<a href="#">Appeal-timings.pdf</a>'
+            },
+            actions: {
+              items: [
+                {
+                  href: 'upload-evidence',
+                  text: 'Change'
+                }
+              ]
+            }
+          }
+
+        ]
+      }) }}
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Submit proof of evidence',
+          href: 'confirmation'
+        }) }}
+      {% endblock %}
+
+    {% endblock %}
+
+
+
+  </div>
+</div>

@@ -1,0 +1,80 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Upload witness timings' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      {% set uploadHtml %}
+        {{ govukFileUpload({
+          id: 'witness-timings',
+          name: 'witness-timings',
+          classes: 'moj-multi-file-upload__input',
+          label: {
+            text: 'Upload files',
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            html: '<p class="govuk-body">You can find the date on the letter confirming your application</p>
+            <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB</p>'
+          },
+          attributes: { multiple: '' }
+        }) }}
+
+        {{govukButton({
+          text: 'Upload file',
+          classes: 'govuk-button--secondary moj-multi-file-upload__button'
+        })}}
+      {% endset -%}
+
+      {{ mojMultiFileUpload({
+        uploadedFiles: {
+          heading: { text: 'Files added' },
+          items: []
+        },
+        uploadHtml: uploadHtml
+      }) }}
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue',
+          href: 'check-your-answers'
+        }) }}
+      {% endblock %}
+
+    {% endblock %}
+
+    {% block pageScripts %}
+      <script>
+        // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
+        $('form').submit(function(e) {
+          e.preventDefault();
+
+          $('.moj-multi-file-upload__filename').each(function() {
+            $('<input name="witness-timings" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+          });
+
+          $(this).unbind('submit').submit();
+        })
+      </script>
+
+  </div>
+
+{% endblock %}

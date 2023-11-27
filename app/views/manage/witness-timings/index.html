@@ -1,0 +1,47 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Witness timings' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+
+    <p class="govuk-body">
+      Main parties can tell us what what time their witnesses will need at an inquiry, based on other party evidence and witnesses.
+    </p>
+
+    {% set version = "1" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/appeal/witness-timings/'+'v'+version+'/before-you-continue',
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

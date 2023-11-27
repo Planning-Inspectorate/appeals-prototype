@@ -1,0 +1,70 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Tell us about your witness timings' %}
+
+{% set back = true %}
+{% set return = false %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <p class="govuk-body">
+        (information about what you need to tell us)
+      </p>
+
+      <!--
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          appeal statement
+        </li>
+        <li>
+          planning application form
+        </li>
+        <li>
+          site plan for the appeal site
+        </li>
+        <li>
+          plans, drawings and supporting documents for your application
+        </li>
+        <li>
+          design and access statement, if you have one
+        </li>
+        <li>
+          application decision letter from your local authority, if you have one
+        </li>
+        <li>
+          draft statement of common ground, if you need one
+        </li>
+      </ul>
+
+      -->
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue',
+          href: 'upload-witness-timings'
+        }) }}
+      {% endblock %}
+
+    </div>
+  </div>
+
+{% endblock %}

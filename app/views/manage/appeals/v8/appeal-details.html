@@ -9,47 +9,51 @@
 {% set prototypeLinks = [
 
   {
-    href: '?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
+    href: '?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
     text: 'New appeal (not validated)'
   },
   {
-    href: '?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
+    href: '?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
     text: 'Questionnaire stage'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
+    href: '?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
     text: 'Questionnaire done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
     text: 'Your statement done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
     text: 'All statements and comments done, final-comments due'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
     text: 'Your final-comments done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=&appellant-proofs=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=&appellant-proofs=&timings=',
     text: 'All final-comments done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=due&appellant-proofs=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&evidence=&appeal-decided=&proofs=due&appellant-proofs=&timings=',
     text: 'Inquiry: Proof due'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=complete&appellant-proofs=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&evidence=&appeal-decided=&proofs=complete&appellant-proofs=&timings=',
     text: 'Inquiry: Your proof done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=complete&appellant-proofs=complete',
-    text: 'Inquiry: All proof done'
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=complete&appellant-proofs=complete&timings=due',
+    text: 'Inquiry: All proof done / witness timings due'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete&proofs=&appellant-proofs=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=&proofs=complete&appellant-proofs=complete&timings=complete',
+    text: 'Inquiry: Timings done'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&evidence=&appeal-decided=complete&proofs=&appellant-proofs=&timings=',
     text: 'Appeal decided'
   }
   ]
@@ -165,23 +169,43 @@
       {% if data['appeal-type'] == 'inquiry' %}
         <!-- notice for proof of evidence -->
         {% if data['proofs'] == 'due' %}
-        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Proof of evidence and witnesses due
-            </h2>
+          <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Proof of evidence and witnesses due
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">
+                You must submit proof of evidence by 11:59pm on {{ 7 | daysInFuture }}
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/manage/proofs-of-evidence/v2/before-you-continue?action=banner">Submit proofs and witnesses</a>
+                  </li>
+                </ul>
+              </p>
+            </div>
           </div>
-          <div class="govuk-notification-banner__content">
-            <p class="govuk-notification-banner__heading">
-              You must submit proof of evidence by 11:59pm on {{ 7 | daysInFuture }}
-              <ul class="govuk-list govuk-list--bullet">
-                <li>
-                  <a href="/manage/proofs-of-evidence/v2/before-you-continue?action=banner">Submit proofs and witnesses</a>
-                </li>
-              </ul>
-            </p>
+        {% endif %}
+
+        {% if data['timings'] == 'due' %}
+          <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Witness timings due
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">
+                You must submit witness timings by 11:59pm on {{ 7 | daysInFuture }}
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/manage/witness-timings/v1/before-you-continue?action=banner">Submit witness timings</a>
+                  </li>
+                </ul>
+              </p>
+            </div>
           </div>
-        </div>
         {% endif %}
       {% endif %}
 
@@ -318,6 +342,20 @@
         {% endif %}
 
         <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+        {% if data['timings'] == 'complete' %}
+
+          <h2 class="govuk-heading-l">
+            Witness timings
+          </h2>
+
+          <p class="govuk-body">
+            <a href="lpa-proofs">
+              View your witness timings
+            </a>
+          </p>
+
+        {% endif %}
 
       {% endif %}
 
