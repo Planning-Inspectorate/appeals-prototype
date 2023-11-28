@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = "Appeal "+(data['appealCode'] or '1345264') %}
+{% set title = "Your witness timings" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -18,20 +18,21 @@
       Appeal {{ data['appealCode'] or '1345264' }}
     </span>
     <h1 class="govuk-heading-xl">
-      Local planning authority final comments
+      {{ title }}
     </h1>
+
   </div>
 
   <div class="govuk-grid-column-full">
-    {% include "_includes/appellant/meta-full-appeal.html" %}
+    {% include "_includes/lpa/meta-full-appeal.html" %}
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
   </div>
 
   <div class="govuk-grid-column-full">
-    {% include "_includes/appellant/table-final-comments.html" %}
-    <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
-  </div>
+    <!-- appeal submission -->
+    {% include "_includes/rule-6/table-rule-6-timings.html" %}
 
+  </div>
 </div>
 
 {% endblock %}

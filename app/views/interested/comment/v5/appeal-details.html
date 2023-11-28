@@ -4,7 +4,7 @@
   {% set appealCode = "0166327" %}
 {% endif %}
 
-{% set title = "Appeal "+data['appealCode'] %}
+{% set title = "Appeal "+(data['appealCode'] or '01234567') %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
