@@ -149,9 +149,15 @@
       <h2 class="govuk-heading-l">
         Appeal decision
       </h2>
-      <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
-        Dismissed
-      </strong>
+      {% if data['appeal-type'] == 'inquiry' %}
+        <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
+          Dismissed
+        </strong>
+      {% else %}
+        <strong class="govuk-tag govuk-tag--green govuk-!-margin-bottom-3">
+          Allowed
+        </strong>
+      {% endif %}
       <p class="govuk-body">
         <a href="#">
           Decision letter.doc
