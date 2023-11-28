@@ -9,35 +9,27 @@
 {% set prototypeLinks = [
 
   {
-    href: '?procedure=&questionnaire=&lpa-statement=&rule6-statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&lpa-final-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
-    text: 'New appeal (not validated)'
+    href: '?questionnaire=complete&lpa-statement=&rule6-statement=due&r6-statement=&ip-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
+    text: 'Rule 6 status granted, appeal started and statements due'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=&rule6-statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&lpa-final-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
-    text: 'Appeal started / statements due'
-  },
-  {
-    href: '?questionnaire=complete&lpa-statement=&rule6-statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&lpa-final-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
+    href: '?questionnaire=complete&lpa-statement=&rule6-statement=complete&r6-statement=&ip-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
     text: 'Rule 6 statement done'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&lpa-final-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
-    text: 'All statements and IP comments done'
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=&proofs=due&lpa-proofs=&appellant-proofs=',
+    text: 'All statements and IP comments done, proof of evidence due'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&lpa-final-comments=&appeal-decided=&proofs=due&lpa-proofs=&appellant-proofs=',
-    text: 'Inquiry: Proof due'
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=&proofs=complete&lpa-proofs=&appellant-proofs=',
+    text: 'Proof done'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&lpa-final-comments=&appeal-decided=&proofs=complete&lpa-proofs=&appellant-proofs=',
-    text: 'Inquiry: Proof done'
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=&proofs=complete&lpa-proofs=complete&appellant-proofs=complete',
+    text: 'All proof done'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&appeal-decided=&proofs=complete&lpa-proofs=complete&appellant-proofs=complete',
-    text: 'Inquiry: All proof done'
-  },
-  {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&final-comments=completecomplete&appellant-final-comments=complete&lpa-final-comments=complete&appeal-decided=complete&proofs=&lpa-proofs=&appellant-proofs=',
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=complete&proofs=&lpa-proofs=&appellant-proofs=',
     text: 'Appeal decided'
   }
   ]
@@ -82,27 +74,6 @@
         </div>
       {% endif %}
 
-      {% if data['final-comments'] == 'due' %}
-        <!-- notice for due final comments -->
-        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Final comments due
-            </h2>
-          </div>
-          <div class="govuk-notification-banner__content">
-            <p class="govuk-notification-banner__heading">
-              You can submit final comments by 11:59pm on {{ 12 | daysInFuture }}
-              <ul class="govuk-list govuk-list--bullet">
-                <li>
-                  <a href="/manage/final-comments/v2/add-comments?action=banner">Submit final comments</a>
-                </li>
-              </ul>
-            </p>
-          </div>
-        </div>
-      {% endif %}
-
       <!-- notice for proof of evidence -->
       {% if data['proofs'] == 'due' %}
       <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -135,7 +106,7 @@
         Appeal decision
       </h2>
       <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
-        Dismissed
+        Split-decision
       </strong>
       <p class="govuk-body">
         <a href="#">
