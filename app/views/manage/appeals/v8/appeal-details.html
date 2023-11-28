@@ -42,7 +42,7 @@
   },
   {
     href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=due&appellant-proofs=&timings=&other-timings=&appeal-decided=',
-    text: 'Inquiry: Proof due'
+    text: 'Inquiry: All statements and IP comments done, proof due'
   },
   {
     href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&proofs=complete&appellant-proofs=&timings=&other-timings=&appeal-decided=',
@@ -291,8 +291,7 @@
         </a>
       </p>
 
-      {% if appeal-type == 'inquiry' %}
-
+      {% if data['appeal-type'] == 'inquiry' %}
         {% if data['r6-statement'] == 'complete' %}
           <p class="govuk-body">
             <a href="r6-statement">
@@ -300,7 +299,6 @@
             </a>
           </p>
         {% endif %}
-
       {% endif %}
 
       {% if data['ip-comments'] == 'complete' %}
