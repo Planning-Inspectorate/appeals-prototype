@@ -9,27 +9,35 @@
 {% set prototypeLinks = [
 
   {
-    href: '?questionnaire=complete&lpa-statement=&rule6-statement=due&r6-statement=&ip-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
+    href: '?questionnaire=complete&lpa-statement=&rule6-statement=due&r6-statement=&ip-comments=&proofs=&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Rule 6 status granted, appeal started and statements due'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=&rule6-statement=complete&r6-statement=&ip-comments=&appeal-decided=&proofs=&lpa-proofs=&appellant-proofs=',
+    href: '?questionnaire=complete&lpa-statement=&rule6-statement=complete&r6-statement=&ip-comments=&proofs=&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Rule 6 statement done'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=&proofs=due&lpa-proofs=&appellant-proofs=',
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=due&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'All statements and IP comments done, proof of evidence due'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=&proofs=complete&lpa-proofs=&appellant-proofs=',
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
     text: 'Proof done'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=&proofs=complete&lpa-proofs=complete&appellant-proofs=complete',
-    text: 'All proof done'
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=due&other-timings=&appeal-decided=',
+    text: 'All proof done / witness timings due'
   },
   {
-    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&appeal-decided=complete&proofs=&lpa-proofs=&appellant-proofs=',
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=&appellant-proofs=complete&timings=complete&other-timings=&appeal-decided=',
+    text: 'Witness timings done'
+  },
+  {
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=',
+    text: 'All witness timings done'
+  },
+  {
+    href: '?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete',
     text: 'Appeal decided'
   }
   ]
@@ -93,6 +101,26 @@
           </p>
         </div>
       </div>
+      {% endif %}
+
+      {% if data['timings'] == 'due' %}
+        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Witness timings due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must submit witness timings by 11:59pm on {{ 7 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/witness-timings/v1/before-you-continue?action=banner">Submit witness timings</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
       {% endif %}
 
     </section>
@@ -209,12 +237,12 @@
     {% if data['proofs'] == 'complete' %}
 
       <h2 class="govuk-heading-l">
-        Proof of evidence and witness timings
+        Proof of evidence and witnesses
       </h2>
 
       <p class="govuk-body">
         <a href="rule6-proofs">
-          View your proof of evidence and witness timings
+          View your proof of evidence and witnesses
         </a>
       </p>
 
@@ -240,7 +268,35 @@
         </p>
       {% endif %}
 
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+      {% if data['timings'] == 'complete' %}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+        <h2 class="govuk-heading-l">
+          Witness timings
+        </h2>
+
+        <p class="govuk-body">
+          <a href="appellant-timings">
+            View your witness timings
+          </a>
+        </p>
+
+        {% if data['other-timings'] == 'complete' %}
+          <p class="govuk-body">
+            <a href="lpa-timings">
+              View witness timings for the local planning authority
+            </a>
+          </p>
+
+          <p class="govuk-body">
+            <a href="r6-timings">
+              View witness timings for other parties
+            </a>
+          </p>
+        {% endif %}
+
+      {% endif %}
 
     {% endif %}
 
