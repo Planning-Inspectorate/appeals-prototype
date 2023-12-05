@@ -1,0 +1,156 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Interested parties can find an appeal' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
+
+    {% set version = "10" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        shows our MVP version without a grid reference search
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/appeal-search-number',
+      isStartButton: true
+    }) }}
+
+    {% set v9HTML %}
+
+      {% set version = "9" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          some content updates
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appeal-search-number',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {% set v8HTML %}
+
+      {% set version = "8" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          this version is where we got to before signing off the work, it has grid reference search
+        </li>
+      </ul>
+
+      <p class="govuk-body">
+        Researched November 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1074397185" class="govuk-link">
+          Link to Confluence research notes
+        </a>
+      </p>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appeal-search-number',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {% set v7HTML %}
+
+      {% set version = "7" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          (needs update)
+        </li>
+      </ul>
+
+      <!-- <p class="govuk-body">
+        Researched November 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1074397185" class="govuk-link">
+          Link to Confluence research notes
+        </a>
+      </p> -->
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appeal-search-number',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+        {
+          heading: {
+            html: 'Version 9 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v9HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 8 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v8HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 7 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v7HTML
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

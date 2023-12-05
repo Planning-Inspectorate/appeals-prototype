@@ -1,0 +1,111 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Appeal reference "+data['appealCode'] %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% if data['appealCode'] == null %}
+  {% set appealCode = "177722" %}
+{% endif %}
+
+{% block content %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {% if data['status'] == "open" %}
+        Appeal open for comment
+      {% elseif data['status'] == "closed" %}
+        Appeal closed for comment
+      {% else %}
+        Decision for appeal 123456
+      {% endif %}
+    </h1>
+
+    {% if data['status'] == 'completed' %}
+      <h2 class="govuk-heading-m">
+        Appeal decision
+      </h2>
+      <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
+        Dismissed
+      </strong>
+      <p class="govuk-body">
+        Decision date, 2 February 2024<br>
+        <a href="#">
+          Decision letter.doc
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+  </div>
+</div>
+
+<!-- SECTION -->
+<!-- appeal metadata -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% include "_includes/interested/full-appeal-meta.html" %}
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+  </div>
+</div>
+
+<!-- SECTION -->
+<!-- appeal metadata -->
+
+<div class="govuk-grid-row">
+
+  <!-- SECTION -->
+  <!-- text about what you can or can't do -->
+
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['status'] == "open" %}
+
+      <p class="govuk-body">
+        You can comment on this appeal until 11:59pm on 4 May 2024.
+      </p>
+
+      {{ govukButton({
+        href: "/interested/comment/v8/your-name",
+        text: "Comment on this appeal",
+        classes: "govuk-button--secondary govuk-!-margin-bottom-1"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {% elif data['status'] == "closed" %}
+
+      <p class="govuk-body">
+        The deadline for comment was 4 January 2024.
+      </p>
+
+      <p class="govuk-body">
+        You cannot add comment.
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {% endif %}
+
+  </div>
+
+  <!-- SECTION -->
+  <!-- appeal information / decision -->
+  <div class="govuk-grid-column-full">
+    {% include "/interested/find-appeal/v9/full-appeal-data.html" %}
+    {% include "/interested/find-appeal/v9/full-application-data.html" %}
+  </div>
+
+</div>
+
+{% endblock %}
