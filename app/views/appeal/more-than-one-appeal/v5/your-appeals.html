@@ -68,7 +68,7 @@
         ]
       }) }}
 
-      {% if data['decided-appeals'] == 'yes' %}
+      {% if data['decided-appeals'] != 'no' %}
         <p class="govuk-body">
           <a href="decided-appeals" class="govuk-link">12 decided appeals</a>
         </p>
