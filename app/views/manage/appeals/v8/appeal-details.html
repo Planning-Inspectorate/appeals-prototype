@@ -224,13 +224,27 @@
       Appeal {{ data['appealCode'] or '1345264' }}
     </h1>
 
-    {% if data['appeal-decided'] == 'complete' %}
+    {% if data['appeal-decided'] %}
       <h2 class="govuk-heading-l">
         Appeal decision
       </h2>
-      <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
-        Dismissed
+      {% if data['appeal-decided'] == 'allowed' %}
+      <strong class="govuk-tag govuk-tag--green govuk-!-margin-bottom-3">
+        Allowed
       </strong>
+      {% elseif data['appeal-decided'] == 'dismissed' %}
+        <strong class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-3">
+          Dismissed
+        </strong>
+      {% elseif data['appeal-decided'] == 'split' %}
+        <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
+          Allowed in part
+        </strong>
+      {% elseif data['appeal-decided'] == 'varied' %}
+        <strong class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-3">
+          Notice varied and upheld
+        </strong>
+      {% endif %}
       <p class="govuk-body">
         <a href="#">
           Decision letter.doc
