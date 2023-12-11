@@ -30,14 +30,62 @@
     </dt>
     <dd class="govuk-summary-list__value">
       <p class="govuk-body">
-        {% if data['appeal-type'] != 'inquiry' %}
+        {% if data['appeal-type'] == 'written' %}
           Written representations
+        {% elseif data['appeal-type'] == 'hearing' %}
+          Hearing
         {% else %}
           Inquiry
         {% endif %}
       </p>
     </dd>
   </div>
+
+  {% if data['appeal-type'] == 'hearing' %}
+    <!-- if the dates are in show the event dates -->
+    {% if data['hearing-date'] == 'complete' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Hearing date and time
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">
+            11.30am on {{ 35 | daysInFuture }}
+          </p>
+        </dd>
+      </div>
+    {% endif %}
+  {% elif data['appeal-type'] == 'inquiry' %}
+
+    <!-- if the dates are in show the event dates -->
+    {% if data['case-conference-date'] == 'complete' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Case conference date and time
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">
+            10am on {{ 12 | daysInFuture }}
+          </p>
+        </dd>
+      </div>
+    {% endif %}
+
+    {% if data['inquiry-date'] == 'complete' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Inquiry date and time
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">
+            11.30am on {{ 28 | daysInFuture }}
+          </p>
+        </dd>
+      </div>
+    {% endif %}
+
+  {% endif %}
+
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Appeal site

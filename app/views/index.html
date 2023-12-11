@@ -277,75 +277,123 @@
       {{ govukDetails({
         summaryText: "LPA appeal details in different stages",
         html: '
+          <h4 class="govuk-heading-s">
+            Written representations
+          </h4>
           <ul class="govuk-list govuk-list--bullet">
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
                 New appeal
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
                 Questionnaire due
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
                 Questionnaire valid, statement due
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
                 LPA statement done
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
                 All statements and comments done / final comments due
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
                 LPA final comments done
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
                 All final comments done
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=complete">
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=complete">
                 Appeal decided
               </a>
             </li>
+          </ul>
+          <h4 class="govuk-heading-s">
+            Hearing
+          </h4>
+          <ul class="govuk-list govuk-list--bullet">
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=due&appellant-proofs=&timings=&other-timings=&appeal-decided=">
-                Inquiry appeal with proof of evidence due
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=hearing&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=">
+                New appeal
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&proofs=complete&appellant-proofs=&timings=&other-timings=&appeal-decided=">
-                Inquiry appeal with LPA proof of evidence complete
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=hearing&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=">
+                New appeal
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=complete&appellant-proofs=complete&timings=due&other-timings=&appeal-decided=">
-                Inquiry appeal witness timings due
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=hearing&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=due&final-comments=&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=due&hearing-date=complete&appeal-decided=">
+                Statement of common ground due, IP comments due
+              </a>
+            </li>
+          </ul>
+          <h4 class="govuk-heading-s">
+            Inquiry
+          </h4>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+                New appeal
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=&appeal-decided=">
-                Inquiry appeal with LPA witness timings complete
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+                Questionnaire due
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=">
-                Inquiry appeal with all witness timings complete
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+                Questionnaire valid, statement due
               </a>
             </li>
             <li>
-              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete">
-                Inquiry appeal decided
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&case-conference-date=&inquiry-date=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+                LPA statement done
+              </a>
+            </li>
+            <li>
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=complete&proofs=due&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+                Proof of evidence due
+              </a>
+            </li>
+            <li>
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&case-conference-date=&inquiry-date=complete&proofs=complete&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+                LPA proof of evidence complete
+              </a>
+            </li>
+            <li>
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=due&other-timings=&appeal-decided=">
+                Witness timings due
+              </a>
+            </li>
+            <li>
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=&appeal-decided=">
+                LPA witness timings complete
+              </a>
+            </li>
+            <li>
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=">
+                All witness timings complete
+              </a>
+            </li>
+            <li>
+              <a href="/manage/appeals/v8/appeal-details?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete">
+                Appeal decided
               </a>
             </li>
           </ul>

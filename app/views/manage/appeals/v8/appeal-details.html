@@ -9,59 +9,63 @@
 {% set prototypeLinks = [
 
   {
-    href: '?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=written&questionnaire=&statement=&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'New appeal (not validated)'
   },
   {
-    href: '?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=written&questionnaire=due&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'Questionnaire stage'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=written&questionnaire=complete&statement=due&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'Questionnaire done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=&ip-comments=&final-comments=&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'Your statement done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=due&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'All statements and comments done, final-comments due'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'Your final-comments done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'All final-comments done'
   },
   {
-    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=complete',
+    href: '?appeal-type=written&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=complete',
     text: 'Appeal decided'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=due&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=hearing&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=due&final-comments=&appellant-final-comments=complete&case-conference-date=&inquiry-date=&proofs=&appellant-proofs=&timings=&other-timings=&socg=due&hearing-date=complete&appeal-decided=',
+    text: 'Hearing: Statement of common ground due, IP comments due'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=due&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'Inquiry: All statements and IP comments done, proof due'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&proofs=complete&appellant-proofs=&timings=&other-timings=&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'Inquiry: Your proof done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=complete&appellant-proofs=complete&timings=due&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=due&socg=&hearing-date=&appeal-decided=',
     text: 'Inquiry: All proof done / witness timings due'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=&socg=&hearing-date=&appeal-decided=',
     text: 'Inquiry: Timings done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&socg=&hearing-date=&appeal-decided=',
     text: 'Inquiry: All timings done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&socg=&hearing-date=&appeal-decided=complete',
     text: 'Inquiry: Appeal decided'
   }
   ]
@@ -215,6 +219,49 @@
             </div>
           </div>
         {% endif %}
+
+      {% elseif data['appeal-type'] == 'hearing' %}
+
+        {% if data['ip-comments'] == 'due' %}
+          <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Interested party comments due
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">
+                You must submit interested party comments by 11:59pm on {{ 7 | daysInFuture }}
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/manage/witness-timings/v1/before-you-continue?action=banner">Submit interested party comments</a>
+                  </li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if data['socg'] == 'due' %}
+          <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Statement of common ground due
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">
+                You must submit the statement of common ground by 11:59pm on {{ 7 | daysInFuture }}
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/manage/witness-timings/v1/before-you-continue?action=banner">Submit statement of common ground</a>
+                  </li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        {% endif %}
+
       {% endif %}
 
 
