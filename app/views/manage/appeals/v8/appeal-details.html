@@ -222,7 +222,7 @@
 
       {% elseif data['appeal-type'] == 'hearing' %}
 
-        {% if data['ip-comments'] == 'due' %}
+        {% if data['ip-comments'] == 'removedfornow' %} <!-- due -->
           <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
             <div class="govuk-notification-banner__header">
               <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -242,7 +242,7 @@
           </div>
         {% endif %}
 
-        {% if data['socg'] == 'due' %}
+        {% if data['socg'] == 'removedfornow' %} <!-- due -->
           <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
             <div class="govuk-notification-banner__header">
               <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
