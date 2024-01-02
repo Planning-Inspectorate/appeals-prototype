@@ -19,15 +19,19 @@
         Appeal a planning decision
       </h2>
 
+      <h3 class="govuk-heading-m">
+        Appellant service
+      </h3>
+
       {{govukButton({
         text: 'Appeals hub (dashboard)',
         classes: 'govuk-button--secondary',
         href: 'appeal/more-than-one-appeal/v5/your-appeals'
       })}}
 
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+      <h4 class="govuk-heading-s govuk-!-margin-bottom-2">
         Common journeys and patterns
-      </h3>
+      </h4>
       <ul class="govuk-list govuk-list--bullet">
         <li>
           <a href="appeal/before-you-start/">Before you start</a>
@@ -67,9 +71,9 @@
         </li>
       </ul>
 
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+      <h4 class="govuk-heading-s govuk-!-margin-bottom-2">
         Appeal types
-      </h3>
+      </h4>
       <ul class="govuk-list govuk-list--bullet">
         <li>
           <a href="/appeal/has/">Householder</a>
@@ -91,9 +95,9 @@
         </li>
       </ul>
 
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+      <h4 class="govuk-heading-s govuk-!-margin-bottom-2">
         Appeal details
-      </h3>
+      </h4>
       <p class="govuk-body">
         These show the appellant’s view of their appeal in its different stages.
       </p>
@@ -162,9 +166,20 @@
         </ul>'
       }) }}
 
-      <h3 class="govuk-heading-s govuk-!-margin-bottom-2" id="rule-6">
-        Rule 6 appeal details
+      <h3 class="govuk-heading-m">
+        Rule 6 service
       </h3>
+
+      {{govukButton({
+        text: 'Rule 6 hub (dashboard)',
+        classes: 'govuk-button--secondary',
+        href: 'appeal/rule-6/v1/your-appeals'
+      })}}
+
+      <h4 class="govuk-heading-s govuk-!-margin-bottom-2" id="rule-6">
+        Rule 6 appeal details
+      </h4>
+
       <p class="govuk-body">
         These show the Rule 6 party view of their appeal in its different stages.
       </p>
@@ -175,42 +190,42 @@
         html: '
         <ul class="govuk-list govuk-list--bullet">
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=&rule6-statement=due&r6-statement=&ip-comments=&proofs=&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=&rule6-statement=due&r6-statement=&ip-comments=&proofs=&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
               Rule 6 status granted, appeal started and statements due
             </a>
           </li>
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=&rule6-statement=complete&r6-statement=&ip-comments=&proofs=&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=&rule6-statement=complete&r6-statement=&ip-comments=&proofs=&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
               Rule 6 statement done
             </a>
           </li>
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=due&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=due&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
               All statements and IP comments done, proof of evidence due
             </a>
           </li>
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">
               Proof of evidence done
             </a>
           </li>
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=due&other-timings=&appeal-decided=">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=due&other-timings=&appeal-decided=">
               All proof done witness timings due
             </a>
           </li>
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=&appellant-proofs=&timings=complete&other-timings=&appeal-decided=">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=&appellant-proofs=&timings=complete&other-timings=&appeal-decided=">
               Witness timings done
             </a>
           </li>
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=">
               All witness timings done
             </a>
           </li>
           <li>
-            <a href="/interested/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete">
+            <a href="/appeal/rule-6/v1/appeal-details?questionnaire=complete&lpa-statement=complete&rule6-statement=complete&r6-statement=complete&ip-comments=complete&proofs=complete&lpa-proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete">
               Appeal decided
             </a>
           </li>
