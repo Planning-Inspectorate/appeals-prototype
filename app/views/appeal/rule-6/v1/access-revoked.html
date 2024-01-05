@@ -1,0 +1,23 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set serviceName = "Appeal a planning decision" %}
+
+{% set title = 'You cannot access this appeal' %}
+
+{% set back = false %}
+
+{% block questions %}
+	<h1 class="govuk-heading-l">
+		{{ title }}
+	</h1>
+	<p class="govuk-body">
+		You do not have rule 6 status for the appeal {{data['appealCode']}}.
+	</p>
+	<p class="govuk-body">
+		Contact <a href="">enquiries@planning-inspectorate.gov.uk</a> if you think you should have rule 6 status.
+	</p>
+
+{% endblock %}
+
+{% block buttons %}
+{% endblock %}

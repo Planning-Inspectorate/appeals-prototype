@@ -1,14 +1,26 @@
+
+
 {% if data['current-appeals'] == 'no' %}
 
-  <h2 class="govuk-heading-xl govuk-!-margin-top-3">
-    Your appeals
-  </h2>
+  <div class="govuk-grid-column-two-thirds">
 
-  <p class="govuk-body">
-    There are currently no appeals in progress.
-  </p>
+    {{ govukNotificationBanner({
+      html: "You do not have rule 6 status to the appeal "+data['appealCode']+"."
+    }) }}
+
+    <h1 class="govuk-heading-xl govuk-!-margin-top-3">
+      Your appeals
+    </h1>
+
+    <p class="govuk-body">
+      There are currently no appeals in progress.
+    </p>
+
+  </div>
 
 {% else %}
+
+<div class="govuk-grid-column-full">
 
   {{ govukTable({
     classes: 'govuk-!-margin-top-3',
@@ -36,7 +48,7 @@
     rows: [
       [
         {
-          html: '<a href="/appeal/rule-6/v1/appeal-details?appealCode=1552612&type=s78&action=">1552612</a>'
+          html: '<a href="/appeal/rule-6/v1/appeal-details?appealCode=1552612&type=s78&action=&questionnaire=complete&lpa-statement=&rule6-statement=due&r6-statement=&ip-comments=&proofs=&lpa-proofs=&appellant-proofs=&timings=&other-timings=&appeal-decided=">1552612</a>'
         },
         {
           html: 'Minchinhampton Common, Stroud GL5 5BZ'
@@ -55,5 +67,7 @@
 
     ]
   }) }}
+
+</div>
 
 {% endif %}

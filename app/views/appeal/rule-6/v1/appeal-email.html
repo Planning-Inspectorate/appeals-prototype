@@ -1,0 +1,86 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% set prototypeLinks = [
+    {
+      href: '?current-appeals=no',
+      text: 'Revoke access'
+    } if data['current-appeals'] == 'yes' else
+    {
+      href: '?current-appeals=yes',
+      text: 'Grant access'
+    }
+  ]
+%}
+
+{% block pageTitle %}
+  Rule 6 access granted
+{% endblock %}
+
+{% if data['appealCode'] != "true" %}
+  {% set appealCode = "0123456" %}
+{% endif %}
+
+{% set title = "Take part in an appeal" %}
+
+{% block emailHeader %}
+  <h1 class="govuk-heading-m">
+    {{ title }}
+  </h1>
+  <p class="govuk-body">
+    <strong>To:</strong> butcombeparishcouncil@gmail.com
+    <br>
+    <strong>From:</strong> info@planninginspectorate.gov.uk
+  </p>
+{% endblock %}
+
+{% block emailContent %}
+
+  <p class="govuk-body">
+    To Butcombe Parish Council,
+  </p>
+
+  <p class="govuk-body">
+    We’re giving you access to take part in the appeal: {{ data['appealCode'] }}.
+  </p>
+
+  <h2 class="govuk-heading-m">
+    What you can do
+  </h2>
+
+  <p class="govuk-body">
+    Go to <a href="email">https://appeal-a-planning-decision.service.gov.uk/</a>
+  </p>
+
+  <p class="govuk-body">
+    You have rule 6 status, so you can use the service to:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      view the appeal
+    </li>
+    <li>
+      submit a statement of case
+    </li>
+    <li>
+      add comments
+    </li>
+    <li>
+      add proof of evidence
+    </li>
+  </ul>
+
+  <p class="govuk-body">
+    You can send your statement by post to:
+  </p>
+
+  <p class="govuk-body">
+    Appeals Team,<br>
+    The Planning Inspectorate,<br>
+    Temple Quay House,<br>
+    2 The Square,<br>
+    Bristol<br>
+    BS1 6PN
+  </p>
+
+{% endblock %}

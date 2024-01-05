@@ -4,12 +4,12 @@
 
   {
     href: 'your-appeals?current-appeals=no&submitted-appeals=no&decided-appeals=no',
-    text: 'No appeals'
+    text: 'No access'
   } if data['current-appeals'] != 'no' else
 
   {
     href: 'your-appeals?current-appeals=yes&submitted-appeals=yes&decided-appeals=yes',
-    text: 'Show appeals'
+    text: 'Access'
   }
   ]
 %}
@@ -33,8 +33,7 @@
 
     </div>
 
-    <div class="govuk-grid-column-full">
-      {% include "/appeal/rule-6/v1/current-appeals.html" %}
-    </div>
+    {% include "/appeal/rule-6/v1/current-appeals.html" %}
+
   </div>
 {% endblock %}

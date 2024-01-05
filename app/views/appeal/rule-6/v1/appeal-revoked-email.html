@@ -1,0 +1,40 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% block pageTitle %}
+  Rule 6 access granted
+{% endblock %}
+
+{% if data['appealCode'] != "true" %}
+  {% set appealCode = "1345264" %}
+{% endif %}
+
+{% set title = "We’ve removed your rule 6 status" %}
+
+{% set applicationRef = "23/04125/FUL" %}
+
+{% block emailHeader %}
+  <h1 class="govuk-heading-m">
+    {{ title }}
+  </h1>
+  <p class="govuk-body">
+    <strong>To:</strong> butcombeparishcouncil@gmail.com
+    <br>
+    <strong>From:</strong> info@planninginspectorate.gov.uk
+  </p>
+{% endblock %}
+
+{% block emailContent %}
+
+  <p class="govuk-body">
+    To Butcombe Parish Council,
+  </p>
+
+  <p class="govuk-body">
+    We’ve removed your rule 6 status for the appeal {{ data['appealCode'] }}. The evidence you've given is already in the appeal.
+  </p>
+
+  <p class="govuk-body">
+    Contact us if you have any questions.
+  </p>
+
+{% endblock %}
