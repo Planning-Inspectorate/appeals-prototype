@@ -1,6 +1,6 @@
 {% if data['current-appeals'] == 'no' %}
 
-  <h2 class="govuk-heading-l">
+  <h2 class="govuk-heading-xl govuk-!-margin-top-3">
     Your appeals
   </h2>
 
@@ -13,8 +13,8 @@
   {{ govukTable({
     classes: 'govuk-!-margin-top-3',
     caption: 'Your appeals',
-    captionClasses: 'govuk-table__caption--l',
-    firstCellIsHeader: false,
+    captionClasses: 'govuk-table__caption--xl',
+    firstCellIsHeader: true,
     head: [
       {
         html: 'Appeal number'
@@ -36,7 +36,7 @@
     rows: [
       [
         {
-          html: '<a href="/appeal/appeals/v2/appeal-details?appealCode=1552612&type=s78&action=">1552612</a>'
+          html: '<a href="/appeal/rule-6/v1/appeal-details?appealCode=1552612&type=s78&action=">1552612</a>'
         },
         {
           html: 'Minchinhampton Common, Stroud GL5 5BZ'
