@@ -2,8 +2,8 @@
 
 {% block backLink %}
   {{ govukBackLink({
-    html: 'Back to manage appeals',
-    href: 'index'
+    html: 'Back to your appeals',
+    href: 'your-appeals'
   }) }}
 {% endblock %}
 
@@ -14,10 +14,6 @@
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">
-        <span class="govuk-caption-xl">
-          {{ data['dashboard-lpa'] }}
-          <span class="govuk-visually-hidden"> - </span>
-        </span>
         {{ title }}
       </h1>
 
@@ -25,29 +21,8 @@
 
     <div class="govuk-grid-column-full">
 
-      {% include "/_includes/appellant/decided-appeals.html" %}
+      {% include "/_includes/rule-6/decided-appeals.html" %}
 
-      {{ govukPagination({
-        
-        next: {
-          href: "#"
-        },
-        items: [
-          {
-            number: 1,
-            current: true,
-            href: "#"
-          },
-          {
-            number: 2,
-            href: "#"
-          },
-          {
-            number: 3,
-            href: "#"
-          }
-        ]
-      }) }}
     </div>
   </div>
 {% endblock %}

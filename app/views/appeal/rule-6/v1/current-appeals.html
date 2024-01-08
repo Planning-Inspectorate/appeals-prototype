@@ -20,12 +20,10 @@
 
 {% else %}
 
-<div class="govuk-grid-column-full">
-
   {{ govukTable({
     classes: 'govuk-!-margin-top-3',
-    caption: 'Your appeals',
-    captionClasses: 'govuk-table__caption--xl',
+    caption: 'To do',
+    captionClasses: 'govuk-table__caption--l',
     firstCellIsHeader: true,
     head: [
       {
@@ -67,7 +65,5 @@
 
     ]
   }) }}
-
-</div>
 
 {% endif %}

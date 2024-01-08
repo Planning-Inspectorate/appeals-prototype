@@ -1,0 +1,46 @@
+{{ govukTable({
+  classes: 'govuk-!-margin-top-0',
+  caption: '1 to 10 decided appeals',
+  captionClasses: 'govuk-visually-hidden govuk-table__caption--l',
+  firstCellIsHeader: false,
+  head: [
+    {
+      html: 'Appeal number'
+    },
+    {
+      html: 'Site address',
+      classes: 'govuk-!-width-one-half'
+    },
+    {
+      html: 'Decision date'
+    },
+    {
+      html: 'Appeal type',
+      classes: 'govuk-!-width-one-third'
+    },
+    {
+      html: 'Decision',
+      classes: 'govuk-!-width-one-third'
+    }
+  ],
+  rows: [
+    [
+      {
+        html: "<a href='' class='govuk-link'>0208012</a>"
+      },
+      {
+        html: '12a Malago Road, Chamford, BR07 2PD'
+      },
+      {
+        html: '365' | daysInPastShort
+      },
+      {
+        html: 'Listed building consent'
+      },
+      {
+        html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+      }
+    ]
+
+  ]
+}) }}

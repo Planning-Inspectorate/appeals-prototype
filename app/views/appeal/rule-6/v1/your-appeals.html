@@ -19,21 +19,48 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <!-- <h1 class="govuk-heading-xl">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
         {{ title }}
-      </h1> -->
-
-      <!-- <p class="govuk-body govuk-!-margin-bottom-6">
-        <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
-          Add and remove users
-        </a>
-      </p> -->
-
+      </h1>
     </div>
 
-    {% include "/appeal/rule-6/v1/current-appeals.html" %}
+    <div class="govuk-grid-column-full">
+
+      {% set currentAppeals %}
+        {% include "/appeal/rule-6/v1/current-appeals.html" %}
+      {% endset -%}
+
+      {% set submittedAppeals %}
+        {% include "/_includes/rule-6/submitted-appeals.html" %}
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "To do",
+            id: "new-appeals",
+            panel: {
+              html: currentAppeals
+            }
+          },
+          {
+            label: "Waiting for review",
+            id: "submitted-appeals",
+            panel: {
+              html: submittedAppeals
+            }
+          }
+
+        ]
+      }) }}
+
+      <p class="govuk-body">
+        <a href="decided-appeals" class="govuk-link">1 decided appeals</a>
+      </p>
+
+    </div>
 
   </div>
 {% endblock %}
