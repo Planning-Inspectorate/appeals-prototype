@@ -2,21 +2,13 @@
 
 {% if data['current-appeals'] == 'no' %}
 
-  <div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl govuk-!-margin-top-3">
+    Your appeals
+  </h1>
 
-    {{ govukNotificationBanner({
-      html: "You do not have rule 6 status to the appeal "+data['appealCode']+"."
-    }) }}
-
-    <h1 class="govuk-heading-xl govuk-!-margin-top-3">
-      Your appeals
-    </h1>
-
-    <p class="govuk-body">
-      There are currently no appeals in progress.
-    </p>
-
-  </div>
+  <p class="govuk-body">
+    There are currently no appeals in progress.
+  </p>
 
 {% else %}
 

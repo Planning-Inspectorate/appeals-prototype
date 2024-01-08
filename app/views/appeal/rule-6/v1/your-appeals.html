@@ -20,6 +20,18 @@
 {% block content %}
   <div class="govuk-grid-row">
 
+    {% if data['current-appeals'] == 'no' %}
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukNotificationBanner({
+          html: "You do not have rule 6 status to the appeal "+data['appealCode']+"."
+        }) }}
+
+      </div>
+
+    {% endif %}
+
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
         {{ title }}
