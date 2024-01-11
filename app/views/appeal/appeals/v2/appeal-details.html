@@ -75,7 +75,7 @@
 
       {% if data['final-comments'] == 'due' %}
         <!-- notice for due final comments -->
-        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
             <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
               Final comments due
@@ -87,6 +87,25 @@
               <ul class="govuk-list govuk-list--bullet">
                 <li>
                   <a href="/manage/final-comments/v2/add-comments?action=banner">Submit final comments</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+
+        <!-- notice for 106 agreement -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Planning obligation due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must submit your final planning obligation by 11:59pm on {{ 12 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/final-comments/v2/add-comments?action=banner">Submit final planning obligation</a>
                 </li>
               </ul>
             </p>
