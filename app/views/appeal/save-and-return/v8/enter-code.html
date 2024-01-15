@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Enter the code we sent to your email address' %}
+
+{% set back = false %}
+
+{% block questions %}
+
+  <div class="govuk-form-group">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <input class="govuk-input govuk-input--width-5" id="securecode" name="securecode" type="number" spellcheck="false" autocomplete="none" value="" style="text-transform:uppercase">
+
+  </div>
+
+{% endblock %}
+
+{% block afterContent %}
+  <p class="govuk-body">
+    <a href="enter-code--confirm-email?newcode=true" class="govuk-link">
+    Send a new code
+  </p>
+{% endblock %}

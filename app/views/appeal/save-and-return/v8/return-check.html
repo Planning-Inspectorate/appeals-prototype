@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Do you want to start a new appeal or return to a saved appeal?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'return-check',
+    name: 'return-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Start a new appeal',
+        value: 'Start a new appeal',
+        checked: checked('return-check','Start a new appeal')
+      },
+      {
+        html: 'Return to a saved appeal',
+        value: 'Return to a saved appeal',
+        checked: checked('return-check','Return to a saved appeal')
+      }
+    ]
+  }) }}
+{% endblock %}

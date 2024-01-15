@@ -21,31 +21,24 @@
       {{ title }}
     </h1>
 
-    {% set version = "7" %}
+    {% set version = "8" %}
 
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
         classes: 'govuk-tag--blue govuk-!-margin-left-2',
-        text: 'Researched'
+        text: 'Ready for research'
       }) }}
     </h2>
 
     <p class="govuk-body">
-      Improvements to the feature that was developed and released, some functionality was missing or didn’t work as intended and some changes to try and improve the process.
-    </p>
-
-    <p>
-      Researched May 2023<br>
-      <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1184858113" class="govuk-link">
-        Confluence user research notes
-      </a>
+      We made some changes to this version to allow us to meet GDPR obligations and share the email address with the LPA.
     </p>
 
     <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        use a code instead of a link to confirm the email address
+        content update on the initial email screen
       </li>
     </ul>
 
@@ -54,6 +47,36 @@
       href: 'v'+version+'/govuk-start',
       isStartButton: true
     }) }}
+
+    {% set v7HTML %}
+
+      {% set version = "7" %}
+
+      <p class="govuk-body">
+        Improvements to the feature that was developed and released, some functionality was missing or didn’t work as intended and some changes to try and improve the process.
+      </p>
+
+      <p>
+        Researched May 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1184858113" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p>
+
+      <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          use a code instead of a link to confirm the email address
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/govuk-start',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v6HTML %}
 
@@ -139,6 +162,14 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
+        {
+          heading: {
+            html: 'Version 7 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v7HTML
+          }
+        },
         {
           heading: {
             html: 'Version 6 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

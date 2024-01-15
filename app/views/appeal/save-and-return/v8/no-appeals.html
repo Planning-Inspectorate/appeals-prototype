@@ -1,0 +1,15 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'No appeals to action' %}
+{% set back = false %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">You do not have any appeals to submit or action.</p>
+
+  <p class="govuk-body"><a href="#0" class="govuk-link--no-visited-state">Start a new appeal</a></p>
+{% endblock %}
+{% block buttons %}{% endblock %}
