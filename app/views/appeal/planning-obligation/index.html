@@ -1,0 +1,55 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Submitting a final planning obligation' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% set version = "1" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
+      }) }}
+    </h2>
+
+    <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        moved to the new prototype
+      </li>
+      <li>
+        added question for adding comments
+      </li>
+      <li>
+        updated check answers to show the answer to ‘Do you want to add final comments?’
+      </li>
+    </ul> -->
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'planning-obligation/v'+version+'/final-planning-obligation-check',
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+{% endblock %}
