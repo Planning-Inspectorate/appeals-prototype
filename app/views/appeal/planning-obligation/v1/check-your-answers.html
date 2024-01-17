@@ -4,14 +4,14 @@
 
 {% block questions %}
   <h1 class="govuk-heading-l">
-    Check your answers and submit your final comment
+    Check your answers and submit your planning obligation
   </h1>
 
   {{ govukSummaryList({
     rows: [
       {
         key: {
-          text: 'Final planning obligation'
+          text: 'Do you have a planning obligation to support your appeal?'
         },
         value: {
           html: 'Yes'
@@ -27,7 +27,7 @@
       } if data['adding-planning-obligation'] != 'No',
       {
         key: {
-          text: 'Final planning obligation'
+          text: 'Do you have a planning obligation to support your appeal?'
         },
         value: {
           html: 'No'
@@ -63,7 +63,7 @@
 
 {% block buttons %}
   {{ govukButton({
-    text: 'Submit final comments',
+    text: 'Submit planning obligation',
     href: 'confirmation'
   }) }}
 {% endblock %}
