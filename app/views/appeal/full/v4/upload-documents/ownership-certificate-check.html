@@ -1,0 +1,45 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Separate ownership certificate and agricultural land declaration' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">The &lsquo;ownership certificate&rsquo; confirms if you own all or some of the land involved in your application. The &lsquo;agricultural land declaration&rsquo; confirms if any of the land is part of an agricultural holding.</p>
+
+  {# <p class="govuk-body">You would have chosen 1 of 4 options, labelled A, B, C or D.</p> #}
+
+  <p class="govuk-!-margin-bottom-2">You would have submitted these separately if either:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>your application form did not have an ownership certificate section</li>
+    <li>your local planning authority asked for a separate document because of a mistake on your application form</li>
+    <li>you chose to submit a separate ownership certificate section</li>
+  </ul>
+
+  <p class="govuk-body">If you&rsquo;re still not sure, you can find your application on the local planning authority&rsquo;s website.</p>
+
+  {{ govukRadios({
+    idPrefix: 'ownership-certificate-check',
+    name: 'ownership-certificate-check',
+    fieldset: {
+      legend: {
+        html: 'Did you submit a separate ownership certificate and agricultural land declaration with your application?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('ownership-certificate-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('ownership-certificate-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

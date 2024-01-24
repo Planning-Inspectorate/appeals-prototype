@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Is the description of development on your application form still correct?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'application-desc-correct',
+    name: 'application-desc-correct',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes, the description of development is still correct',
+        value: 'Yes',
+        checked: checked('application-desc-correct','Yes')
+      },
+      {
+        html: 'No, I agreed a new one with the local planning authority',
+        value: 'No',
+        checked: checked('application-desc-correct','No')
+      }
+    ]
+  }) }}
+{% endblock %}
