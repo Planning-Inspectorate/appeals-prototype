@@ -19,7 +19,7 @@
         actions: {
           items: [
             {
-              href: 'final-comment-check',
+              href: 'final-planning-obligation-check',
               text: 'Change'
             }
           ]
@@ -35,7 +35,7 @@
         actions: {
           items: [
             {
-              href: 'final-comment-check',
+              href: 'final-planning-obligation-check',
               text: 'Change'
             }
           ]
@@ -56,7 +56,7 @@
             }
           ]
         }
-      } if data['adding-planning-obligation'] == 'Yes'
+      } if data['adding-planning-obligation'] != 'No'
     ]
   }) }}
 {% endblock %}
