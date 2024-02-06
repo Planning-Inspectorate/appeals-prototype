@@ -23,6 +23,10 @@ router.post('/appeal-search-number', function (req, res) {
   res.redirect('appeal-details?status=open')
 })
 
+router.post('/appeal-search-address', function (req, res) {
+  res.redirect('open-appeals?address=postcode')
+})
+
 router.post('/documents-upload', function (req, res) {
   res.redirect('check-your-answers')
 })
