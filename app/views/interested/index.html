@@ -25,7 +25,7 @@
       This is the on-going design work for interested parties, finding and commenting on an appeal. Includes appeals at different stages, open, closed and completed.
     </p>
 
-    {% set version = "9" %}
+    {% set version = "10" %}
 
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -41,22 +41,7 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        find appeal defaults to reference number
-      </li>
-      <li>
-        content updates
-      </li>
-      <li>
-        ‘find’ an appeal rather than ‘search for’
-      </li>
-      <li>
-        updated no results page
-      </li>
-      <li>
-        aligned decided appeals page
-      </li>
-      <li>
-        moving the appeal ref to the first column on the results page
+        version with no grid reference
       </li>
     </ul>
 
@@ -65,6 +50,42 @@
       href: 'find-appeal/v'+version+'/guidance',
       isStartButton: true
     }) }}
+
+    {% set v9HTML %}
+      {% set version = "9" %}
+
+      <p class="govuk-body">
+        Changes:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          find appeal defaults to reference number
+        </li>
+        <li>
+          content updates
+        </li>
+        <li>
+          ‘find’ an appeal rather than ‘search for’
+        </li>
+        <li>
+          updated no results page
+        </li>
+        <li>
+          aligned decided appeals page
+        </li>
+        <li>
+          moving the appeal ref to the first column on the results page
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'find-appeal/v'+version+'/guidance',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v8HTML %}
 
@@ -152,7 +173,8 @@
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
-
+          Moved latest version to this prototypes
+        </li>
       </ul>
 
       {{ govukButton({

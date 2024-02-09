@@ -37,14 +37,38 @@ $department-color: govuk-colour("turquoise");
 	}
 }
 
+// .app-c-header__product-name {
+// 	position: absolute;
+// 	top: 37px;
+// 	left: 53px;
+//
+// 	@include govuk-media-query($from: tablet) {
+// 		position: initial;
+// 		display: inline-block;
+//
+// 			&:before {
+// 				display: inline-block;
+// 				content: "";
+// 				background-color: #fff;
+// 				width: 1px;
+// 				height: 25px;
+// 				position: relative;
+// 				top: 5px;
+// 				left: 0;
+// 				margin-right: 10px;
+// 			}
+// 	}
+// }
+
 .app-c-header__product-name {
 	position: absolute;
-	top: 37px;
+	top: 24px;
 	left: 53px;
 
 	@include govuk-media-query($from: tablet) {
 		position: initial;
 		display: inline-block;
+		margin-top: 3px;
 
 			&:before {
 				display: inline-block;
@@ -64,4 +88,14 @@ $department-color: govuk-colour("turquoise");
 	@include govuk-media-query($from: desktop) {
 		display: none;
 	}
+}
+
+
+// The crown styles were removed as GOV.UK was added to the SVG, add them back in
+.govuk-header__logotype-crown {
+	position: relative;
+	top: -1px;
+	margin-right: 1px;
+	fill: currentcolor;
+	vertical-align: top;
 }
