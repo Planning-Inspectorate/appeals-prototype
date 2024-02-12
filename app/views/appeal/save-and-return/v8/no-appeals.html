@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'No appeals to action' %}
+{% set title = 'There are no appeals with your email address' %}
 {% set back = false %}
 
 {% block questions %}
@@ -8,8 +8,17 @@
     {{title}}
   </h1>
 
-  <p class="govuk-body">You do not have any appeals to submit or action.</p>
-
-  <p class="govuk-body"><a href="#0" class="govuk-link--no-visited-state">Start a new appeal</a></p>
+  <p class="govuk-body">You can start a new appeal or enter a different email address.</p>
 {% endblock %}
-{% block buttons %}{% endblock %}
+
+{% block buttons %}
+
+  {{ govukButton({
+    text: 'Start new appeal',
+    href: '/appeal/before-you-start/v15/lpa'
+  }) }}
+
+  <p class="govuk-body">
+    <a href="#0" class="govuk-link--no-visited-state">Enter a different email address</a>
+  </p>
+{% endblock %}
