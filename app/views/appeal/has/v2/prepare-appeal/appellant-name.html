@@ -36,5 +36,14 @@
       spellcheck: false
     }) }}
 
+    {{ govukInput({
+      id: 'appellant-company',
+      name: 'appellant-company',
+      value: data['appellant-company'],
+      label: {
+        html: 'Company name (optional)'
+      }
+    }) }}
+
   {% endcall %}
 {% endblock %}
