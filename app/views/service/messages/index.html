@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = false %}
-{% set title = 'Service messages' %}
+{% set title = 'Service status messages' %}
 
 {% block backLink %}
   {{ govukBackLink({
@@ -27,8 +27,8 @@
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
-          classes: 'govuk-tag--blue govuk-!-margin-left-2',
-          text: 'Ready for review'
+          classes: 'govuk-tag--green govuk-!-margin-left-2',
+          text: 'Ready for research'
         }) }}
       </h2>
 
@@ -51,6 +51,11 @@
         <li>
           <a href="v1/service-unavailable" class="govuk-link">
             service is unavailable (unexpected)
+          </a>
+        </li>
+        <li>
+          <a href="v1/firewall-issue" class="govuk-link">
+            firewall issue message
           </a>
         </li>
       </ul>

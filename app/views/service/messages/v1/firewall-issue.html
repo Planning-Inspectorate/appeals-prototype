@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'There is a problem' %}
+{% set back = true %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">
+    Go back and try again.
+  </p>
+{% endblock %}
+
+{% block buttons %}
+
+  <!-- {{ govukButton({
+    text: 'Start new appeal',
+    href: '/appeal/before-you-start/v15/lpa'
+  }) }}
+
+  <p class="govuk-body">
+    <a href="#0" class="govuk-link--no-visited-state">Enter a different email address</a>
+  </p> -->
+{% endblock %}
