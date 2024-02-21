@@ -13,13 +13,13 @@
   }) %}
 
   <p class="govuk-hint">
-    Enter the name of the person on the planning application.
+     Enter the name of each individual on the planning application.
   </p>
 
   {{ govukInput({
-    id: 'appellant-full-name',
-    name: 'appellant-full-name',
-    value: data['appellant-full-name'],
+    id: 'new-appellant-full-name',
+    name: 'new-appellant-full-name',
+    value: data['new-appellant-full-name'],
     classes: 'govuk-!-width-three-quarters',
     label: {
       html: 'Full name'
@@ -29,5 +29,4 @@
   }) }}
 
   {% endcall %}
-
 {% endblock %}

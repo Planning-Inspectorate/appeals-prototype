@@ -1,0 +1,24 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What is the name of the company?' %}
+
+{% block questions %}
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Enter the name of the company on the planning application."
+    },
+    id: "appellant-company-name",
+    name: "appellant-company-name",
+    classes: 'govuk-!-width-three-quarters',
+    value: data['appellant-company-name'],
+    autocomplete: 'organization',
+    spellcheck: false
+  }) }}
+
+{% endblock %}

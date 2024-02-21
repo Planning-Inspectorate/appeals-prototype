@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Who is the applicant on the planning application you are appealing?' %}
+{% set title = 'Who made the planning application?' %}
 
 {% block questions %}
   {{ govukRadios({
@@ -16,15 +16,28 @@
     },
     items: [
       {
-        html: 'You',
-        value: 'You',
-        checked: checked('appellant-check','You')
+        html: 'An individual',
+        value: 'A person',
+        checked: checked('appellant-check','A person')
       },
       {
-        html: 'Another individual',
-        value: 'Another individual',
-        checked: checked('appellant-check','Another individual')
+        html: 'A group of individuals',
+        hint: {
+          text: "If at least 2 people own the property and made a joint planning application."
+        },
+        value: 'Joint application',
+        checked: checked('appellant-check','Joint application')
+      },
+      {
+        html: "An organisation",
+        hint: {
+          text: "Includes limited companies, partnerships, charities, trusts and estates."
+        },
+        value: "A company",
+        checked: checked('appellant-check','A company')
       }
     ]
   }) }}
+
+
 {% endblock %}

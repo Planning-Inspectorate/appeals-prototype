@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Select your name' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'appellant-check',
+    name: 'appellant-check',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: data['new-appellant-full-name'] or 'Jan Fisher',
+        value: 'Jan Fisher',
+        checked: checked('appellant-check','Jan Fisher')
+      },
+      {
+        html: 'Robin Fisher',
+        value: 'Robin Fisher',
+        checked: checked('appellant-check','Robin Fisher')
+      },
+      {
+        divider: "or"
+      },
+      {
+        html: 'I am appealing on behalf of the individuals on the planning application',
+        value: 'other',
+        checked: checked('appellant-check','other')
+      }
+    ]
+  }) }}
+{% endblock %}

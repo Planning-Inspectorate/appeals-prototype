@@ -269,16 +269,50 @@ router.post('/prepare-appeal/contact-details', function (req, res) {
 })
 
 router.post('/prepare-appeal/appellant-check', function (req, res) {
-  if (req.session.data['appellant-check'] == 'Another individual') {
+  if (req.session.data['appellant-check'] == 'A company') {
+    res.redirect('appellant-company')
+  } else if (req.session.data['appellant-check'] == 'A person') {
     res.redirect('appellant-name')
   } else {
-    res.redirect('lpa-reference')
+    // joint application
+    res.redirect('add-appellant-name')
   }
 })
 
-router.post('/prepare-appeal/appellant-name', function (req, res) {
-  res.redirect('lpa-reference')
+router.post('/prepare-appeal/appellant-company', function (req, res) {
+  res.redirect('../task-list?your-details-complete=true')
 })
+
+router.post('/prepare-appeal/appellant-name', function (req, res) {
+  res.redirect('agent-check')
+})
+
+router.post('/prepare-appeal/agent-check', function (req, res) {
+  res.redirect('../task-list?your-details-complete=true')
+})
+
+router.post('/prepare-appeal/add-appellant-name', function (req, res) {
+  res.redirect('appellant-names')
+})
+
+router.post('/prepare-appeal/appellant-names', function (req, res) {
+  if (req.session.data['add-more-names'] == 'Yes') {
+    res.redirect('add-appellant-name?multiplenames=yes')
+  } else {
+    // move on to check whether they are an agent
+    res.redirect('agent-check-joint-application')
+  }
+})
+
+router.post('/prepare-appeal/agent-check-joint-application', function (req, res) {
+  res.redirect('../task-list?your-details-complete=true')
+})
+
+
+
+// router.post('/prepare-appeal/appellant-name', function (req, res) {
+//   res.redirect('lpa-reference')
+// })
 
 router.post('/prepare-appeal/lpa-reference', function (req, res) {
   res.redirect('address')
