@@ -255,14 +255,20 @@ router.get('/task-list', function(req, res, next){
 
 
 
-//
+
 // PREPARE APPEAL
 //
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
 router.post('/prepare-appeal/:page', function (req, res, next) {
   req.session.data['prepare-appeal-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
   next()
 })
+
+// YOUR DETAILS
+//
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/contact-details', function (req, res) {
   res.redirect('appellant-check')
@@ -308,17 +314,15 @@ router.post('/prepare-appeal/agent-check-joint-application', function (req, res)
   res.redirect('../task-list?your-details-complete=true')
 })
 
-
-
-// router.post('/prepare-appeal/appellant-name', function (req, res) {
-//   res.redirect('lpa-reference')
-// })
-
-router.post('/prepare-appeal/lpa-reference', function (req, res) {
-  res.redirect('address')
-})
+// SITE DETAILS
+//
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/address', function (req, res) {
+  res.redirect('green-belt')
+})
+
+router.post('/prepare-appeal/green-belt', function (req, res) {
   res.redirect('own-all')
 })
 
@@ -391,8 +395,12 @@ router.post('/prepare-appeal/site-visibility', function (req, res) {
 })
 
 router.post('/prepare-appeal/health-and-safety', function (req, res) {
-  res.redirect('procedure')
+  res.redirect('../task-list?site-details-complete=true')
 })
+
+// YOUR APPLICATION
+//
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
