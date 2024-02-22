@@ -5,7 +5,7 @@
   <ul class="govuk-task-list">
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-1-status">
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/application" aria-describedby="company-details-1-status">
           Application
         </a>
         <div id="company-details-3-hint" class="govuk-task-list__hint">
@@ -13,14 +13,20 @@
         </div>
       </div>
       <div class="govuk-task-list__status" id="company-details-2-status">
-        <strong class="govuk-tag govuk-tag--blue">
-          Incomplete
-        </strong>
+        {% if data['application-complete'] %}
+          <strong class="govuk-tag govuk-tag--green">
+            Completed
+          </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--blue">
+            Incomplete
+          </strong>
+        {% endif %}
       </div>
     </li>
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-2-status">
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/ownership-certificate-check" aria-describedby="company-details-2-status">
           Land ownership
         </a>
         <div id="company-details-3-hint" class="govuk-task-list__hint">
@@ -28,26 +34,38 @@
         </div>
       </div>
       <div class="govuk-task-list__status" id="company-details-2-status">
-        <strong class="govuk-tag govuk-tag--blue">
-          Incomplete
-        </strong>
+        {% if data['ownership-complete'] %}
+          <strong class="govuk-tag govuk-tag--green">
+            Completed
+          </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--blue">
+            Incomplete
+          </strong>
+        {% endif %}
       </div>
     </li>
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-4-status">
-          Planning obligation
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/statement-of-common-ground" aria-describedby="company-details-4-status">
+          Statement of common ground
         </a>
       </div>
       <div class="govuk-task-list__status" id="company-details-4-status">
-        <strong class="govuk-tag govuk-tag--blue">
-          Incomplete
-        </strong>
+        {% if data['statement-of-common-ground-complete'] %}
+          <strong class="govuk-tag govuk-tag--green">
+            Completed
+          </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--blue">
+            Incomplete
+          </strong>
+        {% endif %}
       </div>
     </li>
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-3-hint company-details-3-status">
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/design-access-check" aria-describedby="company-details-3-hint company-details-3-status">
           Plans, drawings and supporting documents
         </a>
         <div id="company-details-3-hint" class="govuk-task-list__hint">
@@ -55,9 +73,15 @@
         </div>
       </div>
       <div class="govuk-task-list__status" id="company-details-3-status">
-        <strong class="govuk-tag govuk-tag--blue">
-          Incomplete
-        </strong>
+        {% if data['upload-plans-complete'] %}
+          <strong class="govuk-tag govuk-tag--green">
+            Completed
+          </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--blue">
+            Incomplete
+          </strong>
+        {% endif %}
       </div>
     </li>
 

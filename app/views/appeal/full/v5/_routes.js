@@ -253,11 +253,12 @@ router.get('/task-list', function(req, res, next){
 
 
 
-
-
-
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // PREPARE APPEAL
-//
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/:page', function (req, res, next) {
@@ -267,7 +268,6 @@ router.post('/prepare-appeal/:page', function (req, res, next) {
 })
 
 // YOUR DETAILS
-//
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/contact-details', function (req, res) {
@@ -315,7 +315,6 @@ router.post('/prepare-appeal/agent-check-joint-application', function (req, res)
 })
 
 // SITE DETAILS
-//
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/address', function (req, res) {
@@ -399,7 +398,6 @@ router.post('/prepare-appeal/health-and-safety', function (req, res) {
 })
 
 // YOUR APPLICATION
-//
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/application-reference', function (req, res) {
@@ -415,7 +413,6 @@ router.post('/prepare-appeal/description-of-development', function (req, res) {
 })
 
 // YOUR APPEAL
-//
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/procedure', function (req, res) {
@@ -466,69 +463,98 @@ router.post('/prepare-appeal/other-appeals', function (req, res) {
   }
 })
 
-
-
-// YOUR APPLICATION
-//
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// UPLOAD DOCUMENTS
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
+// YOUR APPLICATION
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-
-
-
-
-
-
-//
-// UPLOAD DOCUMENTS
-//
-// router.post('/upload-documents/:page', function (req, res, next) {
-//   req.session.data['upload-documents-started'] = 'true'
-//   req.session.data[`${req.params.page}-complete`] = 'true'
-//
-//   next()
-// })
-//
-// router.post('/upload-documents/application', function (req, res) {
-//   res.redirect('application-desc-correct')
-// })
-//
-// router.post('/upload-documents/application-desc-correct', function (req, res) {
-//   res.redirect('description-of-development')
-// })
-
-// router.post('/upload-documents/description-of-development', function (req, res) {
-//   res.redirect('plans')
-//   req.session.data['description-detail-complete'] = 'true'
-// })
-
-router.post('/upload-documents/plans', function (req, res) {
-  res.redirect('ownership-certificate-check')
+router.post('/upload-documents/application', function (req, res) {
+  res.redirect('decision-letter')
 })
+
+router.post('/upload-documents/decision-letter', function (req, res) {
+  res.redirect('planning-obligation-check')
+})
+
+// OWNERSHIP
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/ownership-certificate-check', function (req, res) {
   if (req.session.data['ownership-certificate-check'] == 'Yes') {
     res.redirect('ownership-certificate')
   } else {
-    res.redirect('design-access-check')
+    res.redirect('../task-list?ownership-complete=true')
   }
 })
 
 router.post('/upload-documents/ownership-certificate', function (req, res) {
-  res.redirect('design-access-check')
+  res.redirect('../task-list?ownership-complete=true')
 })
+
+// STATEMENT OF COMMON GROUND
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+router.post('/upload-documents/statement-of-common-ground', function (req, res) {
+  res.redirect('../task-list?statement-of-common-ground-complete=true')
+})
+
+// PLANS, DRAWINGS AND SUPPORTING DOCUMENTS
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/design-access-check', function (req, res) {
   if (req.session.data['design-access-check'] == 'Yes') {
     res.redirect('design-access')
   } else {
-    res.redirect('decision-letter')
+    res.redirect('plans')
   }
 })
 
 router.post('/upload-documents/design-access', function (req, res) {
-  res.redirect('decision-letter')
+  res.redirect('plans')
 })
+
+router.post('/upload-documents/plans', function (req, res) {
+  res.redirect('new-plans-check')
+})
+
+router.post('/upload-documents/new-plans-check', function (req, res) {
+  if (req.session.data['new-plans-check'] == 'Yes') {
+    res.redirect('new-plans')
+  } else {
+    res.redirect('other-check')
+  }
+})
+
+router.post('/upload-documents/new-plans', function (req, res) {
+  res.redirect('other-check')
+})
+
+router.post('/upload-documents/other-check', function (req, res) {
+  if (req.session.data['other-check'] == 'Yes') {
+    res.redirect('other')
+  } else {
+    res.redirect('../task-list?upload-plans-complete=true')
+  }
+})
+
+router.post('/upload-documents/other', function (req, res) {
+  res.redirect('../task-list?upload-plans-complete=true')
+})
+
+
+
+
+
+
+
+
+
 
 router.post('/upload-documents/decision-letter', function (req, res) {
   res.redirect('appeal-statement')
@@ -546,49 +572,10 @@ router.post('/upload-documents/common-ground', function (req, res) {
   res.redirect('new-plans-check')
 })
 
-router.post('/upload-documents/new-plans-check', function (req, res) {
-  if (req.session.data['new-plans-check'] == 'Yes') {
-    res.redirect('new-plans')
-  } else {
-    res.redirect('planning-obligation-check')
-  }
-})
 
-router.post('/upload-documents/new-plans', function (req, res) {
-  res.redirect('planning-obligation-check')
-})
 
-router.post('/upload-documents/planning-obligation-check', function (req, res) {
-  if (req.session.data['planning-obligation-check'] == 'Yes') {
-    res.redirect('planning-obligation-status')
-  } else {
-    res.redirect('other-check')
-  }
-})
 
-router.post('/upload-documents/planning-obligation-status', function (req, res) {
-  if (req.session.data['planning-obligation-status'] == 'Finalised and ready to submit' || req.session.data['planning-obligation-status'] == 'In draft') {
-    res.redirect('planning-obligation')
-  } else {
-    res.redirect('other-check')
-  }
-})
 
-router.post('/upload-documents/planning-obligation', function (req, res) {
-  res.redirect('other-check')
-})
-
-router.post('/upload-documents/other-check', function (req, res) {
-  if (req.session.data['other-check'] == 'Yes') {
-    res.redirect('other')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-router.post('/upload-documents/other', function (req, res) {
-  res.redirect('../task-list')
-})
 
 
 
