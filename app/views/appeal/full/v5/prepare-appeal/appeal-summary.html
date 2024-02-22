@@ -1,0 +1,23 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Enter a summary of your grounds of appeal' %}
+
+{% block questions %}
+
+  {{ govukTextarea({
+    name: "appeal-summary",
+    id: "appeal-summary",
+    value: data['appeal-summary'],
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    }
+  }) }}
+
+  <!-- ,
+  hint: {
+    text: "Enter all of the text of the agreed description."
+  } -->
+
+{% endblock %}

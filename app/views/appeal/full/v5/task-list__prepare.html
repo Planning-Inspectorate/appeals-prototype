@@ -44,7 +44,7 @@
     </li>
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-4-status">
+        <a class="govuk-link govuk-task-list__link" href="prepare-appeal/application-reference" aria-describedby="company-details-4-status">
           Your application
         </a>
         <div id="company-details-3-hint" class="govuk-task-list__hint">
@@ -52,14 +52,20 @@
         </div>
       </div>
       <div class="govuk-task-list__status" id="company-details-4-status">
-        <strong class="govuk-tag govuk-tag--blue">
-          Incomplete
+        {% if data['your-application-complete'] %}
+        <strong class="govuk-tag govuk-tag--green">
+          Completed
         </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--blue">
+            Incomplete
+          </strong>
+        {% endif %}
       </div>
     </li>
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-3-hint company-details-3-status">
+        <a class="govuk-link govuk-task-list__link" href="prepare-appeal/procedure" aria-describedby="company-details-3-hint company-details-3-status">
           Your appeal
         </a>
         <div id="company-details-3-hint" class="govuk-task-list__hint">
@@ -67,9 +73,15 @@
         </div>
       </div>
       <div class="govuk-task-list__status" id="company-details-3-status">
-        <strong class="govuk-tag govuk-tag--blue">
-          Incomplete
+        {% if data['your-appeal-complete'] %}
+        <strong class="govuk-tag govuk-tag--green">
+          Completed
         </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--blue">
+            Incomplete
+          </strong>
+        {% endif %}
       </div>
     </li>
 

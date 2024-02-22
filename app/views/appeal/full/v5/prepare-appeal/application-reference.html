@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What was the application reference?' %}
+
+{% block questions %}
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    id: "appellant-company-name",
+    name: "appellant-company-name",
+    classes: "govuk-input--width-10",
+    value: data['appellant-company-name'],
+    autocomplete: 'organization',
+    spellcheck: false
+  }) }}
+
+  <!-- hint: {
+    text: "Enter the name of the company on the planning application."
+  }, -->
+
+{% endblock %}

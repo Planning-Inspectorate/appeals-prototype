@@ -402,11 +402,27 @@ router.post('/prepare-appeal/health-and-safety', function (req, res) {
 //
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
+router.post('/prepare-appeal/application-reference', function (req, res) {
+  res.redirect('application-desc-correct')
+})
+
+router.post('/prepare-appeal/application-desc-correct', function (req, res) {
+  res.redirect('description-of-development')
+})
+
+router.post('/prepare-appeal/description-of-development', function (req, res) {
+  res.redirect('../task-list?your-application-complete=true')
+})
+
+// YOUR APPEAL
+//
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
 router.post('/prepare-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
     res.redirect('procedure--reason')
   } else {
-    res.redirect('complete')
+    res.redirect('appeal-summary')
   }
 })
 
@@ -414,7 +430,7 @@ router.post('/prepare-appeal/procedure--reason', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry') {
     res.redirect('procedure--length')
   } else {
-    res.redirect('complete')
+    res.redirect('appeal-summary')
   }
 })
 
@@ -423,16 +439,17 @@ router.post('/prepare-appeal/procedure--length', function (req, res) {
 })
 
 router.post('/prepare-appeal/procedure--witnesses', function (req, res) {
-  res.redirect('complete')
+  res.redirect('appeal-summary')
 })
 
-router.get('/prepare-appeal/complete', function (req, res) {
-  if (!res.locals.data['upload-documents-completed']) {
-    res.redirect('../upload-documents/application')
-  } else {
-    res.redirect('../task-list')
-  }
+router.post('/prepare-appeal/appeal-summary', function (req, res) {
+  res.redirect('../task-list?your-appeal-complete=true')
 })
+
+// YOUR APPLICATION
+//
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
 
 
 
@@ -443,25 +460,25 @@ router.get('/prepare-appeal/complete', function (req, res) {
 //
 // UPLOAD DOCUMENTS
 //
-router.post('/upload-documents/:page', function (req, res, next) {
-  req.session.data['upload-documents-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
+// router.post('/upload-documents/:page', function (req, res, next) {
+//   req.session.data['upload-documents-started'] = 'true'
+//   req.session.data[`${req.params.page}-complete`] = 'true'
+//
+//   next()
+// })
+//
+// router.post('/upload-documents/application', function (req, res) {
+//   res.redirect('application-desc-correct')
+// })
+//
+// router.post('/upload-documents/application-desc-correct', function (req, res) {
+//   res.redirect('description-of-development')
+// })
 
-  next()
-})
-
-router.post('/upload-documents/application', function (req, res) {
-  res.redirect('application-desc-correct')
-})
-
-router.post('/upload-documents/application-desc-correct', function (req, res) {
-  res.redirect('description-of-development')
-})
-
-router.post('/upload-documents/description-of-development', function (req, res) {
-  res.redirect('plans')
-  req.session.data['description-detail-complete'] = 'true'
-})
+// router.post('/upload-documents/description-of-development', function (req, res) {
+//   res.redirect('plans')
+//   req.session.data['description-detail-complete'] = 'true'
+// })
 
 router.post('/upload-documents/plans', function (req, res) {
   res.redirect('ownership-certificate-check')
