@@ -443,8 +443,30 @@ router.post('/prepare-appeal/procedure--witnesses', function (req, res) {
 })
 
 router.post('/prepare-appeal/appeal-summary', function (req, res) {
-  res.redirect('../task-list?your-appeal-complete=true')
+  res.redirect('other-appeals-check')
 })
+
+router.post('/prepare-appeal/other-appeals-check', function (req, res) {
+  if (req.session.data['other-appeals-radio'] == 'Yes') {
+    res.redirect('other-appeal-reference')
+  } else {
+    res.redirect('../task-list?your-appeal-complete=true')
+  }
+})
+
+router.post('/prepare-appeal/other-appeal-reference', function (req, res) {
+  res.redirect('other-appeals')
+})
+
+router.post('/prepare-appeal/other-appeals', function (req, res) {
+  if (req.session.data['other-appeals'] == 'Yes') {
+    res.redirect('other-appeal-reference?extraotherappeal=yes')
+  } else {
+    res.redirect('../task-list?your-appeal-complete=true')
+  }
+})
+
+
 
 // YOUR APPLICATION
 //
