@@ -482,6 +482,26 @@ router.post('/upload-documents/decision-letter', function (req, res) {
   res.redirect('planning-obligation-check')
 })
 
+router.post('/upload-documents/planning-obligation-check', function (req, res) {
+  if (req.session.data['planning-obligation-check'] == 'Yes') {
+    res.redirect('planning-obligation-status')
+  } else {
+    res.redirect('../task-list?application-complete=true')
+  }
+})
+
+router.post('/upload-documents/planning-obligation-status', function (req, res) {
+  if (req.session.data['planning-obligation-status'] == 'Not started yet') {
+    res.redirect('../task-list?application-complete=true')
+  } else {
+    res.redirect('planning-obligation')
+  }
+})
+
+router.post('/upload-documents/planning-obligation', function (req, res) {
+  res.redirect('../task-list?application-complete=true')
+})
+
 // OWNERSHIP
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
@@ -546,43 +566,6 @@ router.post('/upload-documents/other-check', function (req, res) {
 router.post('/upload-documents/other', function (req, res) {
   res.redirect('../task-list?upload-plans-complete=true')
 })
-
-
-
-
-
-
-
-
-
-
-router.post('/upload-documents/decision-letter', function (req, res) {
-  res.redirect('appeal-statement')
-})
-
-router.post('/upload-documents/appeal-statement', function (req, res) {
-  if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
-    res.redirect('common-ground')
-  } else {
-    res.redirect('new-plans-check')
-  }
-})
-
-router.post('/upload-documents/common-ground', function (req, res) {
-  res.redirect('new-plans-check')
-})
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Add your routes above the module.exports line
 module.exports = router
