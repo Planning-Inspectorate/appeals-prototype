@@ -1,0 +1,83 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Before you start your appeal' %}
+
+{% set back = false %}
+{% set return = false %}
+
+
+{% extends '_layouts/layout-main.html' %}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-hint">
+    You must submit your appeal before the deadline.
+  </p>
+
+  {{ govukWarningText({
+    text: "If you do not upload all of the supporting documents before the deadline, we cannot consider them when we review the appeal.",
+    iconFallbackText: "Warning"
+  }) }}
+
+  <h2 class="govuk-heading-m">
+    What you need to submit your appeal
+  </h2>
+
+  <p class="govuk-body">
+    You will need to upload your:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+
+    <li>
+      planning application form
+    </li>
+    <li>
+      application decision letter from your local authority, if you have one
+    </li>
+    <li>
+      planning obligation, if you have one
+    </li>
+    <li>
+      separate ownership certificate and agricultural land declaration, if you need one
+    </li>
+    <li>
+      draft statement of common ground, if you need one
+    </li>
+    <li>
+      design and access statement, if you have one
+    </li>
+    <li>
+      plans, drawings and supporting documents for your application
+    </li>
+    <li>
+      appeal statement, if you have one
+    </li>
+    <li>
+      new plans or drawings to support your appeal
+    </li>
+    <li>
+      other documents to support your appeal
+    </li>
+  </ul>
+
+  <p class="govuk-body">
+    From now, you're able to save your appeal and come back later.
+  </p>
+
+{% endblock %}
+
+{% block buttons %}
+
+  {{ govukButton({
+    text: 'Continue',
+    href: 'task-list'
+  }) }}
+
+  <p class="govuk-body"><a href="/appeal/save-and-return/v6/appeal-saved" class="govuk-link--no-visited-state">Save and come back later</a></p>
+
+{% endblock %}
