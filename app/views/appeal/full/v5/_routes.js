@@ -493,6 +493,16 @@ router.post('/prepare-appeal/other-appeals', function (req, res) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/application', function (req, res) {
+  // if the description of development changed, the next screen is to upload the
+  // description of development agreement
+  if (req.session.data['application-desc-correct'] != 'Yes') {
+    res.redirect('description-of-development-agreement')
+  } else {
+    res.redirect('decision-letter')
+  }
+})
+
+router.post('/upload-documents/description-of-development-agreement', function (req, res) {
   res.redirect('decision-letter')
 })
 
