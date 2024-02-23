@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What was the date of application?' %}
+
+{% block questions %}
+
+  {{ govukDateInput({
+    id: "application-date",
+    namePrefix: "application-date",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    }
+  }) }}
+
+  <!--
+    ,
+    hint: {
+      text: "For example, 27 3 2007"
+    }
+  -->
+
+{% endblock %}

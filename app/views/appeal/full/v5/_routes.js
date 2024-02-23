@@ -407,6 +407,10 @@ router.post('/prepare-appeal/health-and-safety', function (req, res) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/application-reference', function (req, res) {
+  res.redirect('application-date')
+})
+
+router.post('/prepare-appeal/application-date', function (req, res) {
   res.redirect('application-desc-correct')
 })
 
