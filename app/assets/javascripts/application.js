@@ -27,9 +27,9 @@ jQuery(function() {
 
   shortening_text.each(function() {
     var txt = $(this).html();
-    if (txt.length < 500) return;
+    if (txt.length < 200) return;
     $(this).html(
-      txt.slice(0, 500) +
+      txt.slice(0, 200) +
         '<span>... </span><a href="#" class="show">Read more</a>' +
         '<span style="display:none;">' +
         txt.slice(800, txt.length) +

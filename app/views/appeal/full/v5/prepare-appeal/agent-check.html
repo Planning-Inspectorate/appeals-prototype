@@ -4,8 +4,8 @@
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'appellant-check',
-    name: 'appellant-check',
+    idPrefix: 'agent-check',
+    name: 'agent-check',
     classes: '',
     fieldset: {
       legend: {
@@ -18,12 +18,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('appellant-check','Yes')
+        checked: checked('agent-check','Yes')
       },
       {
         html: 'No, I am appealing on behalf of '+(data['appellant-full-name'] or 'Jan Fisher'),
         value: 'No',
-        checked: checked('appellant-check','No')
+        checked: checked('agent-check','No')
       }
     ]
   }) }}

@@ -2,7 +2,7 @@
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">3. </span> Submit
     {% if
-      data['prepare-appeal-completed'] == 'true'
+      data['prepare-completed'] == 'true'
       and data['upload-documents-completed'] == 'true'
     %}
       {{ govukTag({
@@ -27,11 +27,11 @@
         actions: {
           items: [
             {
-              href: 'declaration',
+              href: 'check-your-answers',
               html: 'Continue'
             }
           ]
-        } if data['prepare-appeal-completed'] == 'true' and data['upload-documents-completed'] == 'true'
+        } if data['prepare-completed'] == 'true' and data['upload-documents-completed'] == 'true'
       }
     ]
   }) }}

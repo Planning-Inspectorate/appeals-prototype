@@ -14,13 +14,17 @@
       </div>
       <div class="govuk-task-list__status" id="company-details-2-status">
         {% if data['application-complete'] %}
-          <strong class="govuk-tag govuk-tag--green">
-            Completed
-          </strong>
+          Completed
         {% else %}
-          <strong class="govuk-tag govuk-tag--blue">
-            Incomplete
+          {% if data['application-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
           </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
         {% endif %}
       </div>
     </li>
@@ -35,13 +39,17 @@
       </div>
       <div class="govuk-task-list__status" id="company-details-2-status">
         {% if data['ownership-complete'] %}
-          <strong class="govuk-tag govuk-tag--green">
-            Completed
-          </strong>
+          Completed
         {% else %}
-          <strong class="govuk-tag govuk-tag--blue">
-            Incomplete
+          {% if data['ownership-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
           </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
         {% endif %}
       </div>
     </li>
@@ -53,13 +61,17 @@
       </div>
       <div class="govuk-task-list__status" id="company-details-4-status">
         {% if data['statement-of-common-ground-complete'] %}
-          <strong class="govuk-tag govuk-tag--green">
-            Completed
-          </strong>
+          Completed
         {% else %}
-          <strong class="govuk-tag govuk-tag--blue">
-            Incomplete
+          {% if data['statement-of-common-ground-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
           </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
         {% endif %}
       </div>
     </li>
@@ -74,13 +86,17 @@
       </div>
       <div class="govuk-task-list__status" id="company-details-3-status">
         {% if data['upload-plans-complete'] %}
-          <strong class="govuk-tag govuk-tag--green">
-            Completed
-          </strong>
+          Completed
         {% else %}
-          <strong class="govuk-tag govuk-tag--blue">
-            Incomplete
+          {% if data['upload-plans-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
           </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
         {% endif %}
       </div>
     </li>

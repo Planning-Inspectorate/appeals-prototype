@@ -21,12 +21,12 @@
       {{ title }}
     </h1>
 
-    {% set version = "4" %}
+    {% set version = "5" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
-        text: 'Ready for research'
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
       }) }}
     </h2>
 
@@ -34,7 +34,13 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        new version of description of development
+        additional questions
+      </li>
+      <li>
+        changes to description of development
+      </li>
+      <li>
+        new task list model to help users know what files they need to upload
       </li>
     </ul>
 
@@ -44,6 +50,26 @@
       isStartButton: true
     }) }}
 
+    {% set v4HTML %}
+
+      {% set version = "4" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          new version of description of development
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list',
+        isStartButton: true
+      }) }}
+
+
+    {% endset -%}
 
     {% set v3HTML %}
 
@@ -92,6 +118,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 4 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v4HTML
+          }
+        },
         {
           heading: {
             html: 'Version 3 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
