@@ -21,16 +21,26 @@ router.post('*', function(req, res, next){
 })
 
 router.get('/task-list', function(req, res, next) {
-  // check if all of the sections are complete
-  if (req.session.data['your-details-complete']
-   && req.session.data['site-details-complete']
-   && req.session.data['your-application-complete']
-   && req.session.data['your-appeal-complete']
+
+  // check if the last question of the 1st section is complete
+  if (req.session.data['other-appeals-check-complete']
+   || req.session.data['other-appeals-complete']
   ) {
-   req.session.data['prepare-completed'] = 'true'
+    req.session.data['prepare-completed'] = 'true'
   } else {
-   req.session.data['prepare-completed'] = 'false'
+    req.session.data['prepare-completed'] = 'false'
   }
+
+  // check if all of the sections are complete
+  // if (req.session.data['your-details-complete']
+  //  && req.session.data['site-details-complete']
+  //  && req.session.data['your-application-complete']
+  //  && req.session.data['your-appeal-complete']
+  // ) {
+  //  req.session.data['prepare-completed'] = 'true'
+  // } else {
+  //  req.session.data['prepare-completed'] = 'false'
+  // }
 
   // check if all of the sections are complete
   if (req.session.data['application-complete']
@@ -53,9 +63,6 @@ router.get('/task-list', function(req, res, next) {
 })
 
 
-
-
-
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
@@ -65,7 +72,6 @@ router.get('/task-list', function(req, res, next) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/:page', function (req, res, next) {
-  req.session.data['prepare-appeal-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
   next()
 })
@@ -279,7 +285,10 @@ router.post('/prepare-appeal/other-appeals', function (req, res) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 
-
+router.post('/upload-documents/:page', function (req, res, next) {
+  req.session.data[`${req.params.page}-complete`] = 'true'
+  next()
+})
 
 
 // YOUR APPLICATION

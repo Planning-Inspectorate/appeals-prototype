@@ -2,7 +2,18 @@
 
 {% set title = 'Your appeal' %}
 {% set back = false %}
-{% set prototypeLinks = [{href: 'declaration', text: 'Skip to declaration'}] %}
+{% set prototypeLinks =
+  [
+    {
+      href: 'check-your-answers',
+      text: 'Skip to check answers'
+    },
+    {
+      href: 'declaration',
+      text: 'Skip to declaration'
+    }
+  ]
+%}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -20,13 +31,29 @@
     </div>
 
 
+
     <div class="govuk-grid-column-three-quarters-from-desktop">
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
         Appeal incomplete
       </h2>
-      <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 3 sections.</p>
+
+      {% if data['other-appeals-check-complete'] or data['other-appeals-complete'] %}
+        {% if data['other-check-complete'] or data['other-complete'] %}
+          <p class="govuk-!-margin-bottom-7">You have completed 2 of 3 sections.</p>
+        {% else %}
+          <p class="govuk-!-margin-bottom-7">You have completed 1 of 3 sections.</p>
+        {% endif %}
+      {% else %}
+        {% if data['other-check-complete'] or data['other-complete'] %}
+          <p class="govuk-!-margin-bottom-7">You have completed 1 of 3 sections.</p>
+        {% else %}
+          <p class="govuk-!-margin-bottom-7">You have completed 0 of 3 sections.</p>
+        {% endif %}
+      {% endif %}
+
+      <!-- <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 3 sections.</p> -->
 
       {# Tweak the task list so we can merge the CYA in #}
       <style>

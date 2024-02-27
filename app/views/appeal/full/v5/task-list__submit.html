@@ -1,20 +1,24 @@
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">3. </span> Submit
-    {% if
-      data['prepare-completed'] == 'true'
-      and data['upload-documents-completed'] == 'true'
-    %}
-      {{ govukTag({
-        html: 'Ready to submit',
-        classes: 'govuk-tag--blue'
-      }) }}
-    {% else %}
-      {{ govukTag({
-        html: 'Cannot start yet',
-        classes: 'govuk-tag--grey'
-      }) }}
-    {% endif %}
+      {% if data['other-appeals-check-complete'] or data['other-appeals-complete'] %}
+        {% if data['other-check-complete'] or data['other-complete'] %}
+          {{ govukTag({
+            html: 'Ready to submit',
+            classes: 'govuk-tag--blue'
+          }) }}
+        {% else %}
+          {{ govukTag({
+            html: 'Cannot start yet',
+            classes: 'govuk-tag--grey'
+          }) }}
+        {% endif %}
+      {% else %}
+        {{ govukTag({
+          html: 'Cannot start yet',
+          classes: 'govuk-tag--grey'
+        }) }}
+      {% endif %}
   </h2>
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
@@ -31,7 +35,7 @@
               html: 'Continue'
             }
           ]
-        } if data['prepare-completed'] == 'true' and data['upload-documents-completed'] == 'true'
+        } if (data['other-appeals-check-complete'] or data['other-appeals-complete']) and (data['other-check-complete'] or data['other-complete'])
       }
     ]
   }) }}

@@ -478,27 +478,27 @@
         rows: [
           {
             key: {
-              text: "Previous application number"
+              text: "Application"
             },
             value: {
-              text: "502135326"
+              html: "<a href='#'>Aubrey-Road-Application-2023.pdf</a>"
             },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "previous application number"
+                  visuallyHiddenText: "application"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Licence type"
+              text: "Proof of agreement to change description of development"
             },
             value: {
-              text: "For personal use"
+              html: "<a href='#'>Aubrey-Road-Description-Change.tiff</a>"
             },
             actions: {
               items: [
@@ -509,7 +509,7 @@
                 }
               ]
             }
-          },
+          } if data['application-desc-correct'] == 'No',
           {
             key: {
               text: "Home address"
