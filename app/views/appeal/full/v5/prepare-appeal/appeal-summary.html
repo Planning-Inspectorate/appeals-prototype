@@ -1,23 +1,21 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Enter a summary of your grounds of appeal' %}
+{% set title = 'Why do you disagree with the local planning authority’s decision?' %}
 
 {% block questions %}
 
-  {{ govukTextarea({
+  {{ govukCharacterCount({
     name: "appeal-summary",
     id: "appeal-summary",
-    value: data['appeal-summary'],
+    maxlength: 200,
     label: {
       text: title,
       classes: "govuk-label--l",
       isPageHeading: true
+    },
+    hint: {
+      text: "Do not include any sensitive information."
     }
   }) }}
-
-  <!-- ,
-  hint: {
-    text: "Enter all of the text of the agreed description."
-  } -->
 
 {% endblock %}
