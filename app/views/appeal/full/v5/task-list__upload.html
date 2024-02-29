@@ -53,6 +53,7 @@
         {% endif %}
       </div>
     </li>
+    {% if data['procedure'] != "Written representations" %}
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
         <a class="govuk-link govuk-task-list__link" href="upload-documents/statement-of-common-ground" aria-describedby="company-details-4-status">
@@ -75,6 +76,7 @@
         {% endif %}
       </div>
     </li>
+    {% endif %}
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
         <a class="govuk-link govuk-task-list__link" href="upload-documents/design-access-check" aria-describedby="company-details-3-hint company-details-3-status">
