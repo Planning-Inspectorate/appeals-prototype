@@ -23,13 +23,13 @@ router.post('*', function(req, res, next){
 router.get('/task-list', function(req, res, next) {
 
   // check if the last question of the 1st section is complete
-  if (req.session.data['other-appeals-check-complete']
-   || req.session.data['other-appeals-complete']
-  ) {
-    req.session.data['prepare-completed'] = 'true'
-  } else {
-    req.session.data['prepare-completed'] = 'false'
-  }
+  // if (req.session.data['other-appeals-check-complete']
+  //  || req.session.data['other-appeals-complete']
+  // ) {
+  //   req.session.data['prepare-completed'] = 'true'
+  // } else {
+  //   req.session.data['prepare-completed'] = 'false'
+  // }
 
   // check if all of the sections are complete
   // if (req.session.data['your-details-complete']
@@ -43,21 +43,21 @@ router.get('/task-list', function(req, res, next) {
   // }
 
   // check if all of the sections are complete
-  if (req.session.data['application-complete']
-   && req.session.data['ownership-complete']
-   && req.session.data['statement-of-common-ground-complete']
-   && req.session.data['upload-plans-complete']
-  ) {
-    req.session.data['upload-documents-completed'] = 'true'
-  } else {
-    req.session.data['upload-documents-completed'] = 'false'
-  }
+  // if (req.session.data['application-complete']
+  //  && req.session.data['ownership-complete']
+  //  && req.session.data['statement-of-common-ground-complete']
+  //  && req.session.data['upload-plans-complete']
+  // ) {
+  //   req.session.data['upload-documents-completed'] = 'true'
+  // } else {
+  //   req.session.data['upload-documents-completed'] = 'false'
+  // }
 
   // Set up the section count and increase if each section is done
-  let count = 0
-  if (res.locals.data['prepare-completed'] == 'true') { count++ }
-  if (res.locals.data['upload-documents-completed'] == 'true') { count++ }
-  res.locals.count = count
+  // let count = 0
+  // if (res.locals.data['prepare-completed'] == 'true') { count++ }
+  // if (res.locals.data['upload-documents-completed'] == 'true') { count++ }
+  // res.locals.count = count
 
   next()
 })

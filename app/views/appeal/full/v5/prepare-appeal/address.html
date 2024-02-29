@@ -45,6 +45,16 @@
     }) }}
 
     {{ govukInput({
+      id: 'county',
+      name: 'county',
+      value: data['county'],
+      classes: 'govuk-!-width-two-thirds',
+      label: {
+        html: 'County (optional)'
+      }
+    }) }}
+
+    {{ govukInput({
       id: 'address-postcode',
       name: 'address-postcode',
       value: data['address-postcode'],

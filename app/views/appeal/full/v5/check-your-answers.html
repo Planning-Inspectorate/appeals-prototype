@@ -512,27 +512,27 @@
           } if data['application-desc-correct'] == 'No',
           {
             key: {
-              text: "Home address"
+              text: "Decision letter"
             },
             value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
+              html: "<a href='#'>Aubrey-Road-Bristol-Decision-Letter-2024.pdf</a>"
             },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "home address"
+                  visuallyHiddenText: "decision letter"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Licence period"
+              text: "Planning obligation"
             },
             value: {
-              text: "Valid for 6 months"
+              html: "<a href='#'>Aubrey-Road-Planning-Obligation-2023.pdf</a>"
             },
             actions: {
               items: [
@@ -540,6 +540,111 @@
                   href: "#",
                   text: "Change",
                   visuallyHiddenText: "licence period"
+                }
+              ]
+            }
+          } if data['planning-obligation-status'] != 'Not started yet',
+          {
+            key: {
+              text: "Separate ownership certificate"
+            },
+            value: {
+              html: "<a href='#'>Aubrey-Road-Ownership-2023.pdf</a>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "ownership certificate"
+                }
+              ]
+            }
+          } if data['ownership-certificate-check'] != 'Yes',
+          {
+            key: {
+              text: "Statement of common ground"
+            },
+            value: {
+              html: "<a href='#'>Aubrey-Road-Statement-of-common-ground-2023.pdf</a>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "ownership certificate"
+                }
+              ]
+            }
+          } if data['procedure'] != 'Written representations',
+          {
+            key: {
+              text: "Design and access statement"
+            },
+            value: {
+              html: "<a href='#'>Aubrey-Road-Design-Access-2023.pdf</a>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "design access statement"
+                }
+              ]
+            }
+          } if data['design-access-check'] == 'Yes',
+          {
+            key: {
+              text: "Application plans and drawings"
+            },
+            value: {
+              html: "<a href='#'>Aubrey-Road-Application-site-outline-2023.pdf</a><br>
+                     <a href='#'>Aubrey-Road-Application-block-plan-2023.pdf</a><br>
+                     <a href='#'>Aubrey-Road-Application-location-2023.pdf</a><br>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "application plans and drawings"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "New plans and drawings"
+            },
+            value: {
+              html: "<a href='#'>Aubrey-Road-Application-block-plan-additions-2024.pdf</a><br>
+                     <a href='#'>Aubrey-Road-Application-location-2023.pdf</a>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "application plans and drawings"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Other documents"
+            },
+            value: {
+              html: "None"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "application plans and drawings"
                 }
               ]
             }
