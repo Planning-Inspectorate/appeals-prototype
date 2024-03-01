@@ -123,6 +123,10 @@ router.post('/prepare-appeal/agent-check-joint-application', function (req, res)
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/address', function (req, res) {
+  res.redirect('site-area?site-details-started=true')
+})
+
+router.post('/prepare-appeal/site-area', function (req, res) {
   res.redirect('green-belt?site-details-started=true')
 })
 

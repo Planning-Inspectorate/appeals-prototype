@@ -130,6 +130,25 @@
           },
           {
             key: {
+              text: "Site area"
+            },
+            value: {
+              html: (data['site-area-hectares'] or '2.4 hectares')+'<br>'+
+                    (data['site-area-hectares'] or '24,000 square metres')
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "site area"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
               text: "Green belt"
             },
             value: {

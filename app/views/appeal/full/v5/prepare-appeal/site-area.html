@@ -1,0 +1,43 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What is the site area?' %}
+
+{% block questions %}
+  {% call govukFieldset({
+    legend: {
+      html: title,
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+    }
+  }) %}
+
+  <!-- <p class="govuk-hint">
+    This should match the address on the application to the local planning authority
+  </p> -->
+
+  {{ govukInput({
+    id: 'site-area-hectares',
+    name: 'site-area-hectares',
+    value: data['site-area-hectares'],
+    classes: "govuk-input--width-5",
+    label: {
+      html: 'Site area in hectares'
+    }
+  }) }}
+
+  <p class="govuk-body">
+    Or
+  </p>
+
+  {{ govukInput({
+    id: 'site-area-square-metres',
+    name: 'site-area-square-metres',
+    value: data['site-area-square-metres'],
+    classes: "govuk-input--width-5",
+    label: {
+      html: 'Site area in square metres'
+    }
+  }) }}
+
+  {% endcall %}
+{% endblock %}
