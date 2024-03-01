@@ -16,52 +16,46 @@
 <dl class="govuk-summary-list appeal-details govuk-summary-list--no-border">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-third">
-      Appeal type
+      Event 1
     </dt>
     <dd class="govuk-summary-list__value">
       <p class="govuk-body">
-        S78 / Full appeal
+        11.30am on {{ 35 | daysInFuture }}
       </p>
     </dd>
   </div>
-  {% if data['appeal-type'] != 'none' %}
+
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Appeal procedure
+      Event 2
     </dt>
     <dd class="govuk-summary-list__value">
       <p class="govuk-body">
-        {% if data['appeal-type'] == 'written' %}
-          Written representations
-        {% else %}
-          Inquiry
-        {% endif %}
+        11.30am on {{ 36 | daysInFuture }}
       </p>
     </dd>
   </div>
-  {% endif %}
+
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Appeal site
+      Event 3
     </dt>
     <dd class="govuk-summary-list__value">
-      Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT
+      <p class="govuk-body">
+        1.30pm on {{ 42 | daysInFuture }}
+      </p>
     </dd>
   </div>
+
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Applicant
+      Event 4
     </dt>
     <dd class="govuk-summary-list__value">
-      Mariella Bidbod
+      <p class="govuk-body">
+        1.30pm on {{ 43 | daysInFuture }}
+      </p>
     </dd>
   </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Application number
-    </dt>
-    <dd class="govuk-summary-list__value">
-      23/04125/FUL
-    </dd>
-  </div>
+
 </dl>
