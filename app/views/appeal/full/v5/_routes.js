@@ -91,7 +91,7 @@ router.post('/prepare-appeal/appellant-check', function (req, res) {
 })
 
 router.post('/prepare-appeal/appellant-company', function (req, res) {
-  res.redirect('../task-list?your-details-complete=true')
+  res.redirect('contact-phone-number')
 })
 
 router.post('/prepare-appeal/appellant-name', function (req, res) {
@@ -99,7 +99,7 @@ router.post('/prepare-appeal/appellant-name', function (req, res) {
 })
 
 router.post('/prepare-appeal/agent-check', function (req, res) {
-  res.redirect('../task-list?your-details-complete=true')
+  res.redirect('contact-phone-number')
 })
 
 router.post('/prepare-appeal/add-appellant-name', function (req, res) {
@@ -116,6 +116,10 @@ router.post('/prepare-appeal/appellant-names', function (req, res) {
 })
 
 router.post('/prepare-appeal/agent-check-joint-application', function (req, res) {
+  res.redirect('contact-phone-number')
+})
+
+router.post('/prepare-appeal/contact-phone-number', function (req, res) {
   res.redirect('../task-list?your-details-complete=true')
 })
 

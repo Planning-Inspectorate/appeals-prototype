@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Enter a contact phone number for this appeal' %}
+
+{% block questions %}
+
+  {% call govukFieldset({
+    legend: {
+    html: title,
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+  <p class="govuk-hint">
+    We may use this number to contact you about appeal site visits.
+  </p>
+
+  {{ govukInput({
+    label: {
+      text: "UK telephone number"
+    },
+    id: "telephone-number",
+    name: "telephoneNumber",
+    type: "tel",
+    autocomplete: "tel",
+    classes: "govuk-input--width-20"
+  }) }}
+
+  {% endcall %}
+
+{% endblock %}
