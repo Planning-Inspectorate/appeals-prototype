@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Before you start your appeal' %}
+{% set title = 'Before you start' %}
 
 {% set back = false %}
 {% set return = false %}
@@ -14,54 +14,23 @@
     {{title}}
   </h1>
 
-  <p class="govuk-hint">
-    You must submit your appeal before the deadline.
+  <p class="govuk-body">
+    You must submit your documents before the deadline or we cannot review them with the appeal.
   </p>
 
-  {{ govukWarningText({
-    text: "If you do not upload all of the supporting documents before the deadline, we cannot consider them when we review the appeal.",
-    iconFallbackText: "Warning"
-  }) }}
-
-  <h2 class="govuk-heading-m">
-    What you need to submit your appeal
-  </h2>
-
   <p class="govuk-body">
-    You will need to upload your:
+    You’ll need your:
   </p>
 
   <ul class="govuk-list govuk-list--bullet">
-
     <li>
       planning application form
-    </li>
-    <li>
-      evidence of your agreement to change the description of development, if you need one
-    </li>
-    <li>
-      application decision letter from your local authority, if you have one
-    </li>
-    <li>
-      planning obligation, if you have one
-    </li>
-    <li>
-      separate ownership certificate and agricultural land declaration, if you need one
-    </li>
-    <li>
-      draft statement of common ground, if you need one
-    </li>
-    <li>
-      design and access statement, if you have one
     </li>
     <li>
       plans, drawings and supporting documents for your application
     </li>
     <li>
-      appeal statement, if you have one
-    </li>
-    <li>
-      new plans or drawings to support your appeal
+      new, plans or drawings to support your appeal
     </li>
     <li>
       other documents to support your appeal
@@ -69,8 +38,36 @@
   </ul>
 
   <p class="govuk-body">
-    From now, you're able to save your appeal and come back later.
+    If you have any of the following documents, you’ll also need to upload your:
   </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      decision letter from the local authority
+    </li>
+    <li>
+      planning obligation
+    </li>
+    <li>
+      separate ownership certificate and agricultural land declaration
+    </li>
+    <li>
+      draft statement of common ground
+    </li>
+    <li>
+      appeal statement, if you have one
+    </li>
+    <li>
+      design and access statement
+    </li>
+    <li>
+      appeal statement
+    </li>
+  </ul>
+<!--
+  <p class="govuk-body">
+    From now, you're able to save your appeal and come back later.
+  </p> -->
 
 {% endblock %}
 
@@ -81,6 +78,10 @@
     href: 'task-list'
   }) }}
 
-  <p class="govuk-body"><a href="/appeal/save-and-return/v6/appeal-saved" class="govuk-link--no-visited-state">Save and come back later</a></p>
+  <p class="govuk-body">
+    <a href="/appeal/save-and-return/v6/appeal-saved" class="govuk-link--no-visited-state">
+      Save and come back later
+    </a>
+  </p>
 
 {% endblock %}
