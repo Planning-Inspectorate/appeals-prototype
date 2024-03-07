@@ -119,9 +119,22 @@ router.post('/prepare-appeal/agent-check-joint-application', function (req, res)
   res.redirect('contact-phone-number')
 })
 
+// agent interuption page
 router.post('/prepare-appeal/contact-phone-number', function (req, res) {
-  res.redirect('../task-list?your-details-complete=true')
+  if (req.session.data['agent-check'] == 'No') {
+    res.redirect('agent-notice')
+  } else if (req.session.data['agent-check-joint-application'] == 'other') {
+    res.redirect('agent-notice')
+  } else {
+    res.redirect('../task-list?your-details-complete=true')
+  }
 })
+
+
+
+
+
+
 
 // SITE DETAILS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
