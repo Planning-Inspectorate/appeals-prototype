@@ -1,6 +1,10 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'You have added an individual' %}
+{% if data['multiplenames'] != 'yes' %}
+  {% set title = 'You have added an individual' %}
+{% else %}
+  {% set title = 'You have added 2 individuals' %}
+{% endif %}
 
 {% set prototypeLinks = [
   {
