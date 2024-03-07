@@ -218,10 +218,10 @@ router.post('/prepare-appeal/application-reference', function (req, res) {
 })
 
 router.post('/prepare-appeal/application-date', function (req, res) {
-  res.redirect('application-desc-correct')
+  res.redirect('application-desc-changed')
 })
 
-router.post('/prepare-appeal/application-desc-correct', function (req, res) {
+router.post('/prepare-appeal/application-desc-changed', function (req, res) {
   res.redirect('description-of-development')
 })
 
@@ -305,7 +305,7 @@ router.post('/upload-documents/:page', function (req, res, next) {
 router.post('/upload-documents/application', function (req, res) {
   // if the description of development changed, the next screen is to upload the
   // description of development agreement
-  if (req.session.data['application-desc-correct'] != 'Yes') {
+  if (req.session.data['application-desc-changed'] != 'No') {
     res.redirect('description-of-development-agreement?application-started=true')
   } else {
     res.redirect('decision-letter?application-started=true')
