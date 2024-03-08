@@ -79,6 +79,28 @@
     {% endif %}
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/appeal-statement-check" aria-describedby="appeal-statement-upload-status">
+          Appeal statement
+        </a>
+      </div>
+      <div class="govuk-task-list__status" id="appeal-statement-upload-status">
+        {% if data['appeal-statement-complete'] %}
+          Completed
+        {% else %}
+          {% if data['appeal-statement-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
+          </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
+        {% endif %}
+      </div>
+    </li>
+    <li class="govuk-task-list__item govuk-task-list__item--with-link">
+      <div class="govuk-task-list__name-and-hint">
         <a class="govuk-link govuk-task-list__link" href="upload-documents/design-access-check" aria-describedby="company-details-3-hint company-details-3-status">
           Plans, drawings and supporting documents
         </a>

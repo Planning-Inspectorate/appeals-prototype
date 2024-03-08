@@ -373,6 +373,21 @@ router.post('/upload-documents/statement-of-common-ground', function (req, res) 
   res.redirect('../task-list?statement-of-common-ground-complete=true')
 })
 
+// APPEAL STATEMENT
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+router.post('/upload-documents/appeal-statement-check', function (req, res) {
+  if (req.session.data['appeal-statement-check'] == 'Yes') {
+    res.redirect('appeal-statement?appeal-statement-started=true')
+  } else {
+    res.redirect('design-access-check?appeal-statement-complete=true')
+  }
+})
+
+router.post('/upload-documents/appeal-statement', function (req, res) {
+  res.redirect('design-access-check?appeal-statement-complete=true')
+})
+
 // PLANS, DRAWINGS AND SUPPORTING DOCUMENTS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
