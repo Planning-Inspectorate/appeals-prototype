@@ -1,12 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Do you have an appeal statement to upload?' %}
+{% set title = 'Do you need to apply for an award of appeal costs?' %}
 
 {% block questions %}
 
   {{ govukRadios({
-    idPrefix: 'appeal-statement-check',
-    name: 'appeal-statement-check',
+    idPrefix: 'costs-check',
+    name: 'costs-check',
     fieldset: {
       legend: {
         html: title,
@@ -18,12 +18,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('appeal-statement-check','Yes')
+        checked: checked('costs-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('appeal-statement-check','No')
+        checked: checked('costs-check','No')
       }
     ]
   }) }}

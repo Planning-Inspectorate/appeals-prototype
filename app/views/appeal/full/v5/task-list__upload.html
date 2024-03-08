@@ -5,14 +5,14 @@
   <ul class="govuk-task-list">
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="upload-documents/application" aria-describedby="company-details-1-status">
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/application" aria-describedby="application-documents-hint application-documents-status">
           Application
         </a>
-        <div id="company-details-3-hint" class="govuk-task-list__hint">
+        <div id="application-documents-hint" class="govuk-task-list__hint">
           Application form and decision letter
         </div>
       </div>
-      <div class="govuk-task-list__status" id="company-details-2-status">
+      <div class="govuk-task-list__status" id="application-documents-status">
         {% if data['application-complete'] %}
           Completed
         {% else %}
@@ -30,14 +30,14 @@
     </li>
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="upload-documents/ownership-certificate-check" aria-describedby="company-details-2-status">
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/ownership-certificate-check" aria-describedby="ownership-documents-hint ownership-documents-status">
           Land ownership
         </a>
-        <div id="company-details-3-hint" class="govuk-task-list__hint">
+        <div id="ownership-documents-hint" class="govuk-task-list__hint">
           Separate ownership certificate and agricultural land declaration
         </div>
       </div>
-      <div class="govuk-task-list__status" id="company-details-2-status">
+      <div class="govuk-task-list__status" id="ownership-documents-status">
         {% if data['ownership-complete'] %}
           Completed
         {% else %}
@@ -53,41 +53,20 @@
         {% endif %}
       </div>
     </li>
-    {% if data['procedure'] == "Hearing" or data['procedure'] == "Inquiry" %}
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="upload-documents/statement-of-common-ground" aria-describedby="company-details-4-status">
-          Statement of common ground
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/appeal-statement-check" aria-describedby="appeal-documents-hint appeal-documents-status">
+          Appeal documents
         </a>
+        <div id="appeal-documents-hint" class="govuk-task-list__hint">
+          Appeal statement and costs
+        </div>
       </div>
-      <div class="govuk-task-list__status" id="company-details-4-status">
-        {% if data['statement-of-common-ground-complete'] %}
+      <div class="govuk-task-list__status" id="appeal-documents-status">
+        {% if data['appeal-documents-complete'] %}
           Completed
         {% else %}
-          {% if data['statement-of-common-ground-started'] %}
-          <strong class="govuk-tag govuk-tag--light-blue">
-            In progress
-          </strong>
-          {% else %}
-            <strong class="govuk-tag govuk-tag--blue">
-              Incomplete
-            </strong>
-          {% endif %}
-        {% endif %}
-      </div>
-    </li>
-    {% endif %}
-    <li class="govuk-task-list__item govuk-task-list__item--with-link">
-      <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="upload-documents/appeal-statement-check" aria-describedby="appeal-statement-upload-status">
-          Appeal statement
-        </a>
-      </div>
-      <div class="govuk-task-list__status" id="appeal-statement-upload-status">
-        {% if data['appeal-statement-complete'] %}
-          Completed
-        {% else %}
-          {% if data['appeal-statement-started'] %}
+          {% if data['appeal-documents-started'] %}
           <strong class="govuk-tag govuk-tag--light-blue">
             In progress
           </strong>
@@ -101,14 +80,14 @@
     </li>
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="upload-documents/design-access-check" aria-describedby="company-details-3-hint company-details-3-status">
+        <a class="govuk-link govuk-task-list__link" href="upload-documents/design-access-check" aria-describedby="plans-and-drawings-hint plans-and-drawings-status">
           Plans, drawings and supporting documents
         </a>
-        <div id="company-details-3-hint" class="govuk-task-list__hint">
+        <div id="plans-and-drawings-hint" class="govuk-task-list__hint">
           Design and access statement, plans, drawings and supporting documents
         </div>
       </div>
-      <div class="govuk-task-list__status" id="company-details-3-status">
+      <div class="govuk-task-list__status" id="plans-and-drawings-status">
         {% if data['upload-plans-complete'] %}
           Completed
         {% else %}

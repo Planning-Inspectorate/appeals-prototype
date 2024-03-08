@@ -366,26 +366,50 @@ router.post('/upload-documents/ownership-certificate', function (req, res) {
   res.redirect('../task-list?ownership-complete=true')
 })
 
-// STATEMENT OF COMMON GROUND
-// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-
-router.post('/upload-documents/statement-of-common-ground', function (req, res) {
-  res.redirect('../task-list?statement-of-common-ground-complete=true')
-})
-
-// APPEAL STATEMENT
+// APPEAL DOCUMENTS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/appeal-statement-check', function (req, res) {
   if (req.session.data['appeal-statement-check'] == 'Yes') {
-    res.redirect('appeal-statement?appeal-statement-started=true')
+    res.redirect('appeal-statement?appeal-documents-started=true')
   } else {
-    res.redirect('design-access-check?appeal-statement-complete=true')
+    // determine whether we need to show statement of common ground
+    if (req.session.data['procedure'] == 'Hearing') {
+      res.redirect('statement-of-common-ground?appeal-documents-started=true')
+    } else if (req.session.data['procedure'] == 'Inquiry') {
+      res.redirect('statement-of-common-ground?appeal-documents-started=true')
+    } else {
+      res.redirect('costs-check?appeal-documents-started=true')
+    }
+
   }
 })
 
 router.post('/upload-documents/appeal-statement', function (req, res) {
-  res.redirect('design-access-check?appeal-statement-complete=true')
+  // determine whether we need to show statement of common ground
+  if (req.session.data['procedure'] == 'Hearing') {
+    res.redirect('statement-of-common-ground')
+  } else if (req.session.data['procedure'] == 'Inquiry') {
+    res.redirect('statement-of-common-ground')
+  } else {
+    res.redirect('costs-check')
+  }
+})
+
+router.post('/upload-documents/statement-of-common-ground', function (req, res) {
+  res.redirect('costs-check')
+})
+
+router.post('/upload-documents/costs-check', function (req, res) {
+  if (req.session.data['costs-check'] == 'Yes') {
+    res.redirect('costs')
+  } else {
+    res.redirect('../task-list?appeal-documents-complete=true')
+  }
+})
+
+router.post('/upload-documents/costs', function (req, res) {
+  res.redirect('../task-list?appeal-documents-complete=true')
 })
 
 // PLANS, DRAWINGS AND SUPPORTING DOCUMENTS
