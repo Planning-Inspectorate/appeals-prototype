@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Are you '+(data['appellant-full-name'] or 'Jan Fisher')+'?' %}
+{% set title = 'Are you '+(data['appellant-first-name'] or 'Jan')+' '+(data['appellant-last-name'] or 'Fisher')+'?' %}
 
 {% block questions %}
   {{ govukRadios({
@@ -21,7 +21,7 @@
         checked: checked('agent-check','Yes')
       },
       {
-        html: 'No, I am appealing on behalf of '+(data['appellant-full-name'] or 'Jan Fisher'),
+        html: 'No, I am appealing on behalf of '+(data['appellant-first-name'] or 'Jan')+' '+(data['appellant-last-name'] or 'Fisher'),
         value: 'No',
         checked: checked('agent-check','No')
       }

@@ -10,11 +10,11 @@
 
   {% if data['appellant-check'] == 'A person' %}
     <h1 class="govuk-heading-l">
-      Complete the appeal on behalf of {{ data['appellant-full-name'] or 'Jan Fisher' }} 
+      Complete the appeal on behalf of {{ data['appellant-first-name'] or 'Jan' }} {{ data['appellant-last-name'] or 'Fisher' }}
     </h1>
   {% else %}
     <h1 class="govuk-heading-l">
-      Complete the appeal on behalf of {{ data['new-appellant-full-name'] or 'Jan Fisher' }} and Robin Fisher
+      Complete the appeal on behalf of {{ data['new-appellant-first-name'] or 'Jan' }} {{ data['new-appellant-last-name'] or 'Fisher' }} and Robin Fisher
     </h1>
   {% endif %}
 

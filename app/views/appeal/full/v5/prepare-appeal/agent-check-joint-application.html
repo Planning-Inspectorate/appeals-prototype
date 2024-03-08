@@ -16,7 +16,7 @@
     },
     items: [
       {
-        html: data['new-appellant-full-name'] or 'Jan Fisher',
+        html: (data['new-appellant-first-name'] or 'Jan')+' '+(data['new-appellant-last-name'] or 'Fisher'),
         value: 'Jan Fisher',
         checked: checked('agent-check-joint-application','Jan Fisher')
       },

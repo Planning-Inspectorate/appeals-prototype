@@ -17,14 +17,26 @@
   </p>
 
   {{ govukInput({
-    id: 'appellant-full-name',
-    name: 'appellant-full-name',
-    value: data['appellant-full-name'],
+    id: 'appellant-first-name',
+    name: 'appellant-first-name',
+    value: data['appellant-first-name'],
     classes: 'govuk-!-width-three-quarters',
     label: {
-      html: 'Full name'
+      html: 'First name'
     },
-    autocomplete: 'name',
+    autocomplete: 'given-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'appellant-last-name',
+    name: 'appellant-last-name',
+    value: data['appellant-last-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Last name'
+    },
+    autocomplete: 'family-name',
     spellcheck: false
   }) }}
 
