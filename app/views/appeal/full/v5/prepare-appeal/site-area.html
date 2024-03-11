@@ -1,8 +1,9 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What is the site area?' %}
+{% set title = 'What is the area of the site?' %}
 
 {% block questions %}
+
   {% call govukFieldset({
     legend: {
       html: title,
@@ -16,27 +17,17 @@
   </p> -->
 
   {{ govukInput({
-    id: 'site-area-hectares',
-    name: 'site-area-hectares',
-    value: data['site-area-hectares'],
-    classes: "govuk-input--width-5",
     label: {
-      html: 'Site area in hectares'
-    }
-  }) }}
-
-  <p class="govuk-body">
-    Or
-  </p>
-
-  {{ govukInput({
+      text: "Total site area, in square metres."
+    },
     id: 'site-area-square-metres',
     name: 'site-area-square-metres',
     value: data['site-area-square-metres'],
     classes: "govuk-input--width-5",
-    label: {
-      html: 'Site area in square metres'
-    }
+    suffix: {
+      text: "m²"
+    },
+    spellcheck: false
   }) }}
 
   {% endcall %}
