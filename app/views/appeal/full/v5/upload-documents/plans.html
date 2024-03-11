@@ -7,7 +7,13 @@
     {{ title }}
   </h1>
 
-  <p class="govuk-body">Do not include any new or updated documents. We&rsquo;ll ask for these later.</p>
+  <p class="govuk-body">
+    You must upload all of the plans, drawings and supporting documents that you submitted to the local planning authority with your planning application.
+  </p>
+
+  <p class="govuk-body">
+    Do not include any new or updated documents. We’ll ask for these later.
+  </p>
 
   {% set uploadHtml %}
     {{ govukFileUpload({
@@ -25,7 +31,7 @@
     }) }}
 
     {{govukButton({
-      text: 'Upload file',
+      text: 'Upload files',
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
   {% endset %}
