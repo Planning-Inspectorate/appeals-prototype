@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Are there any other ongoing appeals next to, or close to the site?' %}
+{% set title = 'Are there other appeals linked to your development?' %}
 
 {% block questions %}
 
@@ -16,6 +16,9 @@
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }
+    },
+    hint: {
+      html: '<span class="govuk-body">Only tell us about ongoing appeals that have not already received a decision.</span>'
     },
     items: [
       {
