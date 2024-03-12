@@ -7,22 +7,52 @@
     {{ title }}
   </h1>
 
+  <p class="govuk-body">
+    The statement must include:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      how the development’s context influenced the design
+    </li>
+    <li>
+      the design principles and concepts that you’ve applied to the development
+    </li>
+    <li>
+      your approach to access the development
+    </li>
+    <li>
+      your approach to access the development
+    </li>
+    <li>
+      how you’ve taken relevant local plan policies into account
+    </li>
+    <li>
+      any consultation that relates to access issues
+    </li>
+    <li>
+      how the outcome of any consultation informed the development
+    </li>
+    <li>
+      how you’ve addressed any issues that may affect access
+    </li>
+  </ul>
+
   {% set uploadHtml %}
     {{ govukFileUpload({
       id: 'design-access',
       name: 'design-access',
       classes: 'moj-multi-file-upload__input',
       label: {
-        text: 'Upload files',
+        text: 'Upload a file',
         classes: 'govuk-label--m'
       },
       hint: {
-        text: 'Each file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
+        text: 'The file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
       }
     }) }}
 
     {{govukButton({
-      text: 'Upload files',
+      text: 'Upload a file',
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
   {% endset %}
