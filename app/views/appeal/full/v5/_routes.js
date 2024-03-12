@@ -388,11 +388,11 @@ router.post('/upload-documents/appeal-statement-check', function (req, res) {
 router.post('/upload-documents/appeal-statement', function (req, res) {
   // determine whether we need to show statement of common ground
   if (req.session.data['procedure'] == 'Hearing') {
-    res.redirect('statement-of-common-ground')
+    res.redirect('statement-of-common-ground?appeal-documents-started=true')
   } else if (req.session.data['procedure'] == 'Inquiry') {
-    res.redirect('statement-of-common-ground')
+    res.redirect('statement-of-common-ground?appeal-documents-started=true')
   } else {
-    res.redirect('costs-check')
+    res.redirect('costs-check?appeal-documents-started=true')
   }
 })
 
