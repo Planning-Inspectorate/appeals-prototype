@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Do you only want to appeal a listed building (LBC) decision?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'lbcConsent',
+    name: 'lbcConsent',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes, I only want to appeal a LBC decision',
+        value: 'Yes',
+        checked: checked('lbcConsent','My appeal is related to or includes a listed building')
+      },
+      {
+        html: 'No, I also want to appeal something else',
+        value: 'No',
+        checked: checked('lbcConsent','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

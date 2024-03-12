@@ -23,7 +23,7 @@
 
     <section class="govuk-!-margin-bottom-6">
 
-      {% set version = "15" %}
+      {% set version = "16" %}
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
@@ -36,6 +36,26 @@
         Changes:
       </p>
 
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          HAS and S78 routing (not listed building consent)
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/',
+        isStartButton: true
+      }) }}
+
+    </section>
+
+    {% set v15HTML %}
+    <section>
+      {% set version = "15" %}
+      <p class="govuk-!-margin-bottom-2">
+        Changes:
+      </p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
           new routing for listed building consent appeals
@@ -67,10 +87,10 @@
       }) }}
 
     </section>
+    {% endset -%}
 
     {% set v14HTML %}
-
-    <section class="govuk-!-margin-bottom-6">
+    <section>
 
       {% set version = "14" %}
 
@@ -94,7 +114,6 @@
       }) }}
 
     </section>
-
     {% endset -%}
 
     {% set v13HTML %}
@@ -116,6 +135,14 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
+        {
+          heading: {
+            html: 'Version 15 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v15HTML
+          }
+        },
         {
           heading: {
             html: 'Version 14 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

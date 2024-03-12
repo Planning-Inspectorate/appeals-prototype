@@ -1,0 +1,54 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Was your planning application about any of the following?' %}
+
+{% block questions %}
+
+	<span class="govuk-caption-l">
+		Before you start
+	</span>
+	{{ govukCheckboxes({
+	  name: "countries",
+	  fieldset: {
+	    legend: {
+	      text: title,
+	      isPageHeading: true,
+	      classes: "govuk-fieldset__legend--l"
+	    }
+	  },
+	  hint: {
+	    text: "Select all countries that apply"
+	  },
+	  items: [
+	    {
+	      value: "A listed building",
+	      text: "A listed building"
+	    },
+	    {
+	      value: "Major housing development",
+	      html: "Major housing development<br><span class='govuk-hint'>At least 10 houses or a site area that is at least 0.5 hectares</span>"
+	    },
+	    {
+	      value: "Major general industry, storage or warehousing",
+	      html: "Major general industry, storage or warehousing<br><span class='govuk-hint'>A planned development that creates at least 1,000 square metres of floor space or has a site area that is at least one hectare</span>"
+	    },
+	    {
+	      value: "Major retail and services",
+	      html: "Major retail and services<br><span class='govuk-hint'>A planned development that creates at least 1,000 square metres of floor space or has a site area that is at least one hectare</span>"
+	    },
+	    {
+	      value: "Major travelling and caravan pitches",
+	      html: "Major travelling and caravan pitches<br><span class='govuk-hint'>At least 10 pitches</span>"
+	    },
+	    {
+	      divider: "or"
+	    },
+	    {
+	      value: "None of these",
+	      text: "None of these",
+	      behaviour: "exclusive"
+	    }
+	  ]
+	}) }}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'When was the application submitted to the local planning authority?' %}
+
+{% block questions %}
+  {{ govukDateInput({
+    id: 'application-date',
+    namePrefix: 'application-date',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'For example, 31 3 2024'
+    },
+    items: [
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: data['application-date-day']
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2',
+        value: data['application-date-month']
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4',
+        value: data['application-date-year']
+      }
+    ]
+  }) }}
+{% endblock %}

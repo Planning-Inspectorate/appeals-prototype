@@ -1,0 +1,69 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What type of planning application is your appeal about?' %}
+
+{% block questions %}
+
+	<span class="govuk-caption-l">
+		Before you start
+	</span>
+	{{ govukRadios({
+		idPrefix: 'planning-type',
+		name: 'planning-type',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		hint: {
+			html: 'You can check this on your planning application form'
+		},
+		items: [
+			{
+				html: 'Full planning',
+				value: 'Full planning',
+				checked: checked('planning-type','Full planning')
+			},
+			{
+				html: 'Householder planning',
+				value: 'Householder planning',
+				checked: checked('planning-type','Householder planning')
+			},
+			{
+				html: 'Outline planning',
+				value: 'Outline planning',
+				checked: checked('planning-type','Outline planning')
+			},
+			{
+				html: 'Prior approval',
+				value: 'Prior approval',
+				checked: checked('planning-type','Prior approval')
+			},
+			{
+				html: 'Reserved matters',
+				value: 'Reserved matters',
+				checked: checked('planning-type','Reserved matters')
+			},
+			{
+				html: 'Removal or variation of conditions',
+				value: 'Removal or variation of conditions',
+				checked: checked('planning-type','Removal or variation of conditions')
+			},
+	    {
+	      html: 'Something else',
+	      value: 'discontinueance notice',
+	      checked: checked('appeal-type','discontinueance notice')
+	    },
+	    {
+	      divider: "or"
+	    },
+	    {
+	      html: 'I have not made a planning application',
+	      value: 'discontinueance notice',
+	      checked: checked('appeal-type','discontinueance notice')
+	    }
+		]
+	}) }}
+{% endblock %}
