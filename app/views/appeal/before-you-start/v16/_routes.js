@@ -55,25 +55,7 @@ router.post('/planning/type', function (req, res) {
 
 // any of the following filter
 router.post('/planning/any-of-following', function (req, res) {
-  let type = req.session.data['planning-type']
-
-  switch (type) {
-    case 'Full planning':
-      res.redirect('any-of-following?type=full');
-      break;
-    case 'Householder planning':
-      res.redirect('decision?type=has');
-      break;
-    case 'Listed building consent':
-      res.redirect('major-development-check');
-      break;
-    case 'Prior approval':
-    case 'Removal or variation of conditions':
-      res.redirect('existing-home-check');
-      break;
-    default:
-      res.redirect('major-development-check');
-  }
+  res.redirect('decision');
 })
 
 router.post('/planning/listed-building', function (req, res) {

@@ -27,6 +27,22 @@ w{% extends location+"common/cya.html" %}
       },
       {
         key: {
+          text: 'Application type'
+        },
+        value: {
+          text: data['planning-type'] or 'Full appeal'
+        },
+        actions: {
+          items: [
+            {
+              href: '../lpa?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
           text: 'Related to a listed building'
         },
         value: {
