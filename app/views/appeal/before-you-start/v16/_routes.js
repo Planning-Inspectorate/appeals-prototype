@@ -91,94 +91,24 @@ router.post('/planning/decision', function (req, res) {
 })
 
 router.post('/planning/decision-date', function (req, res) {
-  res.redirect('cya')
+  res.redirect('enforcement-check')
 })
-
-// LAWFUL DEVELOPMENT CERTIFICATE
-
-router.post('/ldc/section-of-law', function (req, res) {
-  res.redirect('application-date')
-})
-
-router.post('/ldc/application-date', function (req, res) {
-  res.redirect('decision-check')
-})
-
-router.post('/ldc/decision-check', function (req, res) {
-  if (req.session.data['decision-check'] == 'No') {
-    res.redirect('cya')
-  } else {
-    res.redirect('decision-date')
-  }
-})
-
-router.post('/ldc/decision-date', function (req, res) {
-  res.redirect('cya')
-})
-
-// ENFORCEMENT
 
 router.post('/planning/enforcement-check', function (req, res) {
-  if (req.session.data['enforcementStatus'] == 'No') {
-    res.redirect('listed-building-appeal')
-  } else {
-    res.redirect('errors/no-enforcement');
-  }
-})
-
-router.post('/enforcement/listed-building-check', function (req, res) {
-  res.redirect('issue-date')
-})
-
-router.post('/enforcement/issue-date', function (req, res) {
-  res.redirect('effective-date')
-})
-
-router.post('/enforcement/effective-date', function (req, res) {
   res.redirect('cya')
 })
 
-
-
-// CHECK YOUR ANSWERS
-
-router.post('*/cya', function (req, res) {
-  if (req.session.data['bys-next']) {
-    res.redirect(req.session.data['bys-next']);
-  } else {
-    res.redirect('cya');
-  }
-})
-
-
-
-// CYA continue button (not working right now)
-// Need to link this to the various appeal submission journeys
+// Link Check your answers to the various appeal submission journeys
 router.post('/planning/cya', function (req, res) {
+
   let type = req.session.data['planning-type']
 
-  switch (type) {
-    case 'Full planning':
-      res.redirect('/full/v3/tasklist?type=full');
-      break;
-    case 'Householder planning':
-      res.redirect('/has/v2/tasklist?type=full');
-      break;
-    case 'Listed building consent':
-      if (req.session.data['type'] == 'both') {
-        res.redirect(req.session.data['both']);
-      } else {
-        res.redirect('cya');
-      }
-      res.redirect('lbc/v1/task-list');
-      break;
-    case 'Prior approval':
-    case 'Removal or variation of conditions':
-      res.redirect('existing-home-check');
-      break;
-    default:
-      res.redirect('major-development-check');
+  if (type == 'Full planning') {
+    res.redirect('/appeal/full/v5/before-you-continue');
+  } else if (type == 'Householder planning') {
+    res.redirect('/appeal/has/v2/task-list');
   }
+
 })
 
 
