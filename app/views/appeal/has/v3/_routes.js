@@ -100,9 +100,9 @@ router.post('/prepare-appeal/appellant-name', function (req, res) {
 
 router.post('/prepare-appeal/agent-check', function (req, res) {
   if (req.session.data['agent-check'] == 'Yes') {
-    res.redirect('agent-notice')
-  } else {
     res.redirect('contact-phone-number')
+  } else {
+    res.redirect('agent-notice')
   }
 })
 
@@ -121,9 +121,9 @@ router.post('/prepare-appeal/appellant-names', function (req, res) {
 
 router.post('/prepare-appeal/agent-check-joint-application', function (req, res) {
   if (req.session.data['agent-check-joint-application'] == 'Yes') {
-    res.redirect('agent-notice')
-  } else {
     res.redirect('contact-phone-number')
+  } else {
+    res.redirect('agent-notice')
   }
 })
 
