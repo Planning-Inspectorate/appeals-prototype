@@ -91,7 +91,7 @@ router.post('/prepare-appeal/appellant-check', function (req, res) {
 })
 
 router.post('/prepare-appeal/appellant-company', function (req, res) {
-  res.redirect('contact-phone-number')
+  res.redirect('contact-phone-number?agent-notice=yes')
 })
 
 router.post('/prepare-appeal/appellant-name', function (req, res) {
@@ -99,7 +99,11 @@ router.post('/prepare-appeal/appellant-name', function (req, res) {
 })
 
 router.post('/prepare-appeal/agent-check', function (req, res) {
-  res.redirect('contact-phone-number')
+  if (req.session.data['agent-check'] == 'Yes') {
+    res.redirect('contact-phone-number')
+  } else {
+    res.redirect('agent-notice')
+  }
 })
 
 router.post('/prepare-appeal/add-appellant-name', function (req, res) {
@@ -116,23 +120,22 @@ router.post('/prepare-appeal/appellant-names', function (req, res) {
 })
 
 router.post('/prepare-appeal/agent-check-joint-application', function (req, res) {
-  res.redirect('contact-phone-number')
-})
-
-// agent interuption page
-router.post('/prepare-appeal/contact-phone-number', function (req, res) {
-  if (req.session.data['agent-check'] == 'No') {
-    res.redirect('agent-notice')
-  } else if (req.session.data['agent-check-joint-application'] == 'other') {
-    res.redirect('agent-notice')
+  if (req.session.data['agent-check'] == 'Yes') {
+    res.redirect('contact-phone-number')
   } else {
-    res.redirect('../task-list?your-details-complete=true')
+    res.redirect('agent-notice')
   }
 })
 
+// agent interuption page
 router.post('/prepare-appeal/agent-notice', function (req, res) {
+  res.redirect('contact-phone-number')
+})
+
+router.post('/prepare-appeal/contact-phone-number', function (req, res) {
   res.redirect('../task-list?your-details-complete=true')
 })
+
 
 // SITE DETAILS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
