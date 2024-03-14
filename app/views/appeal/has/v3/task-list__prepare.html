@@ -1,0 +1,109 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">1. </span> Prepare appeal
+  </h2>
+  <ul class="govuk-task-list">
+    <li class="govuk-task-list__item govuk-task-list__item--with-link">
+      <div class="govuk-task-list__name-and-hint">
+        <a class="govuk-link govuk-task-list__link" href="prepare-appeal/appellant-check" aria-describedby="your-details-status">
+          Your details
+        </a>
+      </div>
+      <div class="govuk-task-list__status" id="your-details-status">
+        {% if data['your-details-complete'] %}
+        <!-- <strong class="govuk-tag govuk-tag--green"> -->
+          Completed
+        <!-- </strong> -->
+        {% else %}
+          {% if data['your-details-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
+          </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
+        {% endif %}
+      </div>
+    </li>
+    <li class="govuk-task-list__item govuk-task-list__item--with-link">
+      <div class="govuk-task-list__name-and-hint">
+        <a class="govuk-link govuk-task-list__link" href="prepare-appeal/address" aria-describedby="site-details-hint site-details-status">
+          Site details
+        </a>
+        <div id="company-details-3-hint" class="govuk-task-list__hint">
+          Location, ownership and access
+        </div>
+      </div>
+      <div class="govuk-task-list__status" id="site-details-status">
+        {% if data['site-details-complete'] %}
+        <!-- <strong class="govuk-tag govuk-tag--green"> -->
+          Completed
+        <!-- </strong> -->
+        {% else %}
+          {% if data['site-details-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
+          </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
+        {% endif %}
+      </div>
+    </li>
+    <li class="govuk-task-list__item govuk-task-list__item--with-link">
+      <div class="govuk-task-list__name-and-hint">
+        <a class="govuk-link govuk-task-list__link" href="prepare-appeal/application-reference" aria-describedby="your-application-hint your-application-status">
+          Your application
+        </a>
+        <div id="your-application-hint" class="govuk-task-list__hint">
+          Reference number and description of development
+        </div>
+      </div>
+      <div class="govuk-task-list__status" id="your-application-status">
+        {% if data['your-application-complete'] %}
+          Completed
+        {% else %}
+          {% if data['your-application-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
+          </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
+        {% endif %}
+      </div>
+    </li>
+    <li class="govuk-task-list__item govuk-task-list__item--with-link">
+      <div class="govuk-task-list__name-and-hint">
+        <a class="govuk-link govuk-task-list__link" href="prepare-appeal/other-appeals-check" aria-describedby="your-appeal-hint your-appeal-status">
+          Your appeal
+        </a>
+        <div id="company-details-3-hint" class="govuk-task-list__hint">
+          Appeal procedure and statement
+        </div>
+      </div>
+      <div class="govuk-task-list__status" id="your-appeal-status">
+        {% if data['your-appeal-complete'] %}
+          Completed
+        {% else %}
+          {% if data['your-appeal-started'] %}
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
+          </strong>
+          {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          {% endif %}
+        {% endif %}
+      </div>
+    </li>
+
+  </ul>
+</li>

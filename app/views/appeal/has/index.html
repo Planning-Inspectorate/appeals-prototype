@@ -21,12 +21,12 @@
       {{ title }}
     </h1>
 
-    {% set version = "2" %}
+    {% set version = "3" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'In progress'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
 
@@ -34,23 +34,17 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        changed 'consultancy name' to 'company name'
+        alignment with S78 / using question components and patterns
       </li>
       <li>
-        adding guidance about costs on the <a href="v3/upload-documents/appeal-statement?action=" class="govuk-link">upload statement page</a>
-      </li>
-      <li>
-        improvements to the process that was developed and released
-      </li>
-      <li>
-        brings householder in line with design changes made in the time since release
+        change to site visibility question to Inspector access
       </li>
     </ul>
 
     <p class="govuk-body">
 
     {{ govukInsetText({
-      html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVPAIID7s=/?share_link_id=748467977892">Design Miro board</a> with notes from review of live and changes.</p>'
+      html: '<p class="govuk-body"><a href="https://app.mural.co/t/allpins6990/m/allpins6990/1706174587899/03ad9f1e886c06c371e6f3c09a9cca6f87a1438e?sender=ucdc79e79d5de0dae79845426">Householder wireframe</a></p>'
     }) }}
 
     {{ govukButton({
@@ -59,6 +53,56 @@
       isStartButton: true
     }) }}
 
+    {% set v2HTML %}
+      {% set version = "2" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          changed ‘consultancy name’ to ‘company name’
+        </li>
+        <li>
+          adding guidance about costs on the <a href="v3/upload-documents/appeal-statement?action=" class="govuk-link">upload statement page</a>
+        </li>
+        <li>
+          improvements to the process that was developed and released
+        </li>
+        <li>
+          brings householder in line with design changes made in the time since release
+        </li>
+      </ul>
+
+      <p class="govuk-body">
+
+      {{ govukInsetText({
+        html: '<p class="govuk-body"><a href="https://miro.com/app/board/uXjVPAIID7s=/?share_link_id=748467977892">Design Miro board</a> with notes from review of live and changes.</p>'
+      }) }}
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+        {
+          heading: {
+            html: 'Version 2 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v2HTML
+          }
+        }
+      ]
+    }) }}
+
   </div>
 </div>
+
 {% endblock %}

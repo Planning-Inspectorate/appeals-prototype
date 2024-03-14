@@ -1,0 +1,98 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% if data['multiplenames'] != 'yes' %}
+  {% set title = 'You have added an individual' %}
+{% else %}
+  {% set title = 'You have added 2 individuals' %}
+{% endif %}
+
+{% set prototypeLinks = [
+  {
+    href: '?multiplenames=yes',
+    text: 'Multiple names'
+  },
+  {
+    href: '?multiplenames=',
+    text: 'One name'
+  }
+] %}
+
+{% block questions %}
+
+  <section class="govuk-!-margin-bottom-6">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {{ govukSummaryList({
+      classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+      rows: [
+
+        {
+          key: {
+            text: 'Applicant 1'
+          },
+          value: {
+            html: (data['new-appellant-first-name'] or 'Jan')+' '+(data['new-appellant-last-name'] or 'Fisher')
+          },
+          actions: {
+            items: [
+              {
+                href: "add-appellant-name",
+                text: "Remove",
+                visuallyHiddenText: ' Jan Fisher'
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: 'Applicant 2'
+          },
+          value: {
+            html: 'Robin Fisher'
+          },
+          actions: {
+            items: [
+              {
+                href: "?multiplenames=",
+                text: "Remove",
+                visuallyHiddenText: ' Robin Fisher'
+              }
+            ]
+          }
+        } if data['multiplenames'] == 'yes'
+      ]
+    }) }}
+
+  </section>
+
+  {{ govukRadios({
+    idPrefix: 'add-more-names',
+    name: 'add-more-names',
+    fieldset: {
+      legend: {
+        html: 'Do you need to add another individual?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    hint: {
+      text: 'You must tell us about all individuals on the planning application.'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('add-more-names','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('add-more-names','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

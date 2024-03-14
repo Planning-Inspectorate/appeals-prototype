@@ -1,0 +1,43 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Who made the planning application?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'appellant-check',
+    name: 'appellant-check',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'An individual',
+        value: 'A person',
+        checked: checked('appellant-check','A person')
+      },
+      {
+        html: 'A group of individuals',
+        hint: {
+          text: "If at least 2 people own the property and made a joint planning application."
+        },
+        value: 'Joint application',
+        checked: checked('appellant-check','Joint application')
+      },
+      {
+        html: "An organisation",
+        hint: {
+          text: "Includes limited companies, partnerships, charities, trusts and estates."
+        },
+        value: "A company",
+        checked: checked('appellant-check','A company')
+      }
+    ]
+  }) }}
+
+
+{% endblock %}

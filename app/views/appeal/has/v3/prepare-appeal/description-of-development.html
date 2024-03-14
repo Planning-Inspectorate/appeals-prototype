@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Enter description of development' %}
+
+{% block questions %}
+
+  {{ govukTextarea({
+    name: "description-detail",
+    id: "description-detail",
+    value: data['description-detail'],
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Enter the description of development that you submitted in your planning application."
+    }
+  }) }}
+
+{% endblock %}
