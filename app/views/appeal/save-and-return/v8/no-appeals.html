@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-main.html' %}
 
 {% set title = 'There are no appeals with your email address' %}
-{% set back = false %}
+{% set back = true %}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
@@ -19,6 +19,6 @@
   }) }}
 
   <p class="govuk-body">
-    <a href="#0" class="govuk-link--no-visited-state">Enter a different email address</a>
+    <a href="return-email" class="govuk-link--no-visited-state">Enter a different email address</a>
   </p>
 {% endblock %}

@@ -2,7 +2,16 @@
 
 {% set title = 'What is the email address you used to save the appeal?' %}
 
-{% set prototypeLinks = [{href: 'email--code', text: 'Email with a code'}] %}
+{% set prototypeLinks = [
+  {
+    href: 'email--code',
+    text: 'Email with a code'
+  },
+  {
+    href: 'no-appeals',
+    text: 'No appeals for this email'
+  }
+] %}
 
 {% block questions %}
   {{ govukInput({
