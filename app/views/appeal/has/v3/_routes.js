@@ -268,7 +268,13 @@ router.post('/upload-documents/application', function (req, res) {
 })
 
 router.post('/upload-documents/description-of-development-agreement', function (req, res) {
-  res.redirect('decision-letter')
+  // if the appellant didn’t receive a decision letter
+  // do not ask them to upload their decision letter
+  if (req.session.data['non-determined']) {
+    res.redirect('../task-list?application-complete=true')
+  } else {
+    res.redirect('decision-letter')
+  }
 })
 
 router.post('/upload-documents/decision-letter', function (req, res) {

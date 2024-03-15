@@ -94,10 +94,14 @@ router.post('/planning/major-development-check', function (req, res) {
 
 router.post('/planning/decision', function (req, res) {
   if (req.session.data['decision'] == 'I have not received a decision') {
-    res.redirect('decision-due-date');
+    res.redirect('decision-due-date?non-determined=Yes');
   } else {
     res.redirect('decision-date');
   }
+})
+
+router.post('/planning/decision-due-date', function (req, res) {
+  res.redirect('enforcement-check')
 })
 
 router.post('/planning/decision-date', function (req, res) {
@@ -116,7 +120,7 @@ router.post('/planning/cya', function (req, res) {
   if (type == 'Full planning') {
     res.redirect('/appeal/full/v5/before-you-continue');
   } else if (type == 'Householder planning') {
-    res.redirect('/appeal/has/v2/task-list');
+    res.redirect('/appeal/has/v3/task-list');
   }
 
 })
