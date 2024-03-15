@@ -56,14 +56,11 @@ router.post('/planning/type', function (req, res) {
 // any of the following filter
 router.post('/planning/any-of-following', function (req, res) {
   let specific = req.session.data['planning-filter'];
-  if (!specific) { //nothing selected
-    res.redirect('any-of-following'); //go back to current page
-  }
-
-  else if (specific.includes('None of these')) {  // assumption that this is an array that has to be looked through, otherwise this may need to be an iterator or just specific == 'None of these'
+  if (!specific) {                                          //nothing selected
     res.redirect('decision');
-  }
-  else { //anything else goes to the same place
+  } else if (specific.includes('None of these')) {          // assumption that this is an array that has to be looked through, otherwise this may need to be an iterator or just specific == 'None of these'
+    res.redirect('decision');
+  } else {                                                  //anything else goes to the same place
     res.redirect('appeal-filter');
   }
 })

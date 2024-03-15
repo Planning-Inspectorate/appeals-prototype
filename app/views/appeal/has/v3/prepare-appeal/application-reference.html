@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What was the application reference?' %}
+{% set title = 'What is the planning application reference number?' %}
 
 {% block questions %}
 
@@ -10,15 +10,14 @@
       classes: "govuk-label--l",
       isPageHeading: true
     },
+    hint: {
+      text: "You can find this on any correspondence from the local planning authority. For example, the letter confirming your application."
+    },
     id: "application-reference",
     name: "application-reference",
     classes: "govuk-input--width-10",
     value: data['application-reference'],
     spellcheck: false
   }) }}
-
-  <!-- hint: {
-    text: "Enter the name of the company on the planning application."
-  }, -->
 
 {% endblock %}
