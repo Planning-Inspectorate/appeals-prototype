@@ -232,16 +232,18 @@ router.post('/prepare-appeal/application-reference', function (req, res) {
 })
 
 router.post('/prepare-appeal/application-date', function (req, res) {
-  res.redirect('application-desc-changed')
-})
-
-router.post('/prepare-appeal/application-desc-changed', function (req, res) {
   res.redirect('description-of-development')
 })
 
 router.post('/prepare-appeal/description-of-development', function (req, res) {
+  res.redirect('application-desc-changed')
+})
+
+router.post('/prepare-appeal/application-desc-changed', function (req, res) {
   res.redirect('../task-list?your-application-complete=true')
 })
+
+
 
 // YOUR APPEAL
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
