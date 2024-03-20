@@ -1,13 +1,19 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Upload your application form sent to the local planning authority' %}
+{% set title = 'Upload your planning application form' %}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
 
-  <p class="govuk-body">If you do not have your application form, you can find it by searching for your applications on your local planning authority&rsquo;s website.</p>
+  <p class="govuk-body">
+    Upload the planning application form that you sent to the local planning authority, including the date. Do not upload a draft application.
+  </p>
+
+  <p class="govuk-body">
+    If you do not have your application form, you can search for it on the local planning authority’s website.
+  </p>
 
   {% set uploadHtml %}
     {{ govukFileUpload({
