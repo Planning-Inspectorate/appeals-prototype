@@ -8,6 +8,56 @@
     There are currently no appeals in progress.
   </p>
 
+{% elseif data['linked-appeals'] == 'Draft' %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Your appeals',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Site address',
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Deadline'
+      },
+      {
+        html: 'To do',
+        format: 'numeric'
+      }
+    ],
+    rows: [
+
+      [
+        {
+          html: "<strong class='govuk-tag govuk-tag--yellow'>Draft</strong>"
+        },
+        {
+          html: '36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY'
+        },
+        {
+          html: 'Listed building consent'
+        },
+        {
+          html: '26' | daysInFuture
+        },
+        {
+          html: '<a href="">Continue</a>',
+          format: 'numeric'
+        }
+      ]
+
+    ]
+  }) }}
+
 {% else %}
 
   {{ govukTable({

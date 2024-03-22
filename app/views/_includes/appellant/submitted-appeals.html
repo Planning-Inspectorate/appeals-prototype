@@ -8,6 +8,49 @@
     There are currently no submitted appeals.
   </p>
 
+{% elseif data['linked-appeals'] == 'Draft' %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Waiting for review',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Site address',
+        classes: 'govuk-!-width-one-third'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Status',
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="/appeal/appeals/v1/appeal-details?appealCode=1322700&type=has&action=">1322700</a>'
+        },
+        {
+          html: '36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY'
+        },
+        {
+          html: 'Householder appeal'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--yellow">
+                   Queued for checking
+                 </strong>'
+        }
+      ]
+    ]
+  }) }}
+
 {% else %}
 
   {{ govukTable({
