@@ -1,0 +1,44 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What is your name?' %}
+
+{% block questions %}
+
+  {% call govukFieldset({
+    legend: {
+    html: title,
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+  <p class="govuk-hint">
+    Enter your name as it is on the planning application.
+  </p>
+
+  {{ govukInput({
+    id: 'appellant-contact-first-name',
+    name: 'appellant-contact-first-name',
+    value: data['appellant-contact-first-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'First name'
+    },
+    autocomplete: 'given-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'appellant-contact-last-name',
+    name: 'appellant-contact-last-name',
+    value: data['appellant-contact-last-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Last name'
+    },
+    autocomplete: 'family-name',
+    spellcheck: false
+  }) }}
+
+  {% endcall %}
+{% endblock %}

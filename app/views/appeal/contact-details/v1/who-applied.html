@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Who made the planning application?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'who-applied',
+    name: 'who-applied',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'You',
+        value: 'You',
+        checked: checked('who-applied','You')
+      },
+      {
+        html: 'Another individual',
+        value: 'Another individual',
+        checked: checked('who-applied','Another individual')
+      },
+      {
+        html: 'An organisation',
+        value: 'An organisation',
+        checked: checked('who-applied','An organisation')
+      }
+    ]
+  }) }}
+
+{% endblock %}
