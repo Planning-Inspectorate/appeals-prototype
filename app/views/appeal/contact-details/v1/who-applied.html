@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Who made the planning application?' %}
+{% set title = 'Was the planning application made in your name?' %}
 
 {% block questions %}
 
@@ -15,21 +15,19 @@
         isPageHeading: true
       }
     },
+    hint: {
+      html: 'If you are not the applicant, you must have their permission to submit an appeal on their behalf.'
+    },
     items: [
       {
-        html: 'You',
+        html: 'Yes, the planning application was made in my name',
         value: 'You',
         checked: checked('who-applied','You')
       },
       {
-        html: 'Another individual',
+        html: 'No, I’m acting on behalf of the applicant',
         value: 'Another individual',
         checked: checked('who-applied','Another individual')
-      },
-      {
-        html: 'An organisation',
-        value: 'An organisation',
-        checked: checked('who-applied','An organisation')
       }
     ]
   }) }}

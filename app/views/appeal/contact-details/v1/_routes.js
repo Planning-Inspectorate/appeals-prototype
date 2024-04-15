@@ -45,10 +45,6 @@ router.post('/appellant-contact-details', function (req, res) {
 })
 
 router.post('/agent-contact-details', function (req, res) {
-  res.redirect('agent-notice');
-})
-
-router.post('/agent-notice', function (req, res) {
   res.redirect('contact-phone-number');
 })
 

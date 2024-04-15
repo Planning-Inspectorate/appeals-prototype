@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What is your name?' %}
+{% set title = 'Contact details' %}
 
 {% block questions %}
 
@@ -17,9 +17,9 @@
   </p> -->
 
   {{ govukInput({
-    id: 'contact-first-name',
-    name: 'contact-first-name',
-    value: data['contact-first-name'],
+    id: 'appellant-contact-first-name',
+    name: 'appellant-contact-first-name',
+    value: data['appellant-contact-first-name'],
     classes: 'govuk-!-width-three-quarters',
     label: {
       html: 'First name'
@@ -29,14 +29,25 @@
   }) }}
 
   {{ govukInput({
-    id: 'contact-last-name',
-    name: 'contact-last-name',
-    value: data['contact-last-name'],
+    id: 'appellant-contact-last-name',
+    name: 'appellant-contact-last-name',
+    value: data['appellant-contact-last-name'],
     classes: 'govuk-!-width-three-quarters',
     label: {
       html: 'Last name'
     },
     autocomplete: 'family-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'optional-company-name',
+    name: 'optional-company-name',
+    value: data['optional-company-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Organisation name (optional)'
+    },
     spellcheck: false
   }) }}
 

@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What is your name?' %}
+{% set title = 'Contact details' %}
 
 {% block questions %}
 
@@ -12,9 +12,9 @@
     }
   }) %}
 
-  <p class="govuk-hint">
+  <!-- <p class="govuk-hint">
     Enter your name as it is on the planning application.
-  </p>
+  </p> -->
 
   {{ govukInput({
     id: 'appellant-contact-first-name',
@@ -37,6 +37,17 @@
       html: 'Last name'
     },
     autocomplete: 'family-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'optional-company-name',
+    name: 'optional-company-name',
+    value: data['optional-company-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Organisation name (optional)'
+    },
     spellcheck: false
   }) }}
 
