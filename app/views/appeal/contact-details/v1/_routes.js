@@ -41,10 +41,18 @@ router.post('/organisation-name', function (req, res) {
 })
 
 router.post('/appellant-contact-details', function (req, res) {
-  res.redirect('/');
+  res.redirect('contact-phone-number');
 })
 
 router.post('/agent-contact-details', function (req, res) {
+  res.redirect('agent-notice');
+})
+
+router.post('/agent-notice', function (req, res) {
+  res.redirect('contact-phone-number');
+})
+
+router.post('/contact-phone-number', function (req, res) {
   res.redirect('/');
 })
 
