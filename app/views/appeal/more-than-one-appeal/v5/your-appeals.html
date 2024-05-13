@@ -4,7 +4,7 @@
   {
     href: 'your-appeals?current-appeals=no&submitted-appeals=no&decided-appeals=no',
     text: 'No appeals'
-  } if data['current-appeals'] == 'yes' else
+  } if data['current-appeals'] != 'no' else
 
   {
     href: 'your-appeals?current-appeals=yes&submitted-appeals=yes&decided-appeals=yes',
