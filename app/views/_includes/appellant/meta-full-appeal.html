@@ -13,7 +13,7 @@
   }
 </style>
 
-<dl class="govuk-summary-list appeal-details govuk-summary-list--no-border">
+<dl class="govuk-summary-list appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-third">
       Appeal type
@@ -65,20 +65,3 @@
     </dd>
   </div>
 </dl>
-
-
-{% if data['final-comments'] == 'due' %}
-  {% if data['site-visit'] == 'access-required' %}
-    <div class="govuk-inset-text">
-      Access required site visit due on {{ 22 | daysInFuture }} at 11am to 1pm
-    </div>
-  {% elseif data['site-visit'] == 'accompanied' %}
-    <div class="govuk-inset-text">
-      Accompanied site visit due on {{ 22 | daysInFuture }} at 11am
-    </div>
-  {% else %}
-    <div class="govuk-inset-text">
-      Unaccompanied site visit due week commencing {{ 22 | daysInFuture }}
-    </div>
-  {% endif %}
-{% endif %}
