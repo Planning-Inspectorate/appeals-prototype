@@ -65,3 +65,20 @@
     </dd>
   </div>
 </dl>
+
+
+{% if data['final-comments'] == 'due' %}
+  {% if data['site-visit'] == 'access-required' %}
+    <div class="govuk-inset-text">
+      Access required site visit due on {{ 22 | daysInFuture }} at 11am to 1pm
+    </div>
+  {% elseif data['site-visit'] == 'accompanied' %}
+    <div class="govuk-inset-text">
+      Accompanied site visit due on {{ 22 | daysInFuture }} at 11am
+    </div>
+  {% else %}
+    <div class="govuk-inset-text">
+      Unaccompanied site visit due week commencing {{ 22 | daysInFuture }}
+    </div>
+  {% endif %}
+{% endif %}

@@ -20,6 +20,10 @@
   {
     href: '/interested/find-appeal/v7/appeal-notice-email-full',
     text: 'Appeal notice'
+  },
+  {
+    href: './?appeal-withdrawn=yes',
+    text: 'Appeal withdrawn'
   }
   ]
 %}
@@ -31,6 +35,21 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      {% if data['appeal-withdrawn'] == 'yes' %}
+
+        {% set withdrawnBanner %}
+          <h3 class="govuk-notification-banner__heading">
+            Appeal 0123456 has been withdrawn
+          </h3>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: withdrawnBanner,
+          type: 'success'
+        }) }}
+
+      {% endif %}
 
       {% if data['questionnaire-banner'] == 'yes' %}
 
