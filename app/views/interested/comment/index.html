@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = false %}
-{% set title = 'Interested parties can find an appeal' %}
+{% set title = 'Comment on an appeal' %}
 
 {% block backLink %}
   {{ govukBackLink({
@@ -42,7 +42,7 @@
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'v'+version+'/your-name',
+      href: 'comment/v'+version+'/your-name',
       isStartButton: true
     }) }}
 
