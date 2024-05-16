@@ -1,0 +1,40 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you want to tell us your address?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'address-check',
+    name: 'address-check',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: "<p class='govuk-body'>If your address is near the appeal site, your comment will have more weight when we decide the appeal.</p>
+      <p class='govuk-body'>We will not publish or share your address.</p>"
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('address-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('address-check','No')
+      }
+    ]
+  }) }}
+
+  <!-- hint: {
+    text: "If at least 2 people own the property and made a joint planning application."
+  }, -->
+
+{% endblock %}

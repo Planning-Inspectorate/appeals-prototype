@@ -1,0 +1,114 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Interested parties can find an appeal' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
+
+    {% set version = "9" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        added address check and input
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'v'+version+'/your-name',
+      isStartButton: true
+    }) }}
+
+    {% set v8HTML %}
+
+      {% set version = "9" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          some content updates
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/your-name',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {% set v8HTML %}
+
+      {% set version = "8" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          we did this work alongside <a href="../find-appeal/v8/guidance" class="govuk-link govuk-link--no-visited-state">v8 of find-appeal</a><br>
+          <a href="../find-appeal/" class="govuk-link govuk-link--no-visited-state">See find-appeal versions</a>
+        </li>
+      </ul>
+
+      <!-- <p class="govuk-body">
+        Researched November 2023<br>
+        <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/1074397185" class="govuk-link">
+          Link to Confluence research notes
+        </a>
+      </p> -->
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/your-name',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+        {
+          heading: {
+            html: 'Version 8 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
+          },
+          content: {
+            html: v8HTML
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+{% endblock %}
