@@ -31,7 +31,7 @@
           rows: [
             {
               key: {
-                text: 'Your name'
+                text: 'Name'
               },
               value: {
                 html: data['interested-first-name'] + ' ' + data['interested-last-name']
@@ -47,7 +47,7 @@
             },
             {
               key: {
-                text: 'Your email'
+                text: 'Email'
               },
               value: {
                 html: data['email'] or 'sample@test.com'
@@ -63,7 +63,23 @@
             },
             {
               key: {
-                text: 'Your comments'
+                text: 'Address'
+              },
+              value: {
+                text: '7 Aubrey House, Aubrey Road, Bristol BS3 3EX'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'address',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Comments'
               },
               value: {
                 html: data['comments'] or 'Your comments go here etc etc'
