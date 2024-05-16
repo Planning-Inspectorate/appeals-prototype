@@ -34,7 +34,7 @@
                 text: 'Name'
               },
               value: {
-                html: data['interested-first-name'] + ' ' + data['interested-last-name']
+                html: (data['interested-first-name'] or 'Jan') + ' ' + (data['interested-last-name'] or 'Fisher')
               },
               actions: {
                 items: [
