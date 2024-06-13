@@ -16,6 +16,8 @@
 
 {% set interestedPartyComment9 = 'Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
+{% set interestedPartyComment10 = 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi.' %}
+
 <h2 class="govuk-heading-l">
   Interested party 1
 </h2>
@@ -211,5 +213,49 @@
       }
     }
 
+  ]
+}) }}
+
+<h2 class="govuk-heading-l">
+  Interested party 10
+</h2>
+
+{{ govukSummaryList({
+  classes: 'long-answers govuk-!-margin-bottom-9',
+  rows: [
+    {
+      key: {
+        html: 'Comments',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: interestedPartyComment10 | nl2br
+      }
+    }
+
+  ]
+}) }}
+
+{{ govukPagination({
+  previous: {
+    href: "#"
+  },
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    }
   ]
 }) }}
