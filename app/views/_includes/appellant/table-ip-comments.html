@@ -1,29 +1,20 @@
-{% set interestedPartyComment1 = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment1 = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
-{% set interestedPartyComment2 = 'Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment2 = 'Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
-{% set interestedPartyComment3 = 'Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment3 = '<a href="#">1345264-IP-comments.txt</a>' %}
 
-{% set interestedPartyComment4 = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment4 = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
-{% set interestedPartyComment5 = 'Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment5 = 'Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
-{% set interestedPartyComment6 = 'Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment6 = 'Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
-{% set interestedPartyComment7 = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment7 = 'Suspendisse tincidunt libero eu enim tempor porttitor. Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
-{% set interestedPartyComment8 = 'Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment8 = 'Aliquam semper libero turpis. Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
-{% set interestedPartyComment9 = 'Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.
-  ' %}
+{% set interestedPartyComment9 = 'Proin nisl leo, fringilla quis pharetra a, vestibulum vitae velit. Quisque scelerisque iaculis dolor, nec pretium justo venenatis mollis.' %}
 
 <h2 class="govuk-heading-l">
   Interested party 1
@@ -60,6 +51,15 @@
       value: {
         html: interestedPartyComment2 | nl2br
       }
+    },
+    {
+      key: {
+        html: 'Supporting documents',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: '<a href="#">supporting-doc-1.doc</a><br><a href="#">supporting-doc-2.doc</a><br><a href="#">supporting-doc-3.doc</a><br>'
+      }
     }
 
   ]
@@ -79,6 +79,15 @@
       },
       value: {
         html: interestedPartyComment3 | nl2br
+      }
+    },
+    {
+      key: {
+        html: 'Supporting documents',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: '<a href="#">building-front.jpeg</a><br><a href="#">building-side.jpeg</a>'
       }
     }
 
