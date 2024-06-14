@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Does your appeal involve a listed building, including already approved listed building consent (LBC)?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'lbcStatus',
+    name: 'lbcStatus',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes, a listed building is part of this appeal',
+        value: 'Yes',
+        checked: checked('lbcStatus','Yes')
+      },
+      {
+        html: 'No, a listed building is not part of this appeal',
+        value: 'No',
+        checked: checked('lbcStatus','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Did you apply for prior approval to extend an existing home?' if data['planning-type'] == 'Prior approval' else 'Are the conditions for householder planning permission?' %}
+
+{% block questions %}
+	{{ govukRadios({
+		idPrefix: 'existing-home-check',
+		name: 'existing-home-check',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		items: [
+			{
+				html: 'Yes',
+				value: 'Yes',
+				checked: checked('existing-home-check','Yes')
+			},
+			{
+				html: 'No',
+				value: 'No',
+				checked: checked('existing-home-check','No')
+			}
+		]
+	}) }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What date was your decision due?' %}
+
+{% block questions %}
+	{{ govukDateInput({
+		id: 'decision-date',
+		namePrefix: 'decision-date',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		hint: {
+			html: 'For example, 31 3 2024'
+		},
+		items: [
+			{
+				name: 'day',
+				classes: 'govuk-input--width-2',
+				value: data['decision-date-day']
+			},
+			{
+				name: 'month',
+				classes: 'govuk-input--width-2',
+				value: data['decision-date-month']
+			},
+			{
+				name: 'year',
+				classes: 'govuk-input--width-4',
+				value: data['decision-date-year']
+			}
+		]
+	}) }}
+{% endblock %}

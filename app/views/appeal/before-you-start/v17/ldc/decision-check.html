@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Has the local planning authority given you a decision?' %}
+{% set prototypeLinks = [{href: '../errors/lpa-has-more-time', text: 'No: LPA has time to respond'}] %}
+
+{% block questions %}
+	{{ govukRadios({
+		idPrefix: 'decision-check',
+		name: 'decision-check',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		items: [
+			{
+				html: 'Yes',
+				value: 'Yes',
+				checked: checked('decision-check','Yes')
+			},
+			{
+				html: 'No',
+				value: 'No',
+				checked: checked('decision-check','No')
+			}
+		]
+	}) }}
+{% endblock %}
