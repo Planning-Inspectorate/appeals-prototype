@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+<!-- {% set prototypeLinks = [{href: '../errors/no-enforcement', text: 'Yes: no enforcement appeals yet'}] %} -->
+
+{% block questions %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "changedName",
+  fieldset: {
+    legend: {
+      text: "Was a grant or loan made to preserve the listed building?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "We only need to know about grants and loans made under section 3A or 4 of the Historic Buildings and Ancient Monuments Act 1953."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+{% endblock %}

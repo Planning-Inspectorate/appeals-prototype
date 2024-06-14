@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You can appeal using this service' %}
+
+{% block questions %}
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+    <p class="govuk-body">Based on your answers, you can appeal using this service.</p>
+
+    <h2 class="govuk-heading-m">
+      Check your answers
+    </h2>
+{% endblock %}
+
+{% block buttons %}
+
+  {{ govukInsetText({
+    html: 'You will not be able to change these answers later, you will have to start a new appeal.'
+  }) }}
+
+  {{ govukButton({
+    html: 'Start appeal'
+  }) }}
+{% endblock %}

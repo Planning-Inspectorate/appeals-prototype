@@ -1,0 +1,33 @@
+{% extends '_layouts/layout-main.html' %}
+<!-- {% set prototypeLinks = [{href: '../errors/no-enforcement', text: 'Yes: no enforcement appeals yet'}] %} -->
+
+{% block questions %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "same-answers",
+  value: data["same-answers"],
+  fieldset: {
+    legend: {
+      text: "Do you want to use the same answers for your listed building consent appeal?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Many of the questions are the same as the full planning appeal. We will show your previous answers and you can make any changes before you submit the listed building consent appeal."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+{% endblock %}
