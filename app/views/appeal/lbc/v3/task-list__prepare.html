@@ -17,65 +17,42 @@
       }) }}
     {% endif %}
   </h2>
+
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
       {
         key: {
-          html: 'Your name'
+          html: 'Who made the application?'
         },
         value: {
-          html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Jane Doe')+('<br>'+data['agency-name'] if data['agency-name'])
+          html: (data['who-applied'] or 'Jan Dough')
         }
-        if data['contact-details-complete'] else
+        if data['who-applied-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'prepare-appeal/contact-details?cya=true',
+              href: 'prepare-appeal/who-applied?cya=true',
               html: 'Change'
             }
-            if data['contact-details-complete'] else
+            if data['who-applied-complete'] else
             {
-              href: 'prepare-appeal/contact-details',
+              href: 'prepare-appeal/who-applied',
               html: 'Answer'
             }
           ]
         }
       },
+
       {
         key: {
-          html: 'Named on application'
+          html: 'Appellant name'
         },
         value: {
-          html: data['appellant-check'] or 'You'
-        }
-        if data['appellant-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'prepare-appeal/appellant-check?cya=true',
-              html: 'Change'
-            }
-            if data['appellant-check-complete'] else
-            {
-              href: 'prepare-appeal/appellant-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Their name'
-        },
-        value: {
-          html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Joe Bloggs')
+          html: ((data['new-appellant-first-name'] or 'Sam') +' '+ (data['new-appellant-last-name'] or 'Fisher'))+('<br>'+data['optional-appellant-company-name'] if data['optional-appellant-company-name'])
         }
         if data['appellant-name-complete'] else
         {
@@ -84,17 +61,68 @@
         actions: {
           items: [
             {
-              href: 'prepare-appeal/appellant-name?cya=true',
+              href: 'prepare-appeal/appellant-contact-details?cya=true',
               html: 'Change'
             }
             if data['appellant-name-complete'] else
             {
-              href: 'prepare-appeal/appellant-name?',
+              href: 'prepare-appeal/appellant-contact-details',
               html: 'Answer'
             }
           ]
         }
-      } if data['appellant-check'] == 'Another individual',
+      } if data['who-applied'] == 'Another individual',
+
+      {
+        key: {
+          html: 'Contact details'
+        },
+        value: {
+          html: (data['appellant-contact-first-name'] +' '+ data['appellant-contact-last-name'])+('<br>'+data['optional-company-name'] if data['optional-company-name'])
+        }
+        if data['contact-details-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/appellant-contact-details?cya=true',
+              html: 'Change'
+            }
+            if data['contact-details-complete'] else
+            {
+              href: 'prepare-appeal/appellant-contact-details',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Contact phone number'
+        },
+        value: {
+          html: data['telephone-number'] or '011794445000'
+        }
+        if data['contact-phone-number-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/contact-phone-number?cya=true',
+              html: 'Change'
+            }
+            if data['contact-phone-number-complete'] else
+            {
+              href: 'prepare-appeal/contact-phone-number',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
       {
         key: {
           html: 'Application reference'

@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What is the name of the individual who made the planning application?' %}
+{% set title = 'What is the applicant’s name?' %}
 
 {% block questions %}
 
@@ -13,13 +13,13 @@
   }) %}
 
   <p class="govuk-hint">
-    Enter the name of the individual on the planning application.
+    Enter the name as it’s written on the planning application form.
   </p>
 
   {{ govukInput({
-    id: 'appellant-first-name',
-    name: 'appellant-first-name',
-    value: data['appellant-first-name'],
+    id: 'new-appellant-first-name',
+    name: 'new-appellant-first-name',
+    value: data['new-appellant-first-name'],
     classes: 'govuk-!-width-three-quarters',
     label: {
       html: 'First name'
@@ -29,9 +29,9 @@
   }) }}
 
   {{ govukInput({
-    id: 'appellant-last-name',
-    name: 'appellant-last-name',
-    value: data['appellant-last-name'],
+    id: 'new-appellant-last-name',
+    name: 'new-appellant-last-name',
+    value: data['new-appellant-last-name'],
     classes: 'govuk-!-width-three-quarters',
     label: {
       html: 'Last name'
@@ -40,6 +40,16 @@
     spellcheck: false
   }) }}
 
-  {% endcall %}
+  {{ govukInput({
+    id: 'optional-appellant-company-name',
+    name: 'optional-appellant-company-name',
+    value: data['optional-appellant-company-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Organisation name (optional)'
+    },
+    spellcheck: false
+  }) }}
 
+  {% endcall %}
 {% endblock %}

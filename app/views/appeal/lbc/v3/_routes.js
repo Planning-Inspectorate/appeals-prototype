@@ -76,64 +76,28 @@ router.post('/prepare-appeal/:page', function (req, res, next) {
   next()
 })
 
-// YOUR DETAILS
+// CONTACT DETAILS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-router.post('/prepare-appeal/appellant-check', function (req, res) {
-  if (req.session.data['appellant-check'] == 'A company') {
-    res.redirect('appellant-company?your-details-started=true')
-  } else if (req.session.data['appellant-check'] == 'A person') {
-    res.redirect('appellant-name?your-details-started=true')
+router.post('/prepare-appeal/who-applied', function (req, res) {
+  let applicant = req.session.data['who-applied']
+  if (applicant == 'Another individual') {
+    res.redirect('appellant-name?who-applied-complete=true');
   } else {
-    // joint application
-    res.redirect('add-appellant-name?your-details-started=true')
+    res.redirect('contact-details?who-applied-complete=true');
   }
-})
-
-router.post('/prepare-appeal/appellant-company', function (req, res) {
-  res.redirect('contact-phone-number?agent-notice=yes')
 })
 
 router.post('/prepare-appeal/appellant-name', function (req, res) {
-  res.redirect('agent-check')
+  res.redirect('contact-details?appellant-name-complete=true');
 })
 
-router.post('/prepare-appeal/agent-check', function (req, res) {
-  if (req.session.data['agent-check'] == 'Yes') {
-    res.redirect('contact-phone-number')
-  } else {
-    res.redirect('agent-notice')
-  }
-})
-
-router.post('/prepare-appeal/add-appellant-name', function (req, res) {
-  res.redirect('appellant-names')
-})
-
-router.post('/prepare-appeal/appellant-names', function (req, res) {
-  if (req.session.data['add-more-names'] == 'Yes') {
-    res.redirect('add-appellant-name?multiplenames=yes')
-  } else {
-    // move on to check whether they are an agent
-    res.redirect('agent-check-joint-application')
-  }
-})
-
-router.post('/prepare-appeal/agent-check-joint-application', function (req, res) {
-  if (req.session.data['agent-check'] == 'Yes') {
-    res.redirect('contact-phone-number')
-  } else {
-    res.redirect('agent-notice')
-  }
-})
-
-// agent interuption page
-router.post('/prepare-appeal/agent-notice', function (req, res) {
-  res.redirect('contact-phone-number')
+router.post('/prepare-appeal/contact-details', function (req, res) {
+  res.redirect('contact-phone-number?appellant-contact-details-complete=true');
 })
 
 router.post('/prepare-appeal/contact-phone-number', function (req, res) {
-  res.redirect('../task-list?your-details-complete=true')
+  res.redirect('address?contact-phone-number-complete=true')
 })
 
 

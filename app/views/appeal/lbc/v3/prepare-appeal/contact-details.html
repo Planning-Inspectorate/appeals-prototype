@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What&rsquo;s your name?' %}
+{% set title = 'Contact details' %}
 
 {% block questions %}
 
@@ -11,40 +11,45 @@
     isPageHeading: true
     }
   }) %}
-    <p class="govuk-hint">This should match the name on the application to the local planning authority</p>
 
-    {{ govukInput({
-      id: 'applicant-first-name',
-      name: 'applicant-first-name',
-      value: data['applicant-first-name'],
-      classes: 'govuk-!-width-three-quarters',
-      label: {
-        html: 'First name'
-      },
-      autocomplete: 'given-name',
-      spellcheck: false
-    }) }}
+  <!-- <p class="govuk-hint">
+    Enter your name as it is on the planning application.
+  </p> -->
 
-    {{ govukInput({
-      id: 'applicant-last-name',
-      name: 'applicant-last-name',
-      value: data['applicant-last-name'],
-      classes: 'govuk-!-width-three-quarters',
-      label: {
-        html: 'Last name'
-      },
-      autocomplete: 'family-name',
-      spellcheck: false
-    }) }}
+  {{ govukInput({
+    id: 'appellant-contact-first-name',
+    name: 'appellant-contact-first-name',
+    value: data['appellant-contact-first-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'First name'
+    },
+    autocomplete: 'given-name',
+    spellcheck: false
+  }) }}
 
-    {{ govukInput({
-      id: 'agency-name',
-      name: 'agency-name',
-      value: data['agency-name'],
-      label: {
-        html: 'Company name (optional)'
-      }
-    }) }}
+  {{ govukInput({
+    id: 'appellant-contact-last-name',
+    name: 'appellant-contact-last-name',
+    value: data['appellant-contact-last-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Last name'
+    },
+    autocomplete: 'family-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'optional-company-name',
+    name: 'optional-company-name',
+    value: data['optional-company-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Organisation name (optional)'
+    },
+    spellcheck: false
+  }) }}
 
   {% endcall %}
 {% endblock %}
