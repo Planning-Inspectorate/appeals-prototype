@@ -23,7 +23,7 @@
     rows: [
       {
         key: {
-          html: 'Who made the application?'
+          html: 'Applicant'
         },
         value: {
           html: (data['who-applied'] or 'You')
@@ -75,7 +75,7 @@
 
       {
         key: {
-          html: 'Contact details'
+          html: 'Contact name'
         },
         value: {
           html: ((data['appellant-contact-first-name'] or 'Jan')+' '+ (data['appellant-contact-last-name'] or 'Knight'))+('<br>'+data['optional-company-name'] if data['optional-company-name'])
