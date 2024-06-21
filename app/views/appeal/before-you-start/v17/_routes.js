@@ -86,18 +86,6 @@ router.post('/listed-building-consent', function (req, res) {
 
 
 
-
-
-router.post('/appeal-type', function(request, response) {
-
-  var exports = request.session.data['planning-type']
-  if (exports.includes("Listed building consent")){
-      response.redirect("./planning/decision")
-  }else {
-    response.redirect("./errors/certain-types")
-  }
-  })
-
 // PLANNING
 router.post('/planning/type', function (req, res) {
   let type = req.session.data['planning-type']
@@ -216,6 +204,18 @@ router.post('/lb-use-same-answers', function (req, res) {
   }
 })
 
+// LB decision 
+
+router.post('/planning/lb-decision', function (req, res) {
+  res.redirect('../common/lb-decision-date');
+})
+
+// LB decision date
+
+router.post('/common/lb-decision-date', function (req, res) {
+  res.redirect('../planning/decision');
+})
+
 // LB preserve grant or loan
 
 router.post('/lb-preserve-grant-loan', function (req, res) {
@@ -232,6 +232,26 @@ router.post('*/cya', function (req, res) {
   }
 })
 
+
+
+//Appeal type
+
+router.post('/appeal-type', function (req, res) { // routing for different appeal types
+
+  const data = req.session.data
+  let appealType = req.session.data['planning-type']
+
+  if (appealType.includes('Listed building consent')) {      // Listed building consent
+    if (appealType.includes('Full planning')) {      // Listed building consent and planning
+      res.redirect('planning/lb-decision')
+    } else{
+      res.redirect('planning/decision')
+    }
+    
+  } else {
+      res.redirect('planning/decision');
+  }
+})
 
 
 // CYA continue button (not working right now)

@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you need to apply for an award of appeal costs?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'costs-check',
+    name: 'costs-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('costs-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('costs-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}
