@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Check your phone' %}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">Check your phone</h1>
+
+  <p class="govuk-body">We’ve sent you a text message with a security code.</p>
+
+  {{ govukInput({
+    label: {
+      text: "Security code"
+    },
+    id: "security-code",
+    name: "securityCode",
+    type: "text",
+    autocomplete: "one-time-code",
+    classes: "govuk-input--width-4 govuk-input--extra-letter-spacing",
+    inputmode: "numeric"
+  }) }}
+
+  <p class="govuk-body"><a href="#" class="govuk-link">Not received a text message?</a></p>
+
+{% endblock %}
