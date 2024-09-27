@@ -133,6 +133,10 @@ router.post('/prepare-appeal/agent-notice', function (req, res) {
 })
 
 router.post('/prepare-appeal/contact-phone-number', function (req, res) {
+  res.redirect('confirm-phone-number')
+})
+
+router.post('/prepare-appeal/confirm-phone-number', function (req, res) {
   res.redirect('../task-list?your-details-complete=true')
 })
 
