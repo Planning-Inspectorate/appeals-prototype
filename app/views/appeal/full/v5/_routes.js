@@ -140,6 +140,10 @@ router.post('/prepare-appeal/confirm-phone-number', function (req, res) {
   res.redirect('../task-list?your-details-complete=true')
 })
 
+router.post('/prepare-appeal/request-a-new-phone-number-code', function (req, res) {
+  res.redirect('confirm-phone-number')
+})
+
 // SITE DETAILS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
