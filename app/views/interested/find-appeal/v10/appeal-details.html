@@ -81,6 +81,16 @@
         classes: "govuk-button--secondary govuk-!-margin-bottom-1"
       }) }}
 
+      {% if data['procedure'] == 'hearing' %}
+        {{ govukInsetText({
+          text: "The hearing will start on "+ 22 | daysInFuture +"."
+        }) }}
+      {% elseif data['procedure'] == 'inquiry' %}
+        {{ govukInsetText({
+          text: "The inquiry will start on "+ 22 | daysInFuture +"."
+        }) }}
+      {% endif %}
+
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
     {% elif data['status'] == "closed" %}
