@@ -185,10 +185,6 @@
           Appeal decision
         </h2>
 
-        <p class="govuk-body">
-          Decision issued on {{ 1 | daysAgo }}.
-        </p>
-
         {% if data['appeal-decided'] == 'dismissed' %}
           <strong class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-3">
             Dismissed
@@ -207,10 +203,15 @@
           </strong>
         {% endif %}
         <p class="govuk-body">
+          Decision issued on {{ 1 | daysAgo }}.
+        </p>
+        <p class="govuk-body">
           <a href="#">
             APPEAL_DECISION_0201624_Haggis Farm Cottage.doc
           </a>
         </p>
+
+
 
       {% endset -%}
 
