@@ -178,23 +178,45 @@
     </h1>
 
     {% if data['appeal-decided'] == 'complete' %}
-      <h2 class="govuk-heading-l">
-        Appeal decision
-      </h2>
-      {% if data['appeal-type'] == 'inquiry' %}
-        <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
-          Dismissed
-        </strong>
-      {% else %}
-        <strong class="govuk-tag govuk-tag--green govuk-!-margin-bottom-3">
-          Allowed
-        </strong>
-      {% endif %}
-      <p class="govuk-body">
-        <a href="#">
-          Decision letter.doc
-        </a>
-      </p>
+
+      {% set decisions %}
+
+        <h2 class="govuk-heading-m">
+          Appeal decision
+        </h2>
+
+        <p class="govuk-body">
+          Decision issued on {{ 1 | daysAgo }}.
+        </p>
+
+        {% if data['appeal-decided'] == 'dismissed' %}
+          <strong class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-3">
+            Dismissed
+          </strong>
+        {% elseif data['appeal-decided'] == 'split' %}
+          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
+            Allowed in part
+          </strong>
+        {% elseif data['appeal-decided'] == 'varied' %}
+          <strong class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-3">
+            Notice varied and upheld
+          </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--green govuk-!-margin-bottom-3">
+            Allowed
+          </strong>
+        {% endif %}
+        <p class="govuk-body">
+          <a href="#">
+            APPEAL_DECISION_0201624_Haggis Farm Cottage.doc
+          </a>
+        </p>
+
+      {% endset -%}
+
+      {{ govukInsetText({
+        html: decisions
+      }) }}
 
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
 
