@@ -23,7 +23,7 @@
 
     <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
 
-    {% set version = "9" %}
+    {% set version = "10" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -36,37 +36,50 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        check for address and input added
+        addition of ‘Do not share my name’ checkbox on name input screen
       </li>
       <li>
-        check answers added
+        updated Check answers screen for ‘Do not share’
       </li>
       <li>
-        content changes (removed ‘You must be over 18 to comment’ content)
+        small content updates for input email screen
       </li>
     </ul>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'comment/v'+version+'/your-name',
+      href: '/interested/comment/v'+version+'/your-name',
       isStartButton: true
     }) }}
 
-    {% set v8HTML %}
+    {% set v9HTML %}
 
       {% set version = "9" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+          text: 'In progress'
+        }) }}
+      </h2>
 
       <p class="govuk-!-margin-bottom-2">Changes:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          some content updates
+          check for address and input added
+        </li>
+        <li>
+          check answers added
+        </li>
+        <li>
+          content changes (removed ‘You must be over 18 to comment’ content)
         </li>
       </ul>
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/your-name',
+        href: 'comment/v'+version+'/your-name',
         isStartButton: true
       }) }}
 
@@ -104,6 +117,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 9 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v9HTML
+          }
+        },
         {
           heading: {
             html: 'Version 8 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'
