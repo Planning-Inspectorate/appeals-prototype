@@ -1,0 +1,43 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What type of minor commercial development is your appeal about?' %}
+
+{% block questions %}
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "minorCommercialDevelopmentType",
+  fieldset: {
+    legend: {
+      text: "What type of minor commercial development is your appeal about?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "planning",
+      text: "Planning"
+    },
+    {
+      value: "advertisement",
+      text: "Advertisement"
+    },
+    {
+      value: "groundFloorShop",
+      text: "Ground floor shop"
+    },
+    {
+    divider: "or"
+    },
+    {
+    value: "none",
+    text: "None of these"
+    }
+
+  ]
+}) }}
+
+{% endblock %}

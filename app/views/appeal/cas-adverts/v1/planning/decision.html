@@ -1,0 +1,49 @@
+{% extends '_layouts/layout-main.html' %}
+
+<!--{% set title = 'Was your application granted or refused?' %}-->
+
+
+
+
+{% block questions %}
+
+{% if (data["planning-type"] == "Listed building consent") %}
+<h1 class="govuk-heading-l">Was your listed building consent application granted or refused?</h1>
+{% else %}
+{% if (data["planning-type"] == "Full planning", "Listed building") %}
+<h1 class="govuk-heading-l">Was your full planning application granted or refused?</h1>
+{% endif %}
+
+{% endif %}
+	{{ govukRadios({
+		idPrefix: 'decision',
+		name: 'decision',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-visually-hidden',
+				isPageHeading: true
+			}
+		},
+		items: [
+			{
+				html: 'Granted',
+				value: 'Granted',
+				checked: checked('decision','Granted')
+			},
+			{
+				html: 'Refused',
+				value: 'Refused',
+				checked: checked('decision','Refused')
+			},
+			{
+				divider: 'or'
+			},
+			{
+				html: 'I have not received a decision',
+				value: 'I have not received a decision',
+				checked: checked('decision','I have not received a decision')
+			}
+		]
+	}) }}
+{% endblock %}

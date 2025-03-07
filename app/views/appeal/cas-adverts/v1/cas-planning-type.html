@@ -1,0 +1,47 @@
+{% extends '_layouts/layout-main.html' %}
+{% set title = 'Was your application about any of the following?' %}
+
+{% block questions %}
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "waste",
+  fieldset: {
+    legend: {
+      text: "Was your application about any of the following?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select all that apply"
+  },
+  items: [
+    {
+      value: "change of use",
+      text: "Change of use"
+    },
+    {
+      value: "change to the number of units in a building",
+      text: "Change to the number of units in a building"
+    },
+    {
+      value: "development that is not wholly at ground floor level",
+      text: "Development that is not wholly at ground floor level"
+    },
+    {
+      value: "development that would increase the gross internal area of a building",
+      text: "Development that would increase the gross internal area of a building"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "none",
+      text: "None of these",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+{% endblock %}
