@@ -1,0 +1,43 @@
+{% extends '_layouts/layout-main.html' %}
+<!-- {% set prototypeLinks = [{href: '../errors/no-enforcement', text: 'Yes: no enforcement appeals yet'}] %} -->
+
+{% set title = 'What grade is the listed building?' %}
+
+{% block questions %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "signIn",
+  fieldset: {
+    legend: {
+      text: "What grade is the listed building?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  
+  items: [
+    {
+      value: "government-gateway",
+      text: "Grade 1",
+      hint: {
+        text: "A building of exceptional special interest."
+      }
+    },
+    {
+      value: "govuk-one-login",
+      text: "Grade 2*",
+      hint: {
+        text: "A building that is particularly important with more than special interest."
+      }
+    },
+    {
+      value: "govuk-one-login",
+      text: "Grade 2",
+      hint: {
+        text: "A building of special interest that needs every effort to preserve it."
+      }
+    }
+  ]
+}) }}
+{% endblock %}

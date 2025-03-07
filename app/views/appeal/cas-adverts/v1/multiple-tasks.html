@@ -1,0 +1,85 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You need to submit 2 appeals' %}
+
+{% block questions %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Appeal a planning decision</h1>
+
+      <h2 class="govuk-heading-m">Full planning</h2>
+
+      {{ govukTaskList({
+        idPrefix: "before-you-start",
+        items: [
+          {
+            title: {
+              text: "Complete full planning appeal"
+            },
+            href: "/appeal/lbc/v3/task-list",
+            status: {
+              tag: {
+                text: "Incomplete",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">Listed building consent</h2>
+
+      {{ govukTaskList({
+        idPrefix: "before-you-start",
+        items: [
+          {
+            title: {
+              text: "Complete listed building consent appeal"
+            },
+            href: "lb-use-same-answers",
+            status: {
+              tag: {
+                text: "Cannot start yet",
+                classes: "govuk-tag--grey"
+              }
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">Submit</h2>
+
+      {{ govukTaskList({
+        idPrefix: "before-you-start",
+        items: [
+          {
+            title: {
+              text: "Accept declaration and submit"
+            },
+            href: "lb-grade",
+            status: {
+              tag: {
+                text: "Cannot start yet",
+                classes: "govuk-tag--grey"
+              }
+            }
+          }
+        ]
+      }) }}
+      
+          
+       
+
+      
+
+    </div>
+  </div>
+{% endblock %}
+
+{% endblock %}
+
+

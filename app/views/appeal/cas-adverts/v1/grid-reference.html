@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Enter the grid reference' %}
+
+{% block questions %}
+
+  {% call govukFieldset({
+    legend: {
+      html: title,
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+    }
+  }) %}
+
+    <p class="govuk-hint">For example, eastings 359608 and northings 172607.</p>
+
+    
+
+    {{ govukInput({
+      id: 'address-eastings',
+      name: 'address-eastings',
+      value: data['address-eastings'],
+      classes: 'govuk-input--width-10',
+      label: {
+        html: 'Eastings'
+      }
+    }) }}
+
+    {{ govukInput({
+      id: 'address-northings',
+      name: 'address-northings',
+      value: data['address-northings'],
+      classes: 'govuk-input--width-10',
+      label: {
+        html: 'Northings'
+      }
+    }) }}
+
+    
+
+  {% endcall %}
+{% endblock %}
