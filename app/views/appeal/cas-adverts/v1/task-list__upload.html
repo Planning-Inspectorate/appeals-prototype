@@ -25,7 +25,8 @@
           html: 'Application form'
         },
         value: {
-          html: data['application'] | join('<br>') if data['application'] else 'application.pdf'
+          html: data['application'] | join('
+') if data['application'] else 'application.pdf'
         }
         if data['application-complete'] else
         {
@@ -45,14 +46,15 @@
           ]
         }
       },
-     
-     
+
+
       {
         key: {
           html: 'Plans, drawings and supporting documents'
         },
         value: {
-          html: data['plans'] | join('<br>') if data['plans'] else 'plans.pdf'
+          html: data['plans'] | join('
+') if data['plans'] else 'plans.pdf'
         }
         if data['plans-complete'] else
         {
@@ -72,15 +74,16 @@
           ]
         }
       },
-     
-     
-      
+
+
+
       {
         key: {
           html: 'Decision letter'
         },
         value: {
-          html: data['decision-letter'] | join('<br>') if data['decision-letter'] else 'decision-letter.pdf'
+          html: data['decision-letter'] | join('
+') if data['decision-letter'] else 'decision-letter.pdf'
         }
         if data['decision-letter-complete'] else
         {
@@ -105,7 +108,8 @@
           html: 'Appeal statement'
         },
         value: {
-          html: data['appeal-statement'] | join('<br>') if data['appeal-statement'] else 'appeal-statement.pdf'
+          html: data['appeal-statement'] | join('
+') if data['appeal-statement'] else 'appeal-statement.pdf'
         }
         if data['appeal-statement-complete'] else
         {
@@ -130,7 +134,8 @@
           html: 'Draft statement of common ground'
         },
         value: {
-          html: data['common-ground'] | join('<br>') if data['common-ground'] else 'common-ground.pdf'
+          html: data['common-ground'] | join('
+') if data['common-ground'] else 'common-ground.pdf'
         }
         if data['common-ground-complete'] else
         {
@@ -180,7 +185,8 @@
           html: 'New plans or drawings'
         },
         value: {
-          html: data['new-plans'] | join('<br>') if data['new-plans'] else 'new-plans.pdf'
+          html: data['new-plans'] | join('
+') if data['new-plans'] else 'new-plans.pdf'
         }
         if data['new-plans-complete'] else
         {
@@ -200,8 +206,8 @@
           ]
         }
       } if data['new-plans-check'] == 'Yes',
-      
-      
+
+
       {
         key: {
           html: 'Add new supporting documents'
@@ -257,7 +263,8 @@
           html: 'New supporting documents'
         },
         value: {
-          html: data['other'] | join('<br>') if data['other'] else 'other.pdf'
+          html: data['other'] | join('
+') if data['other'] else 'other.pdf'
         }
         if data['other-complete'] else
         {
@@ -280,3 +287,4 @@
     ]
   }) }}
 </li>
+ 

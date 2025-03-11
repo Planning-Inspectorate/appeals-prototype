@@ -1,10 +1,13 @@
-w{% extends location+"common/cya.html" %}
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You can appeal using this service' %}
 
 {% block questions %}
-  {{ super() }}
 
   {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2024') %}
   {% set decisionDate = (data['decision-due-date-day'] or '1') +' '+ (data['decision-due-date-month'] | formatMonth or 'August') +' '+ (data['decision-due-date-year'] or '2024') %}
+
+  <h1 class="govuk-heading-l">{{ title }}</h1>
 
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-6',

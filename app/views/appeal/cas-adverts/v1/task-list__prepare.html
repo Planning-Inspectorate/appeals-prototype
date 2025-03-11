@@ -25,7 +25,8 @@
           html: 'Was the application made in your name?'
         },
         value: {
-          html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Jane Doe')+('<br>'+data['agency-name'] if data['agency-name'])
+          html: (data['applicant-first-name']+' '+data['applicant-last-name'] if data['applicant-first-name'] else 'Jane Doe')+('
+'+data['agency-name'] if data['agency-name'])
         }
         if data['contact-details-complete'] else
         {
@@ -120,7 +121,7 @@
           ]
         }
       },
-     
+
       {
         key: {
           html: 'Are there any health and safety issues on the appeal site?'
@@ -308,7 +309,7 @@
 
       {
         key: {
-          html: 'Do you have the landowner’s permission?' 
+          html: 'Do you have the landowner’s permission?'
         },
         value: {
           html: 'Yes<br>'+data['health-and-safety__details'] if data['health-and-safety'] == 'Yes' else 'No'
@@ -358,8 +359,8 @@
         }
       },
 
-     
-     
+
+
       {
         key: {
           html: data['procedure']+' reasons'
@@ -438,8 +439,4 @@
     ]
   }) }}
 </li>
-  
-      
-      
-  
-
+ 

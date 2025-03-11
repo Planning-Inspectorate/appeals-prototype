@@ -1,20 +1,11 @@
 {% extends '_layouts/layout-main.html' %}
 
-<!--{% set title = 'Was your application granted or refused?' %}-->
-
-
-
+{% set title = 'Was your application granted or refused?' %}
 
 {% block questions %}
 
-{% if (data["planning-type"] == "Listed building consent") %}
-<h1 class="govuk-heading-l">Was your listed building consent application granted or refused?</h1>
-{% else %}
-{% if (data["planning-type"] == "Full planning", "Listed building") %}
-<h1 class="govuk-heading-l">Was your full planning application granted or refused?</h1>
-{% endif %}
+	<h1 class="govuk-heading-l">{{ title }}</h1>
 
-{% endif %}
 	{{ govukRadios({
 		idPrefix: 'decision',
 		name: 'decision',

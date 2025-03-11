@@ -11,30 +11,11 @@
         {{ title }}
       </h1>
 
-      {{ govukSummaryList({
-        classes: 'appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0',
-        rows: [
+      <p class="govuk-body">Your deadline to submit this appeal is {{ '6' | daysInFuture }}.</p>
 
-          {
-            key: {
-              text: 'Local planning authority'
-            },
-            value: {
-              text: data['lpa'] or 'Bradford'
-            }
-          },
-          {
-            key: {
-              text: 'Appeal type'
-            },
-            value: {
-              html: 'Displaying an advertisement'
-            }
-          }
-        ]
-      }) }}
-
-      
+      <p class="govuk-!-margin-bottom-0">
+        <a href="#0" class="govuk-link--no-visited-state">Save and come back later</a>.
+      </p>
 
     </div>
 
@@ -45,12 +26,6 @@
         Appeal incomplete
       </h2>
       <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 3 sections.</p>
-      <p class="govuk-body">Your deadline to submit this appeal is {{ '6' | daysInFuture }}.</p>
-
-      <p class="govuk-!-margin-bottom-0">
-        <a href="#0" class="govuk-link--no-visited-state">Save and come back later</a>.
-      </p>
-      <br>
 
       {# Tweak the task list so we can merge the CYA in #}
       <style>

@@ -206,7 +206,7 @@ router.post('/lb-use-same-answers', function (req, res) {
   }
 })
 
-// LB decision 
+// LB decision
 
 router.post('/planning/lb-decision', function (req, res) {
   res.redirect('../common/lb-decision-date');
@@ -227,10 +227,8 @@ router.post('/lb-preserve-grant-loan', function (req, res) {
 // CHECK YOUR ANSWERS
 
 router.post('*/cya', function (req, res) {
-    res.redirect('v4/task-list');
-  })
-
-
+  res.redirect('../task-list');
+})
 
 //Appeal type
 
@@ -239,31 +237,43 @@ router.post('/appeal-type', function (req, res) { // routing for different appea
   const data = req.session.data
   let appealType = req.session.data['planning-type']
 
-  if (appealType.includes('Listed building consent')) {      // Listed building consent
-    if (appealType.includes('Full planning')) {      // Listed building consent and planning
-      res.redirect('planning/lb-decision')
-    } else{
-      res.redirect('planning/decision')
-    }
-    
+  if (appealType == 'Minor commercial development') {
+    res.redirect('minor-commercial-development-type')
   } else {
-      res.redirect('planning/decision');
+    res.redirect('planning/decision');
   }
+
 })
 
-//Minor commercial development type
-
+// Minor commercial development type
 router.post('/minor-commercial-development-type', function (req, res) { // routing for different minor commercial development types
 
   const data = req.session.data
   let minorCommercialDevelopmentType = req.session.data['minor-commercial-development-type']
 
-  if (minorCommercialDevelopmentType.includes('Planning')) {      // Planning
-    
-    } else{
-      res.redirect('planning/decision')
-    }
-  
+  if (minorCommercialDevelopmentType == 'none') {
+    res.redirect('errors/certain-types')  // redirect the user to ACP
+  } else if (minorCommercialDevelopmentType == 'planning') {
+    res.redirect('cas-planning-type')
+  } else {
+    res.redirect('planning/decision');
+  }
+
+})
+
+
+// CAS advertising type
+router.post('/cas-planning-type', function (req, res) { // routing for different minor commercial development types
+
+  const data = req.session.data
+  let casType = req.session.data['cas-planning-type']
+
+  if (casType.includes('none')) {         // if the user selects ‘None of these’
+    res.redirect('planning/decision')     // go to the decision date
+  } else {
+    res.redirect('errors/certain-types')  // redirect the user to ACP
+  }
+
 })
 
 
