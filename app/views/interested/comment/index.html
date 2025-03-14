@@ -23,12 +23,12 @@
 
     <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
 
-    {% set version = "10" %}
+    {% set version = "11" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'In progress'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
 
@@ -36,21 +36,62 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        addition of ‘Do not share my name’ checkbox on name input screen
+        over 18 declaration for IPs
       </li>
       <li>
-        updated Check answers screen for ‘Do not share’
+        reverting the anonymous user option, IP names will never be shared with main parties
       </li>
       <li>
-        small content updates for input email screen
+        guidance for the IP name
       </li>
+      <li>
+        aligned with other parts of the service (added ‘Do you want to tell us your address?’)
+      </li>
+      <li>
+        removed the skip button for address screen
+      </li>
+
     </ul>
 
     {{ govukButton({
       html: 'View prototype',
-      href: '/interested/comment/v'+version+'/your-name',
+      href: '/interested/comment/v'+version+'/age-declaration',
       isStartButton: true
     }) }}
+
+    {% set v10HTML %}
+
+      {% set version = "10" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+          text: 'In progress'
+        }) }}
+      </h2>
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          addition of ‘Do not share my name’ checkbox on name input screen
+        </li>
+        <li>
+          updated Check answers screen for ‘Do not share’
+        </li>
+        <li>
+          small content updates for input email screen
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/interested/comment/v'+version+'/your-name',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
 
     {% set v9HTML %}
 
@@ -117,6 +158,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 10 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v10HTML
+          }
+        },
         {
           heading: {
             html: 'Version 9 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

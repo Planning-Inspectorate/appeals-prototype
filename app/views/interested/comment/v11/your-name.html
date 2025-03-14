@@ -1,0 +1,85 @@
+{% extends '_layouts/layout-main.html' %}
+{% set caption = "Comment on a planning appeal" %}
+
+{% set title = "What is your name?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            {{ title }}
+          </h1>
+        </legend>
+
+        <p class="govuk-body">
+          We need your name to link you to your comment, this is helpful if you need to contact us. We will not publish your name or share it with the main parties.
+        </p>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="interested-first-name">
+            First name
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="interested-first-name" name="interested-first-name" type="text" spellcheck="false" autocomplete="given-name">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="interested-last-name">
+            Last name
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="interested-last-name" name="interested-last-name" type="text" spellcheck="false" autocomplete="family-name">
+        </div>
+
+        <!-- <section class="govuk-!-margin-bottom-9">
+          
+          {{ govukCheckboxes({
+            name: "siteVisit",
+            fieldset: {
+              legend: {
+                text: "Site visit requested",
+                classes: "govuk-visually-hidden"
+              }
+            },
+            items: [
+              {
+                value: "keepMeAnonymous",
+                text: "Do not share my name"
+              }
+            ]
+          }) }}
+        </section> -->
+
+      </<fieldset>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

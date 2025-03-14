@@ -1,0 +1,180 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Check your answers and submit your comments' %}
+
+<!-- {% set nav = true %} -->
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <form method="post">
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: 'Are you 18 or older?'
+              },
+              value: {
+                html: data['age-declaration'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-name',
+                    text: 'Change'
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: 'Name'
+              },
+              value: {
+                html: (data['interested-first-name'] or 'Jan') + ' ' + (data['interested-last-name'] or 'Fisher') + '<br>Your name will not be shared'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-name',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['age-declaration'] != 'No',
+            {
+              key: {
+                text: 'Email'
+              },
+              value: {
+                html: data['email'] or 'sample@test.com'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'your-email',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['age-declaration'] != 'No',
+            {
+              key: {
+                text: 'Do you want to tell us your address?'
+              },
+              value: {
+                html: data['address-check']
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'address',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['age-declaration'] != 'No',
+            {
+              key: {
+                text: 'Address'
+              },
+              value: {
+                text: '7 Aubrey House, Aubrey Road, Bristol BS3 3EX'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'address',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['address-check'] != 'No' and data['age-declaration'] != 'No',
+            {
+              key: {
+                text: 'Do you want to tell us your postcode?'
+              },
+              value: {
+                html: data['postcode-check'] or 'Yes'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'address',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['age-declaration'] == 'No',
+            {
+              key: {
+                text: 'Postcode'
+              },
+              value: {
+                html: data['postcode'] or 'BS3'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'address',
+                    text: 'Change'
+                  }
+                ]
+              }
+            } if data['postcode-check'] != 'No' and data['age-declaration'] == 'No',
+            {
+              key: {
+                text: 'Comments'
+              },
+              value: {
+                html: data['comments'] or 'Your comments go here etc etc'
+              },
+              actions: {
+                items: [
+                  {
+                    href: 'add-comments',
+                    text: 'Change'
+                  }
+                ]
+              }
+            }
+
+          ]
+        }) }}
+
+        {{ govukButton({
+          html: 'Submit comments'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: 'Submit your comments',
+    href: 'confirmation'
+  }) }}
+{% endblock %}

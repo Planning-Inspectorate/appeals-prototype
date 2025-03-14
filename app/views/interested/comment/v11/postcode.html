@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What is your postcode?' %}
+
+{% block questions %}
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "This is the first part of your postcode, for example BS1"
+    },
+    id: "postcode",
+    name: "postcode",
+    classes: 'govuk-input--width-4'
+  }) }}
+
+{% endblock %}
