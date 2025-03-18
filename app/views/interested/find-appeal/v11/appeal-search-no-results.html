@@ -1,0 +1,72 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% if data['search'] == "postcode" %}
+  {% set title = "Appeals at BS3 3EX" %}
+{% elif data['search'] == "grid" %}
+  {% set title = "Appeals at Eastings 361633 and Northings 174493" %}
+{% else %}
+  {% set title = "Appeal 0123456" %}
+{% endif %}
+
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% if data['search'] == "number" %}
+
+      <p class="govuk-body">
+        We could not find an appeal for this reference number.
+      </p>
+
+    {% else %}
+
+      <h2 class="govuk-heading-m">
+        0 results
+      </h2>
+
+      <p class="govuk-body">
+        We could not find any appeals.
+      </p>
+
+    {% endif %}
+
+    <p class="govuk-body">
+      {% if data['search'] == "postcode" %}
+        <a href="appeal-search-address#postcode-search" class="govuk-link">
+      {% elif data['search'] == "grid" %}
+        <a href="appeal-search-address#grid-search" class="govuk-link">
+      {% else %}
+        <a href="appeal-search-number" class="govuk-link">
+      {% endif %}
+        Find a planning appeal
+      </a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

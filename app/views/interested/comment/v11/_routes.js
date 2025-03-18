@@ -17,15 +17,21 @@ router.post('/age-declaration', function (req, res) {
 })
 
 router.post('/your-name', function (req, res) {
-
   if (req.session.data['interested-first-name']) {
-    res.redirect('your-email')
+    res.redirect('email-check')
   } else {
     res.locals['interested-first-name'] = 'Sam',
     res.locals['interested-last-name'] = 'Fisher'
-    res.redirect('your-email?interested-first-name=Sam&interested-last-name=Fisher')
+    res.redirect('email-check?interested-first-name=Sam&interested-last-name=Fisher')
   }
+})
 
+router.post('/email-check', function (req, res) {
+  if (req.session.data['email-check'] == 'No') {
+    res.redirect('address-check')
+  } else {
+    res.redirect('your-email')
+  }
 })
 
 router.post('/your-email', function (req, res) {

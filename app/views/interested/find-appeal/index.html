@@ -23,7 +23,8 @@
 
     <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
 
-    {% set version = "10" %}
+
+    {% set version = "11" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -36,7 +37,7 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        shows our MVP version without a grid reference search
+        small update to the appeal reference screen, using a single hint instead of guidance paragraph + hint
       </li>
     </ul>
 
@@ -45,6 +46,33 @@
       href: 'v'+version+'/appeal-search-number',
       isStartButton: true
     }) }}
+
+    {% set v10HTML %}
+
+      {% set version = "10" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+          text: 'In progress'
+        }) }}
+      </h2>
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          shows our MVP version without a grid reference search
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appeal-search-number',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v9HTML %}
 
@@ -124,6 +152,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 10 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v10HTML
+          }
+        },
         {
           heading: {
             html: 'Version 9 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

@@ -1,0 +1,63 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Enter a postcode" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <div class="govuk-form-group">
+
+        <label class="govuk-label govuk-label--l" for="postcode">
+          {{ title }}
+        </label>
+
+        <!-- <p class="govuk-body">
+          Enter the reference number from the local planning authority.
+        </p> -->
+
+        <p class="govuk-hint">
+          For example, BS1 6PN
+        </p>
+
+        <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text" value="{{ data['postcode'] }}">
+
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body">
+      <a href="appeal-search-number?search=number">
+        Search with the appeal reference number
+      </a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

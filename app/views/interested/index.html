@@ -25,7 +25,7 @@
       This is the on-going design work for interested parties, finding and commenting on an appeal. Includes appeals at different stages, open, closed and completed.
     </p>
 
-    {% set version = "10" %}
+    {% set version = "11" %}
 
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -41,7 +41,13 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        version with no grid reference
+        age declaration updates, data privacy
+      </li>
+      <li>
+        guidance related to ‘always anonymous’
+      </li>
+      <li>
+        some pattern changes for question pages
       </li>
     </ul>
 
@@ -50,6 +56,36 @@
       href: 'find-appeal/v'+version+'/guidance',
       isStartButton: true
     }) }}
+
+    {% set v10HTML %}
+
+      {% set version = "10" %}
+
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--green govuk-!-margin-left-2',
+          text: 'Ready for research'
+        }) }}
+      </h2>
+
+      <p class="govuk-body">
+        Changes:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          version with no grid reference
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'find-appeal/v'+version+'/guidance',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v9HTML %}
       {% set version = "9" %}
@@ -190,6 +226,22 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
+        {
+          heading: {
+            html: 'Version 10 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v10HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 9 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v9HTML
+          }
+        },
         {
           heading: {
             html: 'Version 8 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

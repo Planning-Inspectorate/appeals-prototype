@@ -1,12 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Do you want us to tell us your address?' %}
+{% set title = 'Do you want to tell us your email?' %}
 
 {% block questions %}
 
   {{ govukRadios({
-    idPrefix: 'address-check',
-    name: 'address-check',
+    idPrefix: 'email-check',
+    name: 'email-check',
     classes: '',
     fieldset: {
       legend: {
@@ -16,18 +16,18 @@
       }
     },
     hint: {
-      html: "If your address is near the appeal site, we will consider your comment as more important. We will not publish or share your address."
+      html: "<span class='govuk-body'>We’ll only contact you by email if we need to discuss your comment.</span>"
     },
     items: [
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('address-check','Yes')
+        checked: checked('email-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('address-check','No')
+        checked: checked('email-check','No')
       }
     ]
   }) }}
