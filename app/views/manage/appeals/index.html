@@ -23,13 +23,50 @@
 
     <section class="govuk-!-margin-bottom-6">
 
-      {% set version = "8" %}
+      {% set version = "9" %}
 
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
           classes: 'govuk-tag--yellow govuk-!-margin-left-2',
           text: 'In progress'
+        }) }}
+      </h2>
+
+      <!-- <p>
+        Researched January 2023<br>
+        <a href="https://pins-ds.atlassian.net/l/cp/m5xUUVAn" class="govuk-link">
+          Confluence user research notes
+        </a>
+      </p> -->
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          showing withdrawn appeals
+        </li>
+        <li>
+          decided appeals is more prominent
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View dashboard',
+        href: 'v9/?action=&questionnaire=due&questionnaire-banner=no&current-appeals=yes&submitted-appeals=yes',
+        isStartButton: true
+      }) }}
+
+    </section>
+
+    {% set v8HTML %}
+
+      {% set version = "8" %}
+
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--green govuk-!-margin-left-2',
+          text: 'Ready for research'
         }) }}
       </h2>
 
@@ -68,7 +105,7 @@
         isStartButton: true
       }) }}
 
-    </section>
+    {% endset -%}
 
     {% set v7HTML %}
 
@@ -253,6 +290,14 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
+        {
+          heading: {
+            html: 'Version 8 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v8HTML
+          }
+        },
         {
           heading: {
             html: 'Version 7 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

@@ -1,0 +1,28 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to manage appeals',
+    href: 'index'
+  }) }}
+{% endblock %}
+
+{% set title = 'Withdrawn appeals' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">
+          {{ data['dashboard-lpa'] }}
+          <span class="govuk-visually-hidden"> - </span>
+        </span>
+        {{ title }}
+      </h1>
+
+      {% include "/_includes/lpa/withdrawn-appeals.html" %}
+
+    </div>
+  </div>
+{% endblock %}

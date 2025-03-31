@@ -1,0 +1,193 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set prototypeLinks = [
+  {
+    href: './?current-appeals=no&submitted-appeals=no',
+    text: 'No appeals'
+  } if data['current-appeals'] != 'no' else
+  {
+    href: './?current-appeals=yes&submitted-appeals=yes',
+    text: 'Show appeals'
+  },
+  {
+    href: './?questionnaire=due&questionnaire-banner=no',
+    text: 'Questionnaire to do'
+  } if data['questionnaire'] == 'complete' else
+  {
+    href: './?questionnaire=complete&questionnaire-banner=yes',
+    text: 'Questionnaire done'
+  },
+  {
+    href: '/interested/find-appeal/v7/appeal-notice-email-full',
+    text: 'Appeal notice'
+  },
+  {
+    href: './?appeal-withdrawn=yes',
+    text: 'Appeal withdrawn'
+  }
+  ]
+%}
+
+{% set back = false %}
+
+{% set title = 'Manage your appeals' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['appeal-withdrawn'] == 'yes' %}
+
+        {% set withdrawnBanner %}
+          <h3 class="govuk-notification-banner__heading">
+            Appeal 0123456 has been withdrawn
+          </h3>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: withdrawnBanner,
+          type: 'success'
+        }) }}
+
+      {% endif %}
+
+      {% if data['questionnaire-banner'] == 'yes' %}
+
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Questionnaire complete
+          </h3>
+          <p class="govuk-body">
+            Questionnaire for appeal 1345264 has been submitted.
+          </p>
+        {% endset %}
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+      {% endif %}
+
+      {% if data['statement-banner'] == 'yes' %}
+
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Statement complete
+          </h3>
+          <p class="govuk-body">
+            You’ve <a href="?statement-banner=&statement=complete&submitted-appeals=yes#submitted-appeals" class="govuk-link">submitted your statement</a> for appeal {{ data['appealCode'] or '0123456' }}.
+          </p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+      {% endif %}
+
+      {% if data['final-comments-banner'] == 'yes' %}
+
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Final comments complete
+          </h3>
+          <p class="govuk-body">
+            Final comments for appeal {{ data['appealCode']}} has been <a href="?final-comments-banner=&final-comments=complete&submitted-appeals=yes#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>submitted<span class="govuk-visually-hidden"> appeals</span></a>.
+          </p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+      {% endif %}
+
+      {% if data['proofs-banner'] == 'yes' %}
+
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Proof of evidence complete
+          </h3>
+          <p class="govuk-body">
+            Proof of evidence for appeal {{ data['appealCode']}} has been <a href="?final-comments-banner=&final-comments=complete&submitted-appeals=yes#submitted-appeals" class="govuk-link"><span class="govuk-visually-hidden">View </span>submitted<span class="govuk-visually-hidden"> appeals</span></a>.
+          </p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+      {% endif %}
+
+    </div>
+
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-6">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">
+        <span class="govuk-caption-xl">
+          {{ data['dashboard-lpa'] }}
+          <span class="govuk-visually-hidden"> - </span>
+        </span>
+        {{ title }}
+      </h1>
+      <p class="govuk-body">
+        <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
+          Add and remove users
+        </a>
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="withdrawn-appeals" class="govuk-link">
+            1 withdrawn appeal
+          </a>
+        </li>
+        <li>
+          <a href="decided-appeals" class="govuk-link">
+            30 decided appeals
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      {% set currentAppeals %}
+        {% include "/_includes/lpa/current-appeals.html" %}
+      {% endset -%}
+
+      {% set submittedAppeals %}
+        {% include "/_includes/lpa/submitted-appeals.html" %}
+      {% endset -%}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "To do",
+            id: "new-appeals",
+            panel: {
+              html: currentAppeals
+            }
+          },
+          {
+            label: "Waiting for review",
+            id: "submitted-appeals",
+            panel: {
+              html: submittedAppeals
+            }
+          }
+
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

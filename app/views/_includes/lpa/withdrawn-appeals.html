@@ -1,0 +1,38 @@
+{{ govukTable({
+  classes: 'govuk-!-margin-top-0',
+  caption: '1 to 10 decided appeals',
+  captionClasses: 'govuk-visually-hidden govuk-table__caption--l',
+  firstCellIsHeader: false,
+  head: [
+    {
+      html: 'Appeal number'
+    },
+    {
+      html: 'Site address',
+      classes: 'govuk-!-width-one-half'
+    },
+    {
+      html: 'Decision date'
+    },
+    {
+      html: 'Appeal type'
+    }
+  ],
+  rows: [
+    [
+      {
+        html: "<a href='/manage/appeals/v9/appeal-details?appealCode=0201623&appeal-type=written&questionnaire=&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=withdrawn' class='govuk-link'>0201623</a>"
+      },
+      {
+        html: '21A Sarson Way, Wiltshire, BA12 0FF'
+      },
+      {
+        html: '1' | daysInPast
+      },
+      {
+        html: 'S78'
+      }
+    ]
+
+  ]
+}) }}
