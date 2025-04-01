@@ -124,37 +124,23 @@
 
     </div>
 
-    <div class="govuk-grid-column-full govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">
+      <h1 class="govuk-heading-xl">
         <span class="govuk-caption-xl">
           {{ data['dashboard-lpa'] }}
           <span class="govuk-visually-hidden"> - </span>
         </span>
         {{ title }}
       </h1>
+
+    </div>
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
       <p class="govuk-body">
         <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
           Add and remove users
         </a>
       </p>
-
-    </div>
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="withdrawn-appeals" class="govuk-link">
-            1 withdrawn appeal
-          </a>
-        </li>
-        <li>
-          <a href="decided-appeals" class="govuk-link">
-            30 decided appeals
-          </a>
-        </li>
-      </ul>
-
     </div>
 
     <div class="govuk-grid-column-full">
@@ -186,6 +172,21 @@
 
         ]
       }) }}
+
+      <div class="govuk-inset-text">
+          <ul class="govuk-list">
+            <li>
+              <a href="withdrawn-appeals" class="govuk-link">
+                1 withdrawn appeal
+              </a>
+            </li>
+            <li>
+              <a href="decided-appeals" class="govuk-link">
+                30 decided appeals
+              </a>
+            </li>
+          </ul>
+        </div>
 
     </div>
   </div>
