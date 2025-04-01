@@ -1,0 +1,31 @@
+pr: none
+trigger: none
+
+pool: pins-odt-agent-pool
+
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      endpoint: Planning-Inspectorate
+      name: Planning-Inspectorate/common-pipeline-templates
+      ref: refs/tags/release/3.20.3
+
+steps:
+  - checkout: self
+  - template: steps/node_script.yml@templates
+    parameters:
+      nodeVersion: 22
+      script: npm ci
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: $(Build.Repository.LocalPath)/app
+      workingDirectory: $(Build.Repository.LocalPath)/
+      includeRootFolder: false
+      archiveFile: $(Build.ArtifactStagingDirectory)/pins-app-prototype-appeals-front-office.zip
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: Azure DevOps Pipelines - Prototypes dev
+      appType: webAppLinux
+      appName: pins-app-prototype-appeals-front-office
+      package: $(Build.ArtifactStagingDirectory)/pins-app-prototype-appeals-front-office.zip
