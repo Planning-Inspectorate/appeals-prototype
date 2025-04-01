@@ -29,3 +29,10 @@ steps:
       appType: webAppLinux
       appName: pins-app-prototype-appeals-front-office
       package: $(Build.ArtifactStagingDirectory)/pins-app-prototype-appeals-front-office.zip
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: $(Build.ArtifactStagingDirectory)
+      artifactName: WebApp
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      patterns: '**/*.zip'
