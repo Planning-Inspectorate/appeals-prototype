@@ -13,10 +13,10 @@ resources:
 
 steps:
   - checkout: self
-  - template: steps/node_script.yml@templates
-    parameters:
-      nodeVersion: 20
-      script: npm ci
+#  - template: steps/node_script.yml@templates
+#    parameters:
+#      nodeVersion: 20
+#      script: npm ci
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: $(Build.Repository.LocalPath)/
@@ -31,8 +31,5 @@ steps:
       package: $(Build.ArtifactStagingDirectory)/pins-app-prototype-appeals-front-office.zip
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: $(Build.ArtifactStagingDirectory)
-      artifactName: WebApp
-  - task: DownloadPipelineArtifact@2
-    inputs:
-      patterns: '**/*.zip'
+      targetPath: $(Build.ArtifactStagingDirectory)/pins-app-prototype-appeals-front-office.zip
+      artifactName: pins-app-prototype-appeals-front-office.zip
