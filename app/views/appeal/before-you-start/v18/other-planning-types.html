@@ -1,0 +1,48 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Do you want to appeal a decision on any of the following?' %}
+
+{% block questions %}
+
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          {{ title }}
+        </h1>
+      </legend>
+
+      <p class="govuk-body">
+        Check your application form to see if it includes any of the following:
+      </p>
+  
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Major housing development <p class="govuk-hint">At least 10 houses or a site area that is at least 0.5 hectares.</p></li>
+        <li>Major general industry, storage or warehousing <p class="govuk-hint">A planned development that creates at least 1,000 square metres of floor space or has a site area that is at least one hectare.</p></li>
+        <li>Major retail and services<p class="govuk-hint">A planned development that creates at least 1,000 square metres of floor space or has a site area that is at least one hectare.</p></li>
+        <li>Major travelling and caravan pitches <p class="govuk-hint">At least 10 pitches.</p></li>
+        <li>Lawful Development Certificate (LDC)<p></p></li>
+        <li>Advertisement consent application<p></p></li>
+        <li>Discontinuance notice<p></p></li>
+      </ul>,
+
+      <div class="govuk-radios--inline" data-module="govuk-radios--inline">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="unsupported-appeals" name="unsupported-appeals" type="radio" value="Yes">
+          <label class="govuk-label govuk-radios__label" for="appeal-type">
+            Yes
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="unsupported-appeals-2" name="unsupported-appeals" type="radio" value="No">
+          <label class="govuk-label govuk-radios__label" for="appeal-type">
+            No
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  
+
+{% endblock %}

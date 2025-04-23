@@ -1,16 +1,19 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Was your application granted or refused?' %}
+{% set title = 'Was your listed building consent application granted or refused?' %}
+
 
 {% block questions %}
+<h1 class="govuk-heading-l">Was your listed building consent application granted or refused?</h1>
 
 	{{ govukRadios({
+		
 		idPrefix: 'decision',
 		name: 'decision',
 		fieldset: {
 			legend: {
 				html: title,
-				classes: 'govuk-fieldset__legend--l',
+				classes: 'govuk-visually-hidden',
 				isPageHeading: true
 			}
 		},

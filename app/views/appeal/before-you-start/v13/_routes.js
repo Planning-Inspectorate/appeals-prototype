@@ -155,11 +155,6 @@ router.post('/enforcement/effective-date', function (req, res) {
   res.redirect('cya')
 })
 
-
-
-
-
-
 // CHECK YOUR ANSWERS
 
 router.post('*/cya', function (req, res) {
@@ -169,14 +164,6 @@ router.post('*/cya', function (req, res) {
     res.redirect('cya');
   }
 })
-
-
-
-
-
-
-
-
 
 // Add your routes above the module.exports line
 module.exports = router

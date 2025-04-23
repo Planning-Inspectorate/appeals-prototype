@@ -1,0 +1,215 @@
+w{% extends location+"common/cya.html" %}
+
+{% block questions %}
+  {{ super() }}
+
+  {% set decisionDate = (data['decision-date-day'] or '1') +' '+ (data['decision-date-month'] | formatMonth or 'August') +' '+ (data['decision-date-year'] or '2024') %}
+  {% set decisionDate = (data['decision-due-date-day'] or '1') +' '+ (data['decision-due-date-month'] | formatMonth or 'August') +' '+ (data['decision-due-date-year'] or '2024') %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-6',
+    rows: [
+      {
+        key: {
+          text: 'Local planning authority'
+        },
+        value: {
+          text: data['lpa'] or 'Bradford'
+        },
+        actions: {
+          items: [
+            {
+              href: '../lpa?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Related to a listed building'
+        },
+        value: {
+          text: 'Yes' if data['lbcStatus'] == 'Yes' else 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: 'Full planning'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['type'] == 'planning' and data['lbcStatus'] == 'Yes',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: 'Listed building consent'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['type'] == 'lbc',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          html: 'Full planning<br>Listed building consent'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['type'] == 'both' and data['lbcStatus'] == 'Yes',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: 'Listed building consent'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['appeal-option'] == 'lbc' and data['lbcStatus'] == 'Yes',
+
+      {
+        key: {
+          text: 'Application type'
+        },
+        value: {
+          text: 'Full planning'
+        },
+        actions: {
+          items: [
+            {
+              href: 'type',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['lbcStatus'] == 'No',
+
+      {
+        key: {
+          text: 'Extend an existing home' if data['planning-type'] == 'Prior approval' else 'Homeholder planning permission'
+        },
+        value: {
+          html: data['existing-home-check'] or 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'existing-home-check',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['planning-type'] == 'Prior approval' or data['planning-type'] == 'Removal or variation of conditions',
+      {
+        key: {
+          text: 'Major development'
+        },
+        value: {
+          html: 'No'
+        },
+        actions: {
+          items: [
+            {
+              href: 'major-development-check',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['existing-home-check'] != 'Yes' and data['planning-type'] != 'Householder planning',
+      {
+        key: {
+          text: 'Decision'
+        },
+        value: {
+          text: data['decision'] or 'Refused'
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision',
+              text: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Decision date'
+        },
+        value: {
+          text: decisionDate
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['decision'] != 'I have not received a decision',
+      {
+        key: {
+          text: 'Decision due date'
+        },
+        value: {
+          html: decisionDueDate or '3' | daysInPast
+        },
+        actions: {
+          items: [
+            {
+              href: 'decision-due-date?cya=true',
+              text: 'Change'
+            }
+          ]
+        }
+      } if data['decision'] == 'I have not received a decision'
+
+    ]
+  }) }}
+
+
+{% endblock %}

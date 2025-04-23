@@ -4,15 +4,19 @@
 
 {% block questions %}
 
+	<span class="govuk-caption-l">
+		Before you start
+	</span>
+
 	{{ govukRadios({
 		idPrefix: 'decision',
 		name: 'decision',
 		fieldset: {
 			legend: {
-				html: title,
-				classes: 'govuk-fieldset__legend--l',
-				isPageHeading: true
-			}
+	      text: title,
+	      isPageHeading: true,
+	      classes: "govuk-fieldset__legend--l"
+	    }
 		},
 		items: [
 			{

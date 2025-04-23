@@ -23,7 +23,38 @@
 
     <section class="govuk-!-margin-bottom-6">
 
+      {% set version = "18" %}
+
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--green govuk-!-margin-left-2',
+          text: 'Ready for research'
+        }) }}
+      </h2>
+
+      <p class="govuk-!-margin-bottom-2">
+        Changes:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          CAS and advert appeal routing
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/',
+        isStartButton: true
+      }) }}
+
+    </section>
+
+    {% set v17HTML %}
+
       {% set version = "17" %}
+
       <h2 class="govuk-heading-m">
         Version {{version}}
         {{ govukTag({
@@ -48,12 +79,10 @@
         isStartButton: true
       }) }}
 
-    </section>
-
-    
+    {% endset -%}
 
     {% set v16HTML %}
-    <section>
+
       {% set version = "16" %}
       <p class="govuk-!-margin-bottom-2">
         Changes:
@@ -63,18 +92,15 @@
           HAS and S78 routing (not listed building consent)
         </li>
       <ul class="govuk-list govuk-list--bullet">
-        
+
       </ul>
       {{ govukButton({
         html: 'View prototype',
         href: 'v'+version+'/',
         isStartButton: true
       }) }}
-    </section>
-      {% endset -%}
 
-
-
+    {% endset -%}
 
     {% set v15HTML %}
     <section>
@@ -106,7 +132,7 @@
         </li>
       </ul>
 
-      
+
       {{ govukButton({
         html: 'View prototype',
         href: 'v'+version+'/',
@@ -162,15 +188,22 @@
       classes: 'govuk-!-margin-top-9',
       items: [
 
-      {
-        heading: {
-          html: 'Version 16 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+        {
+          heading: {
+            html: 'Version 17 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v17HTML
+          }
         },
-        content: {
-          html: v16HTML
-        }
-      },
-
+        {
+          heading: {
+            html: 'Version 16 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v16HTML
+          }
+        },
         {
           heading: {
             html: 'Version 15 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

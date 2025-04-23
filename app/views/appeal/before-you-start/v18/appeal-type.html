@@ -1,0 +1,109 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What type of application is your appeal about?' %}
+
+{% block questions %}
+
+	<span class="govuk-caption-l">
+		Before you start
+	</span>
+
+	{{ govukRadios({
+	  name: "appeal-type",
+	  fieldset: {
+	    legend: {
+	      text: title,
+	      isPageHeading: true,
+	      classes: "govuk-fieldset__legend--l"
+	    }
+	  },
+	  hint: {
+	    text: "You can find the application type on the decision letter from the local planning authority (also called a ‘decision notice’)."
+	  },
+		items: [
+			{
+				html: 'Full planning',
+				value: 'Full planning',
+				hint: {
+					text: "Applications affecting flats, more than one house or changes of use. For example, a new building or any commercial project."
+				},
+				checked: checked('planning-type','Full planning')
+			},
+			{
+				html: 'Householder planning',
+				value: 'Householder planning',
+				hint: {
+					text: "A simpler process for changes to a single house, including works within the garden. For example, small projects like extensions, conservatories or loft conversions."
+				},
+				checked: checked('planning-type','Householder planning')
+			},
+			{
+				html: 'Listed building consent',
+				value: 'Listed building consent',
+	      hint: {
+	        text: "Applications involving a listed building."
+	      },
+				checked: checked('planning-type','Listed building consent')
+			},
+			{
+				html: 'Displaying an advertisement',
+				value: 'Displaying an advertisement',
+				checked: checked('planning-type','Displaying an advertisement')
+			},
+			{
+				html: 'Minor commercial development',
+				value: 'Minor commercial development',
+	      hint: {
+	        text: 'To develop or alter an existing building (or part of a building) for certain commercial purposes.'
+	      },
+				checked: checked('planning-type','Minor commercial development')
+			},
+			{
+				html: 'Outline planning',
+				value: 'Outline planning',
+	      hint: {
+	        text: "General principles of how a site can be developed."
+	      },
+				checked: checked('planning-type','Outline planning')
+			},
+			{
+				html: 'Prior approval',
+				value: 'Prior approval',
+	      hint: {
+	        text: "To accept specific parts of a development before work can start."
+	      },
+				checked: checked('planning-type','Prior approval')
+			},
+			{
+				html: 'Reserved matters',
+				value: 'Reserved matters',
+	      hint: {
+	        text: "Parts of a proposed development which you chose to not submit with your outline planning application (so they are ‘reserved’ for a later decision)."
+	      },
+				checked: checked('planning-type','Reserved matters')
+			},
+			{
+				html: 'Removal or variation of conditions',
+				value: 'Removal or variation of conditions',
+	      hint: {
+	        text: "Planning conditions limit and control the way you must develop."
+	      },
+				checked: checked('planning-type','Removal or variation of conditions')
+			},
+	    {
+	      html: 'Something else',
+	      value: 'Something else',
+	      checked: checked('appeal-type','discontinueance notice')
+	    },
+	    {
+	      divider: "or"
+	    },
+	    {
+	      html: 'I have not made an application',
+	      value: 'I have not made an application',
+	      checked: checked('appeal-type','I have not made a planning application')
+	    }
+	  ]
+	}) }}
+
+{% endblock %}
