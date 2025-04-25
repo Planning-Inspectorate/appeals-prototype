@@ -1,16 +1,115 @@
-{% extends '_layouts/layout-main.html' %}
+{% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Before you start' %}
+{% set nav = false %}
+{% set title = 'Adverts, CAS Adverts and CAS planning appeals' %}
 
-{% block questions %}
-  <h1 class="govuk-heading-l">
-    {{title}}
-  </h1>
-  <p class="govuk-body">
-    This is a new service. It’s only for appeals about certain application types. We’ll check if you can use this service by asking some questions about your appeal.
-  </p>
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
 
-  <p class="govuk-body">
-    If you cannot use this service, you can still appeal using the existing service.
-  </p>
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% set version = "2" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        revised questions
+      </li>
+      <li>
+        based on the ‘Version 2’ of Full planning and HAS appeal forms
+      </li>
+    </ul>
+
+    {{ govukInsetText({
+      html: '<p class="govuk-body"><a href="https://app.mural.co/t/allpins6990/m/allpins6990/1713969443553/fc5529c2800dc9ace2b4ed4d946193e7ee92cabd">Mural design board</a></p>'
+    }) }}
+
+    <form action="v2/before-you-continue" method="post">
+
+      {{ govukRadios({
+        name: "variant",
+        fieldset: {
+          legend: {
+            text: "Which type of appeal do you want to do?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "advert",
+            text: "Advertisement"
+          },
+          {
+            value: "casadvert",
+            text: "CAS advert"
+          },
+          {
+            value: "casplanning",
+            text: "CAS planning"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: 'View prototype',
+        isStartButton: true
+      }) }}
+
+    </form>
+
+    {% set v1HTML %}
+
+      {% set version = "1" %}
+
+      <p class="govuk-body">
+        Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release.
+      </p>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
 {% endblock %}
