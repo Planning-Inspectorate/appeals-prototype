@@ -1,0 +1,49 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set prototypeLinks = [{
+  href: '../errors/out-of-time',
+  text: 'Appeal window has passed'
+}]%}
+
+{% set title = 'What’s the date on the decision letter from the local planning authority?' %}
+
+{% block questions %}
+
+  <!-- <p class="govuk-body-l">
+    Appeal type {{ data['appealType'] }}
+  </p> -->
+
+  <span class="govuk-caption-l">
+    Before you start
+  </span>
+
+  {{ govukDateInput({
+    id: 'decision-date',
+    namePrefix: 'decision-date',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: data['decision-date-day']
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2',
+        value: data['decision-date-month']
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4',
+        value: data['decision-date-year']
+      }
+    ]
+  }) }}
+
+{% endblock %}

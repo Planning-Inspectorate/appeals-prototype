@@ -1,0 +1,39 @@
+{% extends '_layouts/layout-main.html' %}
+{% set prototypeLinks = [{href: '../errors/out-of-time', text: 'Appeal window has passed'}] %}
+
+{% set title = 'What&rsquo;s the date on the listed building consent decision letter from the local planning authority?' %}
+
+
+{% block questions %}
+  {{ govukDateInput({
+    id: 'lb-decision-date',
+    namePrefix: 'lb-decision-date',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: '<p class="govuk-body">You can find the date on the letter confirming your application</p><p class="govuk-body">For example, 31 3 2024</p>'
+    },
+    items: [
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: data['decision-date-day']
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2',
+        value: data['decision-date-month']
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4',
+        value: data['decision-date-year']
+      }
+    ]
+  }) }}
+{% endblock %}

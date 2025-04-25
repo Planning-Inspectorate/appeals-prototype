@@ -1,0 +1,361 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Appeal 12345260' %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      {{title}}
+    </h1>
+    <p class="govuk-body">Submitted on 28 August 2024.</p>
+
+    <h2 class ="govuk-heading-m">Before you start</h2>
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+    <!--Before you start-->
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Local planning authority",
+            classes: "govuk-!-width-one-half"
+          },
+          value: {
+            text: "Shropshire"
+          }
+        },
+        {
+          key: {
+            text: "Appeal type"
+          },
+          value: {
+            text: "Full planning"
+          }
+        },
+        {
+          key: {
+            text: "Decision date"
+          },
+          value: {
+            html: "1 July 2024"
+          }
+        }
+      ]
+    }) }}
+
+    <!--Prepare appeal-->
+    <h2 class ="govuk-heading-m">Prepare appeal</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Was the application made in your name?",
+            classes: "govuk-!-width-one-half"
+
+          },
+          value: {
+            text: "Yes"
+          }
+        },
+        {
+          key: {
+            text: "Contact details"
+          },
+          value: {
+            text: "John Doe"
+          }
+        },
+        {
+          key: {
+            text: "What is the address of the appeal site?"
+          },
+          value: {
+            html: "1 Example street<br>Town<br>County<br>AA1 1AA"
+          }
+        },
+        {
+          key: {
+            text: "What is the area of the appeal site?"
+          },
+          value: {
+            html: "200 sqm"
+          }
+        },
+        {
+          key: {
+            text: "Is the site in a green belt?"
+          },
+          value: {
+            html: "No"
+          }
+        },
+        {
+          key: {
+            text: "Do you own all the land involved in the appeal?"
+          },
+          value: {
+            html: "Yes"
+          }
+        },
+        {
+          key: {
+            text: "Is the appeal site part of an agricultural holding?"
+          },
+          value: {
+            html: "Yes"
+          }
+        },
+        {
+          key: {
+            text: "Are you a tenant of the agricultural holding?"
+          },
+          value: {
+            html: "Yes"
+          }
+        },
+        {
+          key: {
+            text: "Are there any other tenants?"
+          },
+          value: {
+            html: "No"
+          }
+        },
+        {
+          key: {
+            text: "Will an inspector need to access your land or property?"
+          },
+          value: {
+            html: "No"
+          }
+        },
+        {
+          key: {
+            text: "Are there any health and safety issues on the appeal site?"
+          },
+          value: {
+            html: "No"
+          }
+        },
+        {
+          key: {
+            text: "What is the application reference number?"
+          },
+          value: {
+            html: "123456789"
+          }
+        },
+        {
+          key: {
+            text: "What date did you submit your application?"
+          },
+          value: {
+            html: "19 July 2024"
+          }
+        },
+        {
+          key: {
+            text: "Enter the description of development?"
+          },
+          value: {
+            html: "Example description"
+          }
+        },
+        {
+          key: {
+            text: "Did the local planning authority change the description of development?"
+          },
+          value: {
+            html: "No"
+          }
+        },
+        {
+          key: {
+            text: "How would you prefer us to decide your appeal?"
+          },
+          value: {
+            html: "Hearing"
+          }
+        },
+        {
+          key: {
+            text: "Why would you prefer a hearing?"
+          },
+          value: {
+            html: "To give more evidence"
+          }
+        },
+        {
+          key: {
+            text: "Are there any other appeals linked to your development?"
+          },
+          value: {
+            html: "No"
+          }
+        }
+      ]
+    }) }}
+
+     <!--Upload documents-->
+     <h2 class ="govuk-heading-m">Upload documents</h2>
+
+     {{ govukSummaryList({
+       rows: [
+         {
+           key: {
+             text: "Upload your application form",
+             classes: "govuk-!-width-one-half"
+
+           },
+           value: {
+             text: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Upload the evidence of your agreement to change the description of development"
+           },
+           value: {
+             text: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Upload the decision letter from the local planning authority"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Do you plan to submit a planning obligation to support your appeal?"
+           },
+           value: {
+             html: "Yes"
+           }
+         },
+         {
+           key: {
+             text: "Upload your planning obligation"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Did you submit a separate ownership certificate and agricultural land declaration with your application?"
+           },
+           value: {
+             html: "No"
+           }
+         },
+         {
+           key: {
+             text: "Upload your appeal statement"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Upload your draft statement of common ground"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Do you need to apply for an award of appeal costs?"
+           },
+           value: {
+             html: "Yes"
+           }
+         },
+         {
+           key: {
+             text: "Upload your application for an award of appeal costs"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Did you submit a design and access statement with your application?"
+           },
+           value: {
+             html: "Yes"
+           }
+         },
+         {
+           key: {
+             text: "Upload your design and access statement"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Upload your plans, drawings and supporting documents you submitted with your application"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Do you have any new plans or drawings that support your appeal?"
+           },
+           value: {
+             html: "Yes"
+           }
+         },
+         {
+           key: {
+             text: "Do you have any new plans or drawings that support your appeal?"
+           },
+           value: {
+             html: "Yes"
+           }
+         },
+         {
+           key: {
+             text: "Upload your new plans or drawings"
+           },
+           value: {
+             html: "File name.png"
+           }
+         },
+         {
+           key: {
+             text: "Do you have any other new documents that support your appeal?"
+           },
+           value: {
+             html: "Yes"
+           }
+         },
+         {
+           key: {
+             text: "Upload your other new supporting documents"
+           },
+           value: {
+             html: "File name.png"
+           }
+         }
+       ]
+     }) }}
+
+{% endblock %}
+{% block buttons %}
+
+    </div>
+  </div>
+{% endblock %}

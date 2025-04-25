@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'When is the enforcement notice effective from?' %}
+
+{% block questions %}
+  {{ govukDateInput({
+    id: 'effective-date',
+    namePrefix: 'effective-date',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'For example, 31 3 2024'
+    },
+    items: [
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: data['effective-date-day']
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2',
+        value: data['effective-date-month']
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4',
+        value: data['effective-date-year']
+      }
+    ]
+  }) }}
+{% endblock %}

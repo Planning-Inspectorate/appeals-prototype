@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Was your application granted or refused?' %}
+
+{% block questions %}
+
+	<span class="govuk-caption-l">
+		Before you start
+	</span>
+
+	{{ govukRadios({
+		idPrefix: 'decision',
+		name: 'decision',
+		fieldset: {
+			legend: {
+	      text: title,
+	      isPageHeading: true,
+	      classes: "govuk-fieldset__legend--l"
+	    }
+		},
+		items: [
+			{
+				html: 'Granted',
+				value: 'Granted',
+				checked: checked('decision','Granted')
+			},
+			{
+				html: 'Refused',
+				value: 'Refused',
+				checked: checked('decision','Refused')
+			},
+			{
+				divider: 'or'
+			},
+			{
+				html: 'I have not received a decision',
+				value: 'I have not received a decision',
+				checked: checked('decision','I have not received a decision')
+			}
+		]
+	}) }}
+{% endblock %}

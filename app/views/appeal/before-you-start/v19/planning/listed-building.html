@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Does the planning change any part of a listed building?' %}
+
+{% block questions %}
+	{{ govukRadios({
+		idPrefix: 'listed-building',
+		name: 'listed-building',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		items: [
+			{
+				html: 'Yes',
+				value: 'Yes',
+				checked: checked('listed-building','Yes')
+			},
+			{
+				html: 'No',
+				value: 'No',
+				checked: checked('listed-building','No')
+			}
+		]
+	}) }}
+{% endblock %}

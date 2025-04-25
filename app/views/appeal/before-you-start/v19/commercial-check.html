@@ -1,0 +1,59 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Was your application about any of the following?' %}
+
+{% block questions %}
+
+	<span class="govuk-caption-l">
+		Before you start
+	</span>
+
+  <form class="form" action="/decision" method="post">
+	{{ govukCheckboxes({
+		idPrefix: 'commercial-check',
+		name: 'commercial-check',
+    values: data["commercial-check"],
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		hint: {
+			html: 'Select all that apply.'
+		},
+		items: [
+			{
+				html: 'Change of use',
+				value: 'Change of use',
+				checked: checked('commercial-check','Change of use')
+			},
+			{
+				html: 'A change to the number of units in a building',
+				value: 'A change to the number of units in a building',
+				checked: checked('commercial-check','A change to the number of units in a building')
+			},
+			{
+				html: 'A development that is not wholly at ground floor level',
+				value: 'A development that is not wholly at ground floor level',
+				checked: checked('commercial-check','A development that is not wholly at ground floor level')
+			},
+			{
+				html: 'A development that would increase the gross internal area of a building',
+				value: 'A development that would increase the gross internal area of a building',
+				checked: checked('commercial-check','A development that would increase the gross internal area of a building')
+			},
+	    {
+	      divider: "or"
+	    },
+	    {
+	      html: 'None of these',
+	      value: 'None of these',
+				behaviour: "exclusive",
+	      checked: checked('appeal-type','None of these')
+	    }
+		]
+	}) }}
+
+{% endblock %}

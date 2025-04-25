@@ -1,0 +1,23 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What date did you submit your planning application?' %}
+
+{% block questions %}
+
+	<span class="govuk-caption-l">
+		Before you start
+	</span>
+
+  {{ govukDateInput({
+    id: "application-date",
+    namePrefix: "application-date",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    }
+  }) }}
+
+{% endblock %}
