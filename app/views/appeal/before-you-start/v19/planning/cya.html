@@ -10,7 +10,7 @@
     Applications date month is {{ data ['application-date-month'] }}<br>
     Applications date year is {{ data ['application-date-year'] }}<br> -->
 
-    Appeal type is {{ data['appealType'] }}<br>
+    Appeal type is {{ data['appealIs'] }}<br>
 
   </p>
 
@@ -23,7 +23,7 @@
     rows: [
       {
         key: {
-          text: 'Local planning authority'
+          text: 'Which local planning authority (LPA) do you want to appeal against?'
         },
         value: {
           text: data['lpa'] or 'Bradford'
@@ -39,10 +39,10 @@
       },
       {
         key: {
-          text: 'Related to a listed building'
+          text: 'Have you received an enforcement notice?'
         },
         value: {
-          text: 'Yes' if data['lbcStatus'] == 'Yes' else 'No'
+          text: data['enforcementStatus'] or 'No'
         },
         actions: {
           items: [
@@ -56,10 +56,10 @@
 
       {
         key: {
-          text: 'Application type'
+          text: 'What type of application is your appeal about?'
         },
         value: {
-          text: 'Full planning'
+          text: data['appeal-type'] or 'Full planning'
         },
         actions: {
           items: [
@@ -69,14 +69,14 @@
             }
           ]
         }
-      } if data['type'] == 'planning' and data['lbcStatus'] == 'Yes',
+      },
 
       {
         key: {
-          text: 'Application type'
+          text: 'What type of application is your appeal about?'
         },
         value: {
-          text: 'Listed building consent'
+          text: data['appeal-type'] or 'Full planning'
         },
         actions: {
           items: [
@@ -86,14 +86,14 @@
             }
           ]
         }
-      } if data['type'] == 'lbc',
+      } if data['appeal-type'] == 'Minor commercial development',
 
       {
         key: {
-          text: 'Application type'
+          text: 'What date did you submit your planning application?'
         },
         value: {
-          html: 'Full planning<br>Listed building consent'
+          text: data['application-date'] or '31 July 2025'
         },
         actions: {
           items: [
@@ -103,85 +103,19 @@
             }
           ]
         }
-      } if data['type'] == 'both' and data['lbcStatus'] == 'Yes',
+      },
 
       {
         key: {
-          text: 'Application type'
+          text: 'Was your application granted or refused?'
         },
         value: {
-          text: 'Listed building consent'
+          html: data['decision'] or 'Refused'
         },
         actions: {
           items: [
             {
               href: 'type',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['appeal-option'] == 'lbc' and data['lbcStatus'] == 'Yes',
-
-      {
-        key: {
-          text: 'Application type'
-        },
-        value: {
-          text: 'Full planning'
-        },
-        actions: {
-          items: [
-            {
-              href: 'type',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['lbcStatus'] == 'No',
-
-      {
-        key: {
-          text: 'Extend an existing home' if data['planning-type'] == 'Prior approval' else 'Homeholder planning permission'
-        },
-        value: {
-          html: data['existing-home-check'] or 'No'
-        },
-        actions: {
-          items: [
-            {
-              href: 'existing-home-check',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['planning-type'] == 'Prior approval' or data['planning-type'] == 'Removal or variation of conditions',
-      {
-        key: {
-          text: 'Major development'
-        },
-        value: {
-          html: 'No'
-        },
-        actions: {
-          items: [
-            {
-              href: 'major-development-check',
-              text: 'Change'
-            }
-          ]
-        }
-      } if data['existing-home-check'] != 'Yes' and data['planning-type'] != 'Householder planning',
-      {
-        key: {
-          text: 'Decision'
-        },
-        value: {
-          text: data['decision'] or 'Refused'
-        },
-        actions: {
-          items: [
-            {
-              href: 'decision',
               text: 'Change'
             }
           ]
@@ -189,15 +123,15 @@
       },
       {
         key: {
-          text: 'Decision date'
+          text: 'What’s the date on the decision letter from the local planning authority?'
         },
         value: {
-          html: decisionDate
+          text: data['decision-date'] or 3 | daysAgo
         },
         actions: {
           items: [
             {
-              href: 'decision-date?cya=true',
+              href: 'type',
               text: 'Change'
             }
           ]
@@ -205,21 +139,20 @@
       } if data['decision'] != 'I have not received a decision',
       {
         key: {
-          text: 'Decision due date'
+          text: 'What date was your decision due?'
         },
         value: {
-          html: decisionDate
+          text: data['decision-date'] or 3 | daysAgo
         },
         actions: {
           items: [
             {
-              href: 'decision-due-date?cya=true',
+              href: 'type',
               text: 'Change'
             }
           ]
         }
       } if data['decision'] == 'I have not received a decision'
-
     ]
   }) }}
 

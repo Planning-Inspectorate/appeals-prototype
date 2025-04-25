@@ -32,7 +32,7 @@ router.post('/lpa', function (req, res) {
 
 router.post('/enforcement', function (req, res) {
   if (req.session.data['enforcementStatus'] != 'No') {
-    res.redirect('appeal-type');
+    res.redirect('planning-type');
   } else {
     res.redirect('errors/no-enforcement');
   }
@@ -40,16 +40,12 @@ router.post('/enforcement', function (req, res) {
 
 //Appeal type
 
-router.post('/appeal-type', function (req, res) { // routing for different appeal types
+router.post('/planning-type', function (req, res) { // routing for different appeal types
 
-  let type = req.session.data['appeal-type']
-
-  switch (type) {
-    case 'Minor commercial development':
-      res.redirect('commercial-check');
-      break;
-    default:
-      res.redirect('planning/application-date');
+  if (req.session.data['planning-type'] == 'Minor commercial development') {
+    res.redirect('commercial-check');
+  } else {
+    res.redirect('planning/application-date');
   }
 
 })
@@ -59,10 +55,10 @@ router.post('/appeal-type', function (req, res) { // routing for different appea
 router.post('/commercial-check', function (req, res) { // routing for different appeal types
 
   // removed the 'more' option in the form - code still works
-  if (req.session.data['commercial-check'] == 'None of these') {
-    res.redirect('planning/application-date?appealType=PlanningCAS');
+  if (req.session.data['commercial-check'] != 'Yes') {
+    res.redirect('planning/application-date?appealIs=planning%20CAS');
   } else {
-    res.redirect('planning/application-date?appealType=FullPlanning');
+    res.redirect('planning/application-date?appealIs=full%20planning');
   }
 
 })
@@ -78,18 +74,18 @@ router.post('/planning/decision', function (req, res) {
   if (req.session.data['decision'] == 'Granted' || req.session.data['decision'] == 'Refused' ) {
 
     // then check that the appeal type is not MCD
-    if (req.session.data['appeal-type'] != 'Minor commercial development') {
+    if (req.session.data['planning-type'] != 'Minor commercial development') {
 
       // then set vars for appeal type, based on decision
       // if the appeal type was ‘Displaying an advert’
-      if (req.session.data['appeal-type'] == 'Displaying an advertisement') {
+      if (req.session.data['planning-type'] == 'Displaying an advertisement') {
         if (req.session.data['decision'] == 'Granted') {
-          res.redirect('decision-date?appealType=Advert');
+          res.redirect('decision-date?appealIs=advert');
         } else {
-          res.redirect('decision-date?appealType=CASAdvert');
+          res.redirect('decision-date?appealIs=CAS%20advert');
         }
       } else { // S78
-        res.redirect('decision-date?appealType=FullPlanning');
+        res.redirect('decision-date?appealIs=full%20planning');
       }
 
     } else {
@@ -102,10 +98,10 @@ router.post('/planning/decision', function (req, res) {
   } else {
 
     // then check that the appeal type is Displaying an advert
-    if (req.session.data['appeal-type'] == 'Displaying an advertisement') {
+    if (req.session.data['planning-type'] == 'Displaying an advertisement') {
 
       // then set vars for appeal type, based on decision
-      res.redirect('decision-due-date?appealType=Advert');
+      res.redirect('decision-due-date?appealIs=advert');
 
     } else {
 
@@ -119,7 +115,7 @@ router.post('/planning/decision', function (req, res) {
 
 router.post('/planning/decision-date', function (req, res) {
 
-  let type = req.session.data['appeal-type']
+  let type = req.session.data['planning-type']
   let appmonth = req.session.data['application-date-month']
   let appyear = req.session.data['application-date-year']
   let decision = req.session.data['decision']
@@ -135,7 +131,7 @@ router.post('/planning/decision-date', function (req, res) {
       // check decision has been received
       if (decision != 'I have not received a decision') {
 
-        res.redirect('cya?appealType=expedited')
+        res.redirect('cya?appealIs=expedited')
 
       } else {
         res.redirect('cya')
@@ -153,7 +149,7 @@ router.post('/planning/decision-date', function (req, res) {
 
 router.post('/planning/decision-due-date', function (req, res) {
 
-  let type = req.session.data['appeal-type']
+  let type = req.session.data['planning-type']
   let appmonth = req.session.data['application-date-month']
   let appyear = req.session.data['application-date-year']
   let decision = req.session.data['decision']
@@ -169,7 +165,7 @@ router.post('/planning/decision-due-date', function (req, res) {
       // check decision has been received
       if (decision != 'I have not received a decision') {
 
-        res.redirect('cya?appealType=expedited')
+        res.redirect('cya?appealIs=expedited')
 
       } else {
         res.redirect('cya')
@@ -189,9 +185,9 @@ router.post('/planning/decision-due-date', function (req, res) {
 
 router.post('/planning/cya', function (req, res) {
 
-  if (req.session.data['appealType'] == 'FullPlanning') {
+  if (req.session.data['appealIs'] == 'full%20planning') {
     res.redirect('/appeal/full/v5/before-you-continue');
-  } else if (req.session.data['appealType'] == 'CAS') {
+  } else if (req.session.data['appealIs'] == 'CAS') {
     res.redirect('/appeal/has/v3/before-you-continue');
   } else {
     res.redirect('/appeal/cas-adverts/v1/');

@@ -2,58 +2,64 @@
 
 {% set title = 'Was your application about any of the following?' %}
 
-{% block questions %}
+{% block content %}
 
-	<span class="govuk-caption-l">
-		Before you start
-	</span>
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
 
-  <form class="form" action="/decision" method="post">
-	{{ govukCheckboxes({
-		idPrefix: 'commercial-check',
-		name: 'commercial-check',
-    values: data["commercial-check"],
-		fieldset: {
-			legend: {
-				html: title,
-				classes: 'govuk-fieldset__legend--l',
-				isPageHeading: true
-			}
-		},
-		hint: {
-			html: 'Select all that apply.'
-		},
-		items: [
-			{
-				html: 'Change of use',
-				value: 'Change of use',
-				checked: checked('commercial-check','Change of use')
-			},
-			{
-				html: 'A change to the number of units in a building',
-				value: 'A change to the number of units in a building',
-				checked: checked('commercial-check','A change to the number of units in a building')
-			},
-			{
-				html: 'A development that is not wholly at ground floor level',
-				value: 'A development that is not wholly at ground floor level',
-				checked: checked('commercial-check','A development that is not wholly at ground floor level')
-			},
-			{
-				html: 'A development that would increase the gross internal area of a building',
-				value: 'A development that would increase the gross internal area of a building',
-				checked: checked('commercial-check','A development that would increase the gross internal area of a building')
-			},
-	    {
-	      divider: "or"
-	    },
-	    {
-	      html: 'None of these',
-	      value: 'None of these',
-				behaviour: "exclusive",
-	      checked: checked('appeal-type','None of these')
-	    }
-		]
-	}) }}
+			<span class="govuk-caption-l">
+				Before you start
+			</span>
+
+			<h1 class="govuk-heading-l">
+		    {{ title }}
+		  </h1>
+
+			<ul class="govuk-list govuk-list--bullet">
+			  <li>
+					change of use
+				</li>
+			  <li>
+					a change to the number of units in a building
+				</li>
+			  <li>
+					a development that is not wholly at ground floor level
+				</li>
+			  <li>
+					a development that would increase the gross internal area of a building
+				</li>
+			</ul>
+
+		  <form method="post">
+
+			  {{ govukRadios({
+			    name: "commercial-check",
+			    fieldset: {
+			      legend: {
+			        text: "Was your application about any of these?",
+			        isPageHeading: false,
+			        classes: "govuk-fieldset__legend--m"
+			      }
+			    },
+			    items: [
+			      {
+			        value: "Yes",
+			        text: "Yes"
+			      },
+			      {
+			        value: "No",
+			        text: "No"
+			      }
+			    ]
+			  }) }}
+
+			  {{ govukButton({
+			    text: "Continue"
+			  }) }}
+
+			</form>
+
+		</div>
+	</div>
 
 {% endblock %}

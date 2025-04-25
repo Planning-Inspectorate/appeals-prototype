@@ -9,7 +9,7 @@
 	</span>
 
 	{{ govukRadios({
-	  name: "appeal-type",
+	  name: "planning-type",
 	  fieldset: {
 	    legend: {
 	      text: title,
@@ -93,7 +93,7 @@
 	    {
 	      html: 'Something else',
 	      value: 'Something else',
-	      checked: checked('appeal-type','discontinueance notice')
+	      checked: checked('planning-type','discontinueance notice')
 	    },
 	    {
 	      divider: "or"
@@ -101,7 +101,7 @@
 	    {
 	      html: 'I have not made an application',
 	      value: 'I have not made an application',
-	      checked: checked('appeal-type','I have not made a planning application')
+	      checked: checked('planning-type','I have not made a planning application')
 	    }
 	  ]
 	}) }}
