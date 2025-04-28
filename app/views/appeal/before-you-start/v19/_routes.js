@@ -31,7 +31,7 @@ router.post('/lpa', function (req, res) {
 })
 
 router.post('/enforcement', function (req, res) {
-  if (req.session.data['enforcementStatus'] != 'No') {
+  if (req.session.data['enforcementStatus'] != 'Yes') {
     res.redirect('planning-type');
   } else {
     res.redirect('errors/no-enforcement');
