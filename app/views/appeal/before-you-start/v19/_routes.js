@@ -90,7 +90,7 @@ router.post('/planning/decision', function (req, res) {
 
     } else {
 
-      res.redirect('decision-date');
+      res.redirect('decision-date?appealIs=appealIs=Householder%20planning');
 
     }
 
@@ -185,14 +185,22 @@ router.post('/planning/decision-due-date', function (req, res) {
 
 router.post('/planning/cya', function (req, res) {
 
-  if (req.session.data['appealIs'] == 'full%20planning') {
-    res.redirect('/appeal/full/v5/before-you-continue');
-  } else if (req.session.data['appealIs'] == 'CAS') {
-    res.redirect('/appeal/has/v3/before-you-continue');
-  } else {
-    res.redirect('/appeal/cas-adverts/v1/');
-  }
+  let appealtype = req.session.data['appealIs']
 
+  switch (appealtype) {
+    case 'advert':
+    case 'CAS%20advert':
+      res.redirect('/appeal/cas-adverts/v1/');
+      break;
+    case 'full%20planning':
+      res.redirect('/appeal/full/v5/before-you-continue');
+      break;
+    case 'expedited':
+      res.redirect('/appeal/s78e/v1/before-you-continue');
+      break;
+    default:
+      res.redirect('/appeal/has/v3/before-you-continue');
+  }
 })
 
 // Add your routes above the module.exports line

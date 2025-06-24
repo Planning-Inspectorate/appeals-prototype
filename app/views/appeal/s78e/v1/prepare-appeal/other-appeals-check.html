@@ -1,0 +1,36 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Are there other appeals linked to your development?' %}
+
+{% block questions %}
+
+  <!-- <span class="govuk-caption-l">
+    Appeal process
+  </span> -->
+  {{ govukRadios({
+    idPrefix: 'other-appeals-radio',
+    name: 'other-appeals-radio',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: '<span class="govuk-body">Only tell us about ongoing appeals that have not already received a decision.</span>'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('other-appeals-radio','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('other-appeals-radio','No')
+      }
+    ]
+  }) }}
+{% endblock %}

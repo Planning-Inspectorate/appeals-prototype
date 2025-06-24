@@ -1,0 +1,59 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Simplified appeal procedure / S78E' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% set version = "1" %}
+
+    <p class="govuk-body">
+      Showing the appeal submission form for an S78E (expedited S78) appeal.
+    </p>
+
+    {{ govukInsetText({
+      html: '
+        <p class="govuk-body">
+          Linked resources:
+          <ul class="govuk-list">
+            <li>
+              <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1745403946298/5b6e3324bb5ee3e4e45a2f3ef8677e724fb7a9bf">
+                Design Mural board
+              </a> for S78E
+            </li>
+            <li>
+              <a href="https://pins-ds.atlassian.net/browse/A2-2639">
+                Jira epic ticket
+              </a>
+            </li>
+          </ul>
+
+        </p>'
+
+    }) }}
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/appeal/s78e/v'+version+'/before-you-continue',
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+{% endblock %}
