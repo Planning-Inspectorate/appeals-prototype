@@ -56,9 +56,9 @@ router.post('/commercial-check', function (req, res) { // routing for different 
 
   // removed the 'more' option in the form - code still works
   if (req.session.data['commercial-check'] != 'Yes') {
-    res.redirect('planning/application-date?appealIs=planning%20CAS');
+    res.redirect('planning/application-date?appealIs=CASplanning');
   } else {
-    res.redirect('planning/application-date?appealIs=full%20planning');
+    res.redirect('planning/application-date?appealIs=fullplanning');
   }
 
 })
@@ -82,15 +82,15 @@ router.post('/planning/decision', function (req, res) {
         if (req.session.data['decision'] == 'Granted') {
           res.redirect('decision-date?appealIs=advert');
         } else {
-          res.redirect('decision-date?appealIs=CAS%20advert');
+          res.redirect('decision-date?appealIs=CASadvert');
         }
       } else { // S78
-        res.redirect('decision-date?appealIs=full%20planning');
+        res.redirect('decision-date?appealIs=fullplanning');
       }
 
     } else {
 
-      res.redirect('decision-date?appealIs=appealIs=Householder%20planning');
+      res.redirect('decision-date?appealIs=HASplanning');
 
     }
 
@@ -189,18 +189,25 @@ router.post('/planning/cya', function (req, res) {
 
   switch (appealtype) {
     case 'advert':
-    case 'CAS%20advert':
+    case 'CASadvert':
       res.redirect('/appeal/cas-adverts/v1/');
       break;
-    case 'full%20planning':
+    case 'CASplanning':
+      res.redirect('/appeal/cas-planning/v1/');
+      break;
+    case 'fullplanning':
       res.redirect('/appeal/full/v5/before-you-continue');
       break;
     case 'expedited':
       res.redirect('/appeal/s78e/v1/before-you-continue');
       break;
-    default:
+    case 'HASplanning':
       res.redirect('/appeal/has/v3/before-you-continue');
+      break;
+    default:
+      res.redirect('/appeal/generic/v3/before-you-continue');
   }
+
 })
 
 // Add your routes above the module.exports line
