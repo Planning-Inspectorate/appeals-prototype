@@ -21,7 +21,7 @@
       {{ title }}
     </h1>
 
-    {% set version = "14" %}
+    {% set version = "15" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -33,13 +33,10 @@
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        content updates following user research
+        S78 expedited variant
       </li>
       <li>
-        simplification of Planning officer’s report section title
-      </li>
-      <li>
-        removed environmental impact assessment site notice and responses questions
+        additional section, ‘Original evidence’
       </li>
     </ul>
 
@@ -48,6 +45,31 @@
       href: 'v'+version+'/task-list',
       isStartButton: true
     }) }}
+
+    {% set v14HTML %}
+
+      {% set version = "14" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          content updates following user research
+        </li>
+        <li>
+          simplification of Planning officer’s report section title
+        </li>
+        <li>
+          removed environmental impact assessment site notice and responses questions
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v13HTML %}
 
@@ -169,6 +191,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 14 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v14HTML
+          }
+        },
         {
           heading: {
             html: 'Version 13 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">Researched</strong>'

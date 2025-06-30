@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Appeal "+(data['appealCode'] or '01234567') %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-xl">
+      Appeal {{ data['appealCode'] or '1345264' }}
+    </span>
+    <h1 class="govuk-heading-xl">
+      Appellant’s statement
+    </h1>
+  </div>
+
+  <div class="govuk-grid-column-full">
+    {% include "_includes/lpa/meta-full-appeal.html" %}
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+  </div>
+
+  <div class="govuk-grid-column-full">
+    {% include "_includes/lpa/table-appellant-statement.html" %}
+    <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
+  </div>
+
+</div>
+
+{% endblock %}

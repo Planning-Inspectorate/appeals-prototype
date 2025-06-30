@@ -3,37 +3,14 @@
 {% set title = 'Appeal submitted' %}
 {% set back = false %}
 
-{% set prototypeLinks = [
-  {
-    href: 'confirmation?integration=yes',
-    text: 'Back office integrated version'
-  } if data['integration'] != 'yes' else
-
-  {
-    href: 'confirmation?integration=',
-    text: 'Horizon version'
-  }
-  ]
-%}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      {% if data['integration'] != 'yes' %}
-
-        {{ govukPanel({
-          titleHtml: title
-        }) }}
-
-      {% else %}
 
         {{ govukPanel({
           titleHtml: title,
           html: "Appeal reference number <br><strong>0123456</strong>"
         }) }}
-
-      {% endif %}
 
       <p class="govuk-body">
         We’ve sent you a confirmation email with a link to download a copy of your appeal.

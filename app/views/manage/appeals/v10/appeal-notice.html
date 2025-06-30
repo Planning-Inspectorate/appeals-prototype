@@ -1,0 +1,103 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% block pageTitle %}
+  Interested party full planning notification - Appeal a planning decision - GOV.UK
+{% endblock %}
+
+{% if data['appealCode'] != "true" %}
+  {% set appealCode = "1345264" %}
+{% endif %}
+
+{% set title = "Notice of a planning appeal" %}
+
+{% set applicationRef = "23/04125/FUL" %}
+
+{% block content %}
+<!-- faux email header -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% include "_includes/appeal-content/lpa-appeal-notice-meta.html" %}
+    <section>
+      <!-- <p class="govuk-body">
+        <img src="{{ asset_path }}images/pi-logo.png" width="150"/>
+      </p> -->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    </section>
+
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+
+    <section class="govuk-!-margin-bottom-9">
+      <!-- <p class="govuk-body">
+        Dear householder,
+      </p> -->
+
+      <p class="govuk-body">
+        An appeal has been made to the Secretary of State against the refusal of planning permission. The Planning Inspectorate will make the final decision on this appeal.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What you can do
+      </h2>
+
+      <p class="govuk-body">
+        If you have an interest in this appeal, you can have your say and add a comment (this is also known as a ‘written representation’).
+      </p>
+
+      <p class="govuk-body">
+        The deadline to comment is 11:59pm on {{ 7 | daysInFuture }}.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        How to comment on the appeal
+      </h2>
+
+      <p class="govuk-body">
+        You can use the Planning Inspectorate’s website to submit a comment on this appeal. If you commented on the original application, it has already been sent to the planning inspector.
+      </p>
+
+      <ol class="govuk-list govuk-list--number">
+        <li>Go to <span class="govuk-!-font-weight-bold" style="text-decoration: underline;">
+          https://comment-on-planning-appeals.service.gov.uk/
+        </span></li>
+        <li>Search for appeal reference <span class="govuk-!-font-weight-bold">{{ appealCode }}</span>.</li>
+        <li>View more details and add your comment.</li>
+      </ol>
+
+      <p class="govuk-body">
+        Alternatively, you can send your comment by post to: Appeals Team, The Planning Inspectorate, Temple Quay House, 2 The Square, Bristol BS1 6PN.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p class="govuk-body">
+        The Planning Inspectorate will review all the information from the application, comments on the appeal and may do a site visit. They will then make their decision. We will publish the decision on our website.
+      </p>
+
+      <p class="govuk-body">
+        Bristol City Council
+      </p>
+
+      <p class="govuk-body-l">
+        <span class="govuk-!-font-weight-bold"">Contact us on 0117 922 3000</span> or visit our website, <span class="govuk-!-font-weight-bold" style="text-decoration: underline;">https://www.bristol.gov.uk/</span>
+      <p>
+
+    </section>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="window.print()">
+      Print this notice
+    </button>
+
+  </div>
+</div>
+
+{% endblock %}
