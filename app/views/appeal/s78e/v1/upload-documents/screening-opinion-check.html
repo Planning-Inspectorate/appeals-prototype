@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did you ask the local planning authority for a screening opinion?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'screening-opinion-check',
+    name: 'screening-opinion-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('screening-opinion-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('screening-opinion-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

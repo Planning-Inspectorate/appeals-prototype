@@ -326,6 +326,48 @@ router.post('/upload-documents/:page', function (req, res, next) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/application', function (req, res) {
+  res.redirect('environment-statement-check')
+})
+
+router.post('/upload-documents/environment-statement-check', function (req, res) {
+  if (req.session.data['environment-statement-check'] == 'No') {
+    res.redirect('screening-opinion-check')
+  } else {
+    res.redirect('environment-statement')
+  }
+})
+
+router.post('/upload-documents/environment-statement', function (req, res) {
+  res.redirect('screening-opinion-check')
+})
+
+router.post('/upload-documents/screening-opinion-check', function (req, res) {
+  if (req.session.data['screening-opinion-check'] == 'No') {
+    res.redirect('new-environment-statement-check')
+  } else {
+    res.redirect('screening-opinion')
+  }
+})
+
+router.post('/upload-documents/screening-opinion', function (req, res) {
+  res.redirect('new-environment-statement-check')
+})
+
+router.post('/upload-documents/new-environment-statement-check', function (req, res) {
+  if (req.session.data['new-environment-statement-check'] == 'No') {
+    // if the description of development changed, the next screen is to upload the
+    // description of development agreement
+    if (req.session.data['application-desc-changed'] != 'No') {
+      res.redirect('description-of-development-agreement?application-started=true')
+    } else {
+      res.redirect('decision-letter?application-started=true')
+    }
+  } else {
+    res.redirect('new-environment-statement')
+  }
+})
+
+router.post('/upload-documents/new-environment-statement', function (req, res) {
   // if the description of development changed, the next screen is to upload the
   // description of development agreement
   if (req.session.data['application-desc-changed'] != 'No') {

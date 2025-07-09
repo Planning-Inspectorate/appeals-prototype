@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Was an environment statement submitted with the application?' %}
+
+
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'environment-statement-check',
+    name: 'environment-statement-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('environment-statement-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('environment-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}
