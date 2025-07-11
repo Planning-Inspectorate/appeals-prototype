@@ -32,7 +32,7 @@
     },
     {
       key: {
-        html: 'Site address'
+        html: 'What is the address of the appeal site?'
       },
       value: {
         html: 'Haggis Farm Cottage<br>Cambridge Rd<br>Barton<br>Cambridge<br>CB23 7AT'
@@ -48,7 +48,7 @@
     },
     {
       key: {
-        html: 'Is the site in a green belt?'
+        html: 'Is the appeal site in a green belt?'
       },
       value: {
         html: 'No'
@@ -56,12 +56,22 @@
     },
     {
       key: {
-        html: 'Site fully owned'
+        html: 'Do you own all of the land involved in the appeal?'
       },
       value: {
         html: 'Yes'
       }
     },
+    
+    {
+      key: {
+        html: 'Is the appeal site part of an agricultural holding?'	
+      },
+      value: {
+        html: 'No'
+      }
+    },
+
     {
       key: {
         html: 'Will an inspector need to access your land or property?'
@@ -70,25 +80,10 @@
         html: 'No'
       }
     },
+    
     {
       key: {
-        html: 'Agricultural holding'
-      },
-      value: {
-        html: 'No'
-      }
-    },
-    {
-      key: {
-        html: 'Visibility'
-      },
-      value: {
-        html: 'No<br>On private land'
-      }
-    },
-    {
-      key: {
-        html: 'Site health and safety issues'
+        html: 'Are there any health and safety issues on the appeal site?'
       },
       value: {
         html: 'Yes<br>Cattle'
@@ -96,7 +91,7 @@
     },
     {
       key: {
-        html: 'Application reference'
+        html: 'What is your application number?'
       },
       value: {
         html: '23/04125/FUL'
@@ -104,7 +99,7 @@
     },
     {
       key: {
-        html: 'What date did you submit your planning application?'
+        html: 'What date did you submit your application?'
       },
       value: {
         html: 45 | daysAgo
@@ -112,7 +107,23 @@
     },
     {
       key: {
-        html: 'Enter the description of development'
+        html: 'Was your application for a major or minor development?'
+      },
+      value: {
+        html: 'Minor'
+      }
+    },
+    {
+      key: {
+        html: 'Was your application about any of the following?'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'Enter the description of development that you submitted in your application'
       },
       value: {
         html: 'New facia to 3rd floor dorma and change of roof material'
@@ -126,20 +137,21 @@
         html: 'No'
       }
     },
-    {
-      key: {
-        html: 'Preferred procedure'
-      },
-      value: {
-        html: 'Hearing'
-      }
-    },
+    
     {
       key: {
         html: 'Are there other appeals linked to your development?'
       },
       value: {
         html: 'No'
+      }
+    },
+    {
+      key: {
+        html: 'How would you prefer us to decide your appeal?'
+      },
+      value: {
+        html: 'Written representations'
       }
     }
 
@@ -164,13 +176,71 @@
     },
     {
       key: {
-        html: 'New description of developement',
+        html: 'Agreement to change the description of development',
         classes: 'govuk-!-width-one-third'
       },
       value: {
-        html: 'Application for approval of details reserved by condition 17(renewable energy) of permission 20/02137/FB Proposed residential development (Use Class C3). Two and three storey new buildings (total of 34 units) with access, parking, landscaping and open space.'
+        html: '<a href="#" class="govuk-link">agreement-lpa.pdf</a>'
       }
     },
+
+    {
+      key: {
+        html: 'Decision letter from the local planning authority',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">decision-lpa.pdf</a>'
+      }
+    },
+
+    {
+      key: {
+        html: 'What is the status of your planning obligation?'
+      },
+      value: {
+        html: 'Finalised'
+      }
+    },
+
+    {
+      key: {
+        html: 'Planning obligation',
+        classes: 'govuk-!-width-one-third'
+      },
+      value: {
+        html: '<a href="#" class="govuk-link">planning-obligation.pdf</a>'
+      }
+    },
+
+    {
+      key: {
+        html: 'Did you submit a separate ownership certificate and agricultural land declaration with your application?'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+
+    {
+      key: {
+        html: 'Do you need to apply for an award of appeal costs?'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+
+    {
+      key: {
+        html: 'Did you submit a design and access statement with your application?'
+      },
+      value: {
+        html: 'No'
+      }
+    },
+    
+
     {
       key: {
         html: 'Plans, drawings and supporting documents'
@@ -181,78 +251,37 @@
                <a href="#" class="govuk-link">Appeal outline diagram.pdf</a><br>'
       }
     },
+   
+   
+    
+   
     {
       key: {
-        html: 'Separate ownership certificate in application'
+        html: 'Do you have any new plans or drawings that support your appeal?	'
       },
       value: {
         html: 'No'
       }
     },
+
     {
       key: {
-        html: 'Design and access statement in application'
+        html: 'Do you have any other new documents that support your appeal?'
       },
       value: {
-        html: '<a href="#" class="govuk-link">Appeal DA.pdf</a><br>'
+        html: 'Yes'
       }
     },
+   
     {
       key: {
-        html: 'Decision letter'
-      },
-      value: {
-        html: '<a href="#" class="govuk-link">Appeal decision 2023.pdf</a><br>'
-      }
-    },
-    {
-      key: {
-        html: 'Appeal statement'
-      },
-      value: {
-        html: '<a href="#" class="govuk-link">Appeal statement 2023.pdf</a><br>'
-      }
-    },
-    {
-      key: {
-        html: 'Costs application'
-      },
-      value: {
-        html: '<a href="#" class="govuk-link">Appeal cost application 2023.pdf</a><br>'
-      }
-    },
-    {
-      key: {
-        html: 'New plans or drawings'
-      },
-      value: {
-        html: 'No'
-      }
-    },
-    {
-      key: {
-        html: 'Planning obligation'
-      },
-      value: {
-        html: 'No'
-      }
-    },
-    {
-      key: {
-        html: 'New supporting documents'
+        html: 'Other new supporting documents'
       },
       value: {
         html: '<a href="#" class="govuk-link">Local petition for development.pdf</a>'
       }
-    },
-    {
-      key: {
-        html: 'Draft statement of common ground'
-      },
-      value: {
-        html: '<a href="#" class="govuk-link">Statement of common ground 11.08.2024.doc</a>'
-      }
     }
+    
 
   ]
 }) }}
