@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Contact details' %}
+{% set title = 'What are the appellant&rsquo;s contact details?' %}
 
 {% block questions %}
 
@@ -13,9 +13,9 @@
   }) %}
 
     {{ govukInput({
-      id: 'agent-first-name',
-      name: 'agent-first-name',
-      value: data['agent-first-name'],
+      id: 'applicant-first-name',
+      name: 'applicant-first-name',
+      value: data['applicant-first-name'],
       classes: 'govuk-!-width-three-quarters',
       label: {
         html: 'First name'
@@ -25,9 +25,9 @@
     }) }}
 
     {{ govukInput({
-      id: 'agent-last-name',
-      name: 'agent-last-name',
-      value: data['agent-last-name'],
+      id: 'applicant-last-name',
+      name: 'applicant-last-name',
+      value: data['applicant-last-name'],
       classes: 'govuk-!-width-three-quarters',
       label: {
         html: 'Last name'
@@ -42,6 +42,15 @@
       value: data['agency-name'],
       label: {
         html: 'Company name (optional)'
+      }
+    }) }}
+
+    {{ govukInput({
+      id: 'appellant-enforcement-reference',
+      name: 'appellant-enforcement-reference',
+      value: data['appellant-enforcement-reference'],
+      label: {
+        html: 'Enforcement reference number'
       }
     }) }}
 

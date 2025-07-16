@@ -1,28 +1,32 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Upload your draft statement of common ground' %}
+{% set title = 'Upload your application for an award of appeal costs' %}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
 
+  <!-- <p class="govuk-body">
+    Your appeal statement explains why you disagree with the local planning authority’s decision.
+  </p> -->
+
   {% set uploadHtml %}
     {{ govukFileUpload({
-      id: 'common-ground',
-      name: 'common-ground',
+      id: 'costs-upload',
+      name: 'costs-upload',
       classes: 'moj-multi-file-upload__input',
       label: {
-        text: 'Upload a file',
+        text: 'Upload files',
         classes: 'govuk-label--m'
       },
       hint: {
-        text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
+        text: 'Each file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
       }
     }) }}
 
     {{govukButton({
-      text: 'Upload file',
+      text: 'Upload files',
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
   {% endset %}
@@ -34,7 +38,9 @@
     },
     uploadHtml: uploadHtml
   }) }}
+
 {% endblock %}
+
 
 {% block pageScripts %}
   <script>
@@ -56,7 +62,7 @@
       e.preventDefault();
 
       $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="common-ground" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+        $('<input name="costs-upload" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
       });
 
       $(this).unbind('submit').submit();

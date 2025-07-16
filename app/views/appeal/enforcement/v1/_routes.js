@@ -264,91 +264,58 @@ router.post('/prepare-appeal/:page', function (req, res, next) {
   next()
 })
 
-router.post('/prepare-appeal/contact-details', function (req, res) {
-  res.redirect('appellant-check')
-})
+
 
 router.post('/prepare-appeal/appellant-check', function (req, res) {
-  if (req.session.data['appellant-check'] == 'Another individual') {
+  if (req.session.data['appellant-check'] == 'Appellant') {
     res.redirect('appellant-name')
   } else {
-    res.redirect('lpa-reference')
+    res.redirect('contact-details')
   }
+})
+
+
+router.post('/prepare-appeal/contact-details', function (req, res) {
+  res.redirect('contact-phone-number')
+})
+
+router.post('/prepare-appeal/contact-phone-number', function (req, res) {
+  res.redirect('appellant-name')
 })
 
 router.post('/prepare-appeal/appellant-name', function (req, res) {
-  res.redirect('lpa-reference')
+  res.redirect('other-appellants')
 })
 
-router.post('/prepare-appeal/lpa-reference', function (req, res) {
-  res.redirect('address')
+router.post('/prepare-appeal/add-another-appellant', function (req, res) {
+  if (req.session.data['add-another-appellant'] == 'Yes') {
+    res.redirect('appellant-contact-details')
+  } else {
+    res.redirect('address')
+  }
+})
+
+router.post('/prepare-appeal/appellant-contact-details', function (req, res) {
+  res.redirect('add-another-appellant')
 })
 
 router.post('/prepare-appeal/address', function (req, res) {
-  res.redirect('own-all')
+  res.redirect('interest')
 })
 
-router.post('/prepare-appeal/own-all', function (req, res) {
-  if (req.session.data['own-all'] == 'No') {
-    res.redirect('own-some')
-  } else {
-    res.redirect('agricultural-holding')
-  }
+router.post('/prepare-appeal/interest', function (req, res) {
+  res.redirect('description-of-development')
 })
 
-router.post('/prepare-appeal/own-some', function (req, res) {
-  res.redirect('own-others')
+router.post('/prepare-appeal/description-of-development', function (req, res) {
+  res.redirect('live-site')
 })
 
-router.post('/prepare-appeal/own-others', function (req, res) {
-  if (req.session.data['own-others'] == 'Some' || req.session.data['own-others'] == 'No') {
-    res.redirect('owners-searched')
-  } else {
-    res.redirect('owners-notified')
-  }
+router.post('/prepare-appeal/live-site', function (req, res) {
+  res.redirect('live-site-issue-date')
 })
 
-router.post('/prepare-appeal/owners-searched', function (req, res) {
-  res.redirect('owners-advertised')
-})
-
-router.post('/prepare-appeal/owners-advertised', function (req, res) {
-  if (req.session.data['own-others'] == 'Some') {
-    res.redirect('owners-notified')
-  } else {
-    res.redirect('agricultural-holding')
-  }
-})
-
-router.post('/prepare-appeal/owners-notified', function (req, res) {
-  res.redirect('agricultural-holding')
-})
-
-router.post('/prepare-appeal/agricultural-holding', function (req, res) {
-  if (req.session.data['agricultural-holding'] == 'Yes') {
-    res.redirect('agricultural-tenant')
-  } else {
-    res.redirect('site-visibility')
-  }
-})
-
-router.post('/prepare-appeal/agricultural-tenant', function (req, res) {
-  if (req.session.data['agricultural-tenant'] == 'Yes') {
-    res.redirect('agricultural-others')
-  } else {
-    res.redirect('agricultural-notified')
-  }
-})
-
-router.post('/prepare-appeal/agricultural-others', function (req, res) {
-  if (req.session.data['agricultural-others'] == 'Yes') {
-    res.redirect('agricultural-notified')
-  } else {
-    res.redirect('site-visibility')
-  }
-})
-
-router.post('/prepare-appeal/agricultural-notified', function (req, res) {
+router.post('/prepare-appeal/live-site-issue-date', function (req, res) {
   res.redirect('site-visibility')
 })
 
@@ -357,8 +324,15 @@ router.post('/prepare-appeal/site-visibility', function (req, res) {
 })
 
 router.post('/prepare-appeal/health-and-safety', function (req, res) {
-  res.redirect('procedure')
+  res.redirect('enforcement-reference')
 })
+
+router.post('/prepare-appeal/enforcement-reference', function (req, res) {
+  res.redirect('grounds-facts')
+})
+
+
+
 
 router.post('/prepare-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
@@ -394,13 +368,10 @@ router.get('/prepare-appeal/complete', function (req, res) {
 
 
 
-
-
-
-
 //
 // UPLOAD DOCUMENTS
 //
+
 router.post('/upload-documents/:page', function (req, res, next) {
   req.session.data['upload-documents-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
@@ -408,72 +379,39 @@ router.post('/upload-documents/:page', function (req, res, next) {
   next()
 })
 
-router.post('/upload-documents/application', function (req, res) {
-  res.redirect('application-desc-correct')
-})
-
-router.post('/upload-documents/application-desc-correct', function (req, res) {
-  res.redirect('description-of-development')
-})
-
-router.post('/upload-documents/description-of-development', function (req, res) {
-  res.redirect('plans')
-  req.session.data['description-detail-complete'] = 'true'
-})
-
-router.post('/upload-documents/plans', function (req, res) {
-  res.redirect('ownership-certificate-check')
-})
-
-router.post('/upload-documents/ownership-certificate-check', function (req, res) {
-  if (req.session.data['ownership-certificate-check'] == 'Yes') {
-    res.redirect('ownership-certificate')
+router.post('/upload-documents/grounds-facts', function (req, res) {
+  if (req.session.data['????'] == 'Yes') {
+    res.redirect('????')
   } else {
-    res.redirect('design-access-check')
+    res.redirect('????')
   }
 })
 
-router.post('/upload-documents/ownership-certificate', function (req, res) {
-  res.redirect('design-access-check')
+router.post('/upload-documents/planning-permission', function (req, res) {
+  res.redirect('grounds-supporting-docs')
 })
 
-router.post('/upload-documents/design-access-check', function (req, res) {
-  if (req.session.data['design-access-check'] == 'Yes') {
-    res.redirect('design-access')
+router.post('/upload-documents/grounds-supporting-docs', function (req, res) {
+  res.redirect('grounds-supporting-docs-upload')
+})
+
+router.post('/upload-documents/grounds-supporting-docs', function (req, res) {
+  if (req.session.data['grounds-supporting-docs'] == 'Yes') {
+    res.redirect('grounds-supporting-docs-upload')
   } else {
-    res.redirect('decision-letter')
+    res.redirect('enforcement-notice')
   }
 })
 
-router.post('/upload-documents/design-access', function (req, res) {
-  res.redirect('decision-letter')
+router.post('/upload-documents/grounds-supporting-docs-upload', function (req, res) {
+  res.redirect('enforcement-notice')
 })
 
-router.post('/upload-documents/decision-letter', function (req, res) {
-  res.redirect('appeal-statement')
+router.post('/upload-documents/enforcement-notice', function (req, res) {
+  res.redirect('enforcement-plan')
 })
 
-router.post('/upload-documents/appeal-statement', function (req, res) {
-  if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
-    res.redirect('common-ground')
-  } else {
-    res.redirect('new-plans-check')
-  }
-})
-
-router.post('/upload-documents/common-ground', function (req, res) {
-  res.redirect('new-plans-check')
-})
-
-router.post('/upload-documents/new-plans-check', function (req, res) {
-  if (req.session.data['new-plans-check'] == 'Yes') {
-    res.redirect('new-plans')
-  } else {
-    res.redirect('planning-obligation-check')
-  }
-})
-
-router.post('/upload-documents/new-plans', function (req, res) {
+router.post('/upload-documents/enforcement-plan', function (req, res) {
   res.redirect('planning-obligation-check')
 })
 
@@ -481,7 +419,7 @@ router.post('/upload-documents/planning-obligation-check', function (req, res) {
   if (req.session.data['planning-obligation-check'] == 'Yes') {
     res.redirect('planning-obligation-status')
   } else {
-    res.redirect('other-check')
+    res.redirect('apply-appeal-costs')
   }
 })
 
@@ -489,12 +427,20 @@ router.post('/upload-documents/planning-obligation-status', function (req, res) 
   if (req.session.data['planning-obligation-status'] == 'Finalised and ready to submit' || req.session.data['planning-obligation-status'] == 'In draft') {
     res.redirect('planning-obligation')
   } else {
-    res.redirect('other-check')
+    res.redirect('apply-appeal-costs')
   }
 })
 
-router.post('/upload-documents/planning-obligation', function (req, res) {
+router.post('/upload-documents/apply-appeal-costs', function (req, res) {
   res.redirect('other-check')
+})
+
+router.post('/prepare-appeal/costs-check', function (req, res) {
+  if (req.session.data['costs'] == 'Yes') {
+    res.redirect('costs')
+  } else {
+    res.redirect('other-check')
+  }
 })
 
 router.post('/upload-documents/other-check', function (req, res) {

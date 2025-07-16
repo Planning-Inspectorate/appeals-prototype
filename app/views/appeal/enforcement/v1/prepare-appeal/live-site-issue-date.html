@@ -1,12 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Are you an agent?' %}
+{% set title = 'Did you live at the appeal site when the local planning authority issued the enforcement notice?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'appellant-check',
-    name: 'appellant-check',
-    classes: '',
+    idPrefix: 'live-site-issue-date',
+    name: 'live-site-issue-date',
     fieldset: {
       legend: {
         html: title,
@@ -18,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('appellant-check','Agent')
+        checked: checked('live-site-issue-date','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('appellant-check','Appellant')
+        checked: checked('live-site-issue-date','No')
       }
     ]
   }) }}

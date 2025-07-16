@@ -1,0 +1,85 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'You have added an appellant' %}
+
+{% set prototypeLinks = [
+  {
+    href: '?extraanotherappellant=yes',
+    text: 'Add another appellant'
+  },
+  {
+    href: '?extraanotherappellant=',
+    text: 'One other appellant'
+  }
+] %}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  {{ govukSummaryList({
+    classes: 'appeal-details govuk-!-margin-bottom-6 govuk-!-margin-top-0',
+    rows: [
+
+      {
+        key: {
+          text: 'Appellant 1'
+        },
+        value: {
+          html: (data['appellant-contact-details'] or 'Jan Fisher')
+        },
+        actions: {
+          items: [
+            {
+              href: "other-appellant-contact-details",
+              text: "Remove",
+              visuallyHiddenText: 'appellant 1'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Appellant 2'
+        },
+        value: {
+          html: 'Seb Coe'
+        },
+        actions: {
+          items: [
+            {
+              href: "?extraanotherappellant=",
+              text: "Remove",
+              visuallyHiddenText: 'appellant 2'
+            }
+          ]
+        }
+      } if data['extraotherappeal'] == 'yes'
+
+    ]
+  }) }}
+
+  {{ govukRadios({
+    idPrefix: 'another-appellant',
+    name: 'another-appellant',
+    fieldset: {
+      legend: {
+        html: 'Do you want to add another appellant?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes'
+      },
+      {
+        html: 'No',
+        value: 'No'
+      }
+    ]
+  }) }}
+
+{% endblock %}

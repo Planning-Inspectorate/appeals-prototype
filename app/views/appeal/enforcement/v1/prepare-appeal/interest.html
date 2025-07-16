@@ -1,0 +1,39 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What is your interest in the appeal site?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'site-interest',
+    name: 'site-interest',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Owner',
+        value: 'Owner',
+        checked: checked('site-interest','Owner')
+      },
+      {
+        html: 'Mortgage lender',
+        value: 'Mortgage lender',
+        checked: checked('site interest','Mortgage lender')
+      },
+      {
+        html: 'Tenant',
+        value: 'Tenant',
+        checked: checked('site interest','Tenant')
+      },
+      {
+        html: 'Other',
+        value: 'Other',
+        checked: checked('site interest','Other')
+      }
+    ]
+  }) }}
+{% endblock %}

@@ -1,12 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Are you an agent?' %}
+{% set title = 'Do you need to apply for an award of appeal costs?' %}
 
 {% block questions %}
+
   {{ govukRadios({
-    idPrefix: 'appellant-check',
-    name: 'appellant-check',
-    classes: '',
+    idPrefix: 'costs-check',
+    name: 'costs-check',
     fieldset: {
       legend: {
         html: title,
@@ -18,12 +18,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('appellant-check','Agent')
+        checked: checked('costs-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('appellant-check','Appellant')
+        checked: checked('costs-check','No')
       }
     ]
   }) }}

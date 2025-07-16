@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Do you own all the land involved in the appeal?' %}
+{% set title = 'Do you want to add another appellant to this appeal?' %}
 
 {% block questions %}
   {{ govukRadios({
-    idPrefix: 'own-all',
-    name: 'own-all',
+    idPrefix: 'add-another-appellant',
+    name: 'add-another-appellant',
     fieldset: {
       legend: {
         html: title,
@@ -17,12 +17,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('own-all','Yes')
+        checked: checked('add-another-appellant','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('own-all','No')
+        checked: checked('add-another-appellant','No')
       }
     ]
   }) }}

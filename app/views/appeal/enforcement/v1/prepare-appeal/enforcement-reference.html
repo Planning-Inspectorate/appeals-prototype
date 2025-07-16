@@ -1,0 +1,20 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What is the enforcement notice reference number?' %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'enforcement-reference',
+    name: 'enforcement-reference',
+    value: data['enforcement-reference'],
+    classes: 'govuk-!-width-two-thirds',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    hint: {
+      html: 'You can find this on the enforcement notice from the local planning authority.'
+    }
+  }) }}
+{% endblock %}

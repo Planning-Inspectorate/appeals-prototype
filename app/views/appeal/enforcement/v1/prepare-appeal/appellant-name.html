@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What&rsquo;s the appellant&rsquo;s name?' %}
+{% set title = 'What is the appellant&rsquo;s name?' %}
 
 {% block questions %}
   {% call govukFieldset({
@@ -10,7 +10,6 @@
     isPageHeading: true
     }
   }) %}
-    <p class="govuk-hint">This should match the name on the application to the local planning authority</p>
 
     {{ govukInput({
       id: 'appellant-first-name',
