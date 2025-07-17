@@ -380,10 +380,16 @@ router.post('/upload-documents/:page', function (req, res, next) {
 })
 
 router.post('/upload-documents/grounds-facts', function (req, res) {
-  if (req.session.data['????'] == 'Yes') {
-    res.redirect('????')
-  } else {
-    res.redirect('????')
+
+  const data = req.session.data
+  let grounds = req.session.data['grounds-facts']           // make a variable from the checkbox selection
+
+  if (! grounds) {                                          // if no option selected
+    res.redirect('grounds-facts?error=true')
+  } else if (grounds.includes('ground-a')) {                // otherwise, if it contains the ground a
+    res.redirect('fee-paid')                                  // show the fee question
+  } else {                                                  // if no ground a
+    res.redirect('documents-check')                           // onward
   }
 })
 

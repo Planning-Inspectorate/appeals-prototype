@@ -21,24 +21,21 @@
       {{ title }}
     </h1>
 
+    {% set version = "1" %}
 
-      {% set version = "1" %}
+    <p class="govuk-body">
+      <!-- Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release. -->
+    </p>
 
-      <p class="govuk-body">
-        <!-- Improvements to the process that was developed and released. Brings full planning in line with design changes made in the time since release. -->
-      </p>
+    {{ govukInsetText({
+      html: '<p class="govuk-body"><a href="#">Design board plans for this work</a></p>'
+    }) }}
 
-      {{ govukInsetText({
-        html: '<p class="govuk-body"><a href="#">Design board plans for this work</a></p>'
-      }) }}
-
-      {{ govukButton({
-        html: 'View prototype',
-        href: 'enforcement/v'+version+'/task-list',
-        isStartButton: true
-      }) }}
-
-
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'enforcement/v'+version+'/task-list',
+      isStartButton: true
+    }) }}
 
   </div>
 </div>
