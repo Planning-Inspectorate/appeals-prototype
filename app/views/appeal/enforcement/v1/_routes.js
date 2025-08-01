@@ -287,8 +287,8 @@ router.post('/prepare-appeal/appellant-name', function (req, res) {
   res.redirect('other-appellants')
 })
 
-router.post('/prepare-appeal/add-another-appellant', function (req, res) {
-  if (req.session.data['add-another-appellant'] == 'Yes') {
+router.post('/prepare-appeal/other-appellants', function (req, res) {
+  if (req.session.data['other-appellants'] == 'Yes') {
     res.redirect('appellant-contact-details')
   } else {
     res.redirect('address')
@@ -328,7 +328,7 @@ router.post('/prepare-appeal/health-and-safety', function (req, res) {
 })
 
 router.post('/prepare-appeal/enforcement-reference', function (req, res) {
-  res.redirect('grounds-facts')
+  res.redirect('../upload-documents/grounds-facts')
 })
 
 
@@ -387,23 +387,20 @@ router.post('/upload-documents/grounds-facts', function (req, res) {
   if (! grounds) {                                          // if no option selected
     res.redirect('grounds-facts?error=true')
   } else if (grounds.includes('ground-a')) {                // otherwise, if it contains the ground a
-    res.redirect('fee-paid')                                  // show the fee question
+    res.redirect('apply-planning-permission')               // show the fee question
   } else {                                                  // if no ground a
-    res.redirect('documents-check')                           // onward
+    res.redirect('grounds-facts-supporting-documents-check')// onward
   }
 })
 
-router.post('/upload-documents/planning-permission', function (req, res) {
-  res.redirect('grounds-supporting-docs')
+router.post('/upload-documents/apply-planning-permission', function (req, res) {
+  res.redirect('grounds-facts-supporting-documents-check')
 })
 
-router.post('/upload-documents/grounds-supporting-docs', function (req, res) {
-  res.redirect('grounds-supporting-docs-upload')
-})
+router.post('/upload-documents/grounds-facts-supporting-documents-check', function (req, res) {
 
-router.post('/upload-documents/grounds-supporting-docs', function (req, res) {
-  if (req.session.data['grounds-supporting-docs'] == 'Yes') {
-    res.redirect('grounds-supporting-docs-upload')
+  if (req.session.data['grounds-facts-supporting-documents-check'] == 'Yes') {
+    res.redirect('grounds-facts-supporting-documents-upload')
   } else {
     res.redirect('enforcement-notice')
   }

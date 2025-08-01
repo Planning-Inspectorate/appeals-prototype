@@ -3,6 +3,21 @@
 {% set title = 'What is your interest in the appeal site?' %}
 
 {% block questions %}
+
+  {% set otherDescription %}
+    {{ govukInput({
+      id: "otherDescription",
+      name: "otherDescription",
+      type: "otherDescription",
+      spellcheck: false,
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Your interest"
+      }
+    }) }}
+  {% endset -%}
+
+
   {{ govukRadios({
     idPrefix: 'site-interest',
     name: 'site-interest',
@@ -32,6 +47,9 @@
       {
         html: 'Other',
         value: 'Other',
+        conditional: {
+          html: otherDescription
+        },
         checked: checked('site interest','Other')
       }
     ]

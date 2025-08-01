@@ -5,8 +5,8 @@
 {% block questions %}
 
   {{ govukRadios({
-    idPrefix: 'grounds-supporting-docs',
-    name: 'grounds-supporting-docs',
+    idPrefix: 'grounds-facts-supporting-documents-check',
+    name: 'grounds-facts-supporting-documents-check',
     fieldset: {
       legend: {
         html: title,
@@ -18,12 +18,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('grounds-supporting-docs','Yes')
+        checked: checked('grounds-facts-supporting-documents-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('grounds-supporting-docs','No')
+        checked: checked('grounds-facts-supporting-documents-check','No')
       }
     ]
   }) }}

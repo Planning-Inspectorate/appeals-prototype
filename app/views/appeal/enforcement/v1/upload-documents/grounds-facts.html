@@ -5,240 +5,237 @@
 
 {% block questions %}
 
-  <div class="govuk-form-group">
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Grounds and facts
+      </h1>
+    </legend>
 
-    <fieldset class="govuk-fieldset" aria-describedby="grounds-facts-hint">
+    <div id="grounds-facts-hint" class="govuk-hint">
+      Select all that apply
+    </div>
 
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-        <h2 class="govuk-fieldset__heading-l">
-          Grounds and facts
-        </h2>
-      </legend>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes" data-govuk-checkboxes-init="">
 
-      <div id="grounds-facts-hint" class="govuk-hint">
-        Select all that apply
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts" name="grounds-facts" type="checkbox" value="ground-a" aria-controls="conditional-grounds-facts" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-1">
+          The LPA should grant planning permission for what is in the enforcement notice
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts">
+                Enter your facts
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts" name="grounds-facts" type="text">
+        </div>
       </div>
 
-      <div class="govuk-checkboxes" data-module="govuk-checkboxes" data-govuk-checkboxes-init="">
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts" name="grounds-facts" type="checkbox" value="ground-a" aria-controls="conditional-grounds-facts" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-1">
-            The LPA should grant planning permission for what is in the enforcement notice
-          </label>
-        </div>
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts">
-                  Enter your facts
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts" name="grounds-facts" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-2" name="grounds-facts" type="checkbox" value="ground-b" aria-controls="conditional-grounds-facts-2" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-2">
-            The breach did not happen
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-2">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-2">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-2" name="grounds-facts" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-3" name="grounds-facts" type="checkbox" value="ground-c" aria-controls="conditional-grounds-facts-3" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-3">
-            You do not need planning permission
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-3">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-3">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-3" name="grounds-facts" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-4" name="grounds-facts" type="checkbox" value="ground-d" aria-controls="conditional-grounds-facts-4" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-4">
-            Appeal statement
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-4">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-4">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-4" name="grounds-facts" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-5" name="grounds-facts" type="checkbox" value="ground-e" aria-controls="conditional-grounds-facts-5" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-5">
-            What is the status of your planning obligation?
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-5">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-5">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-5" name="grounds-facts-5" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-6" name="grounds-facts" type="checkbox" value="ground-f" aria-controls="conditional-grounds-facts-6" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-6">
-            Planning obligation
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-6">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-6">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-6" name="grounds-facts-6" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-7" name="grounds-facts" type="checkbox" value="ground-g" aria-controls="conditional-grounds-facts-7" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-7">
-            Separate ownership certificate and agricultural land declaration
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-7">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-7">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-7" name="grounds-facts-7" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-8" name="grounds-facts" type="checkbox" value="ground-h" aria-controls="conditional-grounds-facts-8" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-8">
-            Application for an award of appeal costs
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-8">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="rgrounds-facts-8">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="rgrounds-facts-8" name="grounds-facts-8" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-9" name="grounds-facts" type="checkbox" value="ground-i" aria-controls="conditional-grounds-facts-9" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-9">
-            Design and access statement
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-9">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-9">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-9" name="grounds-facts-9" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-10" name="grounds-facts" type="checkbox" value="ground-j" aria-controls="conditional-grounds-facts-10" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-10">
-            Plans, drawings and list of plans
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-10">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-10">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-10" name="grounds-facts-10" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-11" name="grounds-facts" type="checkbox" value="ground-k" aria-controls="conditional-grounds-facts-11" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-11">
-            New plans or drawings
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-11">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-11">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-11" name="grounds-facts-11" type="text">
-          </div>
-        </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="grounds-facts-12" name="grounds-facts" type="checkbox" value="ground-l" aria-controls="conditional-grounds-facts-12" aria-expanded="false">
-          <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-12">
-            Other new supporting documents
-          </label>
-        </div>
-
-        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-12">
-          <div class="govuk-form-group">
-            <h2 class="govuk-label-wrapper">
-              <label class="govuk-label govuk-label--s" for="grounds-facts-12">
-                Reason
-              </label>
-            </h2>
-            <input class="govuk-input" id="grounds-facts-12" name="grounds-facts-12" type="text">
-          </div>
-        </div>
-
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-2" name="grounds-facts" type="checkbox" value="ground-b" aria-controls="conditional-grounds-facts-2" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-2">
+          The breach did not happen
+        </label>
       </div>
-    </fieldset>
 
-  </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-2">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-2">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-2" name="grounds-facts" type="text">
+        </div>
+      </div>
 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-3" name="grounds-facts" type="checkbox" value="ground-c" aria-controls="conditional-grounds-facts-3" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-3">
+          You do not need planning permission
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-3">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-3">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-3" name="grounds-facts" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-4" name="grounds-facts" type="checkbox" value="ground-d" aria-controls="conditional-grounds-facts-4" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-4">
+          Appeal statement
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-4">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-4">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-4" name="grounds-facts" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-5" name="grounds-facts" type="checkbox" value="ground-e" aria-controls="conditional-grounds-facts-5" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-5">
+          What is the status of your planning obligation?
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-5">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-5">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-5" name="grounds-facts-5" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-6" name="grounds-facts" type="checkbox" value="ground-f" aria-controls="conditional-grounds-facts-6" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-6">
+          Planning obligation
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-6">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-6">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-6" name="grounds-facts-6" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-7" name="grounds-facts" type="checkbox" value="ground-g" aria-controls="conditional-grounds-facts-7" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-7">
+          Separate ownership certificate and agricultural land declaration
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-7">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-7">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-7" name="grounds-facts-7" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-8" name="grounds-facts" type="checkbox" value="ground-h" aria-controls="conditional-grounds-facts-8" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-8">
+          Application for an award of appeal costs
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-8">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="rgrounds-facts-8">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="rgrounds-facts-8" name="grounds-facts-8" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-9" name="grounds-facts" type="checkbox" value="ground-i" aria-controls="conditional-grounds-facts-9" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-9">
+          Design and access statement
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-9">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-9">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-9" name="grounds-facts-9" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-10" name="grounds-facts" type="checkbox" value="ground-j" aria-controls="conditional-grounds-facts-10" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-10">
+          Plans, drawings and list of plans
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-10">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-10">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-10" name="grounds-facts-10" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-11" name="grounds-facts" type="checkbox" value="ground-k" aria-controls="conditional-grounds-facts-11" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-11">
+          New plans or drawings
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-11">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-11">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-11" name="grounds-facts-11" type="text">
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-facts-12" name="grounds-facts" type="checkbox" value="ground-l" aria-controls="conditional-grounds-facts-12" aria-expanded="false">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-facts-12">
+          Other new supporting documents
+        </label>
+      </div>
+
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-grounds-facts-12">
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="grounds-facts-12">
+              Reason
+            </label>
+          </h2>
+          <input class="govuk-input" id="grounds-facts-12" name="grounds-facts-12" type="text">
+        </div>
+      </div>
+
+    </div>
+  </fieldset>
+
+</div>
 {% endblock %}
