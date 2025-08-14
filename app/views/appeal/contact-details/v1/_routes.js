@@ -49,7 +49,16 @@ router.post('/agent-contact-details', function (req, res) {
 })
 
 router.post('/contact-phone-number', function (req, res) {
-  res.redirect('/');
+
+
+  let appeal = req.session.data['appeal']
+
+  if (appeal == 'S78E') {
+    res.redirect('/appeal/s78e/v1/prepare-appeal/address');
+  } else {
+    res.redirect('/');
+  }
+
 })
 
 // Add your routes above the module.exports line
