@@ -126,8 +126,8 @@
 
     </div>
 
+    <!-- title -->
     <div class="govuk-grid-column-full">
-
       <h1 class="govuk-heading-xl">
         <span class="govuk-caption-xl">
           {{ data['dashboard-lpa'] }}
@@ -137,6 +137,7 @@
       </h1>
     </div>
 
+    <!-- user management -->
     <div class="govuk-grid-column-two-thirds">
       <p class="govuk-body govuk-!-margin-bottom-0">
         <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
@@ -148,6 +149,35 @@
     <div class="govuk-grid-column-full">
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+        <!-- search for appeals -->
+
+        {{ govukInput({
+          label: {
+            text: "Search for appeals",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Enter the appeal reference, planning application reference or postcode (including spaces)"
+          },
+          id: "event-name",
+          name: "eventName"
+        }) }}
+
+        {{ govukButton({
+          text: "Search for appeals"
+        }) }}
+
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      <!-- filter appeals -->
       <form method="post">
 
         <div class="govuk-form-group govuk-!-margin-bottom-2">
