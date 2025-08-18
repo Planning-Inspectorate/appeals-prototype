@@ -1,0 +1,54 @@
+{% if data['current-appeals'] == 'no' %}
+
+  <h2 class="govuk-heading-l">
+    To do
+  </h2>
+
+  <p class="govuk-body">
+    There are currently no appeals in progress.
+  </p>
+
+{% else %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Waiting for other party',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Address'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Status',
+        classes: 'govuk-!-width-one-thirds',
+        format: 'numeric'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="#">1345260</a>'
+        },
+        {
+          html: 'Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ]
+    ]
+  }) }}
+
+{% endif %}

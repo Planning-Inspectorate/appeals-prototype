@@ -1,0 +1,213 @@
+{% if data['current-appeals'] == 'no' %}
+
+  <h2 class="govuk-heading-l">
+    To do
+  </h2>
+
+  <p class="govuk-body">
+    There are currently no appeals in progress.
+  </p>
+
+{% else %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Decided appeals',
+    captionClasses: 'govuk-visually-hidden govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Address',
+        classes: 'govuk-!-width-one-half'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Decision date',
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        html: 'Decision',
+        classes: 'govuk-!-width-one-third'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0201624&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=split' class='govuk-link'>0201624</a>"
+        },
+        {
+          html: '38 Tubular Way, Warbingham, BR11 7HA'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '8' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--yellow">Allowed in part</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0201972&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=dismissed' class='govuk-link'>0201972</a>"
+        },
+        {
+          html: '3 Lawn Street, Giffleton, BR2 2BD'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '16' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--orange">Dismissed</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0202120&appeal-type=enforcement&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=varied' class='govuk-link'>0202120</a>"
+        },
+        {
+          html: '22 Bishop Close, Jamvillion, BX2 7PP'
+        },
+        {
+          html: 'S174'
+        },
+        {
+          html: '32' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--orange">Notice varied and upheld</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0202331&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=allowed' class='govuk-link'>0202331</a>"
+        },
+        {
+          html: '102 Haynesford Way, Adbridge, BR15 0PA'
+        },
+        {
+          html: 'HAS'
+        },
+        {
+          html: '64' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0212006&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=allowed' class='govuk-link'>2012006</a>"
+        },
+        {
+          html: '9 Westley Road, Rochdale, OL11 2AN'
+        },
+        {
+          html: 'S20'
+        },
+        {
+          html: '128' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0217634&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=allowed' class='govuk-link'>0217634</a>"
+        },
+        {
+          html: '8 Knivvol Drive, Oldham, BR17 2GH'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '222' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0217801&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=allowed' class='govuk-link'>0217801</a>"
+        },
+        {
+          html: '2 Tubular Way, Warbingham, BR12 2PD'
+        },
+        {
+          html: 'S20'
+        },
+        {
+          html: '265' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0219924&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=allowed' class='govuk-link'>0219924</a>"
+        },
+        {
+          html: '2 Porter Road, Jampton, BR8 8AA'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '301' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0219897&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=allowed' class='govuk-link'>0219897</a>"
+        },
+        {
+          html: '109 Channingford Hill, Salcombe, BR2 8HH'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '322' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+        }
+      ],
+      [
+        {
+          html: "<a href='/manage/appeals/v8/appeal-details?appealCode=0220012&appeal-type=written&statement=complete&final-comments=complete&proofs=&appellant-proofs=&appeal-decided=allowed' class='govuk-link'>0220012</a>"
+        },
+        {
+          html: '12a Malago Road, Chamford, BR07 2PD'
+        },
+        {
+          html: 'S78'
+        },
+        {
+          html: '365' | daysInPastShort
+        },
+        {
+          html: ' <strong class="govuk-tag govuk-tag--green">Allowed</strong>'
+        }
+      ]
+
+    ]
+  }) }}
+
+{% endif %}

@@ -34,6 +34,8 @@
 
 {% block content %}
   <div class="govuk-grid-row">
+
+    <!-- banners -->
     <div class="govuk-grid-column-two-thirds">
 
       {% if data['appeal-withdrawn'] == 'yes' %}
@@ -133,10 +135,10 @@
         </span>
         {{ title }}
       </h1>
-
     </div>
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
-      <p class="govuk-body">
+
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body govuk-!-margin-bottom-0">
         <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
           Add and remove users
         </a>
@@ -144,49 +146,110 @@
     </div>
 
     <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
-      {% set currentAppeals %}
-        {% include "/_includes/lpa/current-appeals.html" %}
-      {% endset -%}
+      <form method="post">
 
-      {% set submittedAppeals %}
-        {% include "/_includes/lpa/submitted-appeals.html" %}
-      {% endset -%}
+        <div class="govuk-form-group govuk-!-margin-bottom-2">
 
-      {{ govukTabs({
-        items: [
-          {
-            label: "To do",
-            id: "new-appeals",
-            panel: {
-              html: currentAppeals
-            }
-          },
-          {
-            label: "Waiting for review",
-            id: "submitted-appeals",
-            panel: {
-              html: submittedAppeals
-            }
-          }
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Filter
+              </h1>
+            </legend>
+            <div class="govuk-radios govuk-radios--small govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                {% if data['appeals-list'] == 'Active' %}
+                  <input class="govuk-radios__input" id="appeals-list" name="appeals-list" type="radio" value="Active" checked>
+                {% else %}
+                  <input class="govuk-radios__input" id="appeals-list" name="appeals-list" type="radio" value="Active" checked>
+                {% endif %}
+                <label class="govuk-label govuk-radios__label" for="appeals-list">
+                  Action required
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                {% if data['appeals-list'] == 'Waiting' %}
+                  <input class="govuk-radios__input" id="appeals-list-2" name="appeals-list" type="radio" value="Waiting" checked>
+                {% else %}
+                  <input class="govuk-radios__input" id="appeals-list-2" name="appeals-list" type="radio" value="Waiting">
+                {% endif %}
 
-        ]
-      }) }}
+                <label class="govuk-label govuk-radios__label" for="appeals-list-2">
+                  Waiting
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                {% if data['appeals-list'] == 'Withdrawn' %}
+                  <input class="govuk-radios__input" id="appeals-list-3" name="appeals-list" type="radio" value="Withdrawn" checked>
+                {% else %}
+                  <input class="govuk-radios__input" id="appeals-list-3" name="appeals-list" type="radio" value="Withdrawn">
+                {% endif %}
 
-      <div class="govuk-inset-text">
-          <ul class="govuk-list">
-            <li>
-              <a href="withdrawn-appeals" class="govuk-link">
-                1 withdrawn appeal
-              </a>
-            </li>
-            <li>
-              <a href="decided-appeals" class="govuk-link">
-                30 decided appeals
-              </a>
-            </li>
-          </ul>
+                <label class="govuk-label govuk-radios__label" for="appeals-list-3">
+                  Withdrawn
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                {% if data['appeals-list'] == 'Decided' %}
+                  <input class="govuk-radios__input" id="appeals-list-4" name="appeals-list" type="radio" value="Decided" checked>
+                {% else %}
+                  <input class="govuk-radios__input" id="appeals-list-4" name="appeals-list" type="radio" value="Decided">
+                {% endif %}
+
+                <label class="govuk-label govuk-radios__label" for="appeals-list-4">
+                  Decided
+                </label>
+              </div>
+            </div>
+          </fieldset>
         </div>
+
+        {{ govukButton({
+          text: "Apply filter",
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </form>
+
+      <!-- show the right list depending on 'appeals' -->
+
+      {% if data['appeals-list'] == 'Active' %}
+        {% include "/manage/appeals/v10/includes/current-appeals.html" %}
+      {% elseif data['appeals-list'] == 'Waiting' %}
+        {% include "/manage/appeals/v10/includes/waiting-appeals.html" %}
+      {% elseif data['appeals-list'] == 'Withdrawn' %}
+        {% include "/manage/appeals/v10/includes/withdrawn-appeals.html" %}
+      {% else %}
+        {% include "/manage/appeals/v10/includes/decided-appeals.html" %}
+      {% endif %}
+
+      {% if data['appeals-list'] == 'Active' or data['appeals-list'] == 'Decided' %}
+        {{ govukPagination({
+          previous: {
+            href: "#"
+          },
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              current: true,
+              href: "#"
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+      {% endif %}
 
     </div>
   </div>
