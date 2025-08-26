@@ -788,6 +788,7 @@ router.post('/appeal-process/:page', function (req, res, next) {
   if (
     req.session.data['procedure-complete']
     && req.session.data['other-appeals-complete']
+    && req.session.data['significant-changes-complete']
     && req.session.data['extra-conditions-complete']
   ){
     req.session.data['appeal-process-completed'] = 'true'
@@ -816,7 +817,7 @@ router.post('/appeal-process/other-appeals-check', function (req, res) {
     res.redirect('other-appeal-reference');
   } else {
     req.session.data['other-appeals-complete'] = 'true'
-    res.redirect('extra-conditions');
+    res.redirect('significant-changes');
   }
 })
 
@@ -830,8 +831,13 @@ router.post('/appeal-process/other-appeals', function (req, res) {
   if (req.session.data['other-appeals'] == 'Yes') {
     res.redirect('other-appeal-reference?extraotherappeal=yes');
   } else {
-    res.redirect('extra-conditions');
+    res.redirect('significant-changes');
   }
+})
+
+router.post('/appeal-process/significant-changes', function (req, res) {
+  req.session.data['significant-changes-complete'] = 'true'
+  res.redirect('extra-conditions');
 })
 
 router.post('/appeal-process/extra-conditions', function (req, res) {

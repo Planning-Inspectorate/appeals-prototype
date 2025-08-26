@@ -1,0 +1,78 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Have there been any significant changes that would affect the application?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Appeal process
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Only tell us about changes that are relevant or material to the application.
+  </p>
+
+  {% set otherChangesHTML %}
+
+    {{ govukTextarea({
+      name: 'significant-changes__other',
+      id: 'significant-changes__other',
+      value: data['significant-changes__other'],
+      rows: '5',
+      label: {
+        html: 'Enter the other significant changes'
+      }
+    }) }}
+
+  {% endset %}
+
+  {{ govukCheckboxes({
+	  name: "significant-changes",
+	  fieldset: {
+	    legend: {
+	      text: "Significant changes",
+	      isPageHeading: false,
+	      classes: "govuk-fieldset__legend--m"
+	    }
+	  },
+	  hint: {
+	    text: "Select all that apply"
+	  },
+	  items: [
+	    {
+	      value: "Adopted a new local plan",
+	      text: "Adopted a new local plan"
+	    },
+	    {
+	      value: "National policy change",
+	      html: "National policy change"
+	    },
+	    {
+	      value: "Court judgement",
+	      html: "Court judgement"
+	    },
+	    {
+	      value: "Other",
+	      html: "Other",
+        conditional: {
+          html: otherChangesHTML
+        }
+	    },
+	    {
+	      divider: "or"
+	    },
+	    {
+	      value: "None of these",
+	      text: "None of these",
+	      behaviour: "exclusive"
+	    }
+	  ]
+	}) }}
+
+
+
+{% endblock %}

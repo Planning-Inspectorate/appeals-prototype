@@ -125,6 +125,32 @@
 
       {
         key: {
+          html: 'Significant changes'
+        },
+        value: {
+          html: (data['significant-changes'] + ('<br>' + data['significant-changes__other'] if data['significant-changes-other'] == 'true') )
+        }
+        if data['significant-changes-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'appeal-process/significant-changes?cya=true',
+              html: 'Change'
+            }
+            if data['significant-changes-complete'] else
+            {
+              href: 'appeal-process/significant-changes',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
           html: 'Extra conditions'
         },
         value: {
