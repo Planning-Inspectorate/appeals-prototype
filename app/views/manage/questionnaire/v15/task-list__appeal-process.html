@@ -1,3 +1,41 @@
+{% set significantHTML %}
+  {% if data['significant-changes'].length == 1 %}
+    <!-- 1 answer -->
+    <p class="govuk-body">{{ data['significant-changes'][0] }}</p>
+    {% if data.localplanchange %}
+      {{ data.localplanchange }}
+    {% endif %}
+    {% if data.nationalpolicychange %}
+      {{ data.nationalpolicychange }}
+    {% endif %}
+    {% if data.courtjudgmentchange %}
+      {{ data.courtjudgmentchange }}
+    {% endif %}
+    {% if data.otherchange %}
+      {{ data.otherchange }}
+    {% endif %}
+  {% else %}
+    <!-- more than 1 answer -->
+    <ul class="govuk-list govuk-list--bullet">
+      {% for item in data['significant-changes'] %}
+        <li class="govuk-!-margin-bottom-0">{{ item }}</li>
+        {% if item == 'Adopted a new local plan' %}
+          {{ data.localplanchange }}
+        {% endif %}
+        {% if item == 'National policy change' %}
+          {{ data.nationalpolicychange }}
+        {% endif %}
+        {% if item == 'Court judgment' %}
+          {{ data.courtjudgmentchange }}
+        {% endif %}
+        {% if item == 'Other' %}
+          {{ data.otherchange }}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endset %}
+
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">8. </span> Appeal process
@@ -128,7 +166,7 @@
           html: 'Significant changes'
         },
         value: {
-          html: (data['significant-changes'] + ('<br>' + data['significant-changes__other'] if data['significant-changes-other'] == 'true') )
+          html: significantHTML
         }
         if data['significant-changes-complete'] else
         {
