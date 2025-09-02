@@ -21,44 +21,35 @@ window.GOVUKPrototypeKit.documentReady(() => {
 })
 
 
-// Read more links
+
 jQuery(function() {
   var shortening_text = $(".long-answers .govuk-summary-list__value");
 
   shortening_text.each(function() {
     var txt = $(this).html();
     if (txt.length < 200) return;
+
     $(this).html(
       txt.slice(0, 200) +
         '<span>... </span><a href="#" class="show">Read more</a>' +
         '<span style="display:none;">' +
-        txt.slice(800, txt.length) +
+        txt.slice(200) +
         ' <a href="#" class="less">Close</a></span>'
     );
   });
 
-  $("a.show", shortening_text).click(function(event) {
+  shortening_text.on("click", "a.show", function(event) {
     event.preventDefault();
-    $(this)
-      .hide()
-      .prev()
-      .hide();
-    $(this)
-      .next()
-      .show();
+    $(this).hide().prev().hide();
+    $(this).next().show();
   });
 
-  $("a.less", shortening_text).click(function(event) {
+  shortening_text.on("click", "a.less", function(event) {
     event.preventDefault();
-    $(this)
-      .parent()
-      .hide()
-      .prev()
-      .show()
-      .prev()
-      .show();
+    $(this).parent().hide().prev().show().prev().show();
   });
 });
+
 
 
 // Setup the MOJ multi file upload, we've made some minor changes to get things working

@@ -1,0 +1,36 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Check your phone' %}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">Request a new security code</h1>
+
+  <p class="govuk-body">Text messages sometimes take a few minutes to arrive. If you do not receive the text message, you can request a new one.</p>
+
+  {% set mobileNumberHtml %}
+    {{ govukInput({
+      label: {
+        text: "Mobile number"
+      },
+      value: "07700 900000",
+      id: "mobile-number",
+      name: "mobileNumber",
+      type: "tel",
+      autocomplete: "tel",
+      classes: "govuk-input--width-20"
+    }) }}
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "Change where the text message is sent",
+    html: mobileNumberHtml
+  }) }}
+
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: "Request a new code"
+  }) }}
+{% endblock %}

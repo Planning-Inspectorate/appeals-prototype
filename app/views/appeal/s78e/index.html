@@ -21,12 +21,6 @@
       {{ title }}
     </h1>
 
-    {% set version = "1" %}
-
-    <p class="govuk-body">
-      Showing the appeal submission form for an S78E (expedited S78) appeal.
-    </p>
-
     {{ govukInsetText({
       html: '
         <p class="govuk-body">
@@ -48,10 +42,56 @@
 
     }) }}
 
+    {% set version = "2" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <p class="govuk-body">
+      Showing grounds of appeal as a text submission.
+    </p>
+
     {{ govukButton({
       html: 'View prototype',
       href: '/appeal/s78e/v'+version+'/before-you-continue',
       isStartButton: true
+    }) }}
+
+
+    {% set v1HTML %}
+
+      {% set version = "1" %}
+
+      <p class="govuk-body">
+        Showing the appeal submission form for an S78E (expedited S78) appeal.
+      </p>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/appeal/s78e/v'+version+'/before-you-continue',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-3',
+      items: [
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
     }) }}
 
   </div>

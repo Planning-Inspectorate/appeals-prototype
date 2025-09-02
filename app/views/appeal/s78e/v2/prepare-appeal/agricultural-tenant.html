@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Are you a tenant of the agricultural holding?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'agricultural-tenant',
+    name: 'agricultural-tenant',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('agricultural-tenant','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('agricultural-tenant','No')
+      }
+    ]
+  }) }}
+{% endblock %}

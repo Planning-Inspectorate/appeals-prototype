@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Advertising your appeal' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">You must have advertised your appeal in the press.</p>
+
+  <p class="govuk-body">You must have done this within the last 21 days using a copy of the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/994918/eHow_To_-_Planning_18_ANNEX.pdf" rel="noreferrer noopener" target="_blank">form in annexe 2A or 2B of the 'making your appeal' guidance (opens in new tab)</a>.</p>
+
+  {{ govukCheckboxes({
+    idPrefix: 'owners-advertised',
+    name: 'owners-advertised',
+    classes: 'checkboxes-long-text',
+    fieldset: {
+      legend: {
+        html: 'Have you advertised the appeal?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'I confirm that I&rsquo;ve advertised my appeal in the press within the last 21 days using a copy of the form in annexe 2A or 2B',
+        value: 'Yes',
+        checked: checked('owners-advertised','Yes')
+      }
+    ]
+  }) }}
+{% endblock %}
