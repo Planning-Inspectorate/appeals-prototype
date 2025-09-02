@@ -409,40 +409,13 @@ router.post('/upload-documents/ownership-certificate', function (req, res) {
 // APPEAL DOCUMENTS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-router.post('/upload-documents/appeal-statement-check', function (req, res) {
-  if (req.session.data['appeal-statement-check'] == 'Yes') {
-    res.redirect('appeal-statement?appeal-documents-started=true')
-  } else {
-    // determine whether we need to show statement of common ground
-    if (req.session.data['procedure'] == 'Hearing') {
-      res.redirect('statement-of-common-ground?appeal-documents-started=true')
-    } else if (req.session.data['procedure'] == 'Inquiry') {
-      res.redirect('statement-of-common-ground?appeal-documents-started=true')
-    } else {
-      res.redirect('costs-check?appeal-documents-started=true')
-    }
-
-  }
-})
-
-router.post('/upload-documents/appeal-statement', function (req, res) {
-  // determine whether we need to show statement of common ground
-  if (req.session.data['procedure'] == 'Hearing') {
-    res.redirect('statement-of-common-ground?appeal-documents-started=true')
-  } else if (req.session.data['procedure'] == 'Inquiry') {
-    res.redirect('statement-of-common-ground?appeal-documents-started=true')
-  } else {
-    res.redirect('costs-check?appeal-documents-started=true')
-  }
-})
-
 router.post('/upload-documents/statement-of-common-ground', function (req, res) {
-  res.redirect('costs-check')
+  res.redirect('costs-check?appeal-documents-started=true')
 })
 
 router.post('/upload-documents/costs-check', function (req, res) {
   if (req.session.data['costs-check'] == 'Yes') {
-    res.redirect('costs')
+    res.redirect('costs?appeal-documents-started=true')
   } else {
     res.redirect('../task-list?appeal-documents-complete=true')
   }

@@ -53,13 +53,27 @@
         {% endif %}
       </div>
     </li>
+
     <li class="govuk-task-list__item govuk-task-list__item--with-link">
       <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="upload-documents/appeal-statement" aria-describedby="appeal-documents-hint appeal-documents-status">
-          Appeal documents
-        </a>
+        {% if data['procedure'] == 'Hearing' or data['procedure'] == 'Inquiry' %}
+          <!-- show statement of common ground if procedure is hearing or inquiry-->
+          <a class="govuk-link govuk-task-list__link" href="upload-documents/statement-of-common-ground" aria-describedby="appeal-documents-hint appeal-documents-status">
+            Appeal documents
+          </a>
+        {% else %}
+          <a class="govuk-link govuk-task-list__link" href="upload-documents/costs-check" aria-describedby="appeal-documents-hint appeal-documents-status">
+            Appeal documents
+          </a>
+        {% endif %}
+
         <div id="appeal-documents-hint" class="govuk-task-list__hint">
-          Appeal statement and costs
+          {% if data['procedure'] == 'Hearing' or data['procedure'] == 'Inquiry' %}
+            <!-- show statement of common ground if procedure is hearing or inquiry-->
+            Statement of common grounds and costs
+          {% else %}
+            Costs application
+          {% endif %}
         </div>
       </div>
       <div class="govuk-task-list__status" id="appeal-documents-status">
@@ -78,6 +92,6 @@
         {% endif %}
       </div>
     </li>
-    
+
   </ul>
 </li>
