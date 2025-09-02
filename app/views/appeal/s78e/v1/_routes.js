@@ -255,11 +255,15 @@ router.post('/prepare-appeal/application-desc-changed', function (req, res) {
 // YOUR APPEAL
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
+router.post('/prepare-appeal/grounds', function (req, res) {
+  res.redirect('procedure?your-appeal-started=true')
+})
+
 router.post('/prepare-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
-    res.redirect('procedure--reason?your-appeal-started=true')
+    res.redirect('procedure--reason')
   } else {
-    res.redirect('appeal-summary?your-appeal-started=true')
+    res.redirect('appeal-summary')
   }
 })
 

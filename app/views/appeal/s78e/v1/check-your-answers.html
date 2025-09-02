@@ -4,7 +4,7 @@
 
 {% set dummydod = 'In facilisis ex eu pretium blandit. Curabitur lacinia accumsan turpis, et vestibulum magna gravida ac. Suspendisse vel enim tincidunt, tempor quam nec, elementum dui. Donec sed ligula non ligula fringilla iaculis. Integer nec sem vitae lorem pharetra scelerisque pretium eget enim. Nullam venenatis lectus non nisi sodales vestibulum. Ut tempor id mi quis finibus. Fusce cursus scelerisque justo, eu condimentum leo sagittis in. lectus. Fusce cursus scelerisque justo, eu condimentum leo sagittis in.\n\nMaecenas nec dictum ligula, vitae cursus lectus. Maecenas et pulvinar velit, vel ultrices tellus. Donec ullamcorper mi vitae orci convallis, a efficitur eros dapibus. Duis tortor ligula, feugiat vitae maximus in, aliquet eu magna. Suspendisse potenti. Fusce ac est ligula. Fusce consequat massa vitae sapien placerat dapibus. Phasellus et blandit odio. Aliquam id nibh gravida massa mollis lacinia.' %}
 
-{% set dummystatement = 'Suspendisse vel enim tincidunt, tempor quam nec, elementum dui. Donec sed ligula non ligula fringilla iaculis. Integer nec sem vitae lorem pharetra scelerisque pretium eget enim. Nullam venenatis lectus non nisi sodales vestibulum. Ut tempor id mi quis finibus. Fusce cursus scelerisque justo, eu condimentum leo sagittis in.\n\nMaecenas nec dictum ligula, vitae dapibus sed. Aliquam et lectus porttitor, rutrum nulla in, dignissim est. Aliquam a magna dignissim, molestie purus vitae, ultrices risus. Sed at ultrices elit, varius tincidunt ex. Nam fermentum eros a dui lobortis, non egestas enim blandit. Maecenas massa nibh, rhoncus sit amet magna vitae, ultrices condimentum nunc. Pellentesque fringilla nisi et nunc pulvinar feugiat. Sed a lorem sollicitudin, dapibus lectus et, pharetra est.' %}
+{% set dummygrounds = 'Suspendisse vel enim tincidunt, tempor quam nec, elementum dui. Donec sed ligula non ligula fringilla iaculis. Integer nec sem vitae lorem pharetra scelerisque pretium eget enim. Nullam venenatis lectus non nisi sodales vestibulum. Ut tempor id mi quis finibus. Fusce cursus scelerisque justo, eu condimentum leo sagittis in.\n\nMaecenas nec dictum ligula, vitae dapibus sed. Aliquam et lectus porttitor, rutrum nulla in, dignissim est. Aliquam a magna dignissim, molestie purus vitae, ultrices risus. Sed at ultrices elit, varius tincidunt ex. Nam fermentum eros a dui lobortis, non egestas enim blandit. Maecenas massa nibh, rhoncus sit amet magna vitae, ultrices condimentum nunc. Pellentesque fringilla nisi et nunc pulvinar feugiat. Sed a lorem sollicitudin, dapibus lectus et, pharetra est.' %}
 
 {% set back = true %}
 
@@ -302,6 +302,23 @@
           },
           {
             key: {
+              text: "Grounds of appeal"
+            },
+            value: {
+              html: data['grounds'] or dummygrounds | nl2br
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "appeal procedure"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Appeal procedure"
             },
             value: {
@@ -319,7 +336,7 @@
           },
           {
             key: {
-              text: "Reason for "+data['procedure']
+              html: "Reason for "+ (data['procedure'] or 'hearing')
             },
             value: {
               html: data['procedure-reason'] or 'The appeal has complex factors.'
@@ -333,7 +350,7 @@
                 }
               ]
             }
-          },
+          } if data['procedure'] == 'Hearing' or data['procedure'] == 'Inquiry',
           {
             key: {
               text: "Days for inquiry"
@@ -385,23 +402,6 @@
               ]
             }
           } if data['procedure'] == 'Inquiry',
-          {
-            key: {
-              text: "Appeal summary"
-            },
-            value: {
-              html: data['appeal-summary'] or dummystatement | nl2br
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "witnesses for inquiry"
-                }
-              ]
-            }
-          },
           {
             key: {
               text: "Appeals near the site"

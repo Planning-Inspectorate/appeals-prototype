@@ -1,0 +1,24 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What are your grounds of appeal?' %}
+
+{% block questions %}
+
+  <!-- <p class="govuk-hint">This should match the address on the application to the local planning authority</p> -->
+
+  {{ govukTextarea({
+    name: "grounds",
+    id: "grounds",
+    rows: "8",
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    }
+  }) }}
+
+    <!-- hint: {
+      text: "Do not include personal or financial information, like your National Insurance number or credit card details"
+    } -->
+
+{% endblock %}
