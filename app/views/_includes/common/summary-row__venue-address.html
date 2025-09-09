@@ -1,0 +1,14 @@
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    Venue address
+  </dt>
+  <dd class="govuk-summary-list__value">
+    <p class="govuk-body">
+      {{ data['venue-address-line-1'] or '11 Test Rd' }},
+      {{ data['venue-address-line-2'] or 'Test Area' }},
+      {{ data['venue-address-town'] or 'Test Town' }},
+      {{ data['venue-county'] or 'Testborough' }} 
+      {{ data['venue-address-postcode'] or 'TT1 2PP' }}
+    </p>
+  </dd>
+</div>

@@ -1,0 +1,68 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What’s the address of the hearing venue?' %}
+
+{% block questions %}
+  {% call govukFieldset({
+    legend: {
+      html: title,
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      id: 'venue-address-line-1',
+      name: 'venue-address-line-1',
+      value: data['venue-address-line-1'],
+      label: {
+        html: 'Address line 1'
+      },
+      autocomplete: 'address-line1'
+    }) }}
+
+    {{ govukInput({
+      id: 'venue-address-line-2',
+      name: 'venue-address-line-2',
+      value: data['venue-address-line-2'],
+      label: {
+        html: 'Address line 2 (optional)'
+      },
+      autocomplete: 'address-line2'
+    }) }}
+
+    {{ govukInput({
+      id: 'venue-address-town',
+      name: 'venue-address-town',
+      value: data['venue-address-town'],
+      classes: 'govuk-!-width-two-thirds',
+      label: {
+        html: 'Town or city'
+      },
+      autocomplete: 'address-level2'
+    }) }}
+
+    {{ govukInput({
+      id: 'venue-county',
+      name: 'venue-county',
+      value: data['venue-county'],
+      classes: 'govuk-!-width-two-thirds',
+      label: {
+        html: 'County (optional)'
+      },
+      autocomplete: 'address-level1'
+    }) }}
+
+    {{ govukInput({
+      id: 'venue-address-postcode',
+      name: 'venue-address-postcode',
+      value: data['venue-address-postcode'],
+      classes: 'govuk-input--width-10',
+      label: {
+        html: 'Postcode'
+      },
+      autocomplete: 'postal-code'
+    }) }}
+
+  {% endcall %}
+{% endblock %}

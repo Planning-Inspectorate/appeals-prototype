@@ -10,6 +10,16 @@
 
 {% else %}
 
+
+  Venue address is {{ data['venue-address'] }}
+
+  {% set venuelink %}
+    {% if data['venue-address'] != "complete" %}
+      <a href="venue-address">Add venue address</a>
+    {% endif %}
+  {% endset %}
+
+
   {{ govukTable({
     classes: 'govuk-!-margin-top-3',
     caption: 'Active',
@@ -124,7 +134,7 @@
           format: 'numeric'
         },
         {
-          html: '<a href="/manage/questionnaire-has/v8/task-list?appealCode=1345260&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>
+          html: '<a href="/manage/questionnaire-has/v6/task-list?appealCode=1345260&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>
           <br><a href="/manage/statement/v2/enter-statement?appealCode=1345260&action="><span class="govuk-visually-hidden">Submit </span>Statement</a>',
           format: 'numeric'
         }
@@ -147,14 +157,14 @@
           format: 'numeric'
         },
         {
-          html: '<a href="/manage/questionnaire-has/v8/task-list?appealCode=1345176&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>
+          html: '<a href="/manage/questionnaire-has/v6/task-list?appealCode=1345176&action="><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>
           <br><a href="/manage/statement/v2/enter-statement?appealCode=1345176&action="><span class="govuk-visually-hidden">Submit </span>Statement</a>',
           format: 'numeric'
         }
       ],
       [
         {
-          html: '<a href="/manage/appeals/v10/appeal-details?appealCode=1442500&action=&questionnaire=due&statement=&final-comments=&appeal-type=&proofs=&appellant-proofs=&appeal-decided=">1442500</a>'
+          html: '<a href="/manage/appeals/v9/appeal-details?appealCode=1442500&action=&questionnaire=due&statement=&final-comments=&appeal-type=&proofs=&appellant-proofs=&appeal-decided=">1442500</a>'
         },
         {
           html: '3 Aubrey House, Bedminster, Bristol BS3 3EX'
@@ -170,7 +180,9 @@
           format: 'numeric'
         },
         {
-          html: '<a href="/manage/questionnaire/v15/task-list?appealCode=1442500&action=&expedited=true"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          html: '<a href="/manage/questionnaire/v15/task-list?appealCode=1442500&action=&expedited=true">' +
+                '<span class="govuk-visually-hidden">Submit </span>Questionnaire</a><br>' +
+                venuelink | safe,
           format: 'numeric'
         }
       ],

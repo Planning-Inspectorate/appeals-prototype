@@ -55,6 +55,13 @@
         </dd>
       </div>
     {% endif %}
+
+    {% if data['venue-address'] == 'complete' %}
+
+       Venue address
+
+    {% endif %}
+
   {% elif data['appeal-type'] == 'inquiry' %}
 
     <!-- if the dates are in show the event dates -->
@@ -82,6 +89,12 @@
           </p>
         </dd>
       </div>
+    {% endif %}
+
+    {% if data['venue-address'] == 'complete' %}
+
+      {% include "/_includes/common/summary-row__venue-address.html" %}
+
     {% endif %}
 
   {% endif %}

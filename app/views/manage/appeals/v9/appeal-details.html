@@ -45,27 +45,27 @@
     text: 'Hearing: Event date available'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=due&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=due&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=&venue-address=complete',
     text: 'Inquiry: All statements and IP comments done, proof due'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=&timings=&other-timings=&socg=&hearing-date=&appeal-decided=&venue-address=complete',
     text: 'Inquiry: Your proof done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=due&socg=&hearing-date=&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=due&socg=&hearing-date=&appeal-decided=&venue-address=complete',
     text: 'Inquiry: All proof done / witness timings due'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=&socg=&hearing-date=&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=&socg=&hearing-date=&appeal-decided=&venue-address=complete',
     text: 'Inquiry: Timings done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&socg=&hearing-date=&appeal-decided=',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=complete&appellant-final-comments=complete&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&socg=&hearing-date=&appeal-decided=&venue-address=complete',
     text: 'Inquiry: All timings done'
   },
   {
-    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&socg=&hearing-date=&appeal-decided=complete',
+    href: '?appeal-type=inquiry&questionnaire=complete&statement=complete&r6-statement=complete&ip-comments=complete&final-comments=&appellant-final-comments=&case-conference-date=complete&inquiry-date=complete&proofs=complete&appellant-proofs=complete&timings=complete&other-timings=complete&socg=&hearing-date=&appeal-decided=complete&venue-address=complete',
     text: 'Inquiry: Appeal decided'
   }
   ]
@@ -88,6 +88,28 @@
 
     <!-- notifications -->
     <section>
+
+      <!-- show banner for venue address if it isn't done -->
+      {% if data['venue-address'] != 'complete' %}
+        <!-- banner for venue address -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-6" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Hearing venue address due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must add a hearing venue address 11:59pm on {{ 53 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="venue-address?action=">Add venue address</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      {% endif %}
 
       {% if data['questionnaire'] == 'overdue' %}
         <!-- notice for overdue questionnaire -->
