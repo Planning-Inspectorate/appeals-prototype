@@ -10,15 +10,11 @@
 
 {% else %}
 
-
-  Venue address is {{ data['venue-address'] }}
-
   {% set venuelink %}
     {% if data['venue-address'] != "complete" %}
       <a href="venue-address">Add venue address</a>
     {% endif %}
   {% endset %}
-
 
   {{ govukTable({
     classes: 'govuk-!-margin-top-3',
@@ -164,7 +160,7 @@
       ],
       [
         {
-          html: '<a href="/manage/appeals/v9/appeal-details?appealCode=1442500&action=&questionnaire=due&statement=&final-comments=&appeal-type=&proofs=&appellant-proofs=&appeal-decided=">1442500</a>'
+          html: '<a href="/manage/appeals/v9/appeal-details?appealCode=1442500&appeal-type=hearing&action=&questionnaire=due&statement=&final-comments=&proofs=&appellant-proofs=&appeal-decided=">1442500</a>'
         },
         {
           html: '3 Aubrey House, Bedminster, Bristol BS3 3EX'

@@ -14,8 +14,36 @@
 </style>
 
 <dl class="govuk-summary-list appeal-details govuk-summary-list--no-border">
+
   <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key govuk-!-width-one-third">
+    <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+      Appellant
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Mariella Bidbod
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Appeal site
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Application number
+    </dt>
+    <dd class="govuk-summary-list__value">
+      23/04125/FUL
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
       Appeal type
     </dt>
     <dd class="govuk-summary-list__value">
@@ -24,6 +52,7 @@
       </p>
     </dd>
   </div>
+
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Appeal procedure
@@ -54,9 +83,6 @@
           </p>
         </dd>
       </div>
-    {% endif %}
-
-    {% if data['venue-address'] == 'complete' %}
 
       {% include "/_includes/common/summary-row__venue-address.html" %}
 
@@ -99,28 +125,5 @@
 
   {% endif %}
 
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Appeal site
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Appellant
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Mariella Bidbod
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Application number
-    </dt>
-    <dd class="govuk-summary-list__value">
-      23/04125/FUL
-    </dd>
-  </div>
+
 </dl>

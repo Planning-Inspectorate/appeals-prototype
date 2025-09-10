@@ -4,11 +4,20 @@
   </dt>
   <dd class="govuk-summary-list__value">
     <p class="govuk-body">
-      {{ data['venue-address-line-1'] or '11 Test Rd' }},
-      {{ data['venue-address-line-2'] or 'Test Area' }},
-      {{ data['venue-address-town'] or 'Test Town' }},
-      {{ data['venue-county'] or 'Testborough' }} 
-      {{ data['venue-address-postcode'] or 'TT1 2PP' }}
+      {% if data['venue-address'] == 'complete' %}
+
+        {{ data['venue-address-line-1'] or '11 Test Rd' }},
+        {{ data['venue-address-line-2'] or 'Test Area' }},
+        {{ data['venue-address-town'] or 'Test Town' }},
+        {{ data['venue-county'] or 'Testborough' }}
+        {{ data['venue-address-postcode'] or 'TT1 2PP' }}
+
+      {% else %}
+
+        <a href="venue-address?action=">Add venue address</a>
+
+      {% endif %}
+
     </p>
   </dd>
 </div>
