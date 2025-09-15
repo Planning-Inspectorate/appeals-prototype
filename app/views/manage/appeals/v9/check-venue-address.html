@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Check details and add venue address' %}
+{% set title = 'Check details and add venue' %}
 
 {% set nav = true %}
 
@@ -26,7 +26,7 @@
     rows: [
       {
         key: {
-          text: 'Venue address'
+          text: 'Hearing venue address'
         },
         value: {
           html: (data['venue-address-line-1'] or '11 Test Rd') + '<br>' +
@@ -40,7 +40,7 @@
             {
               href: 'venue-address',
               text: 'Change',
-              visuallyHiddenText: ' venue address'
+              visuallyHiddenText: 'hearing venue address'
             }
           ]
         }
@@ -51,6 +51,6 @@
 
 {% block buttons %}
   {{ govukButton({
-    text: 'Add venue address'
+    text: 'Add venue'
   }) }}
 {% endblock %}
