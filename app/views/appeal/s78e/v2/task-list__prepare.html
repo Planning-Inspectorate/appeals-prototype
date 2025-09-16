@@ -6,6 +6,30 @@ The authority incorrectly applied local planning policies, particularly in relat
 Failure to Consider Material Benefits
 The decision did not adequately account for the positive contributions of the proposal, including improved site utilisation and enhanced accessibility for local residents.' %}
 
+{% set dummydod = 'The proposed development comprises the construction of 120 new residential dwellings on a 10-hectare site located on the outskirts of the town centre. The scheme includes a mix of detached, semi-detached, and terraced houses, alongside low-rise apartment blocks, designed to accommodate a range of household sizes and needs. The development will be phased over three years and will incorporate sustainable building practices, including energy-efficient materials, solar panel installations, and rainwater harvesting systems.
+
+Key features of the proposal include:
+
+A central green space with pedestrian pathways and recreational areas.
+Integration with existing transport infrastructure, including new bus stops and cycle lanes.
+Affordable housing provision, with 30% of units designated for shared ownership or social rent.
+Environmental impact mitigation measures, such as tree planting and biodiversity corridors.' %}
+
+
+{% set dummydocs = 'Planning Application Form – completed and signed by the applicant.
+Location Plan – showing the site in relation to surrounding area.
+Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.
+Design and Access Statement – explaining the design rationale and accessibility considerations.
+Planning Statement – outlining how the proposal complies with local and national planning policies.
+Transport Assessment – evaluating traffic impact and proposed transport infrastructure.
+Flood Risk Assessment – assessing potential flood risks and mitigation strategies.
+Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.
+Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.
+Heritage Statement – if the site affects listed buildings or conservation areas.
+Noise Impact Assessment – analysing potential noise issues and mitigation.
+Air Quality Assessment – evaluating air pollution impacts.
+Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable' %}
+
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">1. </span> Prepare appeal
@@ -28,6 +52,31 @@ The decision did not adequately account for the positive contributions of the pr
   {{ govukSummaryList({
     classes: 'long-answers govuk-!-margin-bottom-9',
     rows: [
+      {
+        key: {
+          html: 'Was the application made in your name?'
+        },
+        value: {
+          html: data['appellant-check'] or 'Yes, the planning application was made in my name'
+        }
+        if data['appellant-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/appellant-check?cya=true',
+              html: 'Change'
+            }
+            if data['appellant-check-complete'] else
+            {
+              href: 'prepare-appeal/appellant-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
       {
         key: {
           html: 'Your name'
@@ -55,81 +104,6 @@ The decision did not adequately account for the positive contributions of the pr
       },
       {
         key: {
-          html: 'Named on application'
-        },
-        value: {
-          html: data['appellant-check'] or 'You'
-        }
-        if data['appellant-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'prepare-appeal/appellant-check?cya=true',
-              html: 'Change'
-            }
-            if data['appellant-check-complete'] else
-            {
-              href: 'prepare-appeal/appellant-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Their name'
-        },
-        value: {
-          html: (data['appellant-first-name']+' '+data['appellant-last-name'] if data['appellant-first-name'] else 'Joe Bloggs')
-        }
-        if data['appellant-name-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'prepare-appeal/appellant-name?cya=true',
-              html: 'Change'
-            }
-            if data['appellant-name-complete'] else
-            {
-              href: 'prepare-appeal/appellant-name?',
-              html: 'Answer'
-            }
-          ]
-        }
-      } if data['appellant-check'] == 'Another individual',
-      {
-        key: {
-          html: 'Application reference'
-        },
-        value: {
-          html: data['lpa-reference'] or 'ABC123456'
-        }
-        if data['lpa-reference-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'prepare-appeal/lpa-reference?cya=true',
-              html: 'Change'
-            }
-            if data['lpa-reference-complete'] else
-            {
-              href: 'prepare-appeal/lpa-reference',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
           html: 'Site address'
         },
         value: {
@@ -148,6 +122,56 @@ The decision did not adequately account for the positive contributions of the pr
             if data['address-complete'] else
             {
               href: 'prepare-appeal/address',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Site area'
+        },
+        value: {
+          html: data['site-area-square-metres'] or '10000m²'
+        }
+        if data['site-area-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/site-area?cya=true',
+              html: 'Change'
+            }
+            if data['site-area-complete'] else
+            {
+              href: 'prepare-appeal/site-area',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Green belt'
+        },
+        value: {
+          html: data['Green belt'] or 'No'
+        }
+        if data['green-belt-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/green-belt?cya=true',
+              html: 'Change'
+            }
+            if data['green-belt-complete'] else
+            {
+              href: 'prepare-appeal/green-belt',
               html: 'Answer'
             }
           ]
@@ -480,6 +504,206 @@ The decision did not adequately account for the positive contributions of the pr
       },
       {
         key: {
+          html: 'Application reference number'
+        },
+        value: {
+          html: data['application-reference'] or 'SY/200432P'
+        }
+        if data['application-reference-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/application-reference?cya=true',
+              html: 'Change'
+            }
+            if data['application-reference-complete'] else
+            {
+              href: 'prepare-appeal/application-reference',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Application date'
+        },
+        value: {
+          html: data['application-date'] or 90 | daysAgo
+        }
+        if data['application-date-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/application-date?cya=true',
+              html: 'Change'
+            }
+            if data['application-date-complete'] else
+            {
+              href: 'prepare-appeal/application-date',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Development class'
+        },
+        value: {
+          html: data['major-or-minor-development'] or 'Major development'
+        }
+        if data['major-or-minor-development-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/major-or-minor-development?cya=true',
+              html: 'Change'
+            }
+            if data['major-or-minor-development-complete'] else
+            {
+              href: 'prepare-appeal/major-or-minor-development',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Application about'
+        },
+        value: {
+          html: data['application-about'] or 'Dwellings'
+        }
+        if data['application-about-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/application-about?cya=true',
+              html: 'Change'
+            }
+            if data['application-about-complete'] else
+            {
+              href: 'prepare-appeal/application-about',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Description of development'
+        },
+        value: {
+          html: data['description-of-developement'] or dummydod | nl2br
+        }
+        if data['description-of-developement-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/description-of-developement?cya=true',
+              html: 'Change'
+            }
+            if data['description-of-developement-complete'] else
+            {
+              href: 'prepare-appeal/description-of-developement',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Description of development changed'
+        },
+        value: {
+          html: data['description-of-developement-changed'] or 'No'
+        }
+        if data['description-of-developement-changed-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/description-of-developement-changed?cya=true',
+              html: 'Change'
+            }
+            if data['description-of-developement-changed-complete'] else
+            {
+              href: 'prepare-appeal/description-of-developement-changed',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'List of application documents'
+        },
+        value: {
+          html: data['application-documents'] or dummydocs | nl2br
+        }
+        if data['application-documents-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/application-documents?cya=true',
+              html: 'Change'
+            }
+            if data['application-documents-complete'] else
+            {
+              href: 'prepare-appeal/application-documents',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Significant changes'
+        },
+        value: {
+          html: data['significant-changes'] or 'None of these'
+        }
+        if data['significant-changes-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/significant-changes?cya=true',
+              html: 'Change'
+            }
+            if data['significant-changes-complete'] else
+            {
+              href: 'prepare-appeal/application-documents',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
           html: 'Grounds of appeal'
         },
         value: {
@@ -602,7 +826,32 @@ The decision did not adequately account for the positive contributions of the pr
             }
           ]
         }
-      } if data['procedure'] == 'Inquiry'
+      } if data['procedure'] == 'Inquiry',
+      {
+        key: {
+          html: 'Appeals linked to your development'
+        },
+        value: {
+          html: data['other-appeals'] or 'No'
+        }
+        if data['other-appeals-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/other-appeals?cya=true',
+              html: 'Change'
+            }
+            if data['other-appeals-complete'] else
+            {
+              href: 'prepare-appeal/other-appeals',
+              html: 'Answer'
+            }
+          ]
+        }
+      }
     ]
   }) }}
 </li>

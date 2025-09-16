@@ -1,0 +1,65 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Was your application about any of the following?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    name: "application-about",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        text: "Householder development",
+        value: "Householder development",
+        checked: data['application-about'] == "Householder development"
+      },
+      {
+        text: "Change of use",
+        value: "Change of use",
+        checked: data['application-about'] == "Change of use"
+      },
+      {
+        text: "Mineral working",
+        value: "Mineral working",
+        checked: data['application-about'] == "Mineral working"
+      },
+      {
+        text: "Dwellings",
+        value: "Dwellings",
+        checked: data['application-about'] == "Dwellings"
+      },
+      {
+        text: "General industry, storage or warehousing",
+        value: "General industry, storage or warehousing",
+        checked: data['application-about'] == "General industry, storage or warehousing"
+      },
+      {
+        text: "Offices, light industry or research and development",
+        value: "Offices, light industry or research and development",
+        checked: data['application-about'] == "Offices, light industry or research and development"
+      },
+      {
+        text: "Retail and services",
+        value: "Retail and services",
+        checked: data['application-about'] == "Retail and services"
+      },
+      {
+        text: "Traveller and caravan pitches",
+        value: "Traveller and caravan pitches",
+        checked: data['application-about'] == "Traveller and caravan pitches"
+      },
+      {
+        text: "Other",
+        value: "Other",
+        checked: data['application-about'] == "Other"
+      }
+    ]
+  }) }}
+
+{% endblock %}

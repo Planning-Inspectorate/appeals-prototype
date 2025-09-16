@@ -1,0 +1,81 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Was your application for a major or minor development?' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    A major development is for any application that includes:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      developing 10 dwellings or more
+    </li>
+    <li>
+      a site area over 0.5 hectares (when you do not know the number of dwellings)
+    </li>
+    <li>
+      a floor space of over 1,000 square metres or a site area of one hectare
+    </li>
+    <li>
+      mineral extraction
+    </li>
+    <li>
+      waste development
+    </li>
+  </ul>
+
+
+  <p class="govuk-body">
+    A minor development is for any application that includes:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      developing an existing dwelling or within the land around it
+    </li>
+    <li>
+      extending an existing building for non-domestic use (up to 250 square metres of floor space)
+    </li>
+    <li>
+      altering an existing building without increasing its size
+    </li>
+  </ul>
+
+  {{ govukRadios({
+    idPrefix: 'major-or-minor-development',
+    name: 'major-or-minor-development',
+    fieldset: {
+      legend: {
+        html: 'Development class',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    items: [
+      {
+        html: 'Major developement',
+        value: 'Major developement',
+        checked: checked('major-or-minor-development','Major developement')
+      },
+      {
+        html: 'Minor development',
+        value: 'Minor development',
+        checked: checked('major-or-minor-development','Minor development')
+      },
+      {
+        divider: "or"
+      },
+      {
+        html: 'Other',
+        value: 'Other',
+        checked: checked('major-or-minor-development','Other')
+      }
+    ]
+  }) }}
+
+{% endblock %}

@@ -17,141 +17,117 @@
       }) }}
     {% endif %}
   </h2>
+
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
+
       {
         key: {
           html: 'Application form'
         },
         value: {
-          html: data['application'] | join('<br>') if data['application'] else 'application.pdf'
+          html: 'Application-form.pdf'
         }
-        if data['application-complete'] else
+        if data['application-form-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'upload-documents/application?cya=true',
+              href: 'upload-documents/application-form?cya=true',
               html: 'Change'
             }
-            if data['application-complete'] else
+            if data['application-form-complete'] else
             {
-              href: 'upload-documents/application',
+              href: 'upload-documents/application-form',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Was there an environmental statement?'
+        },
+        value: {
+          html: data['environment-statement-check'] or 'No'
+        }
+        if data['environment-statement-check'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/environment-statement-check?cya=true',
+              html: 'Change'
+            }
+            if data['environment-statement-check-complete'] else
+            {
+              href: 'upload-documents/environment-statement-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Environmental statement?'
+        },
+        value: {
+          html: data['environment-statement'] or 'environment-statement.pdf'
+        }
+        if data['environment-statement-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/environment-statement?cya=true',
+              html: 'Change'
+            }
+            if data['environment-statement-complete'] else
+            {
+              href: 'upload-documents/environment-statement',
               html: 'Upload'
             }
           ]
         }
-      },
+      } if data['environment-statement-check'] == 'Yes',
       {
         key: {
-          html: 'Development description correct'
+          html: 'Agreement for changed description of development'
         },
         value: {
-          html: data['application-desc-correct']
+          html: data['description-of-development-agreement'] or 'description-agreement.pdf'
         }
-        if data['application-desc-correct-complete'] else
+        if data['description-of-development-agreement-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'upload-documents/application-desc-correct?cya=true',
+              href: 'upload-documents/description-of-development-agreement?cya=true',
               html: 'Change'
             }
-            if data['application-desc-correct-complete'] else
+            if data['description-of-development-agreement-complete'] else
             {
-              href: 'upload-documents/application-desc-correct',
+              href: 'upload-documents/description-of-development-agreement',
               html: 'Answer'
             }
           ]
         }
-      },
-      {
-        key: {
-          html: 'Description of development'
-        },
-        value: {
-          html: data['description-detail'] if data['description-detail'] else '(Most recent description of development here)'
-        }
-        if data['description-detail-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'upload-documents/description-of-development?cya=true',
-              html: 'Change'
-            }
-            if data['description-detail-complete'] else
-            {
-              href: 'upload-documents/description-of-development',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-
-      {
-        key: {
-          html: 'Separate ownership certificate in application'
-        },
-        value: {
-          html: data['ownership-certificate-check'] or 'No'
-        }
-        if data['ownership-certificate-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'upload-documents/ownership-certificate-check?cya=true',
-              html: 'Change'
-            }
-            if data['ownership-certificate-check-complete'] else
-            {
-              href: 'upload-documents/ownership-certificate-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Separate ownership certificate'
-        },
-        value: {
-          html: data['ownership-certificate'] | join('<br>') if data['ownership-certificate'] else 'ownership-certificate.pdf'
-        }
-        if data['ownership-certificate-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'upload-documents/ownership-certificate?cya=true',
-              html: 'Change'
-            }
-            if data['ownership-certificate-complete'] else
-            {
-              href: 'upload-documents/ownership-certificate',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['ownership-certificate-check'] == 'Yes',
+      } if data['description-of-developement-changed'] == 'Yes',
       {
         key: {
           html: 'Decision letter'
         },
         value: {
-          html: data['decision-letter'] | join('<br>') if data['decision-letter'] else 'decision-letter.pdf'
+          html: data['decision-letter'] or 'decision-letter.pdf'
         }
         if data['decision-letter-complete'] else
         {
@@ -176,7 +152,7 @@
           html: 'Draft statement of common ground'
         },
         value: {
-          html: data['common-ground'] | join('<br>') if data['common-ground'] else 'common-ground.pdf'
+          html: data['common-ground'] or 'common-ground.pdf'
         }
         if data['common-ground-complete'] else
         {
@@ -249,10 +225,10 @@
       } if data['planning-obligation-check'] == 'Yes',
       {
         key: {
-          html: 'Draft planning obligation' if data['planning-obligation-status'] == 'In draft' else 'Planning obligation'
+          html: 'Draft planning obligation'
         },
         value: {
-          html: data['planning-obligation'] | join('<br>') if data['planning-obligation'] else 'planning-obligation.pdf'
+          html: data['planning-obligation'] or 'planning-obligation.pdf'
         }
         if data['planning-obligation-complete'] else
         {
@@ -271,7 +247,107 @@
             }
           ]
         }
-      } if data['planning-obligation-check'] == 'Yes' and (data['planning-obligation-status'] == 'Finalised and ready to submit' or data['planning-obligation-status'] == 'In draft')
+      } if data['planning-obligation-check'] == 'Yes' and (data['planning-obligation-status'] == 'Finalised and ready to submit' or data['planning-obligation-status'] == 'In draft'),
+      {
+        key: {
+          html: 'Separate ownership certificate in application'
+        },
+        value: {
+          html: data['ownership-certificate-check'] or 'No'
+        }
+        if data['ownership-certificate-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate-check?cya=true',
+              html: 'Change'
+            }
+            if data['ownership-certificate-check-complete'] else
+            {
+              href: 'upload-documents/ownership-certificate-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Separate ownership certificate'
+        },
+        value: {
+          html: data['ownership-certificate'] or 'ownership-certificate.pdf'
+        }
+        if data['ownership-certificate-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate?cya=true',
+              html: 'Change'
+            }
+            if data['ownership-certificate-complete'] else
+            {
+              href: 'upload-documents/ownership-certificate',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['ownership-certificate-check'] == 'Yes',
+      {
+        key: {
+          html: 'Statement of common ground'
+        },
+        value: {
+          html: data['statement-of-common-ground'] or 'Statement-of-common-ground.pdf'
+        }
+        if data['statement-of-common-ground-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/statement-of-common-ground?cya=true',
+              html: 'Change'
+            }
+            if data['statement-of-common-ground-complete'] else
+            {
+              href: 'upload-documents/statement-of-common-ground',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Costs application'
+        },
+        value: {
+          html: data['costs-check'] or 'No'
+        }
+        if data['costs-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/costs-check?cya=true',
+              html: 'Change'
+            }
+            if data['costs-check-complete'] else
+            {
+              href: 'upload-documents/costs-check',
+              html: 'Upload'
+            }
+          ]
+        }
+      }
 
     ]
   }) }}

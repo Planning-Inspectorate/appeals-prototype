@@ -17,8 +17,8 @@
 
   {% set uploadHtml %}
     {{ govukFileUpload({
-      id: 'application',
-      name: 'application',
+      id: 'application-form',
+      name: 'application-form',
       classes: 'moj-multi-file-upload__input',
       label: {
         text: 'Upload a file',
@@ -64,7 +64,7 @@
       e.preventDefault();
 
       $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="application" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+        $('<input name="application-form" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
       });
 
       $(this).unbind('submit').submit();

@@ -1,11 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Who made the planning application?' %}
+{% set title = 'Was the planning application made in your name?' %}
 
 {% block questions %}
+
   {{ govukRadios({
-    idPrefix: 'appellant-check',
-    name: 'appellant-check',
+    idPrefix: 'who-applied',
+    name: 'who-applied',
     classes: '',
     fieldset: {
       legend: {
@@ -14,30 +15,21 @@
         isPageHeading: true
       }
     },
+    hint: {
+      html: 'If you are not the applicant, you must have their permission to submit an appeal on their behalf.'
+    },
     items: [
       {
-        html: 'An individual',
-        value: 'A person',
-        checked: checked('appellant-check','A person')
+        html: 'Yes, the planning application was made in my name',
+        value: 'You',
+        checked: checked('who-applied','You')
       },
       {
-        html: 'A group of individuals',
-        hint: {
-          text: "If at least 2 people own the property and made a joint planning application."
-        },
-        value: 'Joint application',
-        checked: checked('appellant-check','Joint application')
-      },
-      {
-        html: "An organisation",
-        hint: {
-          text: "Includes limited companies, partnerships, charities, trusts and estates."
-        },
-        value: "A company",
-        checked: checked('appellant-check','A company')
+        html: 'No, I’m acting on behalf of the applicant',
+        value: 'Another individual',
+        checked: checked('who-applied','Another individual')
       }
     ]
   }) }}
-
 
 {% endblock %}

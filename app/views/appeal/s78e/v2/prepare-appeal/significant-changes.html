@@ -1,0 +1,119 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Have there been any significant changes that would affect the application?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Appeal process
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Only tell us about changes that are relevant or material to the application.
+  </p>
+
+  {% set localPlanHTML %}
+    {{ govukTextarea({
+      name: 'localplanchange',
+      id: 'localplanchange',
+      value: data['localplanchange'],
+      rows: '5',
+      label: {
+        html: 'Enter the local plan changes'
+      }
+    }) }}
+  {% endset %}
+
+  {% set nationalPolicyHTML %}
+    {{ govukTextarea({
+      name: 'nationalpolicychange',
+      id: 'nationalpolicychange',
+      value: data['nationalpolicychange'],
+      rows: '5',
+      label: {
+        html: 'Enter the national policy changes'
+      }
+    }) }}
+  {% endset %}
+
+  {% set courtJudgmentChangeHTML %}
+    {{ govukTextarea({
+      name: 'courtjudgmentchange',
+      id: 'courtjudgmentchange',
+      value: data['courtjudgmentchange'],
+      rows: '5',
+      label: {
+        html: 'Enter the court judgment'
+      }
+    }) }}
+  {% endset %}
+
+  {% set otherChangesHTML %}
+    {{ govukTextarea({
+      name: 'otherchange',
+      id: 'otherchange',
+      value: data['otherchange'],
+      rows: '5',
+      label: {
+        html: 'Enter the other significant changes'
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukCheckboxes({
+	  name: "significant-changes",
+	  fieldset: {
+	    legend: {
+	      text: "Significant changes",
+	      isPageHeading: false,
+	      classes: "govuk-fieldset__legend--m"
+	    }
+	  },
+	  hint: {
+	    text: "Select all that apply"
+	  },
+	  items: [
+	    {
+	      value: "Adopted a new local plan",
+	      text: "Adopted a new local plan",
+        conditional: {
+          html: localPlanHTML
+        }
+	    },
+	    {
+	      value: "National policy change",
+	      html: "National policy change",
+        conditional: {
+          html: nationalPolicyHTML
+        }
+	    },
+	    {
+	      value: "Court judgment",
+	      html: "Court judgment",
+        conditional: {
+          html: courtJudgmentChangeHTML
+        }
+	    },
+	    {
+	      value: "Other",
+	      html: "Other",
+        conditional: {
+          html: otherChangesHTML
+        }
+	    },
+	    {
+	      divider: "or"
+	    },
+	    {
+	      value: "None of these",
+	      text: "None of these",
+	      behaviour: "exclusive"
+	    }
+	  ]
+	}) }}
+
+{% endblock %}
