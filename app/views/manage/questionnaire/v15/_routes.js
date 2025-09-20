@@ -203,6 +203,7 @@ router.post('/og-evidence/:page', function (req, res, next) {
     req.session.data['design-access-statement-check-complete']
     && req.session.data['design-access-statement-upload-complete']
     && req.session.data['plans-and-drawings-upload-complete']
+    && req.session.data['list-of-documents-check-complete']
   ){
     // then make the section complete
     req.session.data['og-evidence-completed'] = 'true'
@@ -236,6 +237,19 @@ router.post('/og-evidence/design-access-statement-upload', function (req, res) {
 })
 
 router.post('/og-evidence/plans-and-drawings-upload', function (req, res) {
+  res.redirect('list-of-documents-check')
+})
+
+router.post('/og-evidence/list-of-documents-check', function (req, res) {
+  if (req.session.data['list-of-documents-check'] == 'No') {
+    res.redirect('list-of-documents');
+  } else {
+    req.session.data['list-of-documents-check'] = 'Yes'
+    res.redirect('complete')
+  }
+})
+
+router.post('/og-evidence/list-of-documents', function (req, res) {
   res.redirect('complete')
 })
 
