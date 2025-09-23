@@ -1,0 +1,36 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "What’s your planning application number?" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-caption-l">Before you start</p>
+    <form action="/form-handler" method="post" novalidate>
+      {{ govukInput({
+        label: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        classes: "govuk-input--width-10",
+        id: "postcode",
+        name: "postcode",
+        autocomplete: "postal-code"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "loading"
+      }) }}
+
+      <p class="govuk-body">
+        <a href="enforcement-notice" class="govuk-link">Continue without an application reference number</a>
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

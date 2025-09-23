@@ -1,0 +1,43 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Have you received an enforcement notice?' %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-caption-l">Before you start</p>
+
+    {{ govukRadios({
+        name: title,
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },      
+        value: data.grantedOrRefused,
+        items: [
+            {
+                value: "Yes",
+                text: "Yes"
+            },
+            {
+                value: "No",
+                text: "No"
+            }
+        ]
+    }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "application-type"
+      }) }}
+
+  </div>
+</div>
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

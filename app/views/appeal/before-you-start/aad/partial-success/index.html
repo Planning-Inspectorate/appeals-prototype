@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Before you start' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p class="govuk-body">
+    This is a new service. It’s only for appeals about certain local planning authorities and application types. We’ll check if you can use this service by asking some questions about your appeal.
+  </p>
+
+  <p class="govuk-body">
+    If you cannot use this service, you can still appeal using the existing service.
+  </p>
+
+  {{ govukButton({
+    text: "Continue",
+    href: "lpa"
+  }) }}
+  
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}
