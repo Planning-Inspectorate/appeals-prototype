@@ -1,16 +1,16 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "What’s your planning application number?" %}
+{% set title = "What’s your application number?" %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     {{ govukErrorSummary({
-      titleText: "Planning application number not found",
+      titleText: "There is a problem",
       errorList: [
         {
-          text: "Enter a valid planning application number",
+          text: "Enter a valid application number",
           href: "#"
         }
       ]
@@ -28,12 +28,12 @@
           text: "You can find this on communications from your local planning department about your application"
         },
         errorMessage: {
-        text: "Enter a valid planning application number"
+        text: "Enter a valid application number"
         },
         classes: "govuk-input--width-10",
-        id: "postcode",
-        name: "postcode",
-        autocomplete: "postal-code"
+        id: "applicationNumber",
+        name: "applicationNnumber",
+        autocomplete: "app-number"
       }) }}
 
       {{ govukButton({
@@ -42,7 +42,7 @@
       }) }}
 
       <p class="govuk-body">
-        <a href="enforcement-notice" class="govuk-link">Continue without a planning application number</a>
+        <a href="../../v19/planning-type" class="govuk-link">Continue without application number</a>
       </p>
 
     </form>

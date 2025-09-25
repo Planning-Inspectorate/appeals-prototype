@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Sorry, there is a problem with the service' %}
+{% set title = 'We could not find an application with this number' %}
 
 {% block backLink %}{% endblock %}
 
@@ -9,19 +9,15 @@
     {{title}}
   </h1>
   <p class="govuk-body">
-    We’re having trouble connecting to the database right now.
-  </p>
-
-  <p class="govuk-body">
-    You can try again, or continue without your application number.
+    We could not find an application with this number.
   </p>
 
   {% from "govuk/components/button/macro.njk" import govukButton %}
 
 <div class="govuk-button-group">
   {{ govukButton({
-    text: "Try again",
-    href:"loading"
+    text: "Enter another application number",
+    href:"application-ref"
   }) }}
 
   <a class="govuk-link" href="../../v19/planning-type">Continue without application number</a>

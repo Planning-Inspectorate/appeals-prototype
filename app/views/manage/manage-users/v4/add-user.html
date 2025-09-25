@@ -1,0 +1,61 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Tell us their email address' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">Tell us their email address</h1>
+
+
+
+<div style="display: flex; gap: 1rem; align-items: flex-end;">
+
+
+  <div style="width: 300px;">
+    {{ govukInput({
+      id: "domain-prefix",
+      name: "domain-prefix",
+      label: { text: "Enter email prefix" }
+    }) }}
+  </div>
+  
+
+  {{ govukSelect({
+      id: "sort",
+      name: "sort",
+      label: {
+        text: "Choose local planning authority"
+      },
+      items: [
+        { value: "published", text: "@cambridgeshirepeterborough-ca.gov.uk", selected: true },
+        { value: "camden", text: "@camden.gov.uk" },
+        { value: "lambeth", text: "@lambeth.gov.uk" }
+      ]
+  }) }}
+</div>
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue',
+          href:'add-user--confirm'
+        }) }}
+      {% endblock %}
+
+    </form>
+
+{% endblock %}

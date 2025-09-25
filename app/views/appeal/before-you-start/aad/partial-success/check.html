@@ -13,13 +13,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">We could only retrieve some details</h1>
+      <h1 class="govuk-heading-l">Your application details</h1>
 
       <p class="govuk-body">You need to check and complete the missing information before you can continue to your application.</p>
 
       <p class="govuk-body">Your deadline to appeal is 11:59pm on Sunday 15 March 2026.</p>
 
-      <h2 class="govuk-heading-m">Check and complete your application details</h2>
+      <h2 class="govuk-heading-m">Check and complete your aplication details</h2>
 
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
@@ -60,23 +60,6 @@
           },
           {
             key: {
-              text: "Have you received an enforcement notice?"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "customer reference"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Type of application"
             },
             value: {
@@ -97,7 +80,16 @@
               text: "Was your application granted or refused?"
             },
             value: {
-              html: '<a href="granted-or-refused" class="govuk-link">Add information</a>'
+              text: "Granted with conditions"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
             }
           },
           {
