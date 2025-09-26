@@ -1,0 +1,75 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "When did you receive the decision?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['grounds-1'] %}
+        <form action="fees" method="post">
+      {% else %}
+        <form action="/endgrounds" method="post">
+      {% endif %}
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {{ govukDateInput({
+          id: "enforcement-application-decision-date",
+          namePrefix: "enforcement-application-decision-date",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-application-decision-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["enforcement-application-decision-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["enforcement-application-decision-date-year"]
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

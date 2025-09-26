@@ -1,0 +1,59 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "Appeal submitted" %}
+
+{% block pageTitle %}
+  {{ title }} - Check your answers and submit your appeal - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleHtml: 'Appeal submitted',
+        html: 'Your reference number<br><strong>ENF13579F</strong>'
+      }) }}
+
+      <p>
+        We’ve sent you a confirmation email with a link to download a copy of your appeal.
+      </p>
+
+      {{ govukInsetText({
+        text: "You need to send a copy of your appeal to the local planning department."
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        What happens next?
+      </h2>
+
+      <p>
+        We’ll check you’ve submitted everything we need to progress your appeal. We’ll contact you once we’ve done this.
+      </p>
+
+    </div>
+
+  <!-- this is a prototype only link -->
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+    <p class="govuk-body-s pins-prototype-only">
+      <a href="../../enforcement-statement/v1/appeal-started-email">
+        Appeal started email
+      </a>
+    </p>
+  </div>
+
+</div>
+
+{% endblock %}

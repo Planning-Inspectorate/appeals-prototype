@@ -1,0 +1,66 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "Why would you prefer a hearing?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="endprocedure" method="post">
+
+      <span class="govuk-caption-l">
+        Tell us how you would prefer us to decide your appeal
+      </span>
+
+      {{ govukTextarea({
+        name: "enforcement-procedure-why-hearing",
+        id: "enforcement-procedure-why-hearing",
+        label: {
+          text: title,
+          classes: "govuk-label--l",
+          isPageHeading: true
+        }
+      }) }}
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          href: "",
+          text: "Save and come back later",
+          classes: "govuk-button--secondary"
+        }) }}
+        
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
+
+      <form method="post">
+
+        {% block questions %}{% endblock %}
+        {% block buttons %}
+        {# <p class="govuk-body-s govuk-!-margin-bottom-1">Current:</p>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Save and continue'
+          }) }}
+
+          {{ govukButton({
+            href: '#0',
+            text: 'Save and come back later',
+            classes: 'govuk-button--secondary'
+          }) }}
+        </div>
+
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Continue button:</p>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+
+          {{ govukButton({
+            href: '#0',
+            text: 'Save and come back later',
+            classes: 'govuk-button--secondary'
+          }) }}
+        </div>
+
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Exit (save):</p>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Save and continue'
+          }) }}
+
+          {{ govukButton({
+            href: '#0',
+            text: 'Save and exit',
+            classes: 'govuk-button--secondary'
+          }) }}
+        </div>
+
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Exit (continue):</p>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+
+          {{ govukButton({
+            href: '#0',
+            text: 'Save and exit',
+            classes: 'govuk-button--secondary'
+          }) }}
+        </div>
+
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Link (save):</p>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Save and continue'
+          }) }}
+
+          <p><a href="#0">Save and complete later</a></p>
+        </div>
+
+        <p class="govuk-body-s govuk-!-margin-bottom-1">Link (continue):</p> #}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+
+          <p><a href="/{{location}}save-and-return/?last-page={{currentURL}}" class="govuk-link--no-visited-state">Save and complete later</a></p>
+        </div>
+
+        {# <p class="govuk-body-s govuk-!-margin-bottom-1">Task list:</p>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Save and continue'
+          }) }}
+
+          <p><a href="#0">Return to task list</a></p>
+        </div> #}
+        {% endblock %}
+
+      </form>
+
+    </div>
+
+    <div class="govuk-grid-column-three-quarters govuk-grid-column-one-third-from-desktop">
+      <aside class="notes">
+        {% block notes %}{% endblock %}
+      </aside>
+    </div>
+  </div>
+{% endblock %}
