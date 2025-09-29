@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">
+    Appeals as data
+  </h1>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      <a href="appeal/before-you-start/aad/successful/">Successful API call</a>
+    </li>
+    <li>
+      <a href="appeal/before-you-start/aad/partial-success/">Partially successful API call</a>
+    </li>
+    <li>
+      <a href="appeal/before-you-start/aad/application-not-found/">Failure – application not found</a>
+    </li>
+    <li>
+      <a href="appeal/before-you-start/aad/invalid-ref-error/">Failure – invalid reference number</a>
+    </li>
+    <li>
+      <a href="appeal/before-you-start/aad/api-error/">Failure – API error (timeout, server error, etc.)</a>
+    </li>
+  </ul>
+
+  {% endblock %}
