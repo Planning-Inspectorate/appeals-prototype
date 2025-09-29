@@ -1,0 +1,61 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Choose your grounds of appeal
+      </span>
+      <h1 class="govuk-heading-l">
+        Your reasons for Ground D
+      </h1>
+
+      <p>Tell us why you think it&rsquo;s too late for the local authority to serve the enforcement notice. It is not enough to say, &lsquo;the breach of planning permission took place more than 10 years ago&rsquo;. Give facts to support your argument.</p>
+
+      <p>You do not need to repeat the local planning authority&rsquo;s reasons for issuing the enforcement notice.</p>
+
+      <p>You can upload documents to support your appeal or provide a statement later.</p>
+    </div>
+
+    <div class="govuk-grid-column-three-quarters">
+      <form method="post">
+
+        {{ govukTextarea({
+          name: 'ground-d',
+          id: 'ground-d',
+          value: data['ground-d'],
+          rows: 15,
+          label: {
+            html: 'What are your reasons for choosing Ground D?',
+            classes: 'govuk-label--m',
+            isPageHeading: false
+          }
+        }) }}
+
+        <div class="govuk-button-group">
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

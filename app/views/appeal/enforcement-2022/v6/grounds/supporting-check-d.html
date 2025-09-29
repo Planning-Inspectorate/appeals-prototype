@@ -1,0 +1,63 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        
+        <span class="govuk-caption-l">
+          Choose your grounds of appeal
+        </span>
+        {{ govukRadios({
+          idPrefix: 'supporting-check-d',
+          name: 'supporting-check-d',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Do you want to upload supporting documents for Ground D?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              html: 'Yes',
+              value: 'Yes',
+              checked: checked('supporting-check-d','Yes')
+            },
+            {
+              html: 'No',
+              value: 'No',
+              checked: checked('supporting-check-d','No')
+            }
+          ]
+        }) }}
+
+
+        <div class="govuk-button-group">
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

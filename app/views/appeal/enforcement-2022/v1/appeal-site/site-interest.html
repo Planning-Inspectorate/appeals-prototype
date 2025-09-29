@@ -1,0 +1,109 @@
+{% extends "layouts/appellant-submission/v11.html" %}
+
+{% set title = "What is your interest in the land or building?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/siteinterest" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                {{ title }}
+              </h1>
+            </legend>
+
+            <p class="govuk-body">
+              To appeal the enforcement notice, you must have an interest in the land or be a relevant occupier of the land.
+            </p>
+
+            <p class="govuk-body">
+              It does not matter what your status was at the time the enforcement notice was served. You must tell us your status at the time of making this appeal.
+            </p>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="enforcement-interest" name="enforcement-interest" type="radio" value="Owner" aria-describedby="enforcement-interest-item-hint">
+                <label class="govuk-label govuk-radios__label" for="enforcement-interest">
+                  Owner
+                </label>
+                <div id="enforcement-interest-item-hint" class="govuk-hint govuk-radios__hint">
+                  I own all of the land or building.
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="enforcement-interest-2" name="enforcement-interest" type="radio" value="Mortgagee" aria-describedby="enforcement-interest-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="enforcement-interest-2">
+                  Mortgagee
+                </label>
+                <div id="enforcement-interest-2-item-hint" class="govuk-hint govuk-radios__hint">
+                  I’m a lender in the mortgage for the land or building.
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="enforcement-interest-3" name="enforcement-interest" type="radio" value="Tenant" aria-describedby="enforcement-interest-3-item-hint">
+                <label class="govuk-label govuk-radios__label" for="enforcement-interest-3">
+                  Tenant
+                </label>
+                <div id="enforcement-interest-3-item-hint" class="govuk-hint govuk-radios__hint">
+                  I occupy the land or building rented from a landlord.
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="enforcement-interest-4" name="enforcement-interest" type="radio" value="Relevant occupier" aria-describedby="enforcement-interest-4-item-hint">
+                <label class="govuk-label govuk-radios__label" for="enforcement-interest-4">
+                  Relevant occupier
+                </label>
+                <div id="enforcement-interest-4-item-hint" class="govuk-hint govuk-radios__hint">
+                  I occupy the land or building with the owner’s consent.
+                </div>
+              </div>
+              <div class="govuk-radios__divider">
+                or
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="enforcement-interest-5" name="enforcement-interest" type="radio" value="none">
+                <label class="govuk-label govuk-radios__label" for="enforcement-interest-5">
+                  I’m none of these
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

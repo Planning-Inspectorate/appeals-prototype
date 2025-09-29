@@ -1,0 +1,112 @@
+{% set pageref = "FUL-AAS-001-AS14" %}
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "What is the address of the appeal site?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="site-visibility" method="post">
+
+        <span class="govuk-caption-l">
+          Tell us about the appeal site
+        </span>
+
+        {% call govukFieldset({
+          legend: {
+            text: "What is the address of the appeal site?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+
+          <p class="govuk-body">
+            The appeal site is the area of property or land that your enforcement notice relates to.
+          <p>
+
+          {{ govukInput({
+            id: "enforcement-site-address-line1",
+            name: "enforcement-site-address-line1",
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            value: data["enforcement-site-address-line1"]
+          }) }}
+
+          {{ govukInput({
+            id: "enforcement-site-address-line2",
+            name: "enforcement-site-address-line2",
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            value: data["enforcement-site-address-line2"]
+          }) }}
+
+          {{ govukInput({
+            id: "enforcement-site-address-town",
+            name: "enforcement-site-address-town",
+            label: {
+              text: "Town or city"
+            },
+            value: data["enforcement-site-address-town"],
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+
+          {{ govukInput({
+            id: "enforcement-site-address-county",
+            name: "enforcement-site-address-county",
+            label: {
+              text: "County"
+            },
+            value: data["enforcement-site-address-county"],
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+
+          {{ govukInput({
+            id: "enforcement-site-address-postcode",
+            name: "enforcement-site-address-postcode",
+            label: {
+              text: "Postcode"
+            },
+            value: "Value",
+            value: data["enforcement-site-address-postcode"],
+            classes: "govuk-input--width-10"
+          }) }}
+
+        {% endcall %}
+
+        <p class="govuk-body">
+          <a href="grid-address">
+            Tell us the address using grid references instead
+          </a>
+        </p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

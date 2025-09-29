@@ -1,0 +1,868 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% block pageTitle %}
+  Check your answers - Check your answers and submit your appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="declaration" method="post">
+
+        <span class="govuk-caption-l">
+          Check your answers and submit your appeal
+        </span>
+
+        <h1 class="govuk-heading-xl">
+          Check your answers
+        </h1>
+
+        <!-- contact details -->
+        <h2 class="govuk-heading-m">Tell us who was on the enforcement notice</h2>
+
+        <dl class="govuk-summary-list">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Named on the notice
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              <!-- if there is a person's name show it -->
+              {% if data['enforcement-first-name'] or data['enforcement-company-name'] %}
+                {% if data['enforcement-first-name'] %}
+                  {{ data['enforcement-first-name'] }} {{ data['enforcement-last-name'] }}<br>
+                {% endif %}
+
+                <!-- if there is a company name show it -->
+                {% if data['enforcement-company-name'] %}
+                  {{ data['enforcement-company-name'] }}
+                {% endif %}
+
+              {% else %}
+                Nic Davies
+              {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> was the planning application made in your name?</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row pins-summary-list__row--last">
+            <dt class="govuk-summary-list__key">
+              Contact details
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{ data["enforcement-your-email"] or 'nickydavies@jambon.co.uk' }}</p>
+              <p class="govuk-body">{{ data['enforcement-telephone'] or '01179428242' }}</p>
+
+            </dd>
+
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> contact details</span>
+              </a>
+            </dd>
+          </div>
+
+
+        </dl>
+
+        <!-- appeal site -->
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Tell us about the appeal site</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Appeal site address
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {{ data["enforcement-site-address-line1"] or '1 Providence Avenue' }}
+
+              {% if data["enforcement-site-address-line2"] %}
+                <br>{{ data["enforcement-site-address-line2"] }}
+              {% endif %}
+
+              {% if data["enforcement-site-address-town"] %}
+                <br>{{ data["enforcement-site-address-town"]}}
+              {% else %}
+                <br>Jamton
+              {% endif %}
+
+              {% if data["enforcement-site-address-county"] %}
+                <br>{{ data["enforcement-site-address-county"] or '' }}
+              {% endif %}
+
+              {% if data["enforcement-site-address-postcode"] %}
+                <br>{{ data["enforcement-site-address-postcode"] }}
+              {% elseif data["enforcement-site-address-easting"] %}
+                <br>{{ data["enforcement-site-address-easting"] }}
+                <br>{{ data["enforcement-site-address-northing"] }}
+              {% else %}
+                <br>JM2 3BL
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> address of the appeal site</span>
+              </a>
+            </dd>
+          </div>
+
+          <!-- site visibility -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Visible from a public road
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">
+                {{ data["enforcement-site-visibility"] or 'Yes' }}
+              </p>
+
+              {% if data["enforcement-site-visibility"] == "No" %}
+                <p class="govuk-body">
+                  {{ data['enforcement-site-visibility-details'] }}
+                </p>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> is the site visible from a public road?</span>
+              </a>
+            </dd>
+          </div>
+
+          <!-- health and safety -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Health and safety issues
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">
+                {{ data["enforcement-site-healthsafety"] or 'No' }}
+              </p>
+
+              {% if data["enforcement-site-healthsafety"] == "Yes" %}
+                <p class="govuk-body">
+                  {{ data['enforcement-site-healthsafety-details'] }}
+                </p>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> is the site visible from a public road?</span>
+              </a>
+            </dd>
+          </div>
+
+          <!-- site interest -->
+          <div class="govuk-summary-list__row  pins-summary-list__row--last">
+            <dt class="govuk-summary-list__key">
+              Interest in the land or building
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+                {% if data['enforcement-interest'] != 'none' %}
+                  <!-- one of the 4 -->
+                  <p class="govuk-body">
+                    {{ data['enforcement-interest'] or 'Owner' }}
+                  </p>
+                {% else %}
+                  <!-- none of the above-->
+                  {% if data['enforcement-site-owner-consent'] != "No" %}
+                    <!-- one of the 4 -->
+                    <p class="govuk-body">
+                      Consent from the owner to occupy the land or building when the enforcement notice was issued.
+                    </p>
+
+                    <!-- none of the above-->
+                    {% if data['enforcement-site-occupation'] == "Yes" %}
+                      <!-- one of the 4 -->
+                      <p class="govuk-body">
+                        I occupy the land or building now.
+                      </p>
+                    {% endif %}
+
+
+                  {% else %}
+                    <!-- none -->
+                    {{ data['enforcement-site-interest-details'] }}
+
+                  {% endif %}
+
+                {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> is the site visible from a public road?</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['enforcement-other-appeals'] == "Yes" %}
+
+            <!-- other appeals -->
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Other appeals for this development or nearby sites
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body">
+                  {{ data["enforcement-other-appeals-details"] }}
+                </p>
+
+                {% if data["enforcement-site-healthsafety"] == "Yes" %}
+                  <p class="govuk-body">
+                    {{ data['enforcement-site-healthsafety-details'] }}
+                  </p>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> is the site visible from a public road?</span>
+                </a>
+              </dd>
+            </div>
+
+          {% endif %}
+
+        </dl>
+
+        <!-- grounds of appeal -->
+        <h2 class="govuk-heading-m govuk-!-margin-top-0">Choose your grounds of appeal</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Grounds of appeal
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {% if data['grounds-1'] != null
+                 or data['grounds-2'] != null
+                 or data['grounds-3'] != null
+                 or data['grounds-4'] != null
+                 or data['grounds-5'] != null
+                 or data['grounds-6'] != null
+                 or data['grounds-7'] != null %}
+
+                {% if data['grounds-1'] %}
+                  <p class="govuk-body">
+                    Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-2'] %}
+                  <p class="govuk-body">
+                    Ground B: The alleged breach of planning permission has not happened.
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-3'] %}
+                  <p class="govuk-body">
+                    Ground C: The alleged breach does not require planning permission.
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-4'] %}
+                  <p class="govuk-body">
+                    Ground D: It’s too late for the local authority to serve the enforcement notice.
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-5'] %}
+                  <p class="govuk-body">
+                    Ground E: Copies of the enforcement notice were not legally served to the right people.
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-6'] %}
+                  <p class="govuk-body">
+                    Ground F: The steps to comply with the enforcement notice are excessive.
+                  </p>
+                {% endif %}
+
+                {% if data['grounds-7'] %}
+                  <p class="govuk-body">
+                    Ground G: I need more time to comply with the enforcement notice.
+                  </p>
+                {% endif %}
+
+              {% else %}
+
+                <p class="govuk-body">
+                  Ground A: Planning permission should be granted for the alleged breach in the enforcement notice.
+                </p>
+
+              {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> your grounds of appeal</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+          <!-- facts and reasons -->
+
+          <!-- if any grounds were selected -->
+
+          {% if data['grounds-1'] != null
+             or data['grounds-2'] != null
+             or data['grounds-3'] != null
+             or data['grounds-4'] != null
+             or data['grounds-5'] != null
+             or data['grounds-6'] != null
+             or data['grounds-7'] != null %}
+
+            <!-- list out the data -->
+
+            {% if data['grounds-1'] %}
+
+              {{ govukSummaryList({
+                classes: 'long-answers govuk-!-margin-bottom-0',
+                rows: [
+                  {
+                    key: {
+                      text: 'Reasons for Ground A'
+                    },
+                    value: {
+                      html: data['ground-a'] | nl2br or "Ground A reasons"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: '#0',
+                          text: 'Change'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+
+            {% endif %}
+
+            {% if data['grounds-2'] %}
+
+              {{ govukSummaryList({
+                classes: 'long-answers govuk-!-margin-bottom-0',
+                rows: [
+                  {
+                    key: {
+                      text: 'Reasons for Ground B'
+                    },
+                    value: {
+                      html: data['ground-b'] | nl2br or "Ground B reasons"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: '#0',
+                          text: 'Change'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+
+            {% endif %}
+
+            {% if data['grounds-3'] %}
+
+              {{ govukSummaryList({
+                classes: 'long-answers govuk-!-margin-bottom-0',
+                rows: [
+                  {
+                    key: {
+                      text: 'Reasons for Ground C'
+                    },
+                    value: {
+                      html: data['ground-c'] | nl2br or "Ground C reasons"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: '#0',
+                          text: 'Change'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+
+            {% endif %}
+
+            {% if data['grounds-4'] %}
+
+              {{ govukSummaryList({
+                classes: 'long-answers govuk-!-margin-bottom-0',
+                rows: [
+                  {
+                    key: {
+                      text: 'Reasons for Ground D'
+                    },
+                    value: {
+                      html: data['ground-d'] | nl2br or "Ground D reasons"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: '#0',
+                          text: 'Change'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+
+            {% endif %}
+
+            {% if data['grounds-5'] %}
+
+              {{ govukSummaryList({
+                classes: 'long-answers govuk-!-margin-bottom-0',
+                rows: [
+                  {
+                    key: {
+                      text: 'Reasons for Ground E'
+                    },
+                    value: {
+                      html: data['ground-e'] | nl2br or "Ground E reasons"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: '#0',
+                          text: 'Change'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+
+            {% endif %}
+
+            {% if data['grounds-6'] %}
+
+              {{ govukSummaryList({
+                classes: 'long-answers govuk-!-margin-bottom-0',
+                rows: [
+                  {
+                    key: {
+                      text: 'Reasons for Ground F'
+                    },
+                    value: {
+                      html: data['ground-f'] | nl2br or "Ground F reasons"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: '#0',
+                          text: 'Change'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+
+            {% endif %}
+
+            {% if data['grounds-7'] %}
+
+              {{ govukSummaryList({
+                classes: 'long-answers govuk-!-margin-bottom-0',
+                rows: [
+                  {
+                    key: {
+                      text: 'Reasons for Ground G'
+                    },
+                    value: {
+                      html: data['ground-g'] | nl2br or "Ground G reasons"
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: '#0',
+                          text: 'Change'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }) }}
+
+            {% endif %}
+
+          {% endif %}
+
+          <!-- if there was an application -->
+          <dl class="govuk-summary-list govuk-!-margin-bottom-0">
+
+            <div class="govuk-summary-list__row pins-summary-list__row--last">
+              <dt class="govuk-summary-list__key">
+                Supporting documents added
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['supporting-check'] or 'No' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> supporting documents</span>
+                </a>
+              </dd>
+            </div>
+
+            {% if data["supporting-check"] == "Yes" %}
+
+              <ul class="govuk-list govuk-list--bullet">
+
+                {% for file in data['statement-supporting-docs'] %}
+                  <li>{{ file }}</li>
+                {% endfor %}
+
+              </ul>
+
+            {% endif %}
+
+          </dl>
+
+          <hr class="pins-table-divider">
+
+          <!-- if there was an application -->
+          <dl class="govuk-summary-list">
+          {% if data["enforcement-application"] == "Yes" %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Planning application submitted
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["enforcement-retroapplication-date-day"] }}
+                {{ data["enforcement-retroapplication-date-month"] | formatMonth  }}
+                {{ data["enforcement-retroapplication-date-year"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> planning application submitted</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Planning application decision
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data["enforcement-application-decision"] == "Yes" %}
+                  {{ data["enforcement-application-decision-date-day"] }}
+                  {{ data["enforcement-application-decision-date-month"] | formatMonth  }}
+                  {{ data["enforcement-application-decision-date-year"] }}
+                {% else %}
+                  No
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> planning application decision</span>
+                </a>
+              </dd>
+            </div>
+
+          {% else %}
+
+          <div class="govuk-summary-list__row  pins-summary-list__row--last">
+            <dt class="govuk-summary-list__key">
+              Planning application submitted
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> planning application submitted</span>
+              </a>
+            </dd>
+          </div>
+
+          {% endif %}
+
+          <!-- if ground a, show fees answer -->
+          {% if data['grounds-1'] %}
+            <div class="govuk-summary-list__row pins-summary-list__row--last">
+              <dt class="govuk-summary-list__key">
+                Fee paid for the same development
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["enforcement-fees-paid"] or 'Yes' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> fee paid for the same development</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          </dl>
+
+
+        <!-- appeal procedure -->
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Tell us how you would prefer us to decide your appeal</h2>
+
+        <dl class="govuk-summary-list">
+          {% if data['enforcement-procedure'] == "Written" %}
+            <div class="govuk-summary-list__row pins-summary-list__row--last">
+          {% elseif data['enforcement-procedure'] == fasle %}
+            <div class="govuk-summary-list__row pins-summary-list__row--last">
+          {% else %}
+            <div class="govuk-summary-list__row">
+          {% endif %}
+            <dt class="govuk-summary-list__key">
+              How would you prefer us to decide your appeal?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['enforcement-procedure'] or 'Written representations'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> how would you prefer us to decide your appeal</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['enforcement-procedure'] == "Hearing" %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Why would you prefer a hearing?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-procedure-why-hearing'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> why would you prefer a hearing</span>
+                </a>
+              </dd>
+            </div>
+
+          {% elif data['enforcement-procedure'] == "Inquiry" %}
+
+            <!-- why inquiry -->
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Why would you prefer an inquiry?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-procedure-why-inquiry'] or "So that I can give verbal evidence and call the architect as a witness."}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> why would you prefer an inquiry</span>
+                </a>
+              </dd>
+            </div>
+
+            <!-- inquiry days -->
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How many days would you expect an inquiry to last?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-inquiry-days'] or '1' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> how many days would you expect an inquiry to last</span>
+                </a>
+              </dd>
+            </div>
+
+            <!-- witnesses -->
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                How many witnesses would you expect to give evidence at the inquiry?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-inquiry-witnesses'] or '1' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> how many witnesses would you expect to give evidence at the inquiry</span>
+                </a>
+              </dd>
+            </div>
+
+            <!-- statement of common ground -->
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Draft statement of common ground
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-statement-common-ground'] or 'Providence-statement-of-common-ground.pdf' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> your uploaded statement of common ground</span>
+                </a>
+              </dd>
+            </div>
+
+          {% endif %}
+
+        </dl>
+
+        <!-- uploaded documents -->
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Upload documents for your appeal</h2>
+        <dl class="govuk-summary-list">
+
+          <!-- enforcement notice and plans -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enforcement notice and additional plans
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href=''>
+                {{ data['enforcement-uploaded-notice'] or 'Project-Providence-enforcement-notice.pdf' }}
+              </a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> enforcement notice</span>
+              </a>
+            </dd>
+          </div>
+
+          <!-- planning obligation -->
+          <div class="govuk-summary-list__row  pins-summary-list__row--last">
+            <dt class="govuk-summary-list__key">
+              Do you plan to submit a planning obligation?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["enforcement-planning-obligation"] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="javascript:preventDefault();">
+                Change<span class="govuk-visually-hidden"> do you plan to submit a planning obligation</span>
+              </a>
+            </dd>
+          </div>
+
+          <!-- if use said yes to planning obligation -->
+          {% if data['enforcement-planning-obligation'] == 'Yes' %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Planning obligation status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['enforcement-planning-obligation-status'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> planning obligation status</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+          {% if data['enforcement-planning-obligation-status'] == 'Finalised and ready to submit' %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Your planning obligation
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href=''>
+                  {{ data['enforcement-uploaded-planning-obligation'] }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> your planning obligation</span>
+                </a>
+              </dd>
+            </div>
+          {% elif data['enforcement-planning-obligation-status'] == 'In draft' %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Your draft planning obligation
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href=''>
+                  {{ data['enforcement-uploaded-draft-planning-obligation'] }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> your draft planning obligation</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+
+          <!-- extra documents -->
+          {% if data['enforcement-supporting-documents'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Supporting documents
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href=''>
+                  {{ data['enforcement-uploaded-documents'] or 'Project-Providence-costs.pdf' }}
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="javascript:preventDefault();">
+                  Change<span class="govuk-visually-hidden"> supporting documents</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+        </dl>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+          {{ govukButton({
+            href: "",
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

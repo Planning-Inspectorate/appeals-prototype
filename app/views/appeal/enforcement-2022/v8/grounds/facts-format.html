@@ -1,0 +1,83 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "How do you want give us the facts and reasons to support your grounds?" %}
+
+{% block pageTitle %}
+  {{title}} - Tell us about the appeal site - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Choose your grounds of appeal
+    </span>
+
+    <form action="reasons" method="post">
+
+      <div class="govuk-form-group">
+
+        {{ govukRadios({
+          idPrefix: "enforcement-facts-format",
+          name: "enforcement-facts-format",
+          fieldset: {
+            legend: {
+              text: title,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "file",
+              text: "Upload a single document with all of your evidence",
+              checked: checked("enforcement-facts-format", "file")
+            },
+            {
+              value: "text",
+              text: "Tell us using a text box for each selected ground",
+              checked: checked("enforcement-facts-format", "text")
+            },
+            {
+              value: "files",
+              text: "Upload a file for each selected ground",
+              checked: checked("enforcement-facts-format", "files")
+            }
+          ]
+        }) }}
+
+      </div>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {{ govukButton({
+          href: "../appeal-saved",
+          text: "Save and come back later",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

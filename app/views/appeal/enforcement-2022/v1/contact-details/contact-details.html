@@ -1,0 +1,95 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "Contact details" %}
+
+{% block pageTitle %}
+  {{title}} - Provide your contact details - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/contactdetails" method="post">
+
+        <span class="govuk-caption-l">
+          Provide your contact details
+        </span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+        {{ govukInput({
+          id: "enforcement-your-email",
+          name: "enforcement-your-email",
+          label: {
+            text: "Your email address"
+          },
+          hint: {
+            html: hintHtml
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: data["enforcement-your-email"]
+        }) }}
+
+        {{ govukInput({
+          id: "enforcement-your-name",
+          name: "enforcement-your-name",
+          label: {
+            text: "Your full name"
+          },
+          hint: {
+            html: hintHtml
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: data["enforcement-your-name"]
+        }) }}
+
+        {{ govukInput({
+          id: "enforcement-company-name",
+          name: "enforcement-company-name",
+          label: {
+            text: "Company name (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: data["enforcement-company-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Your telephone number"
+          },
+          id: "enforcement-telephone",
+          name: "enforcement-telephone",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-input--width-10",
+          value: data["enforcement-telephone"]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
