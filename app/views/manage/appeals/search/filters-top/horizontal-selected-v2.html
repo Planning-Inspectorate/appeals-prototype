@@ -1,0 +1,550 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+
+{% set pageName = "Home" %}
+{% set currentPage = "home" %}
+
+{% block backLink %}{% endblock %}
+
+
+{% block beforeContent %}
+
+  {% endblock %}
+
+
+
+
+    {% block content %}
+
+    <style>
+
+        /* Tooltip text */
+        #tooltiptext {
+            visibility: hidden;
+            background-color: white;
+            color: #000;
+            text-align: left;
+            margin: 10px;
+            padding: 16px;
+            border-radius: 4px;
+            left: 48%;
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            z-index: 1;
+        }
+    
+        #tooltiptext:after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            z-index: 1;
+            border-style: solid;
+            border-color: #ffffff transparent;
+            border-width: 10px 10px 0;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -10px;
+        }
+    
+        #tooltip {
+            background-image: url("https://www.ordnancesurvey.co.uk/img-assets/products/overview-england-wales.x4fa67183.xe4e2d2f0.jpg");
+            background-size: cover;
+            height: 700px;
+            width: 100%;
+            background-color: rgb(188, 214, 188);
+            text-align: center;
+            padding-top: 400px;
+        }
+    
+        .layout-slots__divider {
+            color: #ffffff;
+        }
+        a {
+            color: #1d70b8;
+        }
+        .grey-box {
+            display: none;
+        }
+    
+        .govuk-main-wrapper {
+            padding-top: 0;
+        }
+    
+        .filter {
+            background-color: #f3f2f1;
+            padding: 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+            border: 1px solid #505a5f;
+            text-decoration: none;
+            color: black;
+        }
+    
+        .filters {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #b1b4b6;
+        }
+    
+        .filters .govuk-details__text {
+            border: none;
+            padding-left: 0;
+        }
+    
+        .filtersText {
+            text-decoration: none;
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1875rem;
+        }
+    
+        .filter:visited {
+            color: black;
+        }
+    
+        
+    
+        .greybg {
+            box-shadow: #f3f2f1 800px 0px, #f3f2f1 -800px 0;
+        }
+    
+        .listbox {
+            border: 1px solid rgb(147, 147, 147);
+            padding: 16px;
+            margin: 12px;
+            transform: translateY(600px);
+            position: absolute;
+            background-color: white;
+            width: 554px;
+        }
+    
+        .govuk-details__summary::before {
+            clip-path: polygon(6.38% 22.63%, 49.5% 65.75%, 92.63% 22.63%, 100% 30%, 50% 80%, 0% 30%);
+            background-color: black;
+            color: black;
+            width: 3px;
+            height: 3px;
+            background-color: black;
+            color: black;
+        }
+    
+        .govuk-details[open] > .govuk-details__summary::before {
+            clip-path: polygon(0% 71.88%, 49.5% 22.63%, 98.5% 71.88%, 91.63% 78.71%, 50% 36.88%, 7.37% 79.29%);
+            width: 3px;
+            height: 3px;
+        }
+    </style>
+
+
+<div class="govuk-grid-row">
+    
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl" style="padding-top:40px;">Cambridgeshire and Peterborough Combined Authority</span>
+        Manage your appeals
+      </h1>
+
+    <div>
+        <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
+        <div id="event-name-hint" class="govuk-hint">
+            You can search by appeal reference number, site address, LPA reference number, and appellant name
+          </div>
+        <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;">
+            <label class="govuk-label govuk-visually-hidden" for="keyword-search">Keyword search</label>
+            <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off" style="margin-bottom: 0; width:100%;" value="Cambridge">
+            <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom: 0;" value="Cambridge">Search</button>
+            
+        </form>
+        <p class="govuk-body" style="padding-top: 10px;"><a href="horizontal-v2" class="govuk-link">Clear search</a></p>
+
+        <!--<details class="govuk-details govuk-!-margin-top-3" id="filter-panel">
+            <div style="background-color:#F3F2F1; padding:20px;">
+                <details class="govuk-details govuk-!-margin-bottom-0" id="filter-panel">
+                    <summary class="govuk-details__summary">
+                        <h3 class="govuk-heading-s">
+                            Appeal type
+                        </span>
+                    </summary>
+                    <div style="padding-left:30px;">
+                        <form class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                                <div class="govuk-grid-row">
+                                    <div class="">
+                                        <fieldset class="govuk-fieldset" aria-describedby="type-of-application-hint">
+                                            <div class="govuk-checkboxes govuk-checkboxes--small">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="Planning permission">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="type-1">
+                                                        Householder
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                        Planning
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="type-3" name="type" type="checkbox" value="Approval of reserved matters following outline approval">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="type-3">
+                                                        Planned listed building and conservation area
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="type-4" name="type" type="checkbox" value="Planning permission and listed building consent (LBC)">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="type-4">
+                                                        Advertisement
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </details>
+                <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+                <details class="govuk-details govuk-!-margin-top-3 govuk-!-margin-padding-0 govuk-!-margin-bottom-0" id="filter-panel">
+                    <summary class="govuk-details__summary">
+                        <h3 class="govuk-heading-s">Procedure type</h3>
+                    </summary>
+                    <div style="padding-left:30px;">
+                        <form class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                                <div class="govuk-grid-row">
+                                    <div class="">
+                                        <fieldset class="govuk-fieldset" aria-describedby="stage-hint">
+                                            <div class="govuk-checkboxes govuk-checkboxes--small">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="stage-written" name="stage" type="checkbox" value="Written representations">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="stage-written">
+                                                        Written representations
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="stage-hearing" name="stage" type="checkbox" value="Hearing">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="stage-hearing">
+                                                        Hearing
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="stage-inquiry" name="stage" type="checkbox" value="Inquiry">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="stage-inquiry">
+                                                        Inquiry
+                                                    </label>
+                                                </div>
+                                                
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="govuk-grid-column-one-third"></div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </details>
+                <a href="horizontal-selected-v2" class="govuk-button" style="margin-bottom:0px; width:100%">
+                    Apply
+                </a>
+            </div>
+
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    Filters
+                </span>
+            </summary>
+
+        </details>-->
+    </div>
+
+</div>
+</div>
+
+{# Size modifiers: xl, l, m #}
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+    
+      {{ govukTabs({
+        items: [
+            {
+                label: "To do",
+                id: "to-do",
+                panel: {
+                    html: '<h1 class="govuk-heading-l">Active</h1><table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Appeal number</th>
+                                <th scope="col" class="govuk-table__header">Address</th>
+                                <th scope="col" class="govuk-table__header">Appeal type</th>
+                                <th scope="col" class="govuk-table__header">Deadline</th>
+                                <th scope="col" class="govuk-table__header">Due in</th>
+                                <th scope="col" class="govuk-table__header">To do</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Spital House, Lensfield Rd, Cambridge CB2 1ER</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell">25 September 2025</td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+                                    Overdue
+                                  </strong></td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345264
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT</td>
+                                <td class="govuk-table__cell">Planning</td>
+                                <td class="govuk-table__cell">29 September 2025</td>
+                                <td class="govuk-table__cell">3 days</td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">The Old Library, 2 Wheeler St, Cambridge CB2 3QB</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                                    New
+                                  </strong></td>
+                                  <td class="govuk-table__cell"></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Spital House, Lensfield Rd, Cambridge CB2 1ER</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell">25 September 2025</td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+                                    Overdue
+                                  </strong></td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345264
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT</td>
+                                <td class="govuk-table__cell">Planning</td>
+                                <td class="govuk-table__cell">29 September 2025</td>
+                                <td class="govuk-table__cell">3 days</td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">The Old Library, 2 Wheeler St, Cambridge CB2 3QB</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                                    New
+                                  </strong></td>
+                                  <td class="govuk-table__cell"></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Spital House, Lensfield Rd, Cambridge CB2 1ER</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell">25 September 2025</td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+                                    Overdue
+                                  </strong></td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345264
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT</td>
+                                <td class="govuk-table__cell">Planning</td>
+                                <td class="govuk-table__cell">29 September 2025</td>
+                                <td class="govuk-table__cell">3 days</td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">The Old Library, 2 Wheeler St, Cambridge CB2 3QB</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                                    New
+                                  </strong></td>
+                                  <td class="govuk-table__cell"></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Spital House, Lensfield Rd, Cambridge CB2 1ER</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell">25 September 2025</td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+                                    Overdue
+                                  </strong></td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345264
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT</td>
+                                <td class="govuk-table__cell">Planning</td>
+                                <td class="govuk-table__cell">29 September 2025</td>
+                                <td class="govuk-table__cell">3 days</td>
+                                  <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">The Old Library, 2 Wheeler St, Cambridge CB2 3QB</td>
+                                <td class="govuk-table__cell">Householder</td>
+                                <td class="govuk-table__cell"></td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                                    New
+                                  </strong></td>
+                                  <td class="govuk-table__cell"></td>
+                            </tr>
+                        </tbody>
+                    </table>'
+                }
+            },
+            {
+                label: "Waiting for review",
+                id: "waiting-for-review",
+                panel: {
+                    html: '<h1 class="govuk-heading-l">Waiting for review</h1><table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Appeal number</th>
+                                <th scope="col" class="govuk-table__header">Address</th>
+                                <th scope="col" class="govuk-table__header">Appeal type</th>
+                                <th scope="col" class="govuk-table__header">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                                <td class="govuk-table__cell">S78</td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                                    With case officer
+                                  </strong></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>'
+                }
+            },
+            {
+                label: "Withdrawn",
+                id: "withdrawn",
+                panel: {
+                    html: '<h1 class="govuk-heading-l">Withdrawn appeals</h1><table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Appeal number</th>
+                                <th scope="col" class="govuk-table__header">Address</th>
+                                <th scope="col" class="govuk-table__header">Withdrawn date</th>
+                                <th scope="col" class="govuk-table__header">Appeal type</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">	21A Sarson Way, Wiltshire, BA12 0FF</td>
+                                <td class="govuk-table__cell">28 September 2025</td>
+                                <td class="govuk-table__cell">S78</td>
+                            </tr>
+                        </tbody>
+                    </table>'
+                }
+            },
+            {
+                label: "Decided",
+                id: "decided",
+                panel: {
+                    html: '<h1 class="govuk-heading-l">Decided appeals</h1><table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Appeal number</th>
+                                <th scope="col" class="govuk-table__header">Address</th>
+                                <th scope="col" class="govuk-table__header">Appeal type</th>
+                                <th scope="col" class="govuk-table__header">Decision date</th>
+                                <th scope="col" class="govuk-table__header">Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a class="govuk-link" href="#">
+                                        1345301
+                                    </a>
+                                </th>
+                                <td class="govuk-table__cell">	21A Sarson Way, Wiltshire, BA12 0FF</td>
+                                <td class="govuk-table__cell">28 September 2025</td>
+                                <td class="govuk-table__cell">S78</td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
+                                    Allowed in part
+                                  </strong></td>
+                            </tr>
+                        </tbody>
+                    </table>'
+                }
+            }
+        ]
+      }) }}
+
+
+{% endblock %}

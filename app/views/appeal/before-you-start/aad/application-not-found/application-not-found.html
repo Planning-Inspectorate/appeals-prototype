@@ -9,18 +9,18 @@
     {{title}}
   </h1>
   <p class="govuk-body">
-    We could not find an application with this number.
+    You will need to enter more information or seach another application number.
   </p>
 
   {% from "govuk/components/button/macro.njk" import govukButton %}
 
 <div class="govuk-button-group">
   {{ govukButton({
-    text: "Enter another application number",
-    href:"application-ref"
+    text: "Enter more information",
+    href:"../../v19/planning-type"
   }) }}
 
-  <a class="govuk-link" href="../../v19/planning-type">Continue without application number</a>
+  <a class="govuk-link" href="application-ref">Search another application number</a>
 </div>
   
 {% endblock %}

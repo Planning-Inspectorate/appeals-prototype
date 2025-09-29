@@ -1,0 +1,510 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set pageName = "Home" %}
+
+{% block backLink %}{% endblock %}
+
+{% block content %}
+
+
+    <style>
+
+        /* Tooltip text */
+        #tooltiptext {
+            visibility: hidden;
+            background-color: white;
+            color: #000;
+            text-align: left;
+            margin: 10px;
+            padding: 16px;
+            border-radius: 4px;
+            left: 48%;
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            z-index: 1;
+        }
+
+        #tooltiptext:after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            z-index: 1;
+            border-style: solid;
+            border-color: #ffffff transparent;
+            border-width: 10px 10px 0;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -10px;
+        }
+
+        #tooltip {
+            background-image: url("https://www.ordnancesurvey.co.uk/img-assets/products/overview-england-wales.x4fa67183.xe4e2d2f0.jpg");
+            background-size: cover;
+            height: 700px;
+            width: 100%;
+            background-color: rgb(188, 214, 188);
+            text-align: center;
+            padding-top: 400px;
+        }
+
+        .layout-slots__divider {
+            color: #ffffff;
+        }
+        a {
+            color: #1d70b8;
+        }
+        .grey-box {
+            display: none;
+        }
+
+        .govuk-main-wrapper {
+            padding-top: 0;
+        }
+
+        .filter {
+            background-color: #f3f2f1;
+            padding: 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+            border: 1px solid #505a5f;
+            text-decoration: none;
+            color: black;
+        }
+
+        .filters {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #b1b4b6;
+        }
+
+        .filters .govuk-details__text {
+            border: none;
+            padding-left: 0;
+        }
+
+        .filtersText {
+            text-decoration: none;
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1875rem;
+        }
+
+        .filter:visited {
+            color: black;
+        }
+
+        .greybg {
+            box-shadow: #f3f2f1 800px 0px, #f3f2f1 -800px 0;
+        }
+
+        .listbox {
+            border: 1px solid rgb(147, 147, 147);
+            padding: 16px;
+            margin: 12px;
+            transform: translateY(600px);
+            position: absolute;
+            background-color: white;
+            width: 554px;
+        }
+
+        .govuk-details__summary::before {
+            clip-path: polygon(6.38% 22.63%, 49.5% 65.75%, 92.63% 22.63%, 100% 30%, 50% 80%, 0% 30%);
+            background-color: black;
+            color: black;
+            width: 3px;
+            height: 3px;
+            background-color: black;
+            color: black;
+        }
+
+        .govuk-details[open] > .govuk-details__summary::before {
+            clip-path: polygon(0% 71.88%, 49.5% 22.63%, 98.5% 71.88%, 91.63% 78.71%, 50% 36.88%, 7.37% 79.29%);
+            width: 3px;
+            height: 3px;
+        }
+
+        .govuk-summary-list__key, .govuk-summary-list__value, .govuk-summary-list__actions {
+            padding: 0px;
+        }
+
+        .govuk-summary-list{
+            border-bottom: 1px solid #b1b4b6;
+            margin-bottom: 15px;
+        }
+    </style>
+
+
+    <div class="govuk-width-container govuk-!-padding-0">
+        
+        <main class="govuk-main-wrapper govuk-!-padding-top-0">
+            <div class="govuk-grid-row">
+
+                <div class="govuk-grid-column-one-third">
+                    <!--<details class="govuk-details govuk-!-margin-top-3" id="filter-panel">-->
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
+                        <div style="background-color:#ffffff; padding:20px;">
+                            {# Size modifiers: xl, l, m #}
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+                            <h2 class="govuk-heading-m">Filter</h2>
+                            
+                            <p class="govuk-body-s"><a href="#">Show all sections</a></p>
+                            <details class="govuk-details govuk-!-margin-bottom-0" id="filter-panel">
+
+                                <summary class="govuk-details__summary">
+                                    <p class="govuk-body" style="color: #1d70b8;">
+                                        Status
+                                      </p>
+                                    </span>
+                                </summary>
+                                <div style="padding-left:30px;">
+                                    <form class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <div class="govuk-grid-row">
+                                                <div class="">
+                                                    <fieldset class="govuk-fieldset" aria-describedby="type-of-application-hint">
+                                                        <div class="govuk-checkboxes govuk-checkboxes--small">
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="Planning permission">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-1">
+                                                                    Active
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Waiting for review
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Decided
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Withdrawn
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </details>
+                            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+                            <details class="govuk-details govuk-!-margin-top-3 govuk-!-margin-padding-0 govuk-!-margin-bottom-0">
+                                <summary class="govuk-details__summary">
+                                    <p class="govuk-body" style="color: #1d70b8;">
+                                        Appeal type
+                                      </p>
+                                    </span>
+                                </summary>
+                                <div style="padding-left:30px;">
+                                    <form class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <div class="govuk-grid-row">
+                                                <div class="">
+                                                    <fieldset class="govuk-fieldset" aria-describedby="type-of-application-hint">
+                                                        <div class="govuk-checkboxes govuk-checkboxes--small">
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="Planning permission">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-1">
+                                                                    Householder
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Planning
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Advertisement
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </details>
+
+                            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+
+                            <details class="govuk-details govuk-!-margin-top-3 govuk-!-margin-padding-0 govuk-!-margin-bottom-0">
+                                <summary class="govuk-details__summary">
+                                    <p class="govuk-body" style="color: #1d70b8;">
+                                        Procedure type
+                                      </p>
+                                    </span>
+                                </summary>
+                                <div style="padding-left:30px;">
+                                    <form class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <div class="govuk-grid-row">
+                                                <div class="">
+                                                    <fieldset class="govuk-fieldset" aria-describedby="type-of-application-hint">
+                                                        <div class="govuk-checkboxes govuk-checkboxes--small">
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="Planning permission">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-1">
+                                                                    Written representations
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Hearing
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Inquiry
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </details>
+
+                            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+                            <a href="written-reps-selected" class="govuk-button">
+                                Apply filters
+                            </a>
+                        </div>
+
+                        <!--<summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                                Filters
+                            </span>
+                        </summary>
+
+                    </details>-->
+
+                </div>
+
+                <div class="govuk-grid-column-two-thirds">
+                    {# Size modifiers: xl, l, m #}
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+                    <span class="govuk-caption-xl">Cambridgeshire and Peterborough Combined Authority</span>
+                    <h1 class="govuk-heading-xl">Manage your appeals</h1>
+                        <div id="search-hint" class="govuk-hint">
+                            Search by appeal reference number, site address, LPA reference number, and appellant name</div>
+                        <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;">
+                            <label class="govuk-label govuk-visually-hidden" for="keyword-search">Keyword search</label>
+                            <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off" style="margin-bottom: 0; width:100%;">
+                            <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom: 0;">Search</button>
+                        </form>
+
+                    <div id="pagination" class="govuk-body">
+                        <p class="govuk-body">
+                            Showing
+                            <strong>1</strong>
+                            to
+                            <strong>15</strong>
+                            of
+                            <strong>32</strong>
+                            appeals
+                        </p>
+
+                        <span>
+                            <strong>Results per page</strong>
+                        </span>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <span class="govuk-body">15</span>
+
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a class="govuk-link--no-visited-state" href="?itemsPerPage=50" data-pagination="525">25</a>
+
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a class="govuk-link--no-visited-state" href="?itemsPerPage=100" data-pagination="50">50</a>
+
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                    
+                        <!--classes: 'govuk-summary-list--no-border app-summary-list--compact app-summary-list--small-text'-->
+                             
+                            <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
+                                <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+                                  <a href="#" class="govuk-link">1345301</a>
+                                </h2>
+                                <div class="app-list__tag">
+                                    <strong class="govuk-tag govuk-tag--turquoise">Active</strong>
+                                      <strong class="govuk-tag govuk-tag--red">Overdue</strong>
+                                  </div>
+                              </div>
+                              
+                                <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">Address</dt>
+                                    <dd class="govuk-summary-list__value">Spital House, Lensfield Rd, Cambridge CB2 1ER</dd>
+                                  </div>
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">Appeal type</dt>
+                                    <dd class="govuk-summary-list__value">Householder</dd>
+                                  </div>
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">Deadline</dt>
+                                    <dd class="govuk-summary-list__value">18 September 2025</dd>
+                                  </div>
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">To do</dt>
+                                    <li class="govuk-summary-list__actions-list-item" style="list-style: none; padding-left: 0; margin-left: 0; border-left: none;">
+                                        <a class="govuk-link" href="#">Questionnaire<span class="govuk-visually-hidden"> </span></a>
+                                    </li>
+                                      <li class="govuk-summary-list__actions-list-item">
+                                        <a class="govuk-link" href="#">Statement<span class="govuk-visually-hidden"></span></a>
+                                      </li>
+                                  </div>
+                                </dl>
+
+                                <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
+                                    <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+                                      <a href="#" class="govuk-link">1345301</a>
+                                    </h2>
+                                    <strong class="govuk-tag govuk-tag--blue">Waiting for review</strong>
+                                  </div>
+                                  
+                                    <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Address</dt>
+                                        <dd class="govuk-summary-list__value">Spital House, Lensfield Rd, Cambridge CB2 1ER</dd>
+                                      </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Appeal type</dt>
+                                        <dd class="govuk-summary-list__value">S78</dd>
+                                      </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Stage</dt>
+                                        <dd class="govuk-summary-list__value"><strong class="govuk-tag govuk-tag--light-blue">With case officer</strong></dd>
+                                      </div>
+                                      </div>
+                                    </dl>
+
+                                    <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
+                                        <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+                                          <a href="#" class="govuk-link">1345301</a>
+                                        </h2>
+                                        <strong class="govuk-tag govuk-tag--pink">Decided</strong>
+                                      </div>
+                                      
+                                        <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Address</dt>
+                                            <dd class="govuk-summary-list__value">Spital House, Lensfield Rd, Cambridge CB2 1ER</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Appeal type</dt>
+                                            <dd class="govuk-summary-list__value">Householder</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Decision</dt>
+                                            <dd class="govuk-summary-list__value">18 September 2025 <strong class="govuk-tag govuk-tag--yellow">Notice varied and upheld</strong></dd>
+                                          </div>
+                                        </dl>
+
+                                <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
+                                    <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+                                      <a href="#" class="govuk-link">1345301</a>
+                                    </h2>
+                                    <strong class="govuk-tag govuk-tag--grey">Withdrawn</strong>
+                                  </div>
+                                  
+                                    <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Address</dt>
+                                        <dd class="govuk-summary-list__value">Spital House, Lensfield Rd, Cambridge CB2 1ER</dd>
+                                      </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Withdrawn date</dt>
+                                        <dd class="govuk-summary-list__value">18 September 2025</dd>
+                                      </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Appeal type</dt>
+                                        <dd class="govuk-summary-list__value">S78</dd>
+                                      </div>
+                                    </dl>
+                          
+                        
+                        
+
+
+                          <nav class="govuk-pagination" aria-label="Pagination">
+                            <ul class="govuk-pagination__list">
+                              <li class="govuk-pagination__item govuk-pagination__item--current">
+                                <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1" aria-current="page">
+                                  1
+                                </a>
+                              </li>
+                              <li class="govuk-pagination__item">
+                                <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2">
+                                  2
+                                </a>
+                              </li>
+                              <li class="govuk-pagination__item">
+                                <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+                                  3
+                                </a>
+                              </li>
+                            </ul>
+                            <div class="govuk-pagination__next">
+                              <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+                                <span class="govuk-pagination__link-title">
+                                  Next<span class="govuk-visually-hidden"> page</span>
+                                </span>
+                                <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                                  <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                                </svg>
+                              </a>
+                            </div>
+                          </nav>
+                    </div>
+    </div>
+</div>
+
+</div>
+</main>
+</div>
+
+ <div id="no-filters-panel" style="
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 1000;
+    background: #fff;
+    border: 2px solid #b1b4b6;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+">
+    <a href="written-reps-selected" class="govuk-button govuk-button--secondary" style="margin:0;">
+        Filters selected
+    </a>
+</div>
+
+{% endblock %}
