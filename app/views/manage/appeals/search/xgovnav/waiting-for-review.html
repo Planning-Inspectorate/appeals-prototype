@@ -1,0 +1,185 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+
+{% set pageName = "Home" %}
+{% set currentPage = "home" %}
+
+{% block backLink %}{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl" style="padding-top:0px;">Cambridgeshire and Peterborough Combined
+                Authority</span>
+            Manage your appeals
+        </h1>
+
+
+        <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
+        <div id="event-name-hint" class="govuk-hint">
+            You can search by appeal reference number, site address, LPA reference number, and appellant name
+        </div>
+
+        <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;"
+            action="wfr-search-applied" method="get">
+
+            <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off"
+                style="margin-bottom: 0; width:100%;">
+
+            <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom: 0;">
+                Search
+            </button>
+        </form>
+
+        {# Size modifiers: xl, l, m #}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+    </div>
+    </div>
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+
+
+
+                {{ xGovukSecondaryNavigation({
+                    visuallyHiddenTitle: "Secondary menu",
+                    items: [{
+                    text: "Active (12)",
+                    href: "active"
+                    }, {
+                    text: "Waiting for review (8)",
+                    href: "waiting-for-review",
+                    current: true
+                    }, {
+                    text: "Withdrawn (1)",
+                    href: "withdrawn"
+                    }, {
+                    text: "Decided (5)",
+                    href: "decided"
+                    }]
+                    }) }}
+
+            {# Size modifiers: xl, l, m #}
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+            <h1 class="govuk-heading-l">Waiting for review</h1><table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Appeal number</th>
+                        <th scope="col" class="govuk-table__header">Address</th>
+                        <th scope="col" class="govuk-table__header">Appeal type</th>
+                        <th scope="col" class="govuk-table__header">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Shelford Bottom, Heath Farm, Babraham Rd, Stapleford, Cambridge CB22 3AD</td>
+                        <td class="govuk-table__cell">S78</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">
+                            With case officer
+                          </strong></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    {% endblock %}
