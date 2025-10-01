@@ -51,14 +51,14 @@
             {{ xGovukSecondaryNavigation({
             visuallyHiddenTitle: "Secondary menu",
             items: [{
-            text: "Active (12)",
+            text: "Active (31)",
             href: "#",
             current: true
             }, {
             text: "Waiting for review (8)",
             href: "waiting-for-review"
             }, {
-            text: "Decided (5)",
+            text: "Decided (53)",
             href: "decided"
             }, {
             text: "Withdrawn (1)",
@@ -241,8 +241,71 @@
                           </strong></td>
                           <td class="govuk-table__cell"></td>
                     </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Spital House, Lensfield Rd, Cambridge CB2 1ER</td>
+                        <td class="govuk-table__cell">Householder</td>
+                        <td class="govuk-table__cell">25 September 2025</td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+                            Overdue
+                          </strong></td>
+                          <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345264
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT</td>
+                        <td class="govuk-table__cell">Planning</td>
+                        <td class="govuk-table__cell">29 September 2025</td>
+                        <td class="govuk-table__cell">3 days</td>
+                          <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <a class="govuk-link" href="#">
+                                1345301
+                            </a>
+                        </th>
+                        <td class="govuk-table__cell">The Old Library, 2 Wheeler St, Cambridge CB2 3QB</td>
+                        <td class="govuk-table__cell">Householder</td>
+                        <td class="govuk-table__cell"></td>
+                        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                            New
+                          </strong></td>
+                          <td class="govuk-table__cell"></td>
+                    </tr>
                 </tbody>
             </table>
+
+            {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{{ govukPagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    }
+  ]
+}) }}
 
         </div>
     </div>
