@@ -1,0 +1,87 @@
+<!-- needs page ref -->
+<!-- {% set pageref = "BYS-002" %} -->
+
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "Upload facts to support your grounds" %}
+
+{% block pageTitle %}
+  {{title }} - Choose your grounds of appeal - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="application" method="post">
+
+        <span class="govuk-caption-l">
+          Choose your grounds of appeal
+        </span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+        {% if data["enforcement-grounds-facts"] and data["enforcement-grounds-facts"] != "" %}
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">
+            Uploaded file
+          </h3>
+          <p class="govuk-body govuk-!-margin-bottom-8">
+            <a href="javascript:preventDefault();" class="govuk-link">{{ data["enforcement-grounds-facts"] }}</a>
+          </p>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--m" for="enforcement-grounds-facts">
+            {% if data["enforcement-grounds-facts"] and data["enforcement-grounds-facts"] != "" %}
+              Replace the file
+            {% else %}
+              Drag and drop or choose a file
+            {% endif %}
+          </label>
+          <input class="govuk-file-upload pins-file-upload" id="enforcement-grounds-facts" name="enforcement-grounds-facts" type="file">
+        </div>
+
+        {{ govukDetails({
+          summaryText: "Files you can upload",
+          html: '
+            <p class="govuk-body">
+              You can upload the following types of file:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>DOC or DOCX</li>
+              <li>JPG or JPEG</li>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>TIF or TIFF</li>
+            </ul>
+            <p class="govuk-body">
+              Your file must be smaller than 15MB.
+            </p>
+          '
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

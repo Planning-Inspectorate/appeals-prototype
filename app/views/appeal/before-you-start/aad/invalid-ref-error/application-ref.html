@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "What’s your planning application number?" %}
+{% set title = "What’s your application number?" %}
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -14,12 +14,12 @@
           classes: "govuk-label--l"
         },
         hint: {
-          text: "You can find this on communications from your local planning department about your application"
+          text: "You can find this on communications from your local planning department about your application."
         },
         classes: "govuk-input--width-10",
-        id: "postcode",
-        name: "postcode",
-        autocomplete: "postal-code"
+        id: "appNumber",
+        name: "appNumber",
+        autocomplete: "application-number"
       }) }}
 
       {{ govukButton({
@@ -28,7 +28,7 @@
       }) }}
 
       <p class="govuk-body">
-        <a href="enforcement-notice" class="govuk-link">Continue without a planning application number</a>
+        <a href="../../v19/planning-type" class="govuk-link">Continue without application number</a>
       </p>
     </form>
   </div>

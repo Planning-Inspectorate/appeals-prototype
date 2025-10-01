@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'We could not find an application with this number' %}
+
+{% block backLink %}{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p class="govuk-body">
+    You will need to enter more information or seach another application number.
+  </p>
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Enter more information",
+    href:"../../v19/planning-type"
+  }) }}
+
+  <a class="govuk-link" href="application-ref">Search another application number</a>
+</div>
+  
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

@@ -8,36 +8,46 @@
 
     <p class="govuk-caption-l">Before you start</p>
 
-    {{ govukRadios({
-        name: title,
+    <form method="post" novalidate onsubmit="handleSubmit(event)">
+
+      {{ govukRadios({
+        name: 'enforcementNotice',   
         fieldset: {
-          legend: {
-            text: title,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
+        legend: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
         },      
-        value: data.grantedOrRefused,
+        value: data.enforcementNotice, 
         items: [
-            {
-                value: "Yes",
-                text: "Yes"
-            },
-            {
-                value: "No",
-                text: "No"
-            }
+          { value: "Yes", text: "Yes" },
+          { value: "No", text: "No" }
         ]
-    }) }}
+      }) }}
 
       {{ govukButton({
-        text: "Continue",
-        href: "application-type"
+      text: "Continue"
       }) }}
+
+    </form>
+
+    <script>
+      function handleSubmit(event) {
+      event.preventDefault();
+      const selectedValue = document.querySelector('input[name="enforcementNotice"]:checked').value;
+      if (selectedValue === "Yes") {
+        window.location.href = 'existing-service';
+      } else {
+        window.location.href = 'application-ref';
+      }
+      }
+    </script>
 
   </div>
 </div>
 {% endblock %}
+
 
 {# Override the default "Continue" button with nothing #}
 {% block buttons %}{% endblock %}

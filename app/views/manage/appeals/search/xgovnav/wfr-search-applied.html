@@ -1,0 +1,94 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+
+{% set pageName = "Home" %}
+{% set currentPage = "home" %}
+
+{% block backLink %}{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl" style="padding-top:0px;">Cambridgeshire and Peterborough Combined
+                Authority</span>
+            Manage your appeals
+        </h1>
+
+
+        <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
+        <div id="event-name-hint" class="govuk-hint">
+            You can search by appeal reference number, site address, LPA reference number, and appellant name
+        </div>
+
+        <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;">
+            <label class="govuk-label govuk-visually-hidden" for="keyword-search">Keyword search</label>
+            <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off"
+                style="margin-bottom: 0; width:100%;" value="Cambridge">
+            <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom: 0;"
+                value="Cambridge">Search</button>
+
+        </form>
+        <p class="govuk-body" style="padding-top: 10px;"><a href="waiting-for-review" class="govuk-link">Clear
+                search</a></p>
+
+        {# Size modifiers: xl, l, m #}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+
+        {{ xGovukSecondaryNavigation({
+        visuallyHiddenTitle: "Secondary menu",
+        items: [{
+        text: "Active (2)",
+        href: "active-search-applied"
+        }, {
+        text: "Waiting for review (0)",
+        href: "wfr-search-applied",
+        current: true
+        },{
+        text: "Decided (0)",
+        href: "decided-search-applied"
+        }, {
+        text: "Withdrawn (0)",
+        href: "withdrawn-search-applied"
+        }]
+        }) }}
+
+        {# Size modifiers: xl, l, m #}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+        <h1 class="govuk-heading-l">Waiting for review</h1>
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Appeal number</th>
+                    <th scope="col" class="govuk-table__header">Address</th>
+                    <th scope="col" class="govuk-table__header">Appeal type</th>
+                    <th scope="col" class="govuk-table__header">Status</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <td class="govuk-table__cell">No results.</td>
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell"></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}

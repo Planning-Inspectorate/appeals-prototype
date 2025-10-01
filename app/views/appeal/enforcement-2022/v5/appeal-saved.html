@@ -1,0 +1,22 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+          Your appeal has been saved
+        </h1>
+
+        <p>
+          Follow the link in the email we sent you to continue with your appeal.
+        </p>
+
+        <div class="govuk-inset-text">
+          You have until {{ 10 | daysInFuture }} to submit your appeal.
+        </div>
+
+
+    </div>
+  </div>
+{% endblock %}

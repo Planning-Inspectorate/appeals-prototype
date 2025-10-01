@@ -1,0 +1,112 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "Who’s named on the enforcement notice?" %}
+
+{% block pageTitle %}
+  {{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+      <span class="govuk-caption-l">
+        Tell us who was on the enforcement notice
+      </span>
+
+      <!-- if the applicant was You before -->
+      {% if data['application-check'] != "You" %}
+
+        {{ govukRadios({
+          idPrefix: 'application-check',
+          name: 'application-check',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Who&rsquo;s named on the enforcement notice?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "You can add 1 person or company at a time."
+          },
+          items: [
+            {
+              html: 'You',
+              value: 'You'
+            },
+            {
+              html: 'Another individual',
+              value: 'Another individual'
+            },
+            {
+              html: 'A company',
+              value: 'A company'
+            }
+          ]
+        }) }}
+
+      {% else %}
+
+        {{ govukRadios({
+          idPrefix: 'application-check',
+          name: 'application-check',
+          classes: '',
+          fieldset: {
+            legend: {
+              html: 'Who&rsquo;s named on the enforcement notice?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "You can add 1 person or company at a time."
+          },
+          items: [
+            {
+              html: 'Another individual',
+              value: 'Another individual'
+            },
+            {
+              html: 'A company',
+              value: 'A company'
+            }
+          ]
+        }) }}
+
+      {% endif %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        <p>
+          <a href="../appeal-saved">
+            Save and come back later
+          </a>
+        </p>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

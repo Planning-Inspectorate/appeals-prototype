@@ -1,0 +1,119 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "Named on the appeal" %}
+
+{% block pageTitle %}
+  {{title}} - Additional people - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Tell us who was on the enforcement notice
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      {% for name in data['names'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+            {{ name.type | capitalize or 'Person' }}
+          </dt>
+          <dd class="govuk-summary-list__value  govuk-!-width-one-half">
+            {{ name.name }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#0">
+              Change
+            </a>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="remove-name/{{loop.index}}">
+              Remove
+            </a>
+          </dd>
+        </div>
+      {% else %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+            Person
+          </dt>
+          <dd class="govuk-summary-list__value  govuk-!-width-one-half">
+            Nic Davies
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#0">
+              Change<span class="govuk-visually-hidden"> this person</span>
+            </a>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#0">
+              Remove<span class="govuk-visually-hidden"> this person</span>
+            </a>
+          </dd>
+        </div>
+      {% endfor %}
+    </dl>
+
+    <form method="post">
+
+      {{ govukRadios({
+        idPrefix: "enforcement-morepeople",
+        name: "enforcement-morepeople",
+        fieldset: {
+          legend: {
+            text: "Do you need to add more names?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          href: "",
+          text: "Save and come back later",
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

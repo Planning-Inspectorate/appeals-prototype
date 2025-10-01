@@ -1,0 +1,104 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set title = "You have added 1 person to the appeal" %}
+
+{% block pageTitle %}
+  {{title}} - Additional people - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="added-people-v3" method="post">
+
+      <span class="govuk-caption-l">
+        Provide your contact details
+      </span>
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value  govuk-!-width-one-half">
+            {{ data["enforcement-added-person-first-name"] }}
+            {{ data["enforcement-added-person-last-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> Nic Griffchon</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      <!-- <h2 class="govuk-heading-m">
+        Do you need to add another person?
+      </h2> -->
+
+      {{ govukRadios({
+        idPrefix: "enforcement-morepeople",
+        name: "enforcement-morepeople",
+        fieldset: {
+          legend: {
+            text: "Do you need to add another person?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          href: "",
+          text: "Save and come back later",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
