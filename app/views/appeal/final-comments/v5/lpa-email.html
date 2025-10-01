@@ -1,0 +1,97 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% set back = false %}
+
+{% block content %}
+<!-- faux email header -->
+<section>
+    <p>
+    <strong>Subject:</strong> Respond to comments on your appeal - 0123456
+  </p>
+  <p>
+    <strong>To:</strong> {{ data['email'] or 'my.emailaddress@hotmail.com'}}<br>
+    <strong>From:</strong> appeals@planninginspectorate.gov.uk
+  </p>
+  <!-- <p>
+    <img src="{{ asset_path }}images/pi-logo.png" width="150" alt="Planning Inspectorate logo, Royal coat of arms of the United Kingdom in black and white. A lion wearing a crown and a unicorn dance either side of a crest with a crown on it."/>
+  </p> -->
+  <hr>
+</section>
+
+<div class="govuk-grid-row govuk-!-margin-top-5">
+  <div class="govuk-grid-column-full">
+
+    <p>Appeal reference: 0123456
+    <br>
+      Appeal site: 11 Bradling Avenue, Sampleford, BS17 2PP</p>
+
+    <p>Dear (your name),</p>
+
+    <p>
+      (local planning authority) and other interested parties have commented on your appeal.
+    </p>
+
+    <p>
+      We've attached the comments for your information.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      What you can do
+    </h2>
+
+    <p>
+      You can respond in writing. This is called your ‘final comment’.
+    </p>
+
+    <p>
+      You must only respond to the issues in the comment. You do not need to repeat information from your appeal statement. You cannot introduce new evidence or arguments.
+    </p>
+
+    <p>
+      If you want to respond and add a comment to your appeal, go to the link:
+    </p>
+
+    <p>
+      <a href="input-code" class="govuk-link">http://www.gov.uk/appeal-a-planning-decision/final-comments?app=d81vW7td12s4t5gff728y29</a>
+    </p>
+
+    <p>
+      Your deadline is {{ 21 | daysInFuture }}. This is the last time you can comment on the appeal or add new documents.
+    </p>
+
+    <p>
+      Submitting a comment is optional. If you do not want to submit a comment, you do not need to do anything.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p>
+      If you submit a comment, we’ll forward it to (local planning authority).
+    </p>
+
+    <p>
+      (local planning authority) can also respond to interested parties’ comments. If it does, we’ll forward you a copy for your information.
+    </p>
+
+    <p>
+      Once the deadline for submitting a final comment has passed, the inspector may arrange a site visit. We’ll contact you if you need to give them access.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      What do you think of this service?
+    </h2>
+
+    <p>
+      Tell us in this feedback form (takes 2 minutes), <a href="https://forms.office.com/r/tV33FukH8n" class="govuk-link">https://forms.office.com/r/tV33FukH8n</a>
+    </p>
+
+    <p>
+      Thank you,<br>
+      Mari Bidbod
+    </p>
+
+  </div>
+</div>
+{% endblock %}

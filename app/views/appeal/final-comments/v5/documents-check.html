@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set return = false %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'adding-documents',
+    name: 'adding-documents',
+    fieldset: {
+      legend: {
+        html: 'Do you have additional documents to support your final comments?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: 'Do not add any new evidence to your appeal.'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('adding-documents','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('adding-documents','No')
+      }
+    ]
+  }) }}
+{% endblock %}

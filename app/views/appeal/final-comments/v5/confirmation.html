@@ -1,0 +1,41 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: { text: 'Beta' },
+    html: 'This is a new service &ndash; your <a class="govuk-link" href="#feedback">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% set prototypeLinks = [{
+    href: 'confirmation-email',
+    text: 'Confirmation email'
+  }]
+%}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleHtml: 'Final comments submitted',
+        html: "Your reference number<br><strong>0123456</strong>"
+      }) }}
+
+      <p>
+        We have sent you a confirmation email.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>We will review your final comments and contact you if we need more information.</p>
+
+      <p>
+        <a href="#0">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+
+    </div>
+  </div>
+{% endblock %}
