@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "What’s your application number?" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-caption-l">Before you start</p>
+    <form action="/form-handler" method="post" novalidate>
+      {{ govukInput({
+        label: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        hint: {
+          text: "You can find this on communications from your local planning department about your application."
+        },
+        classes: "govuk-input--width-10",
+        id: "appNumber",
+        name: "appNumber",
+        autocomplete: "application-number"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "granted-or-refused"
+      }) }}
+
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

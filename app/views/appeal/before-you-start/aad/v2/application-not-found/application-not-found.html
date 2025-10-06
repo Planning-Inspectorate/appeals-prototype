@@ -1,0 +1,20 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'We could not find an application with this number' %}
+
+{% block backLink %}{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body"><a class="govuk-link" href="application-ref">Search another application number</a>
+
+  
+
+  
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

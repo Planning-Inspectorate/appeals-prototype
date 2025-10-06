@@ -1,0 +1,17 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Your email address is confirmed' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ govukButton({
+    text: "Continue",
+    href: "enforcement-notice"
+  }) }}
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

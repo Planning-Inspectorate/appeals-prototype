@@ -1,0 +1,33 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You need to use the existing service' %}
+
+{% block backLink %}{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p class="govuk-body">
+  This new service is only for appeals that do not involve an enforcement notice.
+</p>
+<p class="govuk-body">
+You need to submit your appeal using the existing service, the Appeals Casework Portal.
+</p>
+
+  <h2 class="govuk-heading-m">
+How to begin your appeal
+</h2>
+  <p class="govuk-body">
+To begin your appeal, log in or register on the Appeals Casework Portal.
+</p>
+
+  {{ govukButton({
+    text: "Continue to the Appeals Casework Portal"
+  }) }}
+
+  
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}
