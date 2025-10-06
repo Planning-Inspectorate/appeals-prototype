@@ -1,29 +1,28 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Will the inspector need access to the appellant’s land or property?' %}
+{% set title = 'Did you consult all the relevant statutory consultees about the development?' %}
 
 {% block questions %}
 
   <span class="govuk-caption-l">
-    Site access
+    Consultation responses and representations
   </span>
 
-  {% set detailsHTML %}
+  {% set bodies %}
     {{ govukTextarea({
-      name: 'site-entry__details',
-      id: 'site-entry__details',
-      value: data['site-entry__details'],
+      name: 'bodies-consulted',
+      id: 'bodies-consulted',
+      value: data['bodies-consulted'],
       rows: '3',
       label: {
-        html: 'Enter the reason'
+        html: 'Which bodies did you consult?'
       }
     }) }}
-  {% endset %}
+  {% endset -%}
 
   {{ govukRadios({
-    idPrefix: 'site-entry',
-    name: 'site-entry',
-    classes: '',
+    idPrefix: 'consulted',
+    name: 'consulted',
     fieldset: {
       legend: {
         html: title,
@@ -35,18 +34,16 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('site-entry','Yes'),
+        checked: checked('consulted','Yes'),
         conditional: {
-          html: detailsHTML
+          html: bodies
         }
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('site-entry','No')
+        checked: checked('consulted','No')
       }
     ]
   }) }}
 {% endblock %}
-
-{% block pageScripts %}{% endblock %}

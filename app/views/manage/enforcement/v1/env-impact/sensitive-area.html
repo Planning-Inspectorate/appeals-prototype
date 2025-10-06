@@ -1,29 +1,27 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Will the inspector need access to the appellant’s land or property?' %}
+{% set title = 'Is the development in, partly in, or likely to affect a sensitive area?' %}
 
 {% block questions %}
 
   <span class="govuk-caption-l">
-    Site access
+    Environmental impact assessment
   </span>
-
-  {% set detailsHTML %}
+  
+  {% set details %}
     {{ govukTextarea({
-      name: 'site-entry__details',
-      id: 'site-entry__details',
-      value: data['site-entry__details'],
+      name: 'sensitive-area-details',
+      id: 'sensitive-area-details',
+      value: data['sensitive-area-details'],
       rows: '3',
       label: {
-        html: 'Enter the reason'
+        html: 'Tell us about the sensitive area'
       }
     }) }}
-  {% endset %}
-
+  {% endset -%}
   {{ govukRadios({
-    idPrefix: 'site-entry',
-    name: 'site-entry',
-    classes: '',
+    idPrefix: 'sensitive-area',
+    name: 'sensitive-area',
     fieldset: {
       legend: {
         html: title,
@@ -35,18 +33,16 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('site-entry','Yes'),
+        checked: checked('sensitive-area','Yes'),
         conditional: {
-          html: detailsHTML
+          html: details
         }
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('site-entry','No')
+        checked: checked('sensitive-area','No')
       }
     ]
   }) }}
 {% endblock %}
-
-{% block pageScripts %}{% endblock %}

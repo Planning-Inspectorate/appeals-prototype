@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set return = false %}
+
+{% block backLink %}{% endblock %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'adding-comment',
+    name: 'adding-comment',
+    fieldset: {
+      legend: {
+        html: 'Do you want to submit any final comments?',
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('adding-comment','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('adding-comment','No')
+      }
+    ]
+  }) }}
+{% endblock %}

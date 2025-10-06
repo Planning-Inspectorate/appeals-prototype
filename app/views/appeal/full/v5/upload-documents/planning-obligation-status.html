@@ -3,19 +3,30 @@
 {% set title = 'What is the status of your planning obligation?' %}
 
 {% block questions %}
-  {{ govukRadios({
-    idPrefix: 'planning-obligation-status',
-    name: 'planning-obligation-status',
-    fieldset: {
-      legend: {
-        html: title,
-        classes: 'govuk-fieldset__legend--l',
-        isPageHeading: true
-      }
-    },
+
+<h1 class="govuk-heading-l">
+  {{ title }}
+</h1>
+  
+    <p class="govuk-body">If we decide your appeal by:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>written representations, you must submit a certified and executed planning obligation with your appeal</li>
+        <li>a hearing or inquiry, you must submit a final draft of your planning obligation at least 10 days before the event</li>
+      </ul>'
+    
+    {{ govukRadios({
+      idPrefix: 'planning-obligation-status',
+      name: 'planning-obligation-status',
+      fieldset: {
+        legend: {
+          html: 'Planning obligation status',
+          classes: 'govuk-fieldset__legend--m',
+          isPageHeading: true
+        }
+      },
     items: [
       {
-        html: 'Finalised and ready to submit',
+        html: 'Certified and executed',
         value: 'Finalised and ready to submit',
         checked: checked('planning-obligation-status','Finalised and ready to submit')
       },
@@ -23,14 +34,6 @@
         html: 'In draft',
         value: 'In draft',
         checked: checked('planning-obligation-status','In draft')
-      },
-      {
-        html: 'Not started yet',
-        value: 'Not started yet',
-        checked: checked('planning-obligation-status','Not started yet'),
-        conditional: {
-          html: '<p class="govuk-body">The deadline to submit your finalised planning obligation is around 6 weeks after you submit your appeal. We&rsquo;ll tell you the exact date when we confirm your appeal.</p>'
-        }
       }
     ]
   }) }}
