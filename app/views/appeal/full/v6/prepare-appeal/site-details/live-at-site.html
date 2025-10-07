@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you live at the appeal site?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'live-at-site',
+    name: 'live-at-site',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('live-at-site','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('live-at-site','No')
+      }
+    ]
+  }) }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did you apply for planning permission and pay the application fee' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'planning-permission',
+    name: 'planning-permission',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('planning-permission','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('planning-permission','No')
+      }
+    ]
+  }) }}
+
+  {{ govukWarningText({
+    text: "Prototype note: This question is only asked when Ground A is selected",
+    iconFallbackText: "Warning"
+  }) }}
+
+
+{% endblock %}

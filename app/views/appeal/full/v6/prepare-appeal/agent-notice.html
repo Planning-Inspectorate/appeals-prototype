@@ -1,0 +1,46 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set back = true %}
+{% set return = true %}
+
+
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% block questions %}
+
+  {% if data['appellant-check'] == 'A person' %}
+    <h1 class="govuk-heading-l">
+      Complete the appeal on behalf of {{ data['appellant-first-name'] or 'Jan' }} {{ data['appellant-last-name'] or 'Fisher' }}
+    </h1>
+    {% elif data['appellant-check'] == 'Joint application' %}
+    <h1 class="govuk-heading-l">
+      Complete the appeal on behalf of {{ data['new-appellant-first-name'] or 'Jan' }} {{ data['new-appellant-last-name'] or 'Fisher' }} and Robin Fisher
+    </h1>
+    {% elif data['appellant-check'] == 'A company' %}
+    <h1 class="govuk-heading-l">
+      Complete the appeal on behalf of {{ data['appellant-company-name'] or 'Riverside Renewal Co.' }}
+    </h1>
+  {% endif %}
+
+  <p class="govuk-body">
+    We will ask you questions to complete the appeal. For example, ‘What is your interest in the appeal site?’.
+  </p>
+
+  {% if data['appellant-check'] == 'A person' %}
+  <p class="govuk-body">
+    You must answer these questions on behalf of {{ data['appellant-full-name'] or 'Jan Fisher' }}.
+  </p>
+
+{% elif data['appellant-check'] == 'Joint application' %}
+  <p class="govuk-body">
+    You must answer these questions on behalf of {{ data['new-appellant-full-name'] or 'Jan Fisher' }} and Robin Fisher.
+  </p>
+
+{% elif data['appellant-check'] == 'A company' %}
+  <p class="govuk-body">
+    You must answer these questions on behalf of {{ data['appellant-company-name'] or 'Riverside Renewal Co.' }}
+  </p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you plan to submit a planning obligation to support your appeal?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'planning-obligation-check',
+    name: 'planning-obligation-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: '<p class="govuk-body">A planning obligation (a section 106 agreement or unilateral undertaking) is a legal agreement that’s linked to your planning permission. It confirms that you agree to extra conditions if your development goes ahead.</p>'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('planning-obligation-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('planning-obligation-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

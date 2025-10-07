@@ -1,0 +1,17 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'How many witnesses would you expect to give evidence at the inquiry?' %}
+
+{% block questions %}
+  {{ govukInput({
+    id: 'procedure-witnesses',
+    name: 'procedure-witnesses',
+    value: data['procedure-witnesses'],
+    classes: 'govuk-input--width-3',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    }
+  }) }}
+{% endblock %}
