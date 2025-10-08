@@ -152,36 +152,36 @@ router.post('/prepare-appeal/request-a-new-phone-number-code', function (req, re
 // SITE DETAILS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-router.post('/prepare-appeal/site-details/address', function (req, res) {
+router.post('/prepare-appeal/address', function (req, res) {
   res.redirect('interest-in-site?site-details-started=true')
 })
 
-router.post('/prepare-appeal/site-details/interest-in-site', function (req, res) {
+router.post('/prepare-appeal/interest-in-site', function (req, res) {
   res.redirect('description-of-development')
 })
 
-router.post('/prepare-appeal/site-details/description-of-development', function (req, res) {
+router.post('/prepare-appeal/description-of-development', function (req, res) {
   res.redirect('live-at-site')
 })
 
-router.post('/prepare-appeal/site-details/live-at-site', function (req, res) {
+router.post('/prepare-appeal/live-at-site', function (req, res) {
   res.redirect('did-you-live-at-site')
 })
 
-router.post('/prepare-appeal/site-details/did-you-live-at-site', function (req, res) {
+router.post('/prepare-appeal/did-you-live-at-site', function (req, res) {
   res.redirect('site-visibility')
 })
 
-router.post('/prepare-appeal/site-details/site-visibility', function (req, res) {
+router.post('/prepare-appeal/site-visibility', function (req, res) {
   res.redirect('health-and-safety')
 })
 
-router.post('/prepare-appeal/site-details/health-and-safety', function (req, res) {
+router.post('/prepare-appeal/health-and-safety', function (req, res) {
     res.redirect('enforcement-number')
 })
   
-router.post('/prepare-appeal/site-details/enforcement-number', function (req, res) {
-    res.redirect('../../task-list?site-details-complete=true')
+router.post('/prepare-appeal/enforcement-number', function (req, res) {
+    res.redirect('../task-list?site-details-complete=true')
 })
 
 router.post('/prepare-appeal/site-area', function (req, res) {
@@ -528,23 +528,23 @@ router.post('/upload-documents/other', function (req, res) {
 // Grounds of Appeal Routing
 // ---------------------------------------------
 
-router.post('/prepare-appeal/grounds/grounds', function (req, res) {
+router.post('/prepare-appeal/grounds', function (req, res) {
   res.redirect('reasons-a')
 })
 
-router.post('/prepare-appeal/grounds/reasons-a', function (req, res) {
+router.post('/prepare-appeal/reasons-a', function (req, res) {
   res.redirect('facts-a')
 })
 
-router.post('/prepare-appeal/grounds/facts-a', function (req, res) {
+router.post('/prepare-appeal/facts-a', function (req, res) {
   res.redirect('planning-permission')
 })
 
-router.post('/prepare-appeal/grounds/planning-permission', function (req, res) {
+router.post('/prepare-appeal/planning-permission', function (req, res) {
   res.redirect('supporting-check')
 })
 
-router.post('/prepare-appeal/grounds/supporting-check', function (req, res) {
+router.post('/prepare-appeal/supporting-check', function (req, res) {
   if (req.session.data['supporting-check'] == 'Yes') {
     res.redirect('supporting-upload')
   } else {
@@ -552,16 +552,16 @@ router.post('/prepare-appeal/grounds/supporting-check', function (req, res) {
   }
 })
 
-router.post('/prepare-appeal/grounds/supporting-upload', function (req, res) {
+router.post('/prepare-appeal/supporting-upload', function (req, res) {
   res.redirect('upload-enforcement-notice')
 })
 
-router.post('/prepare-appeal/grounds/upload-enforcement-notice', function (req, res) {
+router.post('/prepare-appeal/upload-enforcement-notice', function (req, res) {
   res.redirect('upload-enforcement-plan')
 })
 
-router.post('/prepare-appeal/grounds/upload-enforcement-plan', function (req, res) {
-  res.redirect('../../task-list?your-application-complete=true')
+router.post('/prepare-appeal/upload-enforcement-plan', function (req, res) {
+  res.redirect('../task-list?your-application-complete=true')
 })
 
 
