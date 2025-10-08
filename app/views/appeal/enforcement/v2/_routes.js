@@ -418,6 +418,24 @@ router.post('/upload-documents/costs-check', function (req, res) {
   }
 })
 
+router.post('/upload-documents/costs', function (req, res) {
+  res.redirect('other-check')
+})
+
+router.post('/upload-documents/other-check', function (req, res) {
+  if (req.session.data['other-check'] == 'Yes') {
+    res.redirect('other')
+  } else {
+    res.redirect('../task-list?upload-plans-complete=true')
+  }
+})
+
+router.post('/upload-documents/other', function (req, res) {
+  res.redirect('../task-list?upload-plans-complete=true')
+})
+
+
+
 // OWNERSHIP
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
@@ -467,17 +485,7 @@ router.post('/upload-documents/statement-of-common-ground', function (req, res) 
   res.redirect('costs-check')
 })
 
-router.post('/upload-documents/costs-check', function (req, res) {
-  if (req.session.data['costs-check'] == 'Yes') {
-    res.redirect('costs')
-  } else {
-    res.redirect('../task-list?appeal-documents-complete=true')
-  }
-})
 
-router.post('/upload-documents/costs', function (req, res) {
-  res.redirect('../task-list?appeal-documents-complete=true')
-})
 
 // PLANS, DRAWINGS AND SUPPORTING DOCUMENTS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
@@ -510,17 +518,7 @@ router.post('/upload-documents/new-plans', function (req, res) {
   res.redirect('other-check')
 })
 
-router.post('/upload-documents/other-check', function (req, res) {
-  if (req.session.data['other-check'] == 'Yes') {
-    res.redirect('other')
-  } else {
-    res.redirect('../task-list?upload-plans-complete=true')
-  }
-})
 
-router.post('/upload-documents/other', function (req, res) {
-  res.redirect('../task-list?upload-plans-complete=true')
-})
 
 
 
