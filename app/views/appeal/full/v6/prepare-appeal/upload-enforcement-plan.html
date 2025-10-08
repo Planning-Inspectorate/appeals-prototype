@@ -1,16 +1,15 @@
-{% extends "_layouts/layout-main.html" %}
+{% extends '_layouts/layout-appellant-main.html' %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    html: 'Back',
-    href: 'javascript:history.back()'
-  }) }}
+{# Override the actions block (usually contains Continue button) #}
+{% block actions %}
 {% endblock %}
 
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="post" id="multiupload">
+{# Override the return link block (if layout uses a block for it) #}
+{% block buttons %}
+{% endblock %}
+
+{% block questions %}
+      <form method="post">
         <span class="govuk-caption-l">
           Choose your grounds of appeal
         </span>
@@ -47,23 +46,19 @@
           uploadHtml: uploadHtml
         }) }}
 
-        <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-
-          {{ govukButton({
-            href: "",
-            text: "Save and come back later",
-            classes: "govuk-button--secondary"
-          }) }}
-
-        </div>
+        <p class="govuk-body">
+          <a href="../task-list" class="govuk-link--no-visited-state">
+            Return to your appeal
+          </a>
+        </p>
 
       </form>
-    </div>
-  </div>
+
+
 {% endblock %}
 
 {% block pageScripts %}

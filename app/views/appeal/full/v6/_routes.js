@@ -533,10 +533,6 @@ router.post('/prepare-appeal/grounds', function (req, res) {
 })
 
 router.post('/prepare-appeal/reasons-a', function (req, res) {
-  res.redirect('facts-a')
-})
-
-router.post('/prepare-appeal/facts-a', function (req, res) {
   res.redirect('planning-permission')
 })
 

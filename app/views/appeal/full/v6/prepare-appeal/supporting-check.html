@@ -1,61 +1,30 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    html: 'Back',
-    href: 'javascript:history.back()'
+{% set title = 'Do you have any documents to support your grounds and facts?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'supporting-check',
+    name: 'supporting-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('supporting-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('supporting-check','No')
+      }
+    ]
   }) }}
-{% endblock %}
-
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="post">
-
-        <span class="govuk-caption-l">
-          Choose your grounds of appeal
-        </span>
-        {{ govukRadios({
-          idPrefix: 'supporting-check',
-          name: 'supporting-check',
-          classes: '',
-          fieldset: {
-            legend: {
-              html: 'Do you have any documents to support your grounds and facts?',
-              classes: 'govuk-fieldset__legend--l',
-              isPageHeading: true
-            }
-          },
-          items: [
-            {
-              html: 'Yes',
-              value: 'Yes',
-              checked: checked('supporting-check','Yes')
-            },
-            {
-              html: 'No',
-              value: 'No',
-              checked: checked('supporting-check','No')
-            }
-          ]
-        }) }}
-
-
-        <div class="govuk-button-group">
-
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-
-          {{ govukButton({
-            href: "",
-            text: "Save and come back later",
-            classes: "govuk-button--secondary"
-          }) }}
-
-        </div>
-
-      </form>
-    </div>
-  </div>
 {% endblock %}

@@ -1,59 +1,44 @@
-{% extends "_layouts/layout-main.html" %}
+{% extends '_layouts/layout-appellant-main.html' %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    html: 'Back',
-    href: 'javascript:history.back()'
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Choose your grounds of appeal
+  </span>
+
+  <h1 class="govuk-heading-l">
+    Reasons and facts for Ground A
+  </h1>
+
+  <p class="govuk-body">
+    You do not need to repeat the local planning authority’s reasons for issuing the enforcement notice.
+  </p>
+
+  <p class="govuk-body">
+    You can upload supporting documents later.
+  </p>
+
+  {{ govukTextarea({
+    name: "ground-a-reasons",
+    id: "ground-a-reasons",
+    value: data["ground-a-reasons"] | e,
+    rows: 10,
+    label: {
+      html: "What are your reasons for choosing Ground A?",
+      classes: "govuk-label--m"
+    }
   }) }}
+
+  {{ govukTextarea({
+    name: "ground-a-facts",
+    id: "ground-a-facts",
+    value: data["ground-a-facts"] | e,
+    rows: 10,
+    label: {
+      html: "Facts for Ground A",
+      classes: "govuk-label--m"
+    }
+  }) }}
+
 {% endblock %}
 
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">
-        Choose your grounds of appeal
-      </span>
-      <h1 class="govuk-heading-l">
-        Reasons for Ground A
-      </h1>
-
-      <p>Do not need to repeat the local planning authority's reasons for issuing the enforcement notice.</p>
-
-      <p>You can upload supporting documents later.</p>
-    </div>
-
-    <div class="govuk-grid-column-three-quarters">
-      <form method="post">
-
-        {{ govukTextarea({
-          name: 'ground-a',
-          id: 'ground-a',
-          value: data['ground-a'] |e,
-          rows: 15,
-          label: {
-            html: 'What are your reasons for choosing Ground A?',
-            classes: 'govuk-label--m',
-            isPageHeading: false
-          }
-        }) }}
-
-        <div class="govuk-button-group">
-
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-
-          {{ govukButton({
-            href: "",
-            text: "Save and come back later",
-            classes: "govuk-button--secondary"
-          }) }}
-
-        </div>
-
-      </form>
-    </div>
-  </div>
-{% endblock %}
-
-{% block pageScripts %}{% endblock %}
