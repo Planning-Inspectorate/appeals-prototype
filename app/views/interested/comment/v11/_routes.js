@@ -63,11 +63,11 @@ router.post('/postcode', function (req, res) {
 })
 
 router.post('/add-comments', function (req, res) {
-  res.redirect('check-your-answers')
+  res.redirect('documents-check')
 })
 
 router.post('/documents-check', function (req, res) {
-  if (req.session.data['adding-documents'] == 'Yes') {
+  if (req.session.data['documents-check'] == 'Yes') {
     res.redirect('documents-upload')
   } else {
     res.redirect('check-your-answers')
