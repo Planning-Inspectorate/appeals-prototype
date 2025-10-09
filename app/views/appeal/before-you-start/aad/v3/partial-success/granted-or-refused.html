@@ -1,0 +1,50 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Was your application granted or refused?' %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-caption-l">Before you start</p>
+
+    {{ govukRadios({
+        name: title,
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },      
+        value: data.grantedOrRefused,
+        items: [
+            {
+                value: "Granted with conditions",
+                text: "Granted with conditions"
+            },
+            {
+                value: "Refused",
+                text: "Refused"
+            },
+            {
+              divider: "or"
+            },
+            {
+                value: "I have not received a decision",
+                text: "I have not received a decision"
+            }
+        ]
+    }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "decision-date"
+      }) }}
+
+  </div>
+</div>
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}
