@@ -20,7 +20,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-l">
         {{ caption }}
@@ -29,8 +29,8 @@
       <form method="post">
 
         {{ govukRadios({
-          idPrefix: 'adding-documents',
-          name: 'adding-documents',
+          idPrefix: 'documents-check',
+          name: 'documents-check',
           fieldset: {
             legend: {
               html: title,
@@ -42,12 +42,12 @@
             {
               html: 'Yes',
               value: 'Yes',
-              checked: checked('adding-documents','Yes')
+              checked: checked('documents-check','Yes')
             },
             {
               html: 'No',
               value: 'No',
-              checked: checked('adding-documents','No')
+              checked: checked('documents-check','No')
             }
           ]
         }) }}

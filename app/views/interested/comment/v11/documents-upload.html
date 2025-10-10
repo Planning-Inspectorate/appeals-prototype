@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Upload your new supporting documents' %}
+{% set title = 'Upload your supporting documents' %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -30,8 +30,8 @@
 
         {% set uploadHtml %}
           {{ govukFileUpload({
-            id: "final-documents",
-            name: "final-documents",
+            id: "supporting-documents",
+            name: "supporting-documents",
             classes: 'moj-multi-file-upload__input',
             label: {
               text: "Upload files",
@@ -75,7 +75,7 @@
       e.preventDefault();
 
       $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="final-documents" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+        $('<input name="supporting-documents" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
       });
 
       $(this).unbind('submit').submit();
