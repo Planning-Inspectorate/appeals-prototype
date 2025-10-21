@@ -1,0 +1,94 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Your appeal' %}
+{% set back = false %}
+{% set prototypeLinks =
+  [
+    {
+      href: 'check-your-answers',
+      text: 'Skip to check answers'
+    },
+    {
+      href: 'declaration',
+      text: 'Skip to declaration'
+    },
+    {
+      href: 'confirmation?integration=',
+      text: 'Skip to confirmation (Horizon version)'
+    },
+    {
+      href: 'confirmation?integration=yes',
+      text: 'Skip to confirmation (post-integration)'
+    }
+  ]
+%}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">Your deadline to submit this appeal is {{ '6' | daysInFuture }}.</p>
+
+      <p class="govuk-!-margin-bottom-0">
+        <a href="#0" class="govuk-link--no-visited-state">Save and come back later</a>
+      </p>
+
+    </div>
+
+
+
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+        Appeal incomplete
+      </h2>
+
+      {% if data['other-appeals-check-complete'] or data['other-appeals-complete'] %}
+        {% if data['other-check-complete'] or data['other-complete'] %}
+          <p class="govuk-!-margin-bottom-7">You have completed 2 of 3 sections.</p>
+        {% else %}
+          <p class="govuk-!-margin-bottom-7">You have completed 1 of 3 sections.</p>
+        {% endif %}
+      {% else %}
+        {% if data['other-check-complete'] or data['other-complete'] %}
+          <p class="govuk-!-margin-bottom-7">You have completed 1 of 3 sections.</p>
+        {% else %}
+          <p class="govuk-!-margin-bottom-7">You have completed 0 of 3 sections.</p>
+        {% endif %}
+      {% endif %}
+
+      <!-- <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 3 sections.</p> -->
+
+      {# Tweak the task list so we can merge the CYA in #}
+      <style>
+        .app-task-list>li {
+          position: relative;
+        }
+        .app-task-list__section .govuk-tag {
+          position: absolute;
+          top: 3px;
+          right: 0;
+        }
+        .app-task-list .govuk-summary-list {
+          border-top: 1px solid #b1b4b6;
+        }
+        /* Give some space for the tag being inline now */
+        .app-task-list__section {
+          padding-right: 140px
+        }
+      </style>
+
+      <ol class="app-task-list">
+
+        {% include "./task-list__prepare.html" %}
+        {% include "./task-list__upload.html" %}
+        {% include "./task-list__submit.html" %}
+
+      </ol>
+    </div>
+  </div>
+{% endblock %}

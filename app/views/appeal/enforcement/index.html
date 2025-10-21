@@ -4,10 +4,10 @@
 {% set title = 'Enforcement' %}
 
 {% block backLink %}
-  {{ govukBackLink({
-    html: 'Back to all prototypes',
-    href: '/#appeal'
-  }) }}
+{{ govukBackLink({
+html: 'Back to all prototypes',
+href: '/#appeal'
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -28,16 +28,31 @@
     </p>
 
     {{ govukInsetText({
-      html: '<p class="govuk-body"><a href="https://app.mural.co/t/allpins6990/m/allpins6990/1749120110050/acce8963b62ade4f3e09bebd8cd2f320098d9984">Design board plans for this work</a></p>'
+    html: '<p class="govuk-body"><a
+        href="https://app.mural.co/t/allpins6990/m/allpins6990/1749120110050/acce8963b62ade4f3e09bebd8cd2f320098d9984">Design
+        board plans for this work</a></p>'
     }) }}
+
+    <h2 class="govuk-heading-m">Latest version (October 2025):</h2>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'enforcement/v2/task-list',
+      href: 'enforcement/v3/task-list',
       isStartButton: true
     }) }}
 
-    <p class="govuk-body"><a href="enforcement-2022/v8/task-list">Previous version</a></p>
+    <p class="govuk-body"><a href="enforcement/v3/before-you-start/before-you-start">Before you start</a></p>
+
+    <h2 class="govuk-heading-m">Previous versions:</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="enforcement/v2/task-list">Version 2: September 2025</a>
+      </li>
+      <li>
+        <a href="enforcement-2022/v8/task-list">Previous version (2022)</a>
+      </li>
+    </ul>
+    <p class="govuk-body"></p>
 
   </div>
 </div>

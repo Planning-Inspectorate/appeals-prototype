@@ -1,0 +1,54 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Before you start' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p class="govuk-body">
+    You must submit your documents before the deadline or we cannot review them with the appeal
+  </p>
+
+  <p class="govuk-body">
+    You'll need your:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      enforcement notice
+    </li>
+    <li>
+      enforcement notice plan
+    </li>
+  </ul>
+
+  <p class="govuk-body">
+    If you have any of the following documents, you'll also need to upload your:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      documents that support your grounds and facts
+    </li>
+    <li>
+      planning obligation
+    </li>
+    <li>
+      draft statement of common ground
+    </li>
+    <li>
+      appeal costs application
+    </li>
+  </ul>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<p class="govuk-body"><a href="#">Save and come back later</a></p>
+
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

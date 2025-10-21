@@ -1,0 +1,96 @@
+{% extends '_layouts/layout-main.html' %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Confirm your application details</h1>
+
+      <p class="govuk-body">We’ve combined the details you provided with information held in the local planning authority records.</p>
+
+      <p class="govuk-body">Your deadline to appeal is 11:59pm on Sunday 15 March 2026.</p>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Local planning authority"
+            },
+            value: {
+              text: "Camden"
+            },
+            actions: {
+              items: [
+                {
+                  href: "lpa",
+                  text: "Change",
+                  visuallyHiddenText: "lpa"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Application number"
+            },
+            value: {
+              text: "57602946"
+            },
+            actions: {
+              items: [
+                {
+                  href: "application-ref",
+                  text: "Change",
+                  visuallyHiddenText: "application number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Type of application"
+            },
+            value: {
+              text: "Householder planning"
+            }
+          },
+          {
+            key: {
+              text: "Was your application granted or refused?"
+            },
+            value: {
+              text: "Granted with conditions"
+            }
+          },
+          {
+            key: {
+              text: "Date of decision"
+            },
+            value: {
+              text: "26 May 2025"
+            }
+          }
+        ]
+      }) }}
+     
+      {{ govukButton({
+        text: "Continue to my appeal"
+      }) }}
+
+    <p class="govuk-body">If some of these details are incorrect,
+      <a href="../../../v19/planning-type" class="govuk-link">tell us the correct information</a>.
+    </p>
+
+    </div>
+  </div>
+{% endblock %}

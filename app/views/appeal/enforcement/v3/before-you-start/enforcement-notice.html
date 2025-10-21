@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Have you received an enforcement notice?' %}
+
+{% block questions %}
+
+      {{ govukRadios({
+        name: 'enforcementNotice',   
+        fieldset: {
+        legend: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+        },      
+        value: data.enforcementNotice, 
+        items: [
+          { value: "Yes", text: "Yes" },
+          { value: "No", text: "No" }
+        ]
+      }) }}
+
+{% endblock %}
+
+{% set return = false %}

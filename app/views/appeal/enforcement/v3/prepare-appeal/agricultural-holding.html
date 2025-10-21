@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Is the appeal site part of an agricultural holding?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'agricultural-holding',
+    name: 'agricultural-holding',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'If the aggregate of the land in the contract is for an agricultural tenancy'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('agricultural-holding','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('agricultural-holding','No')
+      }
+    ]
+  }) }}
+{% endblock %}

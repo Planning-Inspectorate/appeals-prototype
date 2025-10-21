@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did you appeal the decision?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'appeal-decision',
+    name: 'appeal-decision',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('appeal-decision','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('appeal-decision','No')
+      }
+    ]
+  }) }}
+{% endblock %}

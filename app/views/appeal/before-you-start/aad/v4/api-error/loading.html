@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Before you start' %}
+
+{% block backLink %}{% endblock %}
+
+{% block questions %}
+
+<div class="hods-loading-spinner" role="status">
+    <div class="hods-loading-spinner__spinner"></div>
+    <div class="hods-loading-spinner__content">
+      <h1 class="govuk-heading-m">Retrieving application details...</h1>
+    </div>
+  </div>
+
+  <script>
+    // Run when page loads
+    window.addEventListener("DOMContentLoaded", () => {
+      // Wait 2.5 seconds (2500ms)
+      setTimeout(() => {
+        // Redirect to check.html
+        window.location.href = "api-error";
+      }, 1000);
+    });
+  </script>
+  
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

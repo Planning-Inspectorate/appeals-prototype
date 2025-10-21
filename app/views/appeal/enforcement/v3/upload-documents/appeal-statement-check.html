@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you have an appeal statement to upload?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'appeal-statement-check',
+    name: 'appeal-statement-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('appeal-statement-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('appeal-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

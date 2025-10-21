@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'You cannot appeal' %}
+
+{% block backLink %}{% endblock %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p class="govuk-body">
+    Your deadline to appeal has passed.
+  </p>
+
+  <p class="govuk-body">
+    Your deadline was 26 March 2025. You had 12 weeks from the date of the decision to appeal. This is 12 weeks from the decision date.
+  </p>
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+<p class="govuk-body"><a href="before-you-start">Start a new appeal</a></p>
+  
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

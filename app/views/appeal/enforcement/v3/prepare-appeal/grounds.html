@@ -1,0 +1,101 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = "Which statements apply to your case?" %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Choose your grounds of appeal
+  </span>
+
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        {{ title }}
+      </h1>
+    </legend>
+
+    <p class="govuk-hint">
+      Select all that apply.
+    </p>
+
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-1" name="grounds" type="checkbox" value="groundA">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-1">
+          Ground (a)
+        </label>
+        <div class="govuk-hint govuk-checkboxes__hint">
+          The local planning authority (LPA) should grant planning permission for all (or part) of the development described in the alleged breach.
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-2" name="grounds" type="checkbox" value="groundB">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-2">
+          Ground (b)
+        </label>
+        <div class="govuk-hint govuk-checkboxes__hint">
+          The alleged breach did not happen.
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-3" name="grounds" type="checkbox" value="groundC">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-3">
+          Ground (c)
+        </label>
+        <div class="govuk-hint govuk-checkboxes__hint">
+          You do not need planning permission (for example, it is a permitted development or you already have planning permission).
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-4" name="grounds" type="checkbox" value="groundD">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-4">
+          Ground (d)
+        </label>
+        <div class="govuk-hint govuk-checkboxes__hint">
+          It is too late for the LPA to take enforcement action.
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-5" name="grounds" type="checkbox" value="groundE">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-5">
+          Ground (e)
+        </label>
+        <div class="govuk-hint govuk-checkboxes__hint">
+          The LPA did not serve the notice properly to everyone with an interest in the land.
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-6" name="grounds" type="checkbox" value="groundF">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-6">
+          Ground (f)
+        </label>
+        <div class="govuk-hint govuk-checkboxes__hint">
+          The actions or steps in the notice are excessive.
+        </div>
+      </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="grounds-7" name="grounds" type="checkbox" value="groundG">
+        <label class="govuk-label govuk-checkboxes__label" for="grounds-7">
+          Ground (g)
+        </label>
+        <div class="govuk-hint govuk-checkboxes__hint">
+          The time to comply with the notice is too short.
+        </div>
+      </div>
+
+    </div>
+  </fieldset>
+  {# Size modifiers: xl, l, m #}
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+{% endblock %}
+
+

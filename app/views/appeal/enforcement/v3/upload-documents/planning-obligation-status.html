@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What is the status of your planning obligation?' %}
+
+{% block questions %}
+
+<h1 class="govuk-heading-l">
+  {{ title }}
+</h1>
+    
+    {{ govukRadios({
+      idPrefix: 'planning-obligation-status',
+      name: 'planning-obligation-status',
+      fieldset: {
+        legend: {
+          classes: 'govuk-fieldset__legend--m',
+          isPageHeading: true
+        }
+      },
+    items: [
+      {
+        html: 'Finalised and ready to submit',
+        value: 'Finalised and ready to submit',
+        checked: checked('planning-obligation-status','Finalised and ready to submit')
+      },
+      {
+        html: 'In draft',
+        value: 'In draft',
+        checked: checked('planning-obligation-status','In draft')
+      },
+      {
+        html: 'Not started yet',
+        value: 'Not started yet',
+        checked: checked('planning-obligation-status','Not started yet')
+      }
+    ]
+  }) }}
+{% endblock %}

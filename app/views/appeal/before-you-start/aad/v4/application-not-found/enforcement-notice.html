@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Have you received an enforcement notice?' %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-caption-l">Before you start</p>
+
+    <form method="post" novalidate onsubmit="handleSubmit(event)">
+
+      {{ govukRadios({
+        name: 'enforcementNotice',   
+        fieldset: {
+        legend: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+        },      
+        value: data.enforcementNotice, 
+        items: [
+          { value: "Yes", text: "Yes" },
+          { value: "No", text: "No" }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+    <script>
+      function handleSubmit(event) {
+      event.preventDefault();
+      const selectedValue = document.querySelector('input[name="enforcementNotice"]:checked').value;
+      if (selectedValue === "Yes") {
+        window.location.href = 'existing-service';
+      } else {
+        window.location.href = 'lpa';
+      }
+      }
+    </script>
+
+  </div>
+</div>
+{% endblock %}
+
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

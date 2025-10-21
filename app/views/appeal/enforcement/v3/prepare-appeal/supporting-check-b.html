@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you have any documents to support your ground (a) facts?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'supporting-check-b',
+    name: 'supporting-check-b',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('supporting-check-b','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('supporting-check-b','No')
+      }
+    ]
+  }) }}
+{% endblock %}
