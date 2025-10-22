@@ -15,7 +15,7 @@
 
       <h1 class="govuk-heading-l">Confirm your application details</h1>
 
-      <p class="govuk-body">We’ve combined the details you provided with information held in the Local Planning Authority records.</p>
+      <p class="govuk-body">We’ve combined the details you provided with information held in the local planning authority records.</p>
 
       <p class="govuk-body">Your deadline to appeal is 11:59pm on Sunday 15 March 2026.</p>
 
@@ -51,7 +51,7 @@
                 {
                   href: "application-ref",
                   text: "Change",
-                  visuallyHiddenText: "applciation number"
+                  visuallyHiddenText: "application number"
                 }
               ]
             }
@@ -62,15 +62,6 @@
             },
             value: {
               text: "Householder planning"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "type"
-                }
-              ]
             }
           },
           {
@@ -79,15 +70,6 @@
             },
             value: {
               text: "Granted with conditions"
-            },
-            actions: {
-              items: [
-                {
-                  href: "granted-or-refused",
-                  text: "Change",
-                  visuallyHiddenText: "granted or refused"
-                }
-              ]
             }
           },
           {
@@ -96,23 +78,18 @@
             },
             value: {
               text: "26 May 2025"
-            },
-            actions: {
-              items: [
-                {
-                  href: "decision-date",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
             }
           }
         ]
       }) }}
-
+     
       {{ govukButton({
         text: "Continue to my appeal"
       }) }}
+
+    <p class="govuk-body">If some of these details are incorrect,
+      <a href="../../../v19/planning-type" class="govuk-link">tell us the correct information</a>.
+    </p>
 
     </div>
   </div>
