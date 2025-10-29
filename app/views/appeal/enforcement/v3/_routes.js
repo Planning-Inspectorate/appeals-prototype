@@ -667,6 +667,10 @@ router.post('/upload-documents/upload-enforcement-plan', function (req, res) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/before-you-start/before-you-start', function (req, res) {
+  res.redirect('lpa')
+})
+
+router.post('/before-you-start/lpa', function (req, res) {
   res.redirect('enforcement-notice')
 })
 
@@ -674,12 +678,8 @@ router.post('/before-you-start/enforcement-notice', function (req, res) {
   if (req.session.data['enforcementNotice'] == 'No') {
     res.redirect('../../../before-you-start/v19/planning-type')
   } else {
-    res.redirect('lpa')
+    res.redirect('listed-building-check')
   }
-})
-
-router.post('/before-you-start/lpa', function (req, res) {
-  res.redirect('listed-building-check')
 })
 
 router.post('/before-you-start/listed-building-check', function (req, res) {
