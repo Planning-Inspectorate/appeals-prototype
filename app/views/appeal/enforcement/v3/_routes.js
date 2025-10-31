@@ -173,7 +173,7 @@ router.post('/prepare-appeal/interest-in-site', function (req, res) {
 })
 
 router.post('/prepare-appeal/description-of-land', function (req, res) {
-  res.redirect('live-on-land')
+  res.redirect('site-visibility')
 })
 
 router.post('/prepare-appeal/live-on-land', function (req, res) {
