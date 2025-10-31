@@ -1,0 +1,44 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Appeal statement submitted" %}
+
+{% set serviceName = "Manage your planning inspectorate appeals" %}
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleHtml: title
+      }) }}
+
+      <p class="govuk-body">
+        We’ve sent you a confirmation email.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p class="govuk-body">
+        We’ll check you’ve submitted everything we need to progress your appeal. We&rsquo;ll contact you once we&rsquo;ve done this.
+      </p>
+
+      <p class="govuk-!-margin-bottom-5">
+        <a href="/appeal/more-than-one-appeal/v5/your-appeals
+        ">Back to appeals</a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

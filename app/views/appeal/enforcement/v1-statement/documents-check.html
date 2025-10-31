@@ -1,0 +1,50 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Do you have new documents that support your appeal statement?" %}
+
+{% set serviceName = "Manage your planning inspectorate appeals" %}
+{% set nav = true %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+<form method="post" action="documents-check">
+
+  {{ govukRadios({
+    idPrefix: 'adding-documents',
+    name: 'adding-documents',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('adding-documents','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('adding-documents','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+
