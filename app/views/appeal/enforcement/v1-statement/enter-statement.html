@@ -21,25 +21,9 @@
 
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
-      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
-      <h1 class="govuk-heading-l">
-        {{ title }}
-      </h1>
-
-    </div>
-
-    <div class="govuk-grid-column-full">
-      {% include "_includes/appeal-content/lpa-full-appeal-enforcement.html" %}
-    </div>
-  </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
-
       <form method="post" action="">
 
         {{ govukTextarea({
@@ -47,10 +31,8 @@
           id: "appeal-statement",
           label: {
             html: 'Enter your statement',
-            classes: 'govuk-label--m'
-          },
-          hint: {
-            text: 'Do not include personal or financial information, like National Insurance numbers or credit card details.'
+            classes: 'govuk-label--l',
+            isPageHeading: true
           }
         }) }}
 
