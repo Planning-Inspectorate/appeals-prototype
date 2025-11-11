@@ -1,0 +1,80 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Was a grant or loan made to preserve the listed building [listed building number?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'appeal-type-check?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'appeal-type-check?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% set return = true %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'appeal-type-check',
+      name: 'appeal-type-check',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('appeal-type-check','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('appeal-type-check','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+
+    {{ govukRadios({
+      idPrefix: 'appeal-type-check',
+      name: 'appeal-type-check',
+      fieldset: {
+        legend: {
+          html: 'Is enforcement the correct type of appeal?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('appeal-type-check','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('appeal-type-check','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

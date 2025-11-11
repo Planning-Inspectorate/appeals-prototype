@@ -1,0 +1,150 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">3. </span> Notifying relevant parties
+    {% if data['notified-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['notified-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+    {
+      key: {
+        html: 'How did you notify relevant parties about the application?'
+      },
+      value: {
+        html: data['notified-how'] | e | replace(',', '<br>') or 'A press advert'
+      }
+      if data['notified-how-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'notified/notified-how?cya=true',
+            html: 'Change'
+          }
+          if data['notified-how-complete'] else
+          {
+            href: 'notified/notified-how',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+      {
+        key: {
+          html: 'Who did you notify about this application?'
+        },
+        value: {
+          html: '<a href="#">'+(data['notified-who'] or 'Notified list.pdf')+'</a>'
+        }
+        if data['notified-who-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/notified-who?cya=true',
+              html: 'Change'
+            }
+            if data['notified-who-complete'] else
+            {
+              href: 'notified/notified-who',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Appeal notification letter'
+        },
+        value: {
+          html: data['site-notice-upload'] or 'site-notice.pdf'
+        }
+        if data['site-notice-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/site-notice-upload?cya=true',
+              html: 'Change'
+            }
+            if data['site-notice-upload-complete'] else
+            {
+              href: 'notified/site-notice-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('A site notice'),
+      {
+        key: {
+          html: 'Letter sent to neighbours'
+        },
+        value: {
+          html: data['letters-upload'] or 'letter.pdf'
+        }
+        if data['letters-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/letters-upload?cya=true',
+              html: 'Change'
+            }
+            if data['letters-upload-complete'] else
+            {
+              href: 'notified/letters-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('Letters to the neighbours'),
+      {
+        key: {
+          html: 'Press advert'
+        },
+        value: {
+          html: data['press-advert-upload'] or 'press-advert.pdf'
+        }
+        if data['press-advert-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/press-advert-upload?cya=true',
+              html: 'Change'
+            }
+            if data['press-advert-upload-complete'] else
+            {
+              href: 'notified/press-advert-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('A press advert')
+    ]
+  }) }}
+</li>

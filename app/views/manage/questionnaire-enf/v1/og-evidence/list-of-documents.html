@@ -1,0 +1,22 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "List what documents were used for your decision" %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Original evidence
+  </span>
+
+  {{ govukTextarea({
+    name: "application-documents",
+    id: "application-documents",
+    rows: "8",
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    }
+  }) }}
+
+{% endblock %}

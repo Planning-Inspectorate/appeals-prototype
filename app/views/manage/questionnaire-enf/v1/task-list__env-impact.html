@@ -1,0 +1,391 @@
+<!-- Schedule is {{ data['schedule'] }}
+<br>Dev description {{ data['development-desc-complete'] }}
+<br>Sensitive area {{ data['sensitive-area-complete'] }}
+<br>Column 2 {{ data['column-two-complete'] }}
+<br>Screening check {{ data['screening-check'] }}
+<br>Screening upload = {{ data['screening-upload'] }}
+<br>Screeding env check {{ data['screening-env-statement-check'] }}
+<br>Env statement {{ data['env-statement-check'] }}
+<br>Env upload {{ data['env-statement-upload-complete'] }}
+<br>Env statement responses upload {{ data['env-statement-responses-upload-complete'] }}
+<br>Site notice upload {{ data['site-notice-upload-complete'] }} -->
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span> Environmental impact assessment
+    {% if data['env-impact-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['env-impact-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'What is the development category?'
+        },
+        value: {
+          html: data['schedule'] or 'No'
+        }
+        if data['schedule-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/schedule?cya=true',
+              html: 'Change'
+            }
+            if data['schedule-complete'] else
+            {
+              href: 'env-impact/schedule',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Description of development'
+        },
+        value: {
+          html: data['development-desc'] or 'Agriculture and aquaculture'
+        }
+        if data['development-desc-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/development-desc?cya=true',
+              html: 'Change'
+            }
+            if data['development-desc-complete'] else
+            {
+              href: 'env-impact/development-desc',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['schedule'] == 'Schedule 2',
+      {
+        key: {
+          html: 'Is the development in, partly in, or likely to affect a sensitive area?'
+        },
+        value: {
+          html: (data['sensitive-area'] or 'No')+('<br>'+data['sensitive-area-details'] if data['sensitive-area'] == 'Yes')
+        }
+        if data['sensitive-area-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/sensitive-area?cya=true',
+              html: 'Change'
+            }
+            if data['sensitive-area-complete'] else
+            {
+              href: 'env-impact/sensitive-area',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['schedule'] == 'Schedule 2',
+      {
+        key: {
+          html: 'Does the development meet or exceed the threshold or criteria in column 2?	'
+        },
+        value: {
+          html: data['column-two'] or 'No'
+        }
+        if data['column-two-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/column-two?cya=true',
+              html: 'Change'
+            }
+            if data['column-two-complete'] else
+            {
+              href: 'env-impact/column-two',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['schedule'] == 'Schedule 2',
+      {
+        key: {
+          html: 'Have you issued a screening opinion?'
+        },
+        value: {
+          html: data['screening-check'] or 'No'
+        }
+        if data['screening-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/screening-check?cya=true',
+              html: 'Change'
+            }
+            if data['screening-check-complete'] else
+            {
+              href: 'env-impact/screening-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['schedule'] and data['schedule'] != 'Schedule 1',
+      {
+        key: {
+          html: 'Screening opinion'
+        },
+        value: {
+          html: data['screening-upload'] or 'screening opinion.pdf'
+        }
+        if data['screening-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/screening-upload?cya=true',
+              html: 'Change'
+            }
+            if data['screening-upload-complete'] else
+            {
+              href: 'env-impact/screening-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['screening-check'] == 'Yes',
+      {
+        key: {
+          html: 'Did your screening opinion say the development needed an environmental statement?'
+        },
+        value: {
+          html: data['screening-env-statement-check'] or 'No'
+        }
+        if data['screening-env-statement-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/screening-env-statement-check?cya=true',
+              html: 'Change'
+            }
+            if data['screening-env-statement-check-complete'] else
+            {
+              href: 'env-impact/screening-env-statement-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['screening-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Did you receive a scoping opinion?'
+        },
+        value: {
+          html: data['scoping-check'] or 'No'
+        }
+        if data['scoping-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/scoping-check?cya=true',
+              html: 'Change'
+            }
+            if data['scoping-check-complete'] else
+            {
+              href: 'env-impact/scoping-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['screening-env-statement-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Scoping opinion'
+        },
+        value: {
+          html: data['scoping-upload'] or 'scoping-opinion.pdf'
+        }
+        if data['scoping-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/scoping-upload?cya=true',
+              html: 'Change'
+            }
+            if data['scoping-upload-complete'] else
+            {
+              href: 'env-impact/scoping-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['scoping-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Did the applicant submit an environmental statement?'
+        },
+        value: {
+          html: data['applicant-env-statement-check'] or 'No'
+        }
+        if data['applicant-env-statement-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/applicant-env-statement-check?cya=true',
+              html: 'Change'
+            }
+            if data['applicant-env-statement-check-complete'] else
+            {
+              href: 'env-impact/applicant-env-statement-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['screening-check'] == 'No',
+      {
+        key: {
+          html: 'Did the applicant submit an environmental statement?'
+        },
+        value: {
+          html: data['env-statement-check'] or 'No'
+        }
+        if data['env-statement-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/env-statement-check?cya=true',
+              html: 'Change'
+            }
+            if data['env-statement-check-complete'] else
+            {
+              href: 'env-impact/env-statement-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['screening-env-statement-check'] == 'Yes' or data['schedule'] == 'Schedule 1',
+      {
+        key: {
+          html: 'Environmental statement'
+        },
+        value: {
+          html: data['env-statement-upload'] or 'env-statement.pdf'
+        }
+        if data['env-statement-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/env-statement-upload?cya=true',
+              html: 'Change'
+            }
+            if data['env-statement-upload-complete'] else
+            {
+              href: 'env-impact/env-statement-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['env-statement-check'] == 'Yes',
+      {
+        key: {
+          html: 'Consultation responses for the environmental statement'
+        },
+        value: {
+          html: data['environment-responses-upload'] or 'environment-responses.pdf'
+        }
+        if data['environment-responses-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/environment-responses-upload-upload?cya=true',
+              html: 'Change'
+            }
+            if data['environment-responses-upload-complete'] else
+            {
+              href: 'env-impact/environment-responses-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['env-statement-check'] == 'No',
+      {
+        key: {
+          html: 'Screening direction'
+        },
+        value: {
+          html: data['negative-screening-upload'] or 'screening-direction.pdf'
+        }
+        if data['negative-screening-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'env-impact/negative-screening-upload?cya=true',
+              html: 'Change'
+            }
+            if data['negative-screening-upload-complete'] else
+            {
+              href: 'env-impact/negative-screening-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['env-statement-check'] == 'No'
+      
+
+    ]
+  }) }}
+</li>

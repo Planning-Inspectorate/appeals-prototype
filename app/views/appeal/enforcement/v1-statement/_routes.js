@@ -11,6 +11,11 @@ router.post('/enter-code', function (req, res) {
 })
 
 // enter statement
+router.post('/start', function (req, res) {
+  res.redirect('enter-statement')
+})
+
+// enter statement
 router.post('/enter-statement', function (req, res) {
   res.redirect('documents-check')
 })

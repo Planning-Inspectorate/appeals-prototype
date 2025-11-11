@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set serviceName = "Submit an appeal statement" %}
+{% set nav = true %}
+
+{% set title = "Submit an appeal statement" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    html: 'Back to your planning appeals',
+    href: 'manage/#manage'
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="">
+
+        <h1 class="govuk-heading-l">{{title}}</h1>
+
+        <p class="govuk-body">You can upload any supporting documents after you add your appeal statement.</p>
+
+        {{ govukButton({
+          html: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
