@@ -336,31 +336,6 @@
       } if data['env-statement-check'] == 'Yes',
       {
         key: {
-          html: 'Consultation responses for the environmental statement'
-        },
-        value: {
-          html: data['environment-responses-upload'] or 'environment-responses.pdf'
-        }
-        if data['environment-responses-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'env-impact/environment-responses-upload-upload?cya=true',
-              html: 'Change'
-            }
-            if data['environment-responses-upload-complete'] else
-            {
-              href: 'env-impact/environment-responses-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['env-statement-check'] == 'No',
-      {
-        key: {
           html: 'Screening direction'
         },
         value: {

@@ -1,16 +1,16 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Do you have any other relevant policies to upload?' %}
+{% set title = 'Did you previously grant any planning permission for this development?' %}
 
 {% block questions %}
 
   <span class="govuk-caption-l">
     Planning officer’s report and supporting documents
   </span>
-
+   
   {{ govukRadios({
-    idPrefix: 'other-policies-check',
-    name: 'other-policies-check',
+    idPrefix: 'planning-permission-check',
+    name: 'planning-permission-check',
     fieldset: {
       legend: {
         html: title,
@@ -25,12 +25,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('other-policies-check','Yes')
+        checked: checked('planning-permission-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('other-policies-check','No')
+        checked: checked('planning-permission-check','No')
       }
     ]
   }) }}

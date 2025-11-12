@@ -151,31 +151,6 @@
       },
       {
         key: {
-          html: 'Was a grant or loan made to preserve the listed building [listed building number]?'
-        },
-        value: {
-          html: data['preserve-grant-loan'] or 'No'
-        }
-        if data['preserve-grant-loan'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'constraints/preserve-grant-loan?cya=true',
-              html: 'Change'
-            }
-            if data['preserve-grant-loan-complete'] else
-            {
-              href: 'constraints/preserve-grant-loan',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
           html: 'Did you consult Historic England?'
         },
         value: {
@@ -299,7 +274,7 @@
             }
           ]
         }
-      } if data['conservation-check'] in ['In a conservation area', 'Next to a conservation area'],
+      } if data['conservation-check'] == 'Yes',
       {
         key: {
           html: 'Would the development affect a protected species?'
@@ -355,21 +330,21 @@
           html: 'Is the site in a national landscape?'
         },
         value: {
-          html: data['national-landscape'] or 'No'
+          html: data['outstanding-natural-beauty'] or 'No'
         }
-        if data['national-landscape-complete'] else
+        if data['outstanding-natural-beauty-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'constraints/national-landscape?cya=true',
+              href: 'constraints/outstanding-natural-beauty?cya=true',
               html: 'Change'
             }
-            if data['national-landscape-complete'] else
+            if data['outstanding-natural-beauty-complete'] else
             {
-              href: 'constraints/national-landscape',
+              href: 'constraints/outstanding-natural-beauty',
               html: 'Answer'
             }
           ]
@@ -524,7 +499,257 @@
             }
           ]
         }
-      } if data['right-of-way-check'] == 'Yes'
+      }, 
+      {
+        key: {
+          html: 'Did the appellant apply for planning permission and pay the application fee?'
+        },
+        value: {
+          html: data['fee-check'] or 'No'
+        }
+        if data['fee-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/fee-check?cya=true',
+              html: 'Change'
+            }
+            if data['fee-check-complete'] else
+            {
+              href: 'constraints/fee-check',
+              html: 'Answer'
+            }
+            ]
+          }
+        }, 
+        {
+          key: {
+            html: 'Is the appeal fee exempt?'
+          },
+          value: {
+            html: data['fee-exempt'] or 'No'
+          }
+          if data['fee-exempt-complete'] else
+          {
+            html: '<span class="govuk-hint">Not started</span>'
+          },
+          actions: {
+            items: [
+              {
+                href: 'constraints/fee-exempt?cya=true',
+                html: 'Change'
+              }
+              if data['fee-exempt-complete'] else
+              {
+                href: 'constraints/fee-exempt',
+                html: 'Answer'
+              }
+            ]
+          }
+      }, 
+      {
+        key: {
+          html: 'Does the enforcement notice relate to building, engineering, mining or other operations?'
+        },
+        value: {
+          html: data['other-operation'] or 'No'
+        }
+        if data['other-operations-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/other-operations?cya=true',
+              html: 'Change'
+            }
+            if data['other-operations-complete'] else
+            {
+              href: 'constraints/other-operations',
+              html: 'Answer'
+            }
+          ]
+        }
+    },
+    {
+      key: {
+        html: 'Does the alleged breach create any floor space?'
+      },
+      value: {
+        html: data['floor-space'] or 'No'
+      }
+      if data['floor-space-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/floor-space?cya=true',
+            html: 'Change'
+          }
+          if data['floor-space-complete'] else
+          {
+            href: 'constraints/floor-space',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Does the enforcement notice include a change of use of land to dispose refuse or waste materials?'
+      },
+      value: {
+        html: data['refuse-waste-materials'] or 'No'
+      }
+      if data['refuse-waste-materials-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/refuse-waste-materials?cya=true',
+            html: 'Change'
+          }
+          if data['refuse-waste-materials-complete'] else
+          {
+            href: 'constraints/refuse-waste-materials',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Does the enforcement notice include a change of use of land to store minerals in the open?'
+      },
+      value: {
+        html: data['deposit-materials'] or 'No'
+      }
+      if data['deposit-materials-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/deposit-materials?cya=true',
+            html: 'Change'
+          }
+          if data['deposit-materials-complete'] else
+          {
+            href: 'constraints/deposit-materials',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the area of the alleged breach the same as the site area?'
+      },
+      value: {
+        html: data['alleged-breach-area'] or 'No'
+      }
+      if data['alleged-breach-area-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/alleged-breach-area?cya=true',
+            html: 'Change'
+          }
+          if data['alleged-breach-area-complete'] else
+          {
+            href: 'constraints/alleged-breach-area',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Does the enforcement notice include the erection of a building or buildings?'
+      },
+      value: {
+        html: data['create-building'] or 'No'
+      }
+      if data['create-building-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/create-building?cya=true',
+            html: 'Change'
+          }
+          if data['create-building-complete'] else
+          {
+            href: 'constraints/create-building',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the building on agricultural land and will it be used for agricultural purposes?'
+      },
+      value: {
+        html: data['agricultural-purposes'] or 'No'
+      }
+      if data['agricultural-purposes-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/agricultural-purposes?cya=true',
+            html: 'Change'
+          }
+          if data['agricultural-purposes-complete'] else
+          {
+            href: 'constraints/agricultural-purposes',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the enforcement notice for a single private dwelling house? '
+      },
+      value: {
+        html: data['single-house'] or 'No'
+      }
+      if data['single-house-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/single-house?cya=true',
+            html: 'Change'
+          }
+          if data['single-house-complete'] else
+          {
+            href: 'constraints/single-house',
+            html: 'Answer'
+          }
+        ]
+      }
+    }
     ]
   }) }}
 </li>

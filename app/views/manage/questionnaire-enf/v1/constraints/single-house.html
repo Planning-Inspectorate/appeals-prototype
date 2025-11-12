@@ -1,14 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Is the site in a national landscape?' %}
+{% set title = 'Is the enforcement notice for a single private dwelling house?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'national-landscape?titleVersion=a',
+    href: 'single-house?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'national-landscape?titleVersion=b',
+    href: 'single-house?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
@@ -22,8 +22,8 @@
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'single-house',
+      name: 'single-house',
       fieldset: {
         legend: {
           html: title,
@@ -31,16 +31,19 @@
           isPageHeading: true
         }
       },
+      hint: {
+        text: "Includes either building a new house or a change of use."
+      },
       items: [
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('single-house','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('single-house','No')
         }
       ]
     }) }}
@@ -48,25 +51,28 @@
   {% else %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'single-house',
+      name: 'single-house',
       fieldset: {
         legend: {
-          html: 'Is the site in a national landscape?',
+          html: 'Is the enforcement notice for a single private dwelling house?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
+      },
+      hint: {
+        text: "Includes either building a new house or a change of use."
       },
       items: [
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('single-house','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('single-house','No')
         }
       ]
     }) }}

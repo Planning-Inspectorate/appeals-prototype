@@ -8,13 +8,32 @@
     Planning officer’s report and supporting documents
   </span>
 
+  <h1 class="govuk-heading-l">Supplementary documents</h1>
+
+  <p class="govuk-!-margin-bottom-2">You can upload any policies or planning documents that are related to the decision (for example, extracts from supplementary planning guidance).</p>
+  <p class="govuk-!-margin-bottom-2">You should include:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        the policy’s status
+      </li>
+      <li>
+        if the policy was formally adopted
+      </li>
+      <li>
+        the date that the policy was formally adopted
+      </li>
+      <li>
+        the stage that any emerging documents reached
+      </li>
+    </ul>
+
   {{ govukRadios({
     idPrefix: 'supplementary-check',
     name: 'supplementary-check',
     fieldset: {
       legend: {
         html: title,
-        classes: 'govuk-fieldset__legend--l',
+        classes: 'govuk-fieldset__legend--m',
         isPageHeading: true
       }
     },

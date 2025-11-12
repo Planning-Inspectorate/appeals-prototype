@@ -1,11 +1,11 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Upload your scoping opinion' %}
+{% set title = 'Upload the enforcement notice plan' %}
 
 {% block questions %}
 
   <span class="govuk-caption-l">
-    Environmental impact assessment
+    Planning officer’s report and supporting documents
   </span>
 
   <h1 class="govuk-heading-l">
@@ -14,8 +14,8 @@
 
   {% set uploadHtml %}
     {{ govukFileUpload({
-      id: 'scoping-upload',
-      name: 'scoping-upload',
+      id: 'enforcement-plan-upload',
+      name: 'enforcement-plan-upload',
       classes: 'moj-multi-file-upload__input',
       label: {
         text: 'Upload files',
@@ -49,7 +49,7 @@
       e.preventDefault();
 
       $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="scoping-upload" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+        $('<input name="enforcement-plan-upload" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
       });
 
       $(this).unbind('submit').submit();

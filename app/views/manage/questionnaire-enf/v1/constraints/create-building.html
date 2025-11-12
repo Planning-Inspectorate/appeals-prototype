@@ -1,14 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Is the site in a national landscape?' %}
+{% set title = 'Does the enforcement notice include the erection of a building or buildings?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'national-landscape?titleVersion=a',
+    href: 'create-building?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'national-landscape?titleVersion=b',
+    href: 'create-building?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
@@ -22,8 +22,8 @@
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'create-building',
+      name: 'create-building',
       fieldset: {
         legend: {
           html: title,
@@ -35,12 +35,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('create-building','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('create-building','No')
         }
       ]
     }) }}
@@ -48,11 +48,11 @@
   {% else %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'create-building',
+      name: 'create-building',
       fieldset: {
         legend: {
-          html: 'Is the site in a national landscape?',
+          html: 'Does the enforcement notice include the erection of a building or buildings?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -61,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('create-building','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('create-building','No')
         }
       ]
     }) }}

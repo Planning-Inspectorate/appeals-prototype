@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Is the development a schedule 1 or schedule 2 development?' %}
+{% set title = 'What is the development category?' %}
 
 {% block questions %}
 
@@ -20,12 +20,12 @@
     },
     items: [
       {
-        html: 'Yes, schedule 1',
+        html: 'Schedule 1',
         value: 'Schedule 1',
         checked: checked('schedule','Schedule 1')
       },
       {
-        html: 'Yes, schedule 2',
+        html: 'Schedule 2',
         value: 'Schedule 2',
         checked: checked('schedule','Schedule 2')
       },
@@ -33,9 +33,9 @@
         divider: 'or'
       },
       {
-        html: 'No',
-        value: 'No',
-        checked: checked('schedule','No')
+        html: 'Other',
+        value: 'Other',
+        checked: checked('schedule','Other')
       }
     ]
   }) }}

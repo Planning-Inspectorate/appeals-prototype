@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Who did you notify about this application?' %}
+{% set title = 'Upload the list of people that you served the enforcement notice to' %}
 
 {% block questions %}
   <span class="govuk-caption-l">
@@ -9,19 +9,6 @@
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
-
-  <p class="govuk-body">
-    Provide us with a document that lists:
-  </p>
-
-  <ul class="govuk-list govuk-list--bullet">
-    <li>
-      the names and addresses of any neighbours that you contacted
-    </li>
-    <li>
-      any internal consultees, external specialists, their contact details and why they were contacted (their address is not needed)
-    </li>
-  </ul>
 
   {% set uploadHtml %}
     {{ govukFileUpload({

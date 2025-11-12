@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Do you have any other relevant policies to upload?' %}
+{% set title = 'Was there an enforcement notice in force at the date of the application?' %}
 
 {% block questions %}
 
@@ -9,8 +9,8 @@
   </span>
 
   {{ govukRadios({
-    idPrefix: 'other-policies-check',
-    name: 'other-policies-check',
+    idPrefix: 'enforcement-notice-check',
+    name: 'enforcement-notice-check',
     fieldset: {
       legend: {
         html: title,
@@ -25,12 +25,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('other-policies-check','Yes')
+        checked: checked('enforcement-notice-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('other-policies-check','No')
+        checked: checked('enforcement-notice-check','No')
       }
     ]
   }) }}

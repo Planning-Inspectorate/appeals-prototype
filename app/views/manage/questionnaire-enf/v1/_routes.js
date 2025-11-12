@@ -30,7 +30,6 @@ router.get('/task-list', function(req, res, next){
   if (req.session.data['constraints-completed'] == 'true') { count++ }
   if (req.session.data['env-impact-completed'] == 'true') { count++ }
   if (req.session.data['notified-completed'] == 'true') { count++ }
-  if (req.session.data['consultation-completed'] == 'true') { count++ }
   if (req.session.data['po-report-completed'] == 'true') { count++ }
   if (req.session.data['site-access-completed'] == 'true') { count++ }
   if (req.session.data['appeal-process-completed'] == 'true') { count++ }
@@ -50,6 +49,7 @@ router.post('/constraints/:page', function (req, res, next) {
 
   if (
     req.session.data['listed-building-check-complete']
+    && req.session.data['appeal-type-check-complete']
     && req.session.data['affected-listed-building-check-complete']
     && req.session.data['scheduled-monument-complete']
     && req.session.data['conservation-check-complete']
@@ -60,6 +60,14 @@ router.post('/constraints/:page', function (req, res, next) {
     && req.session.data['tree-order-check-complete']
     && req.session.data['traveller-complete']
     && req.session.data['right-of-way-check-complete']
+    && req.session.data['fee-check-complete']
+    && req.session.data['fee-exempt-complete']
+    && req.session.data['refuse-waste-materials-complete']
+    && req.session.data['deposit-materials-complete']
+    && req.session.data['alleged-breach-area-complete']
+    && req.session.data['create-building-complete']
+    && req.session.data['agricultural-purposes-complete']
+    && req.session.data['single-house-complete']
   ){
     req.session.data['constraints-completed'] = 'true'
   }
@@ -179,13 +187,36 @@ router.post('/constraints/fee-exempt', function (req, res) {
   res.redirect('other-operations')
 })
 
-router.post('/constraints/right-of-way-check', function (req, res) {
-  if (req.session.data['right-of-way-check'] == 'Yes') {
-    req.session.data['constraints-completed'] = 'false'
-    res.redirect('right-of-way-upload');
-  } else {
-    res.redirect('complete');
-  }
+router.post('/constraints/other-operations', function (req, res) {
+  res.redirect('floor-space')
+})
+
+router.post('/constraints/floor-space', function (req, res) {
+  res.redirect('refuse-waste-materials')
+})
+
+router.post('/constraints/refuse-waste-materials', function (req, res) {
+  res.redirect('deposit-materials')
+})
+
+router.post('/constraints/deposit-materials', function (req, res) {
+  res.redirect('alleged-breach-area')
+})
+
+router.post('/constraints/alleged-breach-area', function (req, res) {
+  res.redirect('create-building')
+})
+
+router.post('/constraints/create-building', function (req, res) {
+  res.redirect('agricultural-purposes')
+})
+
+router.post('/constraints/agricultural-purposes', function (req, res) {
+  res.redirect('single-house')
+})
+
+router.post('/constraints/single-house', function (req, res) {
+  res.redirect('complete')
 })
 
 router.post('/constraints/right-of-way-upload', function (req, res) {
@@ -193,18 +224,14 @@ router.post('/constraints/right-of-way-upload', function (req, res) {
 })
 
 router.get('/constraints/complete', function (req, res) {
-  if (!req.session.data['og-evidence-completed']) {
-    res.redirect('../og-evidence/design-access-statement-check')
-  } else if (!req.session.data['env-impact-completed']) {
+  if (!req.session.data['env-impact-completed']) {
     res.redirect('../env-impact/schedule')
   } else if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/notified-who')
-  } else if (!req.session.data['consultation-completed']) {
-    res.redirect('../consultation/consulted')
+    res.redirect('../notified/appeal-notification-upload')
   } else if (!req.session.data['po-report-completed']) {
-    res.redirect('../po-report/report-upload')
+    res.redirect('../po-report/report-check')
   } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
+    res.redirect('../site-access/site-entry')
   } else if (!req.session.data['appeal-process-completed']) {
     res.redirect('../appeal-process/procedure')
   } else {
@@ -357,7 +384,7 @@ router.post('/env-impact/:page', function (req, res, next) {
     }
   }
 
-  if (req.session.data['schedule'] == 'No') {
+  if (req.session.data['schedule'] == 'Other') {
     if (req.session.data['screening-check'] == 'Yes') {
       if (req.session.data['screening-upload'] == 'Yes') {
         if (req.session.data['screening-env-statement-check'] == 'Yes') {
@@ -404,7 +431,7 @@ router.post('/env-impact/schedule', function (req, res) {
   } else if (req.session.data['schedule'] == 'Schedule 2') {
     res.redirect('development-desc');
   } else {
-    req.session.data['schedule'] = 'No'
+    req.session.data['schedule'] = 'Other'
     res.redirect('screening-check');
   }
 })
@@ -466,6 +493,15 @@ router.post('/env-impact/env-statement-check', function (req, res) {
   }
 })
 
+router.post('/env-impact/applicant-env-statement-check', function (req, res) {
+  if (req.session.data['applicant-env-statement-check'] == 'Yes') {
+    res.redirect('env-statement-upload')
+  } else {
+    req.session.data['applicant-env-statement-check']
+    res.redirect('negative-screening-upload');
+  }
+})
+
 router.post('/env-impact/env-statement-upload', function (req, res) {
   res.redirect('complete')
 })
@@ -474,24 +510,13 @@ router.post('/env-impact/negative-screening-upload', function (req, res) {
   res.redirect('complete')
 })
 
-router.post('/env-impact/applicant-env-statement-check', function (req, res) {
-  if (req.session.data['applicant-env-statement-check'] == 'Yes') {
-    res.redirect('site-notice-upload')
-  } else {
-    req.session.data['applicant-env-statement-check'] = 'No'
-    res.redirect('complete');
-  }
-})
-
 router.get('/env-impact/complete', function (req, res) {
   if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/notified-who')
-  } else if (!req.session.data['consultation-completed']) {
-    res.redirect('../consultation/consulted')
+    res.redirect('../notified/appeal-notification-upload')
   } else if (!req.session.data['po-report-completed']) {
-    res.redirect('../po-report/report-upload')
+    res.redirect('../po-report/report-check')
   } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
+    res.redirect('../site-access/site-entry')
   } else if (!req.session.data['appeal-process-completed']) {
     res.redirect('../appeal-process/procedure')
   } else {
@@ -504,61 +529,35 @@ router.get('/env-impact/complete', function (req, res) {
 //
 // NOTIFIED
 //
+
 router.post('/notified/:page', function (req, res, next) {
   req.session.data['notified-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
 
+  if (
+    req.session.data['appeal-notification-complete']
+    && req.session.data['notified-who-complete']
+  ){
+    req.session.data['notified-completed'] = 'true'
+  }
+
   next()
 })
 
+router.post('/notified/appeal-notification-upload', function (req, res) {
+  res.redirect('notified-who')
+})
+
 router.post('/notified/notified-who', function (req, res) {
-  req.session.data['notified-who-complete'] = 'true'
-  res.redirect('notified-how');
-})
-
-router.post('/notified/notified-how', function (req, res) {
-  if (req.session.data['notified-how']?.includes('A site notice')) {
-    res.redirect('site-notice-upload');
-  } else if (req.session.data['notified-how']?.includes('Letters to the neighbours')) {
-    res.redirect('letters-upload');
-  } else {
-    req.session.data['notified-how'] = 'A press advert'
-    res.redirect('press-advert-upload');
-  }
-})
-
-router.post('/notified/site-notice-upload', function (req, res) {
-  if (req.session.data['notified-how']?.includes('Letters to the neighbours')) {
-    res.redirect('letters-upload');
-  } else if (req.session.data['notified-how']?.includes('A press advert')) {
-    res.redirect('press-advert-upload');
-  } else {
-    req.session.data['notified-completed'] = 'true'
-    res.redirect('complete');
-  }
-})
-
-router.post('/notified/letters-upload', function (req, res) {
-  if (req.session.data['notified-how']?.includes('A press advert')) {
-    res.redirect('press-advert-upload');
-  } else {
-    req.session.data['notified-completed'] = 'true'
-    res.redirect('complete');
-  }
-})
-
-router.post('/notified/press-advert-upload', function (req, res) {
   req.session.data['notified-completed'] = 'true'
   res.redirect('complete');
 })
 
 router.get('/notified/complete', function (req, res) {
-  if (!req.session.data['consultation-completed']) {
-    res.redirect('../consultation/consulted')
-  } else if (!req.session.data['po-report-completed']) {
-    res.redirect('../po-report/report-upload')
+  if (!req.session.data['po-report-completed']) {
+    res.redirect('../po-report/report-check')
   } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
+    res.redirect('../site-access/site-entry')
   } else if (!req.session.data['appeal-process-completed']) {
     res.redirect('../appeal-process/procedure')
   } else {
@@ -653,6 +652,7 @@ router.get('/consultation/complete', function (req, res) {
 
 
 
+
 //
 // PO REPORT
 //
@@ -666,11 +666,13 @@ router.post('/po-report/:page', function (req, res, next) {
   }
 
   if (
-    req.session.data['report-upload-complete'] == 'true'
-    && req.session.data['policies-complete'] == 'true'
-    && req.session.data['emerging-plan-complete'] == 'true'
-    && req.session.data['supplementary-documents-complete'] == 'true'
-    && req.session.data['community-infrastructure-complete'] == 'true'
+    req.session.data['report-check-complete'] == 'true'
+    && req.session.data['report-upload-complete'] == 'true'
+    && req.session.data['policies-check-complete'] == 'true'
+    && req.session.data['emerging-plan-check-complete'] == 'true'
+    && req.session.data['other-policies-check-complete'] == 'true'
+    && req.session.data['supplementary-check-complete'] == 'true'
+    && req.session.data['community-infrastructure-check-complete'] == 'true'
   ){
     req.session.data['po-report-completed'] = 'true'
   }
@@ -678,9 +680,28 @@ router.post('/po-report/:page', function (req, res, next) {
   next()
 })
 
+router.post('/po-report/report-check', function (req, res) {
+  if (req.session.data['report-check'] == 'Yes') {
+    req.session.data['report-complete'] = 'true'
+    res.redirect('report-upload');
+  } else {
+    req.session.data['report-complete'] = 'true'
+    res.redirect('policies-check')
+  }
+})
+
 router.post('/po-report/report-upload', function (req, res) {
   req.session.data['report-upload-complete'] = 'true'
-  res.redirect('policies-upload')
+  res.redirect('policies-check')
+})
+
+router.post('/po-report/policies-check', function (req, res) {
+  if (req.session.data['policies-check'] == 'Yes') {
+    res.redirect('policies-upload');
+  } else {
+    req.session.data['policies-complete'] = 'true'
+    res.redirect('emerging-plan-check')
+  }
 })
 
 router.post('/po-report/policies-upload', function (req, res) {
@@ -693,12 +714,26 @@ router.post('/po-report/emerging-plan-check', function (req, res) {
     res.redirect('emerging-plan-upload');
   } else {
     req.session.data['emerging-plan-complete'] = 'true'
-    res.redirect('supplementary-check')
+    res.redirect('other-policies-check')
   }
 })
 
 router.post('/po-report/emerging-plan-upload', function (req, res) {
   req.session.data['emerging-plan-complete'] = 'true'
+  res.redirect('other-policies-check')
+})
+
+router.post('/po-report/other-policies-check', function (req, res) {
+  if (req.session.data['other-policies-check'] == 'Yes') {
+    res.redirect('other-policies-upload');
+  } else {
+    req.session.data['other-policies-check-complete'] = 'true'
+    res.redirect('supplementary-check')
+  }
+})
+
+router.post('/po-report/other-policies-upload', function (req, res) {
+  req.session.data['other-policies-upload-complete'] = 'true'
   res.redirect('supplementary-check')
 })
 
@@ -721,8 +756,7 @@ router.post('/po-report/community-infrastructure-check', function (req, res) {
     res.redirect('community-infrastructure-upload');
   } else {
     req.session.data['community-infrastructure-complete'] = 'true'
-    req.session.data['po-report-completed'] = 'true'
-    res.redirect('complete')
+    res.redirect('local-development-check')
   }
 })
 
@@ -735,7 +769,67 @@ router.post('/po-report/community-infrastructure-adopted', function (req, res) {
 })
 
 router.post('/po-report/community-infrastructure-date', function (req, res) {
-  req.session.data['community-infrastructure-complete'] = 'true'
+  req.session.data['community-infrastructure-date-complete'] = 'true'
+  res.redirect('local-development-check')
+})
+
+router.post('/po-report/local-development-check', function (req, res) {
+  if (req.session.data['local-development-check'] == 'Yes') {
+    res.redirect('local-development-upload');
+  } else {
+    req.session.data['local-development-check-complete'] = 'true'
+    res.redirect('planning-permission-check')
+  }
+})
+
+router.post('/po-report/local-development-upload', function (req, res) {
+  req.session.data['local-development-upload-complete'] = 'true'
+  res.redirect('planning-permission-check')
+})
+
+router.post('/po-report/planning-permission-check', function (req, res) {
+  if (req.session.data['planning-permission-check'] == 'Yes') {
+    res.redirect('planning-permission-upload');
+  } else {
+    req.session.data['planning-permission-check-complete'] = 'true'
+    res.redirect('statement-of-case-check')
+  }
+})
+
+router.post('/po-report/planning-permission-upload', function (req, res) {
+  req.session.data['planning-permission-upload-complete'] = 'true'
+  res.redirect('statement-of-case-check')
+})
+
+router.post('/po-report/statement-of-case-check', function (req, res) {
+  if (req.session.data['statement-of-case-check'] == 'Yes') {
+    res.redirect('statement-of-case-upload');
+  } else {
+    req.session.data['statement-of-case-check-complete'] = 'true'
+    res.redirect('enforcement-notice-check')
+  }
+})
+
+router.post('/po-report/statement-of-case-upload', function (req, res) {
+  req.session.data['statement-of-case-upload-complete'] = 'true'
+  res.redirect('enforcement-notice-check')
+})
+
+router.post('/po-report/enforcement-notice-check', function (req, res) {
+  if (req.session.data['enforcement-notice-check'] == 'Yes') {
+    res.redirect('enforcement-notice-upload');
+  } else {
+    req.session.data['po-report-completed'] = 'true'
+    res.redirect('complete')
+  }
+})
+
+router.post('/po-report/enforcement-notice-upload', function (req, res) {
+  req.session.data['enforcement-notice-upload-complete'] = 'true'
+  res.redirect('enforcement-plan-upload')
+})
+
+router.post('/po-report/enforcement-plan-upload', function (req, res) {
   req.session.data['po-report-completed'] = 'true'
   res.redirect('complete')
 })
@@ -749,7 +843,6 @@ router.get('/po-report/complete', function (req, res) {
     res.redirect('../task-list')
   }
 })
-
 
 
 
@@ -812,10 +905,6 @@ router.get('/site-access/complete', function (req, res) {
 
 
 
-
-
-
-
 //
 // APPEAL PROCESS
 //
@@ -825,8 +914,7 @@ router.post('/appeal-process/:page', function (req, res, next) {
 
   if (
     req.session.data['procedure-complete']
-    && req.session.data['other-appeals-complete']
-    && req.session.data['significant-changes-complete']
+    && req.session.data['other-appeals-check-complete']
     && req.session.data['extra-conditions-complete']
   ){
     req.session.data['appeal-process-completed'] = 'true'
@@ -855,7 +943,7 @@ router.post('/appeal-process/other-appeals-check', function (req, res) {
     res.redirect('other-appeal-reference');
   } else {
     req.session.data['other-appeals-complete'] = 'true'
-    res.redirect('significant-changes');
+    res.redirect('extra-conditions');
   }
 })
 
@@ -869,7 +957,7 @@ router.post('/appeal-process/other-appeals', function (req, res) {
   if (req.session.data['other-appeals'] == 'Yes') {
     res.redirect('other-appeal-reference?extraotherappeal=yes');
   } else {
-    res.redirect('significant-changes');
+    res.redirect('extra-conditions');
   }
 })
 
@@ -879,7 +967,11 @@ router.post('/appeal-process/significant-changes', function (req, res) {
 })
 
 router.post('/appeal-process/extra-conditions', function (req, res) {
-  res.redirect('../task-list');
+  res.redirect('complete');
+})
+
+router.get('/appeal-process/complete', function (req, res) {
+    res.redirect('../task-list')
 })
 
 //

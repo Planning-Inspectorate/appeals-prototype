@@ -9,7 +9,7 @@ PO report done = {{ data['po-report-completed'] }}
 
 <li>
   <h2 class="app-task-list__section">
-    <span class="app-task-list__section-number">5. </span>
+    <span class="app-task-list__section-number">4. </span>
     {% if data['non-determination'] == 'true' %}
       What your decision notice would have said and relevant policies
     {% else %}
@@ -37,6 +37,31 @@ PO report done = {{ data['po-report-completed'] }}
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
+      {
+        key: {
+          html: 'Do you have a planning officer\'s report?'
+        },
+        value: {
+          html: data['report-check'] or 'Yes'
+        }
+        if data['report-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/report-check?cya=true',
+              html: 'Change'
+            }
+            if data['report-check-complete'] else
+            {
+              href: 'po-report/report-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
       {
         key: {
           html: 'Upload what your decision notice would have said' if data['non-determination'] == 'true' else 'Planning officer’s report'

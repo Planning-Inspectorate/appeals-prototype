@@ -1,14 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Is the site in a national landscape?' %}
+{% set title = 'Is the area of the alleged breach the same as the site area?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'national-landscape?titleVersion=a',
+    href: 'alleged-breach-area?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'national-landscape?titleVersion=b',
+    href: 'alleged-breach-area?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
@@ -22,8 +22,8 @@
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'alleged-breach-area',
+      name: 'alleged-breach-area',
       fieldset: {
         legend: {
           html: title,
@@ -35,12 +35,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('alleged-breach-area','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('alleged-breach-area','No')
         }
       ]
     }) }}
@@ -48,11 +48,11 @@
   {% else %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'alleged-breach-area',
+      name: 'alleged-breach-area',
       fieldset: {
         legend: {
-          html: 'Is the site in a national landscape?',
+          html: 'Is the area of the alleged breach the same as the site area?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -61,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('alleged-breach-area','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('alleged-breach-area','No')
         }
       ]
     }) }}

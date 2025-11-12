@@ -1,14 +1,14 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Is the site in a national landscape?' %}
+{% set title = 'Is the building on agricultural land and will it be used for agricultural purposes?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'national-landscape?titleVersion=a',
+    href: 'agricultural-purposes?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'national-landscape?titleVersion=b',
+    href: 'agricultural-purposes?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
@@ -22,8 +22,8 @@
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'agricultural-purposes',
+      name: 'agricultural-purposes',
       fieldset: {
         legend: {
           html: title,
@@ -35,12 +35,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('agricultural-purposes','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('agricultural-purposes','No')
         }
       ]
     }) }}
@@ -48,11 +48,11 @@
   {% else %}
 
     {{ govukRadios({
-      idPrefix: 'national-landscape',
-      name: 'national-landscape',
+      idPrefix: 'agricultural-purposes',
+      name: 'agricultural-purposes',
       fieldset: {
         legend: {
-          html: 'Is the site in a national landscape?',
+          html: 'Is the building on agricultural land and will it be used for agricultural purposes?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -61,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('national-landscape','Yes')
+          checked: checked('agricultural-purposes','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('national-landscape','No')
+          checked: checked('agricultural-purposes','No')
         }
       ]
     }) }}

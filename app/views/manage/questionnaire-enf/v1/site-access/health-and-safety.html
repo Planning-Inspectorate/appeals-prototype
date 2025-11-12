@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Add potential safety risks' %}
+{% set title = 'Health and safety issues' %}
 
 {% block questions %}
 
@@ -11,7 +11,7 @@
       value: data['health-and-safety__details'],
       rows: '',
       label: {
-        html: 'Add details of the potential risk and what the inspector might need'
+        html: 'Tell us about the health and safety issues'
       }
     }) }}
   {% endset -%}
@@ -23,33 +23,44 @@
   </h1>
 
   <p class="govuk-body">
-    You need to tell inspectors how to prepare for a site visit and what to bring.
-  </p>
+    Understanding any health and safety issues will help an inspector carry out a site visit.  </p>
 
   <p class="govuk-!-margin-bottom-2">
-    Potential safety risks include:
+    For example:
   </p>
   <ul class="govuk-list govuk-list--bullet">
     <li>
-      no or limited mobile reception
+      animals at the site, for example pets or livestock
     </li>
     <li>
-      areas with blocked access
+      any vulnerable or potentially violent people who may be at the site
     </li>
     <li>
-      areas that you can only access using ladders or other equipment
+      poor mobile signal at the site
     </li>
     <li>
-      following site health and safety rules (for example, hard hats, boots and high visibility clothing)
+      access issues for people with limited mobility
     </li>
     <li>
-      livestock or other animals
+      overgrown vegetation that could restrict access to the site
     </li>
     <li>
-      dangerous debris or overgrown vegetation
+      building works or other operations taking place on the site    
     </li>
     <li>
-      potentially hazardous material (for example, asbestos)
+      site-specific safety arrangements that are in place
+    </li>
+    <li>
+      areas of the site that require specialist equipment or training for access, for example heights or confined spaces
+    </li>
+    <li>
+      requirements to view the site from a height, for example from a roof or balcony
+    </li>
+    <li>
+      risk of exposure to chemicals, asbestos or radiation
+    </li>
+    <li>
+      unmarked changes in level or missing fittings
     </li>
   </ul>
 
@@ -58,7 +69,7 @@
     name: 'health-and-safety',
     fieldset: {
       legend: {
-        html: 'Are there any potential safety risks?',
+        html: 'Are there any health and safety issues on the appeal site?',
         classes: 'govuk-fieldset__legend--m'
       }
     },

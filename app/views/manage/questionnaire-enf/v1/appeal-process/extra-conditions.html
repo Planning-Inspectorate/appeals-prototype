@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Add new planning conditions to this appeal' %}
+{% set title = 'Check if there are any new conditions' %}
 
 {% block questions %}
 
@@ -12,15 +12,23 @@
   </h1>
 
   <p class="govuk-body">
-    These are additional to the standard planning conditions we would expect to see.
+    Tell us about any new conditions. Do not include the standard conditions.
   </p>
 
   {% set standardConditions %}
-    <p class="govuk-body">The development hereby permitted shall begin not later than 3 years from the date of this decision.</p>
+    <p class="govuk-body">The development must:</p>
 
-    <p class="govuk-body">The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building.</p>
-
-    <p class="govuk-body">The development hereby permitted shall be carried out in accordance with the approved plans.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        start within 3 years from the appeal decision
+      </li>
+      <li>
+        use materials for external surfaces that match the existing building
+      </li>
+      <li>
+        match the approved plans
+      </li>
+    </ul>
   {% endset -%}
 
   {{ govukDetails({
@@ -35,7 +43,7 @@
       value: data['extra-conditions'],
       rows: '3',
       label: {
-        html: 'Tell us about the new conditions'
+        html: 'Enter the new conditions'
       }
     }) }}
   {% endset -%}

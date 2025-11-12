@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Do you have any other relevant policies to upload?' %}
+{% set title = 'Do you have a planning officer\'s report?' %}
 
 {% block questions %}
 
@@ -9,8 +9,8 @@
   </span>
 
   {{ govukRadios({
-    idPrefix: 'other-policies-check',
-    name: 'other-policies-check',
+    idPrefix: 'report-check',
+    name: 'report-check',
     fieldset: {
       legend: {
         html: title,
@@ -25,12 +25,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('other-policies-check','Yes')
+        checked: checked('report-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('other-policies-check','No')
+        checked: checked('report-check','No')
       }
     ]
   }) }}
