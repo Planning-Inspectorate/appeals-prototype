@@ -1,8 +1,7 @@
-{% extends '_layouts/layout-pins.html' %}
+{% extends "_layouts/layout-pins.html" %}
 
 {% set serviceName = "Manage your planning inspectorate appeals" %}
 {% set nav = true %}
-
 {% set title = "Appeal statement" %}
 
 {% block beforeContent %}
@@ -14,35 +13,64 @@
   }) }}
 
   {{ govukBackLink({
-    html: 'Back to your planning appeals',
-    href: 'manage/#manage'
+    text: "Back to your planning appeals",
+    href: "manage/#manage"
   }) }}
 {% endblock %}
 
 
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="post" action="">
+
+        <h1 class="govuk-heading-l">Your statement</h1>
+        <p class="govuk-body">Tell us why you disagree with the local planning authority's decision.</p>
+        <p class="govuk-body">Do not include any sensitive information. It will delay your appeal.</p>
+
+        {{ govukDetails({
+          summaryText: "What is sensitive information?",
+          html: '
+            <p class="govuk-body">Sensitive information refers to:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>comments from children</li>
+              <li>information relating to children</li>
+              <li>information relating to health</li>
+              <li>information relating to crime</li>
+            </ul>
+
+            <p class="govuk-body">It also includes any information relating to an individual’s:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>race</li>
+              <li>ethnic origin</li>
+              <li>politics</li>
+              <li>religion</li>
+              <li>trade union membership</li>
+              <li>genetics</li>
+              <li>physical characteristics</li>
+              <li>sex life</li>
+              <li>sexual orientation</li>
+            </ul>
+          '
+        }) }}
 
         {{ govukTextarea({
           name: "appeal-statement",
           id: "appeal-statement",
           label: {
-            html: 'Enter your statement',
-            classes: 'govuk-label--l',
-            isPageHeading: true
+            text: "Enter your statement",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "You must list each reason separately, using bullet points."
           }
         }) }}
 
         {{ govukButton({
-          html: 'Continue'
+          text: "Continue"
         }) }}
 
       </form>
-
     </div>
   </div>
-
 {% endblock %}
