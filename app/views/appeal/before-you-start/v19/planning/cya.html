@@ -1,18 +1,19 @@
 {% extends location+"common/cya.html" %}
 
+{% set prototypeLinks = [
+  {
+    href: '?debug=true',
+    text: 'Debug stuff'
+  } if not data['debug'],
+  {
+    href: '?debug=',
+    text: 'Hide debugging'
+  } if data['debug']
+] %}
+
 {% block questions %}
 
-  <!-- <p class="govuk-body-l" style="background-color: yellow; padding: 0.5rem;">
-    Not for build:<br>
-
-    Application type is {{ data['appeal-type'] }}<br>
-
-    Applications date month is {{ data ['application-date-month'] }}<br>
-    Applications date year is {{ data ['application-date-year'] }}<br>
-
-    Appeal type is {{ data['appealIs'] }}<br>
-
-  </p> -->
+  {% include "../includes/debugger.html" %}
 
   {{ super() }}
 

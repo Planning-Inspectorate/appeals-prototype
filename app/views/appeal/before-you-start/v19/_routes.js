@@ -53,132 +53,69 @@ router.post('/planning-type', function (req, res) { // routing for different app
 // commercial check
 
 router.post('/commercial-check', function (req, res) { // routing for different appeal types
-
   // removed the 'more' option in the form - code still works
   if (req.session.data['commercial-check'] != 'Yes') {
     res.redirect('planning/application-date?appealIs=CASplanning');
   } else {
     res.redirect('planning/application-date?appealIs=fullplanning');
   }
-
 })
 
 router.post('/planning/application-date', function (req, res) {
   res.redirect('decision');
 })
 
+
 router.post('/planning/decision', function (req, res) {
+  const decision = req.session.data['decision'];
+  const planningType = req.session.data['planning-type'];
+  const appYear = parseInt(req.session.data['application-date-year']);
 
-  // decision was received:
+  // Decision received (Granted or Refused)
+  if (decision === 'Granted' || decision === 'Refused') {
 
-  if (req.session.data['decision'] == 'Granted' || req.session.data['decision'] == 'Refused' ) {
+    // Handle Householder appeal explicitly
+    if (planningType === 'Householder') {
+      return res.redirect('decision-date?appealIs=HASplanning');
+    }
 
-    // then check that the appeal type is not MCD
-    if (req.session.data['planning-type'] != 'Minor commercial development') {
+    // Handle Advertisement appeals
+    if (planningType === 'Displaying an advertisement') {
+      return res.redirect(
+        decision === 'Granted'
+          ? 'decision-date?appealIs=advert'
+          : 'decision-date?appealIs=CASadvert'
+      );
+    }
 
-      // then set vars for appeal type, based on decision
-      // if the appeal type was ‘Displaying an advert’
-      if (req.session.data['planning-type'] == 'Displaying an advertisement') {
-        if (req.session.data['decision'] == 'Granted') {
-          res.redirect('decision-date?appealIs=advert');
-        } else {
-          res.redirect('decision-date?appealIs=CASadvert');
-        }
-      } else { // S78
-        res.redirect('decision-date?appealIs=fullplanning');
+    // Handle S78 types (Full, Outline, Reserved matters)
+    if (['Full planning', 'Outline planning', 'Reserved matters'].includes(planningType)) {
+      if (appYear > 2025) {
+        return res.redirect('decision-date?appealIs=expedited'); // Part 1 appeal
+      } else {
+        return res.redirect('decision-date?appealIs=fullplanning'); // Regular S78
       }
-
-    } else {
-
-      res.redirect('decision-date?appealIs=HASplanning');
-
     }
 
-  // decision was not received:
+    // Other planning types (not advert, not S78, not Householder)
+    return res.redirect('decision-date?appealIs=other');
+
   } else {
-
-    // then check that the appeal type is Displaying an advert
-    if (req.session.data['planning-type'] == 'Displaying an advertisement') {
-
-      // then set vars for appeal type, based on decision
-      res.redirect('decision-due-date?appealIs=advert');
-
-    } else {
-
-      res.redirect('decision-due-date');
-
+    // Decision not received yet
+    if (planningType === 'Displaying an advertisement') {
+      return res.redirect('decision-due-date?appealIs=advert');
     }
-
+    return res.redirect('decision-due-date?appealIs=fullplanning');
   }
+});
 
-})
 
 router.post('/planning/decision-date', function (req, res) {
-
-  let type = req.session.data['planning-type']
-  let appmonth = req.session.data['application-date-month']
-  let appyear = req.session.data['application-date-year']
-  let decision = req.session.data['decision']
-
-  console.log(typeof appmonth)
-
-  // check appeal type for expedited appeal
-  if (type == 'Full planning' || type == 'Outline planning' || type == 'Reserved matters') {
-
-    // check date of application for after legislation is live
-    if (parseInt(appmonth) > 8 && parseInt(appyear) > 2024) {
-
-      // check decision has been received
-      if (decision != 'I have not received a decision') {
-
-        res.redirect('cya?appealIs=expedited')
-
-      } else {
-        res.redirect('cya')
-      }
-
-    } else {
-      res.redirect('cya')
-    }
-
-  } else {
-    res.redirect('cya')
-  }
-
+  res.redirect('cya')
 })
 
 router.post('/planning/decision-due-date', function (req, res) {
-
-  let type = req.session.data['planning-type']
-  let appmonth = req.session.data['application-date-month']
-  let appyear = req.session.data['application-date-year']
-  let decision = req.session.data['decision']
-
-  console.log(typeof appmonth)
-
-  // check appeal type for expedited appeal
-  if (type == 'Full planning' || type == 'Outline planning' || type == 'Reserved matters') {
-
-    // check date of application for after legislation is live
-    if (parseInt(appmonth) > 8 && parseInt(appyear) > 2024) {
-
-      // check decision has been received
-      if (decision != 'I have not received a decision') {
-
-        res.redirect('cya?appealIs=expedited')
-
-      } else {
-        res.redirect('cya')
-      }
-
-    } else {
-      res.redirect('cya')
-    }
-
-  } else {
-    res.redirect('cya')
-  }
-
+  res.redirect('cya')
 })
 
 // CHECK YOUR ANSWERS
@@ -196,10 +133,10 @@ router.post('/planning/cya', function (req, res) {
       res.redirect('/appeal/cas-planning/v1/');
       break;
     case 'fullplanning':
-      res.redirect('/appeal/full/v5/before-you-continue');
+      res.redirect('/appeal/verify-email/v1/confirm-email');
       break;
     case 'expedited':
-      res.redirect('/appeal/s78e/v2/before-you-continue');
+      res.redirect('/appeal/verify-email/v1/confirm-email');
       break;
     case 'HASplanning':
       res.redirect('/appeal/has/v3/before-you-continue');

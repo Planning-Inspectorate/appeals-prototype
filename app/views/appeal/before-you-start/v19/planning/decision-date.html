@@ -1,17 +1,25 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set prototypeLinks = [{
-  href: '../errors/out-of-time',
-  text: 'Appeal window has passed'
-}]%}
+{% set prototypeLinks = [
+  {
+    href: '../errors/out-of-time',
+    text: 'Appeal window has passed'
+  },
+  {
+    href: '?debug=true',
+    text: 'Debug stuff'
+  } if not data['debug'],
+  {
+    href: '?debug=',
+    text: 'Hide debugging'
+  } if data['debug']
+]%}
 
 {% set title = 'What’s the date on the decision letter from the local planning authority?' %}
 
 {% block questions %}
 
-  <!-- <p class="govuk-body-l">
-    Appeal type {{ data['appealIs'] }}
-  </p> -->
+  {% include "../includes/debugger.html" %}
 
   <span class="govuk-caption-l">
     Before you start

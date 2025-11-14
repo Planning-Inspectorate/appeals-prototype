@@ -1,0 +1,16 @@
+{% if data['debug'] %}
+  <p class="govuk-body" style="background-color: #efefef; padding: 0.5rem;">
+    {{govukTag({
+      text: "Debugger",
+      classes: "govuk-tag--red govuk-!-margin-top-1 govuk-!-margin-bottom-3"
+    })}}<br>
+    Planning type is <span class="govuk-!-font-weight-bold">{{ data['planning-type'] }}</span><br>
+    Application year is <span class="govuk-!-font-weight-bold">{{ data ['application-date-year'] }}</span><br>
+    Decision type is <span class="govuk-!-font-weight-bold">{{ data ['decision'] }}</span><br>
+  </p>
+  <p class="govuk-body" style="background-color: #efefef; padding: 0.5rem;">
+    <span class="govuk-body-l">
+      Appeal type is {{ data['appealIs'] }}
+    </span>
+  </p>
+{% endif %}

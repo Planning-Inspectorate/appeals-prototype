@@ -2,7 +2,20 @@
 
 {% set title = 'What date was your decision due?' %}
 
+{% set prototypeLinks = [
+  {
+    href: '?debug=true',
+    text: 'Debug stuff'
+  } if not data['debug'],
+  {
+    href: '?debug=',
+    text: 'Hide debugging'
+  } if data['debug']
+] %}
+
 {% block questions %}
+
+	{% include "../includes/debugger.html" %}
 
 	{{ govukDateInput({
 		id: 'decision-date',

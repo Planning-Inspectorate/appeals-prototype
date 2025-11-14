@@ -2,7 +2,20 @@
 
 {% set title = 'Was your application granted or refused?' %}
 
+{% set prototypeLinks = [
+  {
+    href: '?debug=true',
+    text: 'Debug stuff'
+  } if not data['debug'],
+  {
+    href: '?debug=',
+    text: 'Hide debugging'
+  } if data['debug']
+] %}
+
 {% block questions %}
+
+	{% include "../includes/debugger.html" %}
 
 	<span class="govuk-caption-l">
 		Before you start
