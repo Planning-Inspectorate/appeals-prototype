@@ -563,11 +563,23 @@ router.post('/prepare-appeal/supporting-check-b', function (req, res) {
   if (req.session.data['supporting-check-b'] == 'Yes') {
     res.redirect('supporting-upload-b')
   } else {
+    res.redirect('fee-check')
+  }
+})
+
+router.post('/prepare-appeal/fee-check', function (req, res) {
+  if (req.session.data['fee-check'] == 'Yes') {
+    res.redirect('fee-upload')
+  } else {
     res.redirect('../task-list?your-application-complete=true')
   }
 })
 
 router.post('/prepare-appeal/supporting-upload-b', function (req, res) {
+  res.redirect('fee-check')
+})
+
+router.post('/prepare-appeal/fee-upload', function (req, res) {
   res.redirect('../task-list?your-application-complete=true')
 })
 
