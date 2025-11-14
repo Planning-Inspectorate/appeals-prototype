@@ -44,8 +44,6 @@ router.get('/task-list', function(req, res, next) {
   next()
 })
 
-
-
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
@@ -62,6 +60,8 @@ router.post('/prepare-appeal/:page', function (req, res, next) {
 
 // YOUR DETAILS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/appellant-check', function (req, res) {
   res.redirect('contact-details')
@@ -76,6 +76,8 @@ router.post('/prepare-appeal/contact-phone-number', function (req, res) {
 })
 
 // SITE DETAILS
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/address', function (req, res) {
@@ -164,12 +166,10 @@ router.post('/prepare-appeal/health-and-safety', function (req, res) {
 
 // YOUR APPLICATION
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/application-reference', function (req, res) {
-  res.redirect('application-date')
-})
-
-router.post('/prepare-appeal/application-date', function (req, res) {
   res.redirect('major-or-minor-development')
 })
 
@@ -186,23 +186,28 @@ router.post('/prepare-appeal/description-of-development', function (req, res) {
 })
 
 router.post('/prepare-appeal/description-of-developement-changed', function (req, res) {
-  res.redirect('application-documents')
-})
-
-router.post('/prepare-appeal/application-documents', function (req, res) {
-  res.redirect('significant-changes')
-})
-
-router.post('/prepare-appeal/significant-changes', function (req, res) {
-  res.redirect('grounds')
+res.redirect('grounds-of-appeal')
 })
 
 // YOUR APPEAL
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-router.post('/prepare-appeal/grounds', function (req, res) {
+
+// Part 1 only screens
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+router.post('/prepare-appeal/grounds-of-appeal', function (req, res) {
+  res.redirect('significant-changes')
+})
+
+router.post('/prepare-appeal/significant-changes', function (req, res) {
   res.redirect('procedure')
 })
+
+// Part 1 and 2
+// ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/procedure', function (req, res) {
   if (req.session.data['procedure'] == 'Inquiry' || req.session.data['procedure'] == 'Hearing') {
@@ -267,18 +272,32 @@ router.post('/upload-documents/:page', function (req, res, next) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/application-form', function (req, res) {
+
+  // if the description of development changed, the next screen is to upload the
+  // description of development agreement
+  if (req.session.data['application-desc-changed'] == 'Yes') {
+    res.redirect('description-of-development-agreement')
+  } else {
+    res.redirect('environment-statement-check')
+  }
+
+})
+
+router.post('/upload-documents/description-of-development-agreement', function (req, res) {
   res.redirect('environment-statement-check')
 })
 
 router.post('/upload-documents/environment-statement-check', function (req, res) {
   if (req.session.data['environment-statement-check'] == 'No') {
-    // if the description of development changed, the next screen is to upload the
-    // description of development agreement
-    if (req.session.data['application-desc-changed'] != 'No') {
-      res.redirect('description-of-development-agreement')
+
+    // if the appellant didn’t receive a decision letter
+    // do not ask them to upload their decision letter
+    if (req.session.data['non-determined']) {
+      res.redirect('planning-obligation-check')
     } else {
       res.redirect('decision-letter')
     }
+
   } else {
     res.redirect('environment-statement')
   }
@@ -290,19 +309,18 @@ router.post('/upload-documents/environment-statement', function (req, res) {
   if (req.session.data['application-desc-changed'] != 'No') {
     res.redirect('description-of-development-agreement')
   } else {
-    res.redirect('decision-letter')
+
+    // if the appellant didn’t receive a decision letter
+    // do not ask them to upload their decision letter
+    if (req.session.data['non-determined']) {
+      res.redirect('planning-obligation-check')
+    } else {
+      res.redirect('decision-letter')
+    }
+
   }
 })
 
-router.post('/upload-documents/description-of-development-agreement', function (req, res) {
-  // if the appellant didn’t receive a decision letter
-  // do not ask them to upload their decision letter
-  if (req.session.data['non-determined']) {
-    res.redirect('planning-obligation-check')
-  } else {
-    res.redirect('decision-letter')
-  }
-})
 
 router.post('/upload-documents/decision-letter', function (req, res) {
   res.redirect('planning-obligation-check')
@@ -335,20 +353,16 @@ router.post('/upload-documents/ownership-certificate-check', function (req, res)
   if (req.session.data['ownership-certificate-check'] == 'Yes') {
     res.redirect('ownership-certificate')
   } else {
-    res.redirect('statement-of-common-ground')
+    res.redirect('costs-check')
   }
 })
 
 router.post('/upload-documents/ownership-certificate', function (req, res) {
-  res.redirect('statement-of-common-ground')
+  res.redirect('costs-check')
 })
 
 // APPEAL DOCUMENTS
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-
-router.post('/upload-documents/statement-of-common-ground', function (req, res) {
-  res.redirect('costs-check')
-})
 
 router.post('/upload-documents/costs-check', function (req, res) {
   if (req.session.data['costs-check'] == 'Yes') {

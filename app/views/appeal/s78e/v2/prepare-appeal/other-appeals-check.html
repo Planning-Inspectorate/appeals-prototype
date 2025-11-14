@@ -2,14 +2,14 @@
 
 {% set title = 'Are there other appeals linked to your development?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   <!-- <span class="govuk-caption-l">
     Appeal process
   </span> -->
   {{ govukRadios({
-    idPrefix: 'other-appeals-radio',
-    name: 'other-appeals-radio',
+    idPrefix: 'other-appeals-check',
+    name: 'other-appeals-check',
     fieldset: {
       legend: {
         html: title,
@@ -24,12 +24,12 @@
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('other-appeals-radio','Yes')
+        checked: checked('other-appeals-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('other-appeals-radio','No')
+        checked: checked('other-appeals-check','No')
       }
     ]
   }) }}

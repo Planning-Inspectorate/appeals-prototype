@@ -2,7 +2,7 @@
 
 {% set title = 'Are you '+(data['appellant-first-name'] or 'Jan')+' '+(data['appellant-last-name'] or 'Fisher')+'?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'agent-check',
     name: 'agent-check',

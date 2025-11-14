@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Verifying an email address' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {% set version = "1" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--blue govuk-!-margin-left-2',
+        text: 'Researched'
+      }) }}
+    </h2>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/appeal/verify-email/v'+version+'/confirm-email',
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

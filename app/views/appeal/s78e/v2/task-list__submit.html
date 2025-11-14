@@ -1,8 +1,8 @@
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">3. </span> Submit
-      {% if data['other-appeals-check-complete'] or data['other-appeals-complete'] %}
-        {% if data['appeal-documents-complete'] %}
+      {% if data['prepare-appeal-complete'] == 'true' and data['upload-documents-completed'] == 'true' %}
+        {% if data['prepare-appeal-complete'] == 'true' %}
           {{ govukTag({
             html: 'Ready to submit',
             classes: 'govuk-tag--blue'
@@ -35,7 +35,7 @@
               html: 'Continue'
             }
           ]
-        } if (data['other-appeals-check-complete'] or data['other-appeals-complete']) and (data['appeal-documents-complete'] )
+        } if data['prepare-appeal-complete'] == 'true' and data['upload-documents-completed'] == 'true'
       }
     ]
   }) }}

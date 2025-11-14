@@ -2,7 +2,7 @@
 
 {% set title = 'Upload the decision letter from the local planning authority' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -29,7 +29,7 @@
         classes: 'govuk-label--m'
       },
       hint: {
-        text: 'Each file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
+        text: 'Each file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB'
       }
     }) }}
 

@@ -2,7 +2,7 @@
 
 {% set title = 'What is the name of the individual who made the planning application?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {% call govukFieldset({
     legend: {

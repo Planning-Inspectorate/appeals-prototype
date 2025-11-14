@@ -1,11 +1,16 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Was your application for a major or minor development?' %}
+{% set title = 'Development class' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
+
+  <h2 class="govuk-heading-m">
+    Major development
+  </h2>
 
   <p class="govuk-body">
     A major development is for any application that includes:
@@ -29,6 +34,9 @@
     </li>
   </ul>
 
+  <h2 class="govuk-heading-m">
+    Minor development
+  </h2>
 
   <p class="govuk-body">
     A minor development is for any application that includes:
@@ -51,7 +59,7 @@
     name: 'major-or-minor-development',
     fieldset: {
       legend: {
-        html: 'Development class',
+        html: 'Was your application for a major or minor development?',
         classes: 'govuk-fieldset__legend--m',
         isPageHeading: false
       }

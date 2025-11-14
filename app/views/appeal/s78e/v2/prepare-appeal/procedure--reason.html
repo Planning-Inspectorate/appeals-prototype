@@ -2,7 +2,7 @@
 
 {% set title = 'Why would you prefer a '+ (data['procedure'] | lower or 'inquiry') +'?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukTextarea({
     name: 'procedure-reason',
     id: 'procedure-reason',

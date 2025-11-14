@@ -2,7 +2,7 @@
 
 {% set title = 'Do you have any new plans or drawings that support your appeal?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'new-plans-check',
     name: 'new-plans-check',

@@ -2,18 +2,10 @@
 
 {% set title = 'Upload your environment statement' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
-
-  <!-- <p class="govuk-body">
-    Upload the planning application form that you sent to the local planning authority, including the date. Do not upload a draft application.
-  </p>
-
-  <p class="govuk-body">
-    If you do not have your application form, you can search for it on the local planning authority’s website.
-  </p> -->
 
   {% set uploadHtml %}
     {{ govukFileUpload({
@@ -25,7 +17,7 @@
         classes: 'govuk-label--m'
       },
       hint: {
-        text: 'The file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
+        text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB'
       }
     }) }}
 

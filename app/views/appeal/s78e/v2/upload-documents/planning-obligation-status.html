@@ -2,7 +2,7 @@
 
 {% set title = 'What is the status of your planning obligation?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'planning-obligation-status',
     name: 'planning-obligation-status',

@@ -2,7 +2,7 @@
 
 {% set title = 'Do you have any other new documents that support your appeal?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'other-check',
     name: 'other-check',

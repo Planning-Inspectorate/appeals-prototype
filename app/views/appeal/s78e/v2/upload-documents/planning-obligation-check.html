@@ -2,7 +2,7 @@
 
 {% set title = 'Do you have a planning obligation to support your appeal?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'planning-obligation-check',
     name: 'planning-obligation-check',
@@ -12,9 +12,6 @@
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
       }
-    },
-    hint: {
-      html: '<p class="govuk-body">A planning obligation (a section 106 agreement or unilateral undertaking) is a legal agreement that’s linked to your planning permission. It confirms that you agree to extra conditions if your development goes ahead.</p>'
     },
     items: [
       {

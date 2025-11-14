@@ -2,7 +2,7 @@
 
 {% set title = 'Enter the description of development' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {{ govukTextarea({
     name: "description-detail",

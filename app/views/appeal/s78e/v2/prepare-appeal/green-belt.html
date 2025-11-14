@@ -2,7 +2,7 @@
 
 {% set title = 'Is the site in a green belt?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'green-belt',
     name: 'green-belt',

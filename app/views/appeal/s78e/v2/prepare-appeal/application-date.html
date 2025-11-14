@@ -2,7 +2,7 @@
 
 {% set title = 'What date did you submit your planning application?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {{ govukDateInput({
     id: "application-date",

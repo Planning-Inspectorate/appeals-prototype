@@ -2,7 +2,7 @@
 
 {% set title = 'Did you submit an environmental statement with your application?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'environmental-statement',
     name: 'environmental-statement',

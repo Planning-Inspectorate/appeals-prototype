@@ -2,7 +2,7 @@
 
 {% set title = 'Upload evidence of your agreement to change the description of development' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -21,7 +21,7 @@
         classes: 'govuk-label--m'
       },
       hint: {
-        text: 'Each file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
+        text: 'Each file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB'
       }
     }) }}
 

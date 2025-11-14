@@ -1,10 +1,8 @@
-{% set dummygrounds = 'The appellant contends that the local planning authority decision to refuse the application was flawed on the following grounds.
+{% set dummygrounds = '• The appellant contends that the local planning authority decision to refuse the application was flawed on the following grounds.
 
-Misinterpretation of Policy
-The authority incorrectly applied local planning policies, particularly in relation to the assessment of visual impact and neighbourhood character, leading to an unjustified refusal.
+• I believe this to be a misinterpretation of Policy - The authority incorrectly applied local planning policies, particularly in relation to the assessment of visual impact and neighbourhood character, leading to an unjustified refusal.
 
-Failure to Consider Material Benefits
-The decision did not adequately account for the positive contributions of the proposal, including improved site utilisation and enhanced accessibility for local residents.' %}
+• Failure to Consider Material Benefits — The decision did not adequately account for the positive contributions of the proposal, including improved site utilisation and enhanced accessibility for local residents.' %}
 
 {% set dummydod = 'The proposed development comprises the construction of 120 new residential dwellings on a 10-hectare site located on the outskirts of the town centre. The scheme includes a mix of detached, semi-detached, and terraced houses, alongside low-rise apartment blocks, designed to accommodate a range of household sizes and needs. The development will be phased over three years and will incorporate sustainable building practices, including energy-efficient materials, solar panel installations, and rainwater harvesting systems.
 
@@ -33,7 +31,7 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">1. </span> Prepare appeal
-    {% if data['prepare-appeal-completed'] == 'true' %}
+    {% if data['prepare-appeal-complete'] == 'true' %}
       {{ govukTag({
         html: 'Completed'
       }) }}
@@ -97,6 +95,31 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
             if data['contact-details-complete'] else
             {
               href: 'prepare-appeal/contact-details',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Your phone number'
+        },
+        value: {
+          html: (data['telephone-number'] or '07744122344')
+        }
+        if data['contact-phone-number-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/contact-phone-number?cya=true',
+              html: 'Change'
+            }
+            if data['contact-phone-number-complete'] else
+            {
+              href: 'prepare-appeal/contact-phone-number',
               html: 'Answer'
             }
           ]
@@ -529,31 +552,6 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
       },
       {
         key: {
-          html: 'Application date'
-        },
-        value: {
-          html: data['application-date'] or 90 | daysAgo
-        }
-        if data['application-date-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'prepare-appeal/application-date?cya=true',
-              html: 'Change'
-            }
-            if data['application-date-complete'] else
-            {
-              href: 'prepare-appeal/application-date',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
           html: 'Development class'
         },
         value: {
@@ -609,19 +607,19 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
         value: {
           html: data['description-of-developement'] or dummydod | nl2br
         }
-        if data['description-of-developement-complete'] else
+        if data['description-of-development-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'prepare-appeal/description-of-developement?cya=true',
+              href: 'prepare-appeal/description-of-development?cya=true',
               html: 'Change'
             }
-            if data['description-of-developement-complete'] else
+            if data['description-of-development-complete'] else
             {
-              href: 'prepare-appeal/description-of-developement',
+              href: 'prepare-appeal/description-of-development',
               html: 'Answer'
             }
           ]
@@ -632,7 +630,7 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
           html: 'Description of development changed'
         },
         value: {
-          html: data['description-of-developement-changed'] or 'No'
+          html: data['application-desc-changed'] or 'No'
         }
         if data['description-of-developement-changed-complete'] else
         {
@@ -654,24 +652,24 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
       },
       {
         key: {
-          html: 'List of application documents'
+          html: 'Grounds of appeal'
         },
         value: {
-          html: data['application-documents'] or dummydocs
+          html: data['grounds'] or dummygrounds | nl2br
         }
-        if data['application-documents-complete'] else
+        if data['grounds-of-appeal-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'prepare-appeal/application-documents?cya=true',
+              href: 'prepare-appeal/grounds?cya=true',
               html: 'Change'
             }
-            if data['application-documents-complete'] else
+            if data['grounds-of-appeal-complete'] else
             {
-              href: 'prepare-appeal/application-documents',
+              href: 'prepare-appeal/grounds',
               html: 'Answer'
             }
           ]
@@ -682,7 +680,7 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
           html: 'Significant changes'
         },
         value: {
-          html: data['significant-changes'] or 'None of these'
+          html: 'None of these'
         }
         if data['significant-changes-complete'] else
         {
@@ -697,31 +695,6 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
             if data['significant-changes-complete'] else
             {
               href: 'prepare-appeal/application-documents',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Grounds of appeal'
-        },
-        value: {
-          html: data['grounds'] or dummygrounds | nl2br
-        }
-        if data['grounds-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'prepare-appeal/grounds?cya=true',
-              html: 'Change'
-            }
-            if data['grounds-complete'] else
-            {
-              href: 'prepare-appeal/grounds',
               html: 'Answer'
             }
           ]
@@ -832,9 +805,34 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
           html: 'Appeals linked to your development'
         },
         value: {
-          html: data['other-appeals'] or 'No'
+          html: data['other-appeals-check'] or 'No'
         }
-        if data['other-appeals-complete'] else
+        if data['other-appeals-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'prepare-appeal/other-appeals-check?cya=true',
+              html: 'Change'
+            }
+            if data['other-appeals-check-complete'] else
+            {
+              href: 'prepare-appeal/other-appeals-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Other appeals'
+        },
+        value: {
+          html: data['other-appeal-reference'] or '0176256'
+        }
+        if data['other-appeals-check-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
@@ -844,14 +842,16 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
               href: 'prepare-appeal/other-appeals?cya=true',
               html: 'Change'
             }
-            if data['other-appeals-complete'] else
+            if data['other-appeals-check-complete'] else
             {
               href: 'prepare-appeal/other-appeals',
               html: 'Answer'
             }
           ]
         }
-      }
+      } if data['other-appeals-check'] == 'Yes'
+
+
     ]
   }) }}
 </li>

@@ -2,7 +2,7 @@
 
 {% set title = 'How many witnesses would you expect to give evidence at the inquiry?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukInput({
     id: 'procedure-witnesses',
     name: 'procedure-witnesses',

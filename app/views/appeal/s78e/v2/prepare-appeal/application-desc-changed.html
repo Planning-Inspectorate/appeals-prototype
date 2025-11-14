@@ -2,7 +2,7 @@
 
 {% set title = 'Did the local planning authority change the description of development?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {{ govukRadios({
     idPrefix: 'application-desc-changed',

@@ -2,7 +2,7 @@
 
 {% set title = 'Are there any other tenants?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'agricultural-others',
     name: 'agricultural-others',

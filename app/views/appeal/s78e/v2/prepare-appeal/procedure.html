@@ -2,7 +2,7 @@
 
 {% set title = 'How would you prefer us to decide your appeal?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'procedure',
     name: 'procedure',

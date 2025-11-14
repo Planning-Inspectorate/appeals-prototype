@@ -2,7 +2,7 @@
 
 {% set title = 'Did you ask the local planning authority for a screening opinion?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'screening-opinion-check',
     name: 'screening-opinion-check',

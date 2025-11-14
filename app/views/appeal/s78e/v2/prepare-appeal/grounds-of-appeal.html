@@ -1,0 +1,64 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Why are you appealing?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Tell us why you disagree with the local planning authorities decision. Do not include any new evidence.
+  </p>
+
+  {{ govukInsetText({
+    text: "Do not include any sensitive information in your statement. It will delay your appeal."
+  }) }}
+
+
+  {% set sensitiveHTML %}
+    <p class="govuk-!-margin-bottom-2">Sensitive information refers to:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+      <li>comments from children</li>
+      <li>information relating to children</li>
+      <li>information relating to health</li>
+      <li>information relating to crime</li>
+      <li>
+        any information relating to an individual&rsquo;s:
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+          <li>race</li>
+          <li>ethnic origin</li>
+          <li>politics</li>
+          <li>religion</li>
+          <li>trade union membership</li>
+          <li>genetics</li>
+          <li>physical characteristics</li>
+          <li>sex life</li>
+          <li>sexual orientation</li>
+        </ul>
+      </li>
+    </ul>
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'What is sensitive information?',
+    html: sensitiveHTML
+  }) }}
+
+  {{ govukTextarea({
+    name: "reasons-for-appeal",
+    id: "reasons-for-appeal",
+    rows: "8",
+    label: {
+      text: "Reasons for your appeal",
+      classes: "govuk-label--m",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Your must list each reason separately, using bullet points. Enter between 10 and 250 words."
+    }
+  }) }}
+
+{% endblock %}

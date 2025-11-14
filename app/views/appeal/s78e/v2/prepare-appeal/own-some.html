@@ -2,7 +2,7 @@
 
 {% set title = 'Do you own some of the land involved in the appeal?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'own-some',
     name: 'own-some',

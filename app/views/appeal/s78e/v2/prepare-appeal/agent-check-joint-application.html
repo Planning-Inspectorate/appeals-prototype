@@ -1,8 +1,10 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Select your name' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block questions %}
+
   {{ govukRadios({
     idPrefix: 'agent-check-joint-application',
     name: 'agent-check-joint-application',

@@ -199,7 +199,7 @@ router.post('/planning/cya', function (req, res) {
       res.redirect('/appeal/full/v5/before-you-continue');
       break;
     case 'expedited':
-      res.redirect('/appeal/s78e/v1/before-you-continue');
+      res.redirect('/appeal/s78e/v2/before-you-continue');
       break;
     case 'HASplanning':
       res.redirect('/appeal/has/v3/before-you-continue');

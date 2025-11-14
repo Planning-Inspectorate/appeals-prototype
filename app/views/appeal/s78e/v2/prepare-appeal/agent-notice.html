@@ -6,7 +6,7 @@
 
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {% if data['appellant-check'] == 'A person' %}
     <h1 class="govuk-heading-l">

@@ -2,7 +2,7 @@
 
 {% set title = 'What is your phone number?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {% call govukFieldset({
     legend: {
@@ -21,7 +21,7 @@
       text: "UK telephone number"
     },
     id: "telephone-number",
-    name: "telephoneNumber",
+    name: "telephone-number",
     type: "tel",
     autocomplete: "tel",
     classes: "govuk-input--width-20"

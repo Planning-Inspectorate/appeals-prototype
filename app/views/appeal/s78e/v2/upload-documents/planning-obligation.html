@@ -2,7 +2,7 @@
 
 {% set title = 'Upload your draft planning obligation' if data['planning-obligation-status'] == 'In draft' else 'Upload your planning obligation' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -19,7 +19,7 @@
         classes: 'govuk-label--m'
       },
       hint: {
-        text: 'Each file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
+        text: 'Each file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB'
       }
     }) }}
 

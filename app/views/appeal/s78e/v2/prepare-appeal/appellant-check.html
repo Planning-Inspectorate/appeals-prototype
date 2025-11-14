@@ -2,7 +2,7 @@
 
 {% set title = 'Was the planning application made in your name?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {{ govukRadios({
     idPrefix: 'who-applied',

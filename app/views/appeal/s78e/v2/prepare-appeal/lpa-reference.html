@@ -2,7 +2,7 @@
 
 {% set title = 'What&rsquo;s the reference number for the application?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukInput({
     id: 'lpa-reference',
     name: 'lpa-reference',

@@ -1,8 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Did the local planning authority change the description of development?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block questions %}
+
+<!-- Appeal is {{ (data['appealIs'] or 'not set') }} -->
 
   {{ govukRadios({
     idPrefix: 'application-desc-changed',

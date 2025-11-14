@@ -2,7 +2,7 @@
 
 {% set title = 'Enter a summary of your appeal statement' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
 
   {{ govukCharacterCount({
     name: "appeal-summary",

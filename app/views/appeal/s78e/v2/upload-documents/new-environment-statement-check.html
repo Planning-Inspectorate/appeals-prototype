@@ -2,7 +2,7 @@
 
 {% set title = 'Do you wish to submit a new environment statement for this appeal?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'new-environment-statement-check',
     name: 'new-environment-statement-check',

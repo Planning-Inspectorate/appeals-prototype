@@ -2,7 +2,7 @@
 
 {% set title = 'Are you employed by '+(data['appellant-company-name'] or 'Acme Ltd.')+'?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'agent-check-organisation',
     name: 'agent-check-organisation',

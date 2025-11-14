@@ -49,6 +49,31 @@
       },
       {
         key: {
+          html: 'Evidence of your agreement to change the description of development'
+        },
+        value: {
+          html: data['description-of-development-agreement'] or 'Description of development change agreement 2025.pdf'
+        }
+        if data['description-of-development-agreement-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/description-change-agreement?cya=true',
+              html: 'Change'
+            }
+            if data['description-of-development-agreement-complete'] else
+            {
+              href: 'upload-documents/description-change-agreement',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['application-desc-changed'] == 'Yes',
+      {
+        key: {
           html: 'Was there an environmental statement?'
         },
         value: {
@@ -147,32 +172,6 @@
           ]
         }
       },
-      {
-        key: {
-          html: 'Draft statement of common ground'
-        },
-        value: {
-          html: data['common-ground'] or 'common-ground.pdf'
-        }
-        if data['common-ground-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'upload-documents/common-ground?cya=true',
-              html: 'Change'
-            }
-            if data['common-ground-complete'] else
-            {
-              href: 'upload-documents/common-ground',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['procedure'] == 'Inquiry' or data['procedure'] == 'Hearing',
-
       {
         key: {
           html: 'Add planning obligation'
@@ -298,31 +297,6 @@
           ]
         }
       } if data['ownership-certificate-check'] == 'Yes',
-      {
-        key: {
-          html: 'Statement of common ground'
-        },
-        value: {
-          html: data['statement-of-common-ground'] or 'Statement-of-common-ground.pdf'
-        }
-        if data['statement-of-common-ground-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'upload-documents/statement-of-common-ground?cya=true',
-              html: 'Change'
-            }
-            if data['statement-of-common-ground-complete'] else
-            {
-              href: 'upload-documents/statement-of-common-ground',
-              html: 'Upload'
-            }
-          ]
-        }
-      },
       {
         key: {
           html: 'Costs application'

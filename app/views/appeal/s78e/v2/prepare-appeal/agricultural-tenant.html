@@ -2,7 +2,7 @@
 
 {% set title = 'Are you a tenant of the agricultural holding?' %}
 
-{% block questions %}
+{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
   {{ govukRadios({
     idPrefix: 'agricultural-tenant',
     name: 'agricultural-tenant',
