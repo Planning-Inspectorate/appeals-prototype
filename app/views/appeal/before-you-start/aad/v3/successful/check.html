@@ -51,7 +51,7 @@
                 {
                   href: "application-ref",
                   text: "Change",
-                  visuallyHiddenText: "application number"
+                  visuallyHiddenText: "applciation number"
                 }
               ]
             }
@@ -62,6 +62,15 @@
             },
             value: {
               text: "Householder planning"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "type"
+                }
+              ]
             }
           },
           {
@@ -70,6 +79,15 @@
             },
             value: {
               text: "Granted with conditions"
+            },
+            actions: {
+              items: [
+                {
+                  href: "granted-or-refused",
+                  text: "Change",
+                  visuallyHiddenText: "granted or refused"
+                }
+              ]
             }
           },
           {
@@ -78,18 +96,23 @@
             },
             value: {
               text: "26 May 2025"
+            },
+            actions: {
+              items: [
+                {
+                  href: "decision-date",
+                  text: "Change",
+                  visuallyHiddenText: "date of decision"
+                }
+              ]
             }
           }
         ]
       }) }}
-     
+
       {{ govukButton({
         text: "Continue to my appeal"
       }) }}
-
-    <p class="govuk-body">If some of these details are incorrect,
-      <a href="../../../v19/planning-type" class="govuk-link">tell us the correct information</a>.
-    </p>
 
     </div>
   </div>

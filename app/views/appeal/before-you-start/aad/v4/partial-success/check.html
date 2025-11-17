@@ -13,39 +13,31 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">Check your application details</h1>
+      <h1 class="govuk-heading-l">Confirm your application details</h1>
 
       <p class="govuk-body">We’ve combined the details you provided with information held in the local planning authority records.</p>
-
+      <p class="govuk-body">Make sure these are the details for your application. Altering someone else's details could be a breach of data protection laws.</p>
       <p class="govuk-body">Your deadline to appeal is 11:59pm on Sunday 15 March 2026.</p>
 
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
-            key: {
-              text: "Local planning authority"
-            },
-            value: {
-              text: "Camden"
-            },
+            key: { text: "Local planning authority" },
+            value: { text: "Camden" },
             actions: {
               items: [
                 {
                   href: "lpa",
                   text: "Change",
-                  visuallyHiddenText: "lpa"
+                  visuallyHiddenText: "local planning authority"
                 }
               ]
             }
           },
           {
-            key: {
-              text: "Application number"
-            },
-            value: {
-              text: "25/996703/BA"
-            },
+            key: { text: "Application number" },
+            value: { text: "57602946" },
             actions: {
               items: [
                 {
@@ -57,81 +49,64 @@
             }
           },
           {
-            key: {
-              text: "Site address"
-            },
-            value: {
-              text: "123 Street, London, AB1 2CD"
-            },
+            key: { text: "Site address" },
+            value: { text: "123 Street, London, AB1 2CD" },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "date of birth"
+                  visuallyHiddenText: "site address"
                 }
               ]
             }
           },
           {
-            key: {
-              text: "Type of application"
-            },
-            value: {
-              text: "Householder planning"
-            },
+            key: { text: "Type of application" },
+            value: { text: "Householder planning" },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "type"
+                  visuallyHiddenText: "type of application"
                 }
               ]
             }
           },
           {
-            key: {
-              text: "Was your application granted or refused?"
-            },
-            value: {
-              text: "Granted with conditions"
-            },
+            key: { text: "Was your application granted or refused?" },
+            value: { text: "Granted with conditions" },
             actions: {
               items: [
                 {
                   href: "granted-or-refused",
                   text: "Change",
-                  visuallyHiddenText: "granted or refused"
+                  visuallyHiddenText: "decision outcome"
                 }
               ]
             }
           },
           {
-            key: {
-              text: "Date of decision"
-            },
-            value: {
-              text: "26 May 2025"
-            },
+            key: { text: "Date of decision" },
+            value: { text: "26 May 2025" },
             actions: {
               items: [
                 {
                   href: "decision-date",
                   text: "Change",
-                  visuallyHiddenText: "contact details"
+                  visuallyHiddenText: "decision date"
                 }
               ]
             }
           }
         ]
       }) }}
-
+      
+     
       {{ govukButton({
         text: "Continue to my appeal"
       }) }}
-
-      <p class="govuk-body">[new link here - waiting on content]</p>
 
     </div>
   </div>
