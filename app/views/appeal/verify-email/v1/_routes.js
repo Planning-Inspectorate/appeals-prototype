@@ -19,7 +19,7 @@ router.post('/enter-code--confirm-email', function (req, res) {
 
   // route back to another appeal form depending on what the appeal type is
   // appealIs = what kind of appeal is it
-  
+
   let appealtype = req.session.data['appealIs']
 
   switch (appealtype) {
@@ -40,7 +40,7 @@ router.post('/enter-code--confirm-email', function (req, res) {
       res.redirect('/appeal/has/v3/before-you-continue');
       break;
     default:
-      res.redirect('/appeal/generic/v3/before-you-continue');
+      res.redirect('/appeal/full/v5/before-you-continue');
   }
 
 

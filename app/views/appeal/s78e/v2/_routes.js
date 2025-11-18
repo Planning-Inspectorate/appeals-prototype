@@ -186,7 +186,7 @@ router.post('/prepare-appeal/description-of-development', function (req, res) {
 })
 
 router.post('/prepare-appeal/description-of-developement-changed', function (req, res) {
-res.redirect('grounds-of-appeal')
+res.redirect('reasons-for-appeal')
 })
 
 // YOUR APPEAL
@@ -198,7 +198,7 @@ res.redirect('grounds-of-appeal')
 // Part 1 only screens
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
-router.post('/prepare-appeal/grounds-of-appeal', function (req, res) {
+router.post('/prepare-appeal/reasons-for-appeal', function (req, res) {
   res.redirect('significant-changes')
 })
 
