@@ -1,8 +1,10 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Upload evidence of your agreement to change the description of development' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -38,6 +40,7 @@
     },
     uploadHtml: uploadHtml
   }) }}
+
 {% endblock %}
 
 {% block pageScripts %}

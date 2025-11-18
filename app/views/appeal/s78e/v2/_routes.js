@@ -25,8 +25,8 @@ router.post('*', function(req, res, next){
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.get('/task-list', function(req, res, next) {
-  const prepareComplete = req.session.data['prepare-appeal-complete'] === 'true'
-  const uploadComplete = req.session.data['upload-documents-complete'] === 'true'
+  const prepareComplete = req.session.data['prepare-appeal-completed'] === 'true'
+  const uploadComplete = req.session.data['upload-documents-completed'] === 'true'
 
   const prepareStarted = req.session.data['prepare-appeal-started'] === 'true'
   const uploadStarted = req.session.data['upload-documents-started'] === 'true'
@@ -38,8 +38,8 @@ router.get('/task-list', function(req, res, next) {
   res.locals.count = count
 
   // Status tags for use in Nunjucks
-  res.locals['prepare-appeal-status'] = prepareComplete ? 'complete' : (prepareStarted ? 'started' : 'not started')
-  res.locals['upload-documents-status'] = uploadComplete ? 'complete' : (uploadStarted ? 'started' : 'not started')
+  res.locals['prepare-appeal-status'] = prepareComplete ? 'completed' : (prepareStarted ? 'started' : 'not started')
+  res.locals['upload-documents-status'] = uploadComplete ? 'completed' : (uploadStarted ? 'started' : 'not started')
 
   next()
 })
@@ -182,10 +182,10 @@ router.post('/prepare-appeal/application-about', function (req, res) {
 })
 
 router.post('/prepare-appeal/description-of-development', function (req, res) {
-  res.redirect('description-of-developement-changed')
+  res.redirect('description-of-development-changed')
 })
 
-router.post('/prepare-appeal/description-of-developement-changed', function (req, res) {
+router.post('/prepare-appeal/description-of-development-changed', function (req, res) {
 res.redirect('reasons-for-appeal')
 })
 
@@ -272,30 +272,27 @@ router.post('/upload-documents/:page', function (req, res, next) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/application-form', function (req, res) {
-
-  // if the description of development changed, the next screen is to upload the
-  // description of development agreement
-  if (req.session.data['application-desc-changed'] == 'Yes') {
-    res.redirect('description-of-development-agreement')
-  } else {
-    res.redirect('environment-statement-check')
-  }
-
-})
-
-router.post('/upload-documents/description-of-development-agreement', function (req, res) {
   res.redirect('environment-statement-check')
 })
 
 router.post('/upload-documents/environment-statement-check', function (req, res) {
   if (req.session.data['environment-statement-check'] == 'No') {
 
-    // if the appellant didn’t receive a decision letter
-    // do not ask them to upload their decision letter
-    if (req.session.data['non-determined']) {
-      res.redirect('planning-obligation-check')
+    // if the description of development changed, the next screen is to upload the
+    // description of development agreement
+    if (req.session.data['application-desc-changed'] == 'Yes') {
+
+      res.redirect('description-of-development-agreement')
+
     } else {
-      res.redirect('decision-letter')
+
+      // if the appellant didn’t receive a decision letter
+      // do not ask them to upload their decision letter
+      if (req.session.data['non-determined']) {
+        res.redirect('planning-obligation-check')
+      } else {
+        res.redirect('decision-letter')
+      }
     }
 
   } else {
@@ -304,10 +301,13 @@ router.post('/upload-documents/environment-statement-check', function (req, res)
 })
 
 router.post('/upload-documents/environment-statement', function (req, res) {
+
   // if the description of development changed, the next screen is to upload the
   // description of development agreement
-  if (req.session.data['application-desc-changed'] != 'No') {
+  if (req.session.data['application-desc-changed'] == 'Yes') {
+
     res.redirect('description-of-development-agreement')
+
   } else {
 
     // if the appellant didn’t receive a decision letter
@@ -319,8 +319,20 @@ router.post('/upload-documents/environment-statement', function (req, res) {
     }
 
   }
+
 })
 
+router.post('/upload-documents/description-of-development-agreement', function (req, res) {
+
+  // if the appellant didn’t receive a decision letter
+  // do not ask them to upload their decision letter
+  if (req.session.data['non-determined']) {
+    res.redirect('planning-obligation-check')
+  } else {
+    res.redirect('decision-letter')
+  }
+
+})
 
 router.post('/upload-documents/decision-letter', function (req, res) {
   res.redirect('planning-obligation-check')
@@ -328,17 +340,9 @@ router.post('/upload-documents/decision-letter', function (req, res) {
 
 router.post('/upload-documents/planning-obligation-check', function (req, res) {
   if (req.session.data['planning-obligation-check'] == 'Yes') {
-    res.redirect('planning-obligation-status')
-  } else {
-    res.redirect('ownership-certificate-check')
-  }
-})
-
-router.post('/upload-documents/planning-obligation-status', function (req, res) {
-  if (req.session.data['planning-obligation-status'] == 'Not started yet') {
-    res.redirect('ownership-certificate-check')
-  } else {
     res.redirect('planning-obligation')
+  } else {
+    res.redirect('ownership-certificate-check')
   }
 })
 
