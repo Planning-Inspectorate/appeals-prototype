@@ -47,23 +47,29 @@ href: '/#appeal'
       isStartButton: true
     }) }}
 
+    <h2 class="govuk-heading-m">Features:</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Different task list layout to match enforcement questionnaire
+      </li>
+      <li>
+        New questions added
+      </li>
+    </ul>
+
     {# Size modifiers: xl, l, m #}
     <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
 
-    {{ govukButton({
-      html: 'Before you start prototype',
-      href: 'enforcement/v3/before-you-start/before-you-start',
-      classes: 'govuk-button--secondary'
-    }) }}
+    <h2 class="govuk-heading-m">Other flows:</h2>
 
-    <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
-
-
-    {{ govukButton({
-      html: 'Appellant statement prototype',
-      href: 'enforcement/v1-statement/start',
-      classes: 'govuk-button--secondary'
-    }) }}
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="enforcement/v3/before-you-start/before-you-start">Before you start</a>
+      </li>
+      <li>
+        <a href="enforcement/v1-statement/start">Appellant statement</a>
+      </li>
+    </ul>
     
 
 
