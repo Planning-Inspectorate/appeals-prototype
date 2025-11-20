@@ -1,0 +1,19 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Why would you prefer an inquiry?' %}
+
+{% block questions %}
+<span class="govuk-caption-l">Tell us how you would prefer us to decide your appeal</span>
+
+  {{ govukTextarea({
+    name: 'inquiry',
+    id: 'inquiry',
+    value: data['inquiry'],
+    rows: '5',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    }
+  }) }}
+{% endblock %}
