@@ -99,7 +99,7 @@
       },
       {
         key: {
-          html: 'Environmental statement?'
+          html: 'Environmental statement'
         },
         value: {
           html: data['environment-statement'] or 'environment-statement.pdf'
@@ -146,7 +146,7 @@
             }
           ]
         }
-      } if data['description-of-development-changed'] == 'Yes',
+      } if data['application-desc-changed'] == 'Yes',
       {
         key: {
           html: 'Decision letter'
