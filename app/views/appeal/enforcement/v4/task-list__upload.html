@@ -17,6 +17,7 @@
       }) }}
     {% endif %}
   </h2>
+
   {{ govukSummaryList({
     classes: "govuk-!-margin-bottom-9",
     rows: [
@@ -30,14 +31,14 @@
           { html: '<span class="govuk-hint">Not started</span>' },
         actions: {
           items: [
-            {
-              href: "upload-documents/upload-enforcement-notice",
-              text: "Change",
-              visuallyHiddenText: "enforcement notice"
-            }
+          { href: 'upload-documents/upload-enforcement-notice?cya=true', html: 'Change' }
+          if data['upload-enforcement-notice-complete'] else
+          { href: 'upload-documents/upload-enforcement-notice', html: 'Answer' }
+        
           ]
         }
       },
+
       {
         key: {
           text: "Enforcement plan"
@@ -48,11 +49,9 @@
           { html: '<span class="govuk-hint">Not started</span>' },
         actions: {
           items: [
-            {
-              href: "upload-documents/upload-enforcement-plan",
-              text: "Change",
-              visuallyHiddenText: "enforcement plan"
-            }
+          { href: 'upload-documents/upload-enforcement-plan?cya=true', html: 'Change' }
+          if data['upload-enforcement-plan-complete'] else
+          { href: 'upload-documents/upload-enforcement-plan', html: 'Answer' }
           ]
         }
       },
