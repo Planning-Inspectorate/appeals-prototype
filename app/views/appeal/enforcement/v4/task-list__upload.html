@@ -58,6 +58,24 @@
       },
 
       {
+        key: {
+          text: "Evidence of your agreement to change the description of development"
+        },
+        value:
+          { html: "<a href='#'>description-change.pdf</a>" }
+          if data['desc-change-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+          { href: 'upload-documents/upload-desc-change?cya=true', html: 'Change' }
+          if data['upload-desc-change-complete'] else
+          { href: 'upload-documents/upload-desc-change', html: 'Answer' }
+        ]
+      }
+      } if data['application-desc-changed'] == 'Yes',
+
+
+      {
         key: { text: "Do you plan to submit a planning obligation to support your appeal?" },
         value:
           { html: data['planning-obligation-check'] or 'No' }

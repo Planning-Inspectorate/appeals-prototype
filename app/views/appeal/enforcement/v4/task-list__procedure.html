@@ -71,13 +71,13 @@
     {
       key: { text: "Days for inquiry" },
       value:
-        { html: (data['procedure-length'] or '3') + ' days' }
-        if data['procedure-length-complete'] else
+        { html: (data['inquiry-days'] or '3') + ' days' }
+        if data['inquiry-days-complete'] else
         { html: '<span class="govuk-hint">Not started</span>' },
       actions: {
         items: [
           { href: 'prepare-appeal/inquiry-days?cya=true', html: 'Change' }
-          if data['procedure-length-complete'] else
+          if data['inquiry-days-complete'] else
           { href: 'prepare-appeal/inquiry-days', html: 'Answer' }
         ]
       }
@@ -87,13 +87,13 @@
     {
       key: { text: "Witnesses for inquiry" },
       value:
-        { html: (data['procedure-witnesses'] or '5') + ' witnesses' }
-        if data['procedure-witnesses-complete'] else
+        { html: (data['witnesses'] or '5') + ' witnesses' }
+        if data['witnesses-complete'] else
         { html: '<span class="govuk-hint">Not started</span>' },
       actions: {
         items: [
           { href: 'prepare-appeal/inquiry-witnesses?cya=true', html: 'Change' }
-          if data['procedure-witnesses-complete'] else
+          if data['witnesses-complete'] else
           { href: 'prepare-appeal/inquiry-witnesses', html: 'Answer' }
         ]
       }

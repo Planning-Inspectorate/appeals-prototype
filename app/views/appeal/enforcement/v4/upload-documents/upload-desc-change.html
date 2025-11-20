@@ -11,13 +11,15 @@
 {% block questions %}
       <form method="post">
         <h1 class="govuk-heading-l">
-          Upload your enforcement notice
+          Upload evidence of your agreement to change the description of development
         </h1>
+
+        <p class="govuk-body">For example, an email or letter from the local planning authority that confirms they have changed the description of development.</p>
 
         {% set uploadHtml %}
           {{ govukFileUpload({
-            id: "supporting-docs",
-            name: "_supporting-docs",
+            id: "desc-change",
+            name: "desc-change",
             classes: 'moj-multi-file-upload__input',
             label: {
               text: "Drag and drop or choose files",

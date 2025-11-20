@@ -1,6 +1,14 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What is your interest in the land?' %}
+{% if data['address-check'] == 'Yes' %}
+  {% set title = 'What is ' 
+      ~ (data['appellant-first-name'] or 'Jan') 
+      ~ ' ' 
+      ~ (data['appellant-last-name'] or 'Fisher') 
+      ~ '\'s interest in the land?' %}
+{% else %}
+  {% set title = 'What is your interest in the land?' %}
+{% endif %}
 
 {% block questions %}
   {{ govukRadios({
@@ -28,14 +36,14 @@
         html: 'Tenant',
         value: 'tenant',
         checked: checked('interest-in-site','Tenant')
-      },      
+      },
       {
         divider: "or"
       },
       {
         html: 'Other',
-        value: 'other',
-        checked: checked('interest-in-site','other')
+        value: 'Other',
+        checked: checked('interest-in-site','Other')
       }
     ]
   }) }}

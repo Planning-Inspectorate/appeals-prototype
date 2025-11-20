@@ -8,94 +8,72 @@
     Choose your grounds of appeal
   </span>
 
-  <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <h1 class="govuk-fieldset__heading">
-        {{ title }}
-      </h1>
-    </legend>
+  {{ govukCheckboxes({
+    idPrefix: "grounds",
+    name: "grounds",
+    fieldset: {
+      legend: {
+        text: title,
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: "Select all that apply."
+    },
+    items: [
+      {
+        value: "groundA",
+        text: "Ground (a)",
+        hint: {
+          text: "The local planning authority (LPA) should grant planning permission for all (or part) of the development described in the alleged breach."
+        }
+      },
+      {
+        value: "groundB",
+        text: "Ground (b)",
+        hint: {
+          text: "The alleged breach did not happen."
+        }
+      },
+      {
+        value: "groundC",
+        text: "Ground (c)",
+        hint: {
+          text: "You do not need planning permission (for example, it is a permitted development or you already have planning permission)."
+        }
+      },
+      {
+        value: "groundD",
+        text: "Ground (d)",
+        hint: {
+          text: "It is too late for the LPA to take enforcement action."
+        }
+      },
+      {
+        value: "groundE",
+        text: "Ground (e)",
+        hint: {
+          text: "The LPA did not serve the notice properly to everyone with an interest in the land."
+        }
+      },
+      {
+        value: "groundF",
+        text: "Ground (f)",
+        hint: {
+          text: "A simpler step (or steps) would achieve the same result."
+        }
+      },
+      {
+        value: "groundG",
+        text: "Ground (g)",
+        hint: {
+          text: "The time to comply with the notice is too short."
+        }
+      }
+    ]
+  }) }}
 
-    <p class="govuk-hint">
-      Select all that apply.
-    </p>
-
-    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="grounds-1" name="grounds" type="checkbox" value="groundA">
-        <label class="govuk-label govuk-checkboxes__label" for="grounds-1">
-          Ground (a)
-        </label>
-        <div class="govuk-hint govuk-checkboxes__hint">
-          The local planning authority (LPA) should grant planning permission for all (or part) of the development described in the alleged breach.
-        </div>
-      </div>
-
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="grounds-2" name="grounds" type="checkbox" value="groundB">
-        <label class="govuk-label govuk-checkboxes__label" for="grounds-2">
-          Ground (b)
-        </label>
-        <div class="govuk-hint govuk-checkboxes__hint">
-          The alleged breach did not happen.
-        </div>
-      </div>
-
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="grounds-3" name="grounds" type="checkbox" value="groundC">
-        <label class="govuk-label govuk-checkboxes__label" for="grounds-3">
-          Ground (c)
-        </label>
-        <div class="govuk-hint govuk-checkboxes__hint">
-          You do not need planning permission (for example, it is a permitted development or you already have planning permission).
-        </div>
-      </div>
-
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="grounds-4" name="grounds" type="checkbox" value="groundD">
-        <label class="govuk-label govuk-checkboxes__label" for="grounds-4">
-          Ground (d)
-        </label>
-        <div class="govuk-hint govuk-checkboxes__hint">
-          It is too late for the LPA to take enforcement action.
-        </div>
-      </div>
-
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="grounds-5" name="grounds" type="checkbox" value="groundE">
-        <label class="govuk-label govuk-checkboxes__label" for="grounds-5">
-          Ground (e)
-        </label>
-        <div class="govuk-hint govuk-checkboxes__hint">
-          The LPA did not serve the notice properly to everyone with an interest in the land.
-        </div>
-      </div>
-
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="grounds-6" name="grounds" type="checkbox" value="groundF">
-        <label class="govuk-label govuk-checkboxes__label" for="grounds-6">
-          Ground (f)
-        </label>
-        <div class="govuk-hint govuk-checkboxes__hint">
-          A simpler step (or steps) would achieve the same result.
-        </div>
-      </div>
-
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="grounds-7" name="grounds" type="checkbox" value="groundG">
-        <label class="govuk-label govuk-checkboxes__label" for="grounds-7">
-          Ground (g)
-        </label>
-        <div class="govuk-hint govuk-checkboxes__hint">
-          The time to comply with the notice is too short.
-        </div>
-      </div>
-
-    </div>
-  </fieldset>
-  {# Size modifiers: xl, l, m #}
   <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
 {% endblock %}
-
-

@@ -1,12 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Do you have any documents to support your ground (b) facts?' %}
+{% set title = 'Do you have written or verbal permission to use the land?' %}
 
 {% block questions %}
 
   {{ govukRadios({
-    idPrefix: 'supporting-check-b',
-    name: 'supporting-check-b',
+    idPrefix: 'permission',
+    name: 'permission',
     fieldset: {
       legend: {
         html: title,
@@ -14,17 +14,21 @@
         isPageHeading: true
       }
     },
+    hint: {
+      text: 'Only select yes if you have permission to use the land today and on the enforcement notice issue date.'
+    },
     items: [
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('supporting-check-b','Yes')
+        checked: checked('permission','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('supporting-check-b','No')
+        checked: checked('permission','No')
       }
     ]
   }) }}
+
 {% endblock %}

@@ -5,7 +5,8 @@
 {% block questions %}
 
 {{ govukDateInput({
-  id: "date",
+  idPrefix: 'appeal-decision-date',
+  name: 'appeal-decision-date',
   fieldset: {
     legend: {
       text: title,

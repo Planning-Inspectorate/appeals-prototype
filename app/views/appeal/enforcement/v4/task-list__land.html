@@ -104,6 +104,25 @@
         }
       },
 
+
+      {
+        key: { text: "Do you have written or verbal permission to use the land?" },
+        value:
+          {
+            html:
+              (data['permission'] or 'No')          }
+          if data['permission-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/permission?cya=true', html: 'Change' }
+            if data['permission-complete'] else
+            { href: 'prepare-appeal/permission', html: 'Answer' }
+          ]
+        }
+      } if data['interest-in-site'] == 'Other',
+
+
       {
         key: { text: "Inspector access" },
         value: {

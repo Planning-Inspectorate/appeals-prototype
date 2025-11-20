@@ -183,15 +183,29 @@ router.post('/prepare-appeal/address-check', function (req, res) {
 })
 
 router.post('/prepare-appeal/contact-address', function (req, res) {
+  req.session.data['contact-address'] = req.body['contact-address'];
+  req.session.data['contact-address-complete'] = true;
   res.redirect('interest-in-site')
 })
 
 router.post('/prepare-appeal/interest-in-site', function (req, res) {
-  res.redirect('description-of-land')
+  if (req.session.data['interest-in-site'] == 'Other') {
+    res.redirect('permission')
+  } else {
+    res.redirect('site-visibility')
+  }
+})
+
+router.post('/prepare-appeal/permission', function (req, res) {
+  res.redirect('site-visibility')
 })
 
 router.post('/prepare-appeal/description-of-land', function (req, res) {
-  res.redirect('site-visibility')
+  res.redirect('application-desc-changed')
+})
+
+router.post('/prepare-appeal/application-desc-changed', function (req, res) {
+  res.redirect('granted-or-refused')
 })
 
 router.post('/prepare-appeal/live-on-land', function (req, res) {
@@ -321,18 +335,26 @@ router.post('/prepare-appeal/procedure', function (req, res) {
 })
 
 router.post('/prepare-appeal/reason-hearing', function (req, res) {
+  req.session.data['hearing'] = req.body['hearing'];
+  req.session.data['hearing-complete'] = true;
   res.redirect('other-appeals-check')
 })
 
 router.post('/prepare-appeal/reason-inquiry', function (req, res) {
+  req.session.data['inquiry'] = req.body['inquiry'];
+  req.session.data['inquiry-complete'] = true;
   res.redirect('inquiry-days')
 })
 
 router.post('/prepare-appeal/inquiry-days', function (req, res) {
+  req.session.data['inquiry-days'] = req.body['inquiry-days'];
+  req.session.data['inquiry-days-complete'] = true;
   res.redirect('inquiry-witnesses')
 })
 
 router.post('/prepare-appeal/inquiry-witnesses', function (req, res) {
+  req.session.data['witnesses'] = req.body['witnesses'];
+  req.session.data['witnesses-complete'] = true;
   res.redirect('other-appeals-check')
 })
 
@@ -357,7 +379,7 @@ router.post('/prepare-appeal/appeal-summary', function (req, res) {
 })
 
 router.post('/prepare-appeal/other-appeals-check', function (req, res) {
-  if (req.session.data['other-appeals-radio'] == 'Yes') {
+  if (req.session.data['other-appeals-check'] == 'Yes') {
     res.redirect('other-appeal-reference')
   } else {
     res.redirect('../task-list?procedure-completed=true')
@@ -587,12 +609,14 @@ router.post('/prepare-appeal/supporting-check-b', function (req, res) {
   if (req.session.data['supporting-check-b'] == 'Yes') {
     res.redirect('supporting-upload-b')
   } else {
-    res.redirect('fee-check')
+    res.redirect('../task-list?grounds-completed=true')
   }
 })
 
 router.post('/prepare-appeal/fee-check', function (req, res) {
   if (req.session.data['fee-check'] == 'Yes') {
+    req.session.data['fee-check'] = req.body['fee-check'];
+    req.session.data['fee-check-complete'] = true;
     res.redirect('fee-upload')
   } else {
     res.redirect('../task-list?grounds-completed=true')
@@ -600,19 +624,23 @@ router.post('/prepare-appeal/fee-check', function (req, res) {
 })
 
 router.post('/prepare-appeal/supporting-upload-b', function (req, res) {
-  res.redirect('fee-check')
-})
-
-router.post('/prepare-appeal/fee-upload', function (req, res) {
+  req.session.data['_supporting-docs'] = req.body['_supporting-docs'];
+  req.session.data['_supporting-docs-complete'] = true;
   res.redirect('../task-list?grounds-completed=true')
 })
 
 router.post('/prepare-appeal/submit-planning-application', function (req, res) {
   if (req.session.data['submit-planning-application'] == 'Yes') {
-    res.redirect('all-or-part')
+    res.redirect('fee-upload')
   } else {
-    res.redirect('facts-a')
+    res.redirect('all-or-part')
   }
+})
+
+router.post('/prepare-appeal/fee-upload', function (req, res) {
+  req.session.data['fee-receipt'] = req.body['fee-receipt'];
+  req.session.data['fee-receipt-complete'] = true;
+  res.redirect('all-or-part')
 })
 
 router.post('/prepare-appeal/granted-or-refused', function (req, res) {
@@ -628,7 +656,7 @@ router.post('/prepare-appeal/decision-letter-date', function (req, res) {
 })
 
 router.post('/prepare-appeal/decision-due-date', function (req, res) {
-  res.redirect('appeal-decision')
+  res.redirect('facts-a')
 })
 
 router.post('/prepare-appeal/appeal-decision', function (req, res) {
@@ -648,10 +676,16 @@ router.post('/prepare-appeal/appeal-decision-date', function (req, res) {
 })
 
 router.post('/prepare-appeal/all-or-part', function (req, res) {
+    req.session.data['all-or-part'] = req.body['all-or-part'];
+  req.session.data['all-or-part-complete'] = true;
   res.redirect('application-reference')
 })
 
 router.post('/prepare-appeal/application-reference', function (req, res) {
+  res.redirect('application-date')
+})
+
+router.post('/prepare-appeal/application-date', function (req, res) {
   res.redirect('description-of-development')
 })
 
@@ -660,6 +694,8 @@ router.post('/prepare-appeal/description-of-development', function (req, res) {
 })
 
 router.post('/prepare-appeal/facts-a', function (req, res) {
+  req.session.data['ground-a-reasons'] = req.body['ground-a-reasons'];
+  req.session.data['ground-a-reasons-complete'] = true;
   res.redirect('supporting-check')
 })
 
@@ -673,14 +709,16 @@ router.post('/prepare-appeal/planning-permission', function (req, res) {
 
 router.post('/prepare-appeal/supporting-check', function (req, res) {
   if (req.session.data['supporting-check'] == 'Yes') {
+    req.session.data['_supporting-docsd'] = req.body['_supporting-docs'];
+    req.session.data['_supporting-docs-complete'] = true;
     res.redirect('supporting-upload')
   } else {
-    res.redirect('../task-list?your-application-complete=true')
+    res.redirect('../task-list?grounds-completed=true')
   }
 })
 
 router.post('/prepare-appeal/supporting-upload', function (req, res) {
-  res.redirect('upload-enforcement-notice')
+  res.redirect('../task-list?grounds-completed=true')
 })
 
 router.post('/upload-documents/upload-enforcement-notice', function (req, res) {
@@ -688,6 +726,16 @@ router.post('/upload-documents/upload-enforcement-notice', function (req, res) {
 })
 
 router.post('/upload-documents/upload-enforcement-plan', function (req, res) {
+  if (req.session.data['application-desc-changed'] == 'Yes') {
+    res.redirect('upload-desc-change')
+  } else {
+    res.redirect('planning-obligation-check')
+  }
+})
+
+router.post('/upload-documents/upload-desc-change', function (req, res) {
+  req.session.data['desc-change'] = req.body['desc-change'];
+  req.session.data['desc-change-complete'] = true;
   res.redirect('planning-obligation-check')
 })
 
