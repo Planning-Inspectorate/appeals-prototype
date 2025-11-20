@@ -36,23 +36,42 @@ href: '/#appeal'
     <h2 class="govuk-heading-m">
       Latest version
       {{govukTag({
-          text: "In progress",
-          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+          text: "Ready for review",
+          classes: "govuk-!-margin-left-2 govuk-tag--light-blue"
       })}}
     </h2>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'enforcement/v3/task-list',
+      href: 'enforcement/v4/task-list',
       isStartButton: true
     }) }}
 
-    <p class="govuk-body"><a href="enforcement/v3/before-you-start/before-you-start">Before you start</a></p>
+    {# Size modifiers: xl, l, m #}
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
 
-    <p class="govuk-body"><a href="enforcement/v1-statement/start">Appellant statement</a></p>
+    {{ govukButton({
+      html: 'Before you start prototype',
+      href: 'enforcement/v3/before-you-start/before-you-start',
+      classes: 'govuk-button--secondary'
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
+
+
+    {{ govukButton({
+      html: 'Appellant statement prototype',
+      href: 'enforcement/v1-statement/start',
+      classes: 'govuk-button--secondary'
+    }) }}
+    
+
 
     <h2 class="govuk-heading-m">Previous versions:</h2>
     <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="enforcement/v3/task-list">Version 3: October 2025</a>
+      </li>
       <li>
         <a href="enforcement/v2/task-list">Version 2: September 2025</a>
       </li>
