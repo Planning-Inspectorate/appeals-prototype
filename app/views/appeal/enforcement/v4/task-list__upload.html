@@ -1,0 +1,185 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">5. </span> Upload documents
+    {% if data['upload-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['upload-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-9",
+    rows: [
+      {
+        key: {
+          text: "Enforcement notice"
+        },
+        value:
+          { html: "<a href='#'>enforcement-notice.pdf</a>" }
+          if data['upload-enforcement-notice-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+          { href: 'upload-documents/upload-enforcement-notice?cya=true', html: 'Change' }
+          if data['upload-enforcement-notice-complete'] else
+          { href: 'upload-documents/upload-enforcement-notice', html: 'Answer' }
+        
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Enforcement plan"
+        },
+        value:
+          { html: "<a href='#'>enforcement-plan.pdf</a>" }
+          if data['upload-enforcement-plan-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+          { href: 'upload-documents/upload-enforcement-plan?cya=true', html: 'Change' }
+          if data['upload-enforcement-plan-complete'] else
+          { href: 'upload-documents/upload-enforcement-plan', html: 'Answer' }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Evidence of your agreement to change the description of development"
+        },
+        value:
+          { html: "<a href='#'>description-change.pdf</a>" }
+          if data['desc-change-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+          { href: 'upload-documents/upload-desc-change?cya=true', html: 'Change' }
+          if data['upload-desc-change-complete'] else
+          { href: 'upload-documents/upload-desc-change', html: 'Answer' }
+        ]
+      }
+      } if data['application-desc-changed'] == 'Yes',
+
+
+      {
+        key: { text: "Do you plan to submit a planning obligation to support your appeal?" },
+        value:
+          { html: data['planning-obligation-check'] or 'No' }
+          if data['planning-obligation-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'upload-documents/planning-obligation-check?cya=true', html: 'Change' }
+            if data['planning-obligation-check-complete'] else
+            { href: 'upload-documents/planning-obligation-check', html: 'Answer' }
+          ]
+        }
+      },
+
+      {
+        key: { text: "Status of planning obligation" },
+        value:
+        { html: data['planning-obligation-status'] or 'Finalised and ready to submit' }
+        if data['planning-obligation-status-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'upload-documents/planning-obligation-status?cya=true', html: 'Change' }
+            if data['planning-obligation-status-complete'] else
+            { href: 'upload-documents/planning-obligation-status', html: 'Answer' }
+          ]
+        }
+      } if data['planning-obligation-check'] == 'Yes',
+      
+      {
+        key: { text: "Planning obligation" },
+        value:
+          { html: "<a href='#'>planning-obligation.pdf</a>" }
+          if data['planning-obligation-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'upload-documents/planning-obligation?cya=true', html: 'Change' }
+            if data['planning-obligation-complete'] else
+            { href: 'upload-documents/planning-obligation', html: 'Answer' }
+          ]
+        }
+      } if data['planning-obligation-status'] == 'Finalised and ready to submit' or data['planning-obligation-status'] == 'In draft',
+
+
+      {
+        key: { text: "Do you need to apply for an award of appeal costs?" },
+        value:
+          { html: data['costs-check'] or 'No' }
+          if data['costs-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'upload-documents/costs-check?cya=true', html: 'Change' }
+            if data['costs-check-complete'] else
+            { href: 'upload-documents/costs-check', html: 'Answer' }
+          ]
+        }
+      },
+
+
+      {
+        key: { text: "Application for an award of appeal costs" },
+        value:
+          { html: "<a href='#'>award-of-appeal-costs.pdf</a>" },
+        actions: {
+          items: [
+            { href: 'upload-documents/costs?cya=true', html: 'Change' }
+            if data['costs-complete'] else
+            { href: 'upload-documents/costs', html: 'Answer' }
+          ]
+        }
+      } if data['costs-check'] == 'Yes',
+
+      {
+        key: { text: "Do you have any other new documents to support your appeal?" },
+        value:
+          { html: data['other-check'] or 'No' }
+          if data['other-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'upload-documents/other-check?cya=true', html: 'Change' }
+            if data['other-check-complete'] else
+            { href: 'upload-documents/other-check', html: 'Answer' }
+          ]
+        }
+      },
+
+
+      {
+        key: { text: "Other documentation" },
+        value:
+          { html: "<a href='#'>other.pdf</a>" },
+        actions: {
+          items: [
+            { href: 'upload-documents/other?cya=true', html: 'Change' }
+            if data['other-complete'] else
+            { href: 'upload-documents/other', html: 'Answer' }
+          ]
+        }
+      } if data['other-check'] == 'Yes'
+
+      
+
+    ]
+  }) }}
+</li>

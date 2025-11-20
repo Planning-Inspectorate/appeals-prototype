@@ -1,0 +1,138 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">4. </span> Procedure
+    {% if data['procedure-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['procedure-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+  
+    {
+      key: { text: "Appeal procedure" },
+      value:
+        { html: data['procedure'] or 'Written representations' }
+        if data['procedure-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/procedure?cya=true', html: 'Change' }
+          if data['procedure-complete'] else
+          { href: 'prepare-appeal/procedure', html: 'Answer' }
+        ]
+      }
+    },
+
+    {
+      key: { text: "Reason for hearing" },
+      value:
+        { html: data['hearing'] or 'Because...' }
+        if data['hearing-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/reason-hearing?cya=true', html: 'Change' }
+          if data['hearing-complete'] else
+          { href: 'prepare-appeal/reason-hearing', html: 'Answer' }
+        ]
+      }
+    } if data['procedure'] == 'Hearing',
+
+    {
+      key: { text: "Reason for inquiry" },
+      value:
+        { html: data['inquiry'] or 'Because...' }
+        if data['inquiry-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/reason-inquiry?cya=true', html: 'Change' }
+          if data['inquiry-complete'] else
+          { href: 'prepare-appeal/reason-inquiry', html: 'Answer' }
+        ]
+      }
+    } if data['procedure'] == 'Inquiry',
+
+
+    {
+      key: { text: "Days for inquiry" },
+      value:
+        { html: (data['inquiry-days'] or '3') + ' days' }
+        if data['inquiry-days-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/inquiry-days?cya=true', html: 'Change' }
+          if data['inquiry-days-complete'] else
+          { href: 'prepare-appeal/inquiry-days', html: 'Answer' }
+        ]
+      }
+    } if data['procedure'] == 'Inquiry',
+
+
+    {
+      key: { text: "Witnesses for inquiry" },
+      value:
+        { html: (data['witnesses'] or '5') + ' witnesses' }
+        if data['witnesses-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/inquiry-witnesses?cya=true', html: 'Change' }
+          if data['witnesses-complete'] else
+          { href: 'prepare-appeal/inquiry-witnesses', html: 'Answer' }
+        ]
+      }
+    } if data['procedure'] == 'Inquiry',
+
+
+    {
+      key: { text: "Are there other appeals linked to your development?" },
+      value:
+      { html: data['other-appeals-check'] or 'No' }
+        if data['other-appeals-check-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/other-appeals-check?cya=true', html: 'Change' }
+          if data['other-appeals-check-complete'] else
+          { href: 'prepare-appeal/other-appeals-check', html: 'Answer' }
+        ]
+      }
+    },
+
+
+    {
+      key: { text: "Linked appeals" },
+      value:
+        { html: '0176256<br>0176257' }
+        if data['other-appeals-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/other-appeals?cya=true', html: 'Change' }
+          if data['other-appeals-complete'] else
+          { href: 'prepare-appeal/other-appeal-reference', html: 'Answer' }
+        ]
+      }
+    } if data['other-appeals-check'] == 'Yes'
+
+  ]
+}) }}
+      
+
+</li>

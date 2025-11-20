@@ -1,0 +1,50 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% if data['address-check'] == 'Yes' %}
+  {% set title = 'What is ' 
+      ~ (data['appellant-first-name'] or 'Jan') 
+      ~ ' ' 
+      ~ (data['appellant-last-name'] or 'Fisher') 
+      ~ '\'s interest in the land?' %}
+{% else %}
+  {% set title = 'What is your interest in the land?' %}
+{% endif %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'interest-in-site',
+    name: 'interest-in-site',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Owner',
+        value: 'Owner',
+        checked: checked('interest-in-site','Owner')
+      },
+      {
+        html: 'Mortgage lender',
+        value: 'lender',
+        checked: checked('interest-in-site','lender')
+      },
+      {
+        html: 'Tenant',
+        value: 'tenant',
+        checked: checked('interest-in-site','Tenant')
+      },
+      {
+        divider: "or"
+      },
+      {
+        html: 'Other',
+        value: 'Other',
+        checked: checked('interest-in-site','Other')
+      }
+    ]
+  }) }}
+{% endblock %}

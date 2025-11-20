@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Was the application for all or part of the development?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'all-or-part',
+    name: 'all-or-part',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'All of the development',
+        value: 'All of the development',
+        checked: checked('all-or-part','All of the development')
+      },
+      {
+        html: 'Part of the development',
+        value: 'Part of the development',
+        checked: checked('all-or-part','Part of the development')
+      }
+    ]
+  }) }}
+{% endblock %}

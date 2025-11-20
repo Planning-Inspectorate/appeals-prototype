@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you have written or verbal permission to use the land?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'permission',
+    name: 'permission',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: 'Only select yes if you have permission to use the land today and on the enforcement notice issue date.'
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('permission','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('permission','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

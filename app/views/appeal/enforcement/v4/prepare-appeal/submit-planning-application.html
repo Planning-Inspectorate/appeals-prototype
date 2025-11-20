@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did anyone submit a planning application and pay the correct fee?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'submit-planning-application',
+    name: 'submit-planning-application',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('submit-planning-application','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('submit-planning-application','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

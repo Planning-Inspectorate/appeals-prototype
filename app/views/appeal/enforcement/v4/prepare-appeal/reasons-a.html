@@ -1,0 +1,44 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Choose your grounds of appeal
+  </span>
+
+  <h1 class="govuk-heading-l">
+    Reasons and facts for Ground A
+  </h1>
+
+  <p class="govuk-body">
+    You do not need to repeat the local planning authority’s reasons for issuing the enforcement notice.
+  </p>
+
+  <p class="govuk-body">
+    You can upload supporting documents later.
+  </p>
+
+  {{ govukTextarea({
+    name: "ground-a-reasons",
+    id: "ground-a-reasons",
+    value: data["ground-a-reasons"] | e,
+    rows: 10,
+    label: {
+      html: "What are your reasons for choosing Ground A?",
+      classes: "govuk-label--m"
+    }
+  }) }}
+
+  {{ govukTextarea({
+    name: "ground-a-facts",
+    id: "ground-a-facts",
+    value: data["ground-a-facts"] | e,
+    rows: 10,
+    label: {
+      html: "Facts for Ground A",
+      classes: "govuk-label--m"
+    }
+  }) }}
+
+{% endblock %}
+

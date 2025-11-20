@@ -1,0 +1,336 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">3. </span> Grounds of appeal and supporting facts
+    {% if data['grounds-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['grounds-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+  
+
+    {
+      key: { html: 'Description of breach' },
+      value: {
+        html: data['description-detail']
+          or 'The council alleges that I erected a single-storey timber outbuilding in my rear garden without planning permission. The structure is used solely as a small home office and does not contain any sleeping accommodation or plumbing.'
+      }
+      if data['description-detail-complete'] else
+      { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/description-of-breach?cya=true', html: 'Change' }
+          if data['description-detail-complete'] else
+          { href: 'prepare-appeal/description-of-breach', html: 'Answer' }
+        ]
+      }
+    },
+
+    {
+      key: { text: "Grounds of appeal" },
+      value:
+        { html: data['grounds'] or 'Ground (b)' }
+        if data['grounds-complete'] else 
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/grounds?cya=true', html: 'Change' }
+          if data['grounds-complete'] else
+          { href: 'prepare-appeal/grounds', html: 'Answer' }
+        ]
+      }
+    },
+  
+      {
+        key: { text: "Facts for ground (b)" },
+        value:
+          { html: data['ground-b-reasons'] or 'These are my facts for ground b' }
+          if data['ground-b-reasons-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/facts-b?cya=true', html: 'Change' }
+            if data['ground-b-reasons-complete'] else
+            { href: 'prepare-appeal/facts-b', html: 'Answer' }
+          ]
+        }
+      } if data['grounds-complete'],
+
+      {
+        key: { text: "Do you have any ground (b) supporting documents?" },
+        value:
+          { html: data['supporting-check-b'] or 'No' }
+          if data['supporting-check-b-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/supporting-check-b?cya=true', html: 'Change' }
+            if data['supporting-check-b-complete'] else
+            { href: 'prepare-appeal/supporting-check-b', html: 'Answer' }
+          ]
+        }
+      } if data['grounds-complete'],
+
+
+      {
+        key: { text: "Ground (b) supporting documents" },
+        value:
+          { html: data['_supporting-docs'] or '<a href="#">ground-b-doc.pdf</a>' }
+          if data['_supporting-docs-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/supporting-upload-b?cya=true', html: 'Change' }
+            if data['_supporting-docs-complete'] else
+            { href: 'prepare-appeal/supporting-upload-b', html: 'Answer' }
+          ]
+        }
+      } if data['supporting-check-b'] == 'Yes',
+
+      {
+        key: { text: "Did you pay the application fee?" },
+        value:
+          { html: data['fee-check'] or 'No' }
+          if data['fee-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/fee-check?cya=true', html: 'Change' }
+            if data['fee-check-complete'] else
+            { href: 'prepare-appeal/fee-check', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Application fee receipt" },
+        value:
+          { html: data['fee-receipt'] or '<a href="#">ground-b-doc.pdf</a>' }
+          if data['fee-receipt-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/fee-upload?cya=true', html: 'Change' }
+            if data['fee-receipt-complete'] else
+            { href: 'prepare-appeal/fee-upload', html: 'Answer' }
+          ]
+        }
+      } if data['fee-check'] == 'Yes',
+
+      {
+        key: { text: "Was the application for all or part of the development?" },
+        value:
+          { html: data['all-or-part'] or 'All of the development' }
+          if data['all-or-part-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/all-or-part?cya=true', html: 'Change' }
+            if data['all-or-part-complete'] else
+            { href: 'prepare-appeal/all-or-part', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Application reference number" },
+        value:
+          { html: data['application-reference'] or 'APP/298840/H28S' }
+          if data['application-reference-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/application-reference?cya=true', html: 'Change' }
+            if data['application-reference-complete'] else
+            { href: 'prepare-appeal/application-reference', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Application date" },
+        value:
+          { html: '20 November 2025' }
+          if data['application-date-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/application-date?cya=true', html: 'Change' }
+            if data['application-date-complete'] else
+            { href: 'prepare-appeal/application-date', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Description of development" },
+        value:
+        { html: data['description-detail'] or 'This is my description...' }
+        if data['description-detail-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/description-of-land?cya=true', html: 'Change' }
+            if data['description-detail-complete'] else
+            { href: 'prepare-appeal/description-of-land', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Did the local planning authority change the description of development?" },
+        value:
+        { html: data['application-desc-changed'] or 'This is my description...' }
+        if data['application-desc-changed-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/application-desc-changed?cya=true', html: 'Change' }
+            if data['application-desc-changed-complete'] else
+            { href: 'prepare-appeal/application-desc-changed', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Application decision" },
+        value:
+        { html: data['granted-or-refused'] or 'Refused' }
+        if data['granted-or-refused-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/granted-or-refused?cya=true', html: 'Change' }
+            if data['granted-or-refused-complete'] else
+            { href: 'prepare-appeal/granted-or-refused', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Decision letter date" },
+        value:
+          { html: '20 November 2025' }
+          if data['decision-letter-date-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/decision-letter-date?cya=true', html: 'Change' }
+            if data['decision-letter-date-complete'] else
+            { href: 'prepare-appeal/decision-letter-date', html: 'Answer' }
+          ]
+        }
+      } if data['granted-or-refused'] == 'Granted with conditions' or data['granted-or-refused'] == 'Refused',
+
+      {
+        key: { text: "Did you appeal the decision?" },
+        value:
+        { html: data['appeal-decision'] or 'No' }
+        if data['appeal-decision-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/appeal-decision?cya=true', html: 'Change' }
+            if data['appeal-decision-complete'] else
+            { href: 'prepare-appeal/appeal-decision', html: 'Answer' }
+          ]
+        }
+      } if data['granted-or-refused'] == 'Granted with conditions' or data['granted-or-refused'] == 'Refused',
+
+      {
+        key: { text: "When did you receive an appeal decision?" },
+        value:
+          { html: '20 November 2025' }
+          if data['appeal-decision-date-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/appeal-decision-date?cya=true', html: 'Change' }
+            if data['appeal-decision-date-complete'] else
+            { href: 'prepare-appeal/appeal-decision-date', html: 'Answer' }
+          ]
+        }
+      } if data['appeal-decision'] == 'Yes',
+
+      {
+        key: { text: "What date was the decision due?" },
+        value:
+          { html: '20 November 2025' }
+          if data['decision-due-date-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/decision-due-date?cya=true', html: 'Change' }
+            if data['decision-letter-due-complete'] else
+            { href: 'prepare-appeal/decision-due-date', html: 'Answer' }
+          ]
+        }
+      } if data['granted-or-refused'] == 'I have not received a decision',
+
+      {
+        key: { text: "Facts for ground (a)" },
+        value:
+          { html: data['ground-a-reasons'] or 'These are my facts for ground a' }
+          if data['ground-a-reasons-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/facts-a?cya=true', html: 'Change' }
+            if data['ground-a-reasons-complete'] else
+            { href: 'prepare-appeal/facts-a', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Do you have any ground (a) supporting documents?" },
+        value:
+          { html: data['supporting-check'] or 'No' }
+          if data['supporting-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/supporting-check?cya=true', html: 'Change' }
+            if data['supporting-check-complete'] else
+            { href: 'prepare-appeal/supporting-check', html: 'Answer' }
+          ]
+        }
+      } if data['grounds'] and 'groundA' in data['grounds'],
+
+
+      {
+        key: { text: "Ground (a) supporting documents" },
+        value:
+          { html: data['_supporting-docs'] or '<a href="#">ground-a-doc.pdf</a>' }
+          if data['_supporting-docs-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/supporting-upload?cya=true', html: 'Change' }
+            if data['_supporting-docs-complete'] else
+            { href: 'prepare-appeal/supporting-upload', html: 'Answer' }
+          ]
+        }
+      } if data['supporting-check'] == 'Yes'
+      
+
+      ]
+  }) }}
+      
+
+</li>

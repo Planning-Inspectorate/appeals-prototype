@@ -1,0 +1,90 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Enter the code we sent to your email address' %}
+{% set back = false %}
+
+
+{% set prototypeLinks = [
+  {
+    href: 'email--code',
+    text: 'Email with code'
+  },
+  {
+    href: 'code-expired',
+    text: 'Code has expired'
+  },
+  {
+    href: 'code-wrong',
+    text: 'Entered the wrong code too many times'
+  }
+] %}
+
+
+{% block questions %}
+
+{% set resentNotification %}
+  <mark role="alert" class="govuk-!-margin-bottom-0">
+    <h3 class="govuk-notification-banner__heading">
+      We’ve sent a new code to your email address.
+    </h3>
+  </mark>
+{% endset %}
+
+{% if data['newcode'] %}
+  {{ govukNotificationBanner({
+    html: resentNotification,
+    type: 'success'
+  }) }}
+{% endif %}
+
+  <div class="govuk-form-group">
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <input class="govuk-input govuk-input--width-5" id="securecode" name="securecode" type="number" spellcheck="false" autocomplete="none" value="" style="text-transform:uppercase">
+
+  </div>
+
+{% endblock %}
+
+{% block buttons %}
+
+  {{ govukButton({
+    text: 'Continue'
+  }) }}
+
+  <h2 class="govuk-heading-m">
+    If you’re having problems
+  </h2>
+
+  <p class="govuk-body">
+    Check if the email has gone to your spam or junk folder. If it’s not there, we can <a href="?newcode=true" class="govuk-link--no-visited-state">send a new code</a>.
+  </p>
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        If you’re still having problems
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="govuk-body">
+        You can contact our customer support team.
+      </p>
+
+      <p class="govuk-body">
+        Email: <a href="#0">enquiries@planninginspectorate.gov.uk</a><br>
+        Telephone: 0303 444 5000<br>
+        Monday to Friday, 9am to midday (except public holidays)<br>
+        <a href="#0">Find out about call charges</a>.
+      </p>
+
+    </div>
+  </details>
+
+{% endblock %}
+
+{% set return = false %}
+
+
