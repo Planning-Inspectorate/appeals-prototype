@@ -605,7 +605,7 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
           html: 'Description of development'
         },
         value: {
-          html: data['description-of-developement'] or dummydod | nl2br
+          html: data['description-of-development'] or dummydod | nl2br
         }
         if data['description-of-development-complete'] else
         {
@@ -632,19 +632,19 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
         value: {
           html: data['application-desc-changed'] or 'No'
         }
-        if data['description-of-developement-changed-complete'] else
+        if data['description-of-development-changed-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'prepare-appeal/description-of-developement-changed?cya=true',
+              href: 'prepare-appeal/description-of-development-changed?cya=true',
               html: 'Change'
             }
-            if data['description-of-developement-changed-complete'] else
+            if data['description-of-development-changed-complete'] else
             {
-              href: 'prepare-appeal/description-of-developement-changed',
+              href: 'prepare-appeal/description-of-development-changed',
               html: 'Answer'
             }
           ]
@@ -694,7 +694,7 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
             }
             if data['significant-changes-complete'] else
             {
-              href: 'prepare-appeal/application-documents',
+              href: 'prepare-appeal/significant-changes',
               html: 'Answer'
             }
           ]
