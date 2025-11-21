@@ -1,43 +1,19 @@
 
-{% set listofuserdocs %}
-  <div class="long-answers">
-    <ol class="govuk-list govuk-list--number">
-      <li>Planning Application Form – completed and signed by the applicant.</li>
-      <li>Location Plan – showing the site in relation to surrounding area.</li>
-      <li>Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.</li>
-      <li>Design and Access Statement – explaining the design rationale and accessibility considerations.</li>
-      <li>Planning Statement – outlining how the proposal complies with local and national planning policies.</li>
-      <li>Transport Assessment – evaluating traffic impact and proposed transport infrastructure.</li>
-      <li>Flood Risk Assessment – assessing potential flood risks and mitigation strategies.</li>
-      <li>Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.</li>
-      <li>Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.</li>
-      <li>Heritage Statement – if the site affects listed buildings or conservation areas.</li>
-      <li>Noise Impact Assessment – analysing potential noise issues and mitigation.</li>
-      <li>Air Quality Assessment – evaluating air pollution impacts.</li>
-      <li>Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable practices.</li>
-    </ol>
-  </div>
-{% endset %}
 
 {% set listoflpadocs %}
-  <div class="long-answers">
-    <ol class="govuk-list govuk-list--number">
-      <li>Planning Application Form – completed and signed by the applicant.</li>
-      <li>Location Plan – showing the site in relation to surrounding area.</li>
-      <li>Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.</li>
-      <li>Design and Access Statement – explaining the design rationale and accessibility considerations.</li>
-      <li>Planning Statement – outlining how the proposal complies with local and national planning policies.</li>
-      <li>Transport Assessment – evaluating traffic impact and proposed transport infrastructure.</li>
-      <li>Flood Risk Assessment – assessing potential flood risks and mitigation strategies.</li>
-      <li>Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.</li>
-      <li>Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.</li>
-      <li>Heritage Statement – if the site affects listed buildings or conservation areas.</li>
-      <li>Noise Impact Assessment – analysing potential noise issues and mitigation.</li>
-      <li>Air Quality Assessment – evaluating air pollution impacts.</li>
-      <li>Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable practices.</li>
-      <li>Mining Survay - Geotechnical and geoenvironmental mining investigation report</li>
-    </ol>
-  </div>
+  1. Planning Application Form – completed and signed by the applicant.<br>
+  2. Location Plan – showing the site in relation to surrounding area.<br>
+  3. Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.<br>
+  4. Design and Access Statement – explaining the design rationale and accessibility considerations.<br>
+  5. Planning Statement – outlining how the proposal complies with local and national planning policies.<br>
+  6. Transport Assessment – evaluating traffic impact and proposed transport infrastructure.<br>
+  7. Flood Risk Assessment – assessing potential flood risks and mitigation strategies.<br>
+  8. Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.<br>
+  9. Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.<br>
+  10. Heritage Statement – if the site affects listed buildings or conservation areas.<br>
+  11. Noise Impact Assessment – analysing potential noise issues and mitigation.<br>
+  12. Air Quality Assessment – evaluating air pollution impacts.<br>
+  13. Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable practices.
 {% endset %}
 
 <li>
@@ -62,7 +38,7 @@
   </h2>
 
   {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-9',
+    classes: 'govuk-!-margin-bottom-9 long-answers',
     rows: [
       {
         key: {
@@ -141,54 +117,29 @@
       },
       {
         key: {
-          html: 'List of documents used for the decision'
+          html: 'Documents and plans used to make the decision'
         },
         value: {
-          html: listofuserdocs | safe
+          html: data['application-documents'] or listoflpadocs | safe
         }
-        if data['list-of-documents-check-complete'] else
+        if data['list-of-documents-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: 'og-evidence/list-of-documents-check?cya=true',
+              href: 'og-evidence/list-of-documents?cya=true',
               html: 'Change'
             }
-            if data['list-of-documents-check-complete'] else
+            if data['list-of-documents-complete'] else
             {
-              href: 'og-evidence/list-of-documents-check',
+              href: 'og-evidence/list-of-documents',
               html: 'Answer'
             }
           ]
         }
-      } if data['list-of-documents-check'] != 'No',
-      {
-        key: {
-          html: 'List of documents used for the decision'
-        },
-        value: {
-          html: data['application-documents'] or listoflpadocs
-        }
-        if data['list-of-documents-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'og-evidence/list-of-documents-check?cya=true',
-              html: 'Change'
-            }
-            if data['list-of-documents-check-complete'] else
-            {
-              href: 'og-evidence/list-of-documents-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      } if data['list-of-documents-check'] == 'No'
+      }
 
     ]
   }) }}

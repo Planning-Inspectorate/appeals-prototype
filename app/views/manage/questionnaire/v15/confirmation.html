@@ -3,6 +3,13 @@
 {% set title = 'Questionnaire submitted' %}
 {% set back = false %}
 
+{% set prototypeLinks = [
+  {
+    href: 'https://pins-app-prototype-appeals-back-office.azurewebsites.net/projects/written-representations-part-1/v1/case-details?case-stage=questionnaire&questionnaire=received',
+    text: 'Back in the back office'
+  }
+] %}
+
 {% block beforeContent %}
   {{ govukPhaseBanner({
     tag: {
