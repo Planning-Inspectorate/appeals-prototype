@@ -25,8 +25,22 @@
       <form method="post" action="">
 
         <h1 class="govuk-heading-l">Your statement</h1>
-        <p class="govuk-body">Tell us why you disagree with the local planning authority's decision.</p>
-        <p class="govuk-body">Do not include any sensitive information. It will delay your appeal.</p>
+
+        <p class="govuk-body">Your statement should not:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            include sensitive information, personal opinion or rumour
+          </li>
+          <li>
+            use offensive language
+          </li>
+          <li>
+            include information that is not related to planning law (for example, criminial behaviour)
+          </li>
+        </ul>
+
+        <p class="govuk-body">Including these in your statement will delay your appeal.</p>
 
         {{ govukDetails({
           summaryText: "What is sensitive information?",
@@ -62,7 +76,7 @@
             classes: "govuk-label--m"
           },
           hint: {
-            text: "You must list each reason on a separate line."
+            text: "Your statement should addres each ground of appeal separately, dealing with legal matters first."
           }
         }) }}
 
