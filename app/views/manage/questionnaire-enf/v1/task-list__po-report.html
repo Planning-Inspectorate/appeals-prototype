@@ -139,56 +139,6 @@ PO report done = {{ data['po-report-completed'] }}
       }if data['policies-check'] == 'Yes',
       {
         key: {
-          html: 'Do you have an emerging plan that is relevant to this appeal?'
-        },
-        value: {
-          html: data['emerging-plan-check'] or 'No'
-        }
-        if data['emerging-plan-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/emerging-plan-check?cya=true',
-              html: 'Change'
-            }
-            if data['emerging-plan-check-complete'] else
-            {
-              href: 'po-report/emerging-plan-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Emerging plan and supporting information'
-        },
-        value: {
-          html: data['emerging-plan-upload'] or 'emerging-plan.pdf'
-        }
-        if data['emerging-plan-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/emerging-plan-upload?cya=true',
-              html: 'Change'
-            }
-            if data['emerging-plan-upload-complete'] else
-            {
-              href: 'po-report/emerging-plan-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['emerging-plan-check'] == 'Yes',
-      {
-        key: {
           html: 'Do you have any other relevant policies?'
         },
         value: {

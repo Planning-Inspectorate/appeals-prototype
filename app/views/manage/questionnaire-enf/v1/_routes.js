@@ -700,13 +700,13 @@ router.post('/po-report/policies-check', function (req, res) {
     res.redirect('policies-upload');
   } else {
     req.session.data['policies-complete'] = 'true'
-    res.redirect('emerging-plan-check')
+    res.redirect('other-policies-check')
   }
 })
 
 router.post('/po-report/policies-upload', function (req, res) {
   req.session.data['policies-complete'] = 'true'
-  res.redirect('emerging-plan-check')
+  res.redirect('other-policies-check')
 })
 
 router.post('/po-report/emerging-plan-check', function (req, res) {
@@ -792,13 +792,13 @@ router.post('/po-report/planning-permission-check', function (req, res) {
     res.redirect('planning-permission-upload');
   } else {
     req.session.data['planning-permission-check-complete'] = 'true'
-    res.redirect('statement-of-case-check')
+    res.redirect('enforcement-notice-check')
   }
 })
 
 router.post('/po-report/planning-permission-upload', function (req, res) {
   req.session.data['planning-permission-upload-complete'] = 'true'
-  res.redirect('statement-of-case-check')
+  res.redirect('enforcement-notice-check')
 })
 
 router.post('/po-report/statement-of-case-check', function (req, res) {
