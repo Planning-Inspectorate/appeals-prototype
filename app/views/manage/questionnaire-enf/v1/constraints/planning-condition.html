@@ -1,19 +1,17 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Was a grant or loan made to preserve the listed building at the appeal site?' %}
+{% set title = 'Did you restrict any development rights using a planning condition?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'preserve-grant-loan?titleVersion=a',
+    href: 'planning-condition?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'preserve-grant-loan?titleVersion=b',
+    href: 'planning-condition?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
-
-{% set return = true %}
 
 {% block questions %}
 
@@ -21,12 +19,11 @@
     Constraints, designations and other issues
   </span>
 
-
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'planning-condition',
+      name: 'planning-condition',
       fieldset: {
         legend: {
           html: title,
@@ -38,25 +35,24 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('planning-condition','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('planning-condition','No')
         }
       ]
     }) }}
 
   {% else %}
 
-
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'planning-condition',
+      name: 'planning-condition',
       fieldset: {
         legend: {
-          html: 'Was a grant or loan made to preserve the listed building at the appeal site?',
+          html: 'Did you restrict any development rights using a planning condition?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -65,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('planning-condition','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('planning-condition','No')
         }
       ]
     }) }}

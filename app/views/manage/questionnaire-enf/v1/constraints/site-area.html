@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'What is the area of the appeal site?' %}
+
+{% block questions %}
+
+<span class="govuk-caption-l">
+  Constraints, designations and other issues
+</span>
+
+  {% call govukFieldset({
+    legend: {
+      html: title,
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+    }
+  }) %}
+
+ <p class="govuk-hint">
+    Tell us the area of the appeal site from the notice plan.
+  </p> 
+
+  {{ govukInput({
+    label: {
+      text: "Site area, in square metres."
+    },
+    id: 'site-area-square-metres',
+    name: 'site-area',
+    value: data['site-area'],
+    classes: "govuk-input--width-5",
+    suffix: {
+      text: "m²"
+    },
+    spellcheck: false
+  }) }}
+
+  {% endcall %}
+{% endblock %}

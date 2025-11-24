@@ -1,19 +1,17 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Was a grant or loan made to preserve the listed building at the appeal site?' %}
+{% set title = 'Does the enforcement notice include the change of use of land to dispose of remaining materials after mineral extraction?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'preserve-grant-loan?titleVersion=a',
+    href: 'mineral-extraction-materials?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'preserve-grant-loan?titleVersion=b',
+    href: 'mineral-extraction-materials?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
-
-{% set return = true %}
 
 {% block questions %}
 
@@ -21,12 +19,11 @@
     Constraints, designations and other issues
   </span>
 
-
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'mineral-extraction-materials',
+      name: 'mineral-extraction-materials',
       fieldset: {
         legend: {
           html: title,
@@ -38,25 +35,24 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('mineral-extraction-materials','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('mineral-extraction-materials','No')
         }
       ]
     }) }}
 
   {% else %}
 
-
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'mineral-extraction-materials',
+      name: 'mineral-extraction-materials',
       fieldset: {
         legend: {
-          html: 'Was a grant or loan made to preserve the listed building at the appeal site?',
+          html: 'Does the enforcement notice include the change of use of land to dispose of remaining materials after mineral extraction?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -65,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('mineral-extraction-materials','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('mineral-extraction-materials','No')
         }
       ]
     }) }}

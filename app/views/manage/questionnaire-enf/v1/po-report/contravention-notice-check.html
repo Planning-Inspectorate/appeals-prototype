@@ -1,16 +1,16 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Does the alleged development affect the setting of listed buildings?' %}
+{% set title = 'Did you serve a planning contravention notice?' %}
 
 {% block questions %}
 
   <span class="govuk-caption-l">
-    Constraints, designations and other issues
+    Planning officer’s report and supporting documents
   </span>
-
+   
   {{ govukRadios({
-    idPrefix: 'affected-listed-building-check',
-    name: 'affected-listed-building-check',
+    idPrefix: 'contravention-notice-check',
+    name: 'contravention-notice-check',
     fieldset: {
       legend: {
         html: title,
@@ -18,16 +18,19 @@
         isPageHeading: true
       }
     },
+    hint: {
+      html: hintText
+    },
     items: [
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('affected-listed-building-check','Yes')
+        checked: checked('contravention-notice-check','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('affected-listed-building-check','No')
+        checked: checked('contravention-notice-check','No')
       }
     ]
   }) }}

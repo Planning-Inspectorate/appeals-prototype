@@ -1,0 +1,52 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does the alleged development involve work to meet the needs of a disabled person?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% set detailsHTML %}
+    {{ govukInput({
+      name: 'disabled-person__details',
+      id: 'disabled-person__details',
+      value: data['disabled-person__details'],
+      rows: '3',
+      label: {
+        html: 'Enter the schedule and section from the National Assistance Act 1948'
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    idPrefix: 'disabled-person',
+    name: 'disabled-person',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('disabled-person','Yes'),
+        conditional: {
+          html: detailsHTML
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('disabled-person','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

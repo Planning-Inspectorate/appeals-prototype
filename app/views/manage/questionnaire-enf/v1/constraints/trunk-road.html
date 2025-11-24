@@ -1,0 +1,52 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the appeal site within 67 metres of a trunk road?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% set detailsHTML %}
+    {{ govukInput({
+      name: 'trunk-road__details',
+      id: 'trunk-road__details',
+      value: data['trunk-road__details'],
+      rows: '3',
+      label: {
+        html: 'Enter the road name'
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    idPrefix: 'trunk-road',
+    name: 'trunk-road',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('trunk-road','Yes'),
+        conditional: {
+          html: detailsHTML
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('trunk-road','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

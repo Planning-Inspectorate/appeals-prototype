@@ -1,19 +1,17 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Was a grant or loan made to preserve the listed building at the appeal site?' %}
+{% set title = 'Is the appeal site on Crown land?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'preserve-grant-loan?titleVersion=a',
+    href: 'crown-land?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'preserve-grant-loan?titleVersion=b',
+    href: 'crown-land?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
-
-{% set return = true %}
 
 {% block questions %}
 
@@ -21,12 +19,11 @@
     Constraints, designations and other issues
   </span>
 
-
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'crown-land',
+      name: 'crown-land',
       fieldset: {
         legend: {
           html: title,
@@ -38,25 +35,24 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('crown-land','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('crown-land','No')
         }
       ]
     }) }}
 
   {% else %}
 
-
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'crown-land',
+      name: 'crown-land',
       fieldset: {
         legend: {
-          html: 'Was a grant or loan made to preserve the listed building at the appeal site?',
+          html: 'Is the appeal site on Crown land?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -65,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('crown-land','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('crown-land','No')
         }
       ]
     }) }}

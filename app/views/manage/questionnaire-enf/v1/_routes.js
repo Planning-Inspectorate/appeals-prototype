@@ -119,6 +119,26 @@ router.post('/constraints/affected-listed-buildings', function (req, res) {
   }
 })
 
+router.post('/constraints/preserve-grant-loan', function (req, res) {
+  res.redirect('historic-england')
+})
+
+router.post('/constraints/historic-england', function (req, res) {
+  if (req.session.data['historic-england'] == 'Yes') {
+    res.redirect('historic-england-upload');
+  } else {
+    res.redirect('scheduled-monument')
+  }
+})
+
+router.post('/constraints/historic-england', function (req, res) {
+  res.redirect('historic-england-upload')
+})
+
+router.post('/constraints/historic-england-upload', function (req, res) {
+  res.redirect('scheduled-monument')
+})
+
 router.post('/constraints/scheduled-monument', function (req, res) {
   res.redirect('conservation-check')
 })
@@ -188,6 +208,14 @@ router.post('/constraints/fee-exempt', function (req, res) {
 })
 
 router.post('/constraints/other-operations', function (req, res) {
+  res.redirect('site-area')
+})
+
+router.post('/constraints/site-area', function (req, res) {
+  res.redirect('alleged-breach-area')
+})
+
+router.post('/constraints/alleged-breach-area', function (req, res) {
   res.redirect('floor-space')
 })
 
@@ -196,7 +224,35 @@ router.post('/constraints/floor-space', function (req, res) {
 })
 
 router.post('/constraints/refuse-waste-materials', function (req, res) {
-  res.redirect('deposit-materials')
+  res.redirect('landfill-site')
+})
+
+router.post('/constraints/landfill-site', function (req, res) {
+  res.redirect('waste-materials-import')
+})
+
+router.post('/constraints/waste-materials-import', function (req, res) {
+  res.redirect('underground-interest')
+})
+
+router.post('/constraints/underground-interest', function (req, res) {
+  if (req.session.data['underground-interest'] == 'Yes') {
+    res.redirect('underground-interest-upload');
+  } else {
+    res.redirect('mineral-extraction-materials');
+  }
+})
+
+router.post('/constraints/underground-interest-upload', function (req, res) {
+  res.redirect('mineral-extraction-materials')
+})
+
+router.post('/constraints/mineral-extraction-materials', function (req, res) {
+  res.redirect('store-minerals')
+})
+
+router.post('/constraints/store-minerals', function (req, res) {
+  res.redirect('create-building')
 })
 
 router.post('/constraints/deposit-materials', function (req, res) {
@@ -216,10 +272,58 @@ router.post('/constraints/agricultural-purposes', function (req, res) {
 })
 
 router.post('/constraints/single-house', function (req, res) {
-  res.redirect('complete')
+  res.redirect('trunk-road')
 })
 
-router.post('/constraints/right-of-way-upload', function (req, res) {
+router.post('/constraints/trunk-road', function (req, res) {
+  res.redirect('crown-land')
+})
+
+router.post('/constraints/crown-land', function (req, res) {
+  res.redirect('stop-notice')
+})
+
+router.post('/constraints/stop-notice', function (req, res) {
+  if (req.session.data['stop-notice'] == 'Yes') {
+    res.redirect('stop-notice-upload');
+  } else {
+    res.redirect('development-rights');
+  }
+})
+
+router.post('/constraints/stop-notice-upload', function (req, res) {
+  res.redirect('development-rights')
+})
+
+router.post('/constraints/development-rights', function (req, res) {
+  if (req.session.data['development-rights'] == 'Yes') {
+    res.redirect('development-rights-upload');
+  } else {
+    res.redirect('development-rights-removed');
+  }
+})
+
+router.post('/constraints/development-rights-upload', function (req, res) {
+  res.redirect('development-rights-removed')
+})
+
+router.post('/constraints/development-rights-removed', function (req, res) {
+  res.redirect('planning-condition')
+})
+
+router.post('/constraints/planning-condition', function (req, res) {
+  if (req.session.data['planning-condition'] == 'Yes') {
+    res.redirect('relevant-permission-upload');
+  } else {
+    res.redirect('disabled-person');
+  }
+})
+
+router.post('/constraints/relevant-permission-upload', function (req, res) {
+  res.redirect('disabled-person')
+})
+
+router.post('/constraints/disabled-person', function (req, res) {
   res.redirect('complete')
 })
 
@@ -792,13 +896,13 @@ router.post('/po-report/planning-permission-check', function (req, res) {
     res.redirect('planning-permission-upload');
   } else {
     req.session.data['planning-permission-check-complete'] = 'true'
-    res.redirect('enforcement-notice-check')
+    res.redirect('statement-of-case-check')
   }
 })
 
 router.post('/po-report/planning-permission-upload', function (req, res) {
   req.session.data['planning-permission-upload-complete'] = 'true'
-  res.redirect('enforcement-notice-check')
+  res.redirect('statement-of-case-check')
 })
 
 router.post('/po-report/statement-of-case-check', function (req, res) {
@@ -819,6 +923,30 @@ router.post('/po-report/enforcement-notice-check', function (req, res) {
   if (req.session.data['enforcement-notice-check'] == 'Yes') {
     res.redirect('enforcement-notice-upload');
   } else {
+    res.redirect('contravention-notice-check')
+  }
+})
+
+router.post('/po-report/enforcement-plan-upload', function (req, res) {
+  req.session.data['enforcement-plan-upload-complete'] = 'true'
+  res.redirect('contravention-notice-check')
+})
+
+router.post('/po-report/contravention-notice-check', function (req, res) {
+  if (req.session.data['contravention-notice-check'] == 'Yes') {
+    res.redirect('contravention-notice-upload');
+  } else {
+    res.redirect('planning-permission-consultation')
+  }
+})
+
+router.post('/po-report/contravention-notice-upload', function (req, res) {
+  req.session.data['contravention-notice-upload-complete'] = 'true'
+  res.redirect('planning-permission-consultation')
+})
+
+router.post('/po-report/planning-permission-consultation', function (req, res) {
+  if (req.session.data['planning-permission-consultation'] == 'Yes') {
     req.session.data['po-report-completed'] = 'true'
     res.redirect('complete')
   }

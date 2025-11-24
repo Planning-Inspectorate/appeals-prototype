@@ -1,19 +1,17 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Was a grant or loan made to preserve the listed building at the appeal site?' %}
+{% set title = 'Did you serve a stop notice?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'preserve-grant-loan?titleVersion=a',
+    href: 'stop-notice?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'preserve-grant-loan?titleVersion=b',
+    href: 'stop-notice?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
-
-{% set return = true %}
 
 {% block questions %}
 
@@ -21,12 +19,11 @@
     Constraints, designations and other issues
   </span>
 
-
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'stop-notice',
+      name: 'stop-notice',
       fieldset: {
         legend: {
           html: title,
@@ -38,25 +35,24 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('stop-notice','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('stop-notice','No')
         }
       ]
     }) }}
 
   {% else %}
 
-
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'stop-notice',
+      name: 'stop-notice',
       fieldset: {
         legend: {
-          html: 'Was a grant or loan made to preserve the listed building at the appeal site?',
+          html: 'Did you serve a stop notice?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -65,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('stop-notice','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('stop-notice','No')
         }
       ]
     }) }}

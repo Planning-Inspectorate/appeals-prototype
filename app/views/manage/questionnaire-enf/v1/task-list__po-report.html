@@ -86,7 +86,7 @@ PO report done = {{ data['po-report-completed'] }}
             }
           ]
         }
-      },
+      }if data['report-check'] == 'Yes',
       {
         key: {
           html: 'Do you have any relevant policies from your statutory development plan?'
@@ -336,7 +336,307 @@ PO report done = {{ data['po-report-completed'] }}
             }
           ]
         }
-      } if data['community-infrastructure-check'] == 'Yes'
+      } if data['community-infrastructure-check'] == 'Yes',
+      {
+        key: {
+          html: 'Do you have a local development order?'
+        },
+        value: {
+          html: data['local-development-check'] or 'No'
+        }
+        if data['local-development-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/local-development-check?cya=true',
+              html: 'Change'
+            }
+            if data['local-development-check-complete'] else
+            {
+              href: 'po-report/local-development-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Local development order'
+        },
+        value: {
+          html: data['local-development-upload'] or 'local_development.pdf'
+        }
+        if data['local-development-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/local-development-upload?cya=true',
+              html: 'Change'
+            }
+            if data['local-development-upload-complete'] else
+            {
+              href: 'po-report/local-development-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['local-development-check'] == 'Yes',
+      {
+        key: {
+          html: 'Did you previously grant any planning permission for this development?'
+        },
+        value: {
+          html: data['planning-permission-check'] or 'No'
+        }
+        if data['planning-permission-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/planning-permission-check?cya=true',
+              html: 'Change'
+            }
+            if data['planning-permission-check-complete'] else
+            {
+              href: 'po-report/planning-permission-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Planning permission'
+        },
+        value: {
+          html: data['planning-permission-upload'] or 'planning_permission.pdf'
+        }
+        if data['planning-permission-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/planning-permission-upload?cya=true',
+              html: 'Change'
+            }
+            if data['planning-permission-upload-complete'] else
+            {
+              href: 'po-report/planning-permission-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['planning-permission-check'] == 'Yes',
+      {
+        key: {
+          html: 'Do you have your statement of case?'
+        },
+        value: {
+          html: data['statement-of-case-check'] or 'No'
+        }
+        if data['statement-of-case-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/statement-of-case-check?cya=true',
+              html: 'Change'
+            }
+            if data['statement-of-case-check-complete'] else
+            {
+              href: 'po-report/statement-of-case-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Statement of case'
+        },
+        value: {
+          html: data['statement-of-case-upload'] or 'statement_of_case.pdf'
+        }
+        if data['statement-of-case-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/statement-of-case-upload?cya=true',
+              html: 'Change'
+            }
+            if data['statement-of-case-upload-complete'] else
+            {
+              href: 'po-report/statement-of-case-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['statement-of-case-check'] == 'Yes',
+      {
+        key: {
+          html: 'Was there an enforcement notice in force at the date of the application?'
+        },
+        value: {
+          html: data['enforcement-notice-check'] or 'No'
+        }
+        if data['enforcement-notice-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/enforcement-notice-check?cya=true',
+              html: 'Change'
+            }
+            if data['enforcement-notice-check-complete'] else
+            {
+              href: 'po-report/enforcement-notice-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Enforcement notice'
+        },
+        value: {
+          html: data['enforcement-notice-upload'] or 'enforcement_notice.pdf'
+        }
+        if data['enforcement-notice-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/enforcement-notice-upload?cya=true',
+              html: 'Change'
+            }
+            if data['enforcement-notice-upload-complete'] else
+            {
+              href: 'po-report/enforcement-notice-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['enforcement-notice-check'] == 'Yes',
+      {
+        key: {
+          html: 'Enforcement notice plan'
+        },
+        value: {
+          html: data['enforcement-plan-upload'] or 'enforcement_plan.pdf'
+        }
+        if data['enforcement-plan-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/enforcement-plan-upload?cya=true',
+              html: 'Change'
+            }
+            if data['enforcement-plan-upload-complete'] else
+            {
+              href: 'po-report/enforcement-plan-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['enforcement-notice-check'] == 'Yes',
+      {
+        key: {
+          html: 'Did you serve a planning contravention notice?'
+        },
+        value: {
+          html: data['contravention-notice-check'] or 'No'
+        }
+        if data['contravention-notice-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/contravention-notice-check?cya=true',
+              html: 'Change'
+            }
+            if data['contravention-notice-check-complete'] else
+            {
+              href: 'po-report/contravention-notice-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Planning contravention notice'
+        },
+        value: {
+          html: data['contravention-notice-upload'] or 'contravention_notice.pdf'
+        }
+        if data['contravention-notice-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/contravention-notice-upload?cya=true',
+              html: 'Change'
+            }
+            if data['contravention-notice-upload-complete'] else
+            {
+              href: 'po-report/contravention-notice-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['contravention-notice-check'] == 'Yes',
+      {
+        key: {
+          html: 'Will you carry out a consultation for potential planning permission?'
+        },
+        value: {
+          html: data['planning-permission-consultation'] + ': ' + data['consultees__details'] or 'No'
+        }
+        if data['planning-permission-consultation-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/planning-permission-consultation?cya=true',
+              html: 'Change'
+            }
+            if data['planning-permission-consultation-complete'] else
+            {
+              href: 'po-report/planning-permission-consultation',
+              html: 'Answer'
+            }
+          ]
+        }
+      }
     ]
   }) }}
 </li>

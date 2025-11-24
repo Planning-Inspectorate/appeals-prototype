@@ -1,19 +1,17 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = 'Was a grant or loan made to preserve the listed building at the appeal site?' %}
+{% set title = 'Is the appeal site within 400m of an area of underground or surface mineral interest?' %}
 
 {% set prototypeLinks = [
   {
-    href: 'preserve-grant-loan?titleVersion=a',
+    href: 'underground-interest?titleVersion=a',
     text: 'Switch content'
   } if data['titleVersion'] == 'b' else
   {
-    href: 'preserve-grant-loan?titleVersion=b',
+    href: 'underground-interest?titleVersion=b',
     text: 'Switch content'
   }
 ] %}
-
-{% set return = true %}
 
 {% block questions %}
 
@@ -21,12 +19,11 @@
     Constraints, designations and other issues
   </span>
 
-
   {% if data['titleVersion'] == 'a' %}
 
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'underground-interest',
+      name: 'underground-interest',
       fieldset: {
         legend: {
           html: title,
@@ -38,25 +35,24 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('underground-interest','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('underground-interest','No')
         }
       ]
     }) }}
 
   {% else %}
 
-
     {{ govukRadios({
-      idPrefix: 'preserve-grant-loan',
-      name: 'preserve-grant-loan',
+      idPrefix: 'underground-interest',
+      name: 'underground-interest',
       fieldset: {
         legend: {
-          html: 'Was a grant or loan made to preserve the listed building at the appeal site?',
+          html: 'Is the appeal site within 400m of an area of underground or surface mineral interest?',
           classes: 'govuk-fieldset__legend--l',
           isPageHeading: true
         }
@@ -65,12 +61,12 @@
         {
           html: 'Yes',
           value: 'Yes',
-          checked: checked('preserve-grant-loan','Yes')
+          checked: checked('underground-interest','Yes')
         },
         {
           html: 'No',
           value: 'No',
-          checked: checked('preserve-grant-loan','No')
+          checked: checked('underground-interest','No')
         }
       ]
     }) }}
