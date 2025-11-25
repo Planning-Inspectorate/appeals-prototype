@@ -22,7 +22,7 @@
     rows: [
       {
         key: {
-          html: 'Is enforcement the correct type of appeal?'
+          html: 'Correct appeal type'
         },
         value: {
           html: data['appeal-type-check'] + ': ' + data['appeal-reason']or 'Yes'
@@ -47,7 +47,7 @@
       },
       {
         key: {
-          html: 'Does the development change a listed building?'
+          html: 'Changes a listed building'
         },
         value: {
           html: data['listed-building-check'] or 'No'
@@ -72,7 +72,7 @@
       },
       {
         key: {
-          html: 'Affected listed buiding details'
+          html: 'Listed buiding details'
         },
         value: {
           html: ('1282032')
@@ -99,7 +99,7 @@
       } if data['listed-building-check'] == 'Yes',
       {
         key: {
-          html: 'Does the alleged development affect the setting of listed buildings?'
+          html: 'Affects a listed building'
         },
         value: {
           html: data['affected-listed-building-check'] or 'No'
@@ -151,7 +151,7 @@
       } if data['affected-listed-building-check'] == 'Yes',
       {
         key: {
-          html: 'Would the development affect a scheduled monument?'
+          html: 'Affects a scheduled monument'
         },
         value: {
           html: data['scheduled-monument'] or 'No'
@@ -176,7 +176,7 @@
       },
       {
         key: {
-          html: 'Is the site in, or next to a conservation area?'
+          html: 'Conservation area'
         },
         value: {
           html: data['conservation-check'] or 'Not in or next to a conservation area'
@@ -226,7 +226,7 @@
       } if data['conservation-check'] == 'Yes',
       {
         key: {
-          html: 'Would the development affect a protected species?'
+          html: 'Protected species'
         },
         value: {
           html: data['protected-species'] or 'No'
@@ -251,7 +251,7 @@
       },
       {
         key: {
-          html: 'Is the site in a green belt?'
+          html: 'Green belt'
         },
         value: {
           html: data['green-belt'] or 'No'
@@ -276,7 +276,7 @@
       },
       {
         key: {
-          html: 'Is the site in a national landscape?'
+          html: 'National landscape'
         },
         value: {
           html: data['outstanding-natural-beauty'] or 'No'
@@ -301,7 +301,7 @@
       },
       {
         key: {
-          html: 'Is the development in, near or likely to affect any designated sites?'
+          html: 'Designated sites'
         },
         value: {
           html: (data['designated-sites'] | e | replace(',', '<br>') or 'No, it is not in, near or likely to affect any designated sites') if data['designated-sites'] != 'No, it is not in, near or likely to affect any designated sites' else 'No, it is not in, near or likely to affect any designated sites'
@@ -326,7 +326,7 @@
       },
       {
         key: {
-          html: 'Does a Tree Preservation Order (TPO) apply to any part of the appeal site?'
+          html: 'Tree Preservation Order'
         },
         value: {
           html: data['tree-order-check'] or 'No'
@@ -376,7 +376,7 @@
       } if data['tree-order-check'] == 'Yes',
       {
         key: {
-          html: 'Does the development relate to anyone claiming to be a Gypsy or Traveller?'
+          html: 'Gypsy or Traveller'
         },
         value: {
           html: data['traveller'] or 'No'
@@ -401,7 +401,7 @@
       },
       {
         key: {
-          html: 'Would a public right of way need to be removed or diverted?'
+          html: 'Public right of way'
         },
         value: {
           html: data['right-of-way-check'] or 'No'
@@ -451,7 +451,7 @@
       } if data['right-of-way-check'] == 'Yes', 
       {
         key: {
-          html: 'Did the appellant apply for planning permission and pay the application fee?'
+          html: 'Planning permission and application fee'
         },
         value: {
           html: data['fee-check'] or 'No'
@@ -476,7 +476,7 @@
         }, 
         {
           key: {
-            html: 'Is the appeal fee exempt?'
+            html: 'Fee exempt'
           },
           value: {
             html: data['fee-exempt'] or 'No'
@@ -501,7 +501,7 @@
       }, 
       {
         key: {
-          html: 'Does the enforcement notice relate to building, engineering, mining or other operations?'
+          html: 'Building, engineering, mining or other operations'
         },
         value: {
           html: data['other-operation'] or 'No'
@@ -551,7 +551,7 @@
     },
     {
       key: {
-        html: 'Is the area of the alleged breach the same as the site area?'
+        html: 'Area of the alleged breach'
       },
       value: {
         html: data['alleged-breach-area'] or 'No'
@@ -576,7 +576,7 @@
     },
     {
       key: {
-        html: 'Does the alleged breach create any floor space?'
+        html: 'Floor space'
       },
       value: {
         html: data['floor-space'] or 'No'
@@ -601,7 +601,7 @@
     },
     {
       key: {
-        html: 'Does the enforcement notice include a change of use of land to dispose refuse or waste materials?'
+        html: 'Change of use of land to dispose refuse or waste materials'
       },
       value: {
         html: data['refuse-waste-materials'] or 'No'
@@ -626,8 +626,7 @@
     },
     {
       key: {
-        html: '	
-        Is the appeal site within 250m of a waste landfill site?'
+        html: 'Waste landfill site'
       },
       value: {
         html: data['landfill-site'] or 'No'
@@ -652,8 +651,7 @@
     },
     {
       key: {
-        html: '	
-        Does the alleged development involve importing waste materials?'
+        html: 'Importing waste materials'
       },
       value: {
         html: data['waste-materials-import'] or 'No'
@@ -678,8 +676,7 @@
     },
     {
       key: {
-        html: '	
-        Is the appeal site within 400m of an area of underground or surface mineral interest?'
+        html: 'Underground or surface mineral interest'
       },
       value: {
         html: data['underground-interest'] or 'No'
@@ -729,7 +726,7 @@
     } if data['underground-interest'] == 'Yes',
     {
       key: {
-        html: 'Does the enforcement notice include the change of use of land to dispose of remaining materials after mineral extraction?'
+        html: 'Disposal of remaining materials after mineral extraction'
       },
       value: {
         html: data['mineral-extraction-materials'] or 'No'
@@ -754,7 +751,7 @@
     }, 
     {
       key: {
-        html: 'Does the enforcement notice include a change of use of land to store minerals in the open?'
+        html: 'Store minerals in the open'
       },
       value: {
         html: data['deposit-materials'] or 'No'
@@ -779,7 +776,7 @@
     },
     {
       key: {
-        html: 'Does the enforcement notice include the erection of a building or buildings?'
+        html: 'Erection of a building or buildings'
       },
       value: {
         html: data['create-building'] or 'No'
@@ -804,7 +801,7 @@
     },
     {
       key: {
-        html: 'Is the building on agricultural land and will it be used for agricultural purposes?'
+        html: 'Agricultural land'
       },
       value: {
         html: data['agricultural-purposes'] or 'No'
@@ -829,7 +826,7 @@
     },
     {
       key: {
-        html: 'Is the enforcement notice for a single private dwelling house? '
+        html: 'Single private dwelling house'
       },
       value: {
         html: data['single-house'] or 'No'
@@ -854,7 +851,7 @@
     },
     {
       key: {
-        html: 'Is the appeal site within 67 metres of a trunk road?'
+        html: 'Trunk road'
       },
       value: {
         html: data['trunk-road'] + ': ' + data['trunk-road__details'] or 'No'
@@ -879,7 +876,7 @@
     },
     {
       key: {
-        html: 'Is the appeal site on Crown land?'
+        html: 'Crown land'
       },
       value: {
         html: data['crown-land'] or 'No'
@@ -904,7 +901,7 @@
     },
     {
       key: {
-        html: 'Did you serve a stop notice?'
+        html: 'Stop notice'
       },
       value: {
         html: data['stop-notice'] or 'No'
@@ -929,7 +926,7 @@
     },
     {
       key: {
-        html: 'Stop notice'
+        html: 'Upload stop notice'
       },
       value: {
         html: data['stop-notice-upload'] or 'stop_notice.pdf'
@@ -954,7 +951,7 @@
     } if data['stop-notice'] == 'Yes',
     {
       key: {
-        html: 'Did you remove any permitted development rights for the appeal site?'
+        html: 'Removal of any permitted development rights'
       },
       value: {
         html: data['development-rights'] or 'No'
@@ -979,7 +976,7 @@
     },
     {
       key: {
-        html: 'Article 4 direction'
+        html: 'Upload article 4 direction'
       },
       value: {
         html: data['development-rights-upload'] or 'article-4-direction.pdf'
@@ -1004,7 +1001,7 @@
     } if data['development-rights'] == 'Yes',
     {
       key: {
-        html: 'What permitted development rights did you remove with the direction?'
+        html: 'Permitted development rights removed'
       },
       value: {
         html: data['development-rights-removed'] or 'No'
@@ -1029,7 +1026,7 @@
       },
       {
         key: {
-          html: 'Did you restrict any development rights using a planning condition?'
+          html: 'Planning condition'
         },
         value: {
           html: data['planning-condition'] or 'No'
@@ -1054,7 +1051,7 @@
       },
       {
         key: {
-          html: 'Relevant permission'
+          html: 'Upload relevant permission'
         },
         value: {
           html: data['relevant-permission-upload'] or 'permission.pdf'
@@ -1079,7 +1076,7 @@
       } if data['planning-condition'] == 'Yes',
       {
         key: {
-          html: 'Does the alleged development involve work to meet the needs of a disabled person?'
+          html: 'Needs of a disabled person'
         },
         value: {
           html: data['disabled-person'] or 'No'

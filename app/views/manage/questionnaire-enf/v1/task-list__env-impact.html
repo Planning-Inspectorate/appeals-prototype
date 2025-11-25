@@ -33,7 +33,7 @@
     rows: [
       {
         key: {
-          html: 'What is the development category?'
+          html: 'Development category'
         },
         value: {
           html: data['schedule'] or 'No'
@@ -83,7 +83,7 @@
       } if data['schedule'] == 'Schedule 2',
       {
         key: {
-          html: 'Is the development in, partly in, or likely to affect a sensitive area?'
+          html: 'Sensitive area'
         },
         value: {
           html: (data['sensitive-area'] or 'No')+('<br>'+data['sensitive-area-details'] if data['sensitive-area'] == 'Yes')
@@ -108,7 +108,7 @@
       } if data['schedule'] == 'Schedule 2',
       {
         key: {
-          html: 'Does the development meet or exceed the threshold or criteria in column 2?	'
+          html: 'Column 2 threshold'
         },
         value: {
           html: data['column-two'] or 'No'
@@ -133,7 +133,7 @@
       } if data['schedule'] == 'Schedule 2',
       {
         key: {
-          html: 'Have you issued a screening opinion?'
+          html: 'Screening opinion'
         },
         value: {
           html: data['screening-check'] or 'No'
@@ -158,7 +158,7 @@
       } if data['schedule'] and data['schedule'] != 'Schedule 1',
       {
         key: {
-          html: 'Screening opinion'
+          html: 'Upload screening opinion'
         },
         value: {
           html: data['screening-upload'] or 'screening opinion.pdf'
@@ -183,7 +183,7 @@
       } if data['screening-check'] == 'Yes',
       {
         key: {
-          html: 'Did your screening opinion say the development needed an environmental statement?'
+          html: 'Environmental statement'
         },
         value: {
           html: data['screening-env-statement-check'] or 'No'
@@ -209,7 +209,7 @@
 
       {
         key: {
-          html: 'Did you receive a scoping opinion?'
+          html: 'Scoping opinion'
         },
         value: {
           html: data['scoping-check'] or 'No'
@@ -235,7 +235,7 @@
 
       {
         key: {
-          html: 'Scoping opinion'
+          html: 'Upload scoping opinion'
         },
         value: {
           html: data['scoping-upload'] or 'scoping-opinion.pdf'
@@ -253,7 +253,7 @@
             if data['scoping-upload-complete'] else
             {
               href: 'env-impact/scoping-upload',
-              html: 'Answer'
+              html: 'Upload'
             }
           ]
         }
@@ -261,7 +261,7 @@
 
       {
         key: {
-          html: 'Did the applicant submit an environmental statement?'
+          html: 'Environmental statement submitted'
         },
         value: {
           html: data['applicant-env-statement-check'] or 'No'
@@ -286,7 +286,7 @@
       } if data['screening-check'] == 'No',
       {
         key: {
-          html: 'Did the applicant submit an environmental statement?'
+          html: 'Environmental statement submitted'
         },
         value: {
           html: data['env-statement-check'] or 'No'
@@ -311,7 +311,7 @@
       } if data['screening-env-statement-check'] == 'Yes' or data['schedule'] == 'Schedule 1',
       {
         key: {
-          html: 'Environmental statement'
+          html: 'Upload environmental statement'
         },
         value: {
           html: data['env-statement-upload'] or 'env-statement.pdf'
@@ -336,7 +336,7 @@
       } if data['env-statement-check'] == 'Yes',
       {
         key: {
-          html: 'Screening direction'
+          html: 'Upload screening direction'
         },
         value: {
           html: data['negative-screening-upload'] or 'screening-direction.pdf'
