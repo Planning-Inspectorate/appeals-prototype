@@ -299,7 +299,7 @@ router.post('/constraints/development-rights', function (req, res) {
   if (req.session.data['development-rights'] == 'Yes') {
     res.redirect('development-rights-upload');
   } else {
-    res.redirect('development-rights-removed');
+    res.redirect('planning-condition');
   }
 })
 

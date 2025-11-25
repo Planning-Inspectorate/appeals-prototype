@@ -601,7 +601,7 @@
     },
     {
       key: {
-        html: 'Change of use of land to dispose refuse or waste materials'
+        html: 'Disposal of refuse or waste materials'
       },
       value: {
         html: data['refuse-waste-materials'] or 'No'
@@ -1023,7 +1023,7 @@
           }
           ]
         }
-      },
+      }if data['development-rights'] == 'Yes',
       {
         key: {
           html: 'Planning condition'
