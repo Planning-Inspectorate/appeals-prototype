@@ -60,7 +60,7 @@
     rows: [
       {
         key: {
-          html: 'Which procedure do you think is most appropriate for this appeal?'
+          html: 'Procedure type'
         },
         value: {
           html: (data['procedure'] or 'Written representations')+('<br>Length in days: '+data['procedure-length'] if data['procedure'] == 'Inquiry')
@@ -110,7 +110,7 @@
       } if data['procedure-reason'],
       {
         key: {
-          html: 'Are there any other ongoing appeals next to, or close to the site?'
+          html: 'Appeals near the site'
         },
         value: {
           html: data['other-appeals-radio'] or 'No'
@@ -163,7 +163,7 @@
 
       {
         key: {
-          html: 'Are there any new conditions?'
+          html: 'New conditions'
         },
         value: {
           html: (data['extra-conditions-check'] or 'No')+('<br>Conditions:'+data['extra-conditions'] if data['extra-conditions-check'] == 'Yes')
