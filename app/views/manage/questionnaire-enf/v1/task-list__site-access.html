@@ -22,7 +22,7 @@
     rows: [
       {
         key: {
-          html: 'Access for inspection'
+          html: 'Will the inspector need to enter a neighbour’s land or property?'
         },
         value: {
           html: 'Yes<br>'+data['site-entry__details'] if data['site-entry'] == 'Yes' else 'No'
@@ -47,7 +47,7 @@
       },
       {
         key: {
-          html: 'Inspector visit to neighbour'
+          html: 'Will the inspector need to enter a neighbour’s land or property?'
         },
         value: {
           html: 'Yes<br>'+data['neighbours-land__details'] if data['neighbours-land'] == 'Yes' else 'No'
@@ -117,7 +117,7 @@
       } if data['addedneighbours'] == 'yes',
       {
         key: {
-          html: 'Health and safety issues'
+          html: 'Are there any health and safety issues on the appeal site?'
         },
         value: {
           html: 'Yes<br>'+data['health-and-safety__details'] if data['health-and-safety'] == 'Yes' else 'No'

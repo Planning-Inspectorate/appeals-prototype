@@ -33,7 +33,7 @@
     rows: [
       {
         key: {
-          html: 'Development category'
+          html: 'What is the development category?'
         },
         value: {
           html: data['schedule'] or 'No'
@@ -83,7 +83,7 @@
       } if data['schedule'] == 'Schedule 2',
       {
         key: {
-          html: 'Sensitive area'
+          html: 'Is the development in, partly in, or likely to affect a sensitive area?'
         },
         value: {
           html: (data['sensitive-area'] or 'No')+('<br>'+data['sensitive-area-details'] if data['sensitive-area'] == 'Yes')
@@ -108,7 +108,7 @@
       } if data['schedule'] == 'Schedule 2',
       {
         key: {
-          html: 'Column 2 threshold'
+          html: 'Does the development meet or exceed the threshold or criteria in column 2?'
         },
         value: {
           html: data['column-two'] or 'No'
@@ -133,7 +133,7 @@
       } if data['schedule'] == 'Schedule 2',
       {
         key: {
-          html: 'Screening opinion'
+          html: 'Have you issued a screening opinion?'
         },
         value: {
           html: data['screening-check'] or 'No'
@@ -183,7 +183,7 @@
       } if data['screening-check'] == 'Yes',
       {
         key: {
-          html: 'Environmental statement'
+          html: 'Did the applicant submit an environmental statement?'
         },
         value: {
           html: data['screening-env-statement-check'] or 'No'
@@ -209,7 +209,7 @@
 
       {
         key: {
-          html: 'Scoping opinion'
+          html: 'Did you receive a scoping opinion?'
         },
         value: {
           html: data['scoping-check'] or 'No'
@@ -261,7 +261,7 @@
 
       {
         key: {
-          html: 'Environmental statement submitted'
+          html: 'Did the applicant submit an environmental statement?'
         },
         value: {
           html: data['applicant-env-statement-check'] or 'No'
@@ -286,7 +286,7 @@
       } if data['screening-check'] == 'No',
       {
         key: {
-          html: 'Environmental statement submitted'
+          html: 'Did the applicant submit an environmental statement? '
         },
         value: {
           html: data['env-statement-check'] or 'No'

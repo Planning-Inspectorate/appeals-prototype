@@ -60,7 +60,7 @@
     rows: [
       {
         key: {
-          html: 'Procedure type'
+          html: 'Which procedure do you think is most appropriate for this appeal?'
         },
         value: {
           html: (data['procedure'] or 'Written representations')+('<br>Length in days: '+data['procedure-length'] if data['procedure'] == 'Inquiry')
@@ -85,12 +85,12 @@
       },
       {
         key: {
-          html: 'Procedure reason'
+          html: 'Why would you prefer an inquiry?'
         },
         value: {
           html: data['procedure-reason']
         }
-        if data['procedure-complete'] else
+        if data['procedure-reason-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
@@ -102,15 +102,40 @@
             }
             if data['procedure-complete'] else
             {
-              href: 'appeal-process/procedure',
+              href: 'appeal-process/procedure-reason',
               html: 'Answer'
             }
           ]
         }
-      } if data['procedure-reason'],
+      } if data['procedure'] == 'Inquiry',
       {
         key: {
-          html: 'Appeals near the site'
+          html: 'Why would you prefer a hearing?'
+        },
+        value: {
+          html: data['procedure-reason']
+        }
+        if data['procedure-reason-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'appeal-process/procedure?cya=true',
+              html: 'Change'
+            }
+            if data['procedure-complete'] else
+            {
+              href: 'appeal-process/procedure-reason',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['procedure'] == 'Hearing',
+      {
+        key: {
+          html: 'Are there any other ongoing appeals next to, or close to the site?'
         },
         value: {
           html: data['other-appeals-radio'] or 'No'
@@ -163,7 +188,7 @@
 
       {
         key: {
-          html: 'New conditions'
+          html: 'Are there any new conditions?'
         },
         value: {
           html: (data['extra-conditions-check'] or 'No')+('<br>Conditions:'+data['extra-conditions'] if data['extra-conditions-check'] == 'Yes')

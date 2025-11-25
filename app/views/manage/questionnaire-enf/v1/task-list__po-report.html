@@ -39,7 +39,7 @@ PO report done = {{ data['po-report-completed'] }}
     rows: [
       {
         key: {
-          html: 'Planning officer\'s report'
+          html: 'Do you have a planning officer\'s report?'
         },
         value: {
           html: data['report-check'] or 'Yes'
@@ -89,7 +89,7 @@ PO report done = {{ data['po-report-completed'] }}
       }if data['report-check'] == 'Yes',
       {
         key: {
-          html: 'Relevant policies from statutory development plan'
+          html: 'Do you have any relevant policies from your statutory development plan?'
         },
         value: {
           html: data['policies-check'] or 'Yes'
@@ -139,7 +139,7 @@ PO report done = {{ data['po-report-completed'] }}
       }if data['policies-check'] == 'Yes',
       {
         key: {
-          html: 'Other relevant policies'
+          html: 'Do you have any other relevant policies to upload?'
         },
         value: {
           html: data['other-policies-check'] or 'No'
@@ -164,7 +164,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload other relevant policies'
+          html: 'Upload any other relevant policies'
         },
         value: {
           html: data['other-policies-upload'] or 'other-policies.pdf'
@@ -189,7 +189,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['other-policies-check'] == 'Yes',
       {
         key: {
-          html: 'Supplementary planning documents'
+          html: 'Did any supplementary planning documents inform the outcome of the planning application?'
         },
         value: {
           html: data['supplementary-check'] or 'No'
@@ -214,7 +214,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload supplementary planning documents'
+          html: 'Supplementary planning documents'
         },
         value: {
           html: data['supplementary-upload'] or 'supplementary.pdf'
@@ -239,7 +239,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['supplementary-check'] == 'Yes',
       {
         key: {
-          html: 'Community infrastructure levy'
+          html: 'Do you have a community infrastructure levy?'
         },
         value: {
           html: data['community-infrastructure-check'] or 'No'
@@ -264,7 +264,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload community infrastructure levy'
+          html: 'Community infrastructure levy'
         },
         value: {
           html: data['community-infrastructure-upload'] or 'community-infrastructure.pdf'
@@ -289,7 +289,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['community-infrastructure-check'] == 'Yes',
       {
         key: {
-          html: 'Community infrastructure levy formally adopted'
+          html: 'Is the community infrastructure levy formally adopted?'
         },
         value: {
           html: data['community-infrastructure-adopted'] or 'No'
@@ -307,14 +307,14 @@ PO report done = {{ data['po-report-completed'] }}
             if data['community-infrastructure-adopted-complete'] else
             {
               href: 'po-report/community-infrastructure-adopted',
-              html: 'Upload'
+              html: 'Answer'
             }
           ]
         }
       } if data['community-infrastructure-check'] == 'Yes',
       {
         key: {
-          html: 'Community infrastructure levy adopted date '+('expected to be ' if data['community-infrastructure-adopted'] != 'Yes')+'adopted'
+          html: 'Community infrastructure levy formally adopted date'
         },
         value: {
           html: levyDate
@@ -332,14 +332,14 @@ PO report done = {{ data['po-report-completed'] }}
             if data['community-infrastructure-date-complete'] else
             {
               href: 'po-report/community-infrastructure-date',
-              html: 'Upload'
+              html: 'Answer'
             }
           ]
         }
       } if data['community-infrastructure-check'] == 'Yes',
       {
         key: {
-          html: 'Local development order'
+          html: 'Do you have a local development order?'
         },
         value: {
           html: data['local-development-check'] or 'No'
@@ -364,7 +364,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload local development order'
+          html: 'Local development order'
         },
         value: {
           html: data['local-development-upload'] or 'local_development.pdf'
@@ -389,7 +389,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['local-development-check'] == 'Yes',
       {
         key: {
-          html: 'Previous planning permission granted'
+          html: 'Did you previously grant any planning permission for this development?'
         },
         value: {
           html: data['planning-permission-check'] or 'No'
@@ -414,7 +414,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload planning permission'
+          html: 'Upload planning permission and any other relevant documents'
         },
         value: {
           html: data['planning-permission-upload'] or 'planning_permission.pdf'
@@ -439,7 +439,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['planning-permission-check'] == 'Yes',
       {
         key: {
-          html: 'Statement of case'
+          html: 'Do you have your statement of case?'
         },
         value: {
           html: data['statement-of-case-check'] or 'No'
@@ -464,7 +464,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload statement of case'
+          html: 'Statement of case'
         },
         value: {
           html: data['statement-of-case-upload'] or 'statement_of_case.pdf'
@@ -489,7 +489,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['statement-of-case-check'] == 'Yes',
       {
         key: {
-          html: 'Enforcement notice in force at the date of the application'
+          html: 'Was there an enforcement notice in force at the date of the application?'
         },
         value: {
           html: data['enforcement-notice-check'] or 'No'
@@ -514,7 +514,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload enforcement notice'
+          html: 'Enforcement notice'
         },
         value: {
           html: data['enforcement-notice-upload'] or 'enforcement_notice.pdf'
@@ -564,7 +564,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['enforcement-notice-check'] == 'Yes',
       {
         key: {
-          html: 'Planning contravention notice'
+          html: 'Did you serve a planning contravention notice?'
         },
         value: {
           html: data['contravention-notice-check'] or 'No'
@@ -589,7 +589,7 @@ PO report done = {{ data['po-report-completed'] }}
       },
       {
         key: {
-          html: 'Upload planning contravention notice'
+          html: 'Planning contravention notice'
         },
         value: {
           html: data['contravention-notice-upload'] or 'contravention_notice.pdf'
@@ -614,7 +614,7 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['contravention-notice-check'] == 'Yes',
       {
         key: {
-          html: 'Consultation for potential planning permission'
+          html: 'Will you carry out a consultation for potential planning permission?'
         },
         value: {
           html: data['planning-permission-consultation'] + ': ' + data['consultees__details'] or 'No'
