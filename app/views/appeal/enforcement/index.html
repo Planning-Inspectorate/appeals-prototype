@@ -60,18 +60,13 @@ href: '/#appeal'
     {# Size modifiers: xl, l, m #}
     <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
 
-    <h2 class="govuk-heading-m">Other flows:</h2>
+    <h2 class="govuk-heading-m">Before you start flow:</h2>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        <a href="enforcement/v3/before-you-start/before-you-start">Before you start</a>
-      </li>
-      <li>
-        <a href="enforcement/v1-statement/start">Appellant statement</a>
-      </li>
-    </ul>
-    
-
+    {{ govukButton({
+      text: "View prototype",
+      classes: "govuk-button--secondary",
+      href: "enforcement/v3/before-you-start/before-you-start"
+    }) }}
 
     <h2 class="govuk-heading-m">Previous versions:</h2>
     <ul class="govuk-list govuk-list--bullet">
