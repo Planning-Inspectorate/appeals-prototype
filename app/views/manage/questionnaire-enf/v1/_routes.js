@@ -331,7 +331,7 @@ router.get('/constraints/complete', function (req, res) {
   if (!req.session.data['env-impact-completed']) {
     res.redirect('../env-impact/schedule')
   } else if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/appeal-notification-upload')
+    res.redirect('../notified/notified-who')
   } else if (!req.session.data['po-report-completed']) {
     res.redirect('../po-report/report-check')
   } else if (!req.session.data['site-access-completed']) {
@@ -616,7 +616,7 @@ router.post('/env-impact/negative-screening-upload', function (req, res) {
 
 router.get('/env-impact/complete', function (req, res) {
   if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/appeal-notification-upload')
+    res.redirect('../notified/notified-who')
   } else if (!req.session.data['po-report-completed']) {
     res.redirect('../po-report/report-check')
   } else if (!req.session.data['site-access-completed']) {
@@ -648,11 +648,11 @@ router.post('/notified/:page', function (req, res, next) {
   next()
 })
 
-router.post('/notified/appeal-notification-upload', function (req, res) {
-  res.redirect('notified-who')
+router.post('/notified/notified-who', function (req, res) {
+  res.redirect('appeal-notification-upload')
 })
 
-router.post('/notified/notified-who', function (req, res) {
+router.post('/notified/appeal-notification-upload', function (req, res) {
   req.session.data['notified-completed'] = 'true'
   res.redirect('complete');
 })

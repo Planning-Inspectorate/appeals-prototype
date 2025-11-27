@@ -20,31 +20,6 @@
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
-    {
-      key: {
-        html: 'Upload the appeal notification and the list of people that you notified'
-      },
-      value: {
-        html: '<a href="#">'+(data['appeal-notification-upload'] or 'Notification_letter.pdf')+'</a>'
-      }
-      if data['appeal-notification-upload-complete'] else
-      {
-        html: '<span class="govuk-hint">Not started</span>'
-      },
-      actions: {
-        items: [
-          {
-            href: 'notified/appeal-notification-upload?cya=true',
-            html: 'Change'
-          }
-          if data['appeal-notification-upload-complete'] else
-          {
-            href: 'notified/appeal-notification-upload',
-            html: 'Upload'
-          }
-        ]
-      }
-    },
       {
         key: {
           html: 'Upload the list of people that you served the enforcement notice to'
@@ -65,6 +40,31 @@
             if data['notified-who-complete'] else
             {
               href: 'notified/notified-who',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload the appeal notification letter and the list of people that you notified'
+        },
+        value: {
+          html: '<a href="#">'+(data['appeal-notification-upload'] or 'Notification_letter.pdf')+'</a>'
+        }
+        if data['appeal-notification-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/appeal-notification-upload?cya=true',
+              html: 'Change'
+            }
+            if data['appeal-notification-upload-complete'] else
+            {
+              href: 'notified/appeal-notification-upload',
               html: 'Upload'
             }
           ]
