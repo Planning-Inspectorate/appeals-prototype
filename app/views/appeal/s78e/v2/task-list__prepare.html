@@ -657,7 +657,7 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
         value: {
           html: data['grounds'] or dummygrounds | nl2br
         }
-        if data['grounds-of-appeal-complete'] else
+        if data['reasons-for-appeal-complete'] else
         {
           html: '<span class="govuk-hint">Not started</span>'
         },
@@ -667,7 +667,7 @@ Sustainability Statement – describing energy efficiency, renewable energy use,
               href: 'prepare-appeal/reasons-for-appeal?cya=true',
               html: 'Change'
             }
-            if data['grounds-of-appeal-complete'] else
+            if data['reasons-for-appeal-complete'] else
             {
               href: 'prepare-appeal/reasons-for-appeal',
               html: 'Answer'
