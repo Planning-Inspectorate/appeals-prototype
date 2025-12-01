@@ -439,56 +439,6 @@ PO report done = {{ data['po-report-completed'] }}
       } if data['planning-permission-check'] == 'Yes',
       {
         key: {
-          html: 'Do you have your statement of case?'
-        },
-        value: {
-          html: data['statement-of-case-check'] or 'No'
-        }
-        if data['statement-of-case-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/statement-of-case-check?cya=true',
-              html: 'Change'
-            }
-            if data['statement-of-case-check-complete'] else
-            {
-              href: 'po-report/statement-of-case-check',
-              html: 'Answer'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          html: 'Statement of case'
-        },
-        value: {
-          html: data['statement-of-case-upload'] or 'statement_of_case.pdf'
-        }
-        if data['statement-of-case-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/statement-of-case-upload?cya=true',
-              html: 'Change'
-            }
-            if data['statement-of-case-upload-complete'] else
-            {
-              href: 'po-report/statement-of-case-upload',
-              html: 'Upload'
-            }
-          ]
-        }
-      } if data['statement-of-case-check'] == 'Yes',
-      {
-        key: {
           html: 'Was there an enforcement notice in force at the date of the application?'
         },
         value: {
@@ -611,32 +561,7 @@ PO report done = {{ data['po-report-completed'] }}
             }
           ]
         }
-      } if data['contravention-notice-check'] == 'Yes',
-      {
-        key: {
-          html: 'Will you carry out a consultation for potential planning permission?'
-        },
-        value: {
-          html: data['planning-permission-consultation'] + ': ' + data['consultees__details'] or 'No'
-        }
-        if data['planning-permission-consultation-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'po-report/planning-permission-consultation?cya=true',
-              html: 'Change'
-            }
-            if data['planning-permission-consultation-complete'] else
-            {
-              href: 'po-report/planning-permission-consultation',
-              html: 'Answer'
-            }
-          ]
-        }
-      }
+      } if data['contravention-notice-check'] == 'Yes'
     ]
   }) }}
 </li>

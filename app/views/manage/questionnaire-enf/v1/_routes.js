@@ -896,13 +896,13 @@ router.post('/po-report/planning-permission-check', function (req, res) {
     res.redirect('planning-permission-upload');
   } else {
     req.session.data['planning-permission-check-complete'] = 'true'
-    res.redirect('statement-of-case-check')
+    res.redirect('enforcement-notice-check')
   }
 })
 
 router.post('/po-report/planning-permission-upload', function (req, res) {
   req.session.data['planning-permission-upload-complete'] = 'true'
-  res.redirect('statement-of-case-check')
+  res.redirect('enforcement-notice-check')
 })
 
 router.post('/po-report/statement-of-case-check', function (req, res) {
@@ -927,6 +927,11 @@ router.post('/po-report/enforcement-notice-check', function (req, res) {
   }
 })
 
+router.post('/po-report/enforcement-notice-upload', function (req, res) {
+  req.session.data['enforcement-notice-upload-complete'] = 'true'
+  res.redirect('enforcement-plan-upload')
+})
+
 router.post('/po-report/enforcement-plan-upload', function (req, res) {
   req.session.data['enforcement-plan-upload-complete'] = 'true'
   res.redirect('contravention-notice-check')
@@ -936,28 +941,12 @@ router.post('/po-report/contravention-notice-check', function (req, res) {
   if (req.session.data['contravention-notice-check'] == 'Yes') {
     res.redirect('contravention-notice-upload');
   } else {
-    res.redirect('planning-permission-consultation')
-  }
-})
-
-router.post('/po-report/contravention-notice-upload', function (req, res) {
-  req.session.data['contravention-notice-upload-complete'] = 'true'
-  res.redirect('planning-permission-consultation')
-})
-
-router.post('/po-report/planning-permission-consultation', function (req, res) {
-  if (req.session.data['planning-permission-consultation'] == 'Yes') {
     req.session.data['po-report-completed'] = 'true'
     res.redirect('complete')
   }
 })
 
-router.post('/po-report/enforcement-notice-upload', function (req, res) {
-  req.session.data['enforcement-notice-upload-complete'] = 'true'
-  res.redirect('enforcement-plan-upload')
-})
-
-router.post('/po-report/enforcement-plan-upload', function (req, res) {
+router.post('/po-report/contravention-notice-upload', function (req, res) {
   req.session.data['po-report-completed'] = 'true'
   res.redirect('complete')
 })
