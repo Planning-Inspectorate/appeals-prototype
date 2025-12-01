@@ -25,7 +25,7 @@
     rows: [
 
       {
-        key: { text: "Site address" },
+        key: { text: "What is the address of the appeal site?" },
         value:
           {
             html:
@@ -47,7 +47,7 @@
 
 
       {
-        key: { text: "Is this address your contact address?" },
+        key: { text: "Is the appeal site your contact address?" },
         value:
           {
             html:
@@ -88,7 +88,7 @@
 
 
       {
-        key: { text: "Interest in the land" },
+        key: { text: "What is your interest in the land" },
         value:
           {
             html:
@@ -124,7 +124,7 @@
 
 
       {
-        key: { text: "Inspector access" },
+        key: { text: "Will an inspector need to access your land or property?" },
         value: {
           html: (data['site-visibility'] or 'No')
         } if data['site-visibility-complete'] else
@@ -140,7 +140,7 @@
 
 
       {
-        key: { text: "Health and safety issues" },
+        key: { text: "Are there any health and safety issues on the appeal site?" },
         value:
           {
             html:

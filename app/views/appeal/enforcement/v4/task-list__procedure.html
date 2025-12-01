@@ -23,7 +23,7 @@
     rows: [
   
     {
-      key: { text: "Appeal procedure" },
+      key: { text: "How would you prefer us to decide your appeal?" },
       value:
         { html: data['procedure'] or 'Written representations' }
         if data['procedure-complete'] else
@@ -38,7 +38,7 @@
     },
 
     {
-      key: { text: "Reason for hearing" },
+      key: { text: "Why would you prefer a hearing?" },
       value:
         { html: data['hearing'] or 'Because...' }
         if data['hearing-complete'] else
@@ -53,7 +53,7 @@
     } if data['procedure'] == 'Hearing',
 
     {
-      key: { text: "Reason for inquiry" },
+      key: { text: "Why would you prefer an inquiry?" },
       value:
         { html: data['inquiry'] or 'Because...' }
         if data['inquiry-complete'] else
@@ -69,7 +69,7 @@
 
 
     {
-      key: { text: "Days for inquiry" },
+      key: { text: "How many days would you expect the inquiry to last?" },
       value:
         { html: (data['inquiry-days'] or '3') + ' days' }
         if data['inquiry-days-complete'] else
@@ -85,7 +85,7 @@
 
 
     {
-      key: { text: "Witnesses for inquiry" },
+      key: { text: "How many witnesses would you expect to give evidence at the inquiry?" },
       value:
         { html: (data['witnesses'] or '5') + ' witnesses' }
         if data['witnesses-complete'] else
@@ -117,7 +117,7 @@
 
 
     {
-      key: { text: "Linked appeals" },
+      key: { text: "Enter the appeal reference numbers" },
       value:
         { html: '0176256<br>0176257' }
         if data['other-appeals-complete'] else

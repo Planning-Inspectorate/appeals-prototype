@@ -25,7 +25,7 @@
   
 
     {
-      key: { html: 'Description of breach' },
+      key: { html: 'Enter the description of the alleged breach' },
       value: {
         html: data['description-detail']
           or 'The council alleges that I erected a single-storey timber outbuilding in my rear garden without planning permission. The structure is used solely as a small home office and does not contain any sleeping accommodation or plumbing.'
@@ -42,7 +42,7 @@
     },
 
     {
-      key: { text: "Grounds of appeal" },
+      key: { text: "Choose your grounds of appeal" },
       value:
         { html: data['grounds'] or 'Ground (b)' }
         if data['grounds-complete'] else 
@@ -148,7 +148,7 @@
       } if data['grounds'] and 'groundA' in data['grounds'],
 
       {
-        key: { text: "Application reference number" },
+        key: { text: "What is the application reference number?" },
         value:
           { html: data['application-reference'] or 'APP/298840/H28S' }
           if data['application-reference-complete'] else
@@ -208,7 +208,7 @@
       } if data['grounds'] and 'groundA' in data['grounds'],
 
       {
-        key: { text: "Application decision" },
+        key: { text: "Was your application granted or refused?" },
         value:
         { html: data['granted-or-refused'] or 'Refused' }
         if data['granted-or-refused-complete'] else
@@ -223,7 +223,7 @@
       } if data['grounds'] and 'groundA' in data['grounds'],
 
       {
-        key: { text: "Decision letter date" },
+        key: { text: "What is the date on the decision letter from the local planning authority?" },
         value:
           { html: '20 November 2025' }
           if data['decision-letter-date-complete'] else

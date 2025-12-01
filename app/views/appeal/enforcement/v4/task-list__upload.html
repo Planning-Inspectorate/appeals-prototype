@@ -58,7 +58,7 @@
 
       {
         key: {
-          text: "Evidence of your agreement to change the description of development"
+          text: "Agreement to change the description of development"
         },
         value:
           { html: "<a href='#'>description-change.pdf</a>" }
@@ -90,7 +90,7 @@
       },
 
       {
-        key: { text: "Status of planning obligation" },
+        key: { text: "What is the status of your planning obligation?" },
         value:
         { html: data['planning-obligation-status'] or 'Finalised and ready to submit' }
         if data['planning-obligation-status-complete'] else
@@ -166,7 +166,7 @@
 
 
       {
-        key: { text: "Other documentation" },
+        key: { text: "Other new supporting documents" },
         value:
           { html: "<a href='#'>other.pdf</a>" },
         actions: {

@@ -40,7 +40,7 @@
   
 
       {
-        key: { text: "Appellant name" },
+        key: { text: "What is the name of the individual appealing against the enforcement notice?" },
       
         value:
           { 
@@ -134,7 +134,7 @@
       } if data['appellant-check'] == 'Joint application',
 
       {
-        key: { text: "Name of organisation" },
+        key: { text: "What is the name of the organisation?" },
       
         value: {
           html: data['appellant-company-name'] or 'Riverside Renewal Co.'
@@ -150,7 +150,7 @@
       } if data['appellant-check'] == 'A company',
 
         {
-          key: { text: "Your contact details" },
+          key: { text: "Contact details" },
         
           value:
             {
@@ -174,7 +174,7 @@
 
 
         {
-          key: { text: "Phone number" },
+          key: { text: "What is your phone number?" },
           value:
             { html: '07930592000' }
             if data['telephone-number-complete'] else
