@@ -199,32 +199,7 @@
       },
       {
         key: {
-          html: 'Planning obligation status'
-        },
-        value: {
-          html: data['planning-obligation-status'] or 'Not started yet'
-        }
-        if data['planning-obligation-status-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'upload-documents/planning-obligation-status?cya=true',
-              html: 'Change'
-            }
-            if data['planning-obligation-status-complete'] else
-            {
-              href: 'upload-documents/planning-obligation-status',
-              html: 'Answer'
-            }
-          ]
-        }
-      } if data['planning-obligation-check'] == 'Yes',
-      {
-        key: {
-          html: 'Draft planning obligation'
+          html: 'Planning obligation'
         },
         value: {
           html: data['planning-obligation'] or 'planning-obligation.pdf'
@@ -246,7 +221,7 @@
             }
           ]
         }
-      } if data['planning-obligation-check'] == 'Yes' and (data['planning-obligation-status'] == 'Finalised and ready to submit' or data['planning-obligation-status'] == 'In draft'),
+      } if data['planning-obligation-check'] == 'Yes',
       {
         key: {
           html: 'Separate ownership certificate in application'
