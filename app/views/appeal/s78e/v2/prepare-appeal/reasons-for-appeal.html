@@ -5,6 +5,7 @@
 
 {% block questions %}
 
+  <span class="govuk-caption-l">Prepare appeal</span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -16,7 +17,6 @@
   {{ govukInsetText({
     text: "Do not include any sensitive information in your statement. It will delay your appeal."
   }) }}
-
 
   {% set sensitiveHTML %}
     <p class="govuk-!-margin-bottom-2">Sensitive information refers to:</p>

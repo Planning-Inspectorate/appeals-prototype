@@ -1,8 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Are there any other tenants?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
   {{ govukRadios({
     idPrefix: 'agricultural-others',
     name: 'agricultural-others',

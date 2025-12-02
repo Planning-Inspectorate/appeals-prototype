@@ -1,34 +1,69 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'What is the area of the appeal site?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
 
-  {% call govukFieldset({
-    legend: {
-      html: title,
-      classes: 'govuk-fieldset__legend--l',
-      isPageHeading: true
-    }
-  }) %}
+  <span class="govuk-caption-l">Prepare appeal</span>
+  
+  {% set squaremetresHtml %}
+    {{ govukInput({
+      label: {
+        text: "Site area, in square metres"
+      },
+      id: 'site-area-square-metres',
+      name: 'site-area-square-metres',
+      value: data['site-area-square-metres'],
+      classes: "govuk-input--width-5",
+      suffix: {
+        text: "m²"
+      },
+      spellcheck: false
+    }) }}
+  {% endset -%}
 
-  <!-- <p class="govuk-hint">
-    This should match the address on the application to the local planning authority
-  </p> -->
+  {% set hectaresHtml %}
+    {{ govukInput({
+      label: {
+        text: "Site area, in hectares"
+      },
+      id: 'site-area-hectares',
+      name: 'site-area-hectares',
+      value: data['site-area-hectares'],
+      classes: "govuk-input--width-5",
+      suffix: {
+        text: "m²"
+      },
+      spellcheck: false
+    }) }}
+  {% endset -%}
 
-  {{ govukInput({
-    label: {
-      text: "Total site area, in square metres."
+  {{ govukRadios({
+    name: "sitearea",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
     },
-    id: 'site-area-square-metres',
-    name: 'site-area-square-metres',
-    value: data['site-area-square-metres'],
-    classes: "govuk-input--width-5",
-    suffix: {
-      text: "m²"
-    },
-    spellcheck: false
+    items: [
+      {
+        value: "squaremetres",
+        text: "Square metres",
+        conditional: {
+          html: squaremetresHtml
+        }
+      },
+      {
+        value: "hectares",
+        text: "Hectares",
+        conditional: {
+          html: hectaresHtml
+        }
+      }
+    ]
   }) }}
 
-  {% endcall %}
 {% endblock %}

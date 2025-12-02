@@ -1,8 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Is the site in a green belt?' %}
+{% set title = 'Is the appeal site in a green belt?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
+
   {{ govukRadios({
     idPrefix: 'green-belt',
     name: 'green-belt',

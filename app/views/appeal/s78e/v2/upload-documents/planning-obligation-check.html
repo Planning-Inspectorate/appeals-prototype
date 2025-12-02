@@ -1,8 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Do you have a planning obligation to support your appeal?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
   {{ govukRadios({
     idPrefix: 'planning-obligation-check',
     name: 'planning-obligation-check',
@@ -26,4 +30,5 @@
       }
     ]
   }) }}
+
 {% endblock %}

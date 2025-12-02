@@ -1,8 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Do you own some of the land involved in the appeal?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
   {{ govukRadios({
     idPrefix: 'own-some',
     name: 'own-some',

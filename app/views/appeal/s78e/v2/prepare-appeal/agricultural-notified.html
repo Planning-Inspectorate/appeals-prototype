@@ -1,15 +1,18 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Telling the tenants' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
 
   <p class="govuk-body">You must have told all of the tenants about the appeal.</p>
 
-  <p class="govuk-body">You must have done this within the last 21 days using a copy of the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/994918/eHow_To_-_Planning_18_ANNEX.pdf" rel="noreferrer noopener" target="_blank">form in annexe 2A of the 'making your appeal' guidance (opens in new tab)</a>.</p>
+  <p class="govuk-body">You must have done this within the last 21 days using a copy of the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/994918/eHow_To_-_Planning_18_ANNEX.pdf" rel="noreferrer noopener" target="_blank">form in annexe 2A of the 'making your appeal' guidance (opens new tab)</a>.</p>
 
   {{ govukCheckboxes({
     idPrefix: 'agricultural-notified',

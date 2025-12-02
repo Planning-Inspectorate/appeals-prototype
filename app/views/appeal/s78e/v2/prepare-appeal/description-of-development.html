@@ -1,9 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Enter the description of development' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
 
+  <span class="govuk-caption-l">Prepare appeal</span>
   {{ govukTextarea({
     name: "description-detail",
     id: "description-detail",

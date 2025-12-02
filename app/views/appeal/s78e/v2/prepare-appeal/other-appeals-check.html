@@ -1,12 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Are there other appeals linked to your development?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
 
-  <!-- <span class="govuk-caption-l">
-    Appeal process
-  </span> -->
+  <span class="govuk-caption-l">Prepare appeal</span>
+
   {{ govukRadios({
     idPrefix: 'other-appeals-check',
     name: 'other-appeals-check',

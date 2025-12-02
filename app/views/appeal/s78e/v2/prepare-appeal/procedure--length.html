@@ -1,8 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'How many days would you expect the inquiry to last?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
+
   {{ govukInput({
     id: 'procedure-lenth',
     name: 'procedure-lenth',
@@ -14,4 +18,5 @@
       isPageHeading: true
     }
   }) }}
+  
 {% endblock %}

@@ -1,8 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Enter the appeal reference number' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
 
   {{ govukInput({
     label: {

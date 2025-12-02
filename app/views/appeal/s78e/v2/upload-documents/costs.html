@@ -1,8 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Upload your application for an award of appeal costs' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -43,7 +47,9 @@
 
 
 {% block pageScripts %}
+
   <script>
+
     // Hacky hacky single file
     $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop a file here or ')
     $('.moj-multi-file-upload__dropzone .govuk-button').text('Select file')
@@ -54,8 +60,6 @@
     $('.moj-multi-file__uploaded-files').click(function() {
       $('.moj-multi-file-upload__upload').show()
     });
-
-
 
     // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
     $('form').submit(function(e) {
@@ -68,4 +72,5 @@
       $(this).unbind('submit').submit();
     })
   </script>
+
 {% endblock %}

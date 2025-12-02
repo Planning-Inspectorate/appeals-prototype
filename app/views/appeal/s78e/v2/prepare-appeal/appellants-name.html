@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Contact details' %}
+{% set title = 'What is the applicant’s name?' %}
 {% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block questions %}
@@ -15,6 +15,10 @@
       isPageHeading: true
       }
     }) %}
+
+    <p class="govuk-hint">
+      Enter the name as it’s written on the application form.
+    </p>
 
     {{ govukInput({
       id: 'applicant-first-name',

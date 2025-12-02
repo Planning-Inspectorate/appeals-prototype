@@ -1,8 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Do you need to apply for an award of appeal costs?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
 
   {{ govukRadios({
     idPrefix: 'costs-check',
@@ -27,4 +30,5 @@
       }
     ]
   }) }}
+
 {% endblock %}

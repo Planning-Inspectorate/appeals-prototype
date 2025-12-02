@@ -1,8 +1,12 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Upload your separate ownership certificate and agricultural land declaration' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -35,9 +39,11 @@
     },
     uploadHtml: uploadHtml
   }) }}
+
 {% endblock %}
 
 {% block pageScripts %}
+
   <script>
     // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
     $('form').submit(function(e) {
@@ -50,4 +56,5 @@
       $(this).unbind('submit').submit();
     })
   </script>
+
 {% endblock %}

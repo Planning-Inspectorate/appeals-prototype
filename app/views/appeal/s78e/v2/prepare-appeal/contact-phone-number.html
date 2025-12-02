@@ -1,31 +1,35 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'What is your phone number?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
 
-  {% call govukFieldset({
-    legend: {
-    html: title,
-    classes: 'govuk-fieldset__legend--l',
-    isPageHeading: true
-    }
-  }) %}
+  <span class="govuk-caption-l">Prepare appeal</span>
 
-  <p class="govuk-body">
-    We may use your phone number to contact you about the appeal.
-  </p>
+  {% call govukFieldset
+    ({
+      legend: {
+      html: title,
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+      }
+    }) %}
 
-  {{ govukInput({
-    label: {
-      text: "UK telephone number"
-    },
-    id: "telephone-number",
-    name: "telephone-number",
-    type: "tel",
-    autocomplete: "tel",
-    classes: "govuk-input--width-20"
-  }) }}
+    <p class="govuk-body">
+      We may use your phone number to contact you about the appeal.
+    </p>
+
+    {{ govukInput({
+      label: {
+        text: "UK telephone number"
+      },
+      id: "telephone-number",
+      name: "telephone-number",
+      type: "tel",
+      autocomplete: "tel",
+      classes: "govuk-input--width-20"
+    }) }}
 
   {% endcall %}
 

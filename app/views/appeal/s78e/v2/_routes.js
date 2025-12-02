@@ -64,6 +64,14 @@ router.post('/prepare-appeal/:page', function (req, res, next) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/prepare-appeal/appellant-check', function (req, res) {
+  if (req.session.data['who-applied'] != 'You') {
+    res.redirect('appellants-name')
+  } else {
+    res.redirect('contact-details')
+  }
+})
+
+router.post('/prepare-appeal/appellants-name', function (req, res) {
   res.redirect('contact-details')
 })
 
@@ -234,7 +242,7 @@ router.post('/prepare-appeal/procedure--witnesses', function (req, res) {
 })
 
 router.post('/prepare-appeal/other-appeals-check', function (req, res) {
-  if (req.session.data['other-appeals-radio'] == 'Yes') {
+  if (req.session.data['other-appeals-check'] == 'Yes') {
     res.redirect('other-appeal-reference')
   } else {
     res.redirect('../task-list?prepare-appeal-complete=true')

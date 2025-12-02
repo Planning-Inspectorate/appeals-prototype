@@ -4,15 +4,21 @@
 {% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block questions %}
-  {% call govukFieldset({
-    legend: {
-      html: title,
-      classes: 'govuk-fieldset__legend--l',
-      isPageHeading: true
-    }
-  }) %}
 
-    <p class="govuk-hint">This should match the address on the application to the local planning authority</p>
+  <span class="govuk-caption-l">Prepare appeal</span>
+
+  {% call govukFieldset
+    ({
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    }) %}
+
+    <p class="govuk-hint">
+      This should match the address on the application to the local planning authority
+    </p>
 
     {{ govukInput({
       id: 'address-line-1',

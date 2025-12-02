@@ -5,18 +5,7 @@
 
 {% block questions %}
 
-  {% set textareaHTML %}
-    {{ govukTextarea({
-      name: 'health-and-safety__details',
-      id: 'health-and-safety__details',
-      value: data['health-and-safety__details'],
-      rows: '',
-      label: {
-        html: 'Tell us about the health and safety issues'
-      }
-    }) }}
-  {% endset -%}
-
+  <span class="govuk-caption-l">Prepare appeal</span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -37,6 +26,18 @@
     <li>risk of exposure to chemicals, asbestos or radiation</li>
     <li>unmarked changes in level or missing fittings</li>
   </ul>
+
+  {% set textareaHTML %}
+    {{ govukTextarea({
+      name: 'health-and-safety__details',
+      id: 'health-and-safety__details',
+      value: data['health-and-safety__details'],
+      rows: '',
+      label: {
+        html: 'Tell us about the health and safety issues'
+      }
+    }) }}
+  {% endset -%}  
 
   {{ govukRadios({
     idPrefix: 'health-and-safety',

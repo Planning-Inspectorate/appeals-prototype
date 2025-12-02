@@ -1,8 +1,11 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Why would you prefer a '+ (data['procedure'] | lower or 'inquiry') +'?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
 
-{% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
   {{ govukTextarea({
     name: 'procedure-reason',
     id: 'procedure-reason',
@@ -14,4 +17,5 @@
       isPageHeading: true
     }
   }) }}
+  
 {% endblock %}

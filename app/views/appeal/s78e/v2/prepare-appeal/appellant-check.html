@@ -1,8 +1,9 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Was the planning application made in your name?' %}
-
+{% set title = 'Was the application made in your name?' %}
 {% set pageName = title + ' - Planning Inspectorate'%} {% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
 
   {{ govukRadios({
     idPrefix: 'who-applied',
@@ -20,7 +21,7 @@
     },
     items: [
       {
-        html: 'Yes, the planning application was made in my name',
+        html: 'Yes, the application was made in my name',
         value: 'You',
         checked: checked('who-applied','You')
       },
