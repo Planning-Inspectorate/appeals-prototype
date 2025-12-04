@@ -556,7 +556,7 @@ router.post('/upload-documents/:page', function (req, res, next) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/upload-comms', function (req, res) {
-  res.redirect('upload-enforcement-notice?upload-started=true')
+  res.redirect('application?upload-started=true')
 })
 
 router.post('/upload-documents/application', function (req, res) {
