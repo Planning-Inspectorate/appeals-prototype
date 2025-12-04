@@ -191,19 +191,11 @@ router.post('/constraints/right-of-way-check', function (req, res) {
   if (req.session.data['right-of-way-check'] == 'Yes') {
     res.redirect('right-of-way-upload');
   } else {
-    res.redirect('fee-check');
+    res.redirect('other-operations');
   }
 })
 
 router.post('/constraints/right-of-way-upload', function (req, res) {
-  res.redirect('fee-check')
-})
-
-router.post('/constraints/fee-check', function (req, res) {
-  res.redirect('fee-exempt')
-})
-
-router.post('/constraints/fee-exempt', function (req, res) {
   res.redirect('other-operations')
 })
 

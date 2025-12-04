@@ -631,10 +631,16 @@ router.post('/prepare-appeal/supporting-upload-b', function (req, res) {
 
 router.post('/prepare-appeal/submit-planning-application', function (req, res) {
   if (req.session.data['submit-planning-application'] == 'Yes') {
-    res.redirect('fee-upload')
+    res.redirect('application-upload')
   } else {
     res.redirect('all-or-part')
   }
+})
+
+router.post('/prepare-appeal/application-upload', function (req, res) {
+  req.session.data['application-upload'] = req.body['application-upload'];
+  req.session.data['application-upload-complete'] = true;
+  res.redirect('fee-upload')
 })
 
 router.post('/prepare-appeal/fee-upload', function (req, res) {
@@ -647,8 +653,14 @@ router.post('/prepare-appeal/granted-or-refused', function (req, res) {
   if (req.session.data['granted-or-refused'] == 'I have not received a decision') {
     res.redirect('decision-due-date')
   } else {
-    res.redirect('decision-letter-date')
+    res.redirect('decision-upload')
   }
+})
+
+router.post('/prepare-appeal/decision-upload', function (req, res) {
+  req.session.data['decision-upload'] = req.body['decision-upload'];
+  req.session.data['decision-upload-complete'] = true;
+  res.redirect('decision-letter-date')
 })
 
 router.post('/prepare-appeal/decision-letter-date', function (req, res) {

@@ -11,13 +11,17 @@
 {% block questions %}
       <form method="post">
         <h1 class="govuk-heading-l">
-          Upload your application fee receipt
+          Upload your application form
         </h1>
+
+        <p class="govuk-body">Upload the application that you sent to the local planning authority, including the date. Do not upload a draft application.</p>
+
+        <p class="govuk-body">If you do not have your application form, you can search for it on the local planning authority's website.</p>
 
         {% set uploadHtml %}
           {{ govukFileUpload({
-            id: "fee-receipt",
-            name: "fee-receipt",
+            id: "application-upload",
+            name: "application-upload",
             classes: 'moj-multi-file-upload__input',
             label: {
               text: "Drag and drop or choose files",

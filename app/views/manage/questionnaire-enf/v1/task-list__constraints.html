@@ -451,56 +451,6 @@
       } if data['right-of-way-check'] == 'Yes', 
       {
         key: {
-          html: 'Did the appellant apply for planning permission and pay the application fee?'
-        },
-        value: {
-          html: data['fee-check'] or 'No'
-        }
-        if data['fee-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-            {
-              href: 'constraints/fee-check?cya=true',
-              html: 'Change'
-            }
-            if data['fee-check-complete'] else
-            {
-              href: 'constraints/fee-check',
-              html: 'Answer'
-            }
-            ]
-          }
-        }, 
-        {
-          key: {
-            html: 'Is the appeal fee exempt?'
-          },
-          value: {
-            html: data['fee-exempt'] or 'No'
-          }
-          if data['fee-exempt-complete'] else
-          {
-            html: '<span class="govuk-hint">Not started</span>'
-          },
-          actions: {
-            items: [
-              {
-                href: 'constraints/fee-exempt?cya=true',
-                html: 'Change'
-              }
-              if data['fee-exempt-complete'] else
-              {
-                href: 'constraints/fee-exempt',
-                html: 'Answer'
-              }
-            ]
-          }
-      }, 
-      {
-        key: {
           html: 'Does the enforcement notice relate to building, engineering, mining or other operations?'
         },
         value: {

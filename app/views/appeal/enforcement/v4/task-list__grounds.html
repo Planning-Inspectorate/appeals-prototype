@@ -118,9 +118,24 @@
       } if data['grounds'] and 'groundA' in data['grounds'],
 
       {
+        key: { text: "Application form" },
+        value:
+          { html: data['application-upload'] or '<a href="#">application.pdf</a>' }
+          if data['application-upload-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/application-upload?cya=true', html: 'Change' }
+            if data['application-upload-complete'] else
+            { href: 'prepare-appeal/application-upload', html: 'Answer' }
+          ]
+        }
+      } if data['fee-check'] == 'Yes',
+
+      {
         key: { text: "Application fee receipt" },
         value:
-          { html: data['fee-receipt'] or '<a href="#">ground-b-doc.pdf</a>' }
+          { html: data['fee-receipt'] or '<a href="#">receipt.pdf</a>' }
           if data['fee-receipt-complete'] else
           { html: '<span class="govuk-hint">Not started</span>' },
         actions: {
@@ -221,6 +236,21 @@
           ]
         }
       } if data['grounds'] and 'groundA' in data['grounds'],
+
+      {
+        key: { text: "Decision letter from the local planning authority" },
+        value:
+          { html: data['decision-upload'] or '<a href="#">decision.pdf</a>' }
+          if data['decision-upload-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/decision-upload?cya=true', html: 'Change' }
+            if data['decision-upload-complete'] else
+            { href: 'prepare-appeal/decision-upload', html: 'Answer' }
+          ]
+        }
+      } if data['granted-or-refused'] == 'Granted with conditions' or data['granted-or-refused'] == 'Refused',
 
       {
         key: { text: "What is the date on the decision letter from the local planning authority?" },
