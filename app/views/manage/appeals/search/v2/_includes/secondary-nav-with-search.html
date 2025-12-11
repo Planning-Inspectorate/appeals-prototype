@@ -1,0 +1,24 @@
+{{ xGovukSecondaryNavigation({
+    visuallyHiddenTitle: "Secondary menu",
+    items: [{
+      text: "Active (1)",
+      href: "active-search-applied",
+      current: currentPage == "active-search-applied"
+    }, {
+      text: "Waiting for review (0)",
+      href: "wfr-search-applied",
+      current: currentPage == "wfr-search-applied"
+    }, {
+      text: "Decided (0)",
+      href: "decided-search-applied",
+      current: currentPage == "decided-search-applied"
+    }, {
+      text: "Withdrawn (0)",
+      href: "withdrawn-search-applied",
+      current: currentPage == "withdrawn-search-applied"
+    },{
+      text: "Invalid (0)",
+      href: "invalid-search-applied",
+      current: currentPage == "invalid-search-applied"
+    }]
+  }) }}

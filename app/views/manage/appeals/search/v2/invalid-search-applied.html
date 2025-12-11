@@ -2,7 +2,7 @@
 
 
 {% set pageName = "Home" %}
-{% set currentPage = "home" %}
+{% set currentPage = "invalid-search-applied" %}
 
 {% block backLink %}{% endblock %}
 
@@ -23,11 +23,11 @@
 
         <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
         <div id="event-name-hint" class="govuk-hint">
-            You can search by appeal reference, planning application reference or postcode (including spaces)
+            You can search by appeal reference, planning application reference or first line of address
         </div>
 
         <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;"
-            action="withdrawn-search-applied" method="get">
+            action="invalid-applied" method="get">
 
             <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off"
                 style="margin-bottom: 0; width:100%;">
@@ -36,6 +36,9 @@
                 Search
             </button>
         </form>
+
+        <p class="govuk-body" style="padding-top: 10px;"><a href="invalid" class="govuk-link">Clear
+            search</a></p>
 
         {# Size modifiers: xl, l, m #}
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
@@ -48,28 +51,13 @@
         <div class="govuk-grid-column-full">
 
 
-            {{ xGovukSecondaryNavigation({
-                visuallyHiddenTitle: "Secondary menu",
-                items: [{
-                text: "Active (31)",
-                href: "active"
-                }, {
-                text: "Waiting for review (8)",
-                href: "waiting-for-review"
-                }, {
-                text: "Decided (53)",
-                href: "decided"
-                },{
-                text: "Withdrawn (1)",
-                href: "withdrawn",
-                current: true
-                }]
-                }) }}
+            {% include "./_includes/secondary-nav-with-search.html" %}
+
 
             {# Size modifiers: xl, l, m #}
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
-            <h1 class="govuk-heading-l">Withdrawn</h1><table class="govuk-table">
+            <h1 class="govuk-heading-l">Invalid</h1><table class="govuk-table">
                 <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Appeal number</th>

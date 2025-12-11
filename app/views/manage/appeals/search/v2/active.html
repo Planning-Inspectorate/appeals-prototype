@@ -1,14 +1,9 @@
 {% extends '_layouts/layout-pins-manage-users.html' %}
-
-
 {% set pageName = "Home" %}
-{% set currentPage = "home" %}
-
+{% set currentPage = "active" %}
 {% block backLink %}{% endblock %}
 
-
 {% block content %}
-
 
 <div class="govuk-grid-row">
 
@@ -23,7 +18,7 @@
 
         <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
         <div id="event-name-hint" class="govuk-hint">
-            You can search by appeal reference, planning application reference or postcode (including spaces)
+            You can search by appeal reference, planning application reference or first line of address
         </div>
 
         <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;"
@@ -47,24 +42,7 @@
 
         <div class="govuk-grid-column-full">
 
-
-            {{ xGovukSecondaryNavigation({
-            visuallyHiddenTitle: "Secondary menu",
-            items: [{
-            text: "Active (31)",
-            href: "#",
-            current: true
-            }, {
-            text: "Waiting for review (8)",
-            href: "waiting-for-review"
-            }, {
-            text: "Decided (53)",
-            href: "decided"
-            }, {
-            text: "Withdrawn (1)",
-            href: "withdrawn"
-            }]
-            }) }}
+            {% include "./_includes/secondary-nav.html" %}
 
             {# Size modifiers: xl, l, m #}
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
@@ -85,7 +63,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 1345301
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Lead
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">Spital House, Lensfield Rd, Cambridge CB2 1ER</td>
                         <td class="govuk-table__cell">Householder</td>
@@ -99,7 +80,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 1345264
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Child
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT</td>
                         <td class="govuk-table__cell">Full planning</td>
@@ -139,7 +123,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 1295800
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Lead
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">7 Willowmere Crescent, Oakley Marsh, Kent, ZZ2 2TZ</td>
                         <td class="govuk-table__cell">Full planning</td>
@@ -151,7 +138,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 1204968
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Child
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">The Granary, Meadow Lane, Little Wrenford, Norfolk, ZZ3 3ZA</td>
                         <td class="govuk-table__cell">Householder</td>
@@ -165,7 +155,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 20396833
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Child
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">18 Redgate Terrace, Puddleby-on-Thames, Oxfordshire, ZZ4 49Q</td>
                         <td class="govuk-table__cell">Householder</td>
@@ -173,7 +166,7 @@
                         <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
                             Overdue
                           </strong></td>
-                          <td class="govuk-table__cell"><a href="#">Questionnaire</a><br><a href="#">Statement</a><br></td>
+                          <td class="govuk-table__cell"><a href="#">Statement</a><br></td>
                     </tr>
                     <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">
@@ -245,7 +238,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 2950621
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Lead
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">56 Beacon Hill, Southmarsh, Suffolk, CB2 1ET</td>
                         <td class="govuk-table__cell">Householder</td>
@@ -259,7 +255,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 2948632
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Child
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">The Old Watchtower, Cliffside Road, Marlowe Point, Hampshire, CB23 7UA</td>
                         <td class="govuk-table__cell">Full planning</td>
@@ -271,7 +270,10 @@
                         <th scope="row" class="govuk-table__header">
                             <a class="govuk-link" href="#">
                                 2948596
-                            </a>
+                            </a><br>
+                            <strong class="govuk-tag govuk-tag--grey" style="margin-top:10px; margin-bottom:6px;">
+                                Child
+                              </strong>
                         </th>
                         <td class="govuk-table__cell">9 Lantern Yard, Copperwell, Derbyshire, CB2 5OA</td>
                         <td class="govuk-table__cell">Householder</td>

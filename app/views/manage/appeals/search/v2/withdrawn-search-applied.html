@@ -2,7 +2,7 @@
 
 
 {% set pageName = "Home" %}
-{% set currentPage = "home" %}
+{% set currentPage = "withdrawn-search-applied" %}
 
 {% block backLink %}{% endblock %}
 
@@ -23,7 +23,7 @@
 
         <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
         <div id="event-name-hint" class="govuk-hint">
-            You can search by appeal reference, planning application reference or postcode (including spaces)
+            You can search by appeal reference, planning application reference or first line of address
         </div>
 
         <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;">
@@ -34,7 +34,7 @@
                 value="Cambridge">Search</button>
 
         </form>
-        <p class="govuk-body" style="padding-top: 10px;"><a href="waiting-for-review" class="govuk-link">Clear
+        <p class="govuk-body" style="padding-top: 10px;"><a href="withdrawn" class="govuk-link">Clear
                 search</a></p>
 
         {# Size modifiers: xl, l, m #}
@@ -48,35 +48,19 @@
     <div class="govuk-grid-column-full">
 
 
-        {{ xGovukSecondaryNavigation({
-        visuallyHiddenTitle: "Secondary menu",
-        items: [{
-        text: "Active (2)",
-        href: "active-search-applied"
-        }, {
-        text: "Waiting for review (0)",
-        href: "wfr-search-applied",
-        current: true
-        },{
-        text: "Decided (0)",
-        href: "decided-search-applied"
-        }, {
-        text: "Withdrawn (0)",
-        href: "withdrawn-search-applied"
-        }]
-        }) }}
+        {% include "./_includes/secondary-nav-with-search.html" %}
+
 
         {# Size modifiers: xl, l, m #}
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
-        <h1 class="govuk-heading-l">Waiting for review</h1>
-        <table class="govuk-table">
+        <h1 class="govuk-heading-l">Withdrawn</h1><table class="govuk-table">
             <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
                     <th scope="col" class="govuk-table__header">Appeal number</th>
                     <th scope="col" class="govuk-table__header">Address</th>
+                    <th scope="col" class="govuk-table__header">Withdrawn date</th>
                     <th scope="col" class="govuk-table__header">Appeal type</th>
-                    <th scope="col" class="govuk-table__header">Status</th>
                 </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -84,9 +68,9 @@
                 <td class="govuk-table__cell"></td>
                 <td class="govuk-table__cell"></td>
                 <td class="govuk-table__cell"></td>
-                </tr>
-
-            </tbody>
+            </tr>
+            
+        </tbody>
         </table>
 
     </div>

@@ -2,22 +2,82 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">Testing with search and filter UI</h1>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  
+      <h1 class="govuk-heading-l">
+        LPA dashboard search functionality
+      </h1>
 
-<ul class="govuk-list govuk-list--bullet">
-    <li>
-        <strong>MVP:</strong> <a href="search/xgovnav/active">Search</a> with <a href="https://x-govuk.github.io/govuk-prototype-components/secondary-navigation/">xGov Secondary Navigation</a>
-    </li>
-    <li>
-        <a href="search/filters-top/horizontal-v2">Search with tabs</a>
-    </li>
-    <li>
-        <a href="search/filters-top/horizontal">Search with service navigation</a>
-    </li>
+  
+      <h2 class="govuk-heading-m">
+        Latest version
+        {{govukTag({
+            text: "In progress",
+            classes: "govuk-!-margin-left-2 govuk-tag--blue"
+        })}}
+      </h2>
+  
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'search/v2/active',
+        isStartButton: true
+      }) }}
+  
+      <h2 class="govuk-heading-m">Features:</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Added 'Invalid' tab
+        </li>
+        <li>
+          Added lead/child tags to highlight linked appeals
+        </li>
+        <li>
+         Updated hint text to remove postcode and add first line of address
+        </li>
+      </ul>
 
-    <li>
-        <a href="search/filters-side/side">Side menu filtering and search UI</a>
-    </li>
-</ul>
 
+{{ govukAccordion({
+    id: "",
+    items: [
+        {
+            heading: {
+                text: "Version 1"
+            },
+            content: {
+                html: '<ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a href="search/xgovnav/active">Prototype</a>
+                    </li>
+                    <li>
+                        <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1761841478880/a48d37b68ee306c3be1b6e9bf1a9e62fd552d3ab">Research findings from round 1</a>
+                    </li>
+                </ul>'
+            }
+        }
+    ]
+}) }}
+
+
+
+
+{{ govukDetails({
+    summaryText: "Other workings",
+    html: '<ul class="govuk-list govuk-list--bullet">
+        <li>
+            <a href="search/filters-top/horizontal-v2">Search with tabs</a>
+        </li>
+        <li>
+            <a href="search/filters-top/horizontal">Search with service navigation</a>
+        </li>
+    
+        <li>
+            <a href="search/filters-side/side">Side menu filtering and search UI</a>
+        </li>
+    </ul>'
+}) }}
+
+</div>
+</div>
 {% endblock %}
