@@ -60,10 +60,8 @@ router.post('/constraints/:page', function (req, res, next) {
     && req.session.data['tree-order-check-complete']
     && req.session.data['traveller-complete']
     && req.session.data['right-of-way-check-complete']
-    && req.session.data['fee-check-complete']
-    && req.session.data['fee-exempt-complete']
     && req.session.data['refuse-waste-materials-complete']
-    && req.session.data['deposit-materials-complete']
+    && req.session.data['store-minerals-complete']
     && req.session.data['alleged-breach-area-complete']
     && req.session.data['create-building-complete']
     && req.session.data['agricultural-purposes-complete']
@@ -245,10 +243,6 @@ router.post('/constraints/mineral-extraction-materials', function (req, res) {
 
 router.post('/constraints/store-minerals', function (req, res) {
   res.redirect('create-building')
-})
-
-router.post('/constraints/deposit-materials', function (req, res) {
-  res.redirect('alleged-breach-area')
 })
 
 router.post('/constraints/alleged-breach-area', function (req, res) {

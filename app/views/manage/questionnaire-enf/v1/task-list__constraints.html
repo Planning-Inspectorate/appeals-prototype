@@ -25,7 +25,7 @@
           html: 'Is enforcement the correct type of appeal?'
         },
         value: {
-          html: data['appeal-type-check'] + ': ' + data['appeal-reason']or 'Yes'
+          html: (data['appeal-type-check'] or 'Yes') + ': ' + (data['appeal-reason'] or '')
         }
         if data['appeal-type-check-complete'] else
         {
@@ -479,7 +479,7 @@
         html: 'What is the area of the appeal site?'
       },
       value: {
-        html: data['site-area'] + 'm²' or '1000m²'
+        html: (data['site-area'] or '1000') + 'm²'
       }
       if data['site-area-complete'] else
       {
@@ -704,21 +704,21 @@
         html: 'Does the enforcement notice include a change of use of land to store minerals in the open?'
       },
       value: {
-        html: data['deposit-materials'] or 'No'
+        html: data['store-minerals'] or 'No'
       }
-      if data['deposit-materials-complete'] else
+      if data['store-minerals-complete'] else
       {
         html: '<span class="govuk-hint">Not started</span>'
       },
       actions: {
         items: [
           {
-            href: 'constraints/deposit-materials?cya=true',
+            href: 'constraints/store-minerals?cya=true',
             html: 'Change'
           }
-          if data['deposit-materials-complete'] else
+          if data['store-minerals-complete'] else
           {
-            href: 'constraints/deposit-materials',
+            href: 'constraints/store-minerals',
             html: 'Answer'
           }
         ]
@@ -804,7 +804,7 @@
         html: 'Is the appeal site within 67 metres of a trunk road?'
       },
       value: {
-        html: data['trunk-road'] + ': ' + data['trunk-road__details'] or 'No'
+        html: data['trunk-road'] or 'No'
       }
       if data['trunk-road-complete'] else
       {
