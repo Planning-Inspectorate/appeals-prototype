@@ -1,0 +1,108 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">3. </span> Grounds of appeal and supporting facts
+    {% if data['grounds-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['grounds-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+  
+
+    {
+      key: { html: 'Enter the description of the alleged breach' },
+      value: {
+        html: data['description-detail']
+          or 'The council alleges that I erected a single-storey timber outbuilding in my rear garden without planning permission. The structure is used solely as a small home office and does not contain any sleeping accommodation or plumbing.'
+      }
+      if data['description-detail-complete'] else
+      { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/description-of-breach?cya=true', html: 'Change' }
+          if data['description-detail-complete'] else
+          { href: 'prepare-appeal/description-of-breach', html: 'Answer' }
+        ]
+      }
+    },
+
+    {
+      key: { text: "Choose your grounds of appeal" },
+      value:
+        { html: 'Ground (b)' }
+        if data['grounds-complete'] else 
+        { html: '<span class="govuk-hint">Not started</span>' },
+      actions: {
+        items: [
+          { href: 'prepare-appeal/grounds?cya=true', html: 'Change' }
+          if data['grounds-complete'] else
+          { href: 'prepare-appeal/grounds', html: 'Answer' }
+        ]
+      }
+    },
+  
+      {
+        key: { text: "Facts for ground (b)" },
+        value:
+          { html: data['ground-b-reasons'] or 'These are my facts for ground b' }
+          if data['ground-b-reasons-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/facts-b?cya=true', html: 'Change' }
+            if data['ground-b-reasons-complete'] else
+            { href: 'prepare-appeal/facts-b', html: 'Answer' }
+          ]
+        }
+      } if data['grounds-complete'],
+
+      {
+        key: { text: "Do you have any ground (b) supporting documents?" },
+        value:
+          { html: data['supporting-check-b'] or 'No' }
+          if data['supporting-check-b-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/supporting-check-b?cya=true', html: 'Change' }
+            if data['supporting-check-b-complete'] else
+            { href: 'prepare-appeal/supporting-check-b', html: 'Answer' }
+          ]
+        }
+      } if data['grounds-complete'],
+
+
+      {
+        key: { text: "Ground (b) supporting documents" },
+        value:
+          { html: data['_supporting-docs'] or '<a href="#">ground-b-doc.pdf</a>' }
+          if data['_supporting-docs-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/supporting-upload-b?cya=true', html: 'Change' }
+            if data['_supporting-docs-complete'] else
+            { href: 'prepare-appeal/supporting-upload-b', html: 'Answer' }
+          ]
+        }
+      } if data['supporting-check-b'] == 'Yes'
+      ]
+  }) }}
+      
+
+</li>

@@ -1,0 +1,119 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = "Which statements apply to your case?" %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Choose your grounds of appeal
+  </span>
+
+  {{ govukCheckboxes({
+    idPrefix: "grounds",
+    name: "grounds",
+    fieldset: {
+      legend: {
+        text: title,
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: "Select all that apply."
+    },
+    items: [
+      {
+        value: "groundA",
+        text: "Ground (a)",
+        hint: {
+          text: "The building is not of special architectural or historic interest."
+        }
+      },
+      {
+        value: "groundB",
+        text: "Ground (b)",
+        hint: {
+          text: "The alleged breach did not happen."
+        }
+      },
+      {
+        value: "groundC",
+        text: "Ground (c)",
+        hint: {
+          text: "You do not need listed building consent (for example, the works do not affect the building's character or they are for a part of the building that is not listed)."
+        }
+      },
+      {
+        value: "groundD",
+        text: "Ground (d)",
+        hint: {
+          html: 'The work was urgently necessary. To appeal this ground, you must have:
+          <ul class="govuk-list govuk-list--bullet" style="color:#505a5f">
+            <li>
+              completed the work straight away for safety, health or to preserve the building
+            </li>
+            <li>
+              not been able to preserve or make the building safe with repair or temporary support
+            </li>
+            <li>
+              only completed the minimum work to deal with the immediate risk
+            </li>
+          </ul>'
+        }
+      },
+      {
+        value: "groundE",
+        text: "Ground (e)",
+        hint: {
+          text: "Listed building consent should be granted (or conditions changed) for the work."
+        }
+      },
+      {
+        value: "groundF",
+        text: "Ground (f)",
+        hint: {
+          text: "The local planning authority did not serve the notice properly to everyone with an interest in the land."
+        }
+      },
+      {
+        value: "groundG",
+        text: "Ground (g)",
+        hint: {
+          text: "A simpler step (or steps) would achieve the same result."
+        }
+      },
+      {
+        value: "groundH",
+        text: "Ground (h)",
+        hint: {
+          text: "The time to comply with the notice is too short."
+        }
+      },
+      {
+        value: "groundI",
+        text: "Ground (i)",
+        hint: {
+          text: "The required steps will not restore the building's character."
+        }
+      },
+      {
+        value: "groundJ",
+        text: "Ground (j)",
+        hint: {
+          text: "A simpler step (or steps) would reduce the harm caused."
+        }
+      }
+      ,
+      {
+        value: "groundK",
+        text: "Ground (k)",
+        hint: {
+          text: "A simpler step (or steps) would meet listed building consent conditions."
+        }
+      }
+    ]
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+
+{% endblock %}

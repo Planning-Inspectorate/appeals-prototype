@@ -1,0 +1,163 @@
+<li>
+
+
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span> Land details
+    {% if data['land-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['land-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+      {
+        key: { text: "What is the address of the appeal site?" },
+        value:
+          {
+            html:
+              (data['address-line-1'] or '3 Aubrey Road') + '<br>' +
+              (data['address-line-2'] or 'Bedminster') + '<br>' +
+              (data['address-town'] or 'Bristol') + '<br>' +
+              (data['address-postcode'] or 'BS3 3EX')
+          }
+          if data['address-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/address?cya=true', html: 'Change' }
+            if data['address-complete'] else
+            { href: 'prepare-appeal/address', html: 'Answer' }
+          ]
+        }
+      },
+
+
+      {
+        key: { text: "Is the appeal site your contact address?" },
+        value:
+          {
+            html:
+              (data['address-check'] or 'Yes')
+          }
+          if data['address-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/address-check?cya=true', html: 'Change' }
+            if data['address-check-complete'] else
+            { href: 'prepare-appeal/address-check', html: 'Answer' }
+          ]
+        }
+      },
+
+
+      {
+        key: { text: "Contact address" },
+        value:
+          {
+            html:
+              (data['address-line-1'] or '25 Aubrey Road') + '<br>' +
+              (data['address-line-2'] or 'Bedminster') + '<br>' +
+              (data['address-town'] or 'Bristol') + '<br>' +
+              (data['address-postcode'] or 'BS3 4I1')
+          }
+          if data['contact-address-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/contact-address?cya=true', html: 'Change' }
+            if data['conact-address-complete'] else
+            { href: 'prepare-appeal/contact-address', html: 'Answer' }
+          ]
+        }
+      } if data['address-check'] == 'No',
+
+
+      {
+        key: { text: "What is your interest in the land?" },
+        value:
+          {
+            html:
+              (data['interest-in-site'] or 'Owner')          }
+          if data['interest-in-site-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/interest-in-site?cya=true', html: 'Change' }
+            if data['interest-in-site-complete'] else
+            { href: 'prepare-appeal/interest-in-site', html: 'Answer' }
+          ]
+        }
+      },
+
+
+      {
+        key: { text: "Do you have written or verbal permission to use the land?" },
+        value:
+          {
+            html:
+              (data['permission'] or 'No')          }
+          if data['permission-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/permission?cya=true', html: 'Change' }
+            if data['permission-complete'] else
+            { href: 'prepare-appeal/permission', html: 'Answer' }
+          ]
+        }
+      } if data['interest-in-site'] == 'Other',
+
+
+      {
+        key: { text: "Will an inspector need to access your land or property?" },
+        value: {
+          html: (data['site-visibility'] or 'No')
+        } if data['site-visibility-complete'] else
+        { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/site-visibility?cya=true', html: 'Change' }
+            if data['site-visibility-complete'] else
+            { href: 'prepare-appeal/site-visibility', html: 'Answer' }
+          ]
+        }
+      },
+
+
+      {
+        key: { text: "Are there any health and safety issues on the appeal site?" },
+        value:
+          {
+            html:
+              (data['health-and-safety'] or 'Yes')          }
+          if data['health-and-safety-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/health-and-safety?cya=true', html: 'Change' }
+            if data['health-and-safety-complete'] else
+            { href: 'prepare-appeal/health-and-safety', html: 'Answer' }
+          ]
+        }
+      }
+    ]
+  }) }}
+  
+      
+
+</li>

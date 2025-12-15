@@ -410,15 +410,8 @@ router.post('/prepare-appeal/description-of-breach', function (req, res) {
 
 // POST route for grounds of appeal
 router.post('/prepare-appeal/grounds', function (req, res) {
-  const grounds = req.session.data['grounds']; // this can be a string or an array
-
-  // If groundA is selected, redirect to submit-planning-application
-  if (grounds && (grounds.includes && grounds.includes('groundA'))) {
-    res.redirect('fee-check');
-  } else {
-    // Otherwise, go to facts-b
-    res.redirect('facts-b');
-  }
+  const grounds = req.session.data['grounds'];
+    res.redirect('facts-b')
 })
 
 router.post('/prepare-appeal/facts-b', function (req, res) {
@@ -556,7 +549,7 @@ router.post('/upload-documents/:page', function (req, res, next) {
 // ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 
 router.post('/upload-documents/upload-comms', function (req, res) {
-  res.redirect('application?upload-started=true')
+  res.redirect('upload-enforcement-notice?upload-started=true')
 })
 
 router.post('/upload-documents/application', function (req, res) {
@@ -842,6 +835,10 @@ router.post('/before-you-start/contact-check', function (req, res) {
 })
 
 router.post('/before-you-start/contact-date', function (req, res) {
+  res.redirect('upload-comms')
+})
+
+router.post('/before-you-start/upload-comms', function (req, res) {
   res.redirect('cya')
 })
 

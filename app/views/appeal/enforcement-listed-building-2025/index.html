@@ -1,7 +1,7 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set nav = false %}
-{% set title = 'Enforcement' %}
+{% set title = 'Enforcement listed building' %}
 
 {% block backLink %}
 {{ govukBackLink({
@@ -36,43 +36,22 @@ href: '/#appeal'
     <h2 class="govuk-heading-m">
       Latest version
       {{govukTag({
-          text: "Ready for review",
-          classes: "govuk-!-margin-left-2 govuk-tag--light-blue"
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--blue"
       })}}
     </h2>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'enforcement/v4/task-list',
+      href: 'enforcement-listed-building-2025/v1/task-list',
       isStartButton: true
     }) }}
 
     <h2 class="govuk-heading-m">Features:</h2>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        Different task list layout to match enforcement questionnaire
-      </li>
-      <li>
-        New questions added
       </li>
     </ul>
-
-    {# Size modifiers: xl, l, m #}
-    <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
-
-    <h2 class="govuk-heading-m">Previous versions:</h2>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        <a href="enforcement/v3/task-list">Version 3: October 2025</a>
-      </li>
-      <li>
-        <a href="enforcement/v2/task-list">Version 2: September 2025</a>
-      </li>
-      <li>
-        <a href="enforcement-2022/v8/task-list">Previous version (2022)</a>
-      </li>
-    </ul>
-    <p class="govuk-body"></p>
 
   </div>
 </div>

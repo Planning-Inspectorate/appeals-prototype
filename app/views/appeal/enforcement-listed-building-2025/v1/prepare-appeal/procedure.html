@@ -1,0 +1,43 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'How would you prefer us to decide your appeal?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'procedure',
+    name: 'procedure',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Written representations',
+        value: 'Written representations',
+        checked: checked('procedure','Written representations'),
+        hint: {
+          html: 'For appeals where the issues are clear from written statements and a site visit. This is the simplest way to make an appeal.'
+        }
+      },
+      {
+        html: 'Hearing',
+        value: 'Hearing',
+        checked: checked('procedure','Hearing'),
+        hint: {
+          html: 'For appeals with more complex issues. The Inspector leads a discussion to answer questions they have about the appeal.'
+        }
+      },
+      {
+        html: 'Inquiry',
+        value: 'Inquiry',
+        checked: checked('procedure','Inquiry'),
+        hint: {
+          html: 'For appeals with very complex issues. Appeal evidence is tested by legal representatives, who question witnesses under oath.'
+        }
+      }
+    ]
+  }) }}
+{% endblock %}

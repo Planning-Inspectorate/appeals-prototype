@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Enter the description of the alleged breach' %}
+
+{% block questions %}
+
+  {{ govukTextarea({
+    name: "description-detail",
+    id: "description-detail",
+    value: data['description-detail'],
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "The description must match what is on the enforcement notice."
+    }
+  }) }}
+
+{% endblock %}
