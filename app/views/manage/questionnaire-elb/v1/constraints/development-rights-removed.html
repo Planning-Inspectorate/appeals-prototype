@@ -1,0 +1,33 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'What permitted development rights did you remove with the direction?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'development-rights-removed?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'development-rights-removed?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {{ govukTextarea({
+    name: "development-rights-removed",
+    id: "development-rights-removed",
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    }
+  }) }}
+
+
+{% endblock %}

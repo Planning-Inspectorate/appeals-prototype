@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does the alleged breach create any floor space?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'floor-space?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'floor-space?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'floor-space',
+      name: 'floor-space',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('floor-space','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('floor-space','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'floor-space',
+      name: 'floor-space',
+      fieldset: {
+        legend: {
+          html: 'Does the alleged breach create any floor space?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('floor-space','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('floor-space','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

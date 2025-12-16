@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Do you have your statement of case?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+   
+  {{ govukRadios({
+    idPrefix: 'statement-of-case-check',
+    name: 'statement-of-case-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('statement-of-case-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('statement-of-case-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

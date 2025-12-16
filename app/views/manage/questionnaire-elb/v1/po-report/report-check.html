@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Do you have a planning officer\'s report?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'report-check',
+    name: 'report-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('report-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('report-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

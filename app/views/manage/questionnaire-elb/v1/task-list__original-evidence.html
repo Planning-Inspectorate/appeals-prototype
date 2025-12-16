@@ -1,0 +1,195 @@
+
+{% set listofuserdocs %}
+  <div class="long-answers">
+    <ol class="govuk-list govuk-list--number">
+      <li>Planning Application Form – completed and signed by the applicant.</li>
+      <li>Location Plan – showing the site in relation to surrounding area.</li>
+      <li>Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.</li>
+      <li>Design and Access Statement – explaining the design rationale and accessibility considerations.</li>
+      <li>Planning Statement – outlining how the proposal complies with local and national planning policies.</li>
+      <li>Transport Assessment – evaluating traffic impact and proposed transport infrastructure.</li>
+      <li>Flood Risk Assessment – assessing potential flood risks and mitigation strategies.</li>
+      <li>Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.</li>
+      <li>Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.</li>
+      <li>Heritage Statement – if the site affects listed buildings or conservation areas.</li>
+      <li>Noise Impact Assessment – analysing potential noise issues and mitigation.</li>
+      <li>Air Quality Assessment – evaluating air pollution impacts.</li>
+      <li>Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable practices.</li>
+    </ol>
+  </div>
+{% endset %}
+
+{% set listoflpadocs %}
+  <div class="long-answers">
+    <ol class="govuk-list govuk-list--number">
+      <li>Planning Application Form – completed and signed by the applicant.</li>
+      <li>Location Plan – showing the site in relation to surrounding area.</li>
+      <li>Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.</li>
+      <li>Design and Access Statement – explaining the design rationale and accessibility considerations.</li>
+      <li>Planning Statement – outlining how the proposal complies with local and national planning policies.</li>
+      <li>Transport Assessment – evaluating traffic impact and proposed transport infrastructure.</li>
+      <li>Flood Risk Assessment – assessing potential flood risks and mitigation strategies.</li>
+      <li>Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.</li>
+      <li>Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.</li>
+      <li>Heritage Statement – if the site affects listed buildings or conservation areas.</li>
+      <li>Noise Impact Assessment – analysing potential noise issues and mitigation.</li>
+      <li>Air Quality Assessment – evaluating air pollution impacts.</li>
+      <li>Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable practices.</li>
+      <li>Mining Survay - Geotechnical and geoenvironmental mining investigation report</li>
+    </ol>
+  </div>
+{% endset %}
+
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span>
+    Original evidence
+    {% if data['og-evidence-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['og-evidence-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Design and access statement'
+        },
+        value: {
+          html: data['design-access-statement-check'] or 'No'
+        }
+        if data['design-access-statement-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/design-access-statement-check?cya=true',
+              html: 'Change'
+            }
+            if data['design-access-statement-check-complete'] else
+            {
+              href: 'og-evidence/design-access-statement-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload design and access statement'
+        },
+        value: {
+          html: data['design-access-statement-upload'] or '<a href="#" class="govuk-link">design-access-statement.pdf</a>'
+        }
+        if data['design-access-statement-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/design-access-statement-upload?cya=true',
+              html: 'Change'
+            }
+            if data['design-access-statement-upload-complete'] else
+            {
+              href: 'og-evidence/design-access-statement-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['design-access-statement-check'] == 'Yes',
+      {
+        key: {
+          html: 'Upload plans and drawings submitted with the application'
+        },
+        value: {
+          html: data['plans-and-drawings-upload'] or '<a href="#" class="govuk-link">plans-and-drawings.pdf</a>'
+        }
+        if data['plans-and-drawings-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/plans-and-drawings-upload?cya=true',
+              html: 'Change'
+            }
+            if data['plans-and-drawings-upload-complete'] else
+            {
+              href: 'og-evidence/plans-and-drawings-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'List of documents used for the decision'
+        },
+        value: {
+          html: listofuserdocs | safe
+        }
+        if data['list-of-documents-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/list-of-documents-check?cya=true',
+              html: 'Change'
+            }
+            if data['list-of-documents-check-complete'] else
+            {
+              href: 'og-evidence/list-of-documents-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['list-of-documents-check'] != 'No',
+      {
+        key: {
+          html: 'List of documents used for the decision'
+        },
+        value: {
+          html: data['application-documents'] or listoflpadocs
+        }
+        if data['list-of-documents-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/list-of-documents-check?cya=true',
+              html: 'Change'
+            }
+            if data['list-of-documents-check-complete'] else
+            {
+              href: 'og-evidence/list-of-documents-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['list-of-documents-check'] == 'No'
+
+    ]
+  }) }}
+</li>

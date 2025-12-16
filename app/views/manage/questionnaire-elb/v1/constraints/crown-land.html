@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the appeal site on Crown land?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'crown-land?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'crown-land?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'crown-land',
+      name: 'crown-land',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('crown-land','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('crown-land','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'crown-land',
+      name: 'crown-land',
+      fieldset: {
+        legend: {
+          html: 'Is the appeal site on Crown land?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('crown-land','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('crown-land','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

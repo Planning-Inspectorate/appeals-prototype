@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the appeal fee exempt?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'fee-exempt?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'fee-exempt?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'fee-exempt',
+      name: 'fee-exempt',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('fee-exempt','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('fee-exempt','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'fee-exempt',
+      name: 'fee-exempt',
+      fieldset: {
+        legend: {
+          html: 'Is the appeal fee exempt?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('fee-exempt','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('fee-exempt','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

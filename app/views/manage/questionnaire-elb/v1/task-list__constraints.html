@@ -1,0 +1,1079 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">1. </span> Constraints, designations and other issues
+    {% if data['constraints-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['constraints-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Is enforcement the correct type of appeal?'
+        },
+        value: {
+          html: (data['appeal-type-check'] or 'Yes') + ': ' + (data['appeal-reason'] or '')
+        }
+        if data['appeal-type-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/appeal-type-check?cya=true',
+              html: 'Change'
+            }
+            if data['appeal-type-check-complete'] else
+            {
+              href: 'constraints/appeal-type-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Does the development change a listed building?'
+        },
+        value: {
+          html: data['listed-building-check'] or 'No'
+        }
+        if data['listed-building-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/listed-building-check?cya=true',
+              html: 'Change'
+            }
+            if data['listed-building-check-complete'] else
+            {
+              href: 'constraints/listed-building-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Listed buiding details'
+        },
+        value: {
+          html: ('1282032')
+               +('<br>Grade II listed building')
+               +('<br>138-142, York Road, Bedminster, Bristol, BS3 4AL')
+        }
+        if data['listed-building-details-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/listed-building-details?cya=true',
+              html: 'Change'
+            }
+            if data['listed-building-details-complete'] else
+            {
+              href: 'constraints/listed-building-details',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['listed-building-check'] == 'Yes',
+      {
+        key: {
+          html: 'Does the development affect the setting of listed buildings?'
+        },
+        value: {
+          html: data['affected-listed-building-check'] or 'No'
+        }
+        if data['affected-listed-building-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/affected-listed-building-check?cya=true',
+              html: 'Change'
+            }
+            if data['affected-listed-building-check-complete'] else
+            {
+              href: 'constraints/affected-listed-building-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Affected listed buiding details'
+        },
+        value: {
+          html: ('1282050')
+               +('<br>Grade II listed building')
+               +('<br>155, York Road, Bedminster, Bristol, BS3 4AL')
+        }
+        if data['affected-listed-building-details-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/affected-listed-building-details?cya=true',
+              html: 'Change'
+            }
+            if data['affected-listed-building-details-complete'] else
+            {
+              href: 'constraints/affected-listed-building-details',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['affected-listed-building-check'] == 'Yes',
+      {
+        key: {
+          html: 'Would the development affect a scheduled monument?'
+        },
+        value: {
+          html: data['scheduled-monument'] or 'No'
+        }
+        if data['scheduled-monument-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/scheduled-monument?cya=true',
+              html: 'Change'
+            }
+            if data['scheduled-monument-complete'] else
+            {
+              href: 'constraints/scheduled-monument',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Is the site in, or next to a conservation area?'
+        },
+        value: {
+          html: data['conservation-check'] or 'Not in or next to a conservation area'
+        }
+        if data['conservation-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/conservation-check?cya=true',
+              html: 'Change'
+            }
+            if data['conservation-check-complete'] else
+            {
+              href: 'constraints/conservation-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Conservation area map and guidance'
+        },
+        value: {
+          html: data['conservation-upload'] or 'conservation-map.pdf'
+        }
+        if data['conservation-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/conservation-upload?cya=true',
+              html: 'Change'
+            }
+            if data['conservation-upload-complete'] else
+            {
+              href: 'constraints/conservation-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['conservation-check'] == 'Yes',
+      {
+        key: {
+          html: 'Would the development affect a protected species?'
+        },
+        value: {
+          html: data['protected-species'] or 'No'
+        }
+        if data['protected-species-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/protected-species?cya=true',
+              html: 'Change'
+            }
+            if data['protected-species-complete'] else
+            {
+              href: 'constraints/protected-species',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Is the appeal site in a green belt?'
+        },
+        value: {
+          html: data['green-belt'] or 'No'
+        }
+        if data['green-belt-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/green-belt?cya=true',
+              html: 'Change'
+            }
+            if data['green-belt-complete'] else
+            {
+              href: 'constraints/green-belt',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Is the site in a national landscape?'
+        },
+        value: {
+          html: data['outstanding-natural-beauty'] or 'No'
+        }
+        if data['outstanding-natural-beauty-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/outstanding-natural-beauty?cya=true',
+              html: 'Change'
+            }
+            if data['outstanding-natural-beauty-complete'] else
+            {
+              href: 'constraints/outstanding-natural-beauty',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Is the development in, near or likely to affect any designated sites?'
+        },
+        value: {
+          html: (data['designated-sites'] | e | replace(',', '<br>') or 'No, it is not in, near or likely to affect any designated sites') if data['designated-sites'] != 'No, it is not in, near or likely to affect any designated sites' else 'No, it is not in, near or likely to affect any designated sites'
+        }
+        if data['designated-sites-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/designated-sites?cya=true',
+              html: 'Change'
+            }
+            if data['designated-sites-complete'] else
+            {
+              href: 'constraints/designated-sites',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Does a Tree Preservation Order (TPO) apply to any part of the site?'
+        },
+        value: {
+          html: data['tree-order-check'] or 'No'
+        }
+        if data['tree-order-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/tree-order-check?cya=true',
+              html: 'Change'
+            }
+            if data['tree-order-check-complete'] else
+            {
+              href: 'constraints/tree-order-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Tree Preservation Order'
+        },
+        value: {
+          html: data['tree-order-upload'] or 'tree-preservation-order.pdf'
+        }
+        if data['tree-order-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/tree-order-upload?cya=true',
+              html: 'Change'
+            }
+            if data['tree-order-upload-complete'] else
+            {
+              href: 'constraints/tree-order-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['tree-order-check'] == 'Yes',
+      {
+        key: {
+          html: 'Does the development relate to anyone claiming to be a Gypsy or Traveller?'
+        },
+        value: {
+          html: data['traveller'] or 'No'
+        }
+        if data['traveller-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/traveller?cya=true',
+              html: 'Change'
+            }
+            if data['traveller-complete'] else
+            {
+              href: 'constraints/traveller',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Would a public right of way need to be removed or diverted?'
+        },
+        value: {
+          html: data['right-of-way-check'] or 'No'
+        }
+        if data['right-of-way-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/right-of-way-check?cya=true',
+              html: 'Change'
+            }
+            if data['right-of-way-check-complete'] else
+            {
+              href: 'constraints/right-of-way-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Definitive map and statement extract'
+        },
+        value: {
+          html: data['right-of-way-upload'] or 'right-of-way.pdf'
+        }
+        if data['right-of-way-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/right-of-way-upload?cya=true',
+              html: 'Change'
+            }
+            if data['right-of-way-upload-complete'] else
+            {
+              href: 'constraints/right-of-way-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['right-of-way-check'] == 'Yes', 
+      {
+        key: {
+          html: 'Does the enforcement notice relate to building, engineering, mining or other operations?'
+        },
+        value: {
+          html: data['other-operation'] or 'No'
+        }
+        if data['other-operations-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/other-operations?cya=true',
+              html: 'Change'
+            }
+            if data['other-operations-complete'] else
+            {
+              href: 'constraints/other-operations',
+              html: 'Answer'
+            }
+          ]
+        }
+    },
+    {
+      key: {
+        html: 'What is the area of the appeal site?'
+      },
+      value: {
+        html: (data['site-area'] or '1000') + 'm²'
+      }
+      if data['site-area-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/site-area?cya=true',
+            html: 'Change'
+          }
+          if data['site-area-complete'] else
+          {
+            href: 'constraints/site-area',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the area of the alleged breach the same as the site area?'
+      },
+      value: {
+        html: data['alleged-breach-area'] or 'No'
+      }
+      if data['alleged-breach-area-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/alleged-breach-area?cya=true',
+            html: 'Change'
+          }
+          if data['alleged-breach-area-complete'] else
+          {
+            href: 'constraints/alleged-breach-area',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Does the alleged breach create any floor space?'
+      },
+      value: {
+        html: data['floor-space'] or 'No'
+      }
+      if data['floor-space-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/floor-space?cya=true',
+            html: 'Change'
+          }
+          if data['floor-space-complete'] else
+          {
+            href: 'constraints/floor-space',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Does the enforcement notice include a change of use of land to dispose refuse or waste materials?'
+      },
+      value: {
+        html: data['refuse-waste-materials'] or 'No'
+      }
+      if data['refuse-waste-materials-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/refuse-waste-materials?cya=true',
+            html: 'Change'
+          }
+          if data['refuse-waste-materials-complete'] else
+          {
+            href: 'constraints/refuse-waste-materials',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the appeal site within 250m of a waste landfill site?'
+      },
+      value: {
+        html: data['landfill-site'] or 'No'
+      }
+      if data['landfill-site-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/landfill-site?cya=true',
+            html: 'Change'
+          }
+          if data['landfill-site-complete'] else
+          {
+            href: 'constraints/landfill-site',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Does the alleged development involve importing waste materials?'
+      },
+      value: {
+        html: data['waste-materials-import'] or 'No'
+      }
+      if data['waste-materials-import-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/waste-materials-import?cya=true',
+            html: 'Change'
+          }
+          if data['waste-materials-import-complete'] else
+          {
+            href: 'constraints/waste-materials-import',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the appeal site within 400m of an area of underground or surface mineral interest?'
+      },
+      value: {
+        html: data['underground-interest'] or 'No'
+      }
+      if data['underground-interest-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/underground-interest?cya=true',
+            html: 'Change'
+          }
+          if data['underground-interest-complete'] else
+          {
+            href: 'constraints/underground-interest',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Upload plan that shows the location of the interest and the appeal site'
+      },
+      value: {
+        html: data['underground-interest-upload'] or 'plan.pdf'
+      }
+      if data['underground-interest-upload-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/underground-interest-upload?cya=true',
+            html: 'Change'
+          }
+          if data['underground-interest-upload-complete'] else
+          {
+            href: 'constraints/underground-interest-upload',
+            html: 'Upload'
+          }
+        ]
+      }
+    } if data['underground-interest'] == 'Yes',
+    {
+      key: {
+        html: 'Does the enforcement notice include the change of use of land to dispose of remaining materials after mineral extraction?'
+      },
+      value: {
+        html: data['mineral-extraction-materials'] or 'No'
+      }
+      if data['mineral-extraction-materials-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/mineral-extraction-materials?cya=true',
+            html: 'Change'
+          }
+          if data['mineral-extraction-materials-complete'] else
+          {
+            href: 'constraints/mineral-extraction-materials',
+            html: 'Answer'
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        html: 'Does the enforcement notice include a change of use of land to store minerals in the open?'
+      },
+      value: {
+        html: data['store-minerals'] or 'No'
+      }
+      if data['store-minerals-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/store-minerals?cya=true',
+            html: 'Change'
+          }
+          if data['store-minerals-complete'] else
+          {
+            href: 'constraints/store-minerals',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Does the enforcement notice include the erection of a building or buildings?'
+      },
+      value: {
+        html: data['create-building'] or 'No'
+      }
+      if data['create-building-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/create-building?cya=true',
+            html: 'Change'
+          }
+          if data['create-building-complete'] else
+          {
+            href: 'constraints/create-building',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the building on agricultural land and will it be used for agricultural purposes?'
+      },
+      value: {
+        html: data['agricultural-purposes'] or 'No'
+      }
+      if data['agricultural-purposes-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/agricultural-purposes?cya=true',
+            html: 'Change'
+          }
+          if data['agricultural-purposes-complete'] else
+          {
+            href: 'constraints/agricultural-purposes',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the enforcement notice for a single private dwelling house?'
+      },
+      value: {
+        html: data['single-house'] or 'No'
+      }
+      if data['single-house-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/single-house?cya=true',
+            html: 'Change'
+          }
+          if data['single-house-complete'] else
+          {
+            href: 'constraints/single-house',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the appeal site within 67 metres of a trunk road?'
+      },
+      value: {
+        html: data['trunk-road'] or 'No'
+      }
+      if data['trunk-road-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/trunk-road?cya=true',
+            html: 'Change'
+          }
+          if data['trunk-road-complete'] else
+          {
+            href: 'constraints/trunk-road',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Is the appeal site on Crown land?'
+      },
+      value: {
+        html: data['crown-land'] or 'No'
+      }
+      if data['crown-land-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/crown-land?cya=true',
+            html: 'Change'
+          }
+          if data['crown-land-complete'] else
+          {
+            href: 'constraints/crown-land',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Did you serve a stop notice?'
+      },
+      value: {
+        html: data['stop-notice'] or 'No'
+      }
+      if data['stop-notice-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/stop-notice?cya=true',
+            html: 'Change'
+          }
+          if data['stop-notice-complete'] else
+          {
+            href: 'constraints/stop-notice',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Upload stop notice'
+      },
+      value: {
+        html: data['stop-notice-upload'] or 'stop_notice.pdf'
+      }
+      if data['stop-notice-upload-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/stop-notice-upload?cya=true',
+            html: 'Change'
+          }
+          if data['stop-notice-upload-complete'] else
+          {
+            href: 'constraints/stop-notice-upload',
+            html: 'Upload'
+          }
+        ]
+      }
+    } if data['stop-notice'] == 'Yes',
+    {
+      key: {
+        html: 'Did you remove any permitted development rights for the appeal site?'
+      },
+      value: {
+        html: data['development-rights'] or 'No'
+      }
+      if data['development-rights-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/development-rights?cya=true',
+            html: 'Change'
+          }
+          if data['development-rights-complete'] else
+          {
+            href: 'constraints/development-rights',
+            html: 'Answer'
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        html: 'Upload article 4 direction'
+      },
+      value: {
+        html: data['development-rights-upload'] or 'article-4-direction.pdf'
+      }
+      if data['development-rights-upload-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/development-rights-upload?cya=true',
+            html: 'Change'
+          }
+          if data['development-rights-upload-complete'] else
+          {
+            href: 'constraints/development-rights-upload',
+            html: 'Upload'
+          }
+        ]
+      }
+    } if data['development-rights'] == 'Yes',
+    {
+      key: {
+        html: 'What permitted development rights did you remove with the direction?'
+      },
+      value: {
+        html: data['development-rights-removed'] or 'No'
+      }
+      if data['development-rights-removed-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/development-rights?cya=true',
+            html: 'Change'
+          }
+          if data['development-rights-removed-complete'] else
+          {
+            href: 'constraints/development-rights-removed',
+            html: 'Answer'
+          }
+        ]
+      }
+    } if data['development-rights'] == 'Yes',
+    {
+      key: {
+        html: 'Did you restrict any development rights using a planning condition?'
+      },
+      value: {
+        html: data['development-rights-removed'] or 'No'
+      }
+      if data['development-rights-removed-complete'] else
+      {
+        html: '<span class="govuk-hint">Not started</span>'
+      },
+      actions: {
+        items: [
+          {
+            href: 'constraints/development-rights-removed?cya=true',
+            html: 'Change'
+          }
+          if data['development-rights-removed-complete'] else
+          {
+            href: 'constraints/development-rights-removed',
+            html: 'Answer'
+          }
+          ]
+        }
+      }if data['development-rights'] == 'Yes',
+      {
+        key: {
+          html: 'Did you restrict any development rights using a planning condition?'
+        },
+        value: {
+          html: data['planning-condition'] or 'No'
+        }
+        if data['planning-condition-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/planning-condition?cya=true',
+              html: 'Change'
+            }
+            if data['planning-condition-complete'] else
+            {
+              href: 'constraints/planning-condition',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload relevant permission'
+        },
+        value: {
+          html: data['relevant-permission-upload'] or 'permission.pdf'
+        }
+        if data['relevant-permission-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/relevant-permission-upload?cya=true',
+              html: 'Change'
+            }
+            if data['relevant-permission-upload-complete'] else
+            {
+              href: 'constraints/relevant-permission-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['planning-condition'] == 'Yes',
+      {
+        key: {
+          html: 'Does the alleged development involve work to meet the needs of a disabled person?'
+        },
+        value: {
+          html: data['disabled-person'] or 'No'
+        }
+        if data['disabled-person-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'constraints/disabled-person?cya=true',
+              html: 'Change'
+            }
+            if data['disabled-person-complete'] else
+            {
+              href: 'constraints/disabled-person',
+              html: 'Answer'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+</li>

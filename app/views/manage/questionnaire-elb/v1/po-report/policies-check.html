@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Do you have any relevant policies from your statutory development plan?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+   
+  {{ govukRadios({
+    idPrefix: 'policies-check',
+    name: 'policies-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('policies-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('policies-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

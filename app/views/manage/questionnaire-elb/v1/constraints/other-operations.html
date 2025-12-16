@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does the enforcement notice relate to building, engineering, mining or other operations?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'other-operations?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'other-operations?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'other-operations',
+      name: 'other-operations',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('other-operations','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('other-operations','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'other-operations',
+      name: 'other-operations',
+      fieldset: {
+        legend: {
+          html: 'Does the enforcement notice relate to building, engineering, mining or other operations?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('other-operations','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('other-operations','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,150 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">4. </span> Consultation responses and representations
+    {% if data['consultation-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['consultation-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Did you consult all the relevant statutory consultees about the development?'
+        },
+        value: {
+          html: data['consulted'] or 'No'
+        }
+        if data['consulted-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'consultation/consulted?cya=true',
+              html: 'Change'
+            }
+            if data['consulted-complete'] else
+            {
+              href: 'consultation/consulted',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Do you have any consultation responses or standing advice from statutory consultees to upload?'
+        },
+        value: {
+          html: data['consultation-responses-check'] or 'No'
+        }
+        if data['consultation-responses-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'consultation/consultation-responses-check?cya=true',
+              html: 'Change'
+            }
+            if data['consultation-responses-check-complete'] else
+            {
+              href: 'consultation/consultation-responses-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Consultation responses and standing advice'
+        },
+        value: {
+          html: data['consultation-responses-upload'] or 'consultation-responses.pdf'
+        }
+        if data['consultation-responses-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'consultation/consultation-responses-upload?cya=true',
+              html: 'Change'
+            }
+            if data['consultation-responses-upload-complete'] else
+            {
+              href: 'consultation/consultation-responses-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['consultation-responses-check'] == 'Yes',
+      {
+        key: {
+          html: 'Did you receive representations from members of the public or other parties?'
+        },
+        value: {
+          html: data['other-parties-check'] or 'No'
+        }
+        if data['other-parties-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'consultation/other-parties-check?cya=true',
+              html: 'Change'
+            }
+            if data['other-parties-check-complete'] else
+            {
+              href: 'consultation/other-parties-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Representations from members of the public or other parties'
+        },
+        value: {
+          html: data['other-parties-upload'] or 'other-parties.pdf'
+        }
+        if data['other-parties-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'consultation/other-parties-upload?cya=true',
+              html: 'Change'
+            }
+            if data['other-parties-upload-complete'] else
+            {
+              href: 'consultation/other-parties-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['other-parties-check'] == 'Yes'
+    ]
+  }) }}
+</li>

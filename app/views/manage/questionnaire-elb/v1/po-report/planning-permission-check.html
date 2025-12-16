@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did you previously grant any planning permission for this development?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+   
+  {{ govukRadios({
+    idPrefix: 'planning-permission-check',
+    name: 'planning-permission-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('planning-permission-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('planning-permission-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the appeal site within 400m of an area of underground or surface mineral interest?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'underground-interest?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'underground-interest?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'underground-interest',
+      name: 'underground-interest',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('underground-interest','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('underground-interest','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'underground-interest',
+      name: 'underground-interest',
+      fieldset: {
+        legend: {
+          html: 'Is the appeal site within 400m of an area of underground or surface mineral interest?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('underground-interest','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('underground-interest','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

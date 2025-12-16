@@ -1,0 +1,52 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Emerging plan' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  <h1 class="govuk-heading-l">{{title}}</h1>
+
+    <p class="govuk-!-margin-bottom-2">We need to know if you have a:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        development plan that has been submitted for examination
+      </li>
+      <li>
+        development plan that has been examined and found to be sound or met its basic conditions
+      </li>
+      <li>
+        neighbourhood plan that is awaiting, or has passed a referendum
+      </li>
+    </ul>
+
+  {{ govukRadios({
+    idPrefix: 'emerging-plan-check',
+    name: 'emerging-plan-check',
+    fieldset: {
+      legend: {
+        html: 'Do you have an emerging plan this is relevant to this appeal?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('emerging-plan-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('emerging-plan-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

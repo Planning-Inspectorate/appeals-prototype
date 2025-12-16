@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Did the applicant submit a design and access statement for their application?" %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Original evidence
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'design-access-statement-check',
+    name: 'design-access-statement-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('design-access-statement-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('design-access-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

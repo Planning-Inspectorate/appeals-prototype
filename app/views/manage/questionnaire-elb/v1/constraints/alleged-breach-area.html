@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the area of the alleged breach the same as the site area?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'alleged-breach-area?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'alleged-breach-area?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'alleged-breach-area',
+      name: 'alleged-breach-area',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('alleged-breach-area','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('alleged-breach-area','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'alleged-breach-area',
+      name: 'alleged-breach-area',
+      fieldset: {
+        legend: {
+          html: 'Is the area of the alleged breach the same as the site area?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('alleged-breach-area','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('alleged-breach-area','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

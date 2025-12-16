@@ -1,0 +1,68 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload relevant policies from your statutory development plan' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-!-margin-bottom-2">Only upload the policies that you listed in the decision.</p>
+  <p class="govuk-!-margin-bottom-2">You must include the:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>front page</li>
+    <li>title</li>
+    <li>date that the policy was approved or adopted</li>
+    <li>status of the plan</li>
+    <li>copies of the policies and the relevant supporting text</li>
+  </ul>
+
+  {% set uploadHtml %}
+    {{ govukFileUpload({
+      id: 'policies-upload',
+      name: 'policies-upload',
+      classes: 'moj-multi-file-upload__input',
+      label: {
+        text: 'Upload files',
+        classes: 'govuk-label--m'
+      },
+      hint: {
+        text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB'
+      },
+      attributes: { multiple: '' }
+    }) }}
+
+    {{govukButton({
+      text: 'Upload file',
+      classes: 'govuk-button--secondary moj-multi-file-upload__button'
+    })}}
+  {% endset %}
+
+  {{ mojMultiFileUpload({
+    uploadedFiles: {
+      heading: { text: 'Files added' },
+      items: []
+    },
+    uploadHtml: uploadHtml
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
+    $('form').submit(function(e) {
+      e.preventDefault();
+
+      $('.moj-multi-file-upload__filename').each(function() {
+        $('<input name="policies-upload" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+      });
+
+      $(this).unbind('submit').submit();
+    })
+  </script>
+{% endblock %}

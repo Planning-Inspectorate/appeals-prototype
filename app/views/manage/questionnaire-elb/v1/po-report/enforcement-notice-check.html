@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Was there an enforcement notice in force at the date of the application?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'enforcement-notice-check',
+    name: 'enforcement-notice-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('enforcement-notice-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('enforcement-notice-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

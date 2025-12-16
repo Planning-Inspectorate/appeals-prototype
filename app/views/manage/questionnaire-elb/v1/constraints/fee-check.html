@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did the appellant apply for planning permission and pay the application fee?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'fee-check?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'fee-check?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'fee-check',
+      name: 'fee-check',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('fee-check','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('fee-check','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'fee-check',
+      name: 'fee-check',
+      fieldset: {
+        legend: {
+          html: 'Did the appellant apply for planning permission and pay the application fee?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('fee-check','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('fee-check','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

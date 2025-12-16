@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the building on agricultural land and will it be used for agricultural purposes?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'agricultural-purposes?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'agricultural-purposes?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'agricultural-purposes',
+      name: 'agricultural-purposes',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('agricultural-purposes','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('agricultural-purposes','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'agricultural-purposes',
+      name: 'agricultural-purposes',
+      fieldset: {
+        legend: {
+          html: 'Is the building on agricultural land and will it be used for agricultural purposes?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('agricultural-purposes','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('agricultural-purposes','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

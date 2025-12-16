@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does the enforcement notice include a change of use of land to store minerals in the open?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'store-minerals?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'store-minerals?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'store-minerals',
+      name: 'store-minerals',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('store-minerals','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('store-minerals','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'store-minerals',
+      name: 'store-minerals',
+      fieldset: {
+        legend: {
+          html: 'Does the enforcement notice include a change of use of land to store minerals in the open?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('store-minerals','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('store-minerals','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

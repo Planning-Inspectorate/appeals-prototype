@@ -1,0 +1,52 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Will you carry out a consultation for potential planning permission?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  {% set detailsHTML %}
+    {{ govukTextarea({
+      name: 'consultees__details',
+      id: 'consultees__details',
+      value: data['consultees__details'],
+      rows: '5',
+      label: {
+        html: 'Enter the names and addresses of any consultees'
+      }
+    }) }}
+  {% endset %}
+   
+  {{ govukRadios({
+    idPrefix: 'planning-permission-consultation',
+    name: 'planning-permission-consultation',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hintText
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('planning-permission-consultation','Yes'),
+        conditional: {
+          html: detailsHTML
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('planning-permission-consultation','No')
+      }
+    ]
+  }) }}
+{% endblock %}

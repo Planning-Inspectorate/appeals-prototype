@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Does the enforcement notice include a change of use of land to dispose refuse or waste materials?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'refuse-waste-materials?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'refuse-waste-materials?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'refuse-waste-materials',
+      name: 'refuse-waste-materials',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('refuse-waste-materials','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('refuse-waste-materials','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'refuse-waste-materials',
+      name: 'refuse-waste-materials',
+      fieldset: {
+        legend: {
+          html: 'Does the enforcement notice include a change of use of land to dispose refuse or waste materials?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('refuse-waste-materials','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('refuse-waste-materials','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

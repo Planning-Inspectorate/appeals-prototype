@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did you consult Historic England?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'historic-england?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'historic-england?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'historic-england',
+      name: 'historic-england',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('historic-england','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('historic-england','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'historic-england',
+      name: 'historic-england',
+      fieldset: {
+        legend: {
+          html: 'Did you consult Historic England?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('historic-england','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('historic-england','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

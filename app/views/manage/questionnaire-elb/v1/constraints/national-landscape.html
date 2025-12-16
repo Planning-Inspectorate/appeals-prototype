@@ -1,0 +1,76 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the site in a national landscape?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'national-landscape?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'national-landscape?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'national-landscape',
+      name: 'national-landscape',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('national-landscape','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('national-landscape','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'national-landscape',
+      name: 'national-landscape',
+      fieldset: {
+        legend: {
+          html: 'Is the site in a national landscape?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('national-landscape','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('national-landscape','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}

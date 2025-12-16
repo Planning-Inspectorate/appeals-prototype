@@ -1,0 +1,77 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Check if there are any new conditions' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Appeal process
+  </span>
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Tell us about any new conditions. Do not include the standard conditions.
+  </p>
+
+  {% set standardConditions %}
+    <p class="govuk-body">The development must:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        start within 3 years from the appeal decision
+      </li>
+      <li>
+        use materials for external surfaces that match the existing building
+      </li>
+      <li>
+        match the approved plans
+      </li>
+    </ul>
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'The standard conditions',
+    html: standardConditions
+  }) }}
+
+  {% set extraConditions %}
+    {{ govukTextarea({
+      name: 'extra-conditions',
+      id: 'extra-conditions',
+      value: data['extra-conditions'],
+      rows: '3',
+      label: {
+        html: 'Enter the new conditions'
+      }
+    }) }}
+  {% endset -%}
+
+  {{ govukRadios({
+    idPrefix: 'extra-conditions-check',
+    name: 'extra-conditions-check',
+    fieldset: {
+      legend: {
+        html: 'Are there any new conditions?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('extra-conditions','Yes'),
+        conditional: {
+          html: extraConditions
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('extra-conditions','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'What is the development category?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'schedule',
+    name: 'schedule',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Schedule 1',
+        value: 'Schedule 1',
+        checked: checked('schedule','Schedule 1')
+      },
+      {
+        html: 'Schedule 2',
+        value: 'Schedule 2',
+        checked: checked('schedule','Schedule 2')
+      },
+      {
+        divider: 'or'
+      },
+      {
+        html: 'Other',
+        value: 'Other',
+        checked: checked('schedule','Other')
+      }
+    ]
+  }) }}
+{% endblock %}

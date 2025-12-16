@@ -1,0 +1,82 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the enforcement notice for a single private dwelling house?' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'single-house?titleVersion=a',
+    text: 'Switch content'
+  } if data['titleVersion'] == 'b' else
+  {
+    href: 'single-house?titleVersion=b',
+    text: 'Switch content'
+  }
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {% if data['titleVersion'] == 'a' %}
+
+    {{ govukRadios({
+      idPrefix: 'single-house',
+      name: 'single-house',
+      fieldset: {
+        legend: {
+          html: title,
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      hint: {
+        text: "Includes either building a new house or a change of use."
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('single-house','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('single-house','No')
+        }
+      ]
+    }) }}
+
+  {% else %}
+
+    {{ govukRadios({
+      idPrefix: 'single-house',
+      name: 'single-house',
+      fieldset: {
+        legend: {
+          html: 'Is the enforcement notice for a single private dwelling house?',
+          classes: 'govuk-fieldset__legend--l',
+          isPageHeading: true
+        }
+      },
+      hint: {
+        text: "Includes either building a new house or a change of use."
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes',
+          checked: checked('single-house','Yes')
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('single-house','No')
+        }
+      ]
+    }) }}
+
+  {% endif %}
+
+{% endblock %}
