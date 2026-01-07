@@ -17,6 +17,10 @@
     <h1 class="govuk-heading-l">
       Complete the appeal on behalf of {{ data['appellant-company-name'] or 'Riverside Renewal Co.' }}
     </h1>
+    {% else %}
+    <h1 class="govuk-heading-l">
+      Complete the appeal on behalf of Jan Fisher
+    </h1>
   {% endif %}
 
   <p class="govuk-body">
@@ -36,6 +40,11 @@
 {% elif data['appellant-check'] == 'A company' %}
   <p class="govuk-body">
     You must answer these questions on behalf of {{ data['appellant-company-name'] or 'Riverside Renewal Co.' }}
+  </p>
+
+{% else %}
+  <p class="govuk-body">
+    You must answer these questions on behalf of Jan Fisher.
   </p>
 {% endif %}
 

@@ -44,7 +44,7 @@
     {
       key: { text: "Choose your grounds of appeal" },
       value:
-        { html: data['grounds'] or 'Ground (b)' }
+        { html: 'Ground (a)' }
         if data['grounds-complete'] else 
         { html: '<span class="govuk-hint">Not started</span>' },
       actions: {
@@ -55,52 +55,6 @@
         ]
       }
     },
-  
-      {
-        key: { text: "Facts for ground (b)" },
-        value:
-          { html: data['ground-b-reasons'] or 'These are my facts for ground b' }
-          if data['ground-b-reasons-complete'] else
-          { html: '<span class="govuk-hint">Not started</span>' },
-        actions: {
-          items: [
-            { href: 'prepare-appeal/facts-b?cya=true', html: 'Change' }
-            if data['ground-b-reasons-complete'] else
-            { href: 'prepare-appeal/facts-b', html: 'Answer' }
-          ]
-        }
-      } if data['grounds-complete'],
-
-      {
-        key: { text: "Do you have any ground (b) supporting documents?" },
-        value:
-          { html: data['supporting-check-b'] or 'No' }
-          if data['supporting-check-b-complete'] else
-          { html: '<span class="govuk-hint">Not started</span>' },
-        actions: {
-          items: [
-            { href: 'prepare-appeal/supporting-check-b?cya=true', html: 'Change' }
-            if data['supporting-check-b-complete'] else
-            { href: 'prepare-appeal/supporting-check-b', html: 'Answer' }
-          ]
-        }
-      } if data['grounds-complete'],
-
-
-      {
-        key: { text: "Ground (b) supporting documents" },
-        value:
-          { html: data['_supporting-docs'] or '<a href="#">ground-b-doc.pdf</a>' }
-          if data['_supporting-docs-complete'] else
-          { html: '<span class="govuk-hint">Not started</span>' },
-        actions: {
-          items: [
-            { href: 'prepare-appeal/supporting-upload-b?cya=true', html: 'Change' }
-            if data['_supporting-docs-complete'] else
-            { href: 'prepare-appeal/supporting-upload-b', html: 'Answer' }
-          ]
-        }
-      } if data['supporting-check-b'] == 'Yes',
 
       {
         key: { text: "Did anyone submit a planning application for the development on the enforcement notice and pay the correct fee?" },
