@@ -21,12 +21,12 @@
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
-  
+
 
       {
         key: { html: 'Who is appealing against the enforcement notice?' },
         value:
-          { html: data['appellant-check'] or 'A person' }
+          { html: data['appellant-check'] or 'An individual' }
           if data['appellant-check-complete'] else
           { html: '<span class="govuk-hint">Not started</span>' },
         actions: {
@@ -37,22 +37,22 @@
           ]
         }
       },
-  
+
 
       {
         key: { text: "What is the name of the individual appealing against the enforcement notice?" },
-      
+
         value:
-          { 
+          {
             html: (
-              (data['appellant-first-name'] or '') + 
-              ' ' + 
+              (data['appellant-first-name'] or '') +
+              ' ' +
               (data['appellant-last-name'] or '')
             ) | trim or 'Jan Fisher'
           }
           if data['appellant-name-complete'] else
           { html: '<span class="govuk-hint">Not started</span>' },
-      
+
         actions: {
           items: [
             { href: 'prepare-appeal/appellant-name?cya=true', html: 'Change' }
@@ -61,7 +61,7 @@
           ]
         }
       } if data['appellant-check'] == 'A person',
-  
+
 
       {
         key: { text: "You are one of the appellants" },
@@ -80,7 +80,7 @@
 
       {
         key: { text: "Your contact details" },
-      
+
         value:
           {
             html: (
@@ -91,7 +91,7 @@
           }
           if data['your-contact-details-complete'] else
           { html: '<span class="govuk-hint">Not started</span>' },
-      
+
         actions: {
           items: [
             { href: 'prepare-appeal/your-contact-details?cya=true', html: 'Change' }
@@ -100,7 +100,7 @@
           ]
         }
       } if data['agent-check'] == 'No',
-  
+
 
       {
         key: { text: "Appellants" },
@@ -116,7 +116,7 @@
           ]
         }
       } if data['appellant-check'] == 'Joint application',
-  
+
 
       {
         key: { text: "You are one of the appellants" },
@@ -135,7 +135,7 @@
 
       {
         key: { text: "What is the name of the organisation?" },
-      
+
         value: {
           html: data['appellant-company-name'] or 'Riverside Renewal Co.'
         },
@@ -151,7 +151,7 @@
 
         {
           key: { text: "Contact details" },
-        
+
           value:
             {
               html: (
@@ -162,7 +162,7 @@
             }
             if data['your-contact-details-complete'] else
             { html: '<span class="govuk-hint">Not started</span>' },
-        
+
           actions: {
             items: [
               { href: 'prepare-appeal/your-contact-details?cya=true', html: 'Change' }
@@ -179,7 +179,7 @@
             { html: '07930592000' }
             if data['telephone-number-complete'] else
             { html: '<span class="govuk-hint">Not started</span>' },
-            
+
           actions: {
             items: [
               { href: 'prepare-appeal/contact-phone-number?cya=true', html: 'Change' }
@@ -190,6 +190,6 @@
         }
       ]
   }) }}
-      
+
 
 </li>
