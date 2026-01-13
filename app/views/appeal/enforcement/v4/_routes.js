@@ -437,9 +437,9 @@ router.post('/prepare-appeal/supporting-check-b', function (req, res) {
 
 router.post('/prepare-appeal/fee-check', function (req, res) {
   if (req.session.data['fee-check'] == 'Yes') {
-    res.redirect('fee-upload')
-  } else {
     res.redirect('all-or-part')
+  } else {
+    res.redirect('facts-a')
   }
 })
 
@@ -468,7 +468,7 @@ router.post('/prepare-appeal/decision-letter-date', function (req, res) {
 })
 
 router.post('/prepare-appeal/decision-due-date', function (req, res) {
-  res.redirect('facts-a')
+  res.redirect('ground-a-fee-check')
 })
 
 router.post('/prepare-appeal/appeal-decision', function (req, res) {
@@ -484,6 +484,18 @@ router.post('/prepare-appeal/appeal-decision', function (req, res) {
 })
 
 router.post('/prepare-appeal/appeal-decision-date', function (req, res) {
+  res.redirect('ground-a-fee-check')
+})
+
+router.post('/prepare-appeal/ground-a-fee-check', function (req, res) {
+  if (req.session.data['ground-a-fee-check'] == 'Yes') {
+    res.redirect('ground-a-fee-upload')
+  } else {
+    res.redirect('facts-a')
+  }
+})
+
+router.post('/prepare-appeal/ground-a-fee-upload', function (req, res) {
   res.redirect('facts-a')
 })
 
