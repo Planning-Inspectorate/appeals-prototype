@@ -123,55 +123,6 @@
         }
       } if data['granted-or-refused'] == 'Granted with conditions' or data['granted-or-refused'] == 'Refused',
 
-
-      {
-        key: { text: "Do you plan to submit a planning obligation to support your appeal?" },
-        value:
-          { html: data['planning-obligation-check'] or 'No' }
-          if data['planning-obligation-check-complete'] else
-          { html: '<span class="govuk-hint">Not started</span>' },
-        actions: {
-          items: [
-            { href: 'upload-documents/planning-obligation-check?cya=true', html: 'Change' }
-            if data['planning-obligation-check-complete'] else
-            { href: 'upload-documents/planning-obligation-check', html: 'Answer' }
-          ]
-        }
-      } if data['grounds'] and 'groundA' in data['grounds'],
-
-
-      {
-        key: { text: "What is the status of your planning obligation?" },
-        value:
-        { html: data['planning-obligation-status'] or 'Finalised and ready to submit' }
-        if data['planning-obligation-status-complete'] else
-          { html: '<span class="govuk-hint">Not started</span>' },
-        actions: {
-          items: [
-            { href: 'upload-documents/planning-obligation-status?cya=true', html: 'Change' }
-            if data['planning-obligation-status-complete'] else
-            { href: 'upload-documents/planning-obligation-status', html: 'Answer' }
-          ]
-        }
-      } if data['planning-obligation-check'] == 'Yes',
-      
-
-      {
-        key: { text: "Planning obligation" },
-        value:
-          { html: "<a href='#'>planning-obligation.pdf</a>" }
-          if data['planning-obligation-complete'] else
-          { html: '<span class="govuk-hint">Not started</span>' },
-        actions: {
-          items: [
-            { href: 'upload-documents/planning-obligation?cya=true', html: 'Change' }
-            if data['planning-obligation-complete'] else
-            { href: 'upload-documents/planning-obligation', html: 'Answer' }
-          ]
-        }
-      } if data['planning-obligation-status'] == 'Finalised and ready to submit' or data['planning-obligation-status'] == 'In draft',
-
-
       {
         key: { text: "Do you need to apply for an award of appeal costs?" },
         value:

@@ -716,6 +716,10 @@ router.post('/upload-documents/upload-enforcement-notice', (req, res) => {
   res.redirect('upload-enforcement-plan?upload-started=true');
 });
 
+router.post('/upload-documents/upload-enforcement-plan', (req, res) => {
+  res.redirect('costs-check');
+});
+
 // ------------------------------
 // Upload Enforcement Plan
 // (MAIN LOGIC VERSION — not the task-list one)

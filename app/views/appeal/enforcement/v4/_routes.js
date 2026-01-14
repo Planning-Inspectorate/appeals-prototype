@@ -830,11 +830,7 @@ router.post('/before-you-start/enforcement-notice', function (req, res) {
 })
 
 router.post('/before-you-start/listed-building-check', function (req, res) {
-  if (req.session.data['listed-building-check'] == 'Yes') {
-    res.redirect('existing-service')
-  } else {
     res.redirect('issue-date')
-  }
 })
 
 router.post('/before-you-start/issue-date', function (req, res) {
