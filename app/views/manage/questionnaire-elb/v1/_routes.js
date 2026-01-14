@@ -51,6 +51,8 @@ router.post('/constraints/:page', function (req, res, next) {
     req.session.data['listed-building-check-complete']
     && req.session.data['appeal-type-check-complete']
     && req.session.data['affected-listed-building-check-complete']
+    && req.session.data['preserve-grant-loan-complete']
+    && req.session.data['historic-england-complete']
     && req.session.data['scheduled-monument-complete']
     && req.session.data['conservation-check-complete']
     && req.session.data['protected-species-complete']
@@ -101,7 +103,7 @@ router.post('/constraints/affected-listed-building-check', function (req, res) {
   if (req.session.data['affected-listed-building-check'] == 'Yes') {
     res.redirect('affected-listed-building-details');
   } else {
-    res.redirect('scheduled-monument');
+    res.redirect('preserve-grant-loan');
   }
 })
 
@@ -113,7 +115,7 @@ router.post('/constraints/affected-listed-buildings', function (req, res) {
   if (req.session.data['affected-listed-buildings'] == 'Yes') {
     res.redirect('affected-listed-building-details?extrabuildingsaffected=yes');
   } else {
-    res.redirect('scheduled-monument')
+    res.redirect('preserve-grant-loan')
   }
 })
 
@@ -198,7 +200,7 @@ router.post('/constraints/right-of-way-upload', function (req, res) {
 })
 
 router.post('/constraints/other-operations', function (req, res) {
-  res.redirect('site-area')
+  res.redirect('floor-space')
 })
 
 router.post('/constraints/site-area', function (req, res) {
@@ -206,7 +208,7 @@ router.post('/constraints/site-area', function (req, res) {
 })
 
 router.post('/constraints/alleged-breach-area', function (req, res) {
-  res.redirect('floor-space')
+  res.redirect('create-building')
 })
 
 router.post('/constraints/floor-space', function (req, res) {
@@ -214,7 +216,11 @@ router.post('/constraints/floor-space', function (req, res) {
 })
 
 router.post('/constraints/refuse-waste-materials', function (req, res) {
-  res.redirect('landfill-site')
+  res.redirect('store-minerals')
+})
+
+router.post('/constraints/store-minerals', function (req, res) {
+  res.redirect('alleged-breach-area')
 })
 
 router.post('/constraints/landfill-site', function (req, res) {
@@ -258,58 +264,6 @@ router.post('/constraints/agricultural-purposes', function (req, res) {
 })
 
 router.post('/constraints/single-house', function (req, res) {
-  res.redirect('trunk-road')
-})
-
-router.post('/constraints/trunk-road', function (req, res) {
-  res.redirect('crown-land')
-})
-
-router.post('/constraints/crown-land', function (req, res) {
-  res.redirect('stop-notice')
-})
-
-router.post('/constraints/stop-notice', function (req, res) {
-  if (req.session.data['stop-notice'] == 'Yes') {
-    res.redirect('stop-notice-upload');
-  } else {
-    res.redirect('development-rights');
-  }
-})
-
-router.post('/constraints/stop-notice-upload', function (req, res) {
-  res.redirect('development-rights')
-})
-
-router.post('/constraints/development-rights', function (req, res) {
-  if (req.session.data['development-rights'] == 'Yes') {
-    res.redirect('development-rights-upload');
-  } else {
-    res.redirect('planning-condition');
-  }
-})
-
-router.post('/constraints/development-rights-upload', function (req, res) {
-  res.redirect('development-rights-removed')
-})
-
-router.post('/constraints/development-rights-removed', function (req, res) {
-  res.redirect('planning-condition')
-})
-
-router.post('/constraints/planning-condition', function (req, res) {
-  if (req.session.data['planning-condition'] == 'Yes') {
-    res.redirect('relevant-permission-upload');
-  } else {
-    res.redirect('disabled-person');
-  }
-})
-
-router.post('/constraints/relevant-permission-upload', function (req, res) {
-  res.redirect('disabled-person')
-})
-
-router.post('/constraints/disabled-person', function (req, res) {
   res.redirect('complete')
 })
 
@@ -328,6 +282,12 @@ router.get('/constraints/complete', function (req, res) {
     res.redirect('../task-list')
   }
 })
+
+
+
+
+
+
 
 
 //
