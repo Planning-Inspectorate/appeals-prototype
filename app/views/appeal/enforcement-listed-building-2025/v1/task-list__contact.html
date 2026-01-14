@@ -135,15 +135,14 @@
 
       {
         key: { text: "What is the name of the organisation?" },
-      
-        value: {
-          html: data['appellant-company-name'] or 'Riverside Renewal Co.'
-        },
-
+        value:
+          { html: data['appellant-company-name'] or 'Riverside Renewal Co.' }
+          if data['appellant-company-name-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
         actions: {
           items: [
             { href: 'prepare-appeal/appellant-company?cya=true', html: 'Change' }
-            if data['appellant-company-complete'] else
+            if data['appellant-company-name-complete'] else
             { href: 'prepare-appeal/appellant-company', html: 'Answer' }
           ]
         }

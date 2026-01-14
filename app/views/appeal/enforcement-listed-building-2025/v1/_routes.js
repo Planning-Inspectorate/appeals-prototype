@@ -106,6 +106,7 @@ router.post('/prepare-appeal/appellant-check', function (req, res) {
 })
 
 router.post('/prepare-appeal/appellant-company', function (req, res) {
+  req.session.data['appellant-company-name-complete'] = true;
   res.redirect('your-contact-details')
 })
 
