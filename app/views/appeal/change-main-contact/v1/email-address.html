@@ -1,0 +1,45 @@
+{% extends '_layouts/layout-main-access-control.html' %}
+
+{% set title = 'Enter the email address of the person you want to transfer access to' %}
+{% set back = false %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Change access email address</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        We’ll send them an email inviting them to access to these appeals.
+      </p>
+
+      <p class="govuk-body">
+        When the email address is verified, access to these appeals will be transferred to the new email address.
+      </p>
+
+      {{ govukInput({
+        label: {
+          text: 'New email address',
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        hint: {
+          text: "For example, example@email.com"
+        },
+        id: "email-address",
+        name: "emailAddress"
+      }) }}
+
+      {{ govukButton({
+        href: "confirm-change-access",
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

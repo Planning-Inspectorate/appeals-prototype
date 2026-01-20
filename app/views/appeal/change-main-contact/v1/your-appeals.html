@@ -1,0 +1,83 @@
+{% extends '_layouts/layout-main-access-control.html' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'your-appeals?current-appeals=no&submitted-appeals=no&decided-appeals=no',
+    text: 'No appeals'
+  } if data['current-appeals'] != 'no' else
+
+  {
+    href: 'your-appeals?current-appeals=yes&submitted-appeals=yes&decided-appeals=yes',
+    text: 'Show appeals'
+  }
+  ]
+%}
+
+{% set title = 'Your appeals' %}
+{% set back = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+
+      <!-- <p class="govuk-body govuk-!-margin-bottom-6">
+        <a href="/manage/manage-users/v3/" class="govuk-link--no-visited-state">
+          Add and remove users
+        </a>
+      </p> -->
+
+      <p class="govuk-body govuk-!-margin-bottom-6">
+        <a href="/appeal/before-you-start/v15/lpa" class="govuk-link--no-visited-state">
+          Start a new appeal
+        </a>
+      </p>
+
+    </div>
+
+    {% set currentAppeals %}
+      {% include "/appeal/more-than-one-appeal/v5/current-appeals.html" %}
+    {% endset -%}
+
+    {% set submittedAppealsList %}
+      {% include "/_includes/appellant/submitted-appeals.html" %}
+    {% endset -%}
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Your appeals",
+            id: "current-appeals",
+            panel: {
+              html: currentAppeals
+            }
+          },
+          {
+            label: "Waiting for review",
+            id: "submitted-appeals",
+            panel: {
+              html: submittedAppealsList
+            }
+          }
+
+        ]
+      }) }}
+
+      {% if data['decided-appeals'] != 'no' %}
+        <p class="govuk-body">
+          <a href="decided-appeals" class="govuk-link">12 decided appeals</a>
+        </p>
+      {% else %}
+        <!-- <p class="govuk-body">
+          No decided appeals
+        </p> -->
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

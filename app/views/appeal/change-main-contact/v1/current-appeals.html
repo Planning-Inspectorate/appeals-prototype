@@ -1,0 +1,198 @@
+{% if data['current-appeals'] == 'no' %}
+
+  <h2 class="govuk-heading-l">
+    Your appeals
+  </h2>
+
+  <p class="govuk-body">
+    There are currently no appeals in progress.
+  </p>
+
+{% elseif data['linked-appeals'] == 'Draft' %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Your appeals',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Site address',
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Deadline'
+      },
+      {
+        html: 'To do',
+        format: 'numeric'
+      }
+    ],
+    rows: [
+
+      [
+        {
+          html: "<strong class='govuk-tag govuk-tag--yellow'>Draft</strong>"
+        },
+        {
+          html: '36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY'
+        },
+        {
+          html: 'Listed building consent'
+        },
+        {
+          html: '26' | daysInFuture
+        },
+        {
+          html: '<a href="">Continue</a>',
+          format: 'numeric'
+        }
+      ]
+
+    ]
+  }) }}
+
+{% else %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Your appeals',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Site address'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Deadline'
+      },
+      {
+        html: 'To do',
+        format: 'numeric'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="/appeal/appeals/v2/appeal-details?appealCode=1345260&type=has&action=&procedure=written&questionnaire=&lpa-statement=complete&final-comments=&appellant-final-comments=&appeal-decided=&proofs=&lpa-proofs=">1341263</a>'
+        },
+        {
+          html: '12a Crossley Hall, Thornton Road, Bradford BD8 OJN'
+        },
+        {
+          html: 'Householder appeal'
+        },
+        {
+          html: '6' | daysInFuture
+        },
+        {
+          html: '',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/appeal/appeals/v2/appeal-details?appealCode=1345260&type=s78&action=&appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=due&other-final-comments=&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=">1333006</a>'
+        },
+        {
+          html: '93 Greenhill Lane, Leeds Road, Bradford BD3 8DZ'
+        },
+        {
+          html: 'Full appeal'
+        },
+        {
+          html: '6' | daysInFuture
+        },
+        {
+          html: '<a href="/appeal/final-comments/v5/final-comment-check">Final comments</a><br><a href="/appeal/planning-obligation/v1/final-planning-obligation-check">Planning obligation</a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: '<a href="/appeal/appeals/v2/appeal-details?appealCode=1345172&type=lbc&action=&questionnaire=due">1333118</a>'
+        },
+        {
+          html: '72 Wash Way Road, Sale, Greater Manchester M32 8DZ'
+        },
+        {
+          html: 'Listed building consent'
+        },
+        {
+          html: '22' | daysInFuture
+        },
+        {
+          html: '<a href="/appeal/final-comments/v5/final-comment-check"><span class="govuk-visually-hidden">Submit </span>Final comments</a>',
+          format: 'numeric'
+        }
+      ],
+        [
+        {
+          html: '<a href="/appeal/appeals/v2/appeal-details?appealCode=1345172&type=lbc&action=&questionnaire=due">1333118</a>'
+        },
+        {
+          html: '34 Berry Farm, Yorkshire YK58 67T'
+        },
+        {
+          html: 'Enforcement appeal'
+        },
+        {
+          html: '24' | daysInFuture
+        },
+        {
+          html: ''
+        }
+      ],
+      [
+        {
+          html: "<strong class='govuk-tag govuk-tag--yellow'>Draft</strong>"
+        },
+        {
+
+        },
+        {
+          html: 'Full appeal'
+        },
+        {
+          html: '22' | daysInFuture
+        },
+        {
+          html: '<a href="">Continue<span class="govuk-visually-hidden">1332023</span></a>',
+          format: 'numeric'
+        }
+      ],
+      [
+        {
+          html: "<strong class='govuk-tag govuk-tag--yellow'>Draft</strong>"
+        },
+        {
+          html: 'Crown Hall Farm, West Pinchbeck, Spalding PE11 3ND'
+        },
+        {
+          html: 'Enforcement appeal'
+        },
+        {
+          html: '26' | daysInFuture
+        },
+        {
+          html: '<a href="">Continue</a>',
+          format: 'numeric'
+        }
+      ]
+
+    ]
+  }) }}
+
+{% endif %}

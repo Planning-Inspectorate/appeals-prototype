@@ -1,0 +1,51 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Change main contact' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Appeal a planning decision
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body-l">
+      The main user can transfer access and ownership to a case to another user.
+    </p>
+
+    <section class="govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m">Version 1
+        {{govukTag({
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag--yellow"
+        })}}
+      </h2>
+
+      <p class="govuk-body">
+        First version of this work
+      </p>
+
+      {{ govukButton({
+        text: "View prototype",
+        href: "/appeal/change-main-contact/v1/your-appeals",
+        isStartButton: true
+      }) }}
+
+    </section>
+
+  </div>
+</div>
+{% endblock %}

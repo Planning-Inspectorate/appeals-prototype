@@ -1,0 +1,33 @@
+{% extends '_layouts/layout-main-access-control.html' %}
+
+{% set title = 'Confirm you want to change access to all appeals' %}
+{% set back = false %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Change access email address</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        You’re about to send an invite to transfer access of your appeals.
+      </p>
+
+      {{ govukWarningText({
+        text: "If you continue, you’ll lose access to all appeals linked to youremailaddress@gmail.com.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      {{ govukButton({
+        href: "confirm-change-access",
+        text: "Confirm"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
