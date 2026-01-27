@@ -37,16 +37,21 @@
         </li>
       </ul>
 
+      <p class="govuk-body">Changes from Version 1 have not yet been agreed. These designs have been iterated to support technical discussions.</p>
+
 
 {{ govukAccordion({
     id: "",
     items: [
         {
             heading: {
-                text: "Version 1"
+                html: 'Version 1 <strong class="govuk-tag govuk-tag--green">
+                    Research complete
+                  </strong>'
             },
             content: {
-                html: '<ul class="govuk-list govuk-list--bullet">
+                html: '
+                <ul class="govuk-list govuk-list--bullet">
                     <li>
                         <a href="search/xgovnav/active">Prototype</a>
                     </li>
