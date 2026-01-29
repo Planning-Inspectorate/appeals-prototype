@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you own some of the land involved in the appeal?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'own-some',
+    name: 'own-some',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('own-some','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('own-some','No')
+      }
+    ]
+  }) }}
+{% endblock %}

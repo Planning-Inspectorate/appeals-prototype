@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did you submit an appeal?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'submit-appeal',
+    name: 'submit-appeal',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('submit-appeal','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('submit-appeal','No')
+      }
+    ]
+  }) }}
+{% endblock %}

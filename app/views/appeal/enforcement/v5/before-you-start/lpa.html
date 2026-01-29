@@ -1,0 +1,36 @@
+{% extends '_layouts/layout-main.html' %}
+{% set prototypeLinks = [{href: 'errors/lpa-not-available', text: 'LPA not available'}] %}
+
+{% set title = 'Find your local planning authority' %}
+
+{% block questions %}
+  {# Create an array for the LPA select below #}
+  {% set lpaList = [{value: '',text: 'Select LPA'}] %}
+
+  {# Include all of the LPA's which are set in default data #}
+  {% for lpa in data['lpas'] %}
+    {% set lpaList = lpaList | push ({
+      value: lpa,
+      text: lpa
+    }) %}
+  {% endfor %}
+
+  {# Adds all items from the array then progressively enhanced with the script at the bottom of the file #}
+  {{ govukSelect({
+    id: 'lpa',
+    name: 'lpa',
+    classes: 'js-autocomplete',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    items: lpaList,
+    attributes: {
+      'data-default-value': data['lpa']
+    }
+  }) }}
+
+{% endblock %}
+
+{% set return = false %}

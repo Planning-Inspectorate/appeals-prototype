@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+{% set prototypeLinks = [{href: '../errors/no-listed', text: 'Yes: no listed building appeals yet'}] %}
+
+{% set title = 'Did you contact the Planning Inspectorate to tell them you will appeal the enforcement notice?' %}
+
+{% block questions %}
+	{{ govukRadios({
+		idPrefix: 'listed-building-check',
+		name: 'contact-check',
+		fieldset: {
+			legend: {
+				html: title,
+				classes: 'govuk-fieldset__legend--l',
+				isPageHeading: true
+			}
+		},
+		items: [
+			{
+				html: 'Yes',
+				value: 'Yes',
+				checked: checked('contact-check','Yes')
+			},
+			{
+				html: 'No',
+				value: 'No',
+				checked: checked('contact-check','No')
+			}
+		]
+	}) }}
+{% endblock %}
+
+{% set return = false %}

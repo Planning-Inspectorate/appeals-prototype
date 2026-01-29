@@ -1,0 +1,195 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">1. </span> Contact details
+    {% if data['contact-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['contact-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+
+      {
+        key: { html: 'Who is appealing against the enforcement notice?' },
+        value:
+          { html: data['appellant-check'] or 'An individual' }
+          if data['appellant-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/appellant-check?cya=true', html: 'Change' }
+            if data['appellant-check-complete'] else
+            { href: 'prepare-appeal/appellant-check', html: 'Answer' }
+          ]
+        }
+      },
+
+
+      {
+        key: { text: "What is the name of the individual appealing against the enforcement notice?" },
+
+        value:
+          {
+            html: (
+              (data['appellant-first-name'] or '') +
+              ' ' +
+              (data['appellant-last-name'] or '')
+            ) | trim or 'Jan Fisher'
+          }
+          if data['appellant-name-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+
+        actions: {
+          items: [
+            { href: 'prepare-appeal/appellant-name?cya=true', html: 'Change' }
+            if data['appellant-name-complete'] else
+            { href: 'prepare-appeal/appellant-name', html: 'Answer' }
+          ]
+        }
+      } if data['appellant-check'] == 'A person',
+
+
+      {
+        key: { text: "You are one of the appellants" },
+        value:
+          { html: data['agent-check'] or (data['appellant-full-name'] or 'Jan Fisher') }
+          if data['agent-check-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/agent-check?cya=true', html: 'Change' }
+            if data['agent-check-complete'] else
+            { href: 'prepare-appeal/agent-check', html: 'Answer' }
+          ]
+        }
+      } if data['appellant-check'] == 'A person',
+
+      {
+        key: { text: "Your contact details" },
+
+        value:
+          {
+            html: (
+              (data['appellant-first-name'] or '') +
+              ' ' +
+              (data['appellant-last-name'] or '')
+            ) | trim or 'Bob Dylan'
+          }
+          if data['your-contact-details-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+
+        actions: {
+          items: [
+            { href: 'prepare-appeal/your-contact-details?cya=true', html: 'Change' }
+            if data['your-contact-details-complete'] else
+            { href: 'prepare-appeal/your-contact-details', html: 'Answer' }
+          ]
+        }
+      } if data['agent-check'] == 'No',
+
+
+      {
+        key: { text: "Appellants" },
+        value:
+          { html: 'Jan Fisher<br>Robin Fisher' }
+          if data['appellant-names-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/appellant-names?cya=true', html: 'Change' }
+            if data['appellant-names-complete'] else
+            { href: 'prepare-appeal/appellant-names', html: 'Answer' }
+          ]
+        }
+      } if data['appellant-check'] == 'Additional appellants',
+
+
+      {
+        key: { text: "You are one of the appellants" },
+        value:
+          { html: 'Jan Fisher' }
+          if data['agent-check-joint-application-complete'] else
+          { html: '<span class="govuk-hint">Not started</span>' },
+        actions: {
+          items: [
+            { href: 'prepare-appeal/agent-check-joint-application?cya=true', html: 'Change' }
+            if data['agent-check-joint-application-complete'] else
+            { href: 'prepare-appeal/agent-check-joint-application', html: 'Answer' }
+          ]
+        }
+      } if data['appellant-check'] == 'Additional appellants',
+
+      {
+        key: { text: "What is the name of the organisation?" },
+
+        value: {
+          html: data['appellant-company-name'] or 'Riverside Renewal Co.'
+        },
+
+        actions: {
+          items: [
+            { href: 'prepare-appeal/appellant-company?cya=true', html: 'Change' }
+            if data['appellant-company-complete'] else
+            { href: 'prepare-appeal/appellant-company', html: 'Answer' }
+          ]
+        }
+      } if data['appellant-check'] == 'A company',
+
+        {
+          key: { text: "Contact details" },
+
+          value:
+            {
+              html: (
+                (data['appellant-first-name'] or '') +
+                ' ' +
+                (data['appellant-last-name'] or '')
+              ) | trim or 'Bob Dylan'
+            }
+            if data['your-contact-details-complete'] else
+            { html: '<span class="govuk-hint">Not started</span>' },
+
+          actions: {
+            items: [
+              { href: 'prepare-appeal/your-contact-details?cya=true', html: 'Change' }
+              if data['your-contact-details-complete'] else
+              { href: 'prepare-appeal/your-contact-details', html: 'Answer' }
+            ]
+          }
+        } if data['appellant-check'] == 'A company',
+
+
+        {
+          key: { text: "What is your phone number?" },
+          value:
+            { html: '07930592000' }
+            if data['telephone-number-complete'] else
+            { html: '<span class="govuk-hint">Not started</span>' },
+
+          actions: {
+            items: [
+              { href: 'prepare-appeal/contact-phone-number?cya=true', html: 'Change' }
+              if data['telephone-number-complete'] else
+              { href: 'prepare-appeal/contact-phone-number', html: 'Answer' }
+            ]
+          }
+        }
+      ]
+  }) }}
+
+
+</li>

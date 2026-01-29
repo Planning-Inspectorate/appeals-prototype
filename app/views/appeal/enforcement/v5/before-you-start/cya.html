@@ -1,0 +1,149 @@
+{% extends '_layouts/layout-main.html' %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block questions %}
+
+      <h1 class="govuk-heading-l">You can appeal using this service</h1>
+
+      <p class="govuk-body">Based on your answers, you can appeal using this service.</p>
+
+      <h2 class="govuk-heading-m">Check your answers</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Did you receive an enforcement notice?"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "enforcement-notice",
+                  text: "Change",
+                  visuallyHiddenText: "enforcement notice"
+                }
+              ]
+            }
+          },  
+          {
+            key: {
+              text: "Which local planning authority (LPA) issued the enforcement notice?"
+            },
+            value: {
+              text: "Camden"
+            },
+            actions: {
+              items: [
+                {
+                  href: "lpa",
+                  text: "Change",
+                  visuallyHiddenText: "lpa"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Is you enforcement notice about a listed building?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "listed-building-check",
+                  text: "Change",
+                  visuallyHiddenText: "listed building"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is the issue date on your enforcement notice?"
+            },
+            value: {
+              text: "31 July 2024"
+            },
+            actions: {
+              items: [
+                {
+                  href: "issue-date",
+                  text: "Change",
+                  visuallyHiddenText: "issue date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is the effective date on your enforcement notice?"
+            },
+            value: {
+              text: "26 September 2025"
+            },
+            actions: {
+              items: [
+                {
+                  href: "effective-date",
+                  text: "Change",
+                  visuallyHiddenText: "effective date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Did you contact the Planning Inspectorate to tell them you will appeal the enforcement notice?"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-check",
+                  text: "Change",
+                  visuallyHiddenText: "contact check"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "When did you contact the Planning Inspectorate?"
+            },
+            value: {
+              text: "11 October 2025"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-date",
+                  text: "Change",
+                  visuallyHiddenText: "contact date"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    {{ govukInsetText({
+      text: "You will not be able to change these answers later, you will have to start a new appeal."
+    }) }}
+     
+      {{ govukButton({
+        text: "Start appeal"
+      }) }}
+
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

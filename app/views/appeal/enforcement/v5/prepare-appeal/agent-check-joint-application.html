@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Select your name' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'agent-check-joint-application',
+    name: 'agent-check-joint-application',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: (data['new-appellant-first-name'] or 'Jan')+' '+(data['new-appellant-last-name'] or 'Fisher'),
+        value: 'Jan Fisher',
+        checked: checked('agent-check-joint-application','Jan Fisher')
+      },
+      {
+        html: 'Robin Fisher',
+        value: 'Robin Fisher',
+        checked: checked('agent-check-joint-application','Robin Fisher')
+      },
+      {
+        divider: "or"
+      },
+      {
+        html: 'I am appealing on behalf of the additional appellants',
+        value: 'other',
+        checked: checked('agent-check-joint-application','other')
+      }
+    ]
+  }) }}
+{% endblock %}
