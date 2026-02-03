@@ -4,13 +4,8 @@
 {% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block questions %}
-	<div class="govuk-grid-row">
-		<div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
 
-			<form method="post">
-
-  <span class="govuk-caption-l">Upload documents</span>
-
+	<span class="govuk-caption-l">Upload documents</span>
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
@@ -23,8 +18,9 @@
     If you do not have your application form, you can search for it on the local planning authority’s website.
   </p>
 
-  {% set uploadHtml %}
-    {{ govukFileUpload({
+	{% set uploadHtml %}
+
+	  {{ govukFileUpload({
       id: 'application-form',
       name: 'application-form',
       classes: 'moj-multi-file-upload__input',
@@ -41,7 +37,8 @@
       text: 'Upload file',
       classes: 'govuk-button--secondary moj-multi-file-upload__button'
     })}}
-  {% endset %}
+		
+	{% endset %}
 
   {{ mojMultiFileUpload({
     uploadedFiles: {
@@ -50,16 +47,16 @@
     },
     uploadHtml: uploadHtml
   }) }}
-  {% endblock %}
 
-		
-			{% block afterContent %}
-				<p class="govuk-body govuk-!-margin-bottom-6">
-					<a href="/your-appeal">Return to your appeal</a>
-				</p>
-			{% endblock %}
+{% endblock %}
 
-      {% block pageScripts %}
+{% block afterContent %}
+	<p class="govuk-body govuk-!-margin-bottom-6">
+		<a href="/your-appeal">Return to your appeal</a>
+	</p>
+{% endblock %}
+
+{% block pageScripts %}
   <script>
     // Hacky hacky single file
     $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop a file here or ')
@@ -78,4 +75,3 @@
     });
   </script>
 {% endblock %}
-	
