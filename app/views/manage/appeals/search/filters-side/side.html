@@ -173,7 +173,7 @@
                                                             <div class="govuk-checkboxes__item">
                                                                 <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
                                                                 <label class="govuk-label govuk-checkboxes__label" for="type-2">
-                                                                    Waiting for review
+                                                                    With PINs
                                                                 </label>
                                                             </div>
                                                             <div class="govuk-checkboxes__item">
@@ -186,6 +186,12 @@
                                                                 <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
                                                                 <label class="govuk-label govuk-checkboxes__label" for="type-2">
                                                                     Withdrawn
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    Invalid
                                                                 </label>
                                                             </div>
 
@@ -288,6 +294,44 @@
 
                             <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
+                            <details class="govuk-details govuk-!-margin-top-3 govuk-!-margin-padding-0 govuk-!-margin-bottom-0">
+                                <summary class="govuk-details__summary">
+                                    <p class="govuk-body" style="color: #1d70b8;">
+                                        Action required
+                                      </p>
+                                    </span>
+                                </summary>
+                                <div style="padding-left:30px;">
+                                    <form class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <div class="govuk-grid-row">
+                                                <div class="">
+                                                    <fieldset class="govuk-fieldset" aria-describedby="type-of-application-hint">
+                                                        <div class="govuk-checkboxes govuk-checkboxes--small">
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-1" name="type" type="checkbox" value="Planning permission">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-1">
+                                                                    Yes
+                                                                </label>
+                                                            </div>
+                                                            <div class="govuk-checkboxes__item">
+                                                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="Outline planning permission with some matters reserved">
+                                                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                                    No
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </details>
+
+                            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
 
                             <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
@@ -312,12 +356,15 @@
                     <span class="govuk-caption-xl">Cambridgeshire and Peterborough Combined Authority</span>
                     <h1 class="govuk-heading-xl">Manage your appeals</h1>
                         <div id="search-hint" class="govuk-hint">
-                            Search by appeal reference number, site address, LPA reference number, and appellant name</div>
+                            Search by address or any reference number</div>
                         <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;">
                             <label class="govuk-label govuk-visually-hidden" for="keyword-search">Keyword search</label>
                             <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off" style="margin-bottom: 0; width:100%;">
                             <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom: 0;">Search</button>
                         </form>
+
+                        {# Size modifiers: xl, l, m #}
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
 
                     <div id="pagination" class="govuk-body">
                         <p class="govuk-body">
@@ -353,7 +400,6 @@
                                 </h2>
                                 <div class="app-list__tag">
                                     <strong class="govuk-tag govuk-tag--turquoise">Active</strong>
-                                      <strong class="govuk-tag govuk-tag--red">Overdue</strong>
                                   </div>
                               </div>
                               
@@ -367,25 +413,34 @@
                                     <dd class="govuk-summary-list__value">Householder</dd>
                                   </div>
                                   <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">Procedure type</dt>
+                                    <dd class="govuk-summary-list__value">Written representations</dd>
+                                  </div>
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">Linked appeal</dt>
+                                    <dd class="govuk-summary-list__value">Yes (lead)</dd>
+                                  </div>
+                                  <div class="govuk-summary-list__row">
                                     <dt class="govuk-summary-list__key">Deadline</dt>
                                     <dd class="govuk-summary-list__value">18 September 2025</dd>
+                                  </div>
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">Due in</dt>
+                                    <dd class="govuk-summary-list__value">Overdue</dd>
                                   </div>
                                   <div class="govuk-summary-list__row">
                                     <dt class="govuk-summary-list__key">To do</dt>
                                     <li class="govuk-summary-list__actions-list-item" style="list-style: none; padding-left: 0; margin-left: 0; border-left: none;">
                                         <a class="govuk-link" href="#">Questionnaire<span class="govuk-visually-hidden"> </span></a>
                                     </li>
-                                      <li class="govuk-summary-list__actions-list-item">
-                                        <a class="govuk-link" href="#">Statement<span class="govuk-visually-hidden"></span></a>
-                                      </li>
                                   </div>
                                 </dl>
 
                                 <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
                                     <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
-                                      <a href="#" class="govuk-link">1345301</a>
+                                      <a href="#" class="govuk-link">1345302</a>
                                     </h2>
-                                    <strong class="govuk-tag govuk-tag--blue">Waiting for review</strong>
+                                    <strong class="govuk-tag govuk-tag--blue">With PINs</strong>
                                   </div>
                                   
                                     <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
@@ -398,17 +453,20 @@
                                         <dd class="govuk-summary-list__value">S78</dd>
                                       </div>
                                       <div class="govuk-summary-list__row">
-                                        <dt class="govuk-summary-list__key">Stage</dt>
-                                        <dd class="govuk-summary-list__value"><strong class="govuk-tag govuk-tag--light-blue">With case officer</strong></dd>
+                                        <dt class="govuk-summary-list__key">Procedure type</dt>
+                                        <dd class="govuk-summary-list__value">Written representations</dd>
                                       </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Linked appeal</dt>
+                                        <dd class="govuk-summary-list__value">Yes (child)</dd>
                                       </div>
                                     </dl>
 
                                     <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
                                         <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
-                                          <a href="#" class="govuk-link">1345301</a>
+                                          <a href="#" class="govuk-link">1345303</a>
                                         </h2>
-                                        <strong class="govuk-tag govuk-tag--pink">Decided</strong>
+                                        <strong class="govuk-tag govuk-tag--green">Decided</strong>
                                       </div>
                                       
                                         <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
@@ -421,16 +479,28 @@
                                             <dd class="govuk-summary-list__value">Householder</dd>
                                           </div>
                                           <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Procedure type</dt>
+                                            <dd class="govuk-summary-list__value">Hearing</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Linked appeal</dt>
+                                            <dd class="govuk-summary-list__value">No</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
                                             <dt class="govuk-summary-list__key">Decision</dt>
-                                            <dd class="govuk-summary-list__value">18 September 2025 <strong class="govuk-tag govuk-tag--yellow">Notice varied and upheld</strong></dd>
+                                            <dd class="govuk-summary-list__value">Notice varied and witheld</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Decision date</dt>
+                                            <dd class="govuk-summary-list__value">18 September 2025</dd>
                                           </div>
                                         </dl>
 
                                 <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
                                     <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
-                                      <a href="#" class="govuk-link">1345301</a>
+                                      <a href="#" class="govuk-link">1345304</a>
                                     </h2>
-                                    <strong class="govuk-tag govuk-tag--grey">Withdrawn</strong>
+                                    <strong class="govuk-tag govuk-tag--light-blue">Withdrawn</strong>
                                   </div>
                                   
                                     <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
@@ -439,14 +509,52 @@
                                         <dd class="govuk-summary-list__value">Spital House, Lensfield Rd, Cambridge CB2 1ER</dd>
                                       </div>
                                       <div class="govuk-summary-list__row">
-                                        <dt class="govuk-summary-list__key">Withdrawn date</dt>
-                                        <dd class="govuk-summary-list__value">18 September 2025</dd>
-                                      </div>
-                                      <div class="govuk-summary-list__row">
                                         <dt class="govuk-summary-list__key">Appeal type</dt>
                                         <dd class="govuk-summary-list__value">S78</dd>
                                       </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Procedure type</dt>
+                                        <dd class="govuk-summary-list__value">Inquiry</dd>
+                                      </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Linked appeal</dt>
+                                        <dd class="govuk-summary-list__value">No</dd>
+                                      </div>
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Withdrawn date</dt>
+                                        <dd class="govuk-summary-list__value">18 September 2025</dd>
+                                      </div>
                                     </dl>
+
+                                    <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
+                                        <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+                                          <a href="#" class="govuk-link">1345305</a>
+                                        </h2>
+                                        <strong class="govuk-tag govuk-tag--grey">Invalid</strong>
+                                      </div>
+                                      
+                                        <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Address</dt>
+                                            <dd class="govuk-summary-list__value">Spital House, Lensfield Rd, Cambridge CB2 1ER</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Appeal type</dt>
+                                            <dd class="govuk-summary-list__value">S78</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Procedure type</dt>
+                                            <dd class="govuk-summary-list__value">Written representations</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Linked appeal</dt>
+                                            <dd class="govuk-summary-list__value">No</dd>
+                                          </div>
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">Invalid date</dt>
+                                            <dd class="govuk-summary-list__value">18 September 2025</dd>
+                                          </div>
+                                        </dl>
                           
                         
                         
