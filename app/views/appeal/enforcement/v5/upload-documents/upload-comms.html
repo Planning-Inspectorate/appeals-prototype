@@ -1,0 +1,79 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{# Override the actions block (usually contains Continue button) #}
+{% block actions %}
+{% endblock %}
+
+{# Override the return link block (if layout uses a block for it) #}
+{% block buttons %}
+{% endblock %}
+
+{% block questions %}
+      <form method="post">
+        <h1 class="govuk-heading-l">
+          Upload your communication with the Planning Inspectorate
+        </h1>
+
+        <p class="govuk-body">For example, the email you sent to confirm that you will appeal against the enforcement notice.</p>
+
+
+        {% set uploadHtml %}
+          {{ govukFileUpload({
+            id: "comms-upload",
+            name: "comms-upload",
+            classes: 'moj-multi-file-upload__input',
+            label: {
+              text: "Drag and drop or choose files",
+              classes: 'govuk-label--m'
+            },
+            hint: {
+              text: 'The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB'
+            },
+            attributes: { multiple: '' }
+          }) }}
+
+          {{govukButton({
+            text: 'Upload file',
+            classes: 'govuk-button--secondary moj-multi-file-upload__button'
+          })}}
+        {% endset %}
+
+        {{ mojMultiFileUpload({
+          uploadedFiles: {
+            heading: { text: 'Files added' },
+            items: uploadedFiles
+          },
+          uploadHtml: uploadHtml
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <p class="govuk-body">
+          <a href="../task-list" class="govuk-link--no-visited-state">
+            Return to your appeal
+          </a>
+        </p>
+
+      </form>
+
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+  // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
+    $('#multiupload').submit(function(e) {
+      e.preventDefault();
+
+      $('.moj-multi-file-upload__filename').each(function() {
+        $('<input name="comms-upload" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
+      });
+
+      $(this).unbind('submit').submit();
+    })
+  </script>
+{% endblock %}
+
+

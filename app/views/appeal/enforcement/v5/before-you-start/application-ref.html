@@ -1,0 +1,20 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "What is the reference number on the enforcement notice?" %}
+
+{% block questions %}
+      {{ govukInput({
+        label: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        classes: "govuk-input--width-10",
+        id: "appNumber",
+        name: "appNumber",
+        autocomplete: "application-number"
+      }) }}
+
+{% endblock %}
+
+{% set return = false %}

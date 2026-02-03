@@ -1,0 +1,39 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What is the issue date on your enforcement notice?' %}
+
+{% block questions %}
+  {{ govukDateInput({
+    id: 'issue-date',
+    namePrefix: 'issue-date',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'For example, 31 3 2024'
+    },
+    items: [
+      {
+        name: 'day',
+        classes: 'govuk-input--width-2',
+        value: data['issue-date-day']
+      },
+      {
+        name: 'month',
+        classes: 'govuk-input--width-2',
+        value: data['issue-date-month']
+      },
+      {
+        name: 'year',
+        classes: 'govuk-input--width-4',
+        value: data['issue-date-year']
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% set return = false %}

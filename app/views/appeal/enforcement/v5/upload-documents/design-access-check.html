@@ -1,0 +1,46 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did you submit a design and access statement with your application?' %}
+
+{% block questions %}
+
+  {% call govukFieldset({
+    legend: {
+    html: title,
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+  <p class="govuk-body">
+    A design and access statement explains how:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      the development is suitable for the site and its setting
+    </li>
+    <li>
+      you can access the development
+    </li>
+  </ul>
+
+  {{ govukRadios({
+    idPrefix: 'design-access-check',
+    name: 'design-access-check',
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('design-access-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('design-access-check','No')
+      }
+    ]
+  }) }}
+
+  {% endcall %}
+
+{% endblock %}

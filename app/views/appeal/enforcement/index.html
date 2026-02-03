@@ -34,28 +34,56 @@ href: '/#appeal'
     }) }}
 
     <h2 class="govuk-heading-m">
-      Latest version
+      Version 5 (latest)
       {{govukTag({
-          text: "Ready for review",
-          classes: "govuk-!-margin-left-2 govuk-tag--light-blue"
+          text: "In progress",
+          classes: "govuk-!-margin-left-2 govuk-tag"
       })}}
     </h2>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'enforcement/v4/task-list',
+      href: 'enforcement/v5/task-list',
       isStartButton: true
     }) }}
 
-    <h2 class="govuk-heading-m">Features:</h2>
+    <h2 class="govuk-heading-m">Features</h2>
+    <p class="govuk-body">Updated Grounds flow based on stakeholder feedback:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        Different task list layout to match enforcement questionnaire
+        Updated content from "Did you appeal the decision?" to "Did you submit an appeal?" to cover scenario where appellant has not received a decision yet on their application
       </li>
       <li>
-        New questions added
+        New question added after question above: "Did you appeal the decision?"
+      </li>
+      <li>
+        Updates to flow for when ground (a) is selected, the user will always be asked if they have paid the ground (a) fee
       </li>
     </ul>
+
+    <p class="govuk-body"><strong>Note: </strong>Awaiting confirmation on whether we ask the user for their appeal decision details or for their appeal reference number.</p>
+
+    <h2 class="govuk-heading-m">
+      Version 4
+    </h2>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: 'enforcement/v4/task-list',
+      isStartButton: false
+    }) }}
+
+    {{ govukDetails({
+      summaryText: "Features",
+      html: '<ul class="govuk-list govuk-list--bullet">
+        <li>
+          Different task list layout to match enforcement questionnaire
+        </li>
+        <li>
+          New questions added
+        </li>
+      </ul>'
+    }) }}
 
     {# Size modifiers: xl, l, m #}
     <hr class="govuk-section-break govuk-section-break--s govuk-section-break">

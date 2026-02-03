@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'How many days would you expect the inquiry to last?' %}
+
+govuk-input--width-5
+
+{% block questions %}
+<span class="govuk-caption-l">Tell us how you would prefer us to decide your appeal</span>
+
+  {{ govukInput({
+    name: 'inquiry-days',
+    id: 'inquiry-days',
+    value: data['inquiry-days'],
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    classes: "govuk-input--width-5"
+  }) }}
+{% endblock %}
