@@ -1,0 +1,39 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Appeal submitted' %}
+{% set back = false %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ govukPanel({
+          titleHtml: title}) }}
+
+       <h2 class="govuk-heading-m">
+        What happens next
+      </h2>    
+
+      <p class="govuk-body">
+        We will send you a confirmation email with your appeal reference number and a link to download a copy of your appeal.
+      </p>
+
+      <p class="govuk-body">
+        If you need to contact us, include your appeal reference number.
+      </p>
+
+      <p class="govuk-body govuk-!-margin-bottom-6">
+        <a href="/appeal/more-than-one-appeal/v5/your-appeals" class="govuk-link govuk-link--no-visited-state">
+          View your appeals
+        </a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#0">
+          What did you think of this service?
+        </a> (takes 30 seconds)
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends '_layouts/layout-main.html' %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% block questions %}
+
+      <h1 class="govuk-heading-l">You can appeal using this service</h1>
+
+      <p class="govuk-body">Based on your answers, you can appeal using this service.</p>
+      <p class="govuk-body">Your deadline to appeal is {{ data['appeal-deadline-formatted'] }} </p>
+      
+
+      <h2 class="govuk-heading-m">Check your answers</h2>
+
+      {% if data['listed-building'] == 'no' %}
+        {# Show only these rows if user selected 'no' on listed building page #}
+        {{ govukSummaryList({
+          classes: "govuk-!-margin-bottom-9",
+          rows: [
+            {
+              key: {
+                text: "Which local planning authority (LPA) do you want to appeal against?"
+              },
+              value: {
+                text: data['lpa-name'] or "Camden"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "lpa-name",
+                    text: "Change",
+                    visuallyHiddenText: "lpa name"
+                  }
+                ]
+              }
+            }, 
+              {
+              key: {
+                text: "Have you received an enforcement notice?"
+              },
+              value: {
+                text: data['listed-building'] or "No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "enforcement-notice",
+                    text: "Change",
+                    visuallyHiddenText: "enforcement notice"
+                  }
+                ]
+              }
+            }, 
+            {
+              key: {
+                text: "What type of application is your appeal about?"
+              },
+              value: {
+                text: data['planning-type'] or "Lawful development certificate"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "planning-type",
+                    text: "Change",
+                    visuallyHiddenText: "planning type"
+                  }
+                ]
+              }
+            },
+        
+            {
+              key: {
+                text: "Is your appeal about a listed building?"
+              },
+              value: {
+                text: data['listed-building'] or "No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "listed-building",
+                    text: "Change",
+                    visuallyHiddenText: "listed building"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      {% else %}
+        {# Show all rows if user selected 'yes' on listed building page #}
+        {{ govukSummaryList({
+          classes: "govuk-!-margin-bottom-9",
+          rows: [
+            {
+              key: {
+                text: "Which local planning authority (LPA) do you want to appeal against?"
+              },
+              value: {
+                text: data['lpa-name'] or "Camden"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "lpa-name",
+                    text: "Change",
+                    visuallyHiddenText: "lpa name"
+                  }
+                ]
+              }
+            },  
+              {
+              key: {
+                text: "Have you received an enforcement notice?"
+              },
+              value: {
+                text: data['enforcement-notice'] or "No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "enforcement-notice",
+                    text: "Change",
+                    visuallyHiddenText: "enforcement notice"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "What type of application is your appeal about?"
+              },
+              value: {
+                text: data['planning-type'] or "Lawful development certificate"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "planning-type",
+                    text: "Change",
+                    visuallyHiddenText: "planning type"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Is your appeal about a listed building?"
+              },
+              value: {
+                text: data['listed-building'] or "No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "listed-building",
+                    text: "Change",
+                    visuallyHiddenText: "listed building"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Was your application granted or refused?"
+              },
+              value: {
+                text: "Granted"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "granted-or-refused",
+                    text: "Change",
+                    visuallyHiddenText: "granted or refused"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "What's the date on the decision letter from the local planning authority?"
+              },
+              value: {
+                text: "11 October 2025"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "decision-date",
+                    text: "Change",
+                    visuallyHiddenText: "decision date"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      {% endif %}
+
+    {{ govukInsetText({
+      text: "You will not be able to change these answers later, you will have to start a new appeal."
+    }) }}
+     
+      {{ govukButton({
+        text: "Start appeal"
+      }) }}
+
+{% endblock %}
+
+{# Override the default "Continue" button with nothing #}
+{% block buttons %}{% endblock %}

@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "What is the application reference number?" %}
+
+{% block questions %}
+  <span class="govuk-caption-l">Prepare appeal</span>
+
+      {{ govukInput({
+        label: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+          hint: {
+      html: "You can find this on any correspondence from the local planning authority. For example, the letter confirming your application."
+    },
+        classes: "govuk-input--width-10",
+        id: "appNumber",
+        name: "appNumber",
+        autocomplete: "application-number"
+      }) }}
+
+{% endblock %}
+
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}
+
+{% set return = false %}
+

@@ -1,0 +1,85 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What’s the address of the appeal site?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+Prepare appeal  </span>
+
+  {% call govukFieldset({
+    legend: {
+      html: title,
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+    }
+  }) %}
+
+    <p class="govuk-hint">The address should match what is on the application to the local planning authority.</p>
+<p class="govuk-body govuk-!-margin-bottom-6">
+     You can  <a href="/grid-reference">enter the grid reference</a> instead.
+    </p>
+
+    {{ govukInput({
+      id: 'address-line-1',
+      name: 'address-line-1',
+      value: data['address-line-1'],
+      label: {
+        html: 'Address line 1'
+      },
+      autocomplete: 'address-line1'
+    }) }}
+
+    {{ govukInput({
+      id: 'address-line-2',
+      name: 'address-line-2',
+      value: data['address-line-2'],
+      label: {
+        html: 'Address line 2 (optional)'
+      },
+      autocomplete: 'address-line2'
+    }) }}
+
+    {{ govukInput({
+      id: 'address-town',
+      name: 'address-town',
+      value: data['address-town'],
+      classes: 'govuk-!-width-two-thirds',
+      label: {
+        html: 'Town or city'
+      },
+      autocomplete: 'address-level2'
+    }) }}
+
+     {{ govukInput({
+      id: 'address-county',
+      name: 'address-county',
+      value: data['address-county'],
+      classes: 'govuk-!-width-two-thirds',
+      label: {
+        html: 'County (optional)'
+      },
+      autocomplete: 'address-level2'
+    }) }}
+
+    {{ govukInput({
+      id: 'address-postcode',
+      name: 'address-postcode',
+      value: data['address-postcode'],
+      classes: 'govuk-input--width-10',
+      label: {
+        html: 'Postcode'
+      },
+      autocomplete: 'postal-code'
+    }) }}
+  {% endcall %}
+ 
+{% endblock %}
+
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}

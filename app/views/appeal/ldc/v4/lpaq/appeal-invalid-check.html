@@ -1,0 +1,58 @@
+{% extends "_layouts/layout-main.html" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set title = 'Do you think the appeal is invalid?' %}
+{% set back = false %}
+
+{% set reasonHtml %}
+{{ govukInput({
+  id: "reason",
+  name: "reason",
+  type: "text",
+  label: {
+    text: "Enter a reason"
+  }
+}) }}
+{% endset -%}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{{serviceName}}</span>
+    
+    <form action="./appeal-invalid-check" method="post" novalidate>
+
+      {{ govukRadios({
+        name: "appeal-invalid-check",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: reasonHtml
+            }
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

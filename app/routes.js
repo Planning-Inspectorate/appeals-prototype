@@ -40,6 +40,36 @@ router.use("/:service/v:version", (req, res, next) => {
 	}
 })
 
+// Import routes for ldc-bys folder
+router.use("/appeal/ldc/v4/ldc-bys", (req, res, next) => {
+	try {
+		return require(`./views/appeal/ldc/v4/ldc-bys/_routes`)(req, res, next)
+	} catch (e) {
+		next()
+	}
+})
+
+// Import routes for prepare-appeal folder
+router.use("/appeal/ldc/v4/prepare-appeal", (req, res, next) => {
+	try {
+		return require(`./views/appeal/ldc/v4/prepare-appeal/_routes`)(req, res, next)
+	} catch (e) {
+		next()
+	}
+})
+
+// Import routes for upload-documents folder
+router.use("/appeal/ldc/v4/upload-documents", (req, res, next) => {
+	try {
+		return require(`./views/appeal/ldc/v4/upload-documents/_routes`)(req, res, next)
+	} catch (e) {
+		next()
+	}
+})
+
+// Import routes for lpaq folder
+router.use("/appeal/ldc/v4/lpaq", require('./views/appeal/ldc/v4/lpaq/_routes'))
+
 // Easy routing by Craig Abbott - https://github.com/abbott567/radio-button-redirect
 // Added for simple branching
 const radioButtonRedirect = require('radio-button-redirect')

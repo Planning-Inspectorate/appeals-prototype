@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Enter the description of development that you submitted in your application' %}
+  <span class="govuk-caption-l">Prepare appeal</span>
+
+
+{% block questions %}
+
+  {{ govukTextarea({
+    name: "description-detail",
+    id: "description-detail",
+    value: data['description-detail'],
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "If the local planning authority changed the description of development, you can upload evidence of your agreement to change the description later."
+    }
+  }) }}
+
+{% endblock %}
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Enforcement notice' %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<span class="govuk-caption-l">
+		Before you start
+	</span>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/form-handler" method="post" novalidate>
+
+        {{ govukRadios({
+          name: "enforcement-notice",
+          fieldset: {
+            legend: {
+              text: "Did you receive an enforcement notice?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "planning-type.html"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

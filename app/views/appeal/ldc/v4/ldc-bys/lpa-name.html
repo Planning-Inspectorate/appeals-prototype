@@ -1,0 +1,24 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Which local planning authority (LPA) do you want to appeal against?' %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% block questions %}
+<span class="govuk-caption-l">
+		Before you start
+	</span>
+
+  {{ govukInput({
+    label: {
+      text: title,
+      isPageHeading: true,
+      classes: "govuk-label--l"
+    },
+    classes: "govuk-input--width-10",
+    id: "lpa-name",
+    name: "lpa-name",
+    autocomplete: "off"
+  }) }}
+
+{% endblock %}

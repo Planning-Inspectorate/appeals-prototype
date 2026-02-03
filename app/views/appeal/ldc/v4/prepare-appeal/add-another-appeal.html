@@ -1,0 +1,93 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'You’ve added a linked appeal' %}
+
+{% set prototypeLinks = [
+  {
+    href: '?extraotherappeal=yes',
+    text: 'Add another appeal'
+  },
+  {
+    href: '?extraotherappeal=',
+    text: 'One other appeal'
+  }
+] %}
+
+{% block questions %}
+
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  {{ govukSummaryList({
+    classes: 'appeal-details govuk-!-margin-bottom-6 govuk-!-margin-top-0',
+    rows: [
+
+      {
+        key: {
+          text: 'Other appeal 1'
+        },
+        value: {
+          html: (data['other-appeal-reference'] or '0176256')
+        },
+        actions: {
+          items: [
+            {
+              href: "other-appeal-reference",
+              text: "Remove",
+              visuallyHiddenText: 'appeal 0176256'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Other appeal 2'
+        },
+        value: {
+          html: '0176257'
+        },
+        actions: {
+          items: [
+            {
+              href: "?extraotherappeal=",
+              text: "Remove",
+              visuallyHiddenText: 'appeal 0176257'
+            }
+          ]
+        }
+      } if data['extraotherappeal'] == 'yes'
+
+    ]
+  }) }}
+
+  {{ govukRadios({
+    idPrefix: 'other-appeals',
+    name: 'other-appeals',
+    fieldset: {
+      legend: {
+        html: 'Add another appeal?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes'
+      },
+      {
+        html: 'No',
+        value: 'No'
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}

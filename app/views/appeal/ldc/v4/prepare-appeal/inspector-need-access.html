@@ -1,0 +1,43 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Will an inspector need to access the land or property?' %}
+
+{% block questions %}
+ <span class="govuk-caption-l">
+Prepare appeal  </span>
+  {{ govukRadios({
+    idPrefix: 'green-belt',
+    name: 'green-belt',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+        
+      }
+    },
+    hint: {
+      html: "An inspector will visit the appeal site to assess the development's impact on its surroundings.<br><br>If the inspector can view the appeal site from a public road or footpath without entering your land or property, they do not need access."
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('green-belt','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('green-belt','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}
