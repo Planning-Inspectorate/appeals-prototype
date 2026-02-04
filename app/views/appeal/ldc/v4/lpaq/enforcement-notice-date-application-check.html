@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Was there an enforcement notice in force at the date of the application?' %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">{{serviceName}}</span>
+
+  {{ govukRadios({
+    name: "enforcement-notice-date-application",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+        {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+{% endblock %}

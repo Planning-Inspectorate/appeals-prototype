@@ -11,19 +11,52 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l">
-      Appeal a planning decision
-    </span>
-    <h1 class="govuk-heading-l">
+    <!-- <span class="govuk-caption-l">
+      Manage LPA appeals
+    </span> -->
+    <h1 class="govuk-heading-xl">
       {{ title }}
     </h1>
 
-    {% set version = "3" %}
+    {% set version = "4" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+
+    <!-- <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>first version</li>
+    </ul> -->
+
+    <p class="govuk-!-margin-bottom-2">Jump to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <!-- <li><a href="file-upload/file-upload">service headers</a></li>
+      <li><a href="file-upload/file-upload">H1 scale</a></li> -->
+      <li><a href="ldc-bys/before-you-start">Before you start</a></li>
+      <li><a href="prepare-appeal/application-name">Prepare appeal</a></li>
+      <li><a href="upload-documents/application-form">Upload documents</a></li>
+     <li><a href="lpaq/task-list">LPAQ</a></li>
+    </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        isStartButton: true,
+        href: 'ldc-bys/before-you-start'
+      }) }}
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    {% set version = "3" %}
+    Version {{version}}
+    <h2 class="govuk-heading-m">
       {{ govukTag({
         classes: 'govuk-tag--green govuk-!-margin-left-2',
         text: 'Ready for dev'
@@ -95,7 +128,7 @@
         html: 'View prototype',
         isStartButton: true
       }) }}
-  </form>
+    </form>
 
   </div>
 </div>

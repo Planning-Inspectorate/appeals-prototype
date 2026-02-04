@@ -1,0 +1,41 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What is your phone number?' %}
+
+
+{% block questions %}
+<span class="govuk-caption-l">Prepare appeal</span>
+  {% call govukFieldset({
+    legend: {
+    html: title,
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+  <p class="govuk-body">
+    We may use your phone number to contact you about the appeal.
+  </p>
+
+  {{ govukInput({
+    label: {
+      text: "UK telephone number"
+    },
+    id: "telephone-number",
+    name: "telephoneNumber",
+    type: "tel",
+    autocomplete: "tel",
+    classes: "govuk-input--width-20"
+  }) }}
+
+  {% endcall %}
+
+{% endblock %}
+
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}

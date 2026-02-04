@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Does the appeal relate to a planning condition?' %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">{{serviceName}}</span>
+
+  {{ govukRadios({
+    name: "planning-condition-check",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+        {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+{% endblock %}

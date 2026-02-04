@@ -1,0 +1,72 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span>
+    Upload your documents
+    {{ govukTag({
+      text: "Not started",
+      classes: "govuk-tag govuk-tag--grey"
+    }) }}
+  </h2>
+  
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [],
+    rows: [
+      [
+        { text: "Application form", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['application-form'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/application-form" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
+      [
+        { text: "Decision letter", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['decision-letter'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/decision-letter" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['decision-letter'],
+      [
+        { text: "Description of development agreement", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['description-of-development-agreement'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/description-of-development-agreement" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['description-of-development-agreement'],
+      [
+        { text: "Ownership certificate", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['ownership-certificate-check'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/ownership-certificate-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['ownership-certificate-check'],
+      [
+        { text: "Upload ownership certificate", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['ownership-certificate'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/ownership-certificate" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['ownership-certificate-check'] == 'Yes' and data['ownership-certificate'],
+      [
+        { text: "Planning obligation", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['planning-obligation-check'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/planning-obligation-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['planning-obligation-check'],
+      [
+        { text: "Upload planning obligation", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['planning-obligation'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/planning-obligation" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['planning-obligation-check'] == 'Yes' and data['planning-obligation'],
+      [
+        { text: "Environment statement", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['environment-statement-check'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/environment-statement-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['environment-statement-check'],
+      [
+        { text: "Upload environment statement", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['environment-statement'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/environment-statement" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['environment-statement-check'] == 'Yes' and data['environment-statement'],
+      [
+        { text: "Costs", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['costs-check'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/costs-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['costs-check'],
+      [
+        { text: "Upload costs", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Complete" if data['costs'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="../upload-documents/costs" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['costs-check'] == 'Yes' and data['costs']
+    ] | reject("equalto", false) | list
+  }) }}
+</li>

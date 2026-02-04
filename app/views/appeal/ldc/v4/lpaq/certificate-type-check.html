@@ -1,0 +1,35 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'What type of lawful development certificate is the appeal about?' %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">{{serviceName}}</span>
+
+  {{ govukRadios({
+    name: "certificate-type",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "existing development",
+        text: "Existing development"
+      },
+        {
+        value: "proposed use of a development",
+        text: "Proposed use of a development"
+      },
+      {
+        value: "proposed changes to a listed building",
+        text: "Proposed changes to a listed building"
+      }
+    ]
+  }) }}
+{% endblock %}

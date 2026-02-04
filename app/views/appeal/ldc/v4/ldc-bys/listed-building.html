@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Is your appeal about a listed building?' %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    name: "listed-building",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+{% endblock %}

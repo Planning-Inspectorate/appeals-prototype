@@ -1,0 +1,44 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Will the inspector need access to the appellant’s land or property?' %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set reasonHtml %}
+{{ govukInput({
+  id: "access-reason",
+  name: "access-reason",
+  type: "text",
+  label: {
+    text: "Enter the reason"
+  }
+}) }}
+{% endset -%}
+{% block questions %}
+
+  <span class="govuk-caption-l">{{serviceName}}</span>
+
+  {{ govukRadios({
+    name: "inspector-access-appeal-site",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        conditional: {
+        html: reasonHtml
+        }
+      },
+        {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+{% endblock %}

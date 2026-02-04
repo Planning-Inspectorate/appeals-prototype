@@ -1,0 +1,28 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'How many witnesses would you expect to give evidence at the inquiry?' %}
+
+{% block questions %}
+  <span class="govuk-caption-l">
+Prepare appeal  </span>
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukInput({
+  label: {
+    text: title,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  classes: "govuk-input--width-5",
+  id: "width-5",
+  name: "width5"
+}) }}
+
+{% endblock %}
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}
