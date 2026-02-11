@@ -1,11 +1,57 @@
 <li>
+  {# Calculate status for Prepare section #}
+  {% set prepareRequired = [
+    data['application-name'],
+    data['appellant-first-name'],
+    data['contact-first-name'],
+    data['telephoneNumber'],
+    data['address-line-1'],
+    data['green-belt'],
+    data['health-and-safety'],
+    data['appNumber'],
+    data['application-date-day'],
+    data['moreDetail'],
+    data['existing-or-proposed'],
+    data['decide-appeal'],
+    data['other-appeals-radio']
+  ] %}
+  {% set prepareOptional = [] %}
+  {% if data['existing-or-proposed'] == 'Proposed development' %}
+    {% set prepareOptional = prepareOptional.concat([data['description-detail'], data['description-development-correct']]) %}
+  {% endif %}
+  {% if data['decide-appeal'] == 'Hearing' %}
+    {% set prepareOptional = prepareOptional.concat([data['preferHearing']]) %}
+  {% endif %}
+  {% if data['decide-appeal'] == 'Inquiry' %}
+    {% set prepareOptional = prepareOptional.concat([data['preferInquiry'], data['width5'], data['how-many-witnesses']]) %}
+  {% endif %}
+  {% if data['other-appeals-radio'] == 'Yes' %}
+    {% set prepareOptional = prepareOptional.concat([data['other-appeal-reference']]) %}
+  {% endif %}
+  {% set prepareAll = prepareRequired.concat(prepareOptional) %}
+  {% set prepareAnswered = prepareAll | reject("equalto", undefined) | reject("equalto", "") | list %}
+  {% set prepareComplete = (prepareAnswered.length == prepareAll.length and prepareAll.length > 0) %}
+  {% set prepareInProgress = (prepareAnswered.length > 0 and prepareAnswered.length < prepareAll.length) %}
+  
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">1. </span>
     Prepare your appeal
-    {{ govukTag({
-      text: "Completed",
-      classes: "govuk-tag"
-    }) }}
+    {% if prepareComplete %}
+      {{ govukTag({
+        text: "Completed",
+        classes: "govuk-tag"
+      }) }}
+    {% elif prepareInProgress %}
+      {{ govukTag({
+        text: "In progress",
+        classes: "govuk-tag govuk-tag--grey"
+      }) }}
+    {% else %}
+      {{ govukTag({
+        text: "Not started",
+        classes: "govuk-tag govuk-tag--grey"
+      }) }}
+    {% endif %}
   </h2>
   
   {{ govukTable({
@@ -13,110 +59,110 @@
     head: [],
     rows: [
       [
-        { text: "Application made in your name", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['application-name'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="application-name" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-name'],
+        { text: "Was the application made in your name?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['application-name'] if data['application-name'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="application-name" class="govuk-link">Change</a>' if data['application-name'] else '<a href="application-name" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Your name", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['appellant-name'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="appellant-name" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['appellant-name'],
+        { text: "What's the applicant's name?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: (data['appellant-first-name'] + ' ' + data['appellant-last-name']) if data['appellant-first-name'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="appellant-name" class="govuk-link">Change</a>' if data['appellant-first-name'] else '<a href="appellant-name" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
         { text: "Contact details", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['contact-details'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="contact-details" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['contact-details'],
+        { text: ((data['contact-first-name'] or '') + ' ' + (data['contact-last-name'] or '') + (('<br>' + data['contact-email']) if data['contact-email'] else '')) if (data['contact-first-name'] or data['contact-email']) else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="contact-details" class="govuk-link">Change</a>' if (data['contact-first-name'] or data['contact-email']) else '<a href="contact-details" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Phone number", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['phone-number'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="phone-number" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['phone-number'],
+        { text: "What is your phone number?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['telephoneNumber'] if data['telephoneNumber'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="phone-number" class="govuk-link">Change</a>' if data['telephoneNumber'] else '<a href="phone-number" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Appeal site address", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['appeal-site-address'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="appeal-site-address" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['appeal-site-address'],
+        { text: "What's the address of the appeal site?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { html: (data['address-line-1'] + '<br>' + (data['address-line-2'] + '<br>' if data['address-line-2'] else '') + (data['address-town'] + '<br>' if data['address-town'] else '') + (data['address-postcode'] if data['address-postcode'] else '')) if data['address-line-1'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="appeal-site-address" class="govuk-link">Change</a>' if data['address-line-1'] else '<a href="appeal-site-address" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Green belt", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['green-belt'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="green-belt" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['green-belt'],
+        { text: "Is the site in a green belt?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['green-belt'] if data['green-belt'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="green-belt" class="govuk-link">Change</a>' if data['green-belt'] else '<a href="green-belt" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Inspector site access", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['inspector-need-access'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="inspector-need-access" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['inspector-need-access'],
+        { text: "Will an inspector need to access the land or property?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['inspector-access'] if data['inspector-access'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="inspector-need-access" class="govuk-link">Change</a>' if data['inspector-access'] else '<a href="inspector-need-access" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Health and safety", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['health-and-safety'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="health-and-safety" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['health-and-safety'],
+        { text: "Health and safety issues", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['health-and-safety'] if data['health-and-safety'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="health-and-safety" class="govuk-link">Change</a>' if data['health-and-safety'] else '<a href="health-and-safety" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Application reference", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['application-ref'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="application-ref" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-ref'],
+        { text: "What is the application reference number?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['appNumber'] if data['appNumber'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="application-ref" class="govuk-link">Change</a>' if data['appNumber'] else '<a href="application-ref" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Application date", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['application-date-day'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="application-date" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-date-day'],
+        { text: "What date did you submit your planning application?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: (data['application-date-day'] + ' ' + data['application-date-month'] + ' ' + data['application-date-year']) if data['application-date-day'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="application-date" class="govuk-link">Change</a>' if data['application-date-day'] else '<a href="application-date" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Existing use", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['existing-use'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="existing-use" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['existing-use'],
+        { text: "What did you use the appeal site for when you made the application?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['moreDetail'] | truncate(50) if data['moreDetail'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="existing-use" class="govuk-link">Change</a>' if data['moreDetail'] else '<a href="existing-use" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Existing or proposed", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['existing-or-proposed'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="existing-or-proposed" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['existing-or-proposed'],
+        { text: "What type of lawful development certificate is the appeal about?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['existing-or-proposed'] if data['existing-or-proposed'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="existing-or-proposed" class="govuk-link">Change</a>' if data['existing-or-proposed'] else '<a href="existing-or-proposed" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Description of development", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['description-of-development'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="description-of-development" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['description-of-development'],
+        { text: "Enter the description of development that you submitted in your application", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['description-detail'] | truncate(50) if data['description-detail'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="description-of-development" class="govuk-link">Change</a>' if data['description-detail'] else '<a href="description-of-development" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['existing-or-proposed'] == 'Proposed development',
       [
-        { text: "Description correct", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['description-development-correct'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="description-development-correct" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['description-development-correct'],
+        { text: "Did the local planning authority change the description of development?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['description-development-correct'] if data['description-development-correct'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="description-development-correct" class="govuk-link">Change</a>' if data['description-development-correct'] else '<a href="description-development-correct" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['existing-or-proposed'] == 'Proposed development',
       [
-        { text: "How to decide appeal", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['application-desc-changed'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="decide-appeal" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-desc-changed'],
+        { text: "How would you prefer us to decide your appeal?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['decide-appeal'] if data['decide-appeal'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="decide-appeal" class="govuk-link">Change</a>' if data['decide-appeal'] else '<a href="decide-appeal" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Hearing preference", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['prefer-hearing'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="prefer-hearing" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-desc-changed'] == 'Hearing' and data['prefer-hearing'],
+        { text: "Why do you prefer a hearing?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['preferHearing'] | truncate(50) if data['preferHearing'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="prefer-hearing" class="govuk-link">Change</a>' if data['preferHearing'] else '<a href="prefer-hearing" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['decide-appeal'] == 'Hearing',
       [
-        { text: "Inquiry preference", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['prefer-inquiry'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="prefer-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-desc-changed'] == 'Inquiry' and data['prefer-inquiry'],
+        { text: "Why would you prefer an inquiry?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['preferInquiry'] | truncate(50) if data['preferInquiry'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="prefer-inquiry" class="govuk-link">Change</a>' if data['preferInquiry'] else '<a href="prefer-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['decide-appeal'] == 'Inquiry',
       [
-        { text: "How many days for inquiry", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['width5'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="how-many-days-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-desc-changed'] == 'Inquiry' and data['width5'],
+        { text: "How many days would you expect the inquiry to last?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['width5'] if data['width5'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="how-many-days-inquiry" class="govuk-link">Change</a>' if data['width5'] else '<a href="how-many-days-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['decide-appeal'] == 'Inquiry',
       [
-        { text: "How many witnesses", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['how-many-witnesses'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="how-many-witnesses" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['application-desc-changed'] == 'Inquiry' and data['how-many-witnesses'],
+        { text: "How many witnesses would you expect to give evidence at the inquiry?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['how-many-witnesses'] if data['how-many-witnesses'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="how-many-witnesses" class="govuk-link">Change</a>' if data['how-many-witnesses'] else '<a href="how-many-witnesses" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['decide-appeal'] == 'Inquiry',
       [
-        { text: "Other appeals", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['other-appeals-radio'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="other-appeals" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['other-appeals-radio'],
+        { text: "Are there other appeals linked to your development?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['other-appeals-radio'] if data['other-appeals-radio'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="other-appeals" class="govuk-link">Change</a>' if data['other-appeals-radio'] else '<a href="other-appeals" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
       [
-        { text: "Appeal reference", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: "Complete" if data['enter-appeal-reference'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="enter-appeal-reference" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['other-appeals-radio'] == 'Yes' and data['enter-appeal-reference']
+        { text: "Enter the appeal reference number", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['other-appeal-reference'] if data['other-appeal-reference'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="enter-appeal-reference" class="govuk-link">Change</a>' if data['other-appeal-reference'] else '<a href="enter-appeal-reference" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ] if data['other-appeals-radio'] == 'Yes'
     ] | reject("equalto", false) | list
   }) }}
 </li>

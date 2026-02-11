@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload your other new supporting documents' %}
+{% set pageName = title + ' - Appeal a planning decision'%}
+{% set uploadDataKey = 'upload-other-new-documents' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}
+
+{% block pageScripts %}
+{% endblock %}
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="../prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}

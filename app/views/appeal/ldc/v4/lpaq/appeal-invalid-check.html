@@ -4,7 +4,7 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% set title = 'Do you think the appeal is invalid?' %}
-{% set back = false %}
+{% set back = true %}
 
 {% set reasonHtml %}
 {{ govukInput({
@@ -53,6 +53,11 @@
       }) }}
 
     </form>
+
+    <p class="govuk-body govuk-!-margin-bottom-6">
+       <a href="/appeal/ldc/v4/lpaq/task-list">Return to questionnaire homepage</a>
+      </p>
+
   </div>
 </div>
 {% endblock %}

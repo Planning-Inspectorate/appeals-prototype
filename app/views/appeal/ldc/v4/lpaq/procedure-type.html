@@ -1,6 +1,20 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'How would you prefer us to decide your appeal?' %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set title = 'Which procedure do you think is most appropriate for this appeal?' %}
+
+{% set inquiryHtml %}
+  {{ govukInput({
+    id: 'inquiry-days',
+    name: 'inquiry-days',
+    value: data['inquiry-days'],
+    classes: 'govuk-input--width-5',
+    label: {
+      text: 'How many days would you expect the inquiry to last?'
+    }
+  }) }}
+{% endset -%}
 
 {% block questions %}
   {{ govukRadios({
@@ -17,27 +31,28 @@
       {
         html: 'Written representations',
         value: 'Written representations',
-        checked: checked('procedure','Written representations'),
-        hint: {
-          html: 'For appeals where the issues are clear from written statements and a site visit. This is the quickest and most common way to make an appeal.'
-        }
+        checked: checked('procedure','Written representations')
       },
       {
         html: 'Hearing',
         value: 'Hearing',
-        checked: checked('procedure','Hearing'),
-        hint: {
-          html: 'For appeals with more complex issues. The Inspector leads a discussion to answer questions they have about the appeal.'
-        }
+        checked: checked('procedure','Hearing')
       },
       {
         html: 'Inquiry',
         value: 'Inquiry',
         checked: checked('procedure','Inquiry'),
-        hint: {
-          html: 'For appeals with very complex issues. Appeal evidence is tested by legal representatives, who question witnesses under oath.'
+        conditional: {
+          html: inquiryHtml
         }
       }
     ]
   }) }}
+{% endblock %}
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/lpaq/task-list">Return to questionnaire homepage</a>
+    </p>
+
 {% endblock %}

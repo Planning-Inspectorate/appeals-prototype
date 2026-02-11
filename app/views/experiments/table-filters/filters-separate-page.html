@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appeals List - Separate Filter Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css">
+    <style>
+        body {
+            font-family: "GDS Transport", arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            background: #f3f2f1;
+        }
+
+        .govuk-width-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .govuk-main-wrapper {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .govuk-heading-l {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.11111;
+            margin-bottom: 30px;
+        }
+
+        .govuk-heading-m {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .govuk-button {
+            font-weight: 400;
+            font-size: 19px;
+            line-height: 1;
+            padding: 8px 10px 7px;
+            border: 2px solid transparent;
+            background-color: #00703c;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .govuk-button:hover {
+            background-color: #005a30;
+        }
+
+        .govuk-button--secondary {
+            background-color: #f3f2f1;
+            color: #0b0c0c;
+        }
+
+        .govuk-button--secondary:hover {
+            background-color: #dbdad9;
+        }
+
+        .filter-summary {
+            background: #1d70b8;
+            color: #fff;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .filter-summary.show {
+            display: block;
+        }
+
+        .filter-summary p {
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .filter-tag {
+            background: #fff;
+            color: #0b0c0c;
+            padding: 5px 10px;
+            margin-right: 10px;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .filter-tag button {
+            background: none;
+            border: none;
+            color: #0b0c0c;
+            font-weight: bold;
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .filter-actions-inline {
+            margin-top: 10px;
+        }
+
+        .filter-actions-inline a {
+            color: #fff;
+            text-decoration: underline;
+            margin-right: 15px;
+        }
+
+        .govuk-table {
+            width: 100%;
+            background: #fff;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .govuk-table__header {
+            font-weight: 700;
+            text-align: left;
+            padding: 10px 20px 10px 0;
+            border-bottom: 1px solid #b1b4b6;
+        }
+
+        .govuk-table__cell {
+            padding: 10px 20px 10px 0;
+            border-bottom: 1px solid #b1b4b6;
+        }
+
+        .govuk-tag {
+            display: inline-block;
+            padding: 5px 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            background-color: #1d70b8;
+            color: #fff;
+        }
+
+        .govuk-tag--red {
+            background-color: #d4351c;
+        }
+
+        .govuk-tag--green {
+            background-color: #00703c;
+        }
+
+        .govuk-link {
+            color: #1d70b8;
+            text-decoration: underline;
+        }
+
+        .govuk-link:hover {
+            color: #003078;
+        }
+
+        .results-count {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Filter page styles */
+        .filter-page {
+            display: none;
+            background: #fff;
+            padding: 30px;
+            border: 1px solid #b1b4b6;
+        }
+
+        .filter-page.show {
+            display: block;
+        }
+
+        .list-page.hide {
+            display: none;
+        }
+
+        .govuk-form-group {
+            margin-bottom: 30px;
+        }
+
+        .govuk-label {
+            font-weight: 700;
+            font-size: 19px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .govuk-select, .govuk-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 5px;
+            border: 2px solid #0b0c0c;
+            font-size: 19px;
+            line-height: 1.25;
+        }
+
+        .govuk-back-link {
+            font-size: 16px;
+            color: #0b0c0c;
+            text-decoration: underline;
+            display: inline-block;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .govuk-back-link:before {
+            content: "← ";
+        }
+
+        .govuk-back-link:hover {
+            color: #0b0c0c;
+        }
+    </style>
+</head>
+<body>
+    <div class="govuk-width-container">
+        <main class="govuk-main-wrapper">
+            <!-- LIST PAGE -->
+            <div id="list-page" class="list-page">
+                <h1 class="govuk-heading-l">Active appeals</h1>
+
+                <!-- Filter Summary (shown when filters are active) -->
+                <div class="filter-summary" id="filter-summary">
+                    <p>Active filters:</p>
+                    <div id="filter-tags"></div>
+                    <div class="filter-actions-inline">
+                        <a href="#" onclick="showFilterPage(); return false;">Change filters</a>
+                        <a href="#" onclick="clearAllFilters(); return false;">Clear all filters</a>
+                    </div>
+                </div>
+
+                <!-- Filter Button -->
+                <button class="govuk-button govuk-button--secondary" onclick="showFilterPage()">
+                    Filter this list
+                </button>
+
+                <!-- Results Count -->
+                <p class="results-count" id="results-count">Showing 18 appeals</p>
+
+                <!-- Table -->
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Appeal number</th>
+                            <th scope="col" class="govuk-table__header">Address</th>
+                            <th scope="col" class="govuk-table__header">Appeal type</th>
+                            <th scope="col" class="govuk-table__header">Deadline</th>
+                            <th scope="col" class="govuk-table__header">Due in</th>
+                            <th scope="col" class="govuk-table__header">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body" id="table-body">
+                        <tr class="govuk-table__row" data-type="householder" data-status="overdue" data-action="questionnaire">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">1345301</a><br><span style="font-size: 14px; color: #505a5f;">Lead</span></td>
+                            <td class="govuk-table__cell">Spital House, Lensfield Rd, Cambridge CB21ER</td>
+                            <td class="govuk-table__cell">Householder</td>
+                            <td class="govuk-table__cell">25 September 2025</td>
+                            <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--red">Overdue</span></td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Questionnaire</a></td>
+                        </tr>
+                        <tr class="govuk-table__row" data-type="planning" data-status="3-days" data-action="questionnaire">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">1345264</a><br><span style="font-size: 14px; color: #505a5f;">Child</span></td>
+                            <td class="govuk-table__cell">Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT</td>
+                            <td class="govuk-table__cell">Planning</td>
+                            <td class="govuk-table__cell">29 September 2025</td>
+                            <td class="govuk-table__cell">3 days</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Questionnaire</a></td>
+                        </tr>
+                        <tr class="govuk-table__row" data-type="householder" data-status="new" data-action="">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">1009386</a></td>
+                            <td class="govuk-table__cell">The Old Library, 2 Wheeler St, Cambridge CB2 3QB</td>
+                            <td class="govuk-table__cell">Householder</td>
+                            <td class="govuk-table__cell"></td>
+                            <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">New</span></td>
+                            <td class="govuk-table__cell"></td>
+                        </tr>
+                        <tr class="govuk-table__row" data-type="householder" data-status="overdue" data-action="statement">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">10693866</a></td>
+                            <td class="govuk-table__cell">Flat 3, 12 Bramblewick Road, Northwick Hollow, Somerset, ZZ1 1H6</td>
+                            <td class="govuk-table__cell">Householder</td>
+                            <td class="govuk-table__cell">25 September 2025</td>
+                            <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--red">Overdue</span></td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Statement</a></td>
+                        </tr>
+                        <tr class="govuk-table__row" data-type="planning" data-status="3-days" data-action="statement">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">1295800</a><br><span style="font-size: 14px; color: #505a5f;">Lead</span></td>
+                            <td class="govuk-table__cell">7 Willowmere Crescent, Oakley Marsh, Kent, ZZ2 2TZ</td>
+                            <td class="govuk-table__cell">Planning</td>
+                            <td class="govuk-table__cell">29 September 2025</td>
+                            <td class="govuk-table__cell">3 days</td>
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">Statement</a></td>
+                        </tr>
+                        <tr class="govuk-table__row" data-type="householder" data-status="new" data-action="">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link">1204968</a><br><span style="font-size: 14px; color: #505a5f;">Child</span></td>
+                            <td class="govuk-table__cell">The Granary, Meadow Lane, Little Wrenford, Norfolk, ZZ3 3ZA</td>
+                            <td class="govuk-table__cell">Householder</td>
+                            <td class="govuk-table__cell"></td>
+                            <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">New</span></td>
+                            <td class="govuk-table__cell"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- FILTER PAGE -->
+            <div id="filter-page" class="filter-page">
+                <a class="govuk-back-link" onclick="showListPage(); return false;">Back to appeals list</a>
+                
+                <h1 class="govuk-heading-l">Filter appeals</h1>
+
+                <form>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="filter-appeal-type">
+                            Appeal type
+                        </label>
+                        <select class="govuk-select" id="filter-appeal-type" name="appeal-type">
+                            <option value="">All</option>
+                            <option value="householder">Householder</option>
+                            <option value="planning">Planning</option>
+                        </select>
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="filter-status">
+                            Status
+                        </label>
+                        <select class="govuk-select" id="filter-status" name="status">
+                            <option value="">All</option>
+                            <option value="new">New</option>
+                            <option value="overdue">Overdue</option>
+                            <option value="3-days">3 days</option>
+                            <option value="1-day">1 day</option>
+                        </select>
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="filter-action">
+                            Action required
+                        </label>
+                        <select class="govuk-select" id="filter-action" name="action">
+                            <option value="">All</option>
+                            <option value="questionnaire">Questionnaire</option>
+                            <option value="statement">Statement</option>
+                        </select>
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="filter-search">
+                            Search
+                        </label>
+                        <input class="govuk-input" id="filter-search" name="search" type="text" placeholder="Appeal number or address">
+                    </div>
+
+                    <button type="button" class="govuk-button" onclick="applyFiltersAndReturn()">
+                        Apply filters
+                    </button>
+                    <button type="button" class="govuk-button govuk-button--secondary" onclick="clearFiltersOnPage()">
+                        Clear all
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let currentFilters = {
+            appealType: '',
+            status: '',
+            action: '',
+            search: ''
+        };
+
+        function showFilterPage() {
+            // Load current filter values into filter page
+            document.getElementById('filter-appeal-type').value = currentFilters.appealType;
+            document.getElementById('filter-status').value = currentFilters.status;
+            document.getElementById('filter-action').value = currentFilters.action;
+            document.getElementById('filter-search').value = currentFilters.search;
+
+            document.getElementById('list-page').classList.add('hide');
+            document.getElementById('filter-page').classList.add('show');
+            window.scrollTo(0, 0);
+        }
+
+        function showListPage() {
+            document.getElementById('filter-page').classList.remove('show');
+            document.getElementById('list-page').classList.remove('hide');
+            window.scrollTo(0, 0);
+        }
+
+        function applyFiltersAndReturn() {
+            // Get filter values from filter page
+            currentFilters.appealType = document.getElementById('filter-appeal-type').value;
+            currentFilters.status = document.getElementById('filter-status').value;
+            currentFilters.action = document.getElementById('filter-action').value;
+            currentFilters.search = document.getElementById('filter-search').value.toLowerCase();
+
+            // Apply filters to table
+            applyFilters();
+
+            // Return to list page
+            showListPage();
+        }
+
+        function applyFilters() {
+            const rows = document.querySelectorAll('#table-body tr');
+            let visibleCount = 0;
+            const filterSummaryDiv = document.getElementById('filter-summary');
+            const filterTagsDiv = document.getElementById('filter-tags');
+            
+            filterTagsDiv.innerHTML = '';
+            let hasFilters = false;
+
+            rows.forEach(row => {
+                let show = true;
+
+                if (currentFilters.appealType && row.dataset.type !== currentFilters.appealType) show = false;
+                if (currentFilters.status && row.dataset.status !== currentFilters.status) show = false;
+                if (currentFilters.action && row.dataset.action !== currentFilters.action) show = false;
+                if (currentFilters.search && !row.textContent.toLowerCase().includes(currentFilters.search)) show = false;
+
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+
+            // Update filter tags
+            if (currentFilters.appealType) {
+                hasFilters = true;
+                const displayValue = currentFilters.appealType.charAt(0).toUpperCase() + currentFilters.appealType.slice(1);
+                filterTagsDiv.innerHTML += `<span class="filter-tag">Appeal type: ${displayValue} <button onclick="removeSingleFilter('appealType')">×</button></span>`;
+            }
+            if (currentFilters.status) {
+                hasFilters = true;
+                const displayValue = currentFilters.status;
+                filterTagsDiv.innerHTML += `<span class="filter-tag">Status: ${displayValue} <button onclick="removeSingleFilter('status')">×</button></span>`;
+            }
+            if (currentFilters.action) {
+                hasFilters = true;
+                const displayValue = currentFilters.action.charAt(0).toUpperCase() + currentFilters.action.slice(1);
+                filterTagsDiv.innerHTML += `<span class="filter-tag">Action: ${displayValue} <button onclick="removeSingleFilter('action')">×</button></span>`;
+            }
+            if (currentFilters.search) {
+                hasFilters = true;
+                filterTagsDiv.innerHTML += `<span class="filter-tag">Search: "${currentFilters.search}" <button onclick="removeSingleFilter('search')">×</button></span>`;
+            }
+
+            if (hasFilters) {
+                filterSummaryDiv.classList.add('show');
+            } else {
+                filterSummaryDiv.classList.remove('show');
+            }
+
+            document.getElementById('results-count').textContent = `Showing ${visibleCount} appeals`;
+        }
+
+        function removeSingleFilter(filterName) {
+            currentFilters[filterName] = '';
+            applyFilters();
+        }
+
+        function clearAllFilters() {
+            currentFilters = {
+                appealType: '',
+                status: '',
+                action: '',
+                search: ''
+            };
+            applyFilters();
+        }
+
+        function clearFiltersOnPage() {
+            document.getElementById('filter-appeal-type').value = '';
+            document.getElementById('filter-status').value = '';
+            document.getElementById('filter-action').value = '';
+            document.getElementById('filter-search').value = '';
+        }
+    </script>
+</body>
+</html>

@@ -2,6 +2,7 @@
 
 {% set title = 'Upload your separate ownership certificate and agricultural land declaration' %}
 {% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'ownership-certificate' %}
 
 {% block questions %}
 
@@ -11,57 +12,19 @@
     {{ title }}
   </h1>
 
-  {% set uploadHtml %}
-    {{ govukFileUpload({
-      id: 'ownership-certificate',
-      name: 'ownership-certificate',
-      classes: 'moj-multi-file-upload__input',
-      label: {
-        text: 'Upload files',
-        classes: 'govuk-label--m'
-      },
-      hint: {
-        text: 'Each file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and smaller than 25MB.'
-      },
-      attributes: { multiple: '' }
-    }) }}
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
 
-    {{govukButton({
-      text: 'Upload files',
-      classes: 'govuk-button--secondary moj-multi-file-upload__button'
-    })}}
-  {% endset %}
-
-  {{ mojMultiFileUpload({
-    uploadedFiles: {
-      heading: { text: 'Files added' },
-      items: []
-    },
-    uploadHtml: uploadHtml
-  }) }}
+  {% include '_includes/common/multiple-document-upload.html' %}
 
 {% endblock %}
 
 {% block pageScripts %}
-
-  <script>
-    // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
-    $('form').submit(function(e) {
-      e.preventDefault();
-
-      $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="ownership-certificate" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
-      });
-
-      $(this).unbind('submit').submit();
-    })
-  </script>
-
 {% endblock %}
 {% block afterContent %}
 
   <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/your-appeal">Return to your appeal</a>
+     <a href="../prepare-appeal/your-appeal">Return to your appeal</a>
     </p>
 
 {% endblock %}

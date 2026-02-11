@@ -138,6 +138,15 @@ router.post('/other-relevant-matters', function (req, res) {
   }
 })
 
+// POST route for upload-other-relevant-matters
+router.post('/upload-other-relevant-matters', function (req, res) {
+  res.redirect('./inspector-access-appeal-site')
+})
+
+
+
+
+
 // POST route for inspector-access-appeal-site
 router.post('/inspector-access-appeal-site', function (req, res) {
   res.redirect('./inspector-enter-neighbour-site')
@@ -161,9 +170,9 @@ router.post('/neighbours-address', function (req, res) {
 
 // POST route for neighbours
 router.post('/neighbours', function (req, res) {
-  const answer = req.session.data['neighbours']
+  const answer = req.session.data['add-neighbours']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./neighbours-address')
   } else {
     res.redirect('./health-and-safety')
@@ -172,7 +181,7 @@ router.post('/neighbours', function (req, res) {
 
 // POST route for health-and-safety
 router.post('/health-and-safety', function (req, res) {
-  res.redirect('./procedure-type')
+  res.redirect('/appeal/ldc/v4/lpaq/procedure-type')
 })
 
 // POST route for procedure-type

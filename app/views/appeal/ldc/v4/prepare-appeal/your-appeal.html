@@ -1,5 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
+
 {% set title = 'Your appeal' %}
 {% set back = false %}
 {% set prototypeLinks = [{href: 'declaration', text: 'Skip to declaration'}] %}
@@ -18,13 +19,37 @@
 
     </div>
 
+
+<!-- change log experiment -->
+
+{% set changelogText = "Version 2.0: Added linked appeals support, improved form field validation, enhanced task list tracking with contact details and witness count validation, and fixed procedure type conditional inquiry days input." %}
+{% set changelogVersions = [
+  { pageName: "Your appeal - v1.5", dateEdited: "25 January 2026", href: "#", changes: "Fixed form field naming inconsistencies (contact-details to contact-first-name/last-name, width5 to how-many-witnesses)" },
+  { pageName: "Your appeal - v1.0", dateEdited: "3 December 2025", href: "#", changes: "Initial release with basic task list structure and section completion tracking" }
+] %}
+
+{% include "experiments/includes/changelog.html" %}
+<!--  changelog experiment end -->
+
     <div class="govuk-grid-column-three-quarters-from-desktop">
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
+      {# Count completed sections #}
+      {% set completedCount = 0 %}
+      {% if data['application-name'] and data['appellant-first-name'] and data['address-line-1'] and data['lpa-name'] and data['decide-appeal'] %}
+        {% set completedCount = completedCount + 1 %}
+      {% endif %}
+      {% if data['application-form'] %}
+        {% set completedCount = completedCount + 1 %}
+      {% endif %}
+      {% if data['declaration'] %}
+        {% set completedCount = completedCount + 1 %}
+      {% endif %}
+
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
-        Appeal incomplete
+        {% if completedCount == 3 %}Appeal complete{% else %}Appeal incomplete{% endif %}
       </h2>
-      <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 3 sections.</p>
+      <p class="govuk-!-margin-bottom-7">You have completed {{completedCount}} of 3 sections.</p>
 
       {# Tweak the task list so we can merge the CYA in #}
       <style>

@@ -1,6 +1,7 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Upload your draft statement of common ground' %}
+{% set uploadDataKey = 'draft-statement-common-ground' %}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
@@ -9,61 +10,13 @@
  
   {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-  {% set uploadHtml %}
-    {{ govukFileUpload({
-      id: 'draft-statement-common-ground',
-      name: 'draft-statement-common-ground',
-      classes: 'moj-multi-file-upload__input',
-      label: {
-        text: 'Upload files',
-        classes: 'govuk-label--m'
-      },
-      hint: {
-        text: 'The file must be a DOC, DOCX, PDF, XLS, TIF, JPG or PNG and be smaller than 25MB'
-      }
-    }) }}
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
 
-    {{govukButton({
-      text: 'Upload files',
-      classes: 'govuk-button--secondary moj-multi-file-upload__button'
-    })}}
-  {% endset %}
-
-  {{ mojMultiFileUpload({
-    uploadedFiles: {
-      heading: { text: 'File added' },
-      items: []
-    },
-    uploadHtml: uploadHtml
-  }) }}
+  {% include '_includes/common/multiple-document-upload.html' %}
 
 {% endblock %}
 
 
 {% block pageScripts %}
-  <script>
-    // Hacky hacky single file
-    $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop a file here or ')
-    $('.moj-multi-file-upload__dropzone .govuk-button').text('Select file')
-    $('.moj-multi-file__uploaded-files').on('fileAdded', function() {
-      $('.moj-multi-file-upload__upload').hide()
-    });
-
-    $('.moj-multi-file__uploaded-files').click(function() {
-      $('.moj-multi-file-upload__upload').show()
-    });
-
-
-
-    // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
-    $('form').submit(function(e) {
-      e.preventDefault();
-
-      $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="appeal-statement" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
-      });
-
-      $(this).unbind('submit').submit();
-    })
-  </script>
 {% endblock %}

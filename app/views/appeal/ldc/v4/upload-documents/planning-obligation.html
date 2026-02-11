@@ -2,6 +2,7 @@
 
 {% set title = 'Upload your planning obligation' %}
 {% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'planning-obligation' %}
 
 {% block questions %}
 
@@ -13,66 +14,18 @@
 
   {{ '<p class="govuk-body">Your deadline to submit your finalised planning obligation is around 6 weeks after you submit your appeal. We&rsquo;ll tell you the exact date when we confirm your appeal.</p>' | safe if data['planning-obligation-status'] == 'In draft' }}
 
-  {% set uploadHtml %}
-    {{ govukFileUpload({
-      id: 'planning-obligation',
-      name: 'planning-obligation',
-      classes: 'moj-multi-file-upload__input',
-      label: {
-        text: 'Upload files',
-        classes: 'govuk-label--m'
-      },
-      hint: {
-        text: 'Each file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB'
-      }
-    }) }}
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
 
-    {{govukButton({
-      text: 'Upload files',
-      classes: 'govuk-button--secondary moj-multi-file-upload__button'
-    })}}
-  {% endset %}
-
-  {{ mojMultiFileUpload({
-    uploadedFiles: {
-      heading: { text: 'File added' },
-      items: []
-    },
-    uploadHtml: uploadHtml
-  }) }}
+  {% include '_includes/common/multiple-document-upload.html' %}
 {% endblock %}
 
 {% block pageScripts %}
-  <script>
-    // Hacky hacky single file
-    $('.moj-multi-file-upload__dropzone .govuk-body').text('Drag and drop a file here or ')
-    $('.moj-multi-file-upload__dropzone .govuk-button').text('Select file')
-    $('.moj-multi-file__uploaded-files').on('fileAdded', function() {
-      $('.moj-multi-file-upload__upload').hide()
-    });
-
-    $('.moj-multi-file__uploaded-files').click(function() {
-      $('.moj-multi-file-upload__upload').show()
-    });
-
-
-
-    // I really should learn how the MOJ upload works, however, a hack to get all the files passed into data
-    $('form').submit(function(e) {
-      e.preventDefault();
-
-      $('.moj-multi-file-upload__filename').each(function() {
-        $('<input name="planning-obligation" type="checkbox" value="'+ $(this).text() +'" checked="true" style="display: none">').insertBefore('.govuk-heading-l');
-      });
-
-      $(this).unbind('submit').submit();
-    })
-  </script>
 {% endblock %}
 {% block afterContent %}
 
   <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/your-appeal">Return to your appeal</a>
+     <a href="../prepare-appeal/your-appeal">Return to your appeal</a>
     </p>
 
 {% endblock %}

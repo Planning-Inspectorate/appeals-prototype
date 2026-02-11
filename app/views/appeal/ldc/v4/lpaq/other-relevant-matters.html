@@ -4,7 +4,7 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% set title = 'Are there any other relevant matters?' %}
-{% set back = false %}
+{% set back = true %}
 
 {% set reasonHtml %}
 {{ govukInput({
@@ -20,9 +20,9 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-l">{{serviceName}}</span>
+    <span class="govuk-caption-l">Planning officer’s report and supporting documents </span>
     
-    <form action="./other-relevant-matters" method="post" novalidate>
+    <form action="/appeal/ldc/v4/lpaq/other-relevant-matters" method="post" novalidate>
 
       {{ govukRadios({
         name: "other-relevant-matters",
@@ -50,6 +50,11 @@
       }) }}
 
     </form>
+
+    <p class="govuk-body govuk-!-margin-bottom-6">
+       <a href="/appeal/ldc/v4/lpaq/task-list">Return to questionnaire homepage</a>
+      </p>
+
   </div>
 </div>
 {% endblock %}

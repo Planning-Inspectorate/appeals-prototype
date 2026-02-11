@@ -1,15 +1,16 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Enter the description of development that you submitted in your application' %}
-  <span class="govuk-caption-l">Prepare appeal</span>
 
 
 {% block questions %}
+  <span class="govuk-caption-l">Prepare appeal</span>
+
 
   {{ govukTextarea({
-    name: "description-detail",
-    id: "description-detail",
-    value: data['description-detail'],
+    name: "descriptionOfDevelopment",
+    id: "description-of-development",
+    value: data['descriptionOfDevelopment'],
     label: {
       text: title,
       classes: "govuk-label--l",

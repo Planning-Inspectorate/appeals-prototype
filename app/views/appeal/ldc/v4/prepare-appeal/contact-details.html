@@ -37,27 +37,28 @@
         </legend>
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="appellant-first-name">
+          <label class="govuk-label" for="contact-first-name">
             First name
           </label>
-          <input class="govuk-input govuk-input--width-20" id="appellant-first-name" name="appellant-first-name" type="text" spellcheck="false" autocomplete="given-name">
+          <input class="govuk-input govuk-input--width-20" id="contact-first-name" name="contact-first-name" type="text" spellcheck="false" autocomplete="given-name" value="{{ data['contact-first-name'] }}">
         </div>
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="appellant-last-name">
+          <label class="govuk-label" for="contact-last-name">
             Last name
           </label>
-          <input class="govuk-input govuk-input--width-20" id="appellant-last-name" name="appellant-last-name" type="text" spellcheck="false" autocomplete="family-name">
+          <input class="govuk-input govuk-input--width-20" id="contact-last-name" name="contact-last-name" type="text" spellcheck="false" autocomplete="family-name" value="{{ data['contact-last-name'] }}">
         </div>
 
-          <div class="govuk-form-group">
-          <label class="govuk-label" for="appellant-last-name">
+       
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-company-name">
             Company name (optional)
           </label>
-          <input class="govuk-input govuk-input--width-20" id="appellant-last-name" name="appellant-last-name" type="text" spellcheck="false" autocomplete="family-name">
+          <input class="govuk-input govuk-input--width-20" id="contact-company-name" name="contact-company-name" type="text" spellcheck="false" autocomplete="organization" value="{{ data['contact-company-name'] }}">
         </div>
 
-      </<fieldset>
+      </fieldset>
 
       {{ govukButton({
         text: "Continue"
