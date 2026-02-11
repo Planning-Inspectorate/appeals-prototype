@@ -223,7 +223,7 @@
                 </div>
                     {# Size modifiers: xl, l, m #}
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                    <p class="govuk-body-s"><a href="#">Show all sections</a></p>
+                    <p class="govuk-body-s"><a href="#">Show all filters</a></p>
                     <details class="govuk-details govuk-!-margin-bottom-0" id="filter-panel">
 
                         <summary class="govuk-details__summary">
@@ -396,18 +396,10 @@
 
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
-                    <a href="side-selected" class="govuk-button">
+                    <a href="#" class="govuk-button">
                         Apply filters
                     </a>
                 </div>
-
-                <!--<summary class="govuk-details__summary">
-                            <span class="govuk-details__summary-text">
-                                Filters
-                            </span>
-                        </summary>
-
-                    </details>-->
 
             </div>
 
@@ -416,92 +408,77 @@
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
                 <span class="govuk-caption-xl">Cambridgeshire and Peterborough Combined Authority</span>
                 <h1 class="govuk-heading-xl">Manage your appeals</h1>
-                <div id="search-hint" class="govuk-hint">
-                    Search by appeal reference number, site address, LPA reference number, and appellant name
-                  </div>
-                  
-                  <form class="govuk-form-group search-form">
-                    <label class="govuk-label govuk-visually-hidden" for="keyword-search">Keyword search</label>
+                    <div id="search-hint" class="govuk-hint">
+                        Search by address or any reference number</div>
+                    <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;">
+                        <label class="govuk-label govuk-visually-hidden" for="keyword-search">Keyword search</label>
+                        <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off" style="margin-bottom: 0; width:100%;">
+                        <a href="search-applied" class="govuk-button" style="margin-bottom: 0;">
+                            Search
+                        </a>
+                    </form>
+
+                    <div id="pagination" class="govuk-body">
+
+                        <div style="padding-top:10px;">
+    
+                            <p class="govuk-body">
+                                Showing
+                                <strong>1</strong>
+                                to
+                                <strong>1</strong>
+                                of
+                                <strong>1</strong>
+                                appeals
+                            </p>
+                        </div>
                     
-                    <div class="search-input-wrapper">
-                      <input 
-                        class="govuk-input search-input active" 
-                        id="keyword-search" 
-                        name="keyword-search" 
-                        type="text" 
-                        autocomplete="off"
-                        value="Cambridge"
-                      >
-                      <button type="button" class="clear-btn" aria-label="Clear search">×</button>
-                    </div>
-                  
-                    <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom:0px;">Search</button>
-                  </form>
-
-                <div id="pagination" class="govuk-body">
-                    <p class="govuk-body">
-                        Showing
-                        <strong>1</strong>
-                        to
-                        <strong>1</strong>
-                        of
-                        <strong>1</strong>
-                        appeals
-                    </p>
-
-                    <span>
-                        <strong>Results per page</strong>
-                    </span>&nbsp;&nbsp;&nbsp;&nbsp;
-
-                    <span class="govuk-body">15</span>
-
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a class="govuk-link--no-visited-state" href="?itemsPerPage=50" data-pagination="525">25</a>
-
-                    &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a class="govuk-link--no-visited-state" href="?itemsPerPage=100" data-pagination="50">50</a>
-
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
                     <!--classes: 'govuk-summary-list--no-border app-summary-list--compact app-summary-list--small-text'-->
 
-                    <div class="govuk-!-margin-bottom-1"
-                        style="display:flex; align-items:center; justify-content:space-between;">
+                    <div class="govuk-!-margin-bottom-1" style="display:flex; align-items:center; justify-content:space-between;">
                         <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
-                            <a href="#" class="govuk-link">1345301</a>
+                          <a href="#" class="govuk-link">1345301</a>
                         </h2>
                         <div class="app-list__tag">
-                            <strong class="govuk-tag govuk-tag--turquoise">Active</strong>
-                            <strong class="govuk-tag govuk-tag--red">Overdue</strong>
-                        </div>
-                    </div>
-
-                    <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact">
-                        <div class="govuk-summary-list__row">
+                            <strong class="govuk-tag govuk-tag--blue">Active</strong>
+                          </div>
+                      </div>
+                      
+                        <dl class="govuk-summary-list govuk-summary-list--no-border govuk-summary-list--compact" >
+                          <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Address</dt>
                             <dd class="govuk-summary-list__value">Spital House, Lensfield Rd, Cambridge CB2 1ER</dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
+                          </div>
+                          <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Appeal type</dt>
                             <dd class="govuk-summary-list__value">Householder</dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Procedure type</dt>
+                            <dd class="govuk-summary-list__value">Written representations</dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Linked appeal</dt>
+                            <dd class="govuk-summary-list__value">Yes (lead)</dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Deadline</dt>
                             <dd class="govuk-summary-list__value">18 September 2025</dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Due in</dt>
+                            <dd class="govuk-summary-list__value">Overdue</dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">To do</dt>
-                            <li class="govuk-summary-list__actions-list-item"
-                                style="list-style: none; padding-left: 0; margin-left: 0; border-left: none;">
-                                <a class="govuk-link" href="#">Questionnaire<span class="govuk-visually-hidden">
-                                    </span></a>
+                            <li class="govuk-summary-list__actions-list-item" style="list-style: none; padding-left: 0; margin-left: 0; border-left: none;">
+                                <a class="govuk-link" href="#">Questionnaire<span class="govuk-visually-hidden"> </span></a>
                             </li>
-                            <li class="govuk-summary-list__actions-list-item">
-                                <a class="govuk-link" href="#">Statement<span class="govuk-visually-hidden"></span></a>
-                            </li>
-                        </div>
-                    </dl>
+                          </div>
+                        </dl>
 
 
                 <nav class="govuk-pagination" aria-label="Pagination">

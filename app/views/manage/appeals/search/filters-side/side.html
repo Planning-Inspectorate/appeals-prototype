@@ -148,7 +148,7 @@
                             <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
                             <h2 class="govuk-heading-m">Filter</h2>
                             
-                            <p class="govuk-body-s"><a href="#">Show all sections</a></p>
+                            <p class="govuk-body-s"><a href="#">Show all filters</a></p>
                             <details class="govuk-details govuk-!-margin-bottom-0" id="filter-panel">
 
                                 <summary class="govuk-details__summary">
@@ -335,19 +335,10 @@
 
                             <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
-                            <a href="side-selected" class="govuk-button">
+                            <a href="filter-applied" class="govuk-button">
                                 Apply filters
                             </a>
                         </div>
-
-                        <!--<summary class="govuk-details__summary">
-                            <span class="govuk-details__summary-text">
-                                Filters
-                            </span>
-                        </summary>
-
-                    </details>-->
-
                 </div>
 
                 <div class="govuk-grid-column-two-thirds">
@@ -360,13 +351,16 @@
                         <form class="govuk-form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 0px;">
                             <label class="govuk-label govuk-visually-hidden" for="keyword-search">Keyword search</label>
                             <input class="govuk-input" id="keyword-search" name="keyword-search" type="text" autocomplete="off" style="margin-bottom: 0; width:100%;">
-                            <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom: 0;">Search</button>
+                            <a href="search-applied" class="govuk-button" style="margin-bottom: 0;">
+                                Search
+                            </a>
                         </form>
 
                         {# Size modifiers: xl, l, m #}
                         <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
 
-                    <div id="pagination" class="govuk-body">
+                    <div id="pagination" class="govuk-body" style="padding-top:10px;">
+
                         <p class="govuk-body">
                             Showing
                             <strong>1</strong>
@@ -376,18 +370,7 @@
                             <strong>32</strong>
                             appeals
                         </p>
-
-                        <span>
-                            <strong>Results per page</strong>
-                        </span>&nbsp;&nbsp;&nbsp;&nbsp;
-
-                        <span class="govuk-body">15</span>
-
-                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a class="govuk-link--no-visited-state" href="?itemsPerPage=50" data-pagination="525">25</a>
-
-                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a class="govuk-link--no-visited-state" href="?itemsPerPage=100" data-pagination="50">50</a>
+                    </div>
 
                         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
@@ -610,7 +593,7 @@
     display: flex;
     align-items: center;
 ">
-    <a href="side-selected" class="govuk-button govuk-button--secondary" style="margin:0;">
+    <a href="filter-applied.html" class="govuk-button govuk-button--secondary" style="margin:0;">
         Filters selected
     </a>
 </div>
