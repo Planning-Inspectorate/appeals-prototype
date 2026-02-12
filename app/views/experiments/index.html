@@ -1,0 +1,69 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'Experiments' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#appeal'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- <span class="govuk-caption-l">
+      Manage LPA appeals
+    </span> -->
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p class="govuk-body-l">A collection of quick tests and internal tools</p>
+
+  <h2 class="govuk-heading-m">Changelog</h2>
+    <p class="govuk-body">A collapsible and closable changelog banner, implemented as an include, that displays version information and previous page versions. The purpose is for us internally to have a record of why changes were made to common pages.</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/appeal/ldc/v4/prepare-appeal/your-appeal" class="govuk-link">View changelog example on the 'Your appeal' page</a></li>
+    </ul>
+
+   
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+  
+ <h2 class="govuk-heading-m">Table filters</h2>
+    <p class="govuk-body">Test different approaches for filtering data in tables. Filters can be placed above the table or on a separate page.</p>
+    <ul class="govuk-list govuk-list--bullet">
+
+      <li><a href="/experiments/table-filters/filters-above-table" class="govuk-link">View filters above table</a></li>
+      <li><a href="/experiments/table-filters/filters-separate-page" class="govuk-link">View filters on separate page</a></li>
+    </ul>
+
+
+   <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Collaboration tool</h2>
+    <p class="govuk-body">A tool for teams to collaborate, by selecting their favourite component and copy for a given page, stating their rationale.</p>
+    <p class="govuk-body">Charts allowing designers to overview trends in their colleagues' submissions to make informed choices.</p>
+    {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+    {{ govukInsetText({
+      text: "This tool was made for styling the separate redaction status and date received pages for multifile upload, it can be used as a basis for more flexible page builders in the future.
+    "
+    }) }}
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/experiments/collaboration-tool/collaboration-tool-voting.html" class="govuk-link">View collaboration tool</a></li>
+    </ul>
+
+   
+
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+{% endblock %}

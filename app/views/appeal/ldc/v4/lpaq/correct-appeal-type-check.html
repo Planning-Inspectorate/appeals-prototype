@@ -1,10 +1,8 @@
 {% extends "_layouts/layout-main.html" %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% set title = 'Is lawful development certificate the correct type of appeal?' %}
-{% set back = false %}
+{% set back = true %}
 
 {% set reasonHtml %}
 {{ govukInput({
@@ -53,6 +51,12 @@
       }) }}
 
     </form>
+
+    <p class="govuk-body govuk-!-margin-bottom-6">
+       <a href="/appeal/ldc/v4/lpaq/task-list">Return to questionnaire homepage</a>
+      </p>
+
   </div>
 </div>
 {% endblock %}
+

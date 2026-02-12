@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Do you have a planning obligation to support your appeal?' %}
+{% set title = 'What is the status of your planning obligation?' %}
 {% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block questions %}
@@ -19,14 +19,14 @@
     },
     items: [
       {
-        html: 'Yes',
-        value: 'Yes',
-        checked: checked('planning-obligation-status','Yes')
+        html: 'Finalised and ready to submit',
+        value: 'Finalised and ready to submit',
+        checked: checked('planning-obligation-status','Finalised and ready to submit')
       },
       {
-        html: 'No',
-        value: 'No',
-        checked: checked('planning-obligation-status','No')
+        html: 'Not started yet',
+        value: 'Not started yet',
+        checked: checked('planning-obligation-status','Not started yet')
       }
     ]
   }) }}
@@ -35,7 +35,7 @@
 {% block afterContent %}
 
   <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/your-appeal">Return to your appeal</a>
+     <a href="../prepare-appeal/your-appeal">Return to your appeal</a>
     </p>
 
 {% endblock %}

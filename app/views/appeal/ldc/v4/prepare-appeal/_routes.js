@@ -25,7 +25,13 @@ router.get('/application-date', function (req, res, next) {
 
 //applicant name route
 router.post('/application-name', function (req, res) {
-  res.redirect('appellant-name')
+  const response = req.session.data['application-name']
+  
+  if (response == 'Yes') {
+    res.redirect('contact-details')
+  } else {
+    res.redirect('appellant-name')
+  }
 })
 
 //appellant-name route
@@ -110,15 +116,22 @@ router.post('/description-development-correct', function (req, res) {
 
 //decide-appeal route with branching
 router.post('/decide-appeal', function (req, res) {
-  const preference = req.session.data['application-desc-changed']
+  console.log('=== decide-appeal POST route hit ===')
+  console.log('Full session data:', JSON.stringify(req.session.data, null, 2))
+  const preference = req.session.data['decide-appeal']
+  console.log('decide-appeal value:', preference)
   
   if (preference === 'Written representations') {
+    console.log('Redirecting to other-appeals')
     res.redirect('other-appeals')
   } else if (preference === 'Hearing') {
+    console.log('Redirecting to prefer-hearing')
     res.redirect('prefer-hearing')
   } else if (preference === 'Inquiry') {
+    console.log('Redirecting to prefer-inquiry')
     res.redirect('prefer-inquiry')
   } else {
+    console.log('No match, redirecting to other-appeals')
     res.redirect('other-appeals')
   }
 })
@@ -168,12 +181,16 @@ router.post('/add-another-appeal', function (req, res) {
   const preference = req.session.data['other-appeals']
   
   if (preference == 'Yes') {
-    res.redirect('enter-appeal-reference')
+    res.redirect('enter-appeal-reference-2')
   } else if (preference === 'No') {
     res.redirect('your-appeal')
   } else {
     res.redirect('your-appeal')
   }
+})
+
+router.post('/enter-appeal-reference-2', function (req, res) {
+  res.redirect('add-another-appeal')
 })
 
 module.exports = router

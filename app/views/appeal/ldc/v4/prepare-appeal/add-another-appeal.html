@@ -44,18 +44,18 @@
           text: 'Other appeal 2'
         },
         value: {
-          html: '0176257'
+          html: data['other-appeal-reference-2']
         },
         actions: {
           items: [
             {
-              href: "?extraotherappeal=",
+              href: "#",
               text: "Remove",
-              visuallyHiddenText: 'appeal 0176257'
+              visuallyHiddenText: 'appeal ' + data['other-appeal-reference-2']
             }
           ]
         }
-      } if data['extraotherappeal'] == 'yes'
+      } if data['other-appeal-reference-2']
 
     ]
   }) }}

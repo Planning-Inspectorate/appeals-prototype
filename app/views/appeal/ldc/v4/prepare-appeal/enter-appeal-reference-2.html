@@ -1,0 +1,35 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Enter the appeal reference number' %}
+
+{% block questions %}
+  <span class="govuk-caption-l">Prepare appeal</span>
+
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    classes: "govuk-input--width-10",
+    hint: {
+      html: "<span class='govuk-body'>Enter the appeal reference number from the Planning Inspectorate.</span><br><br>For example, 0221532."
+    },
+    id: "other-appeal-reference-2",
+    name: "other-appeal-reference-2",
+    inputmode: "numeric",
+    spellcheck: false
+  }) }}
+
+
+  
+{% endblock %}
+
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
+    </p>
+
+{% endblock %}

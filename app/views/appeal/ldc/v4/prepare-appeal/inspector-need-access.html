@@ -6,18 +6,17 @@
  <span class="govuk-caption-l">
 Prepare appeal  </span>
   {{ govukRadios({
-    idPrefix: 'green-belt',
-    name: 'green-belt',
+    idPrefix: 'inspector-access',
+    name: 'inspector-access',
     fieldset: {
       legend: {
         html: title,
         classes: 'govuk-fieldset__legend--l',
         isPageHeading: true
-        
       }
     },
     hint: {
-      html: "An inspector will visit the appeal site to assess the development's impact on its surroundings.<br><br>If the inspector can view the appeal site from a public road or footpath without entering your land or property, they do not need access."
+      html: '<p class="govuk-body">An inspector will visit the appeal site to assess the development\'s impact on its surroundings.<br><br>If the inspector can view the appeal site from a public road or footpath without entering your land or property, they do not need access.</p>'
     },
     items: [
       {

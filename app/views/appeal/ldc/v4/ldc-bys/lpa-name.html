@@ -1,24 +1,33 @@
 {% extends '_layouts/layout-main.html' %}
+{% set prototypeLinks = [{href: 'errors/lpa-not-available', text: 'LPA not available'}] %}
 
 {% set title = 'Which local planning authority (LPA) do you want to appeal against?' %}
 
-{% from "govuk/components/input/macro.njk" import govukInput %}
-
 {% block questions %}
-<span class="govuk-caption-l">
-		Before you start
-	</span>
+  {# Create an array for the LPA select below #}
+  {% set lpaList = [{value: '',text: 'Select LPA'}] %}
 
-  {{ govukInput({
+  {# Include all of the LPA's which are set in default data #}
+  {% for lpa in data['lpas'] %}
+    {% set lpaList = lpaList | push ({
+      value: lpa,
+      text: lpa
+    }) %}
+  {% endfor %}
+
+  {# Adds all items from the array then progressively enhanced with the script at the bottom of the file #}
+  {{ govukSelect({
+    id: 'lpa-name',
+    name: 'lpa-name',
+    classes: 'js-autocomplete',
     label: {
-      text: title,
-      isPageHeading: true,
-      classes: "govuk-label--l"
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
     },
-    classes: "govuk-input--width-10",
-    id: "lpa-name",
-    name: "lpa-name",
-    autocomplete: "off"
+    items: lpaList,
+    attributes: {
+      'data-default-value': data['lpa']
+    }
   }) }}
-
 {% endblock %}

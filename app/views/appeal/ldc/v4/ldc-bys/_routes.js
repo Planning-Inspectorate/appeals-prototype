@@ -34,7 +34,7 @@ router.post('/listed-building', function (req, res) {
   console.log('Listed building route hit')
   console.log('Radio value:', req.session.data['listed-building'])
   
-  if (req.session.data['listed-building'] == 'yes') {
+  if (req.session.data['listed-building'] == 'Yes') {
     res.redirect('granted-or-refused')
   } else {
     res.redirect('cya')
@@ -82,10 +82,10 @@ router.post('/decision-date-due', function (req, res) {
   req.session.data['appeal-deadline-formatted'] = `11.59pm on ${deadlineWeekday} ${deadline.getDate()} ${deadlineMonthName} ${deadline.getFullYear()}`
 
   if (entered < cutoff) {
-    const deadlineDay = String(deadline.getDate()).padStart(2, '0')
-    const deadlineMonth = String(deadline.getMonth() + 1).padStart(2, '0')
-    const deadlineYear = deadline.getFullYear()
-    req.session.data['appeal-deadline'] = `${deadlineDay}/${deadlineMonth}/${deadlineYear}`
+    const deadlineDay = deadline.getDate();
+    const deadlineMonthName = deadline.toLocaleDateString('en-GB', { month: 'long' });
+    const deadlineYear = deadline.getFullYear();
+    req.session.data['appeal-deadline'] = `${deadlineDay} ${deadlineMonthName} ${deadlineYear}`;
     res.redirect('cannot-appeal')
   } else {
     res.redirect('cya')
@@ -124,10 +124,10 @@ router.post('/decision-date', function (req, res) {
   req.session.data['appeal-deadline-formatted'] = `11.59pm on ${deadlineWeekday} ${deadline.getDate()} ${deadlineMonthName} ${deadline.getFullYear()}`
 
   if (entered < cutoff) {
-    const deadlineDay = String(deadline.getDate()).padStart(2, '0')
-    const deadlineMonth = String(deadline.getMonth() + 1).padStart(2, '0')
-    const deadlineYear = deadline.getFullYear()
-    req.session.data['appeal-deadline'] = `${deadlineDay}/${deadlineMonth}/${deadlineYear}`
+    const deadlineDay = deadline.getDate();
+    const deadlineMonthName = deadline.toLocaleDateString('en-GB', { month: 'long' });
+    const deadlineYear = deadline.getFullYear();
+    req.session.data['appeal-deadline'] = `${deadlineDay} ${deadlineMonthName} ${deadlineYear}`;
     res.redirect('cannot-appeal')
   } else {
     res.redirect('cya')
@@ -155,7 +155,7 @@ router.post('/email-confirmed', function (req, res) {
 
 // route for the BYS form submission
 router.post('/before-you-start-appeals', function (req, res) {
-  res.redirect('/appeal/ldc/v4/prepare-appeal/application-name')
+  res.redirect('/appeal/ldc/v4/prepare-appeal/your-appeal')
 })
 // route for the BYS form submission end
 module.exports = router

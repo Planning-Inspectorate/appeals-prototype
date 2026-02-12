@@ -1,0 +1,129 @@
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+
+{% set changelogContent %}
+  <div id="changelog-content">
+    <p class="govuk-body">{{ changelogText or 'No changelog information available.' }}</p>
+    
+    {% if changelogVersions %}
+      <p class="govuk-body govuk-!-margin-bottom-2"><strong>Previous versions:</strong></p>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for version in changelogVersions %}
+          <li>
+            <a href="{{ version.href }}" class="govuk-link">
+              {{ version.pageName }} - {{ version.dateEdited }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endset %}
+
+<div id="changelog-banner-wrapper">
+  {{ govukCookieBanner({
+    ariaLabel: "Changelog",
+    messages: [
+      {
+        headingText: "Changelog",
+        html: changelogContent,
+        actions: [
+          {
+            text: "Close",
+            type: "button"
+          }
+        ]
+      }
+    ]
+  }) }}
+</div>
+
+<style>
+  #changelog-banner-wrapper .govuk-cookie-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #changelog-banner-wrapper.minimized .govuk-cookie-banner {
+    transform: translateY(-100%);
+  }
+
+  #changelog-banner-wrapper.closed .govuk-cookie-banner {
+    transform: translateY(-100%);
+  }
+
+  .changelog-minimize-btn {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1000;
+    background-color: #f3f2f1;
+    border: 1px solid #b1b4b6;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+
+  .changelog-minimize-btn:hover {
+    background-color: #e8e8e6;
+  }
+
+  #changelog-banner-wrapper.minimized .changelog-minimize-btn::before {
+    content: "▼ ";
+  }
+
+  #changelog-banner-wrapper:not(.minimized):not(.closed) .changelog-minimize-btn::before {
+    content: "▲ ";
+  }
+</style>
+
+<button class="changelog-minimize-btn" id="changelog-toggle" aria-label="Toggle changelog banner">
+  Changelog
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('changelog-toggle')
+    const bannerWrapper = document.getElementById('changelog-banner-wrapper')
+    
+    // Toggle minimize/maximize and show banner
+    toggleBtn.addEventListener('click', function(e) {
+      e.preventDefault()
+      // Show banner if it's closed
+      if (bannerWrapper.classList.contains('closed')) {
+        bannerWrapper.classList.remove('closed')
+        bannerWrapper.classList.remove('minimized')
+        localStorage.setItem('changelog-hidden', 'false')
+      } else {
+        // Toggle minimize if banner is visible
+        bannerWrapper.classList.toggle('minimized')
+        localStorage.setItem('changelog-minimized', bannerWrapper.classList.contains('minimized'))
+      }
+    })
+
+    // Close banner button - use event delegation to catch the close button
+    if (bannerWrapper) {
+      bannerWrapper.addEventListener('click', function(e) {
+        // Check if the clicked button contains "Close" text
+        if (e.target.tagName === 'BUTTON' && e.target.textContent.trim() === 'Close') {
+          e.preventDefault()
+          bannerWrapper.classList.add('closed')
+          bannerWrapper.classList.remove('minimized')
+          localStorage.setItem('changelog-hidden', 'true')
+        }
+      })
+    }
+
+    // Restore previous state
+    if (localStorage.getItem('changelog-hidden') === 'true') {
+      bannerWrapper.classList.add('closed')
+    } else if (localStorage.getItem('changelog-minimized') === 'true') {
+      bannerWrapper.classList.add('minimized')
+    }
+  })
+</script>

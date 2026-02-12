@@ -1,15 +1,15 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'What is the status of your planning obligation?' %}
-{% set pageName = title + ' - Planning Inspectorate'%}
+{% set title = 'Do you have any other new documents that support your appeal?' %}
+{% set pageName = title + ' - Appeal a planning decision'%}
 
 {% block questions %}
 
   <span class="govuk-caption-l">Upload documents</span>
 
   {{ govukRadios({
-    idPrefix: 'status-planning-obligation',
-    name: 'status-planning-obligation',
+    idPrefix: 'other-new-documents-check',
+    name: 'other-new-documents-check',
     fieldset: {
       legend: {
         html: title,
@@ -19,14 +19,14 @@
     },
     items: [
       {
-        html: 'Finalised and ready to submit',
+        html: 'Yes',
         value: 'Yes',
-        checked: checked('Finalised-and-ready-to-submit','Yes')
+        checked: checked('other-new-documents-check','Yes')
       },
       {
-        html: 'Not started yet',
+        html: 'No',
         value: 'No',
-        checked: checked('Not-started-yet','No')
+        checked: checked('other-new-documents-check','No')
       }
     ]
   }) }}
@@ -35,7 +35,7 @@
 {% block afterContent %}
 
   <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/your-appeal">Return to your appeal</a>
+     <a href="../prepare-appeal/your-appeal">Return to your appeal</a>
     </p>
 
 {% endblock %}

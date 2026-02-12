@@ -1,0 +1,65 @@
+<li>
+  {# Calculate status for Site Access section #}
+  {% set siteAccessRequired = [
+    data['inspector-access-appeal-site'],
+    data['inspector-enter-neighbour-site'],
+    data['neighbour-address'],
+    data['neighbours'],
+    data['health-and-safety']
+  ] %}
+  {% set siteAccessAnswered = siteAccessRequired | reject("equalto", undefined) | reject("equalto", "") | list %}
+  {% set siteAccessComplete = (siteAccessAnswered.length == siteAccessRequired.length and siteAccessRequired.length > 0) %}
+  {% set siteAccessInProgress = (siteAccessAnswered.length > 0 and siteAccessAnswered.length < siteAccessRequired.length) %}
+
+  <h2 class="app-task-list__section">
+    3. Site access
+    {% if siteAccessComplete %}
+      {{ govukTag({
+        text: "Completed",
+        classes: "govuk-tag"
+      }) }}
+    {% elif siteAccessInProgress %}
+      {{ govukTag({
+        text: "In progress",
+        classes: "govuk-tag govuk-tag--grey"
+      }) }}
+    {% else %}
+      {{ govukTag({
+        text: "Not started",
+        classes: "govuk-tag govuk-tag--grey"
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [],
+    rows: [
+      [
+        { text: "Inspector access appeal site", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['inspector-access-appeal-site'] if data['inspector-access-appeal-site'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="inspector-access-appeal-site" class="govuk-link">Change</a>' if data['inspector-access-appeal-site'] else '<a href="inspector-access-appeal-site" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
+      [
+        { text: "Inspector enter neighbour site", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['inspector-enter-neighbour-site'] if data['inspector-enter-neighbour-site'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="inspector-enter-neighbour-site" class="govuk-link">Change</a>' if data['inspector-enter-neighbour-site'] else '<a href="inspector-enter-neighbour-site" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
+      [
+        { text: "Neighbours", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['neighbours'] if data['neighbours'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="neighbours" class="govuk-link">Change</a>' if data['neighbours'] else '<a href="neighbours" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
+      [
+        { text: "Neighbour address", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['neighbour-address'] if data['neighbour-address'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="neighbours-address" class="govuk-link">Change</a>' if data['neighbour-address'] else '<a href="neighbours-address" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ],
+      [
+        { text: "Health and safety", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['health-and-safety'] if data['health-and-safety'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="health-and-safety" class="govuk-link">Change</a>' if data['health-and-safety'] else '<a href="health-and-safety" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+      ]
+    ]
+  }) }}
+</li>

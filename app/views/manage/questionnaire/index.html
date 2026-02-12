@@ -38,11 +38,14 @@
       <li>
         additional section, ‘Original evidence’
       </li>
+       <li>
+        updated logic for the 'View prototype' button to clear your cached answers if you are coming from the index page (which is this page)
+      </li>
     </ul>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'v'+version+'/task-list',
+      href: 'v'+version+'/task-list?clear=true',
       isStartButton: true
     }) }}
 
@@ -65,7 +68,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/task-list',
+        href: 'v'+version+'/task-list?clear=true',
         isStartButton: true
       }) }}
 
@@ -106,7 +109,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/access/email-appeal-started',
+        href: 'v'+version+'/access/email-appeal-started?clear=true',
         isStartButton: true
       }) }}
 
@@ -128,7 +131,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/task-list',
+        href: 'v'+version+'/task-list?clear=true',
         isStartButton: true
       }) }}
 
@@ -145,7 +148,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/task-list',
+        href: 'v'+version+'/task-list?clear=true',
         isStartButton: true
       }) }}
 
@@ -175,7 +178,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/task-list',
+        href: 'v'+version+'/task-list?clear=true',
         isStartButton: true
       }) }}
 

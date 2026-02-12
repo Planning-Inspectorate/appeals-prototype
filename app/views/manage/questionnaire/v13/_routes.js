@@ -12,6 +12,14 @@ router.get('*', function(req, res, next){
   next()
 })
 
+router.get('/access/email-appeal-started', function(req, res, next){
+  // Clear session data if coming from index page
+  if (req.query.clear === 'true') {
+    req.session.data = {}
+  }
+  next()
+})
+
 router.post('/access/enter-code', function (req, res) {
   res.redirect('../task-list')
 })
@@ -26,6 +34,11 @@ router.post('*', function(req, res, next){
 })
 
 router.get('/task-list', function(req, res, next){
+  // Clear session data if coming from index page
+  if (req.query.clear === 'true') {
+    req.session.data = {}
+  }
+  
   let count = 0
   if (req.session.data['constraints-completed'] == 'true') { count++ }
   if (req.session.data['env-impact-completed'] == 'true') { count++ }
