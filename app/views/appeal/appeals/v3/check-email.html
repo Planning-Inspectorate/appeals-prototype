@@ -1,0 +1,56 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Check email address and send access invite" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+{% block questions %}
+
+  <span class="govuk-caption-xl">
+    Appeal {{ data['appealCode'] or '1345264' }} - change access email
+  </span>
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ govukSummaryList({
+    classes: "govuk-!-margin-bottom-9",
+    rows: [
+      {
+        key: {
+          text: "Email"
+        },
+        value: {
+          html: data['new-email'] or 'jan.fisher@appealexperts.co.uk'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+
+  {{ govukWarningText({
+    text: "When the invite is accepted you will lose access to this appeal.",
+    iconFallbackText: "Warning"
+  }) }}
+
+{% endblock %}
+
+{% block buttons %}
+  {{ govukButton({
+    text: "Accept and send"
+  }) }}
+{% endblock %}

@@ -13,43 +13,57 @@
   }
 </style>
 
+  <dl class="govuk-summary-list appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0">
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key govuk-!-width-one-third">
+        Appeal type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">
+          S78 / Full appeal
+        </p>
+      </dd>
+    </div>
+    {% if data['appeal-type'] != 'none' %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Appeal procedure
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <p class="govuk-body">
+          {% if data['appeal-type'] == 'written' %}
+            Written representations
+          {% else %}
+            Inquiry
+          {% endif %}
+        </p>
+      </dd>
+    </div>
+    {% endif %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Application number
+      </dt>
+      <dd class="govuk-summary-list__value">
+        23/04125/FUL
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Appeal site
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT
+      </dd>
+    </div>
+  </dl>
+
+<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
 <dl class="govuk-summary-list appeal-details govuk-summary-list--no-border govuk-!-margin-bottom-0">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key govuk-!-width-one-third">
-      Appeal type
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <p class="govuk-body">
-        S78 / Full appeal
-      </p>
-    </dd>
-  </div>
-  {% if data['appeal-type'] != 'none' %}
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Appeal procedure
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <p class="govuk-body">
-        {% if data['appeal-type'] == 'written' %}
-          Written representations
-        {% else %}
-          Inquiry
-        {% endif %}
-      </p>
-    </dd>
-  </div>
-  {% endif %}
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Appeal site
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Haggis Farm Cottage, Cambridge Rd, Barton, Cambridge CB23 7AT
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
       Applicant
     </dt>
     <dd class="govuk-summary-list__value">
@@ -57,11 +71,24 @@
     </dd>
   </div>
   <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Application number
+    <dt class="govuk-summary-list__key govuk-!-width-one-third">
+      Access email
     </dt>
     <dd class="govuk-summary-list__value">
-      23/04125/FUL
+      <p class="govuk-body">
+        mariellabidbod@email.com <a class="govuk-link" href="new-email">Change<span class="govuk-visually-hidden"> email</span></a>
+      </p>
+    </dd>
+
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contact phone number
+    </dt>
+    <dd class="govuk-summary-list__value">
+      07724112334
     </dd>
   </div>
+
 </dl>
