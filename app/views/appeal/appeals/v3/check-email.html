@@ -23,7 +23,7 @@
     rows: [
       {
         key: {
-          text: "Email"
+          text: "Updated email"
         },
         value: {
           html: data['new-email'] or 'jan.fisher@appealexperts.co.uk'
@@ -43,7 +43,7 @@
 
 
   {{ govukWarningText({
-    text: "When the invite is accepted you will lose access to this appeal.",
+    text: "When the invite is accepted you will lose access to this appeal with sam@planning-agent.com",
     iconFallbackText: "Warning"
   }) }}
 
@@ -51,6 +51,6 @@
 
 {% block buttons %}
   {{ govukButton({
-    text: "Accept and send"
+    text: "Confirm and send"
   }) }}
 {% endblock %}

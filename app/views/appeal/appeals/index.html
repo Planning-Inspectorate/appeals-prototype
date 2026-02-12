@@ -25,7 +25,7 @@
       Appellant and agent list of appeals.
     </p>
 
-    {% set version = "2" %}
+    {% set version = "3" %}
 
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -34,6 +34,10 @@
         text: 'In progress'
       }) }}
     </h2>
+
+    <p>
+      Addition of changing access to appeal, updating the email address for the appeal
+    </p>
 
     <!-- <p>
       Researched May 2023<br>
@@ -44,9 +48,23 @@
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'v'+version+'/appeal-details',
+      href: '/appeal/appeals/v'+version+'/appeal-details',
       isStartButton: true
     }) }}
+
+
+    {% set v2HTML%}
+
+      {% set version = "2" %}
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appeal-details',
+        isStartButton: true
+      }) }}
+
+    {% endset %}
+
 
     {% set v1HTML %}
 
@@ -85,6 +103,14 @@
           },
           content: {
             html: v1HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 2 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v2HTML
           }
         }
       ]
