@@ -587,8 +587,16 @@ router.post('/env-impact/applicant-env-statement-check', function (req, res) {
   if (req.session.data['applicant-env-statement-check'] == 'Yes') {
     res.redirect('env-statement-upload')
   } else {
+
+    // if screening-check was No, skip
+    if (req.session.data['screening-check'] != 'Yes') {
+      res.redirect('complete')
+    } else {
+      res.redirect('negative-screening-upload');
+    }
+
     req.session.data['applicant-env-statement-check']
-    res.redirect('negative-screening-upload');
+
   }
 })
 
