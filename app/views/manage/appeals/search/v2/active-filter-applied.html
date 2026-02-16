@@ -35,15 +35,47 @@
         {# Size modifiers: xl, l, m #}
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
+
     </div>
 </div>
-
 
 
 <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-full">
         {% include "./_includes/filters-v2.html" %}
+
+        <div id="box">
+            <p class="govuk-body">
+                Active filters
+            </p>
+            <div style="flex-direction:column; gap:0px;">
+                <div style="display:flex; align-items:center; gap:12px;">
+
+                    <span style="display:inline-flex; gap:0px;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span class="govuk-body selected-filter-tag"
+                                style="margin:0px; border-radius:5px; background:#f3f2f1; color:#0b0c0c; font-family:'GDS Transport',Arial,sans-serif; border-radius:4px; padding:4px 12px; border:1px solid #b1b4b6; white-space:nowrap;">
+                                <button type="button"
+                                    style="background:none; border:none; padding:0; margin-right:8px; font-size:20px; line-height:1; cursor:pointer;">×
+                                </button>Appeal type: Householder
+
+                            </span>
+                            <span class="govuk-body selected-filter-tag"
+                                style="margin:0px; border-radius:5px; background:#f3f2f1; color:#0b0c0c; font-family:'GDS Transport',Arial,sans-serif; border-radius:4px; padding:4px 12px; border:1px solid #b1b4b6; white-space:nowrap;">
+                                <button type="button"
+                                    style="background:none; border:none; padding:0; margin-right:8px; font-size:20px; line-height:1; cursor:pointer;">×
+                                </button>Action required: Questionnaire
+
+                            </span>
+                        </div>
+                    </span>
+                </div>
+
+            </div>
+
+            <p class="govuk-body" style="padding-top:10px; padding-bottom:10px;"><a href="active">Clear all filters</a></p>
+        </div>
 
 
             {% include "./_includes/secondary-nav.html" %}
@@ -292,26 +324,26 @@
 
             {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
-{{ govukPagination({
-  next: {
-    href: "#"
-  },
-  items: [
-    {
-      number: 1,
-      current: true,
-      href: "#"
-    },
-    {
-      number: 2,
-      href: "#"
-    },
-    {
-      number: 3,
-      href: "#"
-    }
-  ]
-}) }}
+            {{ govukPagination({
+            next: {
+                href: "#"
+            },
+            items: [
+                {
+                number: 1,
+                current: true,
+                href: "#"
+                },
+                {
+                number: 2,
+                href: "#"
+                },
+                {
+                number: 3,
+                href: "#"
+                }
+            ]
+            }) }}
 
         </div>
     </div>
