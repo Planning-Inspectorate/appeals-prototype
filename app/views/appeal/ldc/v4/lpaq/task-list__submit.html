@@ -1,7 +1,10 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 <li>
+  {% set submitComplete = data['submit-complete'] == true or data['submit-complete'] == 'true' or data['submit-complete'] == 'Completed' or data['submit-complete'] == 'completed' %}
   <h2 class="app-task-list__section">
     5. Submit questionnaire
-    {% if data['submit-complete'] %}
+    {% if submitComplete %}
       {{ govukTag({
         text: "Completed",
         classes: "govuk-tag"
@@ -13,4 +16,15 @@
       }) }}
     {% endif %}
   </h2>
+
+  {% if submitComplete %}
+    <p class="govuk-body">You cannot submit the questionnaire until all of the other sections are complete.</p>
+  {% else %}
+    <p class="govuk-body">By submitting this questionnaire you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+    {{ govukButton({
+      text: "Submit questionnaire"
+    }) }}
+  {% endif %}
+
+  
 </li>

@@ -8,8 +8,9 @@
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
 {{ govukTextarea({
-  name: "moreDetail",
-  id: "more-detail",
+  name: "prefer-inquiry",
+  id: "prefer-inquiry",
+  value: data['prefer-inquiry'],
   label: {
     text: title,
     classes: "govuk-label--l",

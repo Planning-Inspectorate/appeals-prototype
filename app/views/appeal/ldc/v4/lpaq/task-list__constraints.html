@@ -1,22 +1,22 @@
 <li>
   {# Calculate status for Constraints section #}
   {% set constraintsRequired = [
-    data['correct-appeal-type-check'],
-    data['certificate-type-check'],
+    data['correct-appeal-type'],
+    data['certificate-type'],
     data['planning-condition-check'],
     data['upload-relevant-planning-permission'],
     data['enforcement-notice-date-application'],
     data['upload-enforcement-notice'],
     data['related-applications'],
     data['upload-related-applications'],
-    data['appeal-invalid']
+    data['appeal-invalid-check']
   ] %}
   {% set constraintsAnswered = constraintsRequired | reject("equalto", undefined) | reject("equalto", "") | list %}
   {% set constraintsComplete = (constraintsAnswered.length == constraintsRequired.length and constraintsRequired.length > 0) %}
   {% set constraintsInProgress = (constraintsAnswered.length > 0 and constraintsAnswered.length < constraintsRequired.length) %}
 
   <h2 class="app-task-list__section">
-    1. Constraints
+    1. Constraints, designations and other issues
     {% if constraintsComplete %}
       {{ govukTag({
         text: "Completed",
@@ -41,13 +41,13 @@
     rows: [
       [
         { text: "Correct appeal type", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['correct-appeal-type-check'] if data['correct-appeal-type-check'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="correct-appeal-type-check" class="govuk-link">Change</a>' if data['correct-appeal-type-check'] else '<a href="correct-appeal-type-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: data['correct-appeal-type'] if data['correct-appeal-type'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="correct-appeal-type-check" class="govuk-link">Change</a>' if data['correct-appeal-type'] else '<a href="correct-appeal-type-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
         { text: "Certificate type", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['certificate-type-check'] if data['certificate-type-check'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="certificate-type-check" class="govuk-link">Change</a>' if data['certificate-type-check'] else '<a href="certificate-type-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: data['certificate-type'] if data['certificate-type'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="certificate-type-check" class="govuk-link">Change</a>' if data['certificate-type'] else '<a href="certificate-type-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
         { text: "Planning condition", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
@@ -81,8 +81,8 @@
       ],
       [
         { text: "Appeal invalid", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['appeal-invalid'] if data['appeal-invalid'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="appeal-invalid-check" class="govuk-link">Change</a>' if data['appeal-invalid'] else '<a href="appeal-invalid-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: data['appeal-invalid-check'] if data['appeal-invalid-check'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="appeal-invalid-check" class="govuk-link">Change</a>' if data['appeal-invalid-check'] else '<a href="appeal-invalid-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ]
     ]
   }) }}

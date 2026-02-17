@@ -1,8 +1,8 @@
 <li>
   {# Calculate status for Appeal Process section #}
   {% set appealProcessRequired = [
-    data['procedure-type'],
-    data['how-many-days-inquiry'],
+    data['procedure'],
+    data['inquiry-days'],
     data['prefer-inquiry'],
     data['prefer-hearing'],
     data['other-appeals'],
@@ -39,13 +39,13 @@
     rows: [
       [
         { text: "Procedure type", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['procedure-type'] if data['procedure-type'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="procedure-type" class="govuk-link">Change</a>' if data['procedure-type'] else '<a href="procedure-type" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: data['procedure'] if data['procedure'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="procedure-type" class="govuk-link">Change</a>' if data['procedure'] else '<a href="procedure-type" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
         { text: "How many days inquiry", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['how-many-days-inquiry'] if data['how-many-days-inquiry'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="how-many-days-inquiry" class="govuk-link">Change</a>' if data['how-many-days-inquiry'] else '<a href="how-many-days-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: data['inquiry-days'] if data['inquiry-days'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="how-many-days-inquiry" class="govuk-link">Change</a>' if data['inquiry-days'] else '<a href="how-many-days-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
         { text: "Prefer inquiry", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
