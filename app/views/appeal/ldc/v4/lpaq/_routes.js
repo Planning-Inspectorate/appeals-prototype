@@ -186,14 +186,16 @@ router.post('/health-and-safety', function (req, res) {
 
 // POST route for procedure-type
 router.post('/procedure-type', function (req, res) {
-  const answer = req.session.data['procedure-type']
+  const answer = req.session.data['procedure']
   
-  if (answer == 'enquiry') {
-    res.redirect('./how-many-days-inquiry')
-  } else if (answer == 'hearing') {
+  if (answer == 'Inquiry') {
+    res.redirect('./prefer-inquiry')
+  } else if (answer == 'Hearing') {
     res.redirect('./prefer-hearing')
-  } else if (answer == 'written') {
+  } else if (answer == 'Written representations') {
     res.redirect('./other-appeals')
+  } else {
+    res.redirect('./procedure-type')
   }
 })
 
@@ -217,6 +219,18 @@ router.post('/other-appeals', function (req, res) {
   res.redirect('./other-appeal-reference')
 })
 
+// POST route for other-appeal-reference
+router.post('/other-appeal-reference', function (req, res) {
+  const reference = req.session.data['other-appeal-reference']
+  const otherAppeals = req.session.data['other-appeal-references'] || []
+
+  if (reference) {
+    otherAppeals.push(reference)
+    req.session.data['other-appeal-references'] = otherAppeals
+  }
+
+  res.redirect('./add-another-appeal')
+})
 
 
 // POST route for add-another-appeal
@@ -226,13 +240,13 @@ router.post('/add-another-appeal', function (req, res) {
   if (answer == 'yes') {
     res.redirect('./other-appeal-reference')
   } else if (answer == 'no') {
-    res.redirect('./check-your-answers')
+    res.redirect('./confirmation')
   }
 })
 
 // POST route for check-your-answers
 router.post('/check-your-answers', function (req, res) {
-  res.redirect('./confirmation ')
+  res.redirect('./confirmation')
 })
 
 module.exports = router

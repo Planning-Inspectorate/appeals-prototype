@@ -6,10 +6,16 @@
     data['community-infrastructure-check'],
     data['community-infrastructure-upload'],
     data['community-infrastructure-adopted'],
-    data['community-infrastructure-date'],
+    data['community-infrastructure-date-day'],
+    data['community-infrastructure-date-month'],
+    data['community-infrastructure-date-year'],
     data['other-relevant-matters'],
     data['upload-other-relevant-matters']
   ] %}
+  {% set communityInfrastructureDate = '' %}
+  {% if data['community-infrastructure-date-day'] and data['community-infrastructure-date-month'] and data['community-infrastructure-date-year'] %}
+    {% set communityInfrastructureDate = data['community-infrastructure-date-day'] ~ '/' ~ data['community-infrastructure-date-month'] ~ '/' ~ data['community-infrastructure-date-year'] %}
+  {% endif %}
   {% set poReportAnswered = poReportRequired | reject("equalto", undefined) | reject("equalto", "") | list %}
   {% set poReportComplete = (poReportAnswered.length == poReportRequired.length and poReportRequired.length > 0) %}
   {% set poReportInProgress = (poReportAnswered.length > 0 and poReportAnswered.length < poReportRequired.length) %}
@@ -65,8 +71,8 @@
       ],
       [
         { text: "Community infrastructure date", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['community-infrastructure-date'] if data['community-infrastructure-date'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="community-infrastructure-date" class="govuk-link">Change</a>' if data['community-infrastructure-date'] else '<a href="community-infrastructure-date" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: communityInfrastructureDate if communityInfrastructureDate else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="community-infrastructure-date" class="govuk-link">Change</a>' if communityInfrastructureDate else '<a href="community-infrastructure-date" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
         { text: "Other relevant matters", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },

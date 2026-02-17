@@ -15,54 +15,25 @@
 
 {% block questions %}
 
+  {% set otherAppeals = data['other-appeal-references'] or [] %}
+
   <h1 class="govuk-heading-l">
     {{title}}
   </h1>
-  {{ govukSummaryList({
-    classes: 'appeal-details govuk-!-margin-bottom-6 govuk-!-margin-top-0',
-    rows: [
-
-      {
-        key: {
-          text: 'Other appeal 1'
-        },
-        value: {
-          html: (data['other-appeal-reference'] or '0176256')
-        },
-        actions: {
-          items: [
-            {
-              href: "other-appeal-reference",
-              text: "Remove",
-              visuallyHiddenText: 'appeal 0176256'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: 'Other appeal 2'
-        },
-        value: {
-          html: '0176257'
-        },
-        actions: {
-          items: [
-            {
-              href: "?extraotherappeal=",
-              text: "Remove",
-              visuallyHiddenText: 'appeal 0176257'
-            }
-          ]
-        }
-      } if data['extraotherappeal'] == 'yes'
-
-    ]
-  }) }}
+  {% if otherAppeals.length %}
+    <dl class="govuk-summary-list appeal-details govuk-!-margin-bottom-6 govuk-!-margin-top-0">
+      {% for ref in otherAppeals %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Other appeal {{ loop.index }}</dt>
+          <dd class="govuk-summary-list__value">{{ ref }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+  {% endif %}
 
   {{ govukRadios({
-    idPrefix: 'other-appeals',
-    name: 'other-appeals',
+    idPrefix: 'add-another-appeal',
+    name: 'add-another-appeal',
     fieldset: {
       legend: {
         html: 'Add another appeal?',
@@ -73,11 +44,11 @@
     items: [
       {
         html: 'Yes',
-        value: 'Yes'
+        value: 'yes'
       },
       {
         html: 'No',
-        value: 'No'
+        value: 'no'
       }
     ]
   }) }}

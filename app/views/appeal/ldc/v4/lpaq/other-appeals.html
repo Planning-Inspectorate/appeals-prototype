@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'Are there other appeals linked to your development?' %}
+{% set title = 'Are there any other ongoing appeals next to, or close to the site?' %}
 
 {% block questions %}
   <span class="govuk-caption-l">{{serviceName}}</span>
@@ -10,8 +10,8 @@
     Appeal process
   </span> -->
   {{ govukRadios({
-    idPrefix: 'other-appeals-radio',
-    name: 'other-appeals-radio',
+    idPrefix: 'other-appeals',
+    name: 'other-appeals',
     fieldset: {
       legend: {
         html: title,
@@ -19,19 +19,16 @@
         isPageHeading: true
       }
     },
-    hint: {
-      html: '<span class="govuk-body">Only tell us about ongoing appeals that have not already received a decision.</span>'
-    },
     items: [
       {
         html: 'Yes',
         value: 'Yes',
-        checked: checked('other-appeals-radio','Yes')
+        checked: checked('other-appeals','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('other-appeals-radio','No')
+        checked: checked('other-appeals','No')
       }
     ]
   }) }}
