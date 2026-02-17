@@ -1,0 +1,212 @@
+<style>
+    .filters-container {
+      background-color: #f3f2f1;
+      padding: 20px;
+    }
+
+    .filters-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 40.0625em) {
+      .filters-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .filter-column {
+      margin-bottom: 0;
+    }
+
+    .app-applied-filters {
+  background: #f3f2f1;
+  border: 1px solid #b1b4b6;
+}
+
+.app-applied-filters__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-applied-filters__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.app-chip {
+  display: inline-flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #b1b4b6;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.app-chip__remove {
+  border: 0;
+  background: none;
+  margin-left: 8px;
+  font-size: 18px;
+  color: #505a5f;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.app-chip__remove:hover {
+  color: #0b0c0c;
+}
+
+.app-applied-filters__clear-link {
+  white-space: nowrap;
+}
+  </style>
+</head>
+
+<body class="govuk-template__body">
+  <script>document.body.className += ' js-enabled';</script>
+
+  <div class="govuk-width-container">
+
+      <!-- Toggle button -->
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        id="toggle-filters"
+        aria-expanded="false"
+        aria-controls="filters-container">
+        Show filters
+      </button>
+
+      <!-- Filters -->
+      <form method="get">
+
+        <div
+          id="filters-container"
+          class="filters-container govuk-!-margin-top-3"
+          hidden>
+
+          <div class="filters-inner">
+
+            <!-- Appeal type -->
+            <div class="filter-column">
+              <h3 class="govuk-heading-s">Appeal type</h3>
+
+              <div class="govuk-checkboxes govuk-checkboxes--small">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-planning" name="type" type="checkbox" value="Planning">
+                  <label class="govuk-label govuk-checkboxes__label" for="type-planning">
+                    Planning
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-householder" name="type" type="checkbox" value="Householder">
+                  <label class="govuk-label govuk-checkboxes__label" for="type-householder">
+                    Householder
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-enforcement" name="type" type="checkbox" value="Enforcement">
+                  <label class="govuk-label govuk-checkboxes__label" for="type-enforcement">
+                    Enforcement
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-enforcement-lbc" name="type" type="checkbox" value="Enforcement LBC">
+                  <label class="govuk-label govuk-checkboxes__label" for="type-enforcement-lbc">
+                    Enforcement listed building
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-advert" name="type" type="checkbox" value="Advertisement">
+                  <label class="govuk-label govuk-checkboxes__label" for="type-advert">
+                    Advertisement
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-cas" name="type" type="checkbox" value="CAS">
+                  <label class="govuk-label govuk-checkboxes__label" for="type-cas">
+                    Commercial advertisement (CAS)
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action required -->
+            <div class="filter-column">
+              <h3 class="govuk-heading-s">Action required</h3>
+
+              <div class="govuk-checkboxes govuk-checkboxes--small">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="action-questionnaire" name="action" type="checkbox" value="Questionnaire">
+                  <label class="govuk-label govuk-checkboxes__label" for="action-questionnaire">
+                    Questionnaire
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="action-statement" name="action" type="checkbox" value="Statement">
+                  <label class="govuk-label govuk-checkboxes__label" for="action-statement">
+                    Statement
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="action-statement" name="action" type="checkbox" value="Statement">
+                    <label class="govuk-label govuk-checkboxes__label" for="action-statement">
+                      Final comments
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="action-statement" name="action" type="checkbox" value="Statement">
+                    <label class="govuk-label govuk-checkboxes__label" for="action-statement">
+                      Proof of evidence
+                    </label>
+                  </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="action-none" name="action" type="checkbox" value="None">
+                  <label class="govuk-label govuk-checkboxes__label" for="action-none">
+                    None
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {{ govukButton({
+            text: "Apply filters",
+            href: "active-filter-applied",
+            classes: "govuk-button govuk-!-margin-top-4"
+          }) }}
+
+        </div>
+      </form>
+
+  </div>
+
+  <script>
+    const toggleButton = document.getElementById('toggle-filters');
+    const filters = document.getElementById('filters-container');
+
+    toggleButton.addEventListener('click', () => {
+      const isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
+
+      toggleButton.setAttribute('aria-expanded', String(!isOpen));
+      toggleButton.textContent = isOpen ? 'Show filters' : 'Hide filters';
+
+      filters.hidden = isOpen;
+    });
+  </script>

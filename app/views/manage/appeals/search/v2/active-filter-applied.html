@@ -43,39 +43,37 @@
 <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-full">
-        {% include "./_includes/filters-v2.html" %}
+        {% include "./_includes/filters-v3.html" %}
 
-        <div id="box">
-            <p class="govuk-body">
-                Active filters
-            </p>
-            <div style="flex-direction:column; gap:0px;">
-                <div style="display:flex; align-items:center; gap:12px;">
+<!-- Applied Filters Bar -->
+<div class="app-applied-filters govuk-!-margin-bottom-4 govuk-!-padding-3">
 
-                    <span style="display:inline-flex; gap:0px;">
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            <span class="govuk-body selected-filter-tag"
-                                style="margin:0px; border-radius:5px; background:#f3f2f1; color:#0b0c0c; font-family:'GDS Transport',Arial,sans-serif; border-radius:4px; padding:4px 12px; border:1px solid #b1b4b6; white-space:nowrap;">
-                                <button type="button"
-                                    style="background:none; border:none; padding:0; margin-right:8px; font-size:20px; line-height:1; cursor:pointer;">×
-                                </button>Appeal type: Householder
+    <div class="app-applied-filters__header">
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Filters</h3>
 
-                            </span>
-                            <span class="govuk-body selected-filter-tag"
-                                style="margin:0px; border-radius:5px; background:#f3f2f1; color:#0b0c0c; font-family:'GDS Transport',Arial,sans-serif; border-radius:4px; padding:4px 12px; border:1px solid #b1b4b6; white-space:nowrap;">
-                                <button type="button"
-                                    style="background:none; border:none; padding:0; margin-right:8px; font-size:20px; line-height:1; cursor:pointer;">×
-                                </button>Action required: Questionnaire
+        <a href="active" class="govuk-link app-applied-filters__clear-link">
+            Clear filters
+        </a>
+    </div>
 
-                            </span>
-                        </div>
-                    </span>
-                </div>
+    <div class="app-applied-filters__chips">
 
-            </div>
-
-            <p class="govuk-body" style="padding-top:10px; padding-bottom:10px;"><a href="active">Clear all filters</a></p>
+        <!-- Example chips (replace with dynamic values later) -->
+        <div class="app-chip">
+            <span>Appeal type: Householder</span>
+            <button class="app-chip__remove"
+                aria-label="Remove filter Appeal type: Householder">✕</button>
         </div>
+
+        <div class="app-chip">
+            <span>Action required: Questionnaire</span>
+            <button class="app-chip__remove"
+                aria-label="Remove filter Action required: Questionnaire">✕</button>
+        </div>
+
+    </div>
+
+</div>
 
 
             {% include "./_includes/secondary-nav.html" %}
