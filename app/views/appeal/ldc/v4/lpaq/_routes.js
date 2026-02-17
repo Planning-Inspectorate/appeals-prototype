@@ -240,7 +240,7 @@ router.post('/add-another-appeal', function (req, res) {
   if (answer == 'yes') {
     res.redirect('./other-appeal-reference')
   } else if (answer == 'no') {
-    res.redirect('./check-your-answers')
+    res.redirect('./confirmation')
   }
 })
 
