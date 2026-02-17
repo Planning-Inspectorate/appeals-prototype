@@ -1,0 +1,13 @@
+{% macro filterTag(label) %}
+<span class="govuk-body"
+      style="border-radius:4px; background:#f3f2f1; padding:4px 12px; border:1px solid #b1b4b6; display:inline-flex; align-items:center; white-space:nowrap;">
+  
+  <button type="button"
+          aria-label="Remove filter {{ label }}"
+          style="background:none; border:none; font-size:20px; line-height:1; margin-right:8px; cursor:pointer;">
+    ×
+  </button>
+
+  {{ label }}
+</span>
+{% endmacro %}

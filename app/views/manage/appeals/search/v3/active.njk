@@ -1,0 +1,66 @@
+{% extends "_layouts/layout-pins-manage-users.html" %}
+{% set pageName = "Home" %}
+{% set currentPage = "active" %}
+{% block backLink %}{% endblock %}
+
+{# Macros #}
+{% from "./_macros/filter-tag.njk" import filterTag %}
+{% from "./_macros/appeal-row.njk" import appealRow %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {# Page header #}
+    {% include "./_includes/page-header.njk" %}
+
+    <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
+    <div class="govuk-hint">You can search by address or any reference number</div>
+
+    <form class="govuk-form-group" action="active-search-applied" method="get">
+      {% set value = searchTerm %}
+      {% include "./_includes/search-bar.njk" %}
+    </form>
+
+    {% if showSearchSummary %}
+      <p class="govuk-body govuk-!-margin-top-2">
+        <a href="active" class="govuk-link">Clear search</a>
+      </p>
+    {% endif %}
+
+    <hr class="govuk-section-break govuk-section-break--m">
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {# Your existing filters UI #}
+    {% include "./_includes/filters-v2.html" %}
+
+    {# Dynamic “Active filters” chips #}
+    {% if showFilters %}
+      {% include "./_includes/active-filters.njk" %}
+    {% endif %}
+
+    {# Secondary nav #}
+    {% include "./_includes/secondary-nav.html" %}
+
+    <hr class="govuk-section-break govuk-section-break--m">
+
+    <h1 class="govuk-heading-l">Active</h1>
+
+    {# Appeal table #}
+    {% include "./_includes/appeal-table.njk" %}
+
+    {# Pagination #}
+    {% include "./_includes/pagination.njk" %}
+
+  </div>
+</div>
+
+{% endblock %}
+``
+``

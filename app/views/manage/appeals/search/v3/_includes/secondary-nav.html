@@ -1,0 +1,23 @@
+{{ xGovukSecondaryNavigation({
+    visuallyHiddenTitle: "Secondary menu",
+    items: [{
+      text: "Active (31)",
+      href: "active",
+      current: currentPage == "active"
+    }, {
+      text: "With case officer (8)",
+      href: "waiting-for-review",
+      current: currentPage == "waiting-for-review"
+    }, {
+      text: "Decided (53)",
+      href: "decided",
+      current: currentPage == "decided"
+    }, {
+      text: "Withdrawn (1)",
+      href: "withdrawn",
+      current: currentPage == "withdrawn"
+    },{
+        text: "Invalid (1)",
+        href: "invalid",
+        current: currentPage == "invalid"}]
+  }) }}
