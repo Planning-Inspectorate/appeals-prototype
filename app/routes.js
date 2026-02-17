@@ -9,7 +9,14 @@ applyAzureHostingFix();
 
 const router = govukPrototypeKit.requests.setupRouter()
 
+// additions to add the flash functionality
+const flash = require('connect-flash')
+router.use(flash())
 
+router.all('*', (req, res, next) => {
+  res.locals.flash = req.flash('success')[0]
+  next()
+})
 
 // Set a flag for if the proto is running locally
 router.use('/', (req, res, next) => {
@@ -74,5 +81,3 @@ router.use("/appeal/ldc/v4/lpaq", require('./views/appeal/ldc/v4/lpaq/_routes'))
 // Added for simple branching
 const radioButtonRedirect = require('radio-button-redirect')
 router.use(radioButtonRedirect)
-
-

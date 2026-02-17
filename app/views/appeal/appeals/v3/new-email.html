@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Updated email" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+{% block questions %}
+
+  <span class="govuk-caption-xl">
+    Appeal {{ data['appealCode'] or '1345264' }} - change access email
+  </span>
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    id: "new-email",
+    name: "new-email"
+  }) }}
+
+{% endblock %}

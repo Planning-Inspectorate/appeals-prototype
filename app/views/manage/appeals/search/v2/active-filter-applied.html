@@ -1,0 +1,229 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+{% set pageName = "Home" %}
+{% set currentPage = "active" %}
+{% block backLink %}{% endblock %}
+
+{% block content %}
+
+<style>
+  .filters-container {
+    background: #f3f2f1;
+    padding: 20px;
+  }
+
+  .filters-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .filters-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .app-applied-filters {
+    background: #f3f2f1;
+    border: 1px solid #b1b4b6;
+    padding: 15px;
+    margin: 20px 0 10px;
+  }
+
+  .app-applied-filters__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .app-applied-filters__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .app-chip {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #b1b4b6;
+    padding: 6px 12px;
+    border-radius: 5px;
+  }
+
+  .app-chip__remove {
+    background: none;
+    border: none;
+    font-size: 18px;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+
+  .app-button--no-margin {
+    margin-bottom: 8px !important;
+  }
+</style>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Cambridgeshire and Peterborough Combined Authority</span>
+      Manage your appeals
+    </h1>
+
+    <h3 class="govuk-heading-m govuk-!-margin-top-0">Search</h3>
+    <div class="govuk-hint">You can search by address or any reference number</div>
+
+    active-search-applied
+      <input class="govuk-input" name="keyword-search" type="text" autocomplete="off" style="margin-bottom:0; width:100%;">
+      <button class="govuk-button" id="keyword-search-button" type="submit" style="margin-bottom:0;">Search</button>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--m">
+
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <!-- ⭐ FILTER TOGGLE BUTTON -->
+    <button
+      type="button"
+      class="govuk-button govuk-button--secondary app-button--no-margin"
+      id="toggle-filters"
+      aria-expanded="false"
+      aria-controls="checkbox-filters">
+      Show filters
+    </button>
+
+
+    <!-- ⭐ APPLIED FILTERS — ALWAYS VISIBLE -->
+    <div class="app-applied-filters" id="applied-filters-section">
+      <div class="app-applied-filters__header">
+        <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Filters</h3>
+
+        <a href="active" class="govuk-link" id="clear-filters-link">
+          Clear filters
+        </a>
+      </div>
+
+      <div class="app-applied-filters__chips">
+        <div class="app-chip">
+          <span>Appeal type: Householder</span>
+          <button class="app-chip__remove">✕</button>
+        </div>
+
+        <div class="app-chip">
+          <span>Action required: Questionnaire</span>
+          <button class="app-chip__remove">✕</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ⭐ CHECKBOX FILTER PANEL (TOGGLED ONLY) -->
+    <form method="get">
+
+      <div id="checkbox-filters" class="filters-container govuk-!-margin-top-2" hidden>
+
+        <div class="filters-inner">
+
+          <div class="filter-column">
+            <h3 class="govuk-heading-s">Appeal type</h3>
+
+            <div class="govuk-checkboxes govuk-checkboxes--small">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="type-planning" name="type" value="Planning" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="type-planning">Planning</label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="type-householder" name="type" value="Householder" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="type-householder">Householder</label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="filter-column">
+            <h3 class="govuk-heading-s">Action required</h3>
+
+            <div class="govuk-checkboxes govuk-checkboxes--small">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="action-questionnaire" name="action" value="Questionnaire" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="action-questionnaire">Questionnaire</label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="action-statement" name="action" value="Statement" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="action-statement">Statement</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {{ govukButton({
+          text: "Apply filters",
+          href: "active-filter-applied",
+          classes: "govuk-button govuk-!-margin-top-4 govuk-!-margin-bottom-0"
+        }) }}
+
+      </div>
+    </form>
+
+
+    <!-- SECONDARY NAV -->
+    {% include "./_includes/secondary-nav.html" %}
+
+    <hr class="govuk-section-break govuk-section-break--m">
+
+    <h1 class="govuk-heading-l">Active</h1>
+
+    <!-- TABLE (unchanged) -->
+    {% include "./_includes/active-table.html" %}
+
+    {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+    {{ govukPagination({
+      next: { href: "#" },
+      items: [
+        { number: 1, current: true, href: "#" },
+        { number: 2, href: "#" },
+        { number: 3, href: "#" }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+
+<!-- ⭐ FILTER TOGGLE BEHAVIOUR -->
+<script>
+  const toggleButton = document.getElementById('toggle-filters');
+  const checkboxFilters = document.getElementById('checkbox-filters');
+  const clearFilters = document.getElementById('clear-filters-link');
+
+  // Toggle ONLY the checkbox area
+  toggleButton.addEventListener('click', () => {
+    const open = toggleButton.getAttribute('aria-expanded') === 'true';
+
+    toggleButton.setAttribute('aria-expanded', !open);
+    toggleButton.textContent = open ? 'Show filters' : 'Hide filters';
+    checkboxFilters.hidden = open;
+  });
+
+  // Clear filters hides ONLY the checkbox area
+  clearFilters.addEventListener('click', () => {
+    checkboxFilters.hidden = true;
+    toggleButton.textContent = 'Show filters';
+    toggleButton.setAttribute('aria-expanded', 'false');
+  });
+</script>
+
+{% endblock %}

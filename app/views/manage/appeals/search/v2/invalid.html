@@ -47,9 +47,8 @@
 
         <div class="govuk-grid-column-full">
 
-
+            {% include "./_includes/filters-v3.html" %}
             {% include "./_includes/secondary-nav.html" %}
-
 
             {# Size modifiers: xl, l, m #}
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
@@ -59,8 +58,8 @@
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Appeal number</th>
                         <th scope="col" class="govuk-table__header">Address</th>
-                        <th scope="col" class="govuk-table__header">Invalid date</th>
                         <th scope="col" class="govuk-table__header">Appeal type</th>
+                        <th scope="col" class="govuk-table__header">Invalid date</th>
                     </tr>
                 </thead>
                 <tbody class="govuk-table__body">

@@ -1,0 +1,424 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Appeal "+(data['appealCode'] or '0123456') %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% set prototypeLinks = [
+
+  {
+    href: '?appeal-type=none&questionnaire=&lpa-statement=&other-statements=&final-comments=&other-final-comments=&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=',
+    text: 'New appeal (not validated)'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=due&other-final-comments=&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=',
+    text: 'Statements and IP comments done / Final-comments due'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=complete&other-final-comments=&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=',
+    text: 'Final-comments done'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=complete&other-final-comments=complete&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=',
+    text: 'All final-comments done'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=complete&other-final-comments=complete&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=complete',
+    text: 'Written representations appeal decided'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&lpa-statement=complete&other-statements=complete&final-comments=&other-final-comments=&proofs=due&other-proofs=&timings=&other-timings=&appeal-decided=',
+    text: 'Inquiry: Proof due'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&lpa-statement=complete&other-statements=complete&final-comments=complete&other-final-comments=&proofs=complete&other-proofs=&timings=&other-timings=&appeal-decided=',
+    text: 'Inquiry: Proof done'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&lpa-statement=complete&other-statements=complete&appellant-statement=complete&final-comments=complete&other-final-comments=complete&proofs=complete&other-proofs=complete&timings=due&other-timings=&appeal-decided=',
+    text: 'Inquiry: All proof done / timings due'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&lpa-statement=complete&other-statements=complete&appellant-statement=complete&final-comments=complete&other-final-comments=complete&proofs=complete&other-proofs=complete&timings=complete&other-timings=&appeal-decided=',
+    text: 'Inquiry: Appellant timings done'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&lpa-statement=complete&other-statements=complete&appellant-statement=complete&final-comments=complete&other-final-comments=complete&proofs=complete&other-proofs=complete&timings=complete&other-timings=complete&appeal-decided=',
+    text: 'Inquiry: All witness timings done'
+  },
+  {
+    href: '?appeal-type=inquiry&questionnaire=complete&lpa-statement=complete&other-statements=complete&final-comments=&other-final-comments=&proofs=complete&other-proofs=complete&timings=complete&other-timings=complete&appeal-decided=complete',
+    text: 'Inquiry appeal decided'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=due&other-final-comments=&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=&site-visit=access-required',
+    text: 'Access required site visit'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=due&other-final-comments=&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=&site-visit=accompanied',
+    text: 'Accompanied site visit'
+  },
+  {
+    href: '?appeal-type=written&questionnaire=complete&lpa-statement=complete&other-statements=&final-comments=due&other-final-comments=&proofs=&other-proofs=&timings=&other-timings=&appeal-decided=&site-visit=unaccompanied',
+    text: 'Unaccompanied site visit'
+  }
+
+  ]
+%}
+
+{% block back %}
+  {{ govukBackLink({
+    text: "Back to appeals",
+    href: "/manage/appeals/v8/?action="
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- notifications -->
+    <section>
+
+      {% if data['final-comments'] == 'due' %}
+        <!-- notice for due final comments -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-3" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Final comments due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You can submit final comments by 11:59pm on {{ 12 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/final-comments/v2/add-comments?action=banner">Submit final comments</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+
+        <!-- notice for 106 agreement -->
+        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Planning obligation due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must submit your final planning obligation by 11:59pm on {{ 12 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/final-comments/v2/add-comments?action=banner">Submit final planning obligation</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if data['appeal-type'] == 'inquiry' %}
+        <!-- notice for proof of evidence -->
+        {% if data['proofs'] == 'due' %}
+        <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Proof of evidence and witnesses due
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You must submit proof of evidence by 11:59pm on {{ 7 | daysInFuture }}
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/manage/proofs-of-evidence/v2/before-you-continue?action=banner">Submit proofs and witnesses</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if data['timings'] == 'due' %}
+          <div class="govuk-notification-banner govuk-!-margin-bottom-9" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Witness timings due
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">
+                You must submit witness timings by 11:59pm on {{ 7 | daysInFuture }}
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    <a href="/manage/witness-timings/v1/before-you-continue?action=banner">Submit witness timings</a>
+                  </li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        {% endif %}
+
+      {% endif %}
+
+
+    </section>
+
+    <h1 class="govuk-heading-xl">
+      Appeal {{ data['appealCode'] or '1345264' }}
+    </h1>
+
+    {% if data['appeal-decided'] == 'complete' %}
+
+      {% set decisions %}
+
+        <h2 class="govuk-heading-m">
+          Appeal decision
+        </h2>
+
+        {% if data['appeal-decided'] == 'dismissed' %}
+          <strong class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-3">
+            Dismissed
+          </strong>
+        {% elseif data['appeal-decided'] == 'split' %}
+          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-3">
+            Allowed in part
+          </strong>
+        {% elseif data['appeal-decided'] == 'varied' %}
+          <strong class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-3">
+            Notice varied and upheld
+          </strong>
+        {% else %}
+          <strong class="govuk-tag govuk-tag--green govuk-!-margin-bottom-3">
+            Allowed
+          </strong>
+        {% endif %}
+        <p class="govuk-body">
+          Decision issued on {{ 1 | daysAgo }}.
+        </p>
+        <p class="govuk-body">
+          <a href="#">
+            APPEAL_DECISION_0201624_Haggis Farm Cottage.doc
+          </a>
+        </p>
+
+
+
+      {% endset -%}
+
+      {{ govukInsetText({
+        html: decisions
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+  </div>
+
+  <!-- metadata -->
+  <div class="govuk-grid-column-full">
+    {% include "/_includes/appellant/meta-full-appeal.html" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    {% include "/_includes/appellant/site-visit-notice.html" %}
+  </div>
+
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+  </div>
+
+  <!-- {% if data['appeal-type'] == 'inquiry'  %}
+
+  <!-- event dates -->
+  <!-- <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">
+      Event dates
+    </h2>
+
+    {% include "/_includes/appellant/meta-event-dates.html" %}
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+  </div> -->
+
+  <!-- {% endif %} -->
+
+  <!-- the appeal -->
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-l">
+      Appeal details
+    </h2>
+
+    <p class="govuk-body">
+      <a href="appellant-submission-full">
+        View appeal details
+      </a>
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% if data['questionnaire'] == 'complete' %}
+
+      <h2 class="govuk-heading-l">
+        Questionnaire
+      </h2>
+
+      <p class="govuk-body">
+        <a href="lpa-questionnaire-full">
+          View questionnaire
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+    {% if data['lpa-statement'] == 'complete' %}
+
+      <h2 class="govuk-heading-l">
+        Statements
+      </h2>
+
+      <p class="govuk-body">
+        <a href="appellant-statement">
+          View local planning authority statement
+        </a>
+      </p>
+
+      {% if data['other-statements'] == 'complete' %}
+
+        <p class="govuk-body">
+          <a href="r6-statement">
+            View statements from other parties
+          </a>
+        </p>
+
+      {% endif %}
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+      <h2 class="govuk-heading-l">
+        Interested party comments
+      </h2>
+
+      <p class="govuk-body">
+        <a href="ip-comments">
+          View interested party comments
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+    {% endif %}
+
+    {% if data['appeal-type'] == 'inquiry' %}
+
+      {% if data['proofs'] == 'complete' %}
+
+        <h2 class="govuk-heading-l">
+          Proof of evidence and witnesses
+        </h2>
+
+        <p class="govuk-body">
+          <a href="appellant-proofs">
+            View your proof of evidence and witnesses
+          </a>
+        </p>
+
+        {% if data['other-proofs'] == 'complete' %}
+          <p class="govuk-body">
+            <a href="lpa-proofs">
+              View the local planning authority proof of evidence and witnesses
+            </a>
+          </p>
+
+          <p class="govuk-body">
+            <a href="r6-proofs">
+              View other party proof of evidence and witnesses
+            </a>
+          </p>
+        {% endif %}
+
+        {% if data['timings'] == 'complete' %}
+
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+          <h2 class="govuk-heading-l">
+            Witness timings
+          </h2>
+
+          <p class="govuk-body">
+            <a href="appellant-timings">
+              View your witness timings
+            </a>
+          </p>
+
+          {% if data['other-timings'] == 'complete' %}
+            <p class="govuk-body">
+              <a href="lpa-timings">
+                View witness timings for the local planning authority
+              </a>
+            </p>
+
+            <p class="govuk-body">
+              <a href="r6-timings">
+                View witness timings from other parties
+              </a>
+            </p>
+          {% endif %}
+
+        {% endif %}
+
+      {% endif %}
+
+    {% else %}
+
+      {% if data['final-comments'] == 'complete' %}
+
+        <h2 class="govuk-heading-l">
+          Final comments
+        </h2>
+
+        <p class="govuk-body">
+          <a href="appellant-final-comments">
+            View your final comments
+          </a>
+        </p>
+
+        {% if data['other-final-comments'] == 'complete' %}
+          <p class="govuk-body">
+            <a href="lpa-final-comments">
+              View local planning authority final comments
+            </a>
+          </p>
+
+          <!-- <p class="govuk-body">
+            <a href="r6-final-comments">
+              View final comments from other parties
+            </a>
+          </p> -->
+
+        {% endif %}
+
+      {% endif %}
+
+    {% endif %} <!-- appeal type -->
+
+  </div>
+</div>
+
+{% endblock %}
+
+<!--
+The local planning authority did not submit a statement.
+The local planning authority did not submit any final comments. -->
