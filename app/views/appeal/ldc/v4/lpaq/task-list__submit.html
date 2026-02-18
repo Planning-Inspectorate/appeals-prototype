@@ -2,6 +2,7 @@
 
 <li>
   {% set submitComplete = data['submit-complete'] == true or data['submit-complete'] == 'true' or data['submit-complete'] == 'Completed' or data['submit-complete'] == 'completed' %}
+  {% set allSectionsComplete = constraintsComplete and poReportComplete and siteAccessComplete and appealProcessComplete %}
   <h2 class="app-task-list__section">
     5. Submit questionnaire
     {% if submitComplete %}
@@ -9,9 +10,14 @@
         text: "Completed",
         classes: "govuk-tag"
       }) }}
-    {% else %}
+    {% elif allSectionsComplete %}
       {{ govukTag({
         text: "Not started",
+        classes: "govuk-tag govuk-tag--grey"
+      }) }}
+    {% else %}
+      {{ govukTag({
+        text: "Cannot start yet",
         classes: "govuk-tag govuk-tag--grey"
       }) }}
     {% endif %}
@@ -19,12 +25,14 @@
 
   {% if submitComplete %}
     <p class="govuk-body">You cannot submit the questionnaire until all of the other sections are complete.</p>
-  {% else %}
+  {% elif allSectionsComplete %}
     <p class="govuk-body">By submitting this questionnaire you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
     {{ govukButton({
       text: "Submit questionnaire",
       href: "./confirmation"
     }) }}
+  {% else %}
+    <p class="govuk-body">You cannot submit the questionnaire until all of the other sections are complete.</p>
   {% endif %}
 
   

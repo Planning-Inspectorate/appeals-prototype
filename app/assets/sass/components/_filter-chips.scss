@@ -1,0 +1,37 @@
+.app-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid $govuk-border-colour;
+  border-radius: 4px;
+  background: $govuk-secondary-text-colour;
+  background: govuk-colour("light-grey");
+  color: $govuk-text-colour;
+  font-family: $govuk-font-family;
+  font-size: 16px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.app-filter-chip__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: $govuk-text-colour;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.app-filter-chip__button:focus {
+  outline: 3px solid $govuk-focus-colour;
+  outline-offset: 1px;
+  box-shadow: 0 0 0 2px $govuk-focus-text-colour;
+}

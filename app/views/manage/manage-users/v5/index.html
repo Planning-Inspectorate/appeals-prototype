@@ -1,0 +1,119 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Add and remove users' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back to appeals',
+    href: '/manage/appeals/search/v2/active'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set added %}
+        <mark role="alert">
+          <h3 class="govuk-notification-banner__heading">
+            {{ data['new-user-email'] or 'example@cambridgeshirepeterborough-ca.gov.uk' }} has been added to the account
+          </h3>
+          <p class="govuk-body">They will get an email with a link to the service.</p>
+        </mark>
+      {% endset %}
+
+      {% set updated %}
+        <mark role="alert">
+          <h3 class="govuk-notification-banner__heading">
+            {{ data['updated-email'] or data['new-user-email'] or 'example@cambridgeshirepeterborough-ca.gov.uk' }} has been updated
+          </h3>
+        </mark>
+      {% endset %}
+
+      {% set removed %}
+        <mark role="alert">
+          <h3 class="govuk-notification-banner__heading">
+            {{ data['remove-email'] }} has been removed
+          </h3>
+        </mark>
+      {% endset %}
+
+      {% if notification %}
+        {{ govukNotificationBanner({
+          html: updated if notification == 'updated' else (added if notification == 'added' else removed),
+          type: 'success'
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <p class="govuk-body">
+        All users can add information to appeals. When a new appeal is added and a task is submitted, they will all be notified by email.
+      </p>
+
+      <p class="govuk-body">
+        <a href="add-user" class="govuk-link--no-visited-state">
+          Add a user
+        </a>
+      </p>
+</div>
+</div>
+
+<div class="govuk-grid-column-full-width">
+      <h2 class="govuk-heading-m app-border-top-big govuk-!-padding-top-6 govuk-!-margin-top-6">
+        Current users
+      </h2>
+
+      <table class="govuk-table govuk-!-width-full">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">User email</th>
+            <th scope="col" class="govuk-table__header">Receives emails for</th>
+            <th scope="col" class="govuk-table__header">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for user in data['users'] %}
+            {% if user != null %}
+              {% set appealTypes = user.appealTypes or user.appeal_types or [] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <p class="govuk-body">{{ user.email }}</p>
+                </td>
+                <td class="govuk-table__cell">
+                  {% if appealTypes.length %}
+                    {% for appealType in appealTypes %}
+                      <span class="app-filter-chip govuk-!-margin-right-1 govuk-!-margin-bottom-1">
+                        <button class="app-filter-chip__button" type="button" aria-label="Remove {{ appealType }}" onclick="this.parentElement.remove()">×</button>
+                        {{ appealType }}
+                      </span>
+                    {% endfor %}
+                  {% endif %}
+                </td>
+                <td class="govuk-table__cell app-actions-cell">
+                  <div class="app-actions-stack">
+                    <a class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" href="/manage/manage-users/v5/edit-user?id={{ user.id }}&edit-email={{ user.email }}">
+                      Edit user
+                    </a>
+                    <a class="govuk-button govuk-button--warning govuk-!-margin-bottom-0" href="/manage/manage-users/v5/remove-user?id={{ user.id }}">
+                      Delete user
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+{% endblock %}
