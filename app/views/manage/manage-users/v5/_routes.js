@@ -183,6 +183,7 @@ router.post('/email-notifications', function (req, res) {
     if (userIndex >= 0) {
       req.session.data['users'][userIndex].email = newEmail
       req.session.data['users'][userIndex].appealTypes = appealTypes
+      req.session.data['users'][userIndex].emailNotifications = notificationChoice
       req.session.data['action'] = 'updated'
       req.session.data['updated-email'] = newEmail
     }
@@ -190,7 +191,8 @@ router.post('/email-notifications', function (req, res) {
     const newUser = Object.assign({
       email: newEmail,
       appealTypes,
-      id: String(req.session.data['next-user-id'])
+      id: String(req.session.data['next-user-id']),
+      emailNotifications: notificationChoice
     })
 
     req.session.data['next-user-id'] += 1
@@ -222,6 +224,7 @@ router.post('/detailed-email-notifications', function (req, res) {
     if (userIndex >= 0) {
       req.session.data['users'][userIndex].email = newEmail
       req.session.data['users'][userIndex].appealTypes = appealTypes
+      req.session.data['users'][userIndex].emailNotifications = 'Particular appeal types'
       req.session.data['action'] = 'updated'
       req.session.data['updated-email'] = newEmail
     }
@@ -229,7 +232,8 @@ router.post('/detailed-email-notifications', function (req, res) {
     const newUser = Object.assign({
       email: newEmail,
       appealTypes,
-      id: String(req.session.data['next-user-id'])
+      id: String(req.session.data['next-user-id']),
+      emailNotifications: 'Particular appeal types'
     })
 
     req.session.data['next-user-id'] += 1

@@ -34,3 +34,15 @@
     }) }}
   </form>
 {% endblock %}
+
+{% block afterContent %}
+  <script>
+    (function () {
+      const url = new URL(window.location.href)
+      if (!url.searchParams.has('reloaded')) {
+        url.searchParams.set('reloaded', 'true')
+        window.location.replace(url.toString())
+      }
+    })()
+  </script>
+{% endblock %}

@@ -89,24 +89,34 @@
                   <p class="govuk-body">{{ user.email }}</p>
                 </td>
                 <td class="govuk-table__cell">
-                  {% if appealTypes.length %}
-                    {% for appealType in appealTypes %}
-                      <span class="app-filter-chip govuk-!-margin-right-1 govuk-!-margin-bottom-1">
-                        <button class="app-filter-chip__button" type="button" aria-label="Remove {{ appealType }}" onclick="this.parentElement.remove()">×</button>
-                        {{ appealType }}
-                      </span>
-                    {% endfor %}
+                  {% if appealTypes.length > 1 %}
+                    <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+                      {% for appealType in appealTypes %}
+                        <li>{{ appealType }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% elif appealTypes.length == 1 %}
+                    <p class="govuk-body govuk-!-margin-0">{{ appealTypes[0] }}</p>
+                  {% elif user.emailNotifications == 'no-email-notifications' %}
+                    <p class="govuk-body govuk-!-margin-0">No email notifications</p>
                   {% endif %}
                 </td>
                 <td class="govuk-table__cell app-actions-cell">
-                  <div class="app-actions-stack">
-                    <a class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" href="/manage/manage-users/v5/edit-user?id={{ user.id }}&edit-email={{ user.email }}">
-                      Edit user
-                    </a>
-                    <a class="govuk-button govuk-button--warning govuk-!-margin-bottom-0" href="/manage/manage-users/v5/remove-user?id={{ user.id }}">
-                      Delete user
-                    </a>
-                  </div>
+                  <ul class="govuk-list" style="margin: 0; display: flex; flex-direction: row; align-items: center; gap: 0.6rem;">
+                    <li>
+                      <a class="govuk-link" href="/manage/manage-users/v5/edit-user?id={{ user.id }}&edit-email={{ user.email }}">
+                        Manage<span class="govuk-visually-hidden"> {{ user.email }}</span>
+                      </a>
+                    </li>
+                    <li aria-hidden="true">
+                      <span style="display: inline-block; width: 1px; height: 1.5rem; background-color: #b1b4b6;"></span>
+                    </li>
+                    <li>
+                      <a class="govuk-link" href="/manage/manage-users/v5/remove-user?id={{ user.id }}">
+                        Remove<span class="govuk-visually-hidden"> {{ user.email }}</span>
+                      </a>
+                    </li>
+                  </ul>
                 </td>
               </tr>
             {% endif %}
