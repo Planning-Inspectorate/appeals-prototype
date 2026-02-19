@@ -21,7 +21,12 @@ module.exports = {
   'lpa-email': '@cambridgeshirepeterborough-ca.gov.uk',
   'users': [
     {
-      'email': 'appeals@cambridgeshirepeterborough-ca.gov.uk'
+      'email': 'appeals@cambridgeshirepeterborough-ca.gov.uk',
+      'appealTypes': [
+        'S78',
+        'Householder',
+        'LDC'
+      ]
     }
   ]
 }

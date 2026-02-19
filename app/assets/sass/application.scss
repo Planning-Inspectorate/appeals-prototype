@@ -2,6 +2,7 @@
 @import "components/header";
 @import "components/footer";
 @import "components/upload";
+@import "components/filter-chips";
 
 @import "pins/pins_tables";
 @import "pins/pins_print-styles";
@@ -41,6 +42,21 @@
 html, body {
 	background-color: #fff !important;
   }
+
+.app-actions-cell {
+	width: 1%;
+	white-space: nowrap;
+}
+
+.app-actions-stack {
+	display: grid;
+	gap: 8px;
+	width: max-content;
+}
+
+.app-actions-stack .govuk-button {
+	width: 100%;
+}
 
 
   
