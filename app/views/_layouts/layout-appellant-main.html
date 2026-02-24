@@ -35,7 +35,7 @@
 		<div class="govuk-grid-column-three-quarters govuk-grid-column-two-thirds-from-desktop">
 
 			{# Forms all post to themselves, action controlled by _routes.js in each prototype #}
-			<form method="post">
+			<form method="post"{% if formAction %} action="{{ formAction }}"{% endif %}>
 
 				{# Use the questions block on each page without needing to add in the rest of this block #}
 				{% block questions %}{% endblock %}

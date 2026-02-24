@@ -80,6 +80,12 @@ router.post('/decision-date-due', function (req, res) {
   const deadlineWeekday = deadline.toLocaleDateString('en-GB', { weekday: 'long' })
   const deadlineMonthName = deadline.toLocaleDateString('en-GB', { month: 'long' })
   req.session.data['appeal-deadline-formatted'] = `11.59pm on ${deadlineWeekday} ${deadline.getDate()} ${deadlineMonthName} ${deadline.getFullYear()}`
+  const decisionDateDue = new Date(Number(year), Number(month) - 1, Number(day))
+  const decisionDateDueMonthName = decisionDateDue.toLocaleDateString('en-GB', { month: 'long' })
+  req.session.data['decision-date-formatted'] = `${decisionDateDue.getDate()} ${decisionDateDueMonthName} ${decisionDateDue.getFullYear()}`
+  const decisionDate = new Date(Number(year), Number(month) - 1, Number(day))
+  const decisionMonthName = decisionDate.toLocaleDateString('en-GB', { month: 'long' })
+  req.session.data['decision-date-formatted'] = `${decisionDate.getDate()} ${decisionMonthName} ${decisionDate.getFullYear()}`
 
   if (entered < cutoff) {
     const deadlineDay = deadline.getDate();

@@ -3,7 +3,6 @@
   {# Check if Prepare section is complete #}
   {% set prepareRequired = [
     data['application-name'],
-    data['appellant-first-name'],
     data['telephoneNumber'],
     data['address-line-1'],
     data['green-belt'],
@@ -16,6 +15,9 @@
     data['other-appeals-radio']
   ] %}
   {% set prepareOptional = [] %}
+  {% if data['application-name'] == 'No' %}
+    {% set prepareOptional = prepareOptional.concat([data['appellant-first-name']]) %}
+  {% endif %}
   {% if data['existing-or-proposed'] == 'Proposed development' %}
     {% set prepareOptional = prepareOptional.concat([data['description-detail'], data['description-development-correct']]) %}
   {% endif %}
@@ -39,9 +41,7 @@
     data['appeal-statement'],
     data['costs-check'],
     data['new-plans-drawings-check'],
-    data['other-new-documents-check'],
-    data['ownership-certificate-check'],
-    data['environment-statement-check']
+    data['other-new-documents-check']
   ] %}
   {% set uploadOptional = [] %}
   {% if data['description-development-correct'] and data['description-development-correct'].startsWith('Yes') %}
@@ -65,12 +65,6 @@
   {% if data['other-new-documents-check'] == 'Yes' %}
     {% set uploadOptional = uploadOptional.concat([data['upload-other-new-documents']]) %}
   {% endif %}
-  {% if data['ownership-certificate-check'] == 'Yes' %}
-    {% set uploadOptional = uploadOptional.concat([data['ownership-certificate']]) %}
-  {% endif %}
-  {% if data['environment-statement-check'] == 'Yes' %}
-    {% set uploadOptional = uploadOptional.concat([data['application']]) %}
-  {% endif %}
   {% set uploadAll = uploadRequired.concat(uploadOptional) %}
   {% set uploadAnswered = uploadAll | reject("equalto", undefined) | reject("equalto", "") | list %}
   {% set uploadComplete = (uploadAnswered.length == uploadAll.length and uploadAll.length > 0) %}
@@ -86,7 +80,7 @@
     {% elif prepareComplete and uploadComplete %}
       {{ govukTag({
         text: "Ready to submit",
-        classes: "govuk-tag"
+        classes: "govuk-tag govuk-tag--blue"
       }) }}
     {% else %}
       {{ govukTag({

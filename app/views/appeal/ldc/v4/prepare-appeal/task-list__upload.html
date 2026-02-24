@@ -7,9 +7,7 @@
     data['appeal-statement'],
     data['costs-check'],
     data['new-plans-drawings-check'],
-    data['other-new-documents-check'],
-    data['ownership-certificate-check'],
-    data['environment-statement-check']
+    data['other-new-documents-check']
   ] %}
   {% set uploadOptional = [] %}
   {# Description pages only shown if user agreed new description with LPA #}
@@ -35,12 +33,6 @@
   {% endif %}
   {% if data['other-new-documents-check'] == 'Yes' %}
     {% set uploadOptional = uploadOptional.concat([data['upload-other-new-documents']]) %}
-  {% endif %}
-  {% if data['ownership-certificate-check'] == 'Yes' %}
-    {% set uploadOptional = uploadOptional.concat([data['ownership-certificate']]) %}
-  {% endif %}
-  {% if data['environment-statement-check'] == 'Yes' %}
-    {% set uploadOptional = uploadOptional.concat([data['application']]) %}
   {% endif %}
   {% set uploadAll = uploadRequired.concat(uploadOptional) %}
   {% set uploadAnswered = uploadAll | reject("equalto", undefined) | reject("equalto", "") | list %}
@@ -164,8 +156,8 @@
   {% endset %}
 
   {% set envStatementHtml %}
-    {% if data['application'] and data['application'] | length > 0 %}
-      {% for file in data['application'] %}<a href="#" class="govuk-link">{{ file }}</a>{% if not loop.last %}<br>{% endif %}{% endfor %}
+    {% if data['environment-statement'] and data['environment-statement'] | length > 0 %}
+      {% for file in data['environment-statement'] %}<a href="#" class="govuk-link">{{ file }}</a>{% if not loop.last %}<br>{% endif %}{% endfor %}
     {% else %}
       Not started
     {% endif %}
@@ -249,24 +241,14 @@
         { html: '<a href="../upload-documents/upload-other-new-documents" class="govuk-link">Change</a>' if (data['upload-other-new-documents'] and data['upload-other-new-documents'] | length > 0) else '<a href="../upload-documents/upload-other-new-documents" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
       ] if data['other-new-documents-check'] == 'Yes',
       [
-        { text: "Did you submit a separate ownership certificate and agricultural land declaration with your application?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['ownership-certificate-check'] if data['ownership-certificate-check'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="../upload-documents/ownership-certificate-check" class="govuk-link">Change</a>' if data['ownership-certificate-check'] else '<a href="../upload-documents/ownership-certificate-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
-      [
         { text: "Upload your separate ownership certificate and agricultural land declaration", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { html: ownershipCertHtml, classes: "govuk-!-width-one-half" },
         { html: '<a href="../upload-documents/ownership-certificate" class="govuk-link">Change</a>' if (data['ownership-certificate'] and data['ownership-certificate'] | length > 0) else '<a href="../upload-documents/ownership-certificate" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
       ] if data['ownership-certificate-check'] == 'Yes',
       [
-        { text: "Did you submit an environment statement with the application?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['environment-statement-check'] if data['environment-statement-check'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="../upload-documents/environment-statement-check" class="govuk-link">Change</a>' if data['environment-statement-check'] else '<a href="../upload-documents/environment-statement-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
-      [
         { text: "Upload your environment statement", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { html: envStatementHtml, classes: "govuk-!-width-one-half" },
-        { html: '<a href="../upload-documents/environment-statement" class="govuk-link">Change</a>' if (data['application'] and data['application'] | length > 0) else '<a href="../upload-documents/environment-statement" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
+        { html: '<a href="../upload-documents/environment-statement" class="govuk-link">Change</a>' if (data['environment-statement'] and data['environment-statement'] | length > 0) else '<a href="../upload-documents/environment-statement" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
       ] if data['environment-statement-check'] == 'Yes'
     ] | reject("equalto", false) | list
   }) }}

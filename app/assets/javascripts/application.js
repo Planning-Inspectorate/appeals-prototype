@@ -221,7 +221,10 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
 
 // Initialise MOJ multi file upload
 if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
-  new MOJFrontend.MultiFileUpload({
-    container: $('.moj-multi-file-upload')
-  });
+  var multiFileContainer = $('.moj-multi-file-upload');
+  if (multiFileContainer.length && multiFileContainer.find('.moj-multi-file-upload__input').length) {
+    new MOJFrontend.MultiFileUpload({
+      container: multiFileContainer
+    });
+  }
 }

@@ -13,6 +13,34 @@
   }
 ] %}
 
+{% set otherAppeals = data['other-appeal-references'] or [] %}
+{% if otherAppeals.length == 0 and data['other-appeal-reference'] %}
+  {% set otherAppeals = [data['other-appeal-reference']] %}
+{% endif %}
+
+{% set appealRows = [] %}
+{% for appeal in otherAppeals %}
+  {% set appealRows = appealRows.concat([
+    {
+      key: {
+        text: 'Other appeal ' + loop.index
+      },
+      value: {
+        html: appeal
+      },
+      actions: {
+        items: [
+          {
+            href: '#',
+            text: 'Remove',
+            visuallyHiddenText: 'appeal ' + appeal
+          }
+        ]
+      }
+    }
+  ]) %}
+{% endfor %}
+
 {% block questions %}
 
   <h1 class="govuk-heading-l">
@@ -20,44 +48,7 @@
   </h1>
   {{ govukSummaryList({
     classes: 'appeal-details govuk-!-margin-bottom-6 govuk-!-margin-top-0',
-    rows: [
-
-      {
-        key: {
-          text: 'Other appeal 1'
-        },
-        value: {
-          html: (data['other-appeal-reference'] or '0176256')
-        },
-        actions: {
-          items: [
-            {
-              href: "other-appeal-reference",
-              text: "Remove",
-              visuallyHiddenText: 'appeal 0176256'
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: 'Other appeal 2'
-        },
-        value: {
-          html: data['other-appeal-reference-2']
-        },
-        actions: {
-          items: [
-            {
-              href: "#",
-              text: "Remove",
-              visuallyHiddenText: 'appeal ' + data['other-appeal-reference-2']
-            }
-          ]
-        }
-      } if data['other-appeal-reference-2']
-
-    ]
+    rows: appealRows
   }) }}
 
   {{ govukRadios({
@@ -73,7 +64,8 @@
     items: [
       {
         html: 'Yes',
-        value: 'Yes'
+        value: 'Yes',
+        checked: true
       },
       {
         html: 'No',

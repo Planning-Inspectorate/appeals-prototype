@@ -85,6 +85,18 @@ router.post('/upload-documents/description-of-development-agreement', function (
   }
 })
 
+//planning-obligation-status routes with branches
+router.post('/upload-documents/planning-obligation-status', function (req, res) {
+  console.log('=== planning-obligation-status POST route hit (v4/_routes.js) ===')
+  const preference = req.session.data['planning-obligation-status']
+
+  if (preference == 'Finalised and ready to submit') {
+    res.redirect('planning-obligation')
+  } else {
+    res.redirect('appeal-statement')
+  }
+})
+
 
 //decision-letter-check routes with branches
 router.post('/upload-documents/decision-letter-check', function (req, res) {
@@ -260,7 +272,7 @@ router.post('/upload-documents/upload-other-new-documents', function (req, res) 
     req.session.data['upload-other-new-documents'] = asArray(req.body['upload-other-new-documents'])
     console.log('Stored upload-other-new-documents files:', req.session.data['upload-other-new-documents'])
   }
-  res.redirect('ownership-certificate-check')
+  res.redirect('../prepare-appeal/your-appeal')
 })
 
 //ownership-certificate-check routes with branches
@@ -312,9 +324,9 @@ router.post('/upload-documents/environment-statement-check', function (req, res)
 router.post('/upload-documents/environment-statement', function (req, res) {
   console.log('=== environment-statement POST route hit ===')
   // Capture file data from form submission and store in session
-  if (req.body['application']) {
-    req.session.data['application'] = asArray(req.body['application'])
-    console.log('Stored application (environment-statement) files:', req.session.data['application'])
+  if (req.body['environment-statement']) {
+    req.session.data['environment-statement'] = asArray(req.body['environment-statement'])
+    console.log('Stored environment-statement files:', req.session.data['environment-statement'])
   }
   res.redirect('../prepare-appeal/your-appeal')
 })

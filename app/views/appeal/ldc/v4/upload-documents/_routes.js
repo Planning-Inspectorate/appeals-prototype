@@ -2,6 +2,13 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 const NotifyClient = require('notifications-node-client').NotifyClient
 
+router.use((req, res, next) => {
+  if (req.method === 'POST') {
+    console.log(`=== upload-documents POST ${req.originalUrl} ===`)
+  }
+  next()
+})
+
 
 
 
@@ -90,6 +97,8 @@ router.post('/planning-obligation-check', function (req, res) {
 
 //planning-obligation-status routes with branches
 router.post('/planning-obligation-status', function (req, res) {
+  console.log('=== planning-obligation-status POST route hit ===')
+  console.log('planning-obligation-status value:', req.session.data['planning-obligation-status'])
   const preference = req.session.data['planning-obligation-status']
   
   if (preference == 'Finalised and ready to submit') {

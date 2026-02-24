@@ -20,6 +20,17 @@
     </div>
 
 
+<!-- change log experiment -->
+
+{% set changelogText = "Version 2.0: Added linked appeals support, improved form field validation, enhanced task list tracking with contact details and witness count validation, and fixed procedure type conditional inquiry days input." %}
+{% set changelogVersions = [
+  { pageName: "Your appeal - v1.5", dateEdited: "25 January 2026", href: "#", changes: "Fixed form field naming inconsistencies (contact-details to contact-first-name/last-name, width5 to how-many-witnesses)" },
+  { pageName: "Your appeal - v1.0", dateEdited: "3 December 2025", href: "#", changes: "Initial release with basic task list structure and section completion tracking" }
+] %}
+
+{% include "experiments/includes/changelog.html" %}
+<!--  changelog experiment end -->
+
     <div class="govuk-grid-column-three-quarters-from-desktop">
       <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 

@@ -184,7 +184,7 @@
                 text: "What's the date on the decision letter from the local planning authority?"
               },
               value: {
-                text: "11 October 2025"
+                text: data['decision-date-formatted'] or (data['decision-date-day'] + ' ' + (data['decision-date-month'] | formatMonth) + ' ' + data['decision-date-year'])
               },
               actions: {
                 items: [

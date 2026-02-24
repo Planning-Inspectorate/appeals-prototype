@@ -77,6 +77,12 @@ router.use("/appeal/ldc/v4/upload-documents", (req, res, next) => {
 // Import routes for lpaq folder
 router.use("/appeal/ldc/v4/lpaq", require('./views/appeal/ldc/v4/lpaq/_routes'))
 
+// Reset session data for LDC v4
+router.get('/appeal/ldc/v4/reset', (req, res) => {
+	req.session.data = {}
+	res.redirect('/appeal/ldc/v4/ldc-bys/before-you-start')
+})
+
 // Easy routing by Craig Abbott - https://github.com/abbott567/radio-button-redirect
 // Added for simple branching
 const radioButtonRedirect = require('radio-button-redirect')

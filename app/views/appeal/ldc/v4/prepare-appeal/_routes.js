@@ -173,6 +173,14 @@ router.post('/other-appeals', function (req, res) {
 
 //enter-appeal-reference route
 router.post('/enter-appeal-reference', function (req, res) {
+  const reference = req.session.data['other-appeal-reference']
+  const otherAppeals = req.session.data['other-appeal-references'] || []
+
+  if (reference) {
+    otherAppeals.push(reference)
+    req.session.data['other-appeal-references'] = otherAppeals
+  }
+
   res.redirect('add-another-appeal')
 })
 
@@ -181,16 +189,12 @@ router.post('/add-another-appeal', function (req, res) {
   const preference = req.session.data['other-appeals']
   
   if (preference == 'Yes') {
-    res.redirect('enter-appeal-reference-2')
+    res.redirect('enter-appeal-reference')
   } else if (preference === 'No') {
     res.redirect('your-appeal')
   } else {
     res.redirect('your-appeal')
   }
-})
-
-router.post('/enter-appeal-reference-2', function (req, res) {
-  res.redirect('add-another-appeal')
 })
 
 module.exports = router
