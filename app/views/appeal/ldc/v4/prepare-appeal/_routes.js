@@ -106,13 +106,9 @@ router.post('/description-of-development', function (req, res) {
 //description-development-correct route
 router.post('/description-development-correct', function (req, res) {
   const descriptionCorrect = req.session.data['description-development-correct']
-  
-  if (descriptionCorrect == 'Yes') {
-    res.redirect('../upload-documents/description-of-development-agreement')
-  } else {
     res.redirect('decide-appeal')
   }
-})
+)
 
 //decide-appeal route with branching
 router.post('/decide-appeal', function (req, res) {

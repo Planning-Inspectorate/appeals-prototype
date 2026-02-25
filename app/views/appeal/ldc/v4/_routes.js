@@ -18,9 +18,9 @@ router.post('/upload-documents/application-form', function (req, res) {
   }
   
   // Check if user agreed a new description with LPA
-  const descriptionChanged = req.session.data['application-desc-changed']
-  console.log('application-desc-changed value:', descriptionChanged)
-  console.log('application-desc-changed type:', typeof descriptionChanged)
+  const descriptionChanged = req.session.data['description-development-correct']
+  console.log('description-development-correct value:', descriptionChanged)
+  console.log('description-development-correct type:', typeof descriptionChanged)
   
   if (descriptionChanged && (descriptionChanged.includes('Yes') || descriptionChanged === 'Yes')) {
     console.log('MATCHED YES - Redirecting to description-of-development-agreement')

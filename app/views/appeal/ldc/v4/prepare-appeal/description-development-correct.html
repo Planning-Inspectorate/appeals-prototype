@@ -9,8 +9,8 @@
 
   <span class="govuk-caption-l">Prepare appeal</span>
   {{ govukRadios({
-    idPrefix: 'application-desc-changed',
-    name: 'application-desc-changed',
+    idPrefix: 'description-development-correct',
+    name: 'description-development-correct',
     fieldset: {
       legend: {
         html: title,
@@ -19,18 +19,18 @@
       }
     },
     hint: {
-      html: 'We need to know if the  of development is the same as what is on your planning application.'
+      html: 'We need to know if the description of development is the same as what is on your planning application.'
     },
     items: [
       {
-        html: 'Yes, I agreed a new  with the local planning authority',
-        value: 'Yes, I agreed a new  with the local planning authority',
-        checked: checked('application-desc-changed','Yes, I agreed a new  with the local planning authority')
+        html: 'Yes, I agreed a new description with the local planning authority',
+        value: 'Yes',
+        checked: checked('description-development-correct','Yes')
       },
       {
         html: 'No',
         value: 'No',
-        checked: checked('application-desc-changed','No')
+        checked: checked('description-development-correct','No')
       }
     ]
   }) }}

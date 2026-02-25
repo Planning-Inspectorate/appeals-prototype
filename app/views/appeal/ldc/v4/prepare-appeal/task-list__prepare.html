@@ -18,7 +18,7 @@
   {% if data['application-name'] == 'No' %}
     {% set prepareOptional = prepareOptional.concat([data['appellant-first-name']]) %}
   {% endif %}
-  {% if data['existing-or-proposed'] == 'Proposed development' %}
+  {% if data['existing-or-proposed'] and data['existing-or-proposed'] != 'Existing development' %}
     {% set prepareOptional = prepareOptional.concat([data['description-detail'], data['description-development-correct']]) %}
   {% endif %}
   {% if data['decide-appeal'] == 'Hearing' %}
@@ -72,8 +72,8 @@
       ] if data['application-name'] == 'No',
       [
         { text: "Contact details", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: ((data['contact-first-name'] or '') + ' ' + (data['contact-last-name'] or '') + (('<br>' + data['contact-email']) if data['contact-email'] else '')) if (data['contact-first-name'] or data['contact-email']) else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="contact-details" class="govuk-link">Change</a>' if (data['contact-first-name'] or data['contact-email']) else '<a href="contact-details" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: ((data['contact-first-name'] or '') + ' ' + (data['contact-last-name'] or '') + (('<br>' + data['contact-email']) if data['contact-email'] else '')) if (data['contact-first-name'] or data['contact-last-name'] or data['contact-email']) else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="contact-details" class="govuk-link">Change</a>' if (data['contact-first-name'] or data['contact-last-name'] or data['contact-email']) else '<a href="contact-details" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
         { text: "What is your phone number?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
@@ -124,12 +124,12 @@
         { text: "Enter the description of development that you submitted in your application", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['description-detail'] | truncate(50) if data['description-detail'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="description-of-development" class="govuk-link">Change</a>' if data['description-detail'] else '<a href="description-of-development" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['existing-or-proposed'] == 'Proposed development',
+      ] if data['existing-or-proposed'] and data['existing-or-proposed'] != 'Existing development',
       [
         { text: "Did the local planning authority change the description of development?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['description-development-correct'] if data['description-development-correct'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="description-development-correct" class="govuk-link">Change</a>' if data['description-development-correct'] else '<a href="description-development-correct" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ] if data['existing-or-proposed'] == 'Proposed development',
+      ] if data['existing-or-proposed'] and data['existing-or-proposed'] != 'Existing development',
       [
         { text: "How would you prefer us to decide your appeal?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['decide-appeal'] if data['decide-appeal'] else "Not started", classes: "govuk-!-width-one-half" },
