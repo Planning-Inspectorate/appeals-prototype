@@ -1,0 +1,257 @@
+<style>
+  /* ===== Visual tidy-up ===== */
+  .filters-container {
+    background: #ffffff;
+    border: 1px solid #b1b4b6;
+    border-radius: 4px;
+    padding: 16px;
+  }
+
+  .filters-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .filters-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .app-applied-filters {
+    background: #f8f8f8;
+    border: 1px solid #b1b4b6;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 12px 0 16px 0;
+  }
+
+  .app-applied-filters__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .app-applied-filters__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .app-chip {
+    display: inline-flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #b1b4b6;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .app-chip__remove {
+    background: none;
+    border: none;
+    font-size: 18px;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+
+  .app-button--no-margin {
+    margin-bottom: 8px !important;
+  }
+</style>
+
+<!-- ===== Toggle (only opens/closes options panel) ===== -->
+<button
+  type="button"
+  class="govuk-button govuk-button--secondary app-button--no-margin"
+  id="toggle-filters"
+  aria-expanded="false"
+  aria-controls="filters-panel"
+>
+  Show filter options
+</button>
+
+<!-- ===== Applied filters (ALWAYS visible) ===== -->
+<div class="app-applied-filters" aria-live="polite">
+  <div class="app-applied-filters__header">
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Applied filters</h3>
+    <!-- Link style as requested -->"
+      <a href="#"
+      id="clear-filters"
+      class="govuk-link govuk-link--no-visited-state"
+      role="button">
+      Clear all
+    </a>
+ 
+  </div>
+
+  <div id="filter-chips" class="app-applied-filters__chips">
+    <span class="govuk-hint govuk-!-margin-bottom-0">No filters applied</span>
+  </div>
+</div>
+
+<!-- ===== Collapsible filter options panel ===== -->
+<div id="filters-panel" hidden class="filters-container govuk-!-margin-top-2">
+  <form id="filters-form" method="get" class="filters-inner" aria-describedby="filters-help">
+    <span id="filters-help" class="govuk-visually-hidden">Select filters and choose Apply filters</span>
+
+    <!-- Appeal type -->
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Appeal type</legend>
+      <div class="govuk-checkboxes govuk-checkboxes--small">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type-advert" name="type" value="Advertisement" type="checkbox">
+          <label class="govuk-label govuk-checkboxes__label" for="type-advert">Advertisement</label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type-cas" name="type" value="Commercial planning (CAS)" type="checkbox">
+          <label class="govuk-label govuk-checkboxes__label" for="type-cas">Commercial planning (CAS)</label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type-enforcement" name="type" value="Enforcement" type="checkbox">
+          <label class="govuk-label govuk-checkboxes__label" for="type-enforcement">Enforcement</label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type-householder" name="type" value="Householder" type="checkbox">
+          <label class="govuk-label govuk-checkboxes__label" for="type-householder">Householder</label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type-planning" name="type" value="Planning" type="checkbox">
+          <label class="govuk-label govuk-checkboxes__label" for="type-planning">Planning</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Action required -->
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Action required</legend>
+      <div class="govuk-checkboxes govuk-checkboxes--small">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="action-questionnaire" name="action" value="Questionnaire" type="checkbox">
+          <label class="govuk-label govuk-checkboxes__label" for="action-questionnaire">Questionnaire</label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="action-statement" name="action" value="Statement" type="checkbox">
+          <label class="govuk-label govuk-checkboxes__label" for="action-statement">Statement</label>
+        </div>
+      </div>
+    </fieldset>
+
+    {{ govukButton({
+      text: "Apply filters",
+      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-0",
+      attributes: { id: "apply-filters-btn" }
+    }) }}
+  </form>
+</div>
+
+<script>
+  (function () {
+    const toggleButton = document.getElementById('toggle-filters');
+    const panel = document.getElementById('filters-panel');
+    const chipsContainer = document.getElementById('filter-chips');
+    const form = document.getElementById('filters-form');
+    const clearBtn = document.getElementById('clear-filters');
+
+    /* ===== Behaviour flags ===== */
+    const autoSubmitOnClear = false;        // keep as false unless you want an immediate refresh
+    const autoSubmitOnChipRemove = false;   // chip removal updates state but does not submit
+    // Chips are now built ONLY on "Apply filters" (form submit)
+
+    /* ===== Toggle: only show/hide the options panel ===== */
+    toggleButton.addEventListener('click', () => {
+      const open = toggleButton.getAttribute('aria-expanded') === 'true';
+      toggleButton.setAttribute('aria-expanded', String(!open));
+      toggleButton.textContent = open ? 'Show filter options' : 'Hide filter options';
+      panel.hidden = open;
+
+      if (!open) {
+        const firstCheckbox = panel.querySelector('input[type=checkbox]');
+        if (firstCheckbox) firstCheckbox.focus();
+      } else {
+        toggleButton.focus();
+      }
+    });
+
+    /* ===== Utility: build chips from a given NodeList of inputs ===== */
+    function renderChipsFrom(checkedInputs) {
+      chipsContainer.innerHTML = '';
+
+      if (!checkedInputs.length) {
+        const hint = document.createElement('span');
+        hint.className = 'govuk-hint govuk-!-margin-bottom-0';
+        hint.textContent = 'No filters applied';
+        chipsContainer.appendChild(hint);
+        return;
+      }
+
+      checkedInputs.forEach((input) => {
+        const chip = document.createElement('div');
+        chip.className = 'app-chip';
+        chip.innerHTML = `
+          <span>${input.value}</span>
+          <button
+            type="button"
+            class="app-chip__remove"
+            aria-label="Remove filter: ${input.value}"
+            data-target="${input.id}"
+          >✕</button>
+        `;
+        chipsContainer.appendChild(chip);
+      });
+    }
+
+    /* ===== Apply filters: only now do we create/update chips ===== */
+    form.addEventListener('submit', (e) => {
+      // If you want a real GET submit to the server, remove the next two lines.
+      e.preventDefault(); // Prototype behavior: keep this page and update chips only
+      const checked = form.querySelectorAll('input[type=checkbox]:checked');
+      renderChipsFrom(checked);
+      // If you DO want a server round-trip, remove preventDefault() and let the server
+      // re-render chips on load (then call renderChipsFrom() on DOMContentLoaded instead).
+    });
+
+    /* ===== Remove a chip -> uncheck corresponding box (no auto-submit) ===== */
+    chipsContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('app-chip__remove')) {
+        const id = e.target.dataset.target;
+        const input = document.getElementById(id);
+        if (input) {
+          input.checked = false;
+        }
+        // Rebuild the chips from the currently APPLIED set:
+        // In this client-only model, the applied set is now whatever the form has checked
+        // since we used the same form state to render chips.
+        const stillChecked = form.querySelectorAll('input[type=checkbox]:checked');
+        renderChipsFrom(stillChecked);
+
+        if (autoSubmitOnChipRemove) {
+          form.submit();
+        }
+      }
+    });
+
+    /* ===== Clear all: reset form + remove chips (link style as requested) ===== */
+
+    clearBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // prevents jumping to top of page
+    form.reset();
+    renderChipsFrom([]); 
+    if (autoSubmitOnClear) form.submit();
+   });
+
+
+    /* ===== Initial state ===== */
+    renderChipsFrom([]); // start with "No filters applied"
+  })();
+</script>
