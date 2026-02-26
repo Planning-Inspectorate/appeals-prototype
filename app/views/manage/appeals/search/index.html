@@ -3,86 +3,128 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-  
-      <h1 class="govuk-heading-l">
-        LPA dashboard search functionality
-      </h1>
+  <div class="govuk-grid-column-two-thirds">
 
-  
-      <h2 class="govuk-heading-m">
-        Version 2 (latest)
-        {{govukTag({
-            text: "Ready for user research",
-            classes: "govuk-!-margin-left-2 govuk-tag--light-blue"
-        })}}
-      </h2>
-  
-      {{ govukButton({
-        html: 'View prototype',
-        href: 'search/v2/active',
-        isStartButton: true
+    <h1 class="govuk-heading-l">
+      LPA dashboard – Search and filter prototypes
+    </h1>
+
+    <p class="govuk-body-l">
+      Iterations exploring search behaviour and the potential need for filters.
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+    <!-- ================= VERSION 2 ================= -->
+
+    <h2 class="govuk-heading-m">
+      Version 2 – Search improvements
+      {{ govukTag({
+        text: "Agreed for build",
+        classes: "govuk-tag govuk-!-margin-left-2"
       }) }}
-  
-      <h2 class="govuk-heading-m">Features:</h2>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          Added 'Invalid' tab
-        </li>
-        <li>
-          Added lead/child tags to highlight linked appeals
-        </li>
-        <li>
-         Updated hint text to remove postcode and add first line of address
-        </li>
-        <li>
-         Added filters (appeal type and action required)
-        </li>
-      </ul>
+    </h2>
 
-{{ govukAccordion({
-    id: "",
-    items: [
+    <p class="govuk-body">
+      Refined search experience following round 1 research.
+    </p>
+
+    {{ govukButton({
+      html: 'Start Version 2 prototype',
+      href: 'search/v2/active',
+      isStartButton: true
+    }) }}
+
+    <h3 class="govuk-heading-s">What changed from version 1</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Added <strong>Invalid</strong> tab</li>
+      <li>Added <strong>lead/child tags</strong> to highlight linked appeals</li>
+      <li>Updated search hint text (removed postcode, added first line of address)</li>
+    </ul>
+
+
+    <!-- ================= FILTER ITERATIONS ================= -->
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">
+      Filter design explorations
+      {{ govukTag({
+        text: "Test if needed",
+        classes: "govuk-tag--yellow govuk-!-margin-left-2"
+      }) }}
+    </h2>
+
+    <p class="govuk-body">
+      These variations introduce filtering alongside search. 
+      We propose testing these only if research indicates that search alone does not meet user needs.
+    </p>
+
+    <h3 class="govuk-heading-s">Option A – Filters within search page</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="search/v2/active-with-filters">Version 2 with filters integrated</a>
+      </li>
+    </ul>
+
+    <h3 class="govuk-heading-s">Option B – Unified filter panel + card view</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="search/filters-side/side">Side panel filtering with card-based results</a>
+      </li>
+    </ul>
+
+
+    <!-- ================= PREVIOUS VERSION ================= -->
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {{ govukAccordion({
+      id: "previous-versions",
+      items: [
         {
-            heading: {
-                html: 'Version 1 <strong class="govuk-tag govuk-tag--green">
-                    Research complete
-                  </strong>'
-            },
-            content: {
-                html: '
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        <a href="search/xgovnav/active">Prototype</a>
-                    </li>
-                    <li>
-                        <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1761841478880/a48d37b68ee306c3be1b6e9bf1a9e62fd552d3ab">Research findings from round 1</a>
-                    </li>
-                </ul>'
-            }
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Research complete</strong>'
+          },
+          content: {
+            html: '
+              <p class="govuk-body">Initial search prototype tested in round 1.</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="search/xgovnav/active">View prototype</a>
+                </li>
+                <li>
+                  <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1761841478880/a48d37b68ee306c3be1b6e9bf1a9e62fd552d3ab">
+                    View research findings
+                  </a>
+                </li>
+              </ul>'
+          }
         }
-    ]
-}) }}
+      ]
+    }) }}
 
 
+    <!-- ================= OTHER EXPLORATIONS ================= -->
 
-
-{{ govukDetails({
-    summaryText: "Other workings",
-    html: '<ul class="govuk-list govuk-list--bullet">
-        <li>
-            <a href="search/filters-top/horizontal-v2">Search with tabs</a>
-        </li>
-        <li>
+    {{ govukDetails({
+      summaryText: "Earlier filter explorations and layout variations",
+      html: '
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a href="search/filters-top/horizontal-v2">Search with horizontal filter bar</a>
+          </li>
+          <li>
             <a href="search/filters-top/horizontal">Search with service navigation</a>
-        </li>
-    
-        <li>
+          </li>
+          <li>
             <a href="search/filters-side/side">Side menu filtering and search UI</a>
-        </li>
-    </ul>'
-}) }}
+          </li>
+        </ul>'
+    }) }}
 
+  </div>
 </div>
-</div>
+
 {% endblock %}
