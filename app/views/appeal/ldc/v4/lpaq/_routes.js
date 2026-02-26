@@ -34,7 +34,7 @@ router.post('/certificate-type-check', function (req, res) {
 router.post('/planning-condition-check', function (req, res) {
   const answer = req.session.data['planning-condition-check']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./upload-relevant-planning-permission')
   } else {
     res.redirect('./enforcement-notice-date-application-check')

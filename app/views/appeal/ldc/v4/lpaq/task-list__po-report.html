@@ -53,7 +53,7 @@
         { text: "Upload planning officers report decision notice", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['upload-planning-officers-report-decision-notice'] if data['upload-planning-officers-report-decision-notice'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="upload-planning-officers-report-decision-notice" class="govuk-link">Change</a>' if data['upload-planning-officers-report-decision-notice'] else '<a href="upload-planning-officers-report-decision-notice" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
-      ],
+      ]if data['planning-officer-report'] == 'Yes',
       [
         { text: "Community infrastructure levy", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['community-infrastructure-check'] if data['community-infrastructure-check'] else "Not started", classes: "govuk-!-width-one-half" },
@@ -63,7 +63,7 @@
         { text: "Community infrastructure upload", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['community-infrastructure-upload'] if data['community-infrastructure-upload'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="community-infrastructure-upload" class="govuk-link">Change</a>' if data['community-infrastructure-upload'] else '<a href="community-infrastructure-upload" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
-      ],
+      ]if data['community-infrastructure-check'] == 'Yes',
       [
         { text: "Community infrastructure adopted", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['community-infrastructure-adopted'] if data['community-infrastructure-adopted'] else "Not started", classes: "govuk-!-width-one-half" },
@@ -83,7 +83,7 @@
         { text: "Upload other relevant matters", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['upload-other-relevant-matters'] if data['upload-other-relevant-matters'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="upload-other-relevant-matters" class="govuk-link">Change</a>' if data['upload-other-relevant-matters'] else '<a href="upload-other-relevant-matters" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
-      ]
+      ]if data['other-relevant-matters'] == 'Yes'
     ]
   }) }}
 </li>
