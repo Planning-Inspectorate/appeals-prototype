@@ -18,7 +18,7 @@
   {% if data['application-name'] == 'No' %}
     {% set prepareOptional = prepareOptional.concat([data['appellant-first-name']]) %}
   {% endif %}
-  {% if data['existing-or-proposed'] == 'Proposed development' %}
+  {% if data['existing-or-proposed'] and data['existing-or-proposed'] != 'Existing development' %}
     {% set prepareOptional = prepareOptional.concat([data['description-detail'], data['description-development-correct']]) %}
   {% endif %}
   {% if data['decide-appeal'] == 'Hearing' %}

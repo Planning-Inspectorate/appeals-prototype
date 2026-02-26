@@ -21,8 +21,8 @@ router.post('/application-form', function (req, res) {
   console.log('Session data:', req.session.data)
   
   // Check if user agreed a new description with LPA
-  const descriptionChanged = req.session.data['application-desc-changed']
-  console.log('application-desc-changed:', descriptionChanged)
+  const descriptionChanged = req.session.data['description-development-correct']
+  console.log('description-development-correct:', descriptionChanged)
   
   if (descriptionChanged && descriptionChanged.startsWith('Yes')) {
     console.log('Redirecting to description-of-development-agreement')
