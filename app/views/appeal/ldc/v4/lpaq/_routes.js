@@ -51,15 +51,15 @@ router.post('/enforcement-notice-date-application-check', function (req, res) {
   const answer = req.session.data['enforcement-notice-date-application']
   
   if (answer === 'yes') {
-    res.redirect('./upload-enforcement-notice')
+    res.redirect('/appeal/ldc/v4/lpaq/upload-enforcement-notice')
   } else {
-    res.redirect('./related-applications-check')
+    res.redirect('/appeal/ldc/v4/lpaq/related-applications-check')
   }
 })
 
 //upload-enforcement-notice route
 router.post('/upload-enforcement-notice', function (req, res) {
-  res.redirect('related-applications-check')
+  res.redirect('/appeal/ldc/v4/lpaq/related-applications-check')
 })
 
 
@@ -215,9 +215,17 @@ router.post('/prefer-inquiry', function (req, res) {
 })
 
 // POST route for other-appeals
-router.post('/other-appeals', function (req, res) {
-  res.redirect('./other-appeal-reference')
+router.post('/other-appeals', function (req, res){
+  const answer = req.session.data['other-appeals']
+  
+  if (answer == 'Yes') {
+    res.redirect('./other-appeal-reference')
+  } else {
+    res.redirect('./task-list')
+  }
 })
+
+
 
 // POST route for other-appeal-reference
 router.post('/other-appeal-reference', function (req, res) {

@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
-{% set title = 'You’ve added a linked appeal' %}
+{% set title = 'Nearby appeal added to the case' %}
 
 {% set prototypeLinks = [
   {
@@ -14,6 +14,8 @@
 ] %}
 
 {% block questions %}
+<span class="govuk-caption-l">Appeal process</span>
+
 
   {% set otherAppeals = data['other-appeal-references'] or [] %}
 

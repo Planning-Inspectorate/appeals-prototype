@@ -1,7 +1,6 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
-
 {% set title = 'Which procedure do you think is most appropriate for this appeal?' %}
 
 {% set inquiryHtml %}
@@ -17,6 +16,8 @@
 {% endset -%}
 
 {% block questions %}
+  <span class="govuk-caption-l">Appeal process</span>
+
   {{ govukRadios({
     idPrefix: 'procedure',
     name: 'procedure',

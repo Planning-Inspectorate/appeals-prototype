@@ -150,7 +150,7 @@
                 text: "Is your appeal about a listed building?"
               },
               value: {
-                text: data['listed-building'] or "No"
+                text: data['listed-building'] or "Yes"
               },
               actions: {
                 items: [
@@ -167,7 +167,7 @@
                 text: "Was your application granted or refused?"
               },
               value: {
-                text: "Granted"
+                text: data['granted-or-refused'] or "Granted"
               },
               actions: {
                 items: [
@@ -184,7 +184,7 @@
                 text: "What's the date on the decision letter from the local planning authority?"
               },
               value: {
-                text: data['decision-date-formatted'] or (data['decision-date-day'] + ' ' + (data['decision-date-month'] | formatMonth) + ' ' + data['decision-date-year'])
+                text: data['decision-date-formatted'] or (data['decision-date-day'] + ' ' + (data['decision-date-month'] | formatMonth) + ' ' + data['decision-date-year']) or "1 January 2026"
               },
               actions: {
                 items: [

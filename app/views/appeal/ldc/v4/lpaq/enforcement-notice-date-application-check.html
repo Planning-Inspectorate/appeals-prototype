@@ -1,37 +1,73 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Was there an enforcement notice in force at the date of the application?' %}
+{% set title = 'Existing enforcement notice' %}
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block questions %}
 
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
   <span class="govuk-caption-l">{{serviceName}}</span>
 
-  {{ govukRadios({
-    name: "enforcement-notice-date-application",
-    fieldset: {
-      legend: {
-        text: title,
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--l"
-      }
-    },
-    items: [
-      {
-        value: "yes",
-        text: "Yes"
-      },
-        {
-        value: "no",
-        text: "No"
-      }
-    ]
-  }) }}
+      <h1 class="govuk-heading-l">
+        {{ title }}
+        </h1>
+
+      <p class="govuk-body">
+Applicants may apply for planning permission retrospectively, after the LPA has issued an enforcement notice, or on Ground (a).      </p>
+
+
+      <form action="/enforcement-notice-date-application-check" method="post" novalidate>
+
+        {{ govukRadios({
+          name: "enforcement-notice-date-application",
+          fieldset: {
+            legend: {
+              text: "Was there an enforcement notice in place at the date of the application?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
 {% endblock %}
+{% endblock %}
+
+
+
 
 {% block afterContent %}
   <p class="govuk-body govuk-!-margin-bottom-6">
      <a href="/appeal/ldc/v4/lpaq/task-list">Return to questionnaire homepage</a>
     </p>
 {% endblock %}
+

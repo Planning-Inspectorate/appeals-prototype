@@ -3,6 +3,7 @@
 {% set title = 'Enter the appeal reference number' %}
 
 {% block questions %}
+<span class="govuk-caption-l">Appeal process</span>
 
   {{ govukInput({
     label: {
@@ -12,7 +13,7 @@
     },
     classes: "govuk-input--width-10",
     hint: {
-      html: "<span class='govuk-body'>Enter the appeal reference number from the Planning Inspectorate.</span><br><br>For example, 0221532."
+      html: "<span class='govuk-body'>You can add more appeals later if there is more than one nearby appeal.</span>"
     },
     id: "other-appeal-reference",
     name: "other-appeal-reference",
