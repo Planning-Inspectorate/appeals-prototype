@@ -51,12 +51,12 @@
         { text: "Prefer inquiry", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['prefer-inquiry'] if data['prefer-inquiry'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="prefer-inquiry" class="govuk-link">Change</a>' if data['prefer-inquiry'] else '<a href="prefer-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
+      ]if data['procedure'] == 'Inquiry',
       [
         { text: "Prefer hearing", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['prefer-hearing'] if data['prefer-hearing'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="prefer-hearing" class="govuk-link">Change</a>' if data['prefer-hearing'] else '<a href="prefer-hearing" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
+      ]if data['procedure'] == 'Hearing',
       [
         { text: "Other appeals", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['other-appeals'] if data['other-appeals'] else "Not started", classes: "govuk-!-width-one-half" },
@@ -66,12 +66,7 @@
         { text: "Other appeal reference", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['other-appeal-reference'] if data['other-appeal-reference'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="other-appeal-reference" class="govuk-link">Change</a>' if data['other-appeal-reference'] else '<a href="other-appeal-reference" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
-      [
-        { text: "Add another appeal", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['add-another-appeal'] if data['add-another-appeal'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="add-another-appeal" class="govuk-link">Change</a>' if data['add-another-appeal'] else '<a href="add-another-appeal" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ]
+      ]if data['other-appeals'] == 'Yes'
     ]
   }) }}
 </li>

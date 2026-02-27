@@ -17,7 +17,7 @@ router.post('/task-list', function (req, res) {
 router.post('/correct-appeal-type-check', function (req, res) {
   const answer = req.session.data['correct-appeal-type']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./certificate-type-check')
   } else {
     res.redirect('./certificate-type-check')
@@ -50,7 +50,7 @@ router.post('/upload-relevant-planning-permission', function (req, res) {
 router.post('/enforcement-notice-date-application-check', function (req, res) {
   const answer = req.session.data['enforcement-notice-date-application']
   
-  if (answer === 'yes') {
+  if (answer === 'Yes') {
     res.redirect('/appeal/ldc/v4/lpaq/upload-enforcement-notice')
   } else {
     res.redirect('/appeal/ldc/v4/lpaq/related-applications-check')
@@ -67,7 +67,7 @@ router.post('/upload-enforcement-notice', function (req, res) {
 router.post('/related-applications-check', function (req, res) {
   const answer = req.session.data['related-applications']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./upload-related-application')
   } else {
     res.redirect('./appeal-invalid-check')
@@ -89,7 +89,7 @@ router.post('/appeal-invalid-check', function (req, res) {
 router.post('/planning-officer-report', function (req, res) {
   const answer = req.session.data['planning-officer-report']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./upload-planning-officers-report-decision-notice')
   } else {
     res.redirect('./community-infrastructure-check')
@@ -105,7 +105,7 @@ router.post('/upload-planning-officers-report-decision-notice', function (req, r
 router.post('/community-infrastructure-check', function (req, res) {
   const answer = req.session.data['community-infrastructure-check']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./community-infrastructure-upload')
   } else {
     res.redirect('./other-relevant-matters')
@@ -131,7 +131,7 @@ router.post('/community-infrastructure-date', function (req, res) {
 router.post('/other-relevant-matters', function (req, res) {
   const answer = req.session.data['other-relevant-matters']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./upload-other-relevant-matters')
   } else {
     res.redirect('./inspector-access-appeal-site')
@@ -156,7 +156,7 @@ router.post('/inspector-access-appeal-site', function (req, res) {
 router.post('/inspector-enter-neighbour-site', function (req, res) {
   const answer = req.session.data['inspector-enter-neighbour-site']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./neighbours-address')
   } else {
     res.redirect('./procedure-type')
@@ -245,10 +245,10 @@ router.post('/other-appeal-reference', function (req, res) {
 router.post('/add-another-appeal', function (req, res) {
   const answer = req.session.data['add-another-appeal']
   
-  if (answer == 'yes') {
+  if (answer == 'Yes') {
     res.redirect('./other-appeal-reference')
-  } else if (answer == 'no') {
-    res.redirect('./confirmation')
+  } else if (answer == 'No') {
+    res.redirect('./task-list')
   }
 })
 
