@@ -1,0 +1,179 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Email notifications' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">Set email notifications for new user</h1>
+
+<p class="govuk-body">Email address</p>
+<p class="govuk-body-l">{{ data['new-user-email'] }}</p>
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<form method="post" action="appeal-stage">
+  <p class="govuk-body">Select appeal stages to receive email notifications for</p>
+
+  <h2 class="govuk-heading-m">Written representations</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage",
+    fieldset: {
+      legend: {
+        text: "Written representations",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'New appeal',
+        value: 'Written representations - New appeal',
+        checked: checked('appeal-stage','Written representations - New appeal')
+      },
+      {
+        html: 'Questionnaire due',
+        value: 'Written representations - Questionnaire due',
+        checked: checked('appeal-stage','Written representations - Questionnaire due')
+      },
+      {
+        html: 'Questionnaire valid, statement due',
+        value: 'Written representations - Questionnaire valid, statement due',
+        checked: checked('appeal-stage','Written representations - Questionnaire valid, statement due')
+      },
+      {
+        html: 'LPA statement done',
+        value: 'Written representations - LPA statement done',
+        checked: checked('appeal-stage','Written representations - LPA statement done')
+      },
+      {
+        html: 'All statements and comments done / final comments due',
+        value: 'Written representations - All statements and comments done / final comments due',
+        checked: checked('appeal-stage','Written representations - All statements and comments done / final comments due')
+      },
+      {
+        html: 'LPA final comments done',
+        value: 'Written representations - LPA final comments done',
+        checked: checked('appeal-stage','Written representations - LPA final comments done')
+      },
+      {
+        html: 'All final comments done',
+        value: 'Written representations - All final comments done',
+        checked: checked('appeal-stage','Written representations - All final comments done')
+      },
+      {
+        html: 'Appeal decided',
+        value: 'Written representations - Appeal decided',
+        checked: checked('appeal-stage','Written representations - Appeal decided')
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Hearing</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage",
+    fieldset: {
+      legend: {
+        text: "Hearing",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'New appeal',
+        value: 'Hearing - New appeal',
+        checked: checked('appeal-stage','Hearing - New appeal')
+      },
+      {
+        html: 'Event date available',
+        value: 'Hearing - Event date available',
+        checked: checked('appeal-stage','Hearing - Event date available')
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Inquiry</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage",
+    fieldset: {
+      legend: {
+        text: "Inquiry",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'New appeal',
+        value: 'Inquiry - New appeal',
+        checked: checked('appeal-stage','Inquiry - New appeal')
+      },
+      {
+        html: 'Questionnaire due',
+        value: 'Inquiry - Questionnaire due',
+        checked: checked('appeal-stage','Inquiry - Questionnaire due')
+      },
+      {
+        html: 'Questionnaire valid, statement due',
+        value: 'Inquiry - Questionnaire valid, statement due',
+        checked: checked('appeal-stage','Inquiry - Questionnaire valid, statement due')
+      },
+      {
+        html: 'LPA statement done',
+        value: 'Inquiry - LPA statement done',
+        checked: checked('appeal-stage','Inquiry - LPA statement done')
+      },
+      {
+        html: 'Proof of evidence due',
+        value: 'Inquiry - Proof of evidence due',
+        checked: checked('appeal-stage','Inquiry - Proof of evidence due')
+      },
+      {
+        html: 'LPA proof of evidence complete',
+        value: 'Inquiry - LPA proof of evidence complete',
+        checked: checked('appeal-stage','Inquiry - LPA proof of evidence complete')
+      },
+      {
+        html: 'Witness timings due',
+        value: 'Inquiry - Witness timings due',
+        checked: checked('appeal-stage','Inquiry - Witness timings due')
+      },
+      {
+        html: 'LPA witness timings complete',
+        value: 'Inquiry - LPA witness timings complete',
+        checked: checked('appeal-stage','Inquiry - LPA witness timings complete')
+      },
+      {
+        html: 'All witness timings complete',
+        value: 'Inquiry - All witness timings complete',
+        checked: checked('appeal-stage','Inquiry - All witness timings complete')
+      },
+      {
+        html: 'Appeal decided',
+        value: 'Inquiry - Appeal decided',
+        checked: checked('appeal-stage','Inquiry - Appeal decided')
+      }
+    ]
+  }) }}
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      {% endblock %}
+
+</form>
+
+{% endblock %}

@@ -14,12 +14,48 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    {% if data['action'] == 'updated' or data['updated-email'] %}
+      {{ govukNotificationBanner({
+        html: "<h3 class='govuk-notification-banner__heading'>" ~ (data['updated-email'] or data['new-user-email'] or 'User') ~ " has been updated</h3>",
+        type: 'success'
+      }) }}
+    {% endif %}
+
     <span class="govuk-caption-l">
       Manage LPA appeals
     </span>
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
+
+ {% set version = "6" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--gray govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+    <p class="govuk-!-margin-bottom-2">Adjusting the flow for sending email notifications about particular appeals so that it is also possible to send notifications to multiple users based on appeal reference</p>
+
+    <p class="govuk-!-margin-bottom-2"><strong>Updated pages</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/manage/manage-users/v6/email-notifications" class="govuk-link">
+          Manage users
+        </a></li>
+         <li><a href="./manage-users/v6/detailed-email-notifications" class="govuk-link">
+          Select appeal types for email notifications
+        </a></li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/manage/manage-users/v6/index.html',
+      isStartButton: true
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
 
     {% set version = "5" %}
     <h2 class="govuk-heading-m">

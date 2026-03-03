@@ -1,4 +1,5 @@
 let lpas = require('./lpas.json')
+let appeals = require('./appeals.json')
 
 
 let data = {
@@ -16,9 +17,27 @@ let data = {
 
 module.exports = {
   lpas,
+  appeals,
   'username': 'Jim Hanson',
   'dashboard-lpa': 'Cambridgeshire and Peterborough Combined Authority',
   'lpa-email': '@cambridgeshirepeterborough-ca.gov.uk',
+  'email-notifications': {
+    '1345301': false,
+    '1345264': false,
+    '1009386': false,
+    '10693866': false,
+    '1295800': false,
+    '1204968': false,
+    '20396833': false,
+    '4928166': false,
+    '90294888': false,
+    '3827652': false,
+    '8472163': false,
+    '2968453': false,
+    '2950621': false,
+    '2948632': false,
+    '2948596': false
+  },
   'users': [
     {
       'email': 'appeals@cambridgeshirepeterborough-ca.gov.uk',

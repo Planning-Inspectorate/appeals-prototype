@@ -1,0 +1,71 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Tell us their email address' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">Tell us their email address</h1>
+
+<form method="post" action="email-notifications">
+  <input type="hidden" name="edit-user-id" value="{{ data['id'] }}">
+  <div style="display: flex; gap: 1rem; align-items: flex-end;">
+
+
+  <div style="width: 300px;">
+    {{ govukInput({
+      id: "domain-prefix",
+      name: "domain-prefix",
+      label: { text: "Enter email prefix" },
+      value: data['edit-user-prefix']
+    }) }}
+  </div>
+  
+
+  {{ govukSelect({
+      id: "sort",
+      name: "sort",
+      label: {
+        text: "Choose local planning authority"
+      },
+      items: [
+        { value: "@cambridgeshirepeterborough-ca.gov.uk", text: "@cambridgeshirepeterborough-ca.gov.uk", selected: data['edit-user-domain'] == "@cambridgeshirepeterborough-ca.gov.uk" },
+        { value: "@camden.gov.uk", text: "@camden.gov.uk", selected: data['edit-user-domain'] == "@camden.gov.uk" },
+        { value: "@lambeth.gov.uk", text: "@lambeth.gov.uk", selected: data['edit-user-domain'] == "@lambeth.gov.uk" }
+      ]
+  }) }}
+  </div>
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      {% endblock %}
+
+  </form>
+
+  <script>
+    (function () {
+      const url = new URL(window.location.href)
+      if (!url.searchParams.has('reloaded')) {
+        url.searchParams.set('reloaded', 'true')
+        window.location.replace(url.toString())
+      }
+    })()
+  </script>
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "_layouts/layout-pins-manage-users.html" %}
+
+{% set pageName="Appellant Case" %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+		href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<script>
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has('reloaded')) {
+    url.searchParams.set('reloaded', '1');
+    window.location.replace(url.toString());
+  }
+</script>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+	<span class="govuk-caption-l">Manage users</span>
+	<h1 class="govuk-heading-l">User email notifications</h1>
+
+  {% set tableRows = [] %}
+  {% if data['manage-user'] %}
+    {% set user = data['manage-user'] %}
+    {% set appealTypes = user.appealTypes or user.appeal_types or [] %}
+    {% set appealReferences = user.appealReferences or user.appeal_references or [] %}
+    {% set appealStages = user.appealStages or user.appeal_stages or [] %}
+
+    {% if appealTypes.length > 1 %}
+      {% set appealTypesHtml %}
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+          {% for appealType in appealTypes %}
+            <li>{{ appealType }}</li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+    {% elif appealTypes.length == 1 %}
+      {% set appealTypesHtml %}<p class="govuk-body govuk-!-margin-0">{{ appealTypes[0] }}</p>{% endset %}
+    {% else %}
+      {% set appealTypesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
+    {% endif %}
+
+    {% if appealReferences.length > 1 %}
+      {% set appealReferencesHtml %}
+        <p class="govuk-body govuk-!-margin-0">
+          {% for appealReference in appealReferences %}
+            <a class="govuk-link" href="#">{{ appealReference }}</a>{% if not loop.last %}<br>{% endif %}
+          {% endfor %}
+        </p>
+      {% endset %}
+    {% elif appealReferences.length == 1 %}
+      {% set appealReferencesHtml %}<p class="govuk-body govuk-!-margin-0"><a class="govuk-link" href="#">{{ appealReferences[0] }}</a></p>{% endset %}
+    {% else %}
+      {% set appealReferencesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
+    {% endif %}
+
+    {% if appealStages.length > 1 %}
+      {% set appealStagesHtml %}
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+          {% for appealStage in appealStages %}
+            <li>{{ appealStage }}</li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+    {% elif appealStages.length == 1 %}
+      {% set appealStagesHtml %}<p class="govuk-body govuk-!-margin-0">{{ appealStages[0] }}</p>{% endset %}
+    {% else %}
+      {% set appealStagesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
+    {% endif %}
+
+    {% set tableRows = (tableRows.push([
+      {
+        text: user.email
+      },
+      {
+        html: appealReferencesHtml
+      },
+      {
+        html: appealTypesHtml
+      }
+    ]), tableRows) %}
+  {% else %}
+    {% set tableRows = (tableRows.push([
+      {
+        html: "<p>No user selected</p>"
+      },
+      {
+        text: "-"
+      },
+      {
+        text: "-"
+      }
+    ]), tableRows) %}
+  {% endif %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-summary-list govuk-!-margin-bottom-6',
+    rows: [
+      {
+        key: {
+          text: 'User email'
+        },
+        value: {
+          text: user.email if data['manage-user'] else 'No user selected'
+        },
+        actions: {
+          items: [
+            {
+              href: '/manage/manage-users/v6/edit-user?id=' ~ (user.id if data['manage-user'] else '') ~ '&from=manage-user',
+              text: 'Change',
+              visuallyHiddenText: 'user email'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Appeal subscriptions'
+        },
+        value: {
+          html: appealReferencesHtml if data['manage-user'] else 'None'
+        },
+        actions: {
+          items: [
+            {
+              href: '/manage/manage-users/v6/select-appeals?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
+              text: 'Change',
+              visuallyHiddenText: 'appeal references'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Appeal type subscriptions'
+        },
+        value: {
+          html: appealTypesHtml if data['manage-user'] else 'None'
+        },
+        actions: {
+          items: [
+            {
+              href: '/manage/manage-users/v6/email-notifications?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
+              text: 'Change',
+              visuallyHiddenText: 'appeal types'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: 'Appeal stage subscriptions'
+        },
+        value: {
+          html: appealStagesHtml if data['manage-user'] else 'None'
+        },
+        actions: {
+          items: [
+            {
+              href: '/manage/manage-users/v6/appeal-stage?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
+              text: 'Change',
+              visuallyHiddenText: 'appeal stages'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+	
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set prototypeLinks = [{href: 'errors/appeal-not-available', text: 'Appeal not available'}] %}
+
+{% set title = 'Choose specific appeals for user to receive email notifications' %}
+
+{% block questions %}
+  {# Create an array for the LPA select below #}
+  {% set appealList = [{value: '',text: 'Select appeal'}] %}
+
+  {# Find selected user (if editing from manage-user) #}
+  {% set selectedUser = null %}
+  {% set selectedUserId = data['manage-user-id'] or data['edit-user-id'] or data['id'] %}
+  {% if selectedUserId and data['users'] %}
+    {% for user in data['users'] %}
+      {% if user and user.id == selectedUserId %}
+        {% set selectedUser = user %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {# Include all of the appeals which are set in default data #}
+  {% for appeal in data['appeals'] %}
+    {% set appealList = appealList | push ({
+      value: appeal.appealReference,
+      text: appeal.appealReference
+    }) %}
+  {% endfor %}
+
+  <h1 class="govuk-heading-l">{{ title }}</h1>
+
+  {% set selectedAppealReferences = (selectedUser.appealReferences if selectedUser and selectedUser.appealReferences else (data['appealReferences'] if data['appealReferences'] else [])) %}
+  {% if selectedUser and selectedAppealReferences.length %}
+    <h2 class="govuk-heading-m">Selected appeals</h2>
+    <div class="govuk-!-margin-bottom-4">
+      {% for ref in selectedAppealReferences %}
+        <span class="app-filter-chip govuk-!-margin-right-2 govuk-!-margin-bottom-2">
+          {{ ref }}
+          <button class="app-filter-chip__button" type="submit" name="removeReference" value="{{ ref }}">
+            <span class="govuk-visually-hidden">Remove {{ ref }}</span>
+            ×
+          </button>
+        </span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {# Adds all items from the array then progressively enhanced with the script at the bottom of the file #}
+  {{ govukSelect({
+    id: 'appealReference',
+    name: 'appealReference',
+    classes: 'js-autocomplete',
+    label: {
+      
+      text: 'Enter appeal reference'
+    },
+    items: appealList,
+    attributes: {
+      'data-default-value': data['appealReference']
+    }
+  }) }}
+{% endblock %}
+
+{% block buttons %}
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: 'Add another',
+      name: 'action',
+      value: 'add-another',
+      type: 'submit',
+      classes: 'govuk-button--secondary'
+    }) }}
+    {{ govukButton({
+      text: 'Continue',
+      name: 'action',
+      value: 'continue',
+      type: 'submit'
+    }) }}
+  </div>
+{% endblock %}
