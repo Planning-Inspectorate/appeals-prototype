@@ -25,13 +25,13 @@
   name: "email-notifications",
   fieldset: {
     legend: {
-      text: "Choose appeal types for the user to receive email notifications for",
+      html: '<h1 class="govuk-heading-l">Select appeal types for ' ~ (data["new-user-email"] or "user") ~ ' to subscribe to for emails</h1>',
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
   hint: {
-    text: "This will determine which appeal types " ~ data['new-user-email'] ~ " receives emails for"
+    text: "This will determine which appeal types " ~ (data["new-user-email"] or "user") ~ " receives emails for"
     },
   items: [
     {

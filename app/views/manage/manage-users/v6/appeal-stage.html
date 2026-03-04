@@ -19,15 +19,11 @@
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-full">
 
-<h1 class="govuk-heading-l">Set email notifications for new user</h1>
-
-<p class="govuk-body">Email address</p>
-<p class="govuk-body-l">{{ data['new-user-email'] }}</p>
+<h1 class="govuk-heading-l">Select appeal stages for {{ data['new-user-email'] }} to receive email notifications</h1>
 
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
 <form method="post" action="appeal-stage">
-  <p class="govuk-body">Select appeal stages to receive email notifications for</p>
 
   {% set selectedUser = null %}
   {% set selectedUserId = data['manage-user-id'] or data['edit-user-id'] or data['id'] %}
@@ -41,7 +37,7 @@
 
   {% set selectedStages = (selectedUser.appealStages if selectedUser and selectedUser.appealStages else []) %}
 
-  <h2 class="govuk-heading-m">Written representations</h2>
+  <h2 class="govuk-heading-m">Select written representation stages</h2>
   {{ govukCheckboxes({
     name: "appeal-stage",
     fieldset: {
@@ -94,12 +90,12 @@
     ]
   }) }}
 
-  <h2 class="govuk-heading-m">Hearing</h2>
+  <h2 class="govuk-heading-m">Select hearing stages</h2>
   {{ govukCheckboxes({
     name: "appeal-stage",
     fieldset: {
       legend: {
-        text: "Hearing",
+        text: "Select hearing stages",
         classes: "govuk-visually-hidden"
       }
     },
@@ -117,12 +113,12 @@
     ]
   }) }}
 
-  <h2 class="govuk-heading-m">Inquiry</h2>
+  <h2 class="govuk-heading-m">Select inquiry stages</h2>
   {{ govukCheckboxes({
     name: "appeal-stage",
     fieldset: {
       legend: {
-        text: "Inquiry",
+        text: "Select inquiry stages",
         classes: "govuk-visually-hidden"
       }
     },

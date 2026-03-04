@@ -3,6 +3,8 @@
 {% set title = 'Add and remove users' %}
 
 {% block beforeContent %}
+
+<!-- success banner -->
   {{ govukPhaseBanner({
     tag: {
       text: "Beta"
@@ -50,6 +52,8 @@
           type: 'success'
         }) }}
       {% endif %}
+
+      <!-- success banner end  -->
 
       <h1 class="govuk-heading-l">
         {{ title }}
