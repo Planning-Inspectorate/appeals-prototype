@@ -301,15 +301,20 @@ router.post('/email-notifications', function (req, res) {
     } else {
       delete req.session.data['edit-user-id']
     }
-    const emailPrefix = req.session.data['domain-prefix'] || 'example'
-    const emailDomain = req.session.data['sort'] || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'
+    const emailPrefix = (req.body && req.body['domain-prefix']) || req.session.data['domain-prefix'] || 'example'
+    const emailDomain = (req.body && req.body['sort']) || req.session.data['sort'] || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'
+    req.session.data['domain-prefix'] = emailPrefix
+    req.session.data['sort'] = emailDomain
     req.session.data['new-user-email'] = `${emailPrefix}${emailDomain}`
     delete req.session.data['email-notifications']
     delete req.session.data['planning-type']
     return res.redirect('email-notifications')
   }
 
-  const notificationChoice = req.session.data['email-notifications']
+  const notificationChoice = req.session.data['email-notifications'] || (req.body && req.body['email-notifications'])
+  if (notificationChoice) {
+    req.session.data['email-notifications'] = notificationChoice
+  }
 
   if (!notificationChoice) {
     return res.redirect('email-notifications')
@@ -320,7 +325,7 @@ router.post('/email-notifications', function (req, res) {
   }
 
   const combinedEmail = req.session.data['new-user-email']
-  const newEmail = combinedEmail || `${req.session.data['domain-prefix'] || 'example'}${req.session.data['sort'] || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'}`
+  const newEmail = combinedEmail || `${req.session.data['domain-prefix'] || (req.body && req.body['domain-prefix']) || 'example'}${req.session.data['sort'] || (req.body && req.body['sort']) || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'}`
 
   const appealTypes = notificationChoice === 'all-appeals' ? ['All appeal types'] : []
 
@@ -376,8 +381,11 @@ router.post('/email-notifications', function (req, res) {
 router.post('/detailed-email-notifications', function (req, res) {
   normalizeUsers(req)
   const combinedEmail = req.session.data['new-user-email']
-  const newEmail = combinedEmail || `${req.session.data['domain-prefix'] || 'example'}${req.session.data['sort'] || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'}`
-  const selectedTypes = req.session.data['planning-type']
+  const newEmail = combinedEmail || `${req.session.data['domain-prefix'] || (req.body && req.body['domain-prefix']) || 'example'}${req.session.data['sort'] || (req.body && req.body['sort']) || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'}`
+  const selectedTypes = req.session.data['planning-type'] || (req.body && req.body['planning-type'])
+  if (selectedTypes) {
+    req.session.data['planning-type'] = selectedTypes
+  }
   const appealTypes = Array.isArray(selectedTypes)
     ? selectedTypes
     : (selectedTypes ? [selectedTypes] : [])
@@ -432,7 +440,10 @@ router.post('/detailed-email-notifications', function (req, res) {
 
 router.post('/edit-detailed-email-notifications', function (req, res) {
   normalizeUsers(req)
-  const selectedTypes = req.session.data['planning-type']
+  const selectedTypes = req.session.data['planning-type'] || (req.body && req.body['planning-type'])
+  if (selectedTypes) {
+    req.session.data['planning-type'] = selectedTypes
+  }
   const appealTypes = Array.isArray(selectedTypes)
     ? selectedTypes
     : (selectedTypes ? [selectedTypes] : [])
@@ -456,7 +467,10 @@ router.post('/edit-detailed-email-notifications', function (req, res) {
 router.post('/appeal-stage', function (req, res) {
   normalizeUsers(req)
 
-  const selectedStages = req.session.data['appeal-stage']
+  const selectedStages = req.session.data['appeal-stage'] || (req.body && req.body['appeal-stage'])
+  if (selectedStages) {
+    req.session.data['appeal-stage'] = selectedStages
+  }
   const appealStages = Array.isArray(selectedStages)
     ? selectedStages
     : (selectedStages ? [selectedStages] : [])
@@ -479,7 +493,10 @@ router.post('/appeal-stage', function (req, res) {
 router.post('/select-appeals', function (req, res) {
   normalizeUsers(req)
 
-  const selectedReference = req.session.data['appealReference']
+  const selectedReference = req.session.data['appealReference'] || (req.body && req.body['appealReference'])
+  if (selectedReference) {
+    req.session.data['appealReference'] = selectedReference
+  }
   const removeReference = req.body ? req.body['removeReference'] : undefined
   const action = req.body ? req.body['action'] : undefined
 
