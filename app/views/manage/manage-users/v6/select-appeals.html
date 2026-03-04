@@ -19,6 +19,10 @@
     {% endfor %}
   {% endif %}
 
+  {% if selectedUserId %}
+    <input type="hidden" name="id" value="{{ selectedUserId }}">
+  {% endif %}
+
   {# Include all of the appeals which are set in default data #}
   {% for appeal in data['appeals'] %}
     {% set appealList = appealList | push ({

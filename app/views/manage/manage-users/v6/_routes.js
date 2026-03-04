@@ -493,6 +493,12 @@ router.post('/appeal-stage', function (req, res) {
 router.post('/select-appeals', function (req, res) {
   normalizeUsers(req)
 
+  const bodyId = req.body ? req.body['id'] : undefined
+  if (bodyId) {
+    req.session.data['manage-user-id'] = bodyId
+    req.session.data['edit-user-id'] = bodyId
+  }
+
   const selectedReference = req.session.data['appealReference'] || (req.body && req.body['appealReference'])
   if (selectedReference) {
     req.session.data['appealReference'] = selectedReference
@@ -506,7 +512,7 @@ router.post('/select-appeals', function (req, res) {
         .filter((ref) => ref !== removeReference)
     }
 
-    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || req.session.data['id']
+    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || req.session.data['id'] || bodyId
     let removedUser = null
     if (editUserId) {
       removedUser = req.session.data['users'].find((entry) => entry.id === editUserId)
@@ -542,7 +548,7 @@ router.post('/select-appeals', function (req, res) {
       req.session.data['appealReferences'].push(selectedReference)
     }
 
-    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || req.session.data['id']
+    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || req.session.data['id'] || bodyId
     if (editUserId) {
       const user = req.session.data['users'].find((entry) => entry.id === editUserId)
       if (user) {
@@ -564,7 +570,7 @@ router.post('/select-appeals', function (req, res) {
 
   if (action === 'add-another' || !action) {
     delete req.session.data['appealReference']
-    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id']
+    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || bodyId
     if (editUserId) {
       const fromManageUser = Boolean(req.session.data['return-from-manage-user'])
       const query = fromManageUser
