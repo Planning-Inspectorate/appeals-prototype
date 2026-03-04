@@ -33,19 +33,25 @@
       Version {{version}}
       {{ govukTag({
         classes: 'govuk-tag--gray govuk-!-margin-left-2',
-        text: 'In progress'
+        text: 'Content needed'
       }) }}
     </h2>
-    <p class="govuk-!-margin-bottom-2">Adjusting the flow for sending email notifications about particular appeals so that it is also possible to send notifications to multiple users based on appeal reference</p>
+    <p class="govuk-!-margin-bottom-2">Adjusting the flow for sending email notifications (from V5) so that, it is possible to send notifications to multiple users based on appeal type, appeal reference and/or appeal stage.</p>
 
-    <p class="govuk-!-margin-bottom-2"><strong>Updated pages</strong></p>
+     <p class="govuk-!-margin-bottom-2"><strong>Existing pages</strong></p>
     <ul class="govuk-list govuk-list--bullet">
-      <li><a href="/manage/manage-users/v6/email-notifications" class="govuk-link">
-          Manage users
-        </a></li>
-         <li><a href="./manage-users/v6/detailed-email-notifications" class="govuk-link">
-          Select appeal types for email notifications
-        </a></li>
+      <li><a href="/manage/manage-users/v6/add-user" class="govuk-link">User email</a></li>
+      <li><a href="/manage/manage-users/v6/remove-user" class="govuk-link">Remove user</a></li>
+    </ul>
+
+    <p class="govuk-!-margin-bottom-2"><strong>New pages</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/manage/manage-users/v6/index" class="govuk-link">Index (manage users)</a></li>
+      <li><a href="/manage/manage-users/v6/manage-user" class="govuk-link">Manage user</a></li>
+      <li><a href="/manage/manage-users/v6/email-notifications" class="govuk-link">Appeal type notifications</a></li>
+      <li><a href="/manage/manage-users/v6/detailed-email-notifications" class="govuk-link">Detailed email notifications</a></li>
+      <li><a href="/manage/manage-users/v6/select-appeals" class="govuk-link">Specific appeal notifications</a></li>
+      <li><a href="/manage/manage-users/v6/appeal-stage" class="govuk-link">Appeal stage notifications</a></li>
     </ul>
 
     {{ govukButton({
@@ -61,8 +67,8 @@
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--blue govuk-!-margin-left-2',
-        text: 'Content needed'
+        classes: 'govuk-tag--grey govuk-!-margin-left-2',
+        text: 'Superseded'
       }) }}
     </h2>
     <p class="govuk-!-margin-bottom-2">Here we've added new functions for LPA users to manage users. Now they can edit user email addresses and set email notifications for users based on appeal type</p>
