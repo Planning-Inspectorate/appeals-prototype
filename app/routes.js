@@ -9,6 +9,17 @@ applyAzureHostingFix();
 
 const router = govukPrototypeKit.requests.setupRouter()
 
+// Ensure posted form data is stored in session (for environments where auto-store data is disabled)
+router.use((req, res, next) => {
+	if (req.method === 'POST' && req.body) {
+		if (!req.session.data) {
+			req.session.data = {}
+		}
+		Object.assign(req.session.data, req.body)
+	}
+	next()
+})
+
 // additions to add the flash functionality
 const flash = require('connect-flash')
 router.use(flash())
