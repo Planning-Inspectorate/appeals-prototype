@@ -1,0 +1,63 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Decided appeals" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {% if data['postcode'] %}
+        33 decided appeals found {{ data['postcode'] }}
+      {% else %}
+        33 decided appeals found BS3 3EX
+      {% endif %}
+    </h1>
+
+  </div>
+
+  <!-- main table -->
+  <div class="govuk-grid-column-full">
+
+    {% include "/_includes/interested/decided-appeals.html" %}
+
+    {{ govukPagination({
+
+      next: {
+        href: "#"
+      },
+      items: [
+        {
+          number: 1,
+          current: true,
+          href: "#"
+        },
+        {
+          number: 2,
+          href: "#"
+        }
+      ]
+    }) }}
+
+  </div>
+
+{% endblock %}

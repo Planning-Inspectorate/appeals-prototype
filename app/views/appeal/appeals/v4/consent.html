@@ -1,0 +1,49 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "appeal-details.html"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Appeal {{ data['appealCode'] or '1345264' }} - change access email
+      </span>
+
+      <h1 class="govuk-heading-l">
+        Change the email used to access this appeal
+      </h1>
+
+      <form class="form" action="/path/of/next/page" method="post">
+
+        <p class="govuk-body">
+          Changing this email will update the details used to access and manage this appeal. 
+        </p>
+
+        <a href="reason" class="govuk-button" data-module="govuk-button">
+          Continue
+        </a>
+
+        <p class="govuk-body">
+
+        <a href="appeal-details.html" class="govuk-link">
+          Return to your appeal
+        </a>
+       </p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
