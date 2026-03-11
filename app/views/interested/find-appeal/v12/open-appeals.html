@@ -65,20 +65,20 @@
 
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="col">
-            Appeal reference number
-          </th>
-          <th class="govuk-table__header" scope="col">
-            Planning application number
+          <th class="govuk-table__header govuk-!-width-two-third" scope="col">
+            Appeal number
           </th>
           <th class="govuk-table__header govuk-!-width-two-third" scope="col">
-            Appeal site
+            Reference number
           </th>
-          <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">
-            Applicant
+          <th class="govuk-table__header govuk-!-width-one-third" scope="col">
+            Address
+          </th>
+          <th class="govuk-table__header govuk-!-width-two-third" scope="col">
+            Name
           </th>
           <th class="govuk-table__header" scope="col">
-            Comment
+            Status
           </th>
         </tr>
       </thead>
@@ -120,11 +120,11 @@
           </td>
 
           <td class="govuk-table__cell">
-            {{govukTag({
-              text: "Open",
-              classes: "govuk-tag--blue"
-            })}}
-          </td>
+              {{govukTag({
+                text: "Open for comment",
+                classes: "govuk-tag--green"
+              })}}
+            </td>
         </tr>
 
         {% if data['address'] == "postcode" %}

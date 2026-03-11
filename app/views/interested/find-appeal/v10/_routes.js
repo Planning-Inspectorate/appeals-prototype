@@ -20,7 +20,7 @@ router.post('/find-appeal', function (req, res) {
 })
 
 router.post('/appeal-search-number', function (req, res) {
-  res.redirect('open-appeals?address=postcode')
+  res.redirect('appeal-details?status=open')
 })
 
 router.post('/appeal-search-address', function (req, res) {
