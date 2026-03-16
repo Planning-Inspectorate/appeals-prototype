@@ -66,17 +66,15 @@
     }) }}
 
     <p class="govuk-!-margin-bottom-2"> 
-      After they accept the invitation
+      The below flow is for after they accept the invitation
     </p>  
-    {{ govukButton({
-      html: 'View prototype',
-      href: '/appeal/appeals/v'+version+'/appeal-details',
-      isStartButton: true
-    }) }}
 
-      {% set v3HTML %}
+    <a class="govuk-caption-l" href="/appeal/appeals/v4/invitation-accepted.html"> <strong> View prototype </strong></a>
 
-      {% set version = "3" %}
+
+   {% set v3HTML %}
+
+   {% set version = "3" %}
 
       <!-- <p>
         Researched May 2023<br>

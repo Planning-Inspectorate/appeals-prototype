@@ -29,6 +29,10 @@ router.post('/who-receives', function (req, res) {
 })
 
 router.post('/new-email', function (req, res) {
+  res.redirect('phone-number')
+})
+
+router.post('/phone-number', function (req, res) {
   res.redirect('check-email')
 })
 

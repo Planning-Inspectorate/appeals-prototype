@@ -17,7 +17,7 @@
     <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-xl">
-        Appeal {{ data['appealCode'] or '1345264' }} - change access email
+        Appeal {{ data['appealCode'] or '1345264' }} - change access
       </span>
 
       <h1 class="govuk-heading-l">
@@ -37,7 +37,19 @@
     spellcheck: false
   }) }}
 
-     {{ govukInput({
+  {{ govukInput({
+    id: 'new-appellant-first-name',
+    name: 'new-appellant-first-name',
+    value: data['new-appellant-first-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Last name'
+    },
+    autocomplete: 'last-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
     id: 'optional-appellant-company-name',
     name: 'optional-appellant-company-name',
     value: data['optional-appellant-company-name'],
@@ -46,7 +58,7 @@
       html: 'Organisation name (optional)'
     },
     spellcheck: false
-    }) }}
+  }) }}
 
         <a href="new-email.html" class="govuk-button" data-module="govuk-button">
           Continue

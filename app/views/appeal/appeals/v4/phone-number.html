@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "Change access email" %}
+{% set title = "Change phone number" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -14,14 +14,15 @@
   <span class="govuk-caption-xl">
     Appeal {{ data['appealCode'] or '1345264' }} - change access
   </span>
+
   {{ govukInput({
     label: {
       text: title,
       classes: "govuk-label--l",
       isPageHeading: true
     },
-    id: "new-email",
-    name: "new-email"
+    id: "phone-number",
+    name: "phone-number"
   }) }}
 
 {% endblock %}
