@@ -1,0 +1,36 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set back = false %} 
+
+{% set prototypeLinks = [
+  {
+    href: 'invitation-expired', 
+    text: 'Invitation expired'
+  }
+] %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Invitation accepted"
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>
+        Sign in with your email to access the service.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

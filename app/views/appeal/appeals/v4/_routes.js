@@ -37,5 +37,9 @@ router.post('/check-email', function (req, res) {
   res.redirect('appellant-submission-full')
 })
 
+router.post('/confirm-email', function (req, res) {
+  res.redirect('enter-code--confirm-email')
+})
+
 // Add your routes above the module.exports line
 module.exports = router
