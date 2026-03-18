@@ -29,12 +29,20 @@ router.post('/who-receives', function (req, res) {
 })
 
 router.post('/new-email', function (req, res) {
+  res.redirect('phone-number')
+})
+
+router.post('/phone-number', function (req, res) {
   res.redirect('check-email')
 })
 
 router.post('/check-email', function (req, res) {
   req.flash('success', 'Access invitation sent')
   res.redirect('appellant-submission-full')
+})
+
+router.post('/confirm-email', function (req, res) {
+  res.redirect('enter-code--confirm-email')
 })
 
 // Add your routes above the module.exports line

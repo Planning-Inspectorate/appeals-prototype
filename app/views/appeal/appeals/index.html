@@ -41,10 +41,10 @@
           Appellants and agents can change the 'email' used to access a certain appeal.
         </li>
         <li>
-          They can sent an invitation to the appellant or an agent. Depending on who, we will ask more details. 
+          They can sent an invitation to the appellant or an agent. Depending on who, we will ask more details.
         </li>
         <li>
-          Notify invitation is sent to the new email address. 
+          Notify invitation is sent to the new email address.
         </li>
         <li>
           Jira ticket: <a href="https://pins-ds.atlassian.net/browse/A2-5868" class="govuk-link">A2-5868</a>
@@ -65,10 +65,16 @@
       isStartButton: true
     }) }}
 
+    <p class="govuk-!-margin-bottom-2"> 
+      The below flow is for after they accept the invitation
+    </p>  
 
-      {% set v3HTML %}
+    <a class="govuk-caption-l" href="/appeal/appeals/v4/invitation-accepted.html"> <strong> View prototype </strong></a>
 
-      {% set version = "3" %}
+
+   {% set v3HTML %}
+
+   {% set version = "3" %}
 
       <!-- <p>
         Researched May 2023<br>
@@ -99,7 +105,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'appeals/v'+version+'/appeal-details',
+        href: '/appeal/appeals/v'+version+'/appeal-details',
         isStartButton: true
       }) }}
 
@@ -126,7 +132,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'appeals/v'+version+'/appeal-details',
+        href: '/appeal/appeals/v'+version+'/appeal-details',
         isStartButton: true
       }) }}
 
@@ -136,14 +142,6 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
-        {
-          heading: {
-            html: 'Version 3 <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-left-2">In progress</strong>'
-          },
-          content: {
-            html: v3HTML
-          }
-         },
         {
           heading: {
             html: 'Version 2 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
@@ -160,6 +158,7 @@
             html: v1HTML
           }
         }
+
       ]
     }) }}
 
