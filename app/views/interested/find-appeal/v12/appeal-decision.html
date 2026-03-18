@@ -1,0 +1,183 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% if data['appealCode'] != "true" %}
+  {% set appealCode = "0166327" %}
+{% endif %}
+
+{% if data['appealCode'] %}
+  {% set title = "Appeal "+data['appealCode']+" decision" %}
+{% else %}
+  {% set title = "Appeal 0166327 decision" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{ subServiceName }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              {% if data['site-address'] %}
+                {{ data['site-address'] }}
+              {% else %}
+                2 Aubrey House, Aubrey Road, BS3 3EX
+              {% endif %}
+            </p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key ">
+            Applicant
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['appellantName'] %}
+              {{ data['appellantName'] }}
+            {% else %}
+              J. M. Wigstone
+            {% endif %}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
+            Description of development
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value--no-border">
+            Loft conversion of roof to existing dwelling (Certificate of Lawfulness of Proposed Use).
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key--no-border govuk-!-width-one-third">
+            Local planning authority
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bristol City Council
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Inspector
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              C J Agenue BA (Hons) BTP MRTPI
+            </p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Decision date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              2 February 2024
+            </p>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row pins-summary-list__row--last">
+          <dt class="govuk-summary-list__key">
+            Decision issued
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              Allowed
+            </p>
+          </dd>
+        </div>
+
+      </dl>
+
+      <h2 class="govuk-heading-m">
+        Peliminary matters
+      </h2>
+
+      <p class="govuk-body">
+        The description of the proposed development in the header above is taken from the original application form. However, in dealing with the application, the Council described the proposal as “Proposed two storey side extension to create new dwelling”. In the interests of clarity, the appeal has been determined on the basis of the Council’s description.
+      </p>
+
+      <p class="govuk-body">
+        A revised version of the National Planning Policy Framework (the Framework) was published in July 2021 and the main parties were given the opportunity to submit comment. The 2021 version of the Framework is referred to in the decision.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Main issue
+      </h2>
+
+      <p class="govuk-body">
+        The main issue is the effect of the proposed development on the character and appearance of the host property and the wider area.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Reasons
+      </h2>
+
+      <ol class="govuk-list govuk-list--number">
+
+        <li>
+          The appeal site and 2 Aubrey House, Aubrey Road occupy a highly prominent street corner position alongside the junction of Aubrey Road with Chessel Street, which forms part of a crossroads. As the common boundary between the two properties has a diagonal alignment from the street corner, each has a triangular shaped plot.
+        </li>
+
+        <li>
+          In the original design of the appeal site and the neighbouring development on the north side of Aubrey Road, the built form distinctly comprised of modest two storey semi-detached houses with perpendicular external walls. As corner plot properties, the appeal site and No 2 were afforded particularly wide side gardens alongside the junction, as were Aubrey House and 1 Aubrey Road on the other street corner. Consequently, as a group, the side gardens would have created a very spacious entrance to Aubrey Road.
+        </li>
+
+        <li>
+          Over time, this spaciousness has been reduced by the development of detached infill properties in the side gardens of No 159 and No 1, (numbered 159A Aubrey Road and 1A Chessel Street respectively). It has also been reduced at the appeal site through the construction of a sizeable two storey side extension and an adjoining single storey garage. However, despite these significant changes, an important sense of spaciousness has been maintained alongside the junction, largely due to the front corners of the two storey elements at 159A and the appeal site being kept a good distance back from the side boundaries.
+        </li>
+
+        <li>
+          In the proposed scheme, the front corner of the two storey element would be positioned closer to the side boundary than at present, the existing open area above the garage would be lost, and a single storey side extension would further reduce the size and width of the side garden. Consequently, the remaining important sense of spaciousness alongside the junction would be harmfully eroded. Furthermore, in responding to the restriction imposed by the diagonal alignment of the side boundary, part of the flank wall to the two storey element would adopt an irregular angle. This would be a stark departure from the characteristic perpendicular walls to the main part of the dwellings in the area, and it would result in the property having an awkward and cramped appearance within its plot. While part of the flank wall to the existing garage adopts the same angle, its less prominent single storey height and ancillary form is distinguishable in this regard.
+        </li>
+
+        <li>
+          The proposed scheme would also result in the host property, which has already been greatly extended to the side, in having an over-extended and unbalanced appearance, both in its own right and set against the modest proportions of the attached neighbouring dwelling. While the appellants have suggested the scheme would lead to the appearance of a terrace, its significant width would be incongruous amongst the distinctive neighbouring semi-detached properties and later infill detached houses. Furthermore, in the nearby terraces that are found on Aubrey Road, the constituent properties have a common and harmonious design, whereas in the appeal development they would be individual and disjointed.
+        </li>
+
+        <li>
+          The proposed planting to the front and the side garden, including some small trees, would fail to successfully mitigate the aforementioned harm to the host property and the street scene. Moreover, notwithstanding the fact the scheme would respect the roof design and the materials of the host and other properties in the locality, it would not represent a visual improvement over the existing garage and side garden arrangement.
+        </li>
+
+        <li>
+          The appellants have drawn attention to an existing side extension at 3 Aubrey House. However, it appears to be of a similar, if not smaller scale to the existing extensions at the appeal site. Moreover, it was considered against a different planning policy context and does not occupy a highly prominent position alongside a crossroads. It is therefore not directly comparable and it does not justify the harm that would arise from the appeal scheme which has been considered on its own merits and with regard to its particular location and circumstances.
+        </li>
+
+      </ol>
+
+    </div>
+  </div>
+
+{% endblock %}

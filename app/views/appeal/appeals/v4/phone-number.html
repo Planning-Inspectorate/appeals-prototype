@@ -1,0 +1,28 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Change phone number" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+{% block questions %}
+
+  <span class="govuk-caption-xl">
+    Appeal {{ data['appealCode'] or '1345264' }} - change access
+  </span>
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    id: "phone-number",
+    name: "phone-number"
+  }) }}
+
+{% endblock %}

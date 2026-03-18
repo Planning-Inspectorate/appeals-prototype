@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "Enter the appeal reference" %}
+{% set title = "Enter a postcode" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -33,19 +33,17 @@
           {{ title }}
         </label>
 
+        <!-- <p class="govuk-body">
+          Enter the reference number from the local planning authority.
+        </p> -->
+
         <p class="govuk-hint">
-          Enter the reference number from the lpa. For example, 0221532.
+          For example, BS1 6PN
         </p>
 
-        <input class="govuk-input govuk-input--width-10" id="appealCode-input" name="appealCode" type="number">
+        <input class="govuk-input govuk-input--width-5" id="postcode-input" name="postcode" type="text" value="{{ data['postcode'] }}">
 
       </div>
-
-      <!-- <p class="govuk-body">
-        <a href="appeal-search-address?search=postcode">
-          I do not have an appeal reference
-        </a>
-      </p> -->
 
       {{ govukButton({
         text: "Continue"
@@ -54,12 +52,12 @@
     </form>
 
     <p class="govuk-body">
-      <a href="appeal-search-address?search=postcode">
-        I do not have an appeal reference
+      <a href="appeal-search-number?search=number">
+        Search with the appeal reference number
       </a>
     </p>
 
-    </div>
   </div>
+</div>
 
 {% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "What is the reason for you to change access?" %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "consent.html"
+}) }}
+{% endblock %}
+
+{% block content %}
+<form method="post">
+      <span class="govuk-caption-xl">
+        Appeal {{ data['appealCode'] or '1345264' }} - change access
+      </span>
+       {{ govukRadios({
+        name: "whychangeaccess",
+        fieldset: {
+          legend: {
+            text: title,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "I want to update my own details",
+            text: "I want to update my own details"
+          },
+          {
+            value: "I want to transfer access to someone else",
+            text: "I want to transfer access to someone else"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
