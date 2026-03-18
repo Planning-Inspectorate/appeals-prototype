@@ -227,6 +227,10 @@ router.get('/edit-email-notifications', function (req, res) {
   const users = req.session.data['users']
   const user = editUserId ? users.find((entry) => entry.id === editUserId) : null
 
+  if (user && user.email) {
+    req.session.data['new-user-email'] = user.email
+  }
+
   if (user && Array.isArray(user.appealTypes)) {
     if (user.appealTypes.includes('All appeal types')) {
       req.session.data['email-notifications'] = 'all-appeals'
@@ -240,7 +244,7 @@ router.get('/edit-email-notifications', function (req, res) {
     }
   }
 
-  return res.render(req.baseUrl.replace(/^\//g, '') + '/email-notifications')
+  return res.render(req.baseUrl.replace(/^\//g, '') + '/edit-email-notifications')
 })
 
 router.get('/edit-emailp-notifications', function (req, res) {
