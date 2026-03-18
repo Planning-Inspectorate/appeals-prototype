@@ -28,6 +28,23 @@
       {{ title }}
     </h1>
 
+    {% set version = "7" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--gray govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h2>
+    <p>Updating user management to alllow multiple agents</p>
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/manage/manage-users/v7/index.html',
+      isStartButton: true
+    }) }}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
  {% set version = "6" %}
     <h2 class="govuk-heading-m">
       Version {{version}}

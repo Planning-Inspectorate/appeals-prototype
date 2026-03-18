@@ -1,0 +1,118 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Email notifications' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">Select appeal types for {{ data['new-user-email'] }} to subscribe to for emails</h1>
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<form method="post" action="detailed-email-notifications">
+{{ govukCheckboxes({
+  name: "planning-type",
+  fieldset: {
+    legend: {
+      text: " ",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      html: 'Enforcement notice',
+      value: 'Enforcement notice',
+      checked: checked('planning-type','Enforcement notice')
+    },
+    {
+      html: 'Householder',
+      value: 'Householder',
+      checked: checked('planning-type','Householder')
+    },
+    {
+      html: 'Enforcement listed building and conservation area',
+      value: 'Enforcement listed building and conservation area',
+      checked: checked('planning-type','Enforcement listed building and conservation area')
+    },
+    {
+      html: 'Discontinuance notice',
+      value: 'Discontinuance notice',
+      checked: checked('planning-type','Discontinuance notice')
+    },
+    {
+      html: 'Advertisement',
+      value: 'Advertisement',
+      checked: checked('planning-type','Advertisement')
+    },
+    {
+      html: 'Community infrastructure levy',
+      value: 'Community infrastructure levy',
+      checked: checked('planning-type','Community infrastructure levy')
+    },
+    {
+      html: 'Planning obligation',
+      value: 'Planning obligation',
+      checked: checked('planning-type','Planning obligation')
+    },
+    {
+      html: 'Affordable housing obligation',
+      value: 'Affordable housing obligation',
+      checked: checked('planning-type','Affordable housing obligation')
+    },
+    {
+      html: 'Call-in application',
+      value: 'Call-in application',
+      checked: checked('planning-type','Call-in application')
+    },
+    {
+      html: 'Planning',
+      value: 'Planning',
+      checked: checked('planning-type','Planning')
+    },
+    {
+      html: 'Lawful development certificate',
+      value: 'Lawful development certificate',
+      checked: checked('planning-type','Lawful development certificate')
+    },
+    {
+      html: 'Planning listed building and conservation area',
+      value: 'Planning listed building and conservation area',
+      checked: checked('planning-type','Planning listed building and conservation area')
+    },
+    {
+      html: 'Commercial planning (CAS)',
+      value: 'Commercial planning (CAS)',
+      checked: checked('planning-type','Commercial planning (CAS)')
+    },
+    {
+      html: 'Commercial advertisement (CAS)',
+      value: 'Commercial advertisement (CAS)',
+      checked: checked('planning-type','Commercial advertisement (CAS)')
+    }
+  ]
+}) }}
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      {% endblock %}
+
+</form>
+
+{% endblock %}
