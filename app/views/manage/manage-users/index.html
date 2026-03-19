@@ -28,12 +28,60 @@
       {{ title }}
     </h1>
 
- {% set version = "6" %}
+    {% set version = "7" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
         classes: 'govuk-tag--gray govuk-!-margin-left-2',
-        text: 'Content needed'
+        text: 'Design checkpoint'
+      }) }}
+    </h2>
+    <p class="govuk-!-margin-bottom-2"><strong>What changed in v7</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Updating user management to allow LPAs to add multiple users and set email subscription preferences per user or email address.</li>
+    <li>Removing the ability to subscribe to emails for particular appeals based on research findings.</li>
+    <li>Users should receive emails if they comment on them, fill in the LPAQ for them and/or the case matches the subscriptions settings chosen for them in manage users.</li>
+    </ul>
+
+    {% set v7ResearchAndFeedback %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Research summary</h3>
+
+      <p class="govuk-body-hint">Research indicates users need clearer and more relevant notifications, reduced non-essential update volume, and language that is simpler than "subscribe". Findings also suggest notifications should support team handoffs between admin and case officer roles.</p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Related research taken from MiPins and Camerons's user tests with LPAs</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>“We received an auto notification of appeal to our admin inbox but it was not clear that it was enforcement (it had no enforcement notice reference on it, merely a planning application reference) so it went to the wrong department. Also, do we have to keep getting a code everytime we want to log onto the portal??”</li>
+        <li>“The number of email updates is obtrusive and focuses on the wrong elements of the process. We don't need constant email updates about when the Council have submitted the questionnaire or the deadline to do so, we do need clear direct correspondence with Case Officers managing the appeal.”</li>
+        <li>“Why do we not get notification that interested party comments are available. Without information about who has made representation we will not be able to include anyone who didn't comment previously into further notifications about hearing dates etc.”</li>
+        <li>“different people take responsiability at different times e.g. admins are for junior staff nitty gritty would be delt with by a planning officer”</li>
+        <li>“subscribe follow, receive email notifications - I understand all of these subscriptions make me think of magazines but I understood wha thtat means”</li>
+        <li>“Receive notifications is probably the clearest”</li>
+        <li>“I would have thought anybody who commented on the initial application would get an email”</li>
+        <li>“I think it would go to an admin chap who receives the appeals and then he sends on to relevant case officer, it's a useful way of doing it because if the officer is on leave then he can forward it to the manager”</li>
+        <li>“Everyone deals with all different types of applications, more senior people deal with more difficult applications”</li>
+      </ul>
+    {% endset %}
+
+    {{ govukDetails({
+      summaryText: 'Related research',
+      html: v7ResearchAndFeedback
+    }) }}
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/manage/manage-users/v7/index.html',
+      isStartButton: true
+    }) }}
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+ {% set version = "6" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+         classes: 'govuk-tag--grey govuk-!-margin-left-2',
+        text: 'Superseded'
       }) }}
     </h2>
     <p class="govuk-!-margin-bottom-2">Adjusting the flow for sending email notifications (from V5) so that, it is possible to send notifications to multiple users based on appeal type, appeal reference and/or appeal stage.</p>
