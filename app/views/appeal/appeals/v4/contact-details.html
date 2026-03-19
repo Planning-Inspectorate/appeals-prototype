@@ -7,7 +7,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
   text: "Back",
-  href: "reason.html"
+  href: "who-receives.html"
 }) }}
 {% endblock %}
 
@@ -24,7 +24,7 @@
         What is the name of the person who will access this appeal?
       </h1>
 
-      <form class="form" action="/path/of/next/page" method="post">
+      <form class="form" method="post">
   {{ govukInput({
     id: 'new-appellant-first-name',
     name: 'new-appellant-first-name',
@@ -33,7 +33,6 @@
     label: {
       html: 'First name'
     },
-    autocomplete: 'given-name',
     spellcheck: false
   }) }}
 
@@ -45,7 +44,6 @@
     label: {
       html: 'Last name'
     },
-    autocomplete: 'last-name',
     spellcheck: false
   }) }}
 
@@ -60,9 +58,9 @@
     spellcheck: false
   }) }}
 
-        <a href="new-email.html" class="govuk-button" data-module="govuk-button">
-          Continue
-        </a>
+      {{ govukButton({
+          text: "Continue"
+      }) }}
 
     </div>
   </div>

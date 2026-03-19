@@ -23,11 +23,10 @@
     rows: [
       {
         key: {
-          text: "Name"
+          text: "First name"
         },
         value: {
           html: data['new-appellant-first-name'] or 'Jan'
-          + ' ' + (data['new-appellant-last-name'] or 'Fisher')
         },
         actions: {
           items: [
@@ -38,8 +37,24 @@
             }
           ]
         }
-      } if data['whowillreceiveinvite'] == 'The agent',
-      
+      },
+      {
+        key: {
+          text: "Last name"
+        },
+        value: {
+          html: data['new-appellant-last-name'] or 'Fisher'
+        },
+        actions: {
+          items: [
+            {
+              href: "contact-details",
+              text: "Change",
+              visuallyHiddenText: "last name"
+            }
+          ]
+        }
+      },
       {
         key: {
           text: "Organisation name"
@@ -56,7 +71,7 @@
             }
           ]
         }
-      } if data['whowillreceiveinvite'] == 'The agent',
+      },
       {
         key: {
           text: "New email"
@@ -104,7 +119,7 @@
 
 {% block buttons %}
   {{ govukButton({
-    text: "Send invitation"
+    text: "Send invitation",
+    href: "appellant-submission-full"
   }) }}
-
 {% endblock %}
