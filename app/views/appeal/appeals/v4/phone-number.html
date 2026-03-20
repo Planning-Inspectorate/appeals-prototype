@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = "Access phone number" %}
+
+{% block pageTitle %}
+  {{ title }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+<!-- SECTION -->
+<!-- title and decision if there is one -->
+
+{% block questions %}
+
+  <span class="govuk-caption-xl">
+    Appeal {{ data['appealCode'] or '1345264' }} - change access
+  </span>
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Enter the new phone number that will be used to access this appeal."
+    },
+    id: "new-phone-number",
+    classes: "govuk-!-width-one-quarter",
+    name: "new-phone-number"
+  }) }}
+
+{% endblock %}

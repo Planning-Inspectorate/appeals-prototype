@@ -22,9 +22,7 @@
     </h1>
 
     <!-- <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l"> -->
-
-
-    {% set version = "11" %}
+     {% set version = "12" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -37,26 +35,51 @@
 
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        small update to the appeal reference screen, using a single hint instead of guidance paragraph + hint
+        search page - combined the search with postcode, reference numbers and address
+      </li>
+
+      <li>
+        added a new column - planning application number to search results page
+      </li>
+      <li>
+        Copy changes to table headings and tag in search results page
+      </li>
+      <li>
+        <a href="https://pins-ds.atlassian.net/browse/A2-5558"> Jira ticket A2-5558 </a>
       </li>
     </ul>
 
     {{ govukButton({
       html: 'View prototype',
-      href: 'v'+version+'/appeal-search-number',
+      href: '/interested/find-appeal/v'+version+'/appeal-search-number',
       isStartButton: true
     }) }}
+
+    {% set v11HTML %}
+
+      {% set version = "11" %}
+
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          small update to the appeal reference screen, using a single hint instead of guidance paragraph + hint
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appeal-search-number',
+        isStartButton: true
+      }) }}
+
+
+    {% endset -%}
 
     {% set v10HTML %}
 
       {% set version = "10" %}
-      <h2 class="govuk-heading-m">
-        Version {{version}}
-        {{ govukTag({
-          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-          text: 'In progress'
-        }) }}
-      </h2>
 
       <p class="govuk-!-margin-bottom-2">Changes:</p>
 
@@ -68,7 +91,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/appeal-search-number',
+        href: '/interested/find-appeal/v'+version+'/appeal-search-number',
         isStartButton: true
       }) }}
 
@@ -88,7 +111,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/appeal-search-number',
+        href: '/interested/find-appeal/v'+version+'/appeal-search-number',
         isStartButton: true
       }) }}
 
@@ -115,7 +138,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/appeal-search-number',
+        href: '/interested/find-appeal/v'+version+'/appeal-search-number',
         isStartButton: true
       }) }}
 
@@ -142,7 +165,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: 'v'+version+'/appeal-search-number',
+        href: '/interested/find-appeal/v'+version+'/appeal-search-number',
         isStartButton: true
       }) }}
 
@@ -154,7 +177,15 @@
       items: [
         {
           heading: {
-            html: 'Version 10 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+            html: 'Version 11 <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-left-2">In progress</strong>'
+          },
+          content: {
+            html: v11HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 10 <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-left-2">In progress</strong>'
           },
           content: {
             html: v10HTML

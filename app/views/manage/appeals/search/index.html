@@ -41,6 +41,7 @@
       <li>Added <strong>Invalid</strong> tab</li>
       <li>Added <strong>lead/child tags</strong> to highlight linked appeals</li>
       <li>Updated search hint text (removed postcode, added first line of address)</li>
+      <li>'Waiting for review' tab changed to 'With case officer'</li>
     </ul>
 
     <p class="govuk-body"><a href="https://pins-ds.atlassian.net.mcas.ms/wiki/spaces/AAPDS/pages/2549678120/LPA+dashboard+search+and+filter+appeals">See design history Confluence page here</a></p>
@@ -63,14 +64,21 @@
       We propose testing these only if research indicates that search alone does not meet user needs.
     </p>
 
-    <h3 class="govuk-heading-s">Option A – Filters within search page</h3>
+    <h3 class="govuk-heading-s">Option A – Filters on top (DfE style)</h3>
     <ul class="govuk-list govuk-list--bullet">
       <li>
         <a href="search/v2/active-with-filters">Version 2 with filters integrated</a>
       </li>
     </ul>
 
-    <h3 class="govuk-heading-s">Option B – Unified filter panel + card view</h3>
+    <h3 class="govuk-heading-s">Option B – Filters on top (GOV.UK style)</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="search/v2/active-with-filters2">Version 2 with filters integrated</a>
+      </li>
+    </ul>
+
+    <h3 class="govuk-heading-s">Option C – Unified filter panel + card view</h3>
     <ul class="govuk-list govuk-list--bullet">
       <li>
         <a href="search/filters-side/side">Side panel filtering with card-based results</a>
@@ -105,10 +113,10 @@
               <p class="govuk-body">Changes include:</p>
               <ul class="govuk-list govuk-list--bullet">
                 <li>
-                  new seconday nav component
+                  new seconday nav component to navigate between tables
                 </li>
                 <li>
-                  t
+                  "Manage users" header item added in replacement of "Add or remove users" link
                 </li>
               </ul>'
           }
@@ -116,24 +124,6 @@
       ]
     }) }}
 
-
-    <!-- ================= OTHER EXPLORATIONS ================= -->
-
-    {{ govukDetails({
-      summaryText: "Earlier filter explorations and layout variations",
-      html: '
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            <a href="search/filters-top/horizontal-v2">Search with horizontal filter bar</a>
-          </li>
-          <li>
-            <a href="search/filters-top/horizontal">Search with service navigation</a>
-          </li>
-          <li>
-            <a href="search/filters-side/side">Side menu filtering and search UI</a>
-          </li>
-        </ul>'
-    }) }}
 
   </div>
 </div>
