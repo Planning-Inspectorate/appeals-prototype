@@ -29,15 +29,15 @@
 
       <div class="govuk-form-group">
 
-        <label class="govuk-label govuk-label--l" for="postcode">
-          {{ title }}
+        <label class="govuk-label govuk-label--l" for="postcode">     
+          Search for an appeal
         </label>
 
-        <p class="govuk-hint">
-          Enter the reference number from the lpa. For example, 0221532.
+        <p class="govuk-body">
+          You can search by address or any reference number. 
         </p>
 
-        <input class="govuk-input govuk-input--width-10" id="appealCode-input" name="appealCode" type="number">
+        <input class="govuk-input govuk-!-width-full" id="full" name="full" type="text">
 
       </div>
 
@@ -52,12 +52,6 @@
       }) }}
 
     </form>
-
-    <p class="govuk-body">
-      <a href="appeal-search-address?search=postcode">
-        I do not have an appeal reference
-      </a>
-    </p>
 
     </div>
   </div>
