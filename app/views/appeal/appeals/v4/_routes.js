@@ -9,23 +9,19 @@ router.get('*', function(req, res, next){
 })
 
 router.post('/consent', function (req, res) {
-  res.redirect('reason')
-})
-
-router.post('/reason', function (req, res) {
-  if (req.session.data['whychangeaccess'] == 'I want to update my own details') {
-    res.redirect('new-email')
-  } else {
-    res.redirect('who-receives')
-  }
+  res.redirect('/who-receives')
 })
 
 router.post('/who-receives', function (req, res) {
-  if (req.session.data['whowillreceiveinvite'] == 'The appellant') {
-    res.redirect('new-email')
-  } else {
+  if (req.session.data['whowillreceiveinvite'] == 'The agent') {
     res.redirect('contact-details')
+  } else {
+    res.redirect('new-email')
   }
+})
+
+router.post('/contact-details', function (req, res) {
+  res.redirect('new-email')
 })
 
 router.post('/new-email', function (req, res) {

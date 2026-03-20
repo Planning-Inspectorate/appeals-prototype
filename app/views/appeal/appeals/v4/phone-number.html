@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "Change phone number" %}
+{% set title = "Access phone number" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -21,8 +21,12 @@
       classes: "govuk-label--l",
       isPageHeading: true
     },
-    id: "phone-number",
-    name: "phone-number"
+    hint: {
+      text: "Enter the new phone number that will be used to access this appeal."
+    },
+    id: "new-phone-number",
+    classes: "govuk-!-width-one-quarter",
+    name: "new-phone-number"
   }) }}
 
 {% endblock %}

@@ -96,13 +96,12 @@
             A1/32/42523234
           </td>
 
-          <td class=""
-          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">
+          <td scope="row" class="govuk-table__header govuk-!-font-weight-regular">
             {% if data['address'] == "postcode" %}
               {% if data['postcode'] %}
                 2 Aubrey House, Aubrey Road {{ data['postcode'] }}
               {% else %}
-                2 Aubrey House, Aubrey Road, Bristol BS3 3EX
+                2 Aubrey, Bristol BS3 3EX
               {% endif %}
             {% else %}
               {% if data['eastings-input'] %}
@@ -113,7 +112,7 @@
                 Northings 174493
               {% endif %}
             {% endif %}
-          </th>
+          </td>
 
           <td class="govuk-table__cell">
             Rachel Silver
