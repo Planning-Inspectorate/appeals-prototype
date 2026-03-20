@@ -21,7 +21,8 @@
       {{ title }}
     </h1>
 
-    {% set version = "15" %}
+    {% set version = "16" %}
+
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
@@ -36,10 +37,10 @@
         S78 expedited variant
       </li>
       <li>
-        additional section, ‘Original evidence’
+        extra question for ‘other documents’ in the Original evidence section
       </li>
        <li>
-        updated logic for the 'View prototype' button to clear your cached answers if you are coming from the index page (which is this page)
+        additional question for ‘list of documents’ in the Original evidence section
       </li>
     </ul>
 
@@ -48,6 +49,31 @@
       href: 'v'+version+'/task-list?clear=true',
       isStartButton: true
     }) }}
+
+    {% set v15HTML%}
+
+      {% set version = "15" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          S78 expedited variant
+        </li>
+        <li>
+          additional section, ‘Original evidence’
+        </li>
+         <li>
+          updated logic for the 'View prototype' button to clear your cached answers if you are coming from the index page (which is this page)
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list?clear=true',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v14HTML %}
 
@@ -194,6 +220,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 15 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v15HTML
+          }
+        },
         {
           heading: {
             html: 'Version 14 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
