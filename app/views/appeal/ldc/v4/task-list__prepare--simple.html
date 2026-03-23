@@ -1,0 +1,104 @@
+<h2 class="govuk-heading-m">Prepare your appeal</h2>
+
+{% if data['aboutYouSectionStatus'] == 'complete' %}
+  {% set aboutyoustatus %}
+    Completed
+  {% endset %}
+{% elif data['aboutYouSectionStatus'] == 'started' %}
+  {% set aboutyoustatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set aboutyoustatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{% if data['siteSectionStatus'] == 'complete' %}
+  {% set aboutsitestatus %}
+    Completed
+  {% endset %}
+{% elif data['siteSectionStatus'] == 'started' %}
+  {% set aboutsitestatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set aboutsitestatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{% if data['applicationSectionStatus'] == 'complete' %}
+  {% set aboutapplicationstatus %}
+    Completed
+  {% endset %}
+{% elif data['applicationSectionStatus'] == 'started' %}
+  {% set aboutapplicationstatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set aboutapplicationstatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{% if data['appealSectionStatus'] == 'complete' %}
+  {% set aboutappealstatus %}
+    Completed
+  {% endset %}
+{% elif data['appealSectionStatus'] == 'started' %}
+  {% set aboutappealstatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set aboutappealstatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{#
+  using the standard task list pattern
+#}
+
+{{ govukTaskList({
+idPrefix: "company-details",
+items: [
+  {
+    title: {
+      text: "Tell us about you"
+    },
+    href: "prepare-appeal/application-name",
+    status: {
+      html: aboutyoustatus
+    }
+  },
+  {
+    title: {
+      text: "Tell us about the site"
+    },
+    href: "prepare-appeal/appeal-site-address",
+    status: {
+      html: aboutsitestatus
+    }
+  },
+  {
+    title: {
+      text: "Tell us about the planning application"
+    },
+    href: "prepare-appeal/application-ref",
+    status: {
+      html: aboutapplicationstatus
+    }
+  },
+  {
+    title: {
+      text: "Tell us about the appeal"
+    },
+    href: "prepare-appeal/decide-appeal",
+    status: {
+      html: aboutappealstatus
+    }
+  }
+
+]
+}) }}

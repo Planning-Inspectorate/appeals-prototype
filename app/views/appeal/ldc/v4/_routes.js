@@ -234,12 +234,14 @@ router.get('/prepare-appeal/application-date', function (req, res, next) {
 //applicant name route
 router.post('/prepare-appeal/application-name', function (req, res) {
   const response = req.session.data['application-name']
+  req.session.data['aboutYouSectionStatus'] = 'started'
 
   if (response == 'Yes') {
     res.redirect('contact-details')
   } else {
     res.redirect('appellant-name')
   }
+  
 })
 
 //appellant-name route
@@ -254,12 +256,16 @@ router.post('/prepare-appeal/contact-details', function (req, res) {
 
 //phone-number route
 router.post('/prepare-appeal/phone-number', function (req, res) {
+  req.session.data['aboutYouSectionStatus'] = 'complete'
   res.redirect('appeal-site-address')
+  
 })
 
 //appeal-site-address route
 router.post('/prepare-appeal/appeal-site-address', function (req, res) {
+  req.session.data['siteSectionStatus'] = 'started'
   res.redirect('green-belt')
+
 })
 
 //green-belt route
@@ -274,11 +280,15 @@ router.post('/prepare-appeal/inspector-need-access', function (req, res) {
 
 //health-and-safety route
 router.post('/prepare-appeal/health-and-safety', function (req, res) {
+  req.session.data['siteSectionStatus'] = 'complete'
+  
   res.redirect('application-ref')
 })
 
 //application-ref route
 router.post('/prepare-appeal/application-ref', function (req, res) {
+  req.session.data['applicationSectionStatus'] = 'started'
+
   res.redirect('application-date')
 })
 
@@ -295,12 +305,15 @@ router.post('/prepare-appeal/application-form', function (req, res) {
 router.post('/prepare-appeal/existing-use', function (req, res) {
   res.redirect('existing-or-proposed')
 })
+
 //existing-or-proposed route
 router.post('/prepare-appeal/existing-or-proposed', function (req, res) {
   const ldcType = req.session.data['existing-or-proposed']
 
   if (ldcType == 'Existing development') {
+    
     res.redirect('decide-appeal')
+
   } else {
     res.redirect('description-of-development')
   }
@@ -313,13 +326,20 @@ router.post('/prepare-appeal/description-of-development', function (req, res) {
 
 //description-development-correct route
 router.post('/prepare-appeal/description-development-correct', function (req, res) {
+  
+  req.session.data['applicationSectionStatus'] = 'complete'
+
   const descriptionCorrect = req.session.data['description-development-correct']
     res.redirect('decide-appeal')
   }
+  
 )
 
 //decide-appeal route with branching
 router.post('/prepare-appeal/decide-appeal', function (req, res) {
+  
+  req.session.data['appealSectionStatus'] = 'started'
+  
   console.log('=== decide-appeal POST route hit ===')
   console.log('Full session data:', JSON.stringify(req.session.data, null, 2))
   const preference = req.session.data['decide-appeal']
@@ -369,8 +389,10 @@ router.post('/prepare-appeal/other-appeals', function (req, res) {
   if (preference == 'Yes') {
     res.redirect('enter-appeal-reference')
   } else if (preference === 'No') {
+    req.session.data['appealSectionStatus'] = 'complete'
     res.redirect('../task-list')
   } else {
+    req.session.data['appealSectionStatus'] = 'complete'
     res.redirect('../task-list')
   }
 })
@@ -395,9 +417,11 @@ router.post('/prepare-appeal/add-another-appeal', function (req, res) {
   if (preference == 'Yes') {
     res.redirect('enter-appeal-reference')
   } else if (preference === 'No') {
-    res.redirect('your-appeal')
+    req.session.data['appealSectionStatus'] = 'complete'
+    res.redirect('../task-list')
   } else {
-    res.redirect('your-appeal')
+    req.session.data['appealSectionStatus'] = 'complete'
+    res.redirect('../task-list')
   }
 })
 

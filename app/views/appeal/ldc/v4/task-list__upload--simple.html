@@ -1,0 +1,33 @@
+<h2 class="govuk-heading-m">Upload documents</h2>
+
+{#
+  using the standard task list pattern
+#}
+
+{{ govukTaskList({
+idPrefix: "company-details",
+items: [
+  {
+    title: {
+      text: "Your application"
+    },
+    href: "#",
+    status: {
+      text: "Completed"
+    }
+  },
+  {
+    title: {
+      text: "Your appeal"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "Incomplete",
+        classes: "govuk-tag--blue"
+      }
+    }
+  }
+
+]
+}) }}
