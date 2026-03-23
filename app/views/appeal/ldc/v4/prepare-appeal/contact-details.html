@@ -1,4 +1,4 @@
-{% extends "_layouts/layout-main.html" %}
+{% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = "Contact details" %}
 
@@ -19,58 +19,38 @@
   }) }}
 {% endblock %}
 
-{% block content %}
+{% block questions %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <span class="govuk-caption-l">Prepare appeal</span>
 
-    <form method="post">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        {{ title }}
+      </h1>
+    </legend>
 
-      <span class="govuk-caption-l">Prepare appeal</span>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="contact-first-name">
+        First name
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="contact-first-name" name="contact-first-name" type="text" spellcheck="false" autocomplete="given-name" value="{{ data['contact-first-name'] }}">
+    </div>
 
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="contact-last-name">
+        Last name
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="contact-last-name" name="contact-last-name" type="text" spellcheck="false" autocomplete="family-name" value="{{ data['contact-last-name'] }}">
+    </div>
 
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">
-            {{ title }}
-          </h1>
-        </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="contact-company-name">
+        Company name (optional)
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="contact-company-name" name="contact-company-name" type="text" spellcheck="false" autocomplete="organization" value="{{ data['contact-company-name'] }}">
+    </div>
 
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-first-name">
-            First name
-          </label>
-          <input class="govuk-input govuk-input--width-20" id="contact-first-name" name="contact-first-name" type="text" spellcheck="false" autocomplete="given-name" value="{{ data['contact-first-name'] }}">
-        </div>
-
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-last-name">
-            Last name
-          </label>
-          <input class="govuk-input govuk-input--width-20" id="contact-last-name" name="contact-last-name" type="text" spellcheck="false" autocomplete="family-name" value="{{ data['contact-last-name'] }}">
-        </div>
-
-       
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-company-name">
-            Company name (optional)
-          </label>
-          <input class="govuk-input govuk-input--width-20" id="contact-company-name" name="contact-company-name" type="text" spellcheck="false" autocomplete="organization" value="{{ data['contact-company-name'] }}">
-        </div>
-
-      </fieldset>
-
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-
-    </form>
-
-    <p class="govuk-body govuk-!-margin-bottom-6">
-      <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
-    </p>
-
-  </div>
-</div>
+  </fieldset>
 
 {% endblock %}
