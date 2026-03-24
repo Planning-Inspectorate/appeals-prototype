@@ -70,6 +70,8 @@ router.get('*', function (req, res, next) {
   next()
 })
 
+// ===== INDEX & LISTING ROUTES =====
+
 router.get('/', function (req, res, next) {
   normalizeUsers(req)
   let path = req.baseUrl.replace(/^\//g, '') + '/index'
@@ -90,6 +92,8 @@ router.get('/', function (req, res, next) {
     res.render(path, { users: req.session.data['users'] })
   }
 })
+
+// ===== USER REMOVAL ROUTES =====
 
 router.get('/remove-user', function (req, res) {
   normalizeUsers(req)
@@ -122,6 +126,8 @@ router.post('/remove-user', function (req, res) {
 
   res.redirect('./')
 })
+
+// ===== USER EDIT ROUTES =====
 
 router.get('/edit-user', function (req, res) {
   normalizeUsers(req)
@@ -187,6 +193,8 @@ router.post('/edit-user', function (req, res) {
   return res.redirect('./')
 })
 
+// ===== MANAGE USER SUMMARY ROUTES =====
+
 router.get('/manage-user', function (req, res) {
   normalizeUsers(req)
   if (req.query.id !== undefined) {
@@ -200,6 +208,8 @@ router.get('/manage-user', function (req, res) {
   res.render(req.baseUrl.replace(/^\//g, '') + '/manage-user')
 })
 
+// ===== ADD USER ROUTES =====
+
 router.get('/add-user', function (req, res) {
   normalizeUsers(req)
   delete req.session.data['manage-user-id']
@@ -211,6 +221,8 @@ router.get('/add-user', function (req, res) {
   delete req.session.data['from-email-notifications']
   res.render(req.baseUrl.replace(/^\//g, '') + '/add-user')
 })
+
+// ===== EMAIL NOTIFICATION ROUTES =====
 
 router.get('/email-notifications', function (req, res) {
   normalizeUsers(req)
@@ -236,6 +248,8 @@ router.get('/email-notifications', function (req, res) {
   res.render(req.baseUrl.replace(/^\//g, '') + '/email-notifications')
 })
 
+// ===== DETAILED EMAIL NOTIFICATION ROUTES =====
+
 router.get('/edit-detailed-email-notifications', function (req, res) {
   normalizeUsers(req)
   setReturnToIndexFromManageUser(req)
@@ -252,6 +266,8 @@ router.get('/edit-detailed-email-notifications', function (req, res) {
 
   res.render(req.baseUrl.replace(/^\//g, '') + '/edit-detailed-email-notifications')
 })
+
+// ===== APPEAL SELECTION ROUTES =====
 
 router.get('/select-appeals', function (req, res) {
   normalizeUsers(req)
@@ -274,7 +290,19 @@ router.get('/select-appeals', function (req, res) {
   res.render(req.baseUrl.replace(/^\//g, '') + '/select-appeals')
 })
 
-router.get('/appeal-stage', function (req, res) {
+// ===== APPEAL STAGE ROUTES =====
+
+router.post('/appeal-stage', function (req, res) {
+  if (req.session.data['appeal-stage'] == 'particular-appeal-stages') {
+    res.redirect('appeal-stage-detailed')
+  } else {
+    res.redirect('index')
+  }
+})
+
+// ===== DETAILED APPEAL STAGE ROUTES =====
+
+router.get('/appeal-stage-detailed', function (req, res) {
   normalizeUsers(req)
   setReturnToIndexFromManageUser(req)
 
@@ -283,13 +311,15 @@ router.get('/appeal-stage', function (req, res) {
   const user = editUserId ? users.find((entry) => entry.id === editUserId) : null
 
   if (user && Array.isArray(user.appealStages)) {
-    req.session.data['appeal-stage'] = user.appealStages
+    req.session.data['appeal-stage-detailed'] = user.appealStages
   } else {
-    req.session.data['appeal-stage'] = []
+    req.session.data['appeal-stage-detailed'] = []
   }
 
-  res.render(req.baseUrl.replace(/^\//g, '') + '/appeal-stage')
+  res.render(req.baseUrl.replace(/^\//g, '') + '/appeal-stage-detailed')
 })
+
+// ===== POST HANDLERS: EMAIL NOTIFICATIONS =====
 
 router.post('/email-notifications', function (req, res) {
   normalizeUsers(req)
@@ -378,6 +408,8 @@ router.post('/email-notifications', function (req, res) {
   return res.redirect('select-appeals')
 })
 
+// ===== POST HANDLERS: DETAILED EMAIL NOTIFICATIONS =====
+
 router.post('/detailed-email-notifications', function (req, res) {
   normalizeUsers(req)
   const combinedEmail = req.session.data['new-user-email']
@@ -438,6 +470,8 @@ router.post('/detailed-email-notifications', function (req, res) {
   return res.redirect('./')
 })
 
+// ===== POST HANDLERS: EDIT DETAILED EMAIL NOTIFICATIONS =====
+
 router.post('/edit-detailed-email-notifications', function (req, res) {
   normalizeUsers(req)
   const selectedTypes = req.session.data['planning-type'] || (req.body && req.body['planning-type'])
@@ -464,12 +498,14 @@ router.post('/edit-detailed-email-notifications', function (req, res) {
   return res.redirect('./')
 })
 
-router.post('/appeal-stage', function (req, res) {
+// ===== POST HANDLERS: APPEAL STAGE DETAILED =====
+
+router.post('/appeal-stage-detailed', function (req, res) {
   normalizeUsers(req)
 
-  const selectedStages = req.session.data['appeal-stage'] || (req.body && req.body['appeal-stage'])
+  const selectedStages = req.session.data['appeal-stage-detailed'] || (req.body && req.body['appeal-stage-detailed'])
   if (selectedStages) {
-    req.session.data['appeal-stage'] = selectedStages
+    req.session.data['appeal-stage-detailed'] = selectedStages
   }
   const appealStages = Array.isArray(selectedStages)
     ? selectedStages
@@ -489,109 +525,4 @@ router.post('/appeal-stage', function (req, res) {
   finalizeManageUserUpdate(req)
   return res.redirect('./')
 })
-
-router.post('/select-appeals', function (req, res) {
-  normalizeUsers(req)
-
-  const bodyId = req.body ? req.body['id'] : undefined
-  if (bodyId) {
-    req.session.data['manage-user-id'] = bodyId
-    req.session.data['edit-user-id'] = bodyId
-  }
-
-  const selectedReference = req.session.data['appealReference'] || (req.body && req.body['appealReference'])
-  if (selectedReference) {
-    req.session.data['appealReference'] = selectedReference
-  }
-  const removeReference = req.body ? req.body['removeReference'] : undefined
-  const action = req.body ? req.body['action'] : undefined
-
-  if (removeReference) {
-    if (Array.isArray(req.session.data['appealReferences'])) {
-      req.session.data['appealReferences'] = req.session.data['appealReferences']
-        .filter((ref) => ref !== removeReference)
-    }
-
-    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || req.session.data['id'] || bodyId
-    let removedUser = null
-    if (editUserId) {
-      removedUser = req.session.data['users'].find((entry) => entry.id === editUserId)
-      if (removedUser && Array.isArray(removedUser.appealReferences)) {
-        removedUser.appealReferences = removedUser.appealReferences.filter((ref) => ref !== removeReference)
-        persistUsers(req)
-      }
-    }
-
-    req.session.data['action'] = 'updated'
-    if (removedUser) {
-      req.session.data['updated-email'] = removedUser.email
-    } else if (req.session.data['new-user-email']) {
-      req.session.data['updated-email'] = req.session.data['new-user-email']
-    }
-    if (editUserId) {
-      const fromManageUser = Boolean(req.session.data['return-from-manage-user'])
-      const query = fromManageUser
-        ? `?from=manage-user&id=${editUserId}`
-        : `?id=${editUserId}`
-      return res.redirect(`select-appeals${query}`)
-    }
-
-    return res.redirect('select-appeals')
-  }
-
-  if (selectedReference) {
-    if (!Array.isArray(req.session.data['appealReferences'])) {
-      req.session.data['appealReferences'] = []
-    }
-
-    if (!req.session.data['appealReferences'].includes(selectedReference)) {
-      req.session.data['appealReferences'].push(selectedReference)
-    }
-
-    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || req.session.data['id'] || bodyId
-    if (editUserId) {
-      const user = req.session.data['users'].find((entry) => entry.id === editUserId)
-      if (user) {
-        if (!Array.isArray(user.appealReferences)) {
-          user.appealReferences = []
-        }
-        if (!user.appealReferences.includes(selectedReference)) {
-          user.appealReferences.push(selectedReference)
-          persistUsers(req)
-        }
-        req.session.data['action'] = 'updated'
-        req.session.data['updated-email'] = user.email
-      }
-    } else if (req.session.data['new-user-email']) {
-      req.session.data['action'] = 'updated'
-      req.session.data['updated-email'] = req.session.data['new-user-email']
-    }
-  }
-
-  if (action === 'add-another' || !action) {
-    delete req.session.data['appealReference']
-    const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id'] || bodyId
-    if (editUserId) {
-      const fromManageUser = Boolean(req.session.data['return-from-manage-user'])
-      const query = fromManageUser
-        ? `?from=manage-user&id=${editUserId}`
-        : `?id=${editUserId}`
-      return res.redirect(`select-appeals${query}`)
-    }
-    return res.redirect('select-appeals')
-  }
-
-  const fromManageUser = Boolean(req.session.data['return-from-manage-user'])
-  const fromEmailNotifications = Boolean(req.session.data['from-email-notifications'])
-  finalizeManageUserUpdate(req)
-  delete req.session.data['appealReference']
-  if (fromEmailNotifications && !fromManageUser) {
-    delete req.session.data['from-email-notifications']
-    return res.redirect('appeal-stage')
-  }
-
-  return res.redirect(fromManageUser ? './' : 'appeal-stage')
-})
-
-
 module.exports = router
