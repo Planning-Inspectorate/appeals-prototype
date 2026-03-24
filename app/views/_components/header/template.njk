@@ -21,7 +21,7 @@
 			</a>
 
 			<span class="govuk-header__product-name app-c-header__product-name">
-				Appeal a planning decision
+				{{ (params.serviceName.text if params.serviceName and params.serviceName.text else serviceName) | default('Appeal a planning decision') }}
 			</span>
 
 		</div>

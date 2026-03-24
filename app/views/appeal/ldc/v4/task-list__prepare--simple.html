@@ -1,5 +1,11 @@
 <h2 class="govuk-heading-m">Prepare your appeal</h2>
 
+{#
+  logic for task status - in this example,
+  the status is determined by session data set in the routes file,
+  which tracks progress through questions in the prepare appeal section.
+#}
+
 {% if data['aboutYouSectionStatus'] == 'complete' %}
   {% set aboutyoustatus %}
     Completed
@@ -57,7 +63,7 @@
 {% endif %}
 
 {#
-  using the standard task list pattern
+  task list follows
 #}
 
 {{ govukTaskList({

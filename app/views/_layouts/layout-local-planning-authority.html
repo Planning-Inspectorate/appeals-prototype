@@ -1,6 +1,8 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set localServiceName = 'Jam' %}
+{% set serviceName = "Manage your appeals" %}
+
+{% set return = true %}
 
 {# Add a body class to override things if needed #}
 {% set bodyClasses = 'internal' %}
@@ -16,13 +18,18 @@
 
 	{# Add nav, remove on pages that don't need it with:
 	{% set nav = false %} #}
+	
 	{{ appHeader({
 		serviceName: {
-			text: serviceName
+			text: 'Manage your appeals'
 		},
 		navigation: {
 			label: 'Primary navigation',
 			items: [
+				{
+					text: 'Manage access',
+					href: '/#0'
+				},	
 				{
 					text: 'Sign out',
 					href: '/#0'

@@ -201,6 +201,12 @@ router.post('/og-evidence/:page', function (req, res, next) {
   // (because you only get to the uploads, if you answer Yes to the check)
 
   if (
+    // design access check is Yes
+    // and upload is complete
+    // plans and drawings is complete
+    // other docs is Yes
+    // and upload is complete
+    // list of documents is complete
     req.session.data['design-access-statement-check-complete']
     && req.session.data['design-access-statement-upload-complete']
     && req.session.data['plans-and-drawings-upload-complete']
@@ -212,21 +218,27 @@ router.post('/og-evidence/:page', function (req, res, next) {
     req.session.data['og-evidence-completed'] = 'true'
 
   } else if (
-    // if design access check is No
-    // but all others are yes, including other documents
-
+    // design access check is No
+    // plans and drawings is complete
+    // other docs is Yes
+    // and upload is complete
+    // list of documents is complete
     req.session.data['design-access-statement-check-complete']
     && req.session.data['design-access-statement-check'] == 'No'
-
     && req.session.data['plans-and-drawings-upload-complete']
     && req.session.data['other-documents-check-complete']
     && req.session.data['other-documents-upload-complete']
     && req.session.data['list-of-documents-complete']
+  ){
+    // then make the section complete
+    req.session.data['og-evidence-completed'] = 'true'
 
   } else if (
-    // if design access check is Yes
-    // but other docs is a No
-    // but all others are yes, including other documents
+    // design access check is Yes
+    // and upload is complete
+    // plans and drawings is complete
+    // other docs is No
+    // list of documents is complete
 
     req.session.data['design-access-statement-check-complete']
     && req.session.data['design-access-statement-upload-complete']
@@ -237,18 +249,36 @@ router.post('/og-evidence/:page', function (req, res, next) {
     && req.session.data['other-documents-check'] == 'No'
 
     && req.session.data['list-of-documents-complete']
-
   ){
     // then make the section complete
     req.session.data['og-evidence-completed'] = 'true'
+
+  } else if (
+    // design access check is No
+    // plans and drawings is complete
+    // other docs is No
+    // list of documents is complete
+
+    req.session.data['design-access-statement-check-complete']
+    && req.session.data['design-access-statement-check'] == 'No'
+
+    && req.session.data['plans-and-drawings-upload-complete']
+
+    && req.session.data['other-documents-check-complete']
+    && req.session.data['other-documents-check'] == 'No'
+
+    && req.session.data['list-of-documents-complete']
+  ){
+    // then make the section complete
+    req.session.data['og-evidence-completed'] = 'true'
+
   } else {
+    // section is not complete
     req.session.data['og-evidence-completed'] = 'false'
   }
 
   next()
 })
-
-
 
 
 router.post('/og-evidence/design-access-statement-check', function (req, res) {

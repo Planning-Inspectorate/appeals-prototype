@@ -444,6 +444,8 @@ router.post('/upload-documents/application-form', function (req, res) {
   const descriptionChanged = req.session.data['description-development-correct']
   console.log('description-development-correct:', descriptionChanged)
 
+  req.session.data['uploadApplicationSectionStatus'] = 'started'
+
   if (descriptionChanged && descriptionChanged.startsWith('Yes')) {
     console.log('Redirecting to description-of-development-agreement')
     res.redirect('description-of-development-agreement')
@@ -509,8 +511,10 @@ router.post('/upload-documents/planning-obligation-check', function (req, res) {
   if (preference == 'Yes') {
     res.redirect('planning-obligation-status')
   } else if (preference === 'No') {
+    req.session.data['uploadApplicationSectionStatus'] = 'complete'
     res.redirect('appeal-statement')
   } else {
+    req.session.data['uploadApplicationSectionStatus'] = 'complete'
     res.redirect('appeal-statement')
   }
 })
@@ -524,14 +528,17 @@ router.post('/upload-documents/planning-obligation-status', function (req, res) 
   if (preference == 'Finalised and ready to submit') {
     res.redirect('planning-obligation')
   } else if (preference == 'Not started yet') {
+    req.session.data['uploadApplicationSectionStatus'] = 'complete'
     res.redirect('appeal-statement')
   } else {
+    req.session.data['uploadApplicationSectionStatus'] = 'complete'
     res.redirect('appeal-statement')
   }
 })
 
 //planning-obligation route
 router.post('/upload-documents/planning-obligation', function (req, res) {
+  req.session.data['uploadApplicationSectionStatus'] = 'complete'
   res.redirect('appeal-statement')
 })
 
@@ -539,6 +546,9 @@ router.post('/upload-documents/planning-obligation', function (req, res) {
 router.post('/upload-documents/appeal-statement', function (req, res) {
   console.log('=== appeal-statement POST route hit ===')
   console.log('Full session data:', JSON.stringify(req.session.data, null, 2))
+
+  req.session.data['uploadAppealSectionStatus'] = 'started'
+
   const preference = req.session.data['decide-appeal']
   console.log('decide-appeal value:', preference)
 
@@ -556,8 +566,6 @@ router.post('/upload-documents/draft-statement-common-ground', function (req, re
   console.log('=== draft-statement-common-ground POST route hit ===')
   res.redirect('apply-appeal-costs')
 })
-
-
 
 //apply-appeal-costs routes with branches
 router.post('/upload-documents/apply-appeal-costs', function (req, res) {
@@ -608,14 +616,17 @@ router.post('/upload-documents/other-new-documents-check', function (req, res) {
   if (preference == 'Yes') {
     res.redirect('upload-other-new-documents')
   } else if (preference == 'No') {
+    req.session.data['uploadAppealSectionStatus'] = 'complete'
     res.redirect('../task-list')
   } else {
+    req.session.data['uploadAppealSectionStatus'] = 'complete'
     res.redirect('../task-list')
   }
 })
 
 //upload-other-new-documents route
 router.post('/upload-documents/upload-other-new-documents', function (req, res) {
+  req.session.data['uploadAppealSectionStatus'] = 'complete'
   res.redirect('../task-list')
 })
 
