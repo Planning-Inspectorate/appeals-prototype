@@ -5,7 +5,6 @@
 {% block questions %}
   <span class="govuk-caption-l">Prepare appeal</span>
 
-
   {{ govukInput({
     label: {
       text: title,
@@ -21,15 +20,5 @@
     inputmode: "numeric",
     spellcheck: false
   }) }}
-
-
-  
-{% endblock %}
-
-{% block afterContent %}
-
-  <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
-    </p>
 
 {% endblock %}

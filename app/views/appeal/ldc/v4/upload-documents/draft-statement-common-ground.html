@@ -7,7 +7,7 @@
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
- 
+
   {% from "govuk/components/details/macro.njk" import govukDetails %}
 
   <h2 class="govuk-heading-m">Upload files</h2>
@@ -15,17 +15,4 @@
 
   {% include '_includes/common/multiple-document-upload.html' %}
 
-  
-
-{% endblock %}
-{% block afterContent %}
-
-  <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="../prepare-appeal/your-appeal">Return to your appeal</a>
-    </p>
-
-{% endblock %}
-
-
-{% block pageScripts %}
 {% endblock %}

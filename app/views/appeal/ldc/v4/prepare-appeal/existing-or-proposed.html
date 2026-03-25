@@ -1,4 +1,4 @@
-{% extends '_layouts/layout-main.html' %}
+{% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'What type of lawful development certificate is the appeal about?' %}
 
@@ -20,7 +20,7 @@
     items: [
       {
         value: "Existing development",
-        text: "Existing development" 
+        text: "Existing development"
       },
       {
         value: "Proposed use of a development",
@@ -32,12 +32,4 @@
       }
     ]
   }) }}
-{% endblock %}
-
-{% block afterContent %}
-
-  <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
-    </p>
-
 {% endblock %}

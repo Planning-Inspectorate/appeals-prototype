@@ -59,13 +59,24 @@
         }
       </style>
 
-      <ol class="app-task-list">
+      {% if data['task-list-pattern'] != 'new' %}
 
-        {% include "./task-list__prepare.html" %}
-        {% include "./task-list__upload.html" %}
-        {% include "./task-list__submit.html" %}
+        <ol class="app-task-list">
 
-      </ol>
+          {% include "./task-list__prepare.html" %}
+          {% include "./task-list__upload.html" %}
+          {% include "./task-list__submit.html" %}
+
+        </ol>
+
+      {% else %}
+        
+        {% include "./task-list__prepare--simple.html" %}
+        {% include "./task-list__upload--simple.html" %}
+        {% include "./task-list__submit--simple.html" %}
+
+      {% endif %}
+
     </div>
   </div>
 {% endblock %}

@@ -1,9 +1,10 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Set service name for all routes in this folder
-router.use(function (req, res, next) {
-  res.locals.serviceName = 'Constraints, designations and other issues'
+router.get('/appeal/ldc/v4/*', (req, res, next) => {
+  // Change the service name for this feature
+  res.locals['serviceName'] = 'Manage your appeals - test 1'
+
   next()
 })
 
@@ -16,7 +17,7 @@ router.post('/task-list', function (req, res) {
 // POST route for correct-appeal-type-check
 router.post('/correct-appeal-type-check', function (req, res) {
   const answer = req.session.data['correct-appeal-type']
-  
+
   if (answer == 'Yes') {
     res.redirect('./certificate-type-check')
   } else {
@@ -33,7 +34,7 @@ router.post('/certificate-type-check', function (req, res) {
 // POST route for planning-condition-check
 router.post('/planning-condition-check', function (req, res) {
   const answer = req.session.data['planning-condition-check']
-  
+
   if (answer == 'Yes') {
     res.redirect('./upload-relevant-planning-permission')
   } else {
@@ -49,7 +50,7 @@ router.post('/upload-relevant-planning-permission', function (req, res) {
 // POST route for enforcement-notice-date-application-check
 router.post('/enforcement-notice-date-application-check', function (req, res) {
   const answer = req.session.data['enforcement-notice-date-application']
-  
+
   if (answer === 'Yes') {
     res.redirect('/appeal/ldc/v4/lpaq/upload-enforcement-notice')
   } else {
@@ -66,7 +67,7 @@ router.post('/upload-enforcement-notice', function (req, res) {
 // POST route for related-applications-check
 router.post('/related-applications-check', function (req, res) {
   const answer = req.session.data['related-applications']
-  
+
   if (answer == 'Yes') {
     res.redirect('./upload-related-application')
   } else {
@@ -88,7 +89,7 @@ router.post('/appeal-invalid-check', function (req, res) {
 // POST route for planning-officer-report
 router.post('/planning-officer-report', function (req, res) {
   const answer = req.session.data['planning-officer-report']
-  
+
   if (answer == 'Yes') {
     res.redirect('./upload-planning-officers-report-decision-notice')
   } else {
@@ -104,7 +105,7 @@ router.post('/upload-planning-officers-report-decision-notice', function (req, r
 // POST route for community-infrastructure-check
 router.post('/community-infrastructure-check', function (req, res) {
   const answer = req.session.data['community-infrastructure-check']
-  
+
   if (answer == 'Yes') {
     res.redirect('./community-infrastructure-upload')
   } else {
@@ -130,7 +131,7 @@ router.post('/community-infrastructure-date', function (req, res) {
 // POST route for other-relevant-matters
 router.post('/other-relevant-matters', function (req, res) {
   const answer = req.session.data['other-relevant-matters']
-  
+
   if (answer == 'Yes') {
     res.redirect('./upload-other-relevant-matters')
   } else {
@@ -155,7 +156,7 @@ router.post('/inspector-access-appeal-site', function (req, res) {
 // POST route for inspector-enter-neighbour-site
 router.post('/inspector-enter-neighbour-site', function (req, res) {
   const answer = req.session.data['inspector-enter-neighbour-site']
-  
+
   if (answer == 'Yes') {
     res.redirect('./neighbours-address')
   } else {
@@ -171,7 +172,7 @@ router.post('/neighbours-address', function (req, res) {
 // POST route for neighbours
 router.post('/neighbours', function (req, res) {
   const answer = req.session.data['add-neighbours']
-  
+
   if (answer == 'Yes') {
     res.redirect('./neighbours-address')
   } else {
@@ -187,7 +188,7 @@ router.post('/health-and-safety', function (req, res) {
 // POST route for procedure-type
 router.post('/procedure-type', function (req, res) {
   const answer = req.session.data['procedure']
-  
+
   if (answer == 'Inquiry') {
     res.redirect('./prefer-inquiry')
   } else if (answer == 'Hearing') {
@@ -217,7 +218,7 @@ router.post('/prefer-inquiry', function (req, res) {
 // POST route for other-appeals
 router.post('/other-appeals', function (req, res){
   const answer = req.session.data['other-appeals']
-  
+
   if (answer == 'Yes') {
     res.redirect('./other-appeal-reference')
   } else {
@@ -244,7 +245,7 @@ router.post('/other-appeal-reference', function (req, res) {
 // POST route for add-another-appeal
 router.post('/add-another-appeal', function (req, res) {
   const answer = req.session.data['add-another-appeal']
-  
+
   if (answer == 'Yes') {
     res.redirect('./other-appeal-reference')
   } else if (answer == 'No') {
