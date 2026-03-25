@@ -7,14 +7,25 @@
   <span class="govuk-caption-l">
     Original evidence
   </span>
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
 
+  <p class="govuk-body">
+    Upload any additional documents, excluding the design and access statement and any plans and drawings.
+  </p>
+
+  <p class="govuk-body">
+    This should include any documents that were considered when determining the application and any additional evidence that you took into account.
+  </p>
+ 
   {% set uploadHtml %}
     {{ govukFileUpload({
       name: 'design-access-statement-upload',
       classes: 'moj-multi-file-upload__input',
       label: {
-        text: title,
-        classes: 'govuk-label--l'
+        text: 'Upload files',
+        classes: 'govuk-label--m'
       },
       hint: {
         text: 'The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB'

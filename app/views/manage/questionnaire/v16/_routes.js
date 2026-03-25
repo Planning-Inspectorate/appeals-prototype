@@ -55,7 +55,7 @@ router.post('/constraints/:page', function (req, res, next) {
     && req.session.data['conservation-check-complete']
     && req.session.data['protected-species-complete']
     && req.session.data['green-belt-complete']
-    && req.session.data['outstanding-natural-beauty-complete']
+    && req.session.data['national-landscape-complete']
     && req.session.data['designated-sites-complete']
     && req.session.data['tree-order-check-complete']
     && req.session.data['traveller-complete']
@@ -128,10 +128,10 @@ router.post('/constraints/protected-species', function (req, res) {
 })
 
 router.post('/constraints/green-belt', function (req, res) {
-  res.redirect('outstanding-natural-beauty')
+  res.redirect('national-landscape')
 })
 
-router.post('/constraints/outstanding-natural-beauty', function (req, res) {
+router.post('/constraints/national-landscape', function (req, res) {
   res.redirect('designated-sites')
 })
 
