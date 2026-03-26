@@ -1,19 +1,6 @@
 <li>
-  {# Calculate status for Constraints section #}
-  {% set constraintsRequired = [
-    data['correct-appeal-type'],
-    data['certificate-type'],
-    data['planning-condition-check'],
-    data['upload-relevant-planning-permission'],
-    data['enforcement-notice-date-application'],
-    data['upload-enforcement-notice'],
-    data['related-applications'],
-    data['upload-related-applications'],
-    data['appeal-invalid-check']
-  ] %}
-  {% set constraintsAnswered = constraintsRequired | reject("equalto", undefined) | reject("equalto", "") | list %}
-  {% set constraintsComplete = (constraintsAnswered.length == constraintsRequired.length and constraintsRequired.length > 0) %}
-  {% set constraintsInProgress = (constraintsAnswered.length > 0 and constraintsAnswered.length < constraintsRequired.length) %}
+  {% set constraintsComplete = constraintsComplete or false %}
+  {% set constraintsInProgress = constraintsInProgress or false %}
 
   <h2 class="app-task-list__section">
     1. Constraints, designations and other issues
@@ -40,17 +27,17 @@
     head: [],
     rows: [
       [
-        { text: "Correct appeal type", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Is a lawful development certificate appeal the correct type of appeal? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['correct-appeal-type'] if data['correct-appeal-type'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="correct-appeal-type-check" class="govuk-link">Change</a>' if data['correct-appeal-type'] else '<a href="correct-appeal-type-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
-        { text: "Certificate type", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " What type of lawful development certificate is the appeal about? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['certificate-type'] if data['certificate-type'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="certificate-type-check" class="govuk-link">Change</a>' if data['certificate-type'] else '<a href="certificate-type-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
-        { text: "Planning condition", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Does the appeal relate to a planning condition?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['planning-condition-check'] if data['planning-condition-check'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="planning-condition-check" class="govuk-link">Change</a>' if data['planning-condition-check'] else '<a href="planning-condition-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
@@ -60,7 +47,7 @@
         { html: '<a href="upload-relevant-planning-permission" class="govuk-link">Change</a>' if data['upload-relevant-planning-permission'] else '<a href="upload-relevant-planning-permission" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
       ]if data['planning-condition-check'] == 'Yes',
       [
-        { text: "Enforcement notice date application", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: "Was there any enforcement notice in place at the date of the application?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['enforcement-notice-date-application'] if data['enforcement-notice-date-application'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="enforcement-notice-date-application-check" class="govuk-link">Change</a>' if data['enforcement-notice-date-application'] else '<a href="enforcement-notice-date-application-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
@@ -70,9 +57,9 @@
         { html: '<a href="upload-enforcement-notice" class="govuk-link">Change</a>' if data['upload-enforcement-notice'] else '<a href="upload-enforcement-notice" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
       ]if data['enforcement-notice-date-application'] == 'Yes',
       [
-        { text: "Related applications", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
-        { text: data['related-applications'] if data['related-applications'] else "Not started", classes: "govuk-!-width-one-half" },
-        { html: '<a href="related-applications-check" class="govuk-link">Change</a>' if data['related-applications'] else '<a href="related-applications-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
+        { text: " Are there any related applications?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: data['related-applications-check'] if data['related-applications-check'] else "Not started", classes: "govuk-!-width-one-half" },
+        { html: '<a href="related-applications-check" class="govuk-link">Change</a>' if data['related-applications-check'] else '<a href="related-applications-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
         { text: "Upload related applications", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
@@ -80,7 +67,7 @@
         { html: '<a href="upload-related-application" class="govuk-link">Change</a>' if data['upload-related-applications'] else '<a href="upload-related-application" class="govuk-link">Upload</a>', classes: "govuk-!-text-align-right" }
       ]if data['related-applications-check'] == 'Yes',
       [
-        { text: "Appeal invalid", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Do you think the appeal is invalid?", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['appeal-invalid-check'] if data['appeal-invalid-check'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="appeal-invalid-check" class="govuk-link">Change</a>' if data['appeal-invalid-check'] else '<a href="appeal-invalid-check" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ]

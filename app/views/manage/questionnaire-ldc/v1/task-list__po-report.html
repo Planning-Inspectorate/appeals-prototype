@@ -1,24 +1,10 @@
 <li>
-  {# Calculate status for Planning Officer Report section #}
-  {% set poReportRequired = [
-    data['planning-officer-report'],
-    data['upload-planning-officers-report-decision-notice'],
-    data['community-infrastructure-check'],
-    data['community-infrastructure-upload'],
-    data['community-infrastructure-adopted'],
-    data['community-infrastructure-date-day'],
-    data['community-infrastructure-date-month'],
-    data['community-infrastructure-date-year'],
-    data['other-relevant-matters'],
-    data['upload-other-relevant-matters']
-  ] %}
+  {% set poReportComplete = poReportComplete or false %}
+  {% set poReportInProgress = poReportInProgress or false %}
   {% set communityInfrastructureDate = '' %}
   {% if data['community-infrastructure-date-day'] and data['community-infrastructure-date-month'] and data['community-infrastructure-date-year'] %}
     {% set communityInfrastructureDate = data['community-infrastructure-date-day'] ~ '/' ~ data['community-infrastructure-date-month'] ~ '/' ~ data['community-infrastructure-date-year'] %}
   {% endif %}
-  {% set poReportAnswered = poReportRequired | reject("equalto", undefined) | reject("equalto", "") | list %}
-  {% set poReportComplete = (poReportAnswered.length == poReportRequired.length and poReportRequired.length > 0) %}
-  {% set poReportInProgress = (poReportAnswered.length > 0 and poReportAnswered.length < poReportRequired.length) %}
 
   <h2 class="app-task-list__section">
     2. Planning officer’s report and supporting documents
@@ -45,7 +31,7 @@
     head: [],
     rows: [
       [
-        { text: "Planning officer report", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Do you have a planning officer’s report? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['planning-officer-report'] if data['planning-officer-report'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="planning-officer-report" class="govuk-link">Change</a>' if data['planning-officer-report'] else '<a href="planning-officer-report" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
@@ -75,7 +61,7 @@
         { html: '<a href="community-infrastructure-date" class="govuk-link">Change</a>' if communityInfrastructureDate else '<a href="community-infrastructure-date" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
-        { text: "Other relevant matters", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Are there any other relevant matters? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['other-relevant-matters'] if data['other-relevant-matters'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="other-relevant-matters" class="govuk-link">Change</a>' if data['other-relevant-matters'] else '<a href="other-relevant-matters" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
