@@ -1,17 +1,8 @@
+
+<!-- status calculation for Appeal Process section -->
 <li>
-  {# Calculate status for Appeal Process section #}
-  {% set appealProcessRequired = [
-    data['procedure'],
-    data['inquiry-days'],
-    data['prefer-inquiry'],
-    data['prefer-hearing'],
-    data['other-appeals'],
-    data['other-appeal-reference'],
-    data['add-another-appeal']
-  ] %}
-  {% set appealProcessAnswered = appealProcessRequired | reject("equalto", undefined) | reject("equalto", "") | list %}
-  {% set appealProcessComplete = (appealProcessAnswered.length == appealProcessRequired.length and appealProcessRequired.length > 0) %}
-  {% set appealProcessInProgress = (appealProcessAnswered.length > 0 and appealProcessAnswered.length < appealProcessRequired.length) %}
+  {% set appealProcessComplete = appealProcessComplete or false %}
+  {% set appealProcessInProgress = appealProcessInProgress or false %}
 
   <h2 class="app-task-list__section">
     4. Appeal process
@@ -46,7 +37,7 @@
         { text: "How many days inquiry", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['inquiry-days'] if data['inquiry-days'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="how-many-days-inquiry" class="govuk-link">Change</a>' if data['inquiry-days'] else '<a href="how-many-days-inquiry" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
+      ]if data['procedure'] == 'Inquiry',
       [
         { text: "Prefer inquiry", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['prefer-inquiry'] if data['prefer-inquiry'] else "Not started", classes: "govuk-!-width-one-half" },
@@ -58,7 +49,7 @@
         { html: '<a href="prefer-hearing" class="govuk-link">Change</a>' if data['prefer-hearing'] else '<a href="prefer-hearing" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ]if data['procedure'] == 'Hearing',
       [
-        { text: "Other appeals", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Are there any other ongoing appeals next to, or close to the site? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['other-appeals'] if data['other-appeals'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="other-appeals" class="govuk-link">Change</a>' if data['other-appeals'] else '<a href="other-appeals" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
