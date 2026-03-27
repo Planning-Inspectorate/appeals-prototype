@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Why do you prefer an inquiry?' %}
+
+{% block questions %}
+<span class="govuk-caption-l">  Appeal process   </span>
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+  name: "prefer-inquiry",
+  id: "prefer-inquiry",
+  value: data['prefer-inquiry'],
+  label: {
+    text: title,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  }
+}) }}  
+{% endblock %}
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+    <a href="/manage/questionnaire-ldc/v1/task-list">Return to questionnaire homepage</a>
+    </p>
+
+{% endblock %}

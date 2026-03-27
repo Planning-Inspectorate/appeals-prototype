@@ -73,81 +73,67 @@
 
 <div class="govuk-grid-column-full-width">
       <h2 class="govuk-heading-m app-border-top-big govuk-!-padding-top-6 govuk-!-margin-top-6">
-        Your details
-      </h2>
-
-      <table class="govuk-table govuk-!-width-full">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header" style="width: 100%;">User email</th>
-            <th scope="col" class="govuk-table__header">Appeal stage subscriptions</th>
-            <th scope="col" class="govuk-table__header">Actions</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell" style="vertical-align: middle;">
-              <p class="govuk-body">your-email@example.com</p>
-            </td>
-            <td class="govuk-table__cell" style="vertical-align: middle;">
-              <p class="govuk-body govuk-!-margin-0">None</p>
-            </td>
-            <td class="govuk-table__cell app-actions-cell" style="vertical-align: middle;">
-              <ul class="govuk-list" style="margin: 0; display: flex; flex-direction: row; align-items: center; gap: 0.6rem;">
-                <li>
-                  <a class="govuk-link" href="/manage/manage-users/v8/manage-user?id={{ user.id }}">
-                    Manage<span class="govuk-visually-hidden"> {{ user.email }}</span>
-                  </a>
-                </li>
-                <li aria-hidden="true">
-                  <span style="display: inline-block; width: 1px; height: 1.5rem; background-color: #b1b4b6;"></span>
-                </li>
-                <li>
-                  <a class="govuk-link" href="/manage/manage-users/v8/remove-user?id={{ user.id }}">
-                    Remove<span class="govuk-visually-hidden"> {{ user.email }}</span>
-                  </a>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-
-<div class="govuk-grid-column-full-width">
-      <h2 class="govuk-heading-m app-border-top-big govuk-!-padding-top-6 govuk-!-margin-top-6">
         Current users
       </h2>
 
       <table class="govuk-table govuk-!-width-full">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header" style="width: 100%;">User email</th>
-            <th scope="col" class="govuk-table__header">Appeal stage subscriptions</th>
+            <th scope="col" class="govuk-table__header">User email</th>
+            <th scope="col" class="govuk-table__header">Appeal type email notifications</th>
+            <th scope="col" class="govuk-table__header">Appeal stage email notifications</th>
             <th scope="col" class="govuk-table__header">Actions</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
           {% for user in data['users'] %}
             {% if user != null %}
+              {% set appealTypes = user.appealTypes or user.appeal_types or [] %}
               {% set appealStages = user.appealStages or user.appeal_stages or [] %}
+              {% set appealTypesClean = [] %}
+              {% for appealType in appealTypes %}
+                {% if appealType and appealType != '_unchecked' %}
+                  {% set appealTypesClean = (appealTypesClean.push(appealType), appealTypesClean) %}
+                {% endif %}
+              {% endfor %}
+              {% set appealStagesClean = [] %}
+              {% for appealStage in appealStages %}
+                {% if appealStage and appealStage != '_unchecked' %}
+                  {% set appealStagesClean = (appealStagesClean.push(appealStage), appealStagesClean) %}
+                {% endif %}
+              {% endfor %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
                   <p class="govuk-body">{{ user.email }}</p>
                 </td>
-                <td class="govuk-table__cell">
-                  {% if appealStages.length > 1 %}
+                 <td class="govuk-table__cell">
+                  {% if appealTypesClean.length > 1 %}
                     <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
-                      {% for appealStage in appealStages %}
-                        <li>{{ appealStage }}</li>
+                      {% for appealType in appealTypesClean %}
+                        <li>{{ appealType }}</li>
                       {% endfor %}
                     </ul>
-                  {% elif appealStages.length == 1 %}
-                    <p class="govuk-body govuk-!-margin-0">{{ appealStages[0] }}</p>
+                  {% elif appealTypesClean.length == 1 %}
+                    <p class="govuk-body govuk-!-margin-0">{{ appealTypesClean[0] }}</p>
                   {% else %}
                     <p class="govuk-body govuk-!-margin-0">None</p>
                   {% endif %}
                 </td>
+                <td class="govuk-table__cell">
+                  {% if appealStagesClean.length > 1 %}
+                    <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+                      {% for appealStage in appealStagesClean %}
+                        <li>{{ appealStage }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% elif appealStagesClean.length == 1 %}
+                    <p class="govuk-body govuk-!-margin-0">{{ appealStagesClean[0] }}</p>
+                  {% else %}
+                    <p class="govuk-body govuk-!-margin-0">None</p>
+                  {% endif %}
+                </td>
+                
+
                 <td class="govuk-table__cell app-actions-cell">
                   <ul class="govuk-list" style="margin: 0; display: flex; flex-direction: row; align-items: center; gap: 0.6rem;">
                     <li>

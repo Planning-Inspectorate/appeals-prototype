@@ -1,0 +1,65 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = ' Nearby appeal added to the case ' %}
+
+{% set prototypeLinks = [
+  {
+    href: '?extraotherappeal=yes',
+    text: 'Add another appeal'
+  },
+  {
+    href: '?extraotherappeal=',
+    text: 'One other appeal'
+  }
+] %}
+
+{% block questions %}
+<span class="govuk-caption-l">  Appeal process   </span>
+
+  {% set otherAppeals = data['other-appeal-references'] or [] %}
+
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  {% if otherAppeals.length %}
+    <dl class="govuk-summary-list appeal-details govuk-!-margin-bottom-6 govuk-!-margin-top-0">
+      {% for ref in otherAppeals %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Other appeal {{ loop.index }}</dt>
+          <dd class="govuk-summary-list__value">{{ ref }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+  {% endif %}
+
+  {{ govukRadios({
+    idPrefix: 'add-another-appeal',
+    name: 'add-another-appeal',
+    fieldset: {
+      legend: {
+        html: 'Add another appeal?',
+        classes: 'govuk-fieldset__legend--m',
+        isPageHeading: false
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes'
+      },
+      {
+        html: 'No',
+        value: 'No'
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+    <a href="/manage/questionnaire-ldc/v1/task-list">Return to questionnaire homepage</a>
+    </p>
+
+{% endblock %}

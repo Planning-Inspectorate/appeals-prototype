@@ -3,8 +3,11 @@
 {% set title = 'What date did you submit your planning application?' %}
 
 {% block questions %}
+
   <span class="govuk-caption-l">
-Prepare appeal  </span>
+    Prepare appeal
+  </span>
+
   {{ govukDateInput({
     id: "application-date",
     namePrefix: "application-date",
@@ -19,12 +22,5 @@ Prepare appeal  </span>
       text: "For example, " + (applicationDateHint or '27 11 2025')
     }
   }) }}
-
-{% endblock %}
-{% block afterContent %}
-
-  <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
-    </p>
 
 {% endblock %}

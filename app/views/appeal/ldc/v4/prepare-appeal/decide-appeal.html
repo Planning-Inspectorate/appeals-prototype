@@ -18,7 +18,7 @@
         isPageHeading: true
       }
     },
-   
+
     items: [
      {
   html: 'Written representations',
@@ -48,18 +48,10 @@
   <script>
     console.log('=== decide-appeal page loaded ===')
     console.log('Current decide-appeal value:', '{{ data["decide-appeal"] }}')
-    
+
     $('form').on('submit', function() {
       const selectedValue = $('input[name="decide-appeal"]:checked').val()
       console.log('Form submitted with value:', selectedValue)
     })
   </script>
-{% endblock %}
-
-{% block afterContent %}
-
-  <p class="govuk-body govuk-!-margin-bottom-6">
-     <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
-    </p>
-
 {% endblock %}

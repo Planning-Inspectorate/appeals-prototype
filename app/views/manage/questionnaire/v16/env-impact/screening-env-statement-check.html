@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did your screening opinion say the development needed an environmental statement?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Environmental impact assessment
+  </span>
+  
+  {{ govukRadios({
+    idPrefix: 'screening-env-statement-check',
+    name: 'screening-env-statement-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('screening-env-statement-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('screening-env-statement-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

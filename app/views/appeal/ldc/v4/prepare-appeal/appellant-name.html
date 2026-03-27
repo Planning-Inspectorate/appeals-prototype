@@ -1,6 +1,6 @@
-{% extends "_layouts/layout-main.html" %}
+{% extends "_layouts/layout-appellant-main.html" %}
 
-{% set title = "What's the applicant's name?" %}
+{% set title = "What’s the applicant’s name?" %}
 
 {% block pageTitle %}
   {{title}} - GOV.UK
@@ -19,65 +19,42 @@
   }) }}
 {% endblock %}
 
-{% block content %}
+{% block questions %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <span class="govuk-caption-l">Prepare appeal</span>
 
-    <form method="post">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        {{ title }}
+      </h1>
+    </legend>
 
-      <span class="govuk-caption-l">Prepare appeal</span>
+    <div id="name-hint" class="govuk-hint">
+        Enter the name as it’s written on the application form.
+    </div>
 
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="appellant-first-name">
+        First name
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="appellant-first-name" name="appellant-first-name" type="text" spellcheck="false" autocomplete="given-name" value="{{ data['appellant-first-name'] }}">
+    </div>
 
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">
-            {{ title }}
-          </h1>
-        </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="appellant-last-name">
+        Last name
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="appellant-last-name" name="appellant-last-name" type="text" spellcheck="false" autocomplete="family-name" value="{{ data['appellant-last-name'] }}">
+    </div>
 
-        <div id="name-hint" class="govuk-hint">
-           Enter the name as it's written on the application form.
-        </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="appellant-company-name">
+        Company name (optional)
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="appellant-company-name" name="appellant-company-name" type="text" spellcheck="false" autocomplete="organization" value="{{ data['appellant-company-name'] }}">
+    </div>
 
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="appellant-first-name">
-            First name
-          </label>
-          <input class="govuk-input govuk-input--width-20" id="appellant-first-name" name="appellant-first-name" type="text" spellcheck="false" autocomplete="given-name" value="{{ data['appellant-first-name'] }}">
-        </div>
-
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="appellant-last-name">
-            Last name
-          </label>
-          <input class="govuk-input govuk-input--width-20" id="appellant-last-name" name="appellant-last-name" type="text" spellcheck="false" autocomplete="family-name" value="{{ data['appellant-last-name'] }}">
-        </div>
-
-          <div class="govuk-form-group">
-          <label class="govuk-label" for="appellant-company-name">
-            Company name (optional)
-          </label>
-          <input class="govuk-input govuk-input--width-20" id="appellant-company-name" name="appellant-company-name" type="text" spellcheck="false" autocomplete="organization" value="{{ data['appellant-company-name'] }}">
-        </div>
-
-      </fieldset>
-
-      <div class="govuk-button-group">
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-      </div>
-
-    </form>
-
-    <p class="govuk-body govuk-!-margin-bottom-6">
-      <a href="/appeal/ldc/v4/prepare-appeal/your-appeal">Return to your appeal</a>
-    </p>
-
-  </div>
-</div>
+  </fieldset>
 
 {% endblock %}

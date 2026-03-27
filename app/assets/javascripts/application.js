@@ -21,35 +21,96 @@ window.GOVUKPrototypeKit.documentReady(() => {
 })
 
 
+jQuery(function () {
+  var $values = $(".long-answers .govuk-summary-list__value");
 
-jQuery(function() {
-  var shortening_text = $(".long-answers .govuk-summary-list__value");
+  function trimTextNodes($root, maxChars) {
+    var count = 0;
+    var done = false;
 
-  shortening_text.each(function() {
-    var txt = $(this).html();
-    if (txt.length < 200) return;
+    function walk(node) {
+      if (done) return;
 
-    $(this).html(
-      txt.slice(0, 200) +
-        '<span>... </span><a href="#" class="show">Read more</a>' +
-        '<span style="display:none;">' +
-        txt.slice(200) +
-        ' <a href="#" class="less">Close</a></span>'
-    );
+      // text node
+      if (node.nodeType === 3) {
+        var text = node.nodeValue;
+        if (!text) return;
+
+        if (count + text.length <= maxChars) {
+          count += text.length;
+        } else {
+          node.nodeValue = text.slice(0, Math.max(0, maxChars - count));
+          count = maxChars;
+          done = true;
+        }
+        return;
+      }
+
+      // element node
+      if (node.nodeType === 1) {
+        // Walk children (copy list structure, links etc remain intact)
+        var children = Array.from(node.childNodes);
+        for (var i = 0; i < children.length; i++) {
+          walk(children[i]);
+          if (done) {
+            // remove any remaining siblings after truncation point
+            for (var j = i + 1; j < children.length; j++) {
+              node.removeChild(children[j]);
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    walk($root[0]);
+    return { truncated: done, count: count };
+  }
+
+  $values.each(function () {
+    var $el = $(this);
+    var fullHtml = $el.html();
+
+    // Measure length via text, but preserve HTML structure
+    var fullText = $el.text();
+    if (fullText.length < 200) return;
+
+    var $previewWrap = $('<span class="long-answers__preview"></span>');
+    var $ellipsis = $('<span class="long-answers__ellipsis">... </span>');
+    var $show = $('<a href="#" class="long-answers__show">Read more</a>');
+    var $fullWrap = $('<span class="long-answers__full" style="display:none;"></span>');
+
+    // Build preview from cloned HTML, then truncate safely
+    var $clone = $el.clone();
+    $clone.find(".long-answers__preview, .long-answers__ellipsis, .long-answers__show, .long-answers__full").remove();
+
+    // Put clone content into preview wrapper
+    $previewWrap.html($clone.html());
+
+    // Trim preview wrapper by text nodes (keeps <ol>/<li>/<a> intact)
+    trimTextNodes($previewWrap, 200);
+
+    // Build full wrapper with original HTML + close link
+    $fullWrap.html(fullHtml + ' <a href="#" class="long-answers__less">Close</a>');
+
+    // Replace content
+    $el.empty().append($previewWrap, $ellipsis, $show, $fullWrap);
   });
 
-  shortening_text.on("click", "a.show", function(event) {
-    event.preventDefault();
-    $(this).hide().prev().hide();
-    $(this).next().show();
+  $values.on("click", "a.long-answers__show", function (e) {
+    e.preventDefault();
+    var $container = $(this).closest(".govuk-summary-list__value");
+    $container.find(".long-answers__preview, .long-answers__ellipsis, .long-answers__show").hide();
+    $container.find(".long-answers__full").show();
   });
 
-  shortening_text.on("click", "a.less", function(event) {
-    event.preventDefault();
-    $(this).parent().hide().prev().show().prev().show();
+  $values.on("click", "a.long-answers__less", function (e) {
+    e.preventDefault();
+    var $container = $(this).closest(".govuk-summary-list__value");
+    $container.find(".long-answers__full").hide();
+    $container.find(".long-answers__preview, .long-answers__ellipsis, .long-answers__show").show();
   });
 });
-
 
 
 // Setup the MOJ multi file upload, we've made some minor changes to get things working

@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Enter an appeal reference number' %}
+
+{% block questions %}
+<span class="govuk-caption-l">  Appeal process   </span>
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    classes: "govuk-input--width-10",
+    hint: {
+      html: "<span class='govuk-gov-hint'>You can add more appeals later if there is more than one nearby</span>"
+    },
+    id: "other-appeal-reference",
+    name: "other-appeal-reference",
+    inputmode: "numeric",
+    spellcheck: false
+  }) }}
+
+{% endblock %}
+{% block afterContent %}
+
+  <p class="govuk-body govuk-!-margin-bottom-6">
+    <a href="/manage/questionnaire-ldc/v1/task-list">Return to questionnaire homepage</a>
+    </p>
+
+{% endblock %}
