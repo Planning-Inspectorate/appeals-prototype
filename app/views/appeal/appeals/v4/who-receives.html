@@ -1,12 +1,12 @@
 {% extends "layouts/main.html" %}
 
-{% set title = "Who will receive the invitation to access this appeal?" %}
+{% set title = "Who will access the appeal?" %}
 {% set pageName = title + ' - Planning Inspectorate'%}
 
 {% block beforeContent %}
   {{ govukBackLink({
   text: "Back",
-  href: "consent.html"
+  href: "appeal-details.html"
 }) }}
 {% endblock %}
 
@@ -14,7 +14,7 @@
 
  <form method="post">
       <span class="govuk-caption-xl">
-        Appeal {{ data['appealCode'] or '1345264' }} - change access
+        Appeal {{ data['appealCode'] or '1345264' }} - Change access
       </span>
 
       {{ govukRadios({
@@ -29,11 +29,11 @@
         items: [
           {
             value: "The appellant",
-            text: "The appellant"
+            text: "[[name of appellant]]"
           },
           {
             value: "The agent",
-            text: "An agent"
+            text: "Someone else"
           }
         ]
       }) }}
