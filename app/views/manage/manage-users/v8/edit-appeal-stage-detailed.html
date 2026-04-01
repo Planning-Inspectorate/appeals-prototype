@@ -1,0 +1,187 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Email notifications' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">Select appeal stages for {{ data['new-user-email'] }} to receive email notifications</h1>
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<form method="post" action="appeal-stage-detailed">
+
+  {% set selectedUser = null %}
+  {% set selectedUserId = data['manage-user-id'] or data['edit-user-id'] or data['id'] %}
+  {% if selectedUserId and data['users'] %}
+    {% for user in data['users'] %}
+      {% if user and user.id == selectedUserId %}
+        {% set selectedUser = user %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% set selectedStages = (selectedUser.appealStages if selectedUser and selectedUser.appealStages else []) %}
+
+  <h2 class="govuk-heading-m">Select written representation stages</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        text: "Written representations",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'New appeal',
+        value: 'Written representations - New appeal',
+        checked: selectedStages.indexOf('Written representations - New appeal') > -1
+      },
+      {
+        html: 'Questionnaire due',
+        value: 'Written representations - Questionnaire due',
+        checked: selectedStages.indexOf('Written representations - Questionnaire due') > -1
+      },
+      {
+        html: 'Questionnaire valid, statement due',
+        value: 'Written representations - Questionnaire valid, statement due',
+        checked: selectedStages.indexOf('Written representations - Questionnaire valid, statement due') > -1
+      },
+      {
+        html: 'LPA statement done',
+        value: 'Written representations - LPA statement done',
+        checked: selectedStages.indexOf('Written representations - LPA statement done') > -1
+      },
+      {
+        html: 'All statements and comments done / final comments due',
+        value: 'Written representations - All statements and comments done / final comments due',
+        checked: selectedStages.indexOf('Written representations - All statements and comments done / final comments due') > -1
+      },
+      {
+        html: 'LPA final comments done',
+        value: 'Written representations - LPA final comments done',
+        checked: selectedStages.indexOf('Written representations - LPA final comments done') > -1
+      },
+      {
+        html: 'All final comments done',
+        value: 'Written representations - All final comments done',
+        checked: selectedStages.indexOf('Written representations - All final comments done') > -1
+      },
+      {
+        html: 'Appeal decided',
+        value: 'Written representations - Appeal decided',
+        checked: selectedStages.indexOf('Written representations - Appeal decided') > -1
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Select hearing stages</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        text: "Select hearing stages",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'New appeal',
+        value: 'Hearing - New appeal',
+        checked: selectedStages.indexOf('Hearing - New appeal') > -1
+      },
+      {
+        html: 'Event date available',
+        value: 'Hearing - Event date available',
+        checked: selectedStages.indexOf('Hearing - Event date available') > -1
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Select inquiry stages</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        text: "Select inquiry stages",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'New appeal',
+        value: 'Inquiry - New appeal',
+        checked: selectedStages.indexOf('Inquiry - New appeal') > -1
+      },
+      {
+        html: 'Questionnaire due',
+        value: 'Inquiry - Questionnaire due',
+        checked: selectedStages.indexOf('Inquiry - Questionnaire due') > -1
+      },
+      {
+        html: 'Questionnaire valid, statement due',
+        value: 'Inquiry - Questionnaire valid, statement due',
+        checked: selectedStages.indexOf('Inquiry - Questionnaire valid, statement due') > -1
+      },
+      {
+        html: 'LPA statement done',
+        value: 'Inquiry - LPA statement done',
+        checked: selectedStages.indexOf('Inquiry - LPA statement done') > -1
+      },
+      {
+        html: 'Proof of evidence due',
+        value: 'Inquiry - Proof of evidence due',
+        checked: selectedStages.indexOf('Inquiry - Proof of evidence due') > -1
+      },
+      {
+        html: 'LPA proof of evidence complete',
+        value: 'Inquiry - LPA proof of evidence complete',
+        checked: selectedStages.indexOf('Inquiry - LPA proof of evidence complete') > -1
+      },
+      {
+        html: 'Witness timings due',
+        value: 'Inquiry - Witness timings due',
+        checked: selectedStages.indexOf('Inquiry - Witness timings due') > -1
+      },
+      {
+        html: 'LPA witness timings complete',
+        value: 'Inquiry - LPA witness timings complete',
+        checked: selectedStages.indexOf('Inquiry - LPA witness timings complete') > -1
+      },
+      {
+        html: 'All witness timings complete',
+        value: 'Inquiry - All witness timings complete',
+        checked: selectedStages.indexOf('Inquiry - All witness timings complete') > -1
+      },
+      {
+        html: 'Appeal decided',
+        value: 'Inquiry - Appeal decided',
+        checked: selectedStages.indexOf('Inquiry - Appeal decided') > -1
+      }
+    ]
+  }) }}
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      {% endblock %}
+
+</form>
+
+{% endblock %}

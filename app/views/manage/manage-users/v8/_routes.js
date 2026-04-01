@@ -1,6 +1,42 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+//permanent user who can't be deleted or have their email address changed
+
+const permanentUserId = 'permanent-user'
+
+const getPermanentUser = (req) => {
+  if (!req.session.data['permanent-user']) {
+    req.session.data['permanent-user'] = {
+      id: permanentUserId,
+      email: 'appeals@cambridgeshirepeterborough-ca.gov.uk',
+      appealTypes: ['S78', 'Householder', 'LDC'],
+      appealStages: ['All appeal stages'],
+      emailNotifications: 'Particular appeal types'
+    }
+  }
+
+  if (!req.session.data['permanent-user'].id) {
+    req.session.data['permanent-user'].id = permanentUserId
+  }
+
+  return req.session.data['permanent-user']
+}
+
+const getUserById = (req, userId) => {
+  if (!userId) {
+    return null
+  }
+
+  if (userId === permanentUserId) {
+    return getPermanentUser(req)
+  }
+
+  return req.session.data['users'].find((entry) => entry.id === userId) || null
+}
+
+// Creating IDs for users
+
 const generateUserId = (existingIds) => {
   let newId = null
 
@@ -17,7 +53,18 @@ const persistUsers = (req) => {
     : []
 }
 
-const normalizeUsers = (req) => {
+// Fix issue with the value "_unchecked" displaying
+const sanitiseSelections = (values) => {
+  const list = Array.isArray(values)
+    ? values
+    : (values ? [values] : [])
+
+  return list.filter((value) => value && value !== '_unchecked')
+}
+
+const normaliseUsers = (req) => {
+  getPermanentUser(req)
+
   if (!Array.isArray(req.session.data['users'])) {
     req.session.data['users'] = []
   }
@@ -29,6 +76,9 @@ const normalizeUsers = (req) => {
     .filter(Boolean))
 
   req.session.data['users'].forEach((user) => {
+    user.appealTypes = sanitiseSelections(user.appealTypes || user.appeal_types)
+    user.appealStages = sanitiseSelections(user.appealStages || user.appeal_stages)
+
     if (!user.id) {
       user.id = generateUserId(existingIds)
       existingIds.add(user.id)
@@ -36,26 +86,15 @@ const normalizeUsers = (req) => {
   })
 }
 
-const setReturnToIndexFromManageUser = (req) => {
-  if (req.query && req.query.from === 'manage-user') {
-    req.session.data['return-from-manage-user'] = true
-  }
+// Banner message for updating users
 
-  if (req.query && req.query.id !== undefined) {
-    req.session.data['manage-user-id'] = req.query.id
-    req.session.data['edit-user-id'] = req.query.id
-  }
-}
-
-const finalizeManageUserUpdate = (req) => {
+const finaliseManageUserUpdate = (req) => {
   if (!req.session.data['return-from-manage-user']) {
     return
   }
 
   const userId = req.session.data['manage-user-id']
-  const user = userId
-    ? req.session.data['users'].find((entry) => entry.id === userId)
-    : null
+  const user = getUserById(req, userId)
 
   if (!req.session.data['updated-email'] && user) {
     req.session.data['updated-email'] = user.email
@@ -70,10 +109,10 @@ router.get('*', function (req, res, next) {
   next()
 })
 
-// ===== INDEX & LISTING ROUTES =====
+// Displaying banners on the index page and making sure that the data displayed for the users is correct
 
 router.get('/', function (req, res, next) {
-  normalizeUsers(req)
+  normaliseUsers(req)
   let path = req.baseUrl.replace(/^\//g, '') + '/index'
 
   if (req.session.data['action'] == 'added') {
@@ -93,15 +132,14 @@ router.get('/', function (req, res, next) {
   }
 })
 
-// ===== USER REMOVAL ROUTES =====
+// remove user routes
 
 router.get('/remove-user', function (req, res) {
-  normalizeUsers(req)
-  setReturnToIndexFromManageUser(req)
+  normaliseUsers(req)
   if (req.query.id !== undefined) {
     req.session.data['id'] = req.query.id
   }
-  const user = req.session.data['users'].find((entry) => entry.id === req.session.data['id'])
+  const user = getUserById(req, req.session.data['id'])
   if (user) {
     req.session.data['remove-email'] = user.email
   }
@@ -109,8 +147,13 @@ router.get('/remove-user', function (req, res) {
 })
 
 router.post('/remove-user', function (req, res) {
-  normalizeUsers(req)
+  normaliseUsers(req)
   const userId = req.session.data['id']
+
+  if (userId === permanentUserId) {
+    return res.redirect('./')
+  }
+
   const users = req.session.data['users']
 
   if (users && userId) {
@@ -122,16 +165,15 @@ router.post('/remove-user', function (req, res) {
   }
 
   req.session.data['action'] = 'removed'
-  finalizeManageUserUpdate(req)
+  finaliseManageUserUpdate(req)
 
   res.redirect('./')
 })
 
-// ===== USER EDIT ROUTES =====
+// edit user routes
 
 router.get('/edit-user', function (req, res) {
-  normalizeUsers(req)
-  setReturnToIndexFromManageUser(req)
+  normaliseUsers(req)
   req.session.data['id'] = null
   req.session.data['edit-email'] = null
   req.session.data['edit-user-prefix'] = ''
@@ -141,8 +183,7 @@ router.get('/edit-user', function (req, res) {
     req.session.data['id'] = req.query.id
     req.session.data['edit-user-id'] = req.query.id
   }
-  const users = req.session.data['users']
-  const user = users.find((entry) => entry.id === req.session.data['id'])
+  const user = getUserById(req, req.session.data['id'])
   const editEmail = req.query['edit-email'] || (user ? user.email : null)
 
   req.session.data['email-notifications'] = null
@@ -154,7 +195,7 @@ router.get('/edit-user', function (req, res) {
       req.session.data['planning-type'] = []
     } else if (user.appealTypes.length > 0) {
       req.session.data['email-notifications'] = 'Particular appeal types'
-      req.session.data['planning-type'] = user.appealTypes
+      req.session.data['planning-type'] = sanitiseSelections(user.appealTypes)
     } else {
       req.session.data['email-notifications'] = 'no-email-notifications'
       req.session.data['planning-type'] = []
@@ -171,66 +212,81 @@ router.get('/edit-user', function (req, res) {
 })
 
 router.post('/edit-user', function (req, res) {
-  normalizeUsers(req)
+  normaliseUsers(req)
   const editUserId = req.body['edit-user-id'] || req.session.data['edit-user-id'] || req.session.data['id']
-  const emailPrefix = req.session.data['domain-prefix'] || 'example'
-  const emailDomain = req.session.data['sort'] || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'
-  const newEmail = `${emailPrefix}${emailDomain}`
 
-  if (editUserId) {
+  if (editUserId === permanentUserId) {
+    req.session.data['manage-user-id'] = editUserId
+    req.session.data['action'] = 'updated'
+    req.session.data['updated-email'] = getPermanentUser(req).email
+    delete req.session.data['edit-user-id']
+    delete req.session.data['id']
+    return res.redirect(`manage-user?id=${editUserId}`)
+  }
+
+  const emailPrefix = req.session.data['add-user-email']
+  
+  if (emailPrefix) {
+    const emailDomain = '@cambridgeshirepeterborough-ca.gov.uk'
     const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
     if (userIndex >= 0) {
-      req.session.data['users'][userIndex].email = newEmail
+      req.session.data['users'][userIndex].email = `${emailPrefix}${emailDomain}`
       persistUsers(req)
       req.session.data['action'] = 'updated'
-      req.session.data['updated-email'] = newEmail
+      req.session.data['updated-email'] = req.session.data['users'][userIndex].email
     }
   }
 
+  req.session.data['manage-user-id'] = editUserId
   delete req.session.data['edit-user-id']
   delete req.session.data['id']
+  delete req.session.data['add-user-email']
 
-  return res.redirect('./')
+  return res.redirect(`manage-user?id=${editUserId}`)
 })
 
-// ===== MANAGE USER SUMMARY ROUTES =====
+// manage user routes
 
 router.get('/manage-user', function (req, res) {
-  normalizeUsers(req)
+  normaliseUsers(req)
   if (req.query.id !== undefined) {
     req.session.data['manage-user-id'] = req.query.id
   }
 
   const userId = req.session.data['manage-user-id']
-  const user = req.session.data['users'].find((entry) => entry.id === userId)
+  const user = getUserById(req, userId)
   req.session.data['manage-user'] = user || null
 
   res.render(req.baseUrl.replace(/^\//g, '') + '/manage-user')
 })
 
-// ===== ADD USER ROUTES =====
+// add user routes
 
 router.get('/add-user', function (req, res) {
-  normalizeUsers(req)
+  normaliseUsers(req)
   delete req.session.data['manage-user-id']
   delete req.session.data['edit-user-id']
+  delete req.session.data['is-add-user-flow']
   delete req.session.data['return-from-manage-user']
   delete req.session.data['id']
   delete req.session.data['appealReferences']
   delete req.session.data['appealReference']
   delete req.session.data['from-email-notifications']
+  delete req.session.data['email-notifications']
+  delete req.session.data['planning-type']
+  delete req.session.data['new-user-email']
+  delete req.session.data['domain-prefix']
+  delete req.session.data['sort']
   res.render(req.baseUrl.replace(/^\//g, '') + '/add-user')
 })
 
-// ===== EMAIL NOTIFICATION ROUTES =====
+// email notification routes (appeal type)
 
 router.get('/email-notifications', function (req, res) {
-  normalizeUsers(req)
-  setReturnToIndexFromManageUser(req)
+  normaliseUsers(req)
 
   const editUserId = req.session.data['edit-user-id']
-  const users = req.session.data['users']
-  const user = editUserId ? users.find((entry) => entry.id === editUserId) : null
+  const user = getUserById(req, editUserId)
 
   if (user && Array.isArray(user.appealTypes)) {
     if (user.appealTypes.includes('All appeal types')) {
@@ -248,18 +304,29 @@ router.get('/email-notifications', function (req, res) {
   res.render(req.baseUrl.replace(/^\//g, '') + '/email-notifications')
 })
 
-// ===== DETAILED EMAIL NOTIFICATION ROUTES =====
+//routes for the edit page - they will have come from and to manage user from here
+
+router.post('/edit-email-notifications', function (req, res) {
+  const userId = req.session.data['manage-user-id'] || req.session.data['edit-user-id']
+  if (req.session.data['email-notifications'] === 'Particular appeal types') {
+    return res.redirect('edit-detailed-email-notifications')
+  } else {
+    return res.redirect(`manage-user?id=${userId}`)
+  }
+})
+
+
+
+//detailed email notification routes (appeal type)
 
 router.get('/edit-detailed-email-notifications', function (req, res) {
-  normalizeUsers(req)
-  setReturnToIndexFromManageUser(req)
+  normaliseUsers(req)
 
   const editUserId = req.session.data['edit-user-id']
-  const users = req.session.data['users']
-  const user = editUserId ? users.find((entry) => entry.id === editUserId) : null
+  const user = getUserById(req, editUserId)
 
   if (user && Array.isArray(user.appealTypes)) {
-    req.session.data['planning-type'] = user.appealTypes
+    req.session.data['planning-type'] = sanitiseSelections(user.appealTypes)
   } else {
     req.session.data['planning-type'] = []
   }
@@ -267,51 +334,68 @@ router.get('/edit-detailed-email-notifications', function (req, res) {
   res.render(req.baseUrl.replace(/^\//g, '') + '/edit-detailed-email-notifications')
 })
 
-// ===== APPEAL SELECTION ROUTES =====
+router.get('/detailed-email-notifications', function (req, res) {
+  normaliseUsers(req)
 
-router.get('/select-appeals', function (req, res) {
-  normalizeUsers(req)
-
-  const fromManageUser = req.query && req.query.from === 'manage-user'
-
-  if (fromManageUser) {
-    req.session.data['return-from-manage-user'] = true
-  } else {
-    delete req.session.data['return-from-manage-user']
+  if (!req.session.data['planning-type']) {
+    req.session.data['planning-type'] = []
   }
 
-  if (req.query && req.query.id !== undefined) {
-    req.session.data['manage-user-id'] = req.query.id
-    req.session.data['edit-user-id'] = req.query.id
-  } else if (!fromManageUser) {
-    delete req.session.data['manage-user-id']
-  }
-
-  res.render(req.baseUrl.replace(/^\//g, '') + '/select-appeals')
+  res.render(req.baseUrl.replace(/^\//g, '') + '/detailed-email-notifications')
 })
 
-// ===== APPEAL STAGE ROUTES =====
+
+// appeal stage routes
 
 router.post('/appeal-stage', function (req, res) {
   if (req.session.data['appeal-stage'] == 'particular-appeal-stages') {
-    res.redirect('appeal-stage-detailed')
-  } else {
-    res.redirect('index')
+    return res.redirect('appeal-stage-detailed')
   }
+
+  normaliseUsers(req)
+  const appealStage = req.session.data['appeal-stage']
+  const appealStages = appealStage === 'all-appeal-stages' ? ['All appeal stages'] : []
+
+  const userId = req.session.data['edit-user-id'] || req.session.data['manage-user-id']
+  if (userId) {
+    if (userId === permanentUserId) {
+      getPermanentUser(req).appealStages = appealStages
+    } else {
+      const userIndex = req.session.data['users'].findIndex((entry) => entry.id === userId)
+      if (userIndex >= 0) {
+        req.session.data['users'][userIndex].appealStages = appealStages
+        persistUsers(req)
+      }
+    }
+  }
+
+  req.session.data['action'] = userId ? 'added' : undefined
+  delete req.session.data['is-add-user-flow']
+  delete req.session.data['edit-user-id']
+  const redirectUserId = userId
+  delete req.session.data['manage-user-id']
+  return res.redirect(`manage-user?id=${redirectUserId}`)
 })
 
-// ===== DETAILED APPEAL STAGE ROUTES =====
+router.post('/edit-appeal-stage', function (req, res) {
+  if (req.session.data['appeal-stage'] == 'particular-appeal-stages') {
+    return res.redirect('edit-appeal-stage-detailed')
+  }
+
+  const userId = req.session.data['manage-user-id'] || req.session.data['edit-user-id']
+  return res.redirect(`manage-user?id=${userId}`)
+})
+
+//detailed appeal stage routes
 
 router.get('/appeal-stage-detailed', function (req, res) {
-  normalizeUsers(req)
-  setReturnToIndexFromManageUser(req)
+  normaliseUsers(req)
 
   const editUserId = req.session.data['edit-user-id']
-  const users = req.session.data['users']
-  const user = editUserId ? users.find((entry) => entry.id === editUserId) : null
+  const user = getUserById(req, editUserId)
 
   if (user && Array.isArray(user.appealStages)) {
-    req.session.data['appeal-stage-detailed'] = user.appealStages
+    req.session.data['appeal-stage-detailed'] = sanitiseSelections(user.appealStages)
   } else {
     req.session.data['appeal-stage-detailed'] = []
   }
@@ -319,19 +403,22 @@ router.get('/appeal-stage-detailed', function (req, res) {
   res.render(req.baseUrl.replace(/^\//g, '') + '/appeal-stage-detailed')
 })
 
-// ===== POST HANDLERS: EMAIL NOTIFICATIONS =====
+// storing data from email-notifications and routing to detailed or appeal stage
 
 router.post('/email-notifications', function (req, res) {
-  normalizeUsers(req)
-  const hasEmailInput = req.body && (req.body['domain-prefix'] || req.body['sort'])
+  normaliseUsers(req)
+  const hasEmailInput = req.body && (req.body['domain-prefix'] || req.body['sort'] || req.body['add-user-email'])
 
   if (hasEmailInput) {
     if (req.body['edit-user-id']) {
       req.session.data['edit-user-id'] = req.body['edit-user-id']
+      req.session.data['is-add-user-flow'] = false
     } else {
       delete req.session.data['edit-user-id']
+      delete req.session.data['manage-user-id']
+      req.session.data['is-add-user-flow'] = true
     }
-    const emailPrefix = (req.body && req.body['domain-prefix']) || req.session.data['domain-prefix'] || 'example'
+    const emailPrefix = (req.body && req.body['domain-prefix']) || (req.body && req.body['add-user-email']) || req.session.data['domain-prefix'] || 'example'
     const emailDomain = (req.body && req.body['sort']) || req.session.data['sort'] || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'
     req.session.data['domain-prefix'] = emailPrefix
     req.session.data['sort'] = emailDomain
@@ -350,26 +437,33 @@ router.post('/email-notifications', function (req, res) {
     return res.redirect('email-notifications')
   }
 
-  if (notificationChoice === 'Particular appeal types') {
-    return res.redirect(req.session.data['return-from-manage-user'] ? 'edit-detailed-email-notifications' : 'detailed-email-notifications')
-  }
-
+  const editUserId = req.session.data['is-add-user-flow'] ? null : req.session.data['edit-user-id']
+  const isManageUserFlow = Boolean(req.session.data['return-from-manage-user'])
   const combinedEmail = req.session.data['new-user-email']
   const newEmail = combinedEmail || `${req.session.data['domain-prefix'] || (req.body && req.body['domain-prefix']) || 'example'}${req.session.data['sort'] || (req.body && req.body['sort']) || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'}`
-
   const appealTypes = notificationChoice === 'all-appeals' ? ['All appeal types'] : []
 
-  const editUserId = req.session.data['edit-user-id']
-  let newUserId = null
+  if (notificationChoice === 'Particular appeal types') {
+    return res.redirect(isManageUserFlow ? 'edit-detailed-email-notifications' : 'detailed-email-notifications')
+  }
+
   if (editUserId) {
-    const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
-    if (userIndex >= 0) {
-      req.session.data['users'][userIndex].email = newEmail
-      req.session.data['users'][userIndex].appealTypes = appealTypes
-      req.session.data['users'][userIndex].emailNotifications = notificationChoice
-      persistUsers(req)
+    if (editUserId === permanentUserId) {
+      const permanentUser = getPermanentUser(req)
+      permanentUser.appealTypes = appealTypes
+      permanentUser.emailNotifications = notificationChoice
       req.session.data['action'] = 'updated'
-      req.session.data['updated-email'] = newEmail
+      req.session.data['updated-email'] = permanentUser.email
+    } else {
+      const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
+      if (userIndex >= 0) {
+        req.session.data['users'][userIndex].email = newEmail
+        req.session.data['users'][userIndex].appealTypes = appealTypes
+        req.session.data['users'][userIndex].emailNotifications = notificationChoice
+        persistUsers(req)
+        req.session.data['action'] = 'updated'
+        req.session.data['updated-email'] = newEmail
+      }
     }
   } else {
     const newUser = Object.assign({
@@ -377,62 +471,61 @@ router.post('/email-notifications', function (req, res) {
       appealTypes,
       id: generateUserId(new Set(req.session.data['users'].map((entry) => entry.id))),
       emailNotifications: notificationChoice,
-      appealReferences: req.session.data['appealReferences'] || []
+      appealReferences: req.session.data['appealReferences'] || [],
+      appealStages: []
     })
     req.session.data['users'].unshift(newUser)
     persistUsers(req)
-    newUserId = newUser.id
+    req.session.data['edit-user-id'] = newUser.id
+    req.session.data['manage-user-id'] = newUser.id
   }
 
   if (req.session.data['action'] !== 'updated') {
     req.session.data['action'] = 'added'
   }
-  finalizeManageUserUpdate(req)
+  finaliseManageUserUpdate(req)
   delete req.session.data['email-notifications']
   delete req.session.data['planning-type']
-  delete req.session.data['edit-user-id']
 
-  if (!editUserId && !req.session.data['return-from-manage-user']) {
-    req.session.data['from-email-notifications'] = true
+  if (isManageUserFlow) {
+    const userId = editUserId || req.session.data['manage-user-id']
+    return res.redirect(`manage-user?id=${userId}`)
   }
 
-  if (!editUserId && newUserId) {
-    req.session.data['from-email-notifications'] = true
-    return res.redirect(`select-appeals?id=${newUserId}`)
-  }
-
-  if (editUserId) {
-    return res.redirect(`select-appeals?id=${editUserId}`)
-  }
-
-  return res.redirect('select-appeals')
+  return res.redirect('appeal-stage')
 })
 
-// ===== POST HANDLERS: DETAILED EMAIL NOTIFICATIONS =====
+// storing data from detailed email notifications 
 
 router.post('/detailed-email-notifications', function (req, res) {
-  normalizeUsers(req)
+  normaliseUsers(req)
   const combinedEmail = req.session.data['new-user-email']
   const newEmail = combinedEmail || `${req.session.data['domain-prefix'] || (req.body && req.body['domain-prefix']) || 'example'}${req.session.data['sort'] || (req.body && req.body['sort']) || req.session.data['lpa-email'] || '@cambridgeshirepeterborough-ca.gov.uk'}`
   const selectedTypes = req.session.data['planning-type'] || (req.body && req.body['planning-type'])
   if (selectedTypes) {
-    req.session.data['planning-type'] = selectedTypes
+    req.session.data['planning-type'] = sanitiseSelections(selectedTypes)
   }
-  const appealTypes = Array.isArray(selectedTypes)
-    ? selectedTypes
-    : (selectedTypes ? [selectedTypes] : [])
+  const appealTypes = sanitiseSelections(selectedTypes)
 
-  const editUserId = req.session.data['edit-user-id']
+  const editUserId = req.session.data['is-add-user-flow'] ? null : req.session.data['edit-user-id']
   let newUserId = null
   if (editUserId) {
-    const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
-    if (userIndex >= 0) {
-      req.session.data['users'][userIndex].email = newEmail
-      req.session.data['users'][userIndex].appealTypes = appealTypes
-      req.session.data['users'][userIndex].emailNotifications = 'Particular appeal types'
-      persistUsers(req)
+    if (editUserId === permanentUserId) {
+      const permanentUser = getPermanentUser(req)
+      permanentUser.appealTypes = appealTypes
+      permanentUser.emailNotifications = 'Particular appeal types'
       req.session.data['action'] = 'updated'
-      req.session.data['updated-email'] = newEmail
+      req.session.data['updated-email'] = permanentUser.email
+    } else {
+      const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
+      if (userIndex >= 0) {
+        req.session.data['users'][userIndex].email = newEmail
+        req.session.data['users'][userIndex].appealTypes = appealTypes
+        req.session.data['users'][userIndex].emailNotifications = 'Particular appeal types'
+        persistUsers(req)
+        req.session.data['action'] = 'updated'
+        req.session.data['updated-email'] = newEmail
+      }
     }
   } else {
     const newUser = Object.assign({
@@ -450,79 +543,90 @@ router.post('/detailed-email-notifications', function (req, res) {
   if (req.session.data['action'] !== 'updated') {
     req.session.data['action'] = 'added'
   }
-  finalizeManageUserUpdate(req)
+  finaliseManageUserUpdate(req)
   delete req.session.data['email-notifications']
   delete req.session.data['planning-type']
-  delete req.session.data['edit-user-id']
 
   if (!editUserId && !req.session.data['return-from-manage-user']) {
     req.session.data['from-email-notifications'] = true
     if (newUserId) {
-      return res.redirect(`select-appeals?id=${newUserId}`)
+      req.session.data['edit-user-id'] = newUserId
+      req.session.data['manage-user-id'] = newUserId
     }
-    return res.redirect('select-appeals')
   }
 
-  if (editUserId) {
-    return res.redirect(`select-appeals?id=${editUserId}`)
-  }
-
-  return res.redirect('./')
+  return res.redirect('appeal-stage')
 })
 
-// ===== POST HANDLERS: EDIT DETAILED EMAIL NOTIFICATIONS =====
+// storing data from edit detailed email notifications and redirecting to the manage user page
 
 router.post('/edit-detailed-email-notifications', function (req, res) {
-  normalizeUsers(req)
+  normaliseUsers(req)
   const selectedTypes = req.session.data['planning-type'] || (req.body && req.body['planning-type'])
   if (selectedTypes) {
-    req.session.data['planning-type'] = selectedTypes
+    req.session.data['planning-type'] = sanitiseSelections(selectedTypes)
   }
-  const appealTypes = Array.isArray(selectedTypes)
-    ? selectedTypes
-    : (selectedTypes ? [selectedTypes] : [])
+  const appealTypes = sanitiseSelections(selectedTypes)
 
   const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id']
   if (editUserId) {
-    const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
-    if (userIndex >= 0) {
-      req.session.data['users'][userIndex].appealTypes = appealTypes
-      req.session.data['users'][userIndex].emailNotifications = 'Particular appeal types'
-      persistUsers(req)
+    if (editUserId === permanentUserId) {
+      const permanentUser = getPermanentUser(req)
+      permanentUser.appealTypes = appealTypes
+      permanentUser.emailNotifications = 'Particular appeal types'
       req.session.data['action'] = 'updated'
-      req.session.data['updated-email'] = req.session.data['users'][userIndex].email
+      req.session.data['updated-email'] = permanentUser.email
+    } else {
+      const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
+      if (userIndex >= 0) {
+        req.session.data['users'][userIndex].appealTypes = appealTypes
+        req.session.data['users'][userIndex].emailNotifications = 'Particular appeal types'
+        persistUsers(req)
+        req.session.data['action'] = 'updated'
+        req.session.data['updated-email'] = req.session.data['users'][userIndex].email
+      }
     }
   }
 
-  finalizeManageUserUpdate(req)
-  return res.redirect('./')
+  finaliseManageUserUpdate(req)
+  const redirectId = editUserId || req.session.data['manage-user-id']
+  return res.redirect(`manage-user?id=${redirectId}`)
 })
 
-// ===== POST HANDLERS: APPEAL STAGE DETAILED =====
+//storing data from detailed appeal stage 
 
 router.post('/appeal-stage-detailed', function (req, res) {
-  normalizeUsers(req)
+  normaliseUsers(req)
 
   const selectedStages = req.session.data['appeal-stage-detailed'] || (req.body && req.body['appeal-stage-detailed'])
   if (selectedStages) {
-    req.session.data['appeal-stage-detailed'] = selectedStages
+    req.session.data['appeal-stage-detailed'] = sanitiseSelections(selectedStages)
   }
-  const appealStages = Array.isArray(selectedStages)
-    ? selectedStages
-    : (selectedStages ? [selectedStages] : [])
+  const appealStages = sanitiseSelections(selectedStages)
 
   const editUserId = req.session.data['edit-user-id'] || req.session.data['manage-user-id']
   if (editUserId) {
-    const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
-    if (userIndex >= 0) {
-      req.session.data['users'][userIndex].appealStages = appealStages
-      persistUsers(req)
+    if (editUserId === permanentUserId) {
+      const permanentUser = getPermanentUser(req)
+      permanentUser.appealStages = appealStages
       req.session.data['action'] = 'updated'
-      req.session.data['updated-email'] = req.session.data['users'][userIndex].email
+      req.session.data['updated-email'] = permanentUser.email
+    } else {
+      const userIndex = req.session.data['users'].findIndex((entry) => entry.id === editUserId)
+      if (userIndex >= 0) {
+        req.session.data['users'][userIndex].appealStages = appealStages
+        persistUsers(req)
+        req.session.data['action'] = 'updated'
+        req.session.data['updated-email'] = req.session.data['users'][userIndex].email
+      }
     }
   }
 
-  finalizeManageUserUpdate(req)
-  return res.redirect('./')
+  finaliseManageUserUpdate(req)
+  delete req.session.data['is-add-user-flow']
+  delete req.session.data['edit-user-id']
+  const redirectUserId = editUserId
+  delete req.session.data['manage-user-id']
+  return res.redirect(`manage-user?id=${redirectUserId}`)
 })
 module.exports = router

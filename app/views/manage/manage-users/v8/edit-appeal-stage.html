@@ -1,0 +1,73 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Email notifications' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<form method="post" action="edit-appeal-stage">
+
+  {% set selectedUser = null %}
+  {% set selectedUserId = data['manage-user-id'] or data['edit-user-id'] or data['id'] %}
+  {% if selectedUserId and data['users'] %}
+    {% for user in data['users'] %}
+      {% if user and user.id == selectedUserId %}
+        {% set selectedUser = user %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "appeal-stage",
+   fieldset: {
+    legend: {
+      text: "Select appeal stages for " ~ (data["new-user-email"] or "user") ~ " to receive email notifications",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+   hint: {
+    text: "This will determine which appeal stages " ~ (data["new-user-email"] or "user") ~ " receives emails for"
+  },
+ items: [
+    {
+      value: "all-appeal-stages",
+      text: "All appeal stages",
+      checked: data['appeal-stage'] == 'all-appeal-stages'
+    },
+    {
+      value: "particular-appeal-stages",
+       text: "Particular appeal stages",
+      checked: data['appeal-stage'] == 'particular-appeal-stages'
+    },
+    {
+      value: "None",
+      text: "None",
+      checked: data['appeal-stage'] == 'None'
+    }
+  ]
+}) }}
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      {% endblock %}
+
+{% endblock %}

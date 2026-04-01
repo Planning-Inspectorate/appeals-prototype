@@ -22,15 +22,15 @@ router.use('*', (req, res, next) => {
 // Data items for status labels for sections
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-const SECTION_STATUS = {
-  NOT_STARTED: 'Not started',
-  IN_PROGRESS: 'In progress',
-  COMPLETED: 'Completed'
+const sectionStatus = {
+  notStarted: 'Not started',
+  inProgress: 'In progress',
+  completed: 'Completed'
 }
 
 function setSectionInProgress(sessionData, key) {
-  if (sessionData[key] !== SECTION_STATUS.COMPLETED) {
-    sessionData[key] = SECTION_STATUS.IN_PROGRESS
+  if (sessionData[key] !== sectionStatus.completed) {
+    sessionData[key] = sectionStatus.inProgress
   }
 }
 
@@ -43,19 +43,19 @@ function setSectionInProgress(sessionData, key) {
 router.get('/task-list', function(req, res, next){
   const data = req.session.data || {}
 
-  const constraintsStatus = data['constraints-status'] || SECTION_STATUS.NOT_STARTED
-  const poReportStatus = data['po-report-status'] || SECTION_STATUS.NOT_STARTED
-  const siteAccessStatus = data['site-access-status'] || SECTION_STATUS.NOT_STARTED
-  const appealProcessStatus = data['appeal-process-status'] || SECTION_STATUS.NOT_STARTED
+  const constraintsStatus = data['constraints-status'] || sectionStatus.notStarted
+  const poReportStatus = data['po-report-status'] || sectionStatus.notStarted
+  const siteAccessStatus = data['site-access-status'] || sectionStatus.notStarted
+  const appealProcessStatus = data['appeal-process-status'] || sectionStatus.notStarted
 
-  res.locals.constraintsComplete = constraintsStatus === SECTION_STATUS.COMPLETED
-  res.locals.poReportComplete = poReportStatus === SECTION_STATUS.COMPLETED
-  res.locals.siteAccessComplete = siteAccessStatus === SECTION_STATUS.COMPLETED
-  res.locals.appealProcessComplete = appealProcessStatus === SECTION_STATUS.COMPLETED
-  res.locals.constraintsInProgress = constraintsStatus === SECTION_STATUS.IN_PROGRESS
-  res.locals.poReportInProgress = poReportStatus === SECTION_STATUS.IN_PROGRESS
-  res.locals.siteAccessInProgress = siteAccessStatus === SECTION_STATUS.IN_PROGRESS
-  res.locals.appealProcessInProgress = appealProcessStatus === SECTION_STATUS.IN_PROGRESS
+  res.locals.constraintsComplete = constraintsStatus === sectionStatus.completed
+  res.locals.poReportComplete = poReportStatus === sectionStatus.completed
+  res.locals.siteAccessComplete = siteAccessStatus === sectionStatus.completed
+  res.locals.appealProcessComplete = appealProcessStatus === sectionStatus.completed
+  res.locals.constraintsInProgress = constraintsStatus === sectionStatus.inProgress
+  res.locals.poReportInProgress = poReportStatus === sectionStatus.inProgress
+  res.locals.siteAccessInProgress = siteAccessStatus === sectionStatus.inProgress
+  res.locals.appealProcessInProgress = appealProcessStatus === sectionStatus.inProgress
 
   // Calculate count
   let count = 0
@@ -143,7 +143,7 @@ router.post('/upload-related-application', function (req, res) {
 
 //appeal-invalid-check route
 router.post('/appeal-invalid-check', function (req, res) {
-  req.session.data['constraints-status'] = SECTION_STATUS.COMPLETED
+  req.session.data['constraints-status'] = sectionStatus.completed
   setSectionInProgress(req.session.data, 'po-report-status')
   res.redirect('./planning-officer-report')
 })
@@ -202,7 +202,7 @@ router.post('/other-relevant-matters', function (req, res) {
   if (answer == 'Yes') {
     res.redirect('./upload-other-relevant-matters')
   } else {
-    req.session.data['po-report-status'] = SECTION_STATUS.COMPLETED
+    req.session.data['po-report-status'] = sectionStatus.completed
     setSectionInProgress(req.session.data, 'site-access-status')
     res.redirect('./inspector-access-appeal-site')
   }
@@ -210,7 +210,7 @@ router.post('/other-relevant-matters', function (req, res) {
 
 // POST route for upload-other-relevant-matters
 router.post('/upload-other-relevant-matters', function (req, res) {
-  req.session.data['po-report-status'] = SECTION_STATUS.COMPLETED
+  req.session.data['po-report-status'] = sectionStatus.completed
   setSectionInProgress(req.session.data, 'site-access-status')
   res.redirect('./inspector-access-appeal-site')
 })
@@ -256,7 +256,7 @@ router.post('/neighbours', function (req, res) {
 
 // POST route for health-and-safety
 router.post('/health-and-safety', function (req, res) {
-  req.session.data['site-access-status'] = SECTION_STATUS.COMPLETED
+  req.session.data['site-access-status'] = sectionStatus.completed
   setSectionInProgress(req.session.data, 'appeal-process-status')
   res.redirect('./procedure-type')
 })
@@ -303,7 +303,7 @@ router.post('/other-appeals', function (req, res){
   if (answer == 'Yes') {
     res.redirect('./other-appeal-reference')
   } else {
-    req.session.data['appeal-process-status'] = SECTION_STATUS.COMPLETED
+    req.session.data['appeal-process-status'] = sectionStatus.completed
     res.redirect('./task-list')
   }
 })
@@ -331,7 +331,7 @@ router.post('/add-another-appeal', function (req, res) {
   if (answer == 'Yes') {
     res.redirect('./other-appeal-reference')
   } else if (answer == 'No') {
-    req.session.data['appeal-process-status'] = SECTION_STATUS.COMPLETED
+    req.session.data['appeal-process-status'] = sectionStatus.completed
     res.redirect('./task-list')
   }
 })
@@ -343,7 +343,7 @@ router.post('/appeal-reference-number', function (req, res) {
   if (answer == 'Yes') {
     res.redirect('./other-appeal-reference')
   } else if (answer == 'No') {
-    req.session.data['appeal-process-status'] = SECTION_STATUS.COMPLETED
+    req.session.data['appeal-process-status'] = sectionStatus.completed
     res.redirect('./task-list')
   }
 })

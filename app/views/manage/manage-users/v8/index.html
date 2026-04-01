@@ -86,6 +86,63 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
+          {% set permanentUser = data['permanent-user'] or {
+            email: 'appeals@cambridgeshirepeterborough-ca.gov.uk',
+            appealTypes: ['S78', 'Householder', 'LDC'],
+            appealStages: ['All appeal stages']
+          } %}
+
+          {% set permanentAppealTypes = [] %}
+          {% for appealType in (permanentUser.appealTypes or []) %}
+            {% if appealType and appealType != '_unchecked' %}
+              {% set permanentAppealTypes = (permanentAppealTypes.push(appealType), permanentAppealTypes) %}
+            {% endif %}
+          {% endfor %}
+
+          {% set permanentAppealStages = [] %}
+          {% for appealStage in (permanentUser.appealStages or []) %}
+            {% if appealStage and appealStage != '_unchecked' %}
+              {% set permanentAppealStages = (permanentAppealStages.push(appealStage), permanentAppealStages) %}
+            {% endif %}
+          {% endfor %}
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <p class="govuk-body">{{ permanentUser.email }}</p>
+            </td>
+            <td class="govuk-table__cell">
+              {% if permanentAppealTypes.length > 1 %}
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+                  {% for appealType in permanentAppealTypes %}
+                    <li>{{ appealType }}</li>
+                  {% endfor %}
+                </ul>
+              {% elif permanentAppealTypes.length == 1 %}
+                <p class="govuk-body govuk-!-margin-0">{{ permanentAppealTypes[0] }}</p>
+              {% else %}
+                <p class="govuk-body govuk-!-margin-0">None</p>
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">
+              {% if permanentAppealStages.length > 1 %}
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+                  {% for appealStage in permanentAppealStages %}
+                    <li>{{ appealStage }}</li>
+                  {% endfor %}
+                </ul>
+              {% elif permanentAppealStages.length == 1 %}
+                <p class="govuk-body govuk-!-margin-0">{{ permanentAppealStages[0] }}</p>
+              {% else %}
+                <p class="govuk-body govuk-!-margin-0">None</p>
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell app-actions-cell">
+              <a class="govuk-link" href="/manage/manage-users/v8/manage-user?id=permanent-user">
+                Manage<span class="govuk-visually-hidden"> {{ permanentUser.email }}</span>
+              </a>
+            </td>
+          </tr>
+
           {% for user in data['users'] %}
             {% if user != null %}
               {% set appealTypes = user.appealTypes or user.appeal_types or [] %}

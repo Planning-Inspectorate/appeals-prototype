@@ -20,7 +20,7 @@
 </script>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full-width">
 
 	<span class="govuk-caption-l">Manage users</span>
 	<h1 class="govuk-heading-l">User email notifications</h1>
@@ -33,16 +33,30 @@
     {% set appealReferences = user.appealReferences or user.appeal_references or [] %}
     {% set appealStages = user.appealStages or user.appeal_stages or [] %}
 
-    {% if appealTypes.length > 1 %}
+    {% set appealTypesClean = [] %}
+    {% for appealType in appealTypes %}
+      {% if appealType and appealType != '_unchecked' %}
+        {% set appealTypesClean = (appealTypesClean.push(appealType), appealTypesClean) %}
+      {% endif %}
+    {% endfor %}
+
+    {% set appealStagesClean = [] %}
+    {% for appealStage in appealStages %}
+      {% if appealStage and appealStage != '_unchecked' %}
+        {% set appealStagesClean = (appealStagesClean.push(appealStage), appealStagesClean) %}
+      {% endif %}
+    {% endfor %}
+
+    {% if appealTypesClean.length > 1 %}
       {% set appealTypesHtml %}
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
-          {% for appealType in appealTypes %}
+          {% for appealType in appealTypesClean %}
             <li>{{ appealType }}</li>
           {% endfor %}
         </ul>
       {% endset %}
-    {% elif appealTypes.length == 1 %}
-      {% set appealTypesHtml %}<p class="govuk-body govuk-!-margin-0">{{ appealTypes[0] }}</p>{% endset %}
+    {% elif appealTypesClean.length == 1 %}
+      {% set appealTypesHtml %}<p class="govuk-body govuk-!-margin-0">{{ appealTypesClean[0] }}</p>{% endset %}
     {% else %}
       {% set appealTypesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
     {% endif %}
@@ -61,16 +75,16 @@
       {% set appealReferencesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
     {% endif %}
 
-    {% if appealStages.length > 1 %}
+    {% if appealStagesClean.length > 1 %}
       {% set appealStagesHtml %}
         <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
-          {% for appealStage in appealStages %}
+          {% for appealStage in appealStagesClean %}
             <li>{{ appealStage }}</li>
           {% endfor %}
         </ul>
       {% endset %}
-    {% elif appealStages.length == 1 %}
-      {% set appealStagesHtml %}<p class="govuk-body govuk-!-margin-0">{{ appealStages[0] }}</p>{% endset %}
+    {% elif appealStagesClean.length == 1 %}
+      {% set appealStagesHtml %}<p class="govuk-body govuk-!-margin-0">{{ appealStagesClean[0] }}</p>{% endset %}
     {% else %}
       {% set appealStagesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
     {% endif %}
@@ -118,24 +132,7 @@
               visuallyHiddenText: 'user email'
             }
           ]
-        }
-      },
-      {
-        key: {
-          text: 'Appeal subscriptions'
-        },
-        value: {
-          html: appealReferencesHtml if data['manage-user'] else 'None'
-        },
-        actions: {
-          items: [
-            {
-              href: '/manage/manage-users/v8/select-appeals?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
-              text: 'Change',
-              visuallyHiddenText: 'appeal references'
-            }
-          ]
-        }
+        } if data['manage-user'] and user.id != 'permanent-user'
       },
       {
         key: {
@@ -147,7 +144,7 @@
         actions: {
           items: [
             {
-              href: '/manage/manage-users/v8/email-notifications?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
+              href: '/manage/manage-users/v8/edit-email-notifications?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
               text: 'Change',
               visuallyHiddenText: 'appeal types'
             }
@@ -164,7 +161,7 @@
         actions: {
           items: [
             {
-              href: '/manage/manage-users/v8/appeal-stage?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
+              href: '/manage/manage-users/v8/edit-appeal-stage?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
               text: 'Change',
               visuallyHiddenText: 'appeal stages'
             }
@@ -173,7 +170,12 @@
       }
     ]
   }) }}
-	
+
+  {{ govukButton({
+    text: 'Confirm',
+    href: '/manage/manage-users/v8/',
+    classes: 'govuk-button'
+  }) }}
 
   </div>
 </div>
