@@ -28,10 +28,18 @@
 {% endblock %}
 
 {% block buttons %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
   <form method="post" action="remove-user">
+    <div class="govuk-button-group">
     {{ govukButton({
-      html: 'Remove user'
+      text: 'Remove user',
+      classes: "govuk-button--warning"
     }) }}
+
+        <a class="govuk-link" href="#">Cancel</a>
+  </div>
   </form>
 {% endblock %}
 

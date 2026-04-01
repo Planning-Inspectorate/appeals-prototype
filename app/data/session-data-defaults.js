@@ -11,10 +11,6 @@ let data = {
 
 }
 
-
-
-
-
 module.exports = {
   lpas,
   appeals,
@@ -37,15 +33,11 @@ module.exports = {
     '2950621': false,
     '2948632': false,
     '2948596': false
-  },
-  'users': [
-    {
-      'email': 'appeals@cambridgeshirepeterborough-ca.gov.uk',
-      'appealTypes': [
-        'S78',
-        'Householder',
-        'LDC'
-      ]
-    }
-  ]
+  }
 }
+
+
+
+
+
+

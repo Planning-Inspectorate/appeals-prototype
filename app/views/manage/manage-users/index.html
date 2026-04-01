@@ -14,12 +14,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data['action'] == 'updated' or data['updated-email'] %}
-      {{ govukNotificationBanner({
-        html: "<h3 class='govuk-notification-banner__heading'>" ~ (data['updated-email'] or data['new-user-email'] or 'User') ~ " has been updated</h3>",
-        type: 'success'
-      }) }}
-    {% endif %}
+    
 
     <span class="govuk-caption-l">
       Manage LPA appeals
@@ -32,31 +27,39 @@
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--gray govuk-!-margin-left-2',
-        text: 'Design checkpoint'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
+    <p class><a href="https://pins-ds.atlassian.net/browse/A2-6547?assignee=712020%3Ad36fa912-ad66-40d6-be7d-7d66f418d034&selectedIssue=A2-6544">Related ticket</a></p>
+    <p class><a href="https://pins-ds.atlassian.net/browse/A2-6544?atlOrigin=eyJpIjoiMzBiMmM5ZDRhODJiNDYzZTgxNGQzYmIyZjk4YWQ1NTMiLCJwIjoiaiJ9">Related ticket</a></p>
+
     <p class="govuk-!-margin-bottom-2"><strong>What changed in v7</strong></p>
     <ul class="govuk-list govuk-list--bullet">
     <li>Updating user management to allow LPAs to add multiple users and set email subscription preferences per user or email address.</li>
     <li>Removing the ability to subscribe to emails for particular appeals based on research findings.</li>
     <li>Users should receive emails if they comment on them, fill in the LPAQ for them and/or the case matches the subscriptions settings chosen for them in manage users.</li>
     </ul>
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "To prevent the issues with 'select all' relying on Javascript to check/uncheck all boxes, I have removed this option and instead added a 'select all appeal types/stages' radio option on separate pages"
+}) }}
 
     {% set v7ResearchAndFeedback %}
           <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Research summary</h3>
 
-      <p class="govuk-body-hint">Research indicates users need clearer and more relevant notifications, reduced non-essential update volume, and language that is simpler than "subscribe". Findings also suggest notifications should support team handoffs between admin and case officer roles.</p>
+      <p class="govuk-body-hint">Users need clearer and more relevant notifications. They prefer 'receive notifications' to 'subscribe' - although they understood both terms. Shared mailboxes are used. Findings also suggest notifications should support communication between LPA and case officer roles.</p>
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
       <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Related research taken from MiPins and Camerons's user tests with LPAs</h3>
       <ul class="govuk-list govuk-list--bullet">
-        <li>“We received an auto notification of appeal to our admin inbox but it was not clear that it was enforcement (it had no enforcement notice reference on it, merely a planning application reference) so it went to the wrong department. Also, do we have to keep getting a code everytime we want to log onto the portal??”</li>
+        <li>“We received an auto notification of appeal to our admin inbox but it was not clear that it was enforcement (it had no enforcement notice reference on it, merely a planning application reference) so it went to the wrong department.”</li>
         <li>“The number of email updates is obtrusive and focuses on the wrong elements of the process. We don't need constant email updates about when the Council have submitted the questionnaire or the deadline to do so, we do need clear direct correspondence with Case Officers managing the appeal.”</li>
         <li>“Why do we not get notification that interested party comments are available. Without information about who has made representation we will not be able to include anyone who didn't comment previously into further notifications about hearing dates etc.”</li>
         <li>“different people take responsiability at different times e.g. admins are for junior staff nitty gritty would be delt with by a planning officer”</li>
-        <li>“subscribe follow, receive email notifications - I understand all of these subscriptions make me think of magazines but I understood wha thtat means”</li>
-        <li>“Receive notifications is probably the clearest”</li>
+        <li>“subscribe follow, receive email notifications - I understand all of these [terms]. Subscriptions make me think of magazines but I understood what that means”</li>
+        <li>“Receive notifications is probably the clearest [wording]”</li>
         <li>“I would have thought anybody who commented on the initial application would get an email”</li>
         <li>“I think it would go to an admin chap who receives the appeals and then he sends on to relevant case officer, it's a useful way of doing it because if the officer is on leave then he can forward it to the manager”</li>
         <li>“Everyone deals with all different types of applications, more senior people deal with more difficult applications”</li>
@@ -70,7 +73,7 @@
 
     {{ govukButton({
       html: 'View prototype',
-      href: '/manage/manage-users/v7/index.html',
+      href: '/manage/manage-users/v8/index.html',
       isStartButton: true
     }) }}
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -80,12 +83,11 @@
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-         classes: 'govuk-tag--grey govuk-!-margin-left-2',
-        text: 'Superseded'
+         classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
     <p class="govuk-!-margin-bottom-2">Adjusting the flow for sending email notifications (from V5) so that, it is possible to send notifications to multiple users based on appeal type, appeal reference and/or appeal stage.</p>
-
      <p class="govuk-!-margin-bottom-2"><strong>Existing pages</strong></p>
     <ul class="govuk-list govuk-list--bullet">
       <li><a href="/manage/manage-users/v6/add-user" class="govuk-link">User email</a></li>
@@ -115,8 +117,8 @@
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--grey govuk-!-margin-left-2',
-        text: 'Superseded'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
     <p class="govuk-!-margin-bottom-2">Here we've added new functions for LPA users to manage users. Now they can edit user email addresses and set email notifications for users based on appeal type</p>
