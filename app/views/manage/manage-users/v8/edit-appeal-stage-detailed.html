@@ -19,7 +19,7 @@
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-full">
 
-<h1 class="govuk-heading-l">Select appeal stages for {{ data['new-user-email'] or 'example@cambridgeshirepeterborough-ca.gov.uk' }} to receive email notifications</h1>
+<h1 class="govuk-heading-l">Select appeal stage</h1>
 
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
@@ -93,7 +93,7 @@
         checked: selectedStages.indexOf('Hearing or inquiry - Notifications due') > -1
       },
       {
-        html: 'LPA Proof of evidence due',
+        html: 'Proof of evidence due',
         value: 'Hearing or inquiry - LPA Proof of evidence due',
         checked: selectedStages.indexOf('Hearing or inquiry - LPA Proof of evidence due') > -1
       },

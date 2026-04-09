@@ -38,14 +38,12 @@
   name: "appeal-stage",
    fieldset: {
     legend: {
-      text: "Select appeal stages for " ~ (data["new-user-email"] or "user") ~ " to receive email notifications",
+      text: "Appeal stage notification preferences",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
-   hint: {
-    text: "This will determine which appeal stages " ~ (data["new-user-email"] or "user") ~ " receives emails for"
-  },
+  
  items: [
     {
       value: "all-appeal-stages",
@@ -54,7 +52,7 @@
     },
     {
       value: "particular-appeal-stages",
-       text: "Particular appeal stages",
+       text: "Select appeal stages",
       checked: data['appeal-stage'] == 'particular-appeal-stages'
     },
     {
