@@ -1,15 +1,6 @@
 <li>
-  {# Calculate status for Site Access section #}
-  {% set siteAccessRequired = [
-    data['inspector-access-appeal-site'],
-    data['inspector-enter-neighbour-site'],
-    data['neighbours-address-line-1'],
-    data['add-neighbours'],
-    data['health-and-safety']
-  ] %}
-  {% set siteAccessAnswered = siteAccessRequired | reject("equalto", undefined) | reject("equalto", "") | list %}
-  {% set siteAccessComplete = (siteAccessAnswered.length == siteAccessRequired.length and siteAccessRequired.length > 0) %}
-  {% set siteAccessInProgress = (siteAccessAnswered.length > 0 and siteAccessAnswered.length < siteAccessRequired.length) %}
+  {% set siteAccessComplete = siteAccessComplete or false %}
+  {% set siteAccessInProgress = siteAccessInProgress or false %}
 
   <h2 class="app-task-list__section">
     3. Site access
@@ -36,12 +27,12 @@
     head: [],
     rows: [
       [
-        { text: "Inspector access appeal site", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Will the inspector need access to the appellant’s land or property? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['inspector-access-appeal-site'] if data['inspector-access-appeal-site'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="inspector-access-appeal-site" class="govuk-link">Change</a>' if data['inspector-access-appeal-site'] else '<a href="inspector-access-appeal-site" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
       [
-        { text: "Inspector enter neighbour site", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Will the inspector need to enter a neighbour’s land or property? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['inspector-enter-neighbour-site'] if data['inspector-enter-neighbour-site'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="inspector-enter-neighbour-site" class="govuk-link">Change</a>' if data['inspector-enter-neighbour-site'] else '<a href="inspector-enter-neighbour-site" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ],
@@ -49,14 +40,14 @@
         { text: "Neighbours", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['add-neighbours'] if data['add-neighbours'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="neighbours" class="govuk-link">Change</a>' if data['add-neighbours'] else '<a href="neighbours" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
+      ]if data['inspector-enter-neighbour-site'] == 'Yes',
       [
-        { text: "Neighbour address", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Tell us the address of the neighbour’s land or property ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['neighbours-address-line-1'] if data['neighbours-address-line-1'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="neighbours-address" class="govuk-link">Change</a>' if data['neighbours-address-line-1'] else '<a href="neighbours-address" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
-      ],
+      ]if data['inspector-enter-neighbour-site'] == 'Yes',
       [
-        { text: "Health and safety", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
+        { text: " Are there any health and safety issues on the appeal site? ", classes: "govuk-!-font-weight-bold govuk-!-width-one-third" },
         { text: data['health-and-safety'] if data['health-and-safety'] else "Not started", classes: "govuk-!-width-one-half" },
         { html: '<a href="health-and-safety" class="govuk-link">Change</a>' if data['health-and-safety'] else '<a href="health-and-safety" class="govuk-link">Answer</a>', classes: "govuk-!-text-align-right" }
       ]

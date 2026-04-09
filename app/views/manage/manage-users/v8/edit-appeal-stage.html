@@ -20,7 +20,7 @@
 		<div class="govuk-grid-column-full">
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-<form method="post" action="appeal-stage">
+<form method="post" action="edit-appeal-stage">
 
   {% set selectedUser = null %}
   {% set selectedUserId = data['manage-user-id'] or data['edit-user-id'] or data['id'] %}

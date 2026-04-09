@@ -1,0 +1,121 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Email notifications' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l">Select appeal stages for {{ data['new-user-email'] or 'example@cambridgeshirepeterborough-ca.gov.uk' }} to receive email notifications</h1>
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<form method="post" action="appeal-stage-detailed">
+
+  {% set selectedUser = null %}
+  {% set selectedUserId = data['manage-user-id'] or data['edit-user-id'] or data['id'] %}
+  {% if selectedUserId and data['users'] %}
+    {% for user in data['users'] %}
+      {% if user and user.id == selectedUserId %}
+        {% set selectedUser = user %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% set selectedStages = (selectedUser.appealStages if selectedUser and selectedUser.appealStages else []) %}
+<h2 class="govuk-heading-m">Select common appeal stages</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'New appeal started',
+        value: 'New appeal started',
+        checked: selectedStages.indexOf('New appeal started') > -1
+      },
+       {
+        html: 'Questionnaire and notification to statutory parties and interested people due',
+        value: 'Questionnaire due',
+        checked: selectedStages.indexOf('Questionnaire due') > -1
+      },
+      {
+        html: ' Questionnaire valid, statement can be submitted',
+        value: 'Written representations - questionnaire valid',
+        checked: selectedStages.indexOf('Written representations - questionnaire valid') > -1
+      }, {
+        html: 'Statements due',
+        value: 'Statements due',
+        checked: selectedStages.indexOf('Statements due') > -1
+      },
+      {
+        html: 'LPA final comments due',
+        value: 'LPA final comments due',
+        checked: selectedStages.indexOf('LPA final comments due') > -1
+      },
+      {
+        html: 'Appeal decided',
+        value: 'Appeal decided',
+        checked: selectedStages.indexOf('Appeal decided') > -1
+      }]
+  }) }}
+
+
+<h2 class="govuk-heading-m">Select hearing and inquiry procedure appeal stages</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        text: "Hearing and inquiry procedure",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'Notification to statutory parties and interested people due',
+        value: 'Hearing or inquiry - notifications due',
+        checked: selectedStages.indexOf('Hearing or inquiry - Notifications due') > -1
+      },
+      {
+        html: 'LPA Proof of evidence due',
+        value: 'Hearing or inquiry - LPA Proof of evidence due',
+        checked: selectedStages.indexOf('Hearing or inquiry - LPA Proof of evidence due') > -1
+      },
+          {
+        html: 'Event date available',
+        value: 'Hearing or inquiry - event date available',
+        checked: selectedStages.indexOf('Hearing or inquiry - event date available') > -1
+      },
+      {
+        html: 'Witness timings due',
+        value: 'Hearing or inquiry - witness timings due',
+        checked: selectedStages.indexOf('Hearing or inquiry - witness timings due') > -1
+      }
+    ]
+  }) }}
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      {% endblock %}
+
+</form>
+
+{% endblock %}

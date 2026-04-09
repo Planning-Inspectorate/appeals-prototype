@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = "Access phone number" %}
+{% set title = "Contact phone number" %}
 
 {% block pageTitle %}
   {{ title }} - {{serviceName}} - GOV.UK
@@ -12,7 +12,7 @@
 {% block questions %}
 
   <span class="govuk-caption-xl">
-    Appeal {{ data['appealCode'] or '1345264' }} - change access
+    Appeal {{ data['appealCode'] or '1345264' }} - Change access
   </span>
 
   {{ govukInput({
@@ -22,7 +22,7 @@
       isPageHeading: true
     },
     hint: {
-      text: "Enter the new phone number that will be used to access this appeal."
+      text: "Enter the phone number we can contact about this appeal."
     },
     id: "new-phone-number",
     classes: "govuk-!-width-one-quarter",

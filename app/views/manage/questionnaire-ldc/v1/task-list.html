@@ -16,6 +16,13 @@
 {% endblock %}
 
 {% block content %}
+  <script>
+    // Refresh page once after clearing data
+    if (new URLSearchParams(window.location.search).get('clear') === 'true') {
+      window.history.replaceState({}, document.title, window.location.pathname);
+      window.location.reload();
+    }
+  </script>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
 
@@ -28,12 +35,14 @@
 
     <div class="govuk-grid-column-full">
       {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+           <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
 
     </div>
 
+
     <div class="govuk-grid-column-three-quarters-from-desktop">
 
-      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
       <h2 class="govuk-heading-s">
         Complete the questionnaire

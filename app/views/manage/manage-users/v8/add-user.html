@@ -16,42 +16,35 @@
 {% endblock %}
 
 {% block content %}
-	<div class="govuk-grid-row">
-		<div class="govuk-grid-column-full">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="email-notifications">
+        <div style="display: flex-verticle; gap: 1rem;align-items: flex-end;">
 
-<h1 class="govuk-heading-l">Tell us their email address</h1>
+  {% block questions %}
+  {{ govukInput({
+    id: 'add-user-email',
+    name: 'add-user-email',
+    classes: 'govuk-!-width-two-thirds',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    suffix: {
+      text: "@cambridgeshirepeterborough-ca.gov.uk"
+    },
+    spellcheck: false
+  }) }}
 
-<form method="post" action="email-notifications">
-  <div style="display: flex; gap: 1rem; align-items: flex-end;">
+{% endblock %}
+        {% block buttons %}
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+        {% endblock %}
 
-    <div style="width: 300px;">
-      {{ govukInput({
-        id: "domain-prefix",
-        name: "domain-prefix",
-        label: { text: "Enter email prefix" }
-      }) }}
-    </div>
+      </form>
 
-    {{ govukSelect({
-        id: "sort",
-        name: "sort",
-        label: {
-          text: "Choose local planning authority"
-        },
-        items: [
-          { value: "@cambridgeshirepeterborough-ca.gov.uk", text: "@cambridgeshirepeterborough-ca.gov.uk", selected: true },
-          { value: "@camden.gov.uk", text: "@camden.gov.uk" },
-          { value: "@lambeth.gov.uk", text: "@lambeth.gov.uk" }
-        ]
-    }) }}
   </div>
-
-  {% block buttons %}
-    {{ govukButton({
-      text: 'Continue'
-    }) }}
-  {% endblock %}
-
-</form>
-
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-main.html' %}
 
-{% set title = 'Email address' %}
+{% set title = 'What is your email address?' %}
 
 {% set back = false %} 
 
@@ -8,44 +8,20 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        {{ title }}
-      </h1>
-
-      <p class="govuk-body">
-    We will only use this to:
-  </p>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>
-      send you a code to sign into the service
-    </li>
-    <li>
-      contact you about the appeal
-    </li>
-    <li>
-      let the local planning authority know where to send their appeal questionnaire
-    </li>
-  </ul>
-
   <form method="post">
 
-    {{ govukInput({
-          label: {
-            text: "What is your email address?",
-            classes: "govuk-label--m"
-          },
-          hint: {
-            text: "Enter the email address where you received your access invitation."
-          },
-          classes: "govuk-input govuk-!-width-three-quarters",
-          id: 'email',
-          name: 'email',
-          value: data['email'],
-          type: 'email',
-          autocomplete: 'email',
-          spellcheck: false
-
-        }) }}
+{{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "We'll send you a code to confirm the email address is yours."
+    },
+    id: "new-email",
+    name: "new-email"
+  }) }}
 
     {{ govukButton({
          text: "Continue"
