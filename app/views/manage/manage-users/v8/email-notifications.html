@@ -25,14 +25,11 @@
   name: "email-notifications",
   fieldset: {
     legend: {
-      html: '<h1 class="govuk-heading-l">Select appeal types for ' ~ (data["new-user-email"] or "user") ~ ' to subscribe to for emails</h1>',
+      html: '<h1 class="govuk-heading-l">Appeal type notification preferences</h1>',
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
-  hint: {
-    text: "This will determine which appeal types " ~ (data["new-user-email"] or "user") ~ " receives emails for"
-    },
   items: [
     {
       value: "all-appeals",
@@ -41,8 +38,8 @@
     },
     {
       value: "Particular appeal types",
-       text: "Particular appeal types",
-      checked: data['email-notifications'] == 'Particular appeal types'
+       text: "Select appeal types",
+      checked: data['email-notifications'] == 'Select appeal types'
     },
     {
       value: "None",
