@@ -36,8 +36,8 @@ const normalizeUsers = (req) => {
   })
 }
 
-router.get('*', function (req, res, next) {
-  res.locals['serviceName'] = 'Manage your planning inspectorate appeals'
+router.use('*', function (req, res, next) {
+  res.locals['serviceName'] = 'Manage appeals'
   next()
 })
 
