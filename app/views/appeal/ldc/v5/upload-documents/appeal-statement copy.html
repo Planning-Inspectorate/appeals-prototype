@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload your appeal statement' %}
+{% set uploadDataKey = 'appeal-statement' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Your appeal statement explains why you disagree with the local planning authority’s decision.
+  </p>
+
+  <p class="govuk-body">
+    You can upload any documents that you refer to in your appeal statement later.
+  </p>
+
+  {{ govukInsetText({
+    text: "Do not include any sensitive information in your statement. It will delay your appeal."
+  }) }}
+
+  {% include '_includes/common/multiple-document-upload.html' %}
+
+{% endblock %}

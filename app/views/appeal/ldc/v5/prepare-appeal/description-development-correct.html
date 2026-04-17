@@ -1,0 +1,38 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did the local planning authority change the description of development?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% block questions %}
+
+<!-- Appeal is {{ (data['appealIs'] or 'not set') }} -->
+
+  <span class="govuk-caption-l">Prepare appeal</span>
+  {{ govukRadios({
+    idPrefix: 'description-development-correct',
+    name: 'description-development-correct',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'We need to know if the description of development is the same as what is on your planning application.'
+    },
+    items: [
+      {
+        html: 'Yes, I agreed a new description with the local planning authority',
+        value: 'Yes',
+        checked: checked('description-development-correct','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('description-development-correct','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

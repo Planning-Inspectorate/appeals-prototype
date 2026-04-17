@@ -1,0 +1,25 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload your application form' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'application-form' %}
+
+{% block questions %}
+
+	<span class="govuk-caption-l">Upload documents</span>
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Upload the planning application form that you sent to the local planning authority, including the date. Do not upload a draft application.
+  </p>
+
+  <p class="govuk-body">
+    If you do not have your application form, you can search for it on the local planning authority’s website.
+  </p>
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+
+{% endblock %}

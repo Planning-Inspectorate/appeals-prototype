@@ -1,0 +1,22 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload your application for an award of appeal costs' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'costs-upload' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <!-- <p class="govuk-body">
+    Your appeal statement explains why you disagree with the local planning authority’s decision.
+  </p> -->
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+
+{% endblock %}
