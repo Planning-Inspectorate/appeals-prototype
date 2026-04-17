@@ -1,0 +1,50 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload your appeal statement' %}
+{% set uploadDataKey = 'appeal-statement' %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    Your appeal statement explains why you disagree with the local planning authority’s decision.
+  </p>
+
+  <p class="govuk-body">
+    You can upload any documents that you refer to in your appeal statement later.
+  </p>
+
+  {{ govukInsetText({
+    text: "Do not include any sensitive information in your statement. It will delay your appeal."
+  }) }}
+
+  {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{{ govukDetails({
+  summaryText: "What is sensitive information?",
+  html: "<p>Sensitive information refers to:</p>
+  <ul class='govuk-list govuk-list--bullet'>
+    <li>comments from children</li>
+    <li>information relating to children</li>
+    <li>information relating to health</li>
+    <li>information relating to crime</li>
+  </ul>
+  <p>It also includes any information relating to an individual’s:</p>
+  <ul class='govuk-list govuk-list--bullet'>
+    <li>race</li>
+    <li>ethnic origin</li>
+    <li>politics</li>
+    <li>religion</li>
+    <li>trade union membership</li>
+    <li>genetics</li>
+    <li>physical characteristics</li>
+    <li>sex life</li>
+    <li>sexual orientation</li>
+  </ul>"
+}) }}
+
+  {% include '_includes/common/multiple-document-upload.html' %}
+
+{% endblock %}

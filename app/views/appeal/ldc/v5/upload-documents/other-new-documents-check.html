@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you have any other new documents that support your appeal?' %}
+{% set pageName = title + ' - Appeal a planning decision'%}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
+  {{ govukRadios({
+    idPrefix: 'other-new-documents-check',
+    name: 'other-new-documents-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('other-new-documents-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('other-new-documents-check','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

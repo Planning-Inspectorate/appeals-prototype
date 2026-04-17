@@ -1,0 +1,46 @@
+<h2 class="govuk-heading-m">Upload documents</h2>
+
+{#
+  logic for task status - in this example,
+  the status is determined by session data set in the routes file,
+  which tracks progress through questions in the upload documents section.
+#}
+
+{% if data['uploadAppealSectionStatus'] == 'complete' %}
+  {% set uploadapplicationstatus %}
+    Completed
+  {% endset %}
+{% elif data['uploadAppealSectionStatus'] == 'started' %}
+  {% set uploadapplicationstatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set uploadapplicationstatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{{ govukTaskList({
+idPrefix: "company-details",
+items: [
+  {
+    title: {
+      text: "Your application"
+    },
+    href: "#",
+    status: {
+      html: uploadapplicationstatus
+    }
+  },
+  {
+    title: {
+      text: "Your appeal"
+    },
+    href: "#",
+    status: {
+      html: uploadappealstatus
+    }
+  }
+
+]
+}) }}

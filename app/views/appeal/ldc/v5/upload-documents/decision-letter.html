@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload the decision letter from the local planning authority' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'decision-letter' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    This letter tells you about the decision on your application.
+  </p>
+
+  <p class="govuk-body">
+    We need the letter from the local planning authority that tells you their decision on your planning application (also called a ‘decision notice’).
+  </p>
+
+  <p class="govuk-body">
+    Do not upload the planning officer’s report.
+  </p>
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

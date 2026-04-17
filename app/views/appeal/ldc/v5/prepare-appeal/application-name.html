@@ -1,0 +1,31 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Was the application made in your name?' %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Prepare appeal</span>
+
+  {{ govukRadios({
+    name: "application-name",
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes, the application was made in my name"
+      },
+      {
+        value: "No",
+        text: "No, I'm acting on behalf of the applicant"
+      }
+    ]
+  }) }}
+{% endblock %}

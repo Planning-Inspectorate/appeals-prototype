@@ -1,0 +1,34 @@
+<h2 class="govuk-heading-m">Submit your appeal</h2>
+
+{#
+  using the standard task list pattern
+#}
+
+{{ govukTaskList({
+idPrefix: "submit-appeal",
+items: [
+  {
+    title: {
+      text: "Check answers and submit"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "Cannot start yet",
+        classes: "govuk-tag--grey"
+      }
+    }
+  } if data['ldc-tasks--complete'],
+   {
+    title: {
+      text: "Check answers and submit"
+    },
+    status: {
+      tag: {
+        text: "Cannot start yet",
+        classes: "govuk-tag--grey"
+      }
+    }
+  } if not data['ldc-tasks--complete']
+]
+}) }}

@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload your plans, drawings and supporting documents you submitted with your application' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'plans-or-drawings' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    You must upload all of the plans, drawings and supporting documents that you submitted to the local planning authority with your planning application.
+  </p>
+
+  <p class="govuk-body">
+    Do not include any new or updated documents. We’ll ask for these later.
+  </p>
+
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

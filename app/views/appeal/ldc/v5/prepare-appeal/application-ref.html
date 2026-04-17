@@ -1,0 +1,23 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = "What is the application reference number?" %}
+
+{% block questions %}
+  <span class="govuk-caption-l">Prepare appeal</span>
+
+      {{ govukInput({
+        label: {
+          text: title,
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+          hint: {
+      html: "You can find this on any correspondence from the local planning authority. For example, the letter confirming your application."
+    },
+        classes: "govuk-input--width-10",
+        id: "appNumber",
+        name: "appNumber",
+        autocomplete: "application-number"
+      }) }}
+
+{% endblock %}
