@@ -25,7 +25,7 @@
           html: 'Procedure type'
         },
         value: {
-          html: (data['procedure'] or 'Written representations')+('<br>Length in days: '+data['procedure-length'] if data['procedure'] == 'Inquiry')
+          html: (data['procedure'] or 'Hearing')+('<br>Length in days: '+data['procedure-length'] if data['procedure'] == 'Inquiry')
         }
         if data['procedure-complete'] else
         {
