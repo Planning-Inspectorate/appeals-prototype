@@ -1,0 +1,57 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'How would you prefer us to decide your appeal?' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+
+{% block questions %}
+
+<!-- Appeal is {{ (data['appealIs'] or 'not set') }} -->
+
+  <span class="govuk-caption-l">Prepare appeal</span>
+  {{ govukRadios({
+    idPrefix: 'decide-appeal',
+    name: 'decide-appeal',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+
+    items: [
+     {
+  html: 'Written representations',
+  value: 'Written representations',
+  hint: { text: 'For appeals where the issues are clear from written statements and a site visit. This is the quickest and most common way to make an appeal.' },
+  checked: checked('decide-appeal','Written representations')
+},
+
+    {
+  html: 'Hearing',
+  value: 'Hearing',
+  hint: { text: 'For appeals with more complex issues. The Inspector leads a discussion to answer questions they have about the appeal.' },
+  checked: checked('decide-appeal','Hearing')
+},
+
+    {
+  html: 'Inquiry',
+  value: 'Inquiry',
+  hint: { text: 'For appeals with very complex issues. Appeal evidence is tested by legal representatives, who question witnesses under oath.' },
+  checked: checked('decide-appeal','Inquiry')
+}
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    console.log('=== decide-appeal page loaded ===')
+    console.log('Current decide-appeal value:', '{{ data["decide-appeal"] }}')
+
+    $('form').on('submit', function() {
+      const selectedValue = $('input[name="decide-appeal"]:checked').val()
+      console.log('Form submitted with value:', selectedValue)
+    })
+  </script>
+{% endblock %}

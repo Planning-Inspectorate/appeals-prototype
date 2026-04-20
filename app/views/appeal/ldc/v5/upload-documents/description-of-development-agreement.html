@@ -1,0 +1,24 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload evidence of your agreement to change the description of development' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'description-change-agreement' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Upload documents</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    For example, an email or letter from the local planning authority that confirms they have changed the description of development.
+  </p>
+
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+
+  {% include '_includes/common/multiple-document-upload.html' %}
+
+{% endblock %}

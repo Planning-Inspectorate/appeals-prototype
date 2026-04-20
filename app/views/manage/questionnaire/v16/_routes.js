@@ -19,6 +19,12 @@ router.post('/access/enter-code', function (req, res) {
 router.post('*', function(req, res, next){
   if (req.session.data['cya']) {
     delete req.session.data['cya']
+    
+    // If screening-env-statement-check is 'No', mark section as complete
+    if (req.session.data['screening-env-statement-check'] == 'No') {
+      req.session.data['env-impact-completed'] = 'true'
+    }
+    
     res.redirect('../task-list');
   } else {
     next()
@@ -284,7 +290,7 @@ router.post('/og-evidence/:page', function (req, res, next) {
 router.post('/og-evidence/design-access-statement-check', function (req, res) {
   if (req.session.data['design-access-statement-check'] == 'Yes') {
     res.redirect('design-access-statement-upload');
-    req.session.data['og-evidence-completed'] = 'false'
+    req.session.data['og-evidence-in-progress'] = 'true'
   } else {
     res.redirect('plans-and-drawings-upload')
   }
@@ -335,6 +341,12 @@ router.post('/env-impact/:page', function (req, res, next) {
   req.session.data['env-impact-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
 
+  // If screening-env-statement-check is 'No', section is complete
+  if (req.session.data['screening-env-statement-check'] == 'No') {
+    req.session.data['env-impact-completed'] = 'true'
+    return next()
+  }
+
   if (req.session.data['schedule'] == 'Schedule 1') {
     if (req.session.data['env-statement-check'] == 'Yes') {
       if (
@@ -374,13 +386,7 @@ router.post('/env-impact/:page', function (req, res, next) {
             }
           }
         } else if (req.session.data['screening-env-statement-check'] == 'No') {
-          if (req.session.data['applicant-env-statement-check'] == 'Yes') {
-            if (req.session.data['env-statement-responses-upload-complete']) {
-              req.session.data['env-impact-completed'] = 'true'
-            }
-          } else if (req.session.data['applicant-env-statement-check'] == 'No') {
-            req.session.data['env-impact-completed'] = 'true'
-          }
+          req.session.data['env-impact-completed'] = 'true'
         }
       }
     } else if (req.session.data['screening-check'] == 'No') {
@@ -404,7 +410,7 @@ router.post('/env-impact/:page', function (req, res, next) {
               && req.session.data['env-statement-responses-upload-complete']
               && req.session.data['site-notice-upload-complete']
             ){
-              req.session.data['env-impact'] = 'true'
+              req.session.data['env-impact-completed'] = 'true'
             }
           } else if (req.session.data['env-statement-check'] == 'No') {
             if (req.session.data['negative-screening-upload-complete']) {
@@ -412,13 +418,7 @@ router.post('/env-impact/:page', function (req, res, next) {
             }
           }
         } else if (req.session.data['screening-env-statement-check'] == 'No') {
-          if (req.session.data['applicant-env-statement-check'] == 'Yes') {
-            if (req.session.data['env-statement-responses-upload-complete']) {
-              req.session.data['env-impact-completed'] = 'true'
-            }
-          } else if (req.session.data['applicant-env-statement-check'] == 'No') {
-            req.session.data['env-impact-completed'] = 'true'
-          }
+          req.session.data['env-impact-completed'] = 'true'
         }
       }
     } else if (req.session.data['screening-check'] == 'No') {
@@ -696,11 +696,6 @@ router.get('/consultation/complete', function (req, res) {
 router.post('/po-report/:page', function (req, res, next) {
   req.session.data['po-report-started'] = 'true'
   req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (req.session.data['other-parties-check'] == 'Yes') {
-    req.session.data['consultation-completed'] = 'false'
-    res.redirect('other-parties-upload');
-  }
 
   if (
     req.session.data['report-upload-complete'] == 'true'

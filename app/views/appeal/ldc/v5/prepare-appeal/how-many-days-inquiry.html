@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'How many days would you expect the inquiry to last?' %}
+
+{% block questions %}
+  <span class="govuk-caption-l">
+Prepare appeal  </span>
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukInput({
+  label: {
+    text: title,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  classes: "govuk-input--width-5",
+  id: "width-5",
+  name: "width5"
+}) }}
+
+{% endblock %}
