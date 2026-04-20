@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'How did you notify relevant parties about the planning application?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Notifying people about the application
+  </span>
+
+  {{ govukCheckboxes({
+    idPrefix: 'notified-how',
+    name: 'notified-how',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: 'Select all that apply'
+    },
+    items: [
+      {
+        html: 'A site notice',
+        value: 'A site notice',
+        checked: checked('notified-how','A site notice')
+      },
+      {
+        html: 'Letters or emails to interested parties',
+        value: 'Letters to the neighbours',
+        checked: checked('notified-how','Letters to the neighbours')
+      },
+      {
+        html: 'An advert in the local press',
+        value: 'A press advert',
+        checked: checked('notified-how','A press advert')
+      }
+    ]
+  }) }}
+{% endblock %}

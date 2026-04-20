@@ -21,7 +21,7 @@
       {{ title }}
     </h1>
 
-    {% set version = "16" %}
+ {% set version = "17" %}
 
     <h2 class="govuk-heading-m">
       Version {{version}}
@@ -34,13 +34,10 @@
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        S78 expedited variant
+        added a question ‘is <span style="font-style: italic;">this</span> the right type of appeal?’
       </li>
       <li>
-        extra question for ‘other documents’ in the Original evidence section
-      </li>
-       <li>
-        additional question for ‘list of documents’ in the Original evidence section
+        added code to fix the actions behaviour when on the task list
       </li>
     </ul>
 
@@ -49,6 +46,31 @@
       href: 'v'+version+'/task-list?clear=true',
       isStartButton: true
     }) }}
+
+    {% set v16HTML %}
+
+      {% set version = "16" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          S78 expedited variant
+        </li>
+        <li>
+          extra question for ‘other documents’ in the Original evidence section
+        </li>
+        <li>
+          additional question for ‘list of documents’ in the Original evidence section
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/task-list?clear=true',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
 
     {% set v15HTML%}
 
@@ -220,6 +242,14 @@
       id: 'previous',
       classes: 'govuk-!-margin-top-9',
       items: [
+        {
+          heading: {
+            html: 'Version 16 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v16HTML
+          }
+        },
         {
           heading: {
             html: 'Version 15 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'

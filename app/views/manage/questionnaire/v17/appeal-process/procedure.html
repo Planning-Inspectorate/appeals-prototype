@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Which procedure do you think is most appropriate for this appeal?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Appeal process
+  </span>
+
+  {% set inquiryDays %}
+    {{ govukInput({
+      id: 'procedure-length',
+      name: 'procedure-length',
+      value: data['procedure-length'],
+      classes: 'govuk-input--width-3',
+      label: {
+        html: 'How many days would you expect the inquiry to last?'
+      }
+    }) }}
+  {% endset -%}
+  {{ govukRadios({
+    idPrefix: 'procedure',
+    name: 'procedure',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Written representations',
+        value: 'Written representations',
+        checked: checked('procedure','Written representations')
+      },
+      {
+        html: 'Hearing',
+        value: 'Hearing',
+        checked: checked('procedure','Hearing')
+      },
+      {
+        html: 'Inquiry',
+        value: 'Inquiry',
+        checked: checked('procedure','Inquiry'),
+        conditional: {
+          html: inquiryDays
+        }
+      }
+    ]
+  }) }}
+{% endblock %}
