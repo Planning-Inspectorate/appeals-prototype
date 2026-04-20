@@ -509,7 +509,14 @@ router.post('/env-impact/env-statement-check', function (req, res) {
     res.redirect('env-statement-upload');
   } else {
     req.session.data['env-statement-check'] = 'No'
-    res.redirect('negative-screening-upload');
+    // If it’s Schedule 2 and screening-check in schedule 2 route = Yes
+    if (req.session.data['schedule'] == 'Schedule 2' && req.session.data['screening-check'] == 'Yes') {
+      // go to negative-screening-upload
+      res.redirect('negative-screening-upload');
+    } else {
+      // go to next section
+      res.redirect('complete')
+    }
   }
 })
 
