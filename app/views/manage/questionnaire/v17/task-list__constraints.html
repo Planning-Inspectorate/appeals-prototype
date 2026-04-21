@@ -304,7 +304,7 @@
           html: 'Designated sites'
         },
         value: {
-          html: (data['designated-sites'] | join('<br>')) if (data['designated-sites'] is iterable and data['designated-sites'] is not string and (data['designated-sites'] | length)) else (data['designated-sites'] or 'No, it is not in, near or likely to affect any designated sites')
+          html: (data['designated-sites'] | join('<br>')) if (data['designated-sites'] is iterable and data['designated-sites'] is not string and (data['designated-sites'] | length)) else (data['designated-sites'] if data['designated-sites'] != '_unchecked' else 'No, it is not in, near or likely to affect any designated sites')
         }
         if data['designated-sites-complete'] else
         {
