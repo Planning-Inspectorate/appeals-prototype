@@ -36,7 +36,8 @@
   {% endif %}
 
   {% set selectedStages = (selectedUser.appealStages if selectedUser and selectedUser.appealStages else []) %}
-<h2 class="govuk-heading-m">Select common appeal stages</h2>
+
+<h2 class="govuk-heading-m">Validation</h2>
   {{ govukCheckboxes({
     name: "appeal-stage-detailed",
     fieldset: {
@@ -46,66 +47,127 @@
     },
     items: [
       {
-        html: 'New appeal started',
-        value: 'New appeal started',
-        checked: selectedStages.indexOf('New appeal started') > -1
-      },
-       {
-        html: 'Questionnaire and notification to statutory parties and interested people due',
-        value: 'Questionnaire due',
-        checked: selectedStages.indexOf('Questionnaire due') > -1
+        html: 'Advance notice of appeal',
+        value: 'Advance notice of appeal',
+        checked: data['appeal-stage-detailed'] == 'Advance notice of appeal'
       },
       {
-        html: ' Questionnaire valid, statement can be submitted',
-        value: 'Written representations - questionnaire valid',
-        checked: selectedStages.indexOf('Written representations - questionnaire valid') > -1
-      }, {
-        html: 'Statements due',
-        value: 'Statements due',
-        checked: selectedStages.indexOf('Statements due') > -1
+        html: 'Start letter issued',
+        value: 'Start letter issued',
+        checked: data['appeal-stage-detailed'] == 'Start letter issued'
       },
       {
-        html: 'LPA final comments due',
-        value: 'LPA final comments due',
-        checked: selectedStages.indexOf('LPA final comments due') > -1
-      },
-      {
-        html: 'Appeal decided',
-        value: 'Appeal decided',
-        checked: selectedStages.indexOf('Appeal decided') > -1
-      }]
+        html: 'Appeal cancelled, withdrawn or invalid',
+        value: 'Appeal cancelled, withdrawn or invalid',
+        checked: data['appeal-stage-detailed'] == 'Appeal cancelled, withdrawn or invalid'
+      }
+    ]
   }) }}
 
-
-<h2 class="govuk-heading-m">Select hearing and inquiry procedure appeal stages</h2>
+<h2 class="govuk-heading-m">Representations</h2>
   {{ govukCheckboxes({
     name: "appeal-stage-detailed",
     fieldset: {
       legend: {
-        text: "Hearing and inquiry procedure",
         classes: "govuk-visually-hidden"
       }
     },
     items: [
       {
-        html: 'Notification to statutory parties and interested people due',
-        value: 'Hearing or inquiry - notifications due',
-        checked: selectedStages.indexOf('Hearing or inquiry - Notifications due') > -1
+        html: 'LPA questionnaire received',
+        value: 'LPA questionnaire received',
+        checked: data['appeal-stage-detailed'] == 'LPA questionnaire received'
       },
       {
-        html: 'Proof of evidence due',
-        value: 'Hearing or inquiry - LPA Proof of evidence due',
-        checked: selectedStages.indexOf('Hearing or inquiry - LPA Proof of evidence due') > -1
-      },
-          {
-        html: 'Event date available',
-        value: 'Hearing or inquiry - event date available',
-        checked: selectedStages.indexOf('Hearing or inquiry - event date available') > -1
+        html: 'Planning obligation received',
+        value: 'Planning obligation received',
+        checked: data['appeal-stage-detailed'] == 'Planning obligation received'
       },
       {
-        html: 'Witness timings due',
-        value: 'Hearing or inquiry - witness timings due',
-        checked: selectedStages.indexOf('Hearing or inquiry - witness timings due') > -1
+        html: 'Proofs of evidence and witnesses due (inquiry only)',
+        value: 'Proofs of evidence and witnesses due (inquiry only)',
+        checked: data['appeal-stage-detailed'] == 'Proofs of evidence and witnesses due (inquiry only)'
+      },
+      {
+        html: 'Proofs of evidence and witnesses received (inquiry only)',
+        value: 'Proofs of evidence and witnesses received (inquiry only)',
+        checked: data['appeal-stage-detailed'] == 'Proofs of evidence and witnesses received (inquiry only)'
+      },
+      {
+        html: 'Representations received - submit final comments',
+        value: 'Representations received - submit final comments',
+        checked: data['appeal-stage-detailed'] == 'Representations received - submit final comments'
+      },
+      {
+        html: 'Final comments received',
+        value: 'Final comments received',
+        checked: data['appeal-stage-detailed'] == 'Final comments received'
+      },
+      {
+        html: 'Costs correspondence',
+        value: 'Costs correspondence',
+        checked: data['appeal-stage-detailed'] == 'Costs correspondence'
+      }
+    ]
+  }) }}
+
+<h2 class="govuk-heading-m">Hearing or inquiry events</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'Site visit details',
+        value: 'Site visit details',
+        checked: data['appeal-stage-detailed'] == 'Site visit details'
+      },
+      {
+        html: 'Event details',
+        value: 'Event details',
+        checked: data['appeal-stage-detailed'] == 'Event details'
+      }
+    ]
+  }) }}
+
+<h2 class="govuk-heading-m">Decision</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'Appeal decision',
+        value: 'Appeal decision',
+        checked: data['appeal-stage-detailed'] == 'Appeal decision'
+      }
+    ]
+  }) }}
+
+<h2 class="govuk-heading-m">Changes</h2>
+  {{ govukCheckboxes({
+    name: "appeal-stage-detailed",
+    fieldset: {
+      legend: {
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        html: 'Procedure changed',
+        value: 'Procedure changed',
+        checked: data['appeal-stage-detailed'] == 'Procedure changed'
+      },
+      {
+        html: 'Appeal type changed',
+        value: 'Appeal type changed',
+        checked: data['appeal-stage-detailed'] == 'Appeal type changed'
       }
     ]
   }) }}
