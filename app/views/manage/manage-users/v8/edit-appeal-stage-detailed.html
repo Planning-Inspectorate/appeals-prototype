@@ -89,14 +89,14 @@
         checked: data['appeal-stage-detailed'] == 'Planning obligation received'
       },
       {
-        html: 'Proofs of evidence and witnesses due (inquiry only)',
-        value: 'Proofs of evidence and witnesses due (inquiry only)',
-        checked: data['appeal-stage-detailed'] == 'Proofs of evidence and witnesses due (inquiry only)'
+        html: 'Proofs of evidence and witnesses due',
+        value: 'Proofs of evidence and witnesses due',
+        checked: data['appeal-stage-detailed'] == 'Proofs of evidence and witnesses due'
       },
       {
-        html: 'Proofs of evidence and witnesses received (inquiry only)',
-        value: 'Proofs of evidence and witnesses received (inquiry only)',
-        checked: data['appeal-stage-detailed'] == 'Proofs of evidence and witnesses received (inquiry only)'
+        html: 'Proofs of evidence and witnesses received',
+        value: 'Proofs of evidence and witnesses received',
+        checked: data['appeal-stage-detailed'] == 'Proofs of evidence and witnesses received'
       },
       {
         html: 'Representations received - submit final comments',
@@ -116,7 +116,7 @@
     ]
   }) }}
 
-<h2 class="govuk-heading-m">Hearing or inquiry events</h2>
+<h2 class="govuk-heading-m">Events</h2>
   {{ govukCheckboxes({
     name: "appeal-stage-detailed",
     fieldset: {
@@ -131,9 +131,9 @@
         checked: data['appeal-stage-detailed'] == 'Site visit details'
       },
       {
-        html: 'Event details',
-        value: 'Event details',
-        checked: data['appeal-stage-detailed'] == 'Event details'
+        html: 'Hearing or inquiry event details',
+        value: 'Hearing or inquiry event details',
+        checked: data['appeal-stage-detailed'] == 'Hearing or inquiry event details'
       }
     ]
   }) }}
