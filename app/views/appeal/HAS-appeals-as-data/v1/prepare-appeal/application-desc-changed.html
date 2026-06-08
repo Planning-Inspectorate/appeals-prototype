@@ -1,0 +1,33 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Did the local planning authority change the description of development?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'application-desc-changed',
+    name: 'application-desc-changed',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'We need to know if the description of development is the same as what is on your planning application.'
+    },
+    items: [
+      {
+        html: 'Yes, I agreed a new description with the local planning authority',
+        value: 'Yes',
+        checked: checked('application-desc-changed','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('application-desc-changed','No')
+      }
+    ]
+  }) }}
+{% endblock %}

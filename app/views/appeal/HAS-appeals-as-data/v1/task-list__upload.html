@@ -1,0 +1,82 @@
+<h2 class="govuk-heading-m">Upload your documents</h2>
+
+{% if data['application-complete'] %}
+  {% set applicationDocumentsStatus %}
+    Completed
+  {% endset %}
+{% elif data['application-started'] %}
+  {% set applicationDocumentsStatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set applicationDocumentsStatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{% if data['ownership-complete'] %}
+  {% set ownershipStatus %}
+    Completed
+  {% endset %}
+{% elif data['ownership-started'] %}
+  {% set ownershipStatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set ownershipStatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{% if data['appeal-documents-complete'] %}
+  {% set appealDocumentsStatus %}
+    Completed
+  {% endset %}
+{% elif data['appeal-documents-started'] %}
+  {% set appealDocumentsStatus %}
+    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
+  {% endset %}
+{% else %}
+  {% set appealDocumentsStatus %}
+    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
+  {% endset %}
+{% endif %}
+
+{{ govukTaskList({
+  idPrefix: "upload-documents",
+  items: [
+    {
+      title: {
+        text: "Application"
+      },
+      href: "upload-documents/application",
+      hint: {
+        text: "Application form and decision letter"
+      },
+      status: {
+        html: applicationDocumentsStatus
+      }
+    },
+    {
+      title: {
+        text: "Ownership certificate"
+      },
+      href: "upload-documents/ownership-certificate-check",
+      status: {
+        html: ownershipStatus
+      }
+    },
+    {
+      title: {
+        text: "Appeal documents"
+      },
+      href: "upload-documents/appeal-statement",
+      hint: {
+        text: "Appeal statement and costs"
+      },
+      status: {
+        html: appealDocumentsStatus
+      }
+    }
+  ]
+}) }}

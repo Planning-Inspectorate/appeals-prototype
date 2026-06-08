@@ -28,15 +28,18 @@ router.post('/add-user', function (req, res) {
 
 router.post('/add-user--confirm', function (req, res) {
   // Check if the email input has been filled in, if not add example
-  if (req.session.data['add-user-email']) {
-    newEmail = req.session.data['add-user-email']
-  } else {
-    newEmail = 'example'
-  }
+  const newEmail = (req.session.data['add-user-email'] || 'example').trim()
+  const domain = '@cambridgeshirepeterborough-ca.gov.uk'
+
   // Setup the object with the new user
-  const newUser = Object.assign({
-    email: newEmail+req.session.data['lpa-email']
-  })
+  const newUser = {
+    email: `${newEmail}${domain}`
+  }
+
+  // Ensure users list exists before adding
+  if (!Array.isArray(req.session.data['users'])) {
+    req.session.data['users'] = []
+  }
 
   // Pass the above object into the array
   req.session.data['users'].unshift(newUser)

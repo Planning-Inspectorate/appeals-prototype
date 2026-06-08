@@ -1,0 +1,30 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Are you '+(data['appellant-first-name'] or 'Jan')+' '+(data['appellant-last-name'] or 'Fisher')+'?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'agent-check',
+    name: 'agent-check',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('agent-check','Yes')
+      },
+      {
+        html: 'No, I am appealing on behalf of '+(data['appellant-first-name'] or 'Jan')+' '+(data['appellant-last-name'] or 'Fisher'),
+        value: 'No',
+        checked: checked('agent-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

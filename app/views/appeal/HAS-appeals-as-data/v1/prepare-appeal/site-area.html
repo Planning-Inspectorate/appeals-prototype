@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'What is the area of the appeal site?' %}
+
+{% block questions %}
+
+  {% call govukFieldset({
+    legend: {
+      html: title,
+      classes: 'govuk-fieldset__legend--l',
+      isPageHeading: true
+    }
+  }) %}
+
+  <!-- <p class="govuk-hint">
+    This should match the address on the application to the local planning authority
+  </p> -->
+
+  {{ govukInput({
+    label: {
+      text: "Total site area, in square metres."
+    },
+    id: 'site-area-square-metres',
+    name: 'site-area-square-metres',
+    value: data['site-area-square-metres'],
+    classes: "govuk-input--width-5",
+    suffix: {
+      text: "m²"
+    },
+    spellcheck: false
+  }) }}
+
+  {% endcall %}
+{% endblock %}

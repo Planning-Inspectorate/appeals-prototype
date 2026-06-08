@@ -1,0 +1,72 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Appeal submitted' %}
+{% set back = false %}
+
+{% set prototypeLinks = [
+  {
+    href: 'confirmation?integration=yes',
+    text: 'Back office integrated version'
+  } if data['integration'] != 'yes' else
+
+  {
+    href: 'confirmation?integration=',
+    text: 'Horizon version'
+  }
+  ]
+%}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['integration'] != 'yes' %}
+
+        {{ govukPanel({
+          titleHtml: title
+        }) }}
+
+      {% else %}
+
+        {{ govukPanel({
+          titleHtml: title,
+          html: "Appeal reference number <br><strong>0123456</strong>"
+        }) }}
+
+      {% endif %}
+
+      <p class="govuk-body">
+        We’ve sent you a confirmation email with a link to download a copy of your appeal.
+      </p>
+
+      {{ govukInsetText({
+        html: '<p class="govuk-body">You need to send a copy of your appeal to the local planning authority.</p>'
+      }) }}
+
+      <p class="govuk-body">
+        If you need to contact us, include your appeal reference number.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p class="govuk-body">
+        We’ll check you’ve submitted everything we need to progress your appeal. We’ll contact you once we’ve done this.
+      </p>
+
+      <p class="govuk-body govuk-!-margin-bottom-9">
+        <a href="/appeal/more-than-one-appeal/v5/your-appeals" class="govuk-link govuk-link--no-visited-state">
+          View your appeals
+        </a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#0">
+          What did you think of this service?
+        </a> (takes 30 seconds)
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

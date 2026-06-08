@@ -1,0 +1,29 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Do you have any other new documents that support your appeal?' %}
+
+{% block questions %}
+  {{ govukRadios({
+    idPrefix: 'other-check',
+    name: 'other-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('other-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('other-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

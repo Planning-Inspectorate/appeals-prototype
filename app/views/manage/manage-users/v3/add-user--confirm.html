@@ -16,11 +16,12 @@
 {% endblock %}
 
 {% block questions %}
+  {% set emailDomain = '@cambridgeshirepeterborough-ca.gov.uk' %}
   <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
 
-  <p class="govuk-body-l">{{ data['add-user-email'] or 'example' }}{{ data['lpa-email'] }}</p>
+  <p class="govuk-body-l">{{ (data['add-user-email'] or 'example') + emailDomain }}</p>
 {% endblock %}
 
 {% block buttons %}

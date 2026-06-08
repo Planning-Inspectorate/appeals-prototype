@@ -1,0 +1,58 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Will an inspector need to access your land or property?' %}
+
+{% block questions %}
+
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          {{ title }}
+        </h1>
+      </legend>
+
+      <p class="govuk-body">
+        An inspector will visit the appeal site to assess the development’s impact on its surroundings.
+      </p>
+
+      <p class="govuk-body">
+        If the inspector can view the appeal site from a public road or footpath without entering your land or property, they do not need access.
+      </p>
+
+      {% set detailsHTML %}
+        {{ govukTextarea({
+          name: 'site-visibility__details',
+          id: 'site-visibility__details',
+          value: data['site-visibility__details'],
+          rows: '5',
+          label: {
+            html: '<p class="govuk-body">Enter a reason why an inspector cannot view the appeal site from a public road or footpath.</p><p class="govuk-hint">For example, the appeal site is at the rear of a terraced property.</p>'
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: 'site-visibility__details',
+        id: 'site-visibility__details',
+        value: data['site-visibility__details'],
+        items: [
+          {
+            html: 'Yes',
+            value: 'Yes',
+            checked: checked('site-visibility','Yes'),
+            conditional: {
+              html: detailsHTML
+            }
+          },
+          {
+            html: 'No',
+            value: 'No',
+            checked: checked('site-visibility','No')
+          }
+        ]
+      }) }}
+    </fieldset>
+  </div>
+
+{% endblock %}
