@@ -1,0 +1,357 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span> Notifying relevant parties of the application
+    {% if data['notified-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['notified-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {% set lettersUploadHtml %}
+    {% if data['letters-upload'] %}
+      {% if data['letters-upload'] is iterable and data['letters-upload'] is not string %}
+        <ol class="govuk-list govuk-list--number">
+          {% for file in data['letters-upload'] | sort %}
+            <li><a href="#" class="govuk-link">{{ file }}</a></li>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+          <li><a href="#" class="govuk-link">{{ data['letters-upload'] }}</a></li>
+        </ol>
+      {% endif %}
+    {% elif data['letters-uploaded'] %}
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#" class="govuk-link">letters.pdf</a></li>
+      </ol>
+    {% else %}
+      <span class="govuk-hint">Not started</span>
+    {% endif %}
+  {% endset %}
+
+  {% set siteNoticeUploadHtml %}
+    {% if data['site-notice-upload'] %}
+      {% if data['site-notice-upload'] is iterable and data['site-notice-upload'] is not string %}
+        <ol class="govuk-list govuk-list--number">
+          {% for file in data['site-notice-upload'] | sort %}
+            <li><a href="#" class="govuk-link">{{ file }}</a></li>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+          <li><a href="#" class="govuk-link">{{ data['site-notice-upload'] }}</a></li>
+        </ol>
+      {% endif %}
+    {% elif data['site-notice-uploaded'] %}
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#" class="govuk-link">site-notice.pdf</a></li>
+      </ol>
+    {% else %}
+      <span class="govuk-hint">Not started</span>
+    {% endif %}
+  {% endset %}
+
+  {% set pressAdvertUploadHtml %}
+    {% if data['press-advert-upload'] %}
+      {% if data['press-advert-upload'] is iterable and data['press-advert-upload'] is not string %}
+        <ol class="govuk-list govuk-list--number">
+          {% for file in data['press-advert-upload'] | sort %}
+            <li><a href="#" class="govuk-link">{{ file }}</a></li>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+          <li><a href="#" class="govuk-link">{{ data['press-advert-upload'] }}</a></li>
+        </ol>
+      {% endif %}
+    {% elif data['press-advert-uploaded'] or data['advert-uploaded'] %}
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#" class="govuk-link">press-advert.pdf</a></li>
+      </ol>
+    {% else %}
+      <span class="govuk-hint">Not started</span>
+    {% endif %}
+  {% endset %}
+
+  {% set notifiedWhoHtml %}
+    {% if data['notified-who'] %}
+      {% if data['notified-who'] is iterable and data['notified-who'] is not string %}
+        <ol class="govuk-list govuk-list--number">
+          {% for file in data['notified-who'] | sort %}
+            <li><a href="#" class="govuk-link">{{ file }}</a></li>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+          <li><a href="#" class="govuk-link">{{ data['notified-who'] }}</a></li>
+        </ol>
+      {% endif %}
+    {% else %}
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#" class="govuk-link">Notified list.pdf</a></li>
+      </ol>
+    {% endif %}
+  {% endset %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+      {
+        key: {
+          html: 'Who was notified'
+        },
+        value: {
+          html: notifiedWhoHtml
+        }
+        if data['notified-who-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/notified-who?cya=true',
+              html: 'Change'
+            }
+            if data['notified-who-complete'] else
+            {
+              href: 'notified/notified-who',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Site notice'
+        },
+        value: {
+          html: (data['site-notice-check'] or 'No')
+        }
+        if data['site-notice-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/site-notice-check?cya=true',
+              html: 'Change'
+            }
+            if data['site-notice-check-complete'] else
+            {
+              href: 'notified/site-notice-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Uploaded site notice'
+        },
+        value: {
+          html: siteNoticeUploadHtml
+        }
+        if data['site-notice-upload'] or data['site-notice-uploaded'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/site-notice-upload?cya=true',
+              html: 'Change'
+            }
+            if data['site-notice-upload'] or data['site-notice-uploaded'] else
+            {
+              href: 'notified/site-notice-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['site-notice-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Letters to neighbours'
+        },
+        value: {
+          html: (data['letters-check'] or 'No')
+        }
+        if data['letters-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/letters-check?cya=true',
+              html: 'Change'
+            }
+            if data['letters-check-complete'] else
+            {
+              href: 'notified/letters-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Uploaded letters'
+        },
+        value: {
+          html: lettersUploadHtml
+        }
+        if data['letters-upload'] or data['letters-uploaded'] else
+        {
+          html: lettersUploadHtml
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/letters-upload?cya=true',
+              html: 'Change'
+            }
+            if data['letters-upload'] or data['letters-uploaded'] else
+            {
+              href: 'notified/letters-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['letters-check'] == 'Yes',
+
+
+      {
+        key: {
+          html: 'Press advert'
+        },
+        value: {
+          html: (data['press-advert-check'] or 'No')
+        }
+        if data['press-advert-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/press-advert-check?cya=true',
+              html: 'Change'
+            }
+            if data['press-advert-check-complete'] else
+            {
+              href: 'notified/press-advert-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Uploaded press advert'
+        },
+        value: {
+          html: pressAdvertUploadHtml
+        }
+        if data['press-advert-upload'] or data['press-advert-uploaded'] else
+        {
+          html: pressAdvertUploadHtml
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/press-advert-upload?cya=true',
+              html: 'Change'
+            }
+            if data['press-advert-upload'] or data['press-advert-uploaded'] else
+            {
+              href: 'notified/press-advert-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['press-advert-check'] == 'Yes',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        key: {
+          html: 'Letters to neighbours'
+        },
+        value: {
+          html: lettersUploadHtml
+        }
+        if data['letters-upload'] or data['letters-uploaded'] else
+        {
+          html: lettersUploadHtml
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/letters-upload?cya=true',
+              html: 'Change'
+            }
+            if data['letters-upload'] or data['letters-uploaded'] else
+            {
+              href: 'notified/letters-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('Letters to neighbours'),
+      {
+        key: {
+          html: 'Advertisement'
+        },
+        value: {
+          html: pressAdvertUploadHtml
+        }
+        if data['advert-uploaded'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'notified/press-advert-upload?cya=true',
+              html: 'Change'
+            }
+            if data['advert-uploaded'] else
+            {
+              href: 'notified/press-advert-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['notified-how'] and data['notified-how'].includes('Advertisement')
+    ]
+  }) }}
+</li>

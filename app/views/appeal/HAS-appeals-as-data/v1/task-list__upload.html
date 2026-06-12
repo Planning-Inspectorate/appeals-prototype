@@ -1,82 +1,235 @@
-<h2 class="govuk-heading-m">Upload your documents</h2>
+<li>
+  {% set applicationComplete = data['application-complete'] %}
+  {% set ownershipComplete = data['ownership-complete'] %}
+  {% set appealDocumentsComplete = data['appeal-documents-complete'] %}
 
-{% if data['application-complete'] %}
-  {% set applicationDocumentsStatus %}
-    Completed
-  {% endset %}
-{% elif data['application-started'] %}
-  {% set applicationDocumentsStatus %}
-    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
-  {% endset %}
-{% else %}
-  {% set applicationDocumentsStatus %}
-    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
-  {% endset %}
-{% endif %}
+  {% set uploadComplete = applicationComplete and ownershipComplete and appealDocumentsComplete %}
+  {% set uploadStarted = data['application-started'] or data['ownership-started'] or data['appeal-documents-started'] %}
 
-{% if data['ownership-complete'] %}
-  {% set ownershipStatus %}
-    Completed
-  {% endset %}
-{% elif data['ownership-started'] %}
-  {% set ownershipStatus %}
-    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
-  {% endset %}
-{% else %}
-  {% set ownershipStatus %}
-    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
-  {% endset %}
-{% endif %}
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span>
+    Upload documents
+    {% if uploadComplete %}
+      {{ govukTag({
+        text: "Completed",
+        classes: "govuk-tag"
+      }) }}
+    {% elif uploadStarted %}
+      {{ govukTag({
+        text: "In progress",
+        classes: "govuk-tag govuk-tag--grey"
+      }) }}
+    {% else %}
+      {{ govukTag({
+        text: "Not started",
+        classes: "govuk-tag govuk-tag--grey"
+      }) }}
+    {% endif %}
+  </h2>
 
-{% if data['appeal-documents-complete'] %}
-  {% set appealDocumentsStatus %}
-    Completed
-  {% endset %}
-{% elif data['appeal-documents-started'] %}
-  {% set appealDocumentsStatus %}
-    {{ govukTag({ text: "In progress", classes: "govuk-tag--yellow" }) }}
-  {% endset %}
-{% else %}
-  {% set appealDocumentsStatus %}
-    {{ govukTag({ text: "Incomplete", classes: "govuk-tag--blue" }) }}
-  {% endset %}
-{% endif %}
-
-{{ govukTaskList({
-  idPrefix: "upload-documents",
-  items: [
-    {
-      title: {
-        text: "Application"
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Application form',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if applicationComplete else ('In progress' if data['application-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/application',
+              html: 'Change' if applicationComplete else 'Continue'
+            }
+          ]
+        }
       },
-      href: "upload-documents/application",
-      hint: {
-        text: "Application form and decision letter"
+       {
+        key: {
+          html: ' Do you plan to submit a planning obligation to support your appeal?',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if applicationComplete else ('In progress' if data['application-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/planning-obligation-check',
+              html: 'Change' if applicationComplete else 'Continue'
+            }
+          ]
+        }
+      }, 
+       {
+        key: {
+          html: ' What is the status of your planning obligation?',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/planning-obligation-status',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
+      }if data['planning-obligation-check'] == 'Yes',
+ {
+        key: {
+          html: ' Planning obligation ',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/planning-obligation',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
+      }if data['planning-obligation-status'] == 'Finalised and ready to submit',
+
+       {
+        key: {
+          html: 'Did you submit a separate ownership certificate and agricultural land declaration with your application?',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate-check',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
+      } ,
+
+         {
+        key: {
+          html: ' Appeal statement',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate-check',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
       },
-      status: {
-        html: applicationDocumentsStatus
+         {
+        key: {
+          html: ' Do you want to apply for an award of appeal costs?',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate-check',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
+      },
+         {
+        key: {
+          html: ' Did you submit a design and access statement with your application?',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate-check',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
+      },
+         {
+        key: {
+          html: ' Plans, drawings and supporting documents',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate-check',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
+      },
+         {
+        key: {
+          html: 'Do you have any new plans or drawings that support your appeal?',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if ownershipComplete else ('In progress' if data['ownership-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/ownership-certificate-check',
+              html: 'Change' if ownershipComplete else 'Continue'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Do you have any other new documents that support your appeal?',
+          classes: 'govuk-!-width-one-third'
+        },
+        value: {
+          html: 'Completed' if appealDocumentsComplete else ('In progress' if data['appeal-documents-started'] else 'Not started'),
+          classes: 'govuk-!-width-one-half'
+        },
+        actions: {
+          items: [
+            {
+              href: 'upload-documents/appeal-statement',
+              html: 'Change' if appealDocumentsComplete else 'Continue'
+            }
+          ]
+        }
       }
-    },
-    {
-      title: {
-        text: "Ownership certificate"
-      },
-      href: "upload-documents/ownership-certificate-check",
-      status: {
-        html: ownershipStatus
-      }
-    },
-    {
-      title: {
-        text: "Appeal documents"
-      },
-      href: "upload-documents/appeal-statement",
-      hint: {
-        text: "Appeal statement and costs"
-      },
-      status: {
-        html: appealDocumentsStatus
-      }
-    }
-  ]
-}) }}
+    ]
+  }) }}
+</li>

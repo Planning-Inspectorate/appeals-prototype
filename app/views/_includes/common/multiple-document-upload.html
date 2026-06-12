@@ -29,6 +29,32 @@
         </colgroup>
 
         <tbody class="govuk-table__body">
+          {% set filesToRender = [] %}
+          {% if uploadDataKey and data and data[uploadDataKey] %}
+            {% if data[uploadDataKey] is iterable and data[uploadDataKey] is not string %}
+              {% set filesToRender = data[uploadDataKey] %}
+            {% else %}
+              {% set filesToRender = [data[uploadDataKey]] %}
+            {% endif %}
+          {% elif initialFiles and initialFiles.length > 0 %}
+            {% set filesToRender = initialFiles %}
+          {% endif %}
+
+          {% if filesToRender and filesToRender.length > 0 %}
+            {% for fileName in filesToRender %}
+              <tr class="govuk-table__row preloaded-upload-row" data-file="{{ fileName }}">
+                <td class="govuk-table__cell">
+                  <a href="#" class="govuk-link">{{ fileName }}</a>
+                </td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--green">Uploaded</strong>
+                </td>
+                <td class="govuk-table__cell">
+                  <a href="#" class="govuk-link remove-link">Remove</a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% endif %}
         </tbody>
       </table>
     </div>
@@ -44,6 +70,13 @@
   const filesTableError = document.getElementById('filesTableError');
   const form = uploadArea.closest('form') || document.querySelector('form');
   const uploadedFiles = new Set(); // Track successfully uploaded files
+
+  document.querySelectorAll('.preloaded-upload-row').forEach((row) => {
+    const fileName = row.dataset.file;
+    if (fileName) {
+      uploadedFiles.add(fileName);
+    }
+  });
 
   // Helper function to show error
   function showUploadingError() {

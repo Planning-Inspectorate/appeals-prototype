@@ -1,0 +1,68 @@
+<li>
+  {% set otherPartiesUploadHtml %}
+    {% if data['other-parties-upload'] %}
+      {% if data['other-parties-upload'] is iterable and data['other-parties-upload'] is not string %}
+        <ol class="govuk-list govuk-list--number">
+          {% for file in data['other-parties-upload'] | sort %}
+            <li><a href="#" class="govuk-link">{{ file }}</a></li>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+          <li><a href="#" class="govuk-link">{{ data['other-parties-upload'] }}</a></li>
+        </ol>
+      {% endif %}
+    {% else %}
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#" class="govuk-link">IP-representation-1</a></li>
+      </ol>
+    {% endif %}
+  {% endset %}
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">3. </span> Consultation responses and representations
+    
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+      {
+        key: {
+          html: 'Representations from other parties'
+        },
+        value: {
+          html: data['other-parties-check'] or 'Yes'
+        },
+        actions: {
+          items: [
+            {
+              href: 'consultation/other-parties-check?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload representations from other parties'
+        },
+        value: {
+          html: otherPartiesUploadHtml
+        },
+        actions: {
+          items: [
+            {
+              href: 'consultation/other-parties-upload?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      } if (data['other-parties-check'] or 'Yes') == 'Yes'
+    ]
+  }) }}
+</li>

@@ -1,6 +1,7 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% set title = 'Upload your planning application form' %}
+{% set return = true %}
 
 {% block questions %}
   <h1 class="govuk-heading-l">
@@ -43,6 +44,7 @@
     uploadHtml: uploadHtml
   }) }}
 {% endblock %}
+
 
 {% block pageScripts %}
   <script>
