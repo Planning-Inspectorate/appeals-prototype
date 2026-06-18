@@ -21,6 +21,35 @@
       {{ title }}
     </h1>
 
+      {% set version = "2" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
+      }) }}
+    </h2>
+
+     <p class="govuk-!-margin-bottom-2">
+      Changes:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Labelling each answer that has been pulled through from BOPS using a tag
+      </li>
+       <li>
+        Moving the warning that the questionnaires are prefilled to the appeals list page to reduce the instances of the message e.g. one message on the appeals list versus one on every questionnaire page
+      </li>
+    </ul>
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/manage/AAD-LPAQ-HAS/v2/task-list?clear=true',
+        isStartButton: true
+      }) }}
+
+
     {% set version = "1" %}
 
     <h2 class="govuk-heading-m">
@@ -63,6 +92,7 @@
         href: '/manage/AAD-LPAQ-HAS/v1/task-list?clear=true',
         isStartButton: true
       }) }}
+
 
     
 

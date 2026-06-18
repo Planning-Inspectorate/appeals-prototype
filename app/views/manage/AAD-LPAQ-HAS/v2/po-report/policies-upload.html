@@ -1,0 +1,36 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload relevant policies from your statutory development plan' %}
+{% set uploadDataKey = 'policies-upload' %}
+{% set initialFiles = [
+'Affordable Housing Policy.docx',
+'Air Quality Management Policy.docx',
+'Biodiversity and Geodiversity Policy.docx',
+'Climate Change Mitigation Policy.docx',
+'Community Infrastructure Policy.docx'
+] %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-!-margin-bottom-2">Only upload the policies that you listed in the decision.</p>
+  <p class="govuk-!-margin-bottom-2">You must include the:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>front page</li>
+    <li>title</li>
+    <li>date that the policy was approved or adopted</li>
+    <li>status of the plan</li>
+    <li>copies of the policies and the relevant supporting text</li>
+  </ul>
+
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

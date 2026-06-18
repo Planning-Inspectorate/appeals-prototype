@@ -1,0 +1,32 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Did you put an advert in the local press?' %}
+
+{% block questions %}
+  <span class="govuk-caption-l">
+    Notifying relevant parties of the application
+  </span>
+  {{ govukRadios({
+    idPrefix: 'press-advert-check',
+    name: 'press-advert-check',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('press-advert-check','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('press-advert-check','No')
+      }
+    ]
+  }) }}
+{% endblock %}

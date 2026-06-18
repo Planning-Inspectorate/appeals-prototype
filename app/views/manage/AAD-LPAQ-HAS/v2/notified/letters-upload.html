@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload the letters and emails' %}
+{% set uploadDataKey = 'letters-upload' %}
+
+{% block questions %}
+  <span class="govuk-caption-l">
+    Notifying relevant parties of the application
+  </span>
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    We need a:
+  </p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      copy of what you used to notify people about the appeal
+    </li>
+    <li>
+      list of the addresses to which it was sent
+    </li>
+  </ul>
+
+  <p class="govuk-body">
+    You do not need to provide every individual letter that was sent.
+  </p>
+
+  <h2 class="govuk-heading-m">Upload file</h2>
+  <p class="govuk-hint">The file must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

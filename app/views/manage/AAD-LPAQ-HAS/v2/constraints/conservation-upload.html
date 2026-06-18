@@ -1,0 +1,22 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload conservation map and guidance' %}
+{% set uploadDataKey = 'conservation-upload' %}
+
+{% block questions %}
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <!-- <p class="govuk-body">
+    <a href="https://magic.defra.gov.uk/magicmap.aspx" target="_blank" class="govuk-link">Link to Magic Maps (opens new tab)</a>
+  </p> -->
+
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 15MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+
+{% endblock %}
