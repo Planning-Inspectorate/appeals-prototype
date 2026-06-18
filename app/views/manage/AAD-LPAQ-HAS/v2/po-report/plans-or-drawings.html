@@ -1,0 +1,28 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Upload the plans, drawings and list of plans' %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'plans-or-drawings' %}
+{% set initialFiles = [
+  'existing-elevations-a3-size-drawing-200-1-march-2026.pdf',
+  'existing-floor-plans-a3-size-drawing-100-1-march-2026.pdf',
+  'location-plan-a4-size-drawing-001-rev-a.pdf',
+  'proposed-block-plan-a3-size-drawing-002-rev-b.pdf',
+  'proposed-floor-plans-a3-size-drawing-101-rev-c.pdf',
+  'proposed-rear-and-side-elevations-a3-size-drawing-201-rev-c.pdf',
+  'proposed-section-drawing-aa-a3-size-drawing-301.pdf'
+] %}
+
+
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Planning officer's report and supplementary documents</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}
