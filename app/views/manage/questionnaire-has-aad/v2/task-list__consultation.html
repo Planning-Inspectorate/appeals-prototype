@@ -1,23 +1,54 @@
 <li>
-  {% set otherPartiesUploadHtml %}
-    {% if data['other-parties-upload'] %}
-      {% if data['other-parties-upload'] is iterable and data['other-parties-upload'] is not string %}
-        <ol class="govuk-list govuk-list--number">
-          {% for file in data['other-parties-upload'] | sort %}
-            <li><a href="#" class="govuk-link">{{ file }}</a></li>
-          {% endfor %}
-        </ol>
-      {% else %}
-        <ol class="govuk-list govuk-list--number">
-          <li><a href="#" class="govuk-link">{{ data['other-parties-upload'] }}</a></li>
-        </ol>
-      {% endif %}
+
+
+<!-- in-line tags for auto-populated files -->
+  {% set otherPartiesInitialFiles = [
+  'IP-representation-1'
+] %}
+
+
+ 
+{% set otherPartiesUploadData = data['other-parties-upload'] or otherPartiesInitialFiles %}
+
+
+
+
+{% set otherPartiesUploadHtml %}
+  {% if otherPartiesUploadData %}
+    {% if otherPartiesUploadData is iterable and otherPartiesUploadData is not string %}
+      <ol class="govuk-list govuk-list--number">
+
+        {% for file in otherPartiesUploadData | sort %}
+          {% set fileName = file.name or file %}
+          {% set isAuto = fileName in otherPartiesInitialFiles %}
+
+          <li>
+            <a href="#">{{ fileName }}</a>
+
+            {% if isAuto %}
+              <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+            {% endif %}
+          </li>
+
+        {% endfor %}
+
+      </ol>
     {% else %}
       <ol class="govuk-list govuk-list--number">
-        <li><a href="#" class="govuk-link">IP-representation-1</a></li>
+        <li>
+          <a href="#">{{ otherPartiesUploadData }}</a>
+        </li>
       </ol>
     {% endif %}
-  {% endset %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files -->
+
+  
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">3. </span> Consultation responses and representations
     
@@ -52,9 +83,9 @@
           html: 'Upload representations from other parties'
         },
         value: {
-        html: '<span class="govuk-!-display-inline-block">' + otherPartiesUploadHtml + '</span>' +
-      '<strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>'},
-
+        html: otherPartiesUploadHtml
+        },
+        
         actions: {
           items: [
             {

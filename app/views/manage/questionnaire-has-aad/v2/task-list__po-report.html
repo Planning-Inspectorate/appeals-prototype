@@ -124,39 +124,60 @@
   {% endset %}
 
 
+<!-- in-line tags for auto-populated files -->
+  {% set policiesInitialFiles = [
+  'Affordable Housing Policy.docx',
+  'Air Quality Management Policy.docx',
+  'Biodiversity and Geodiversity Policy.docx',
+  'Climate Change Mitigation Policy.docx',
+  'Community Infrastructure Policy.docx'
+] %}
+
+
+ 
+{% set policiesUploadData = data['policies-upload'] or policiesInitialFiles %}
+
+
+
+
 {% set policiesUploadHtml %}
-    {% set policiesUploadData = data['policies-upload'] or [
-    { name: 'Affordable Housing Policy.docx', isAuto: true },
-    { name: 'Air Quality Management Policy.docx', isAuto: true },
-    { name: 'Biodiversity and Geodiversity Policy.docx', isAuto: true },
-    { name: 'Climate Change Mitigation Policy.docx', isAuto: true },
-    { name: 'Community Infrastructure Policy.docx', isAuto: true }
-    ] %}
-    {% if policiesUploadData %}
-      {% if policiesUploadData is iterable and policiesUploadData is not string %}
-    <ol class="govuk-list govuk-list--number">
+  {% if policiesUploadData %}
+    {% if policiesUploadData is iterable and policiesUploadData is not string %}
+      <ol class="govuk-list govuk-list--number">
 
-  {% for file in policiesUploadData %}
-    {% set fileName = file.name or file %}
-    {% set isAuto = file.isAuto or false %}
+        {% for file in policiesUploadData | sort %}
+          {% set fileName = file.name or file %}
+          {% set isAuto = fileName in policiesInitialFiles %}
 
-    <li>
-      <a href="#" class="govuk-link">{{ fileName }}</a>
-      {% if isAuto %}
-        <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ol>
-      {% else %}
-        <ol class="govuk-list govuk-list--number">
-          <li><a href="#" class="govuk-link">{{ policiesUploadHtml }}</a></li>
-        </ol>
-      {% endif %}
+          <li>
+            <a href="#">{{ fileName }}</a>
+
+            {% if isAuto %}
+              <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+            {% endif %}
+          </li>
+
+        {% endfor %}
+
+      </ol>
     {% else %}
-      <span class="govuk-hint">Not started</span>
+      <ol class="govuk-list govuk-list--number">
+        <li>
+          <a href="#">{{ policiesUploadData }}</a>
+        </li>
+      </ol>
     {% endif %}
-  {% endset %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files -->
+
+
+
+
   
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
