@@ -391,7 +391,7 @@
           html: 'Documents and plans used to make the decision'
         },
         value: {
-          html: data['application-documents'] or listoflpadocs | safe
+          html: data['list-of-documents'] or listoflpadocs | safe
         }
         if data['list-of-documents-complete'] else
         {

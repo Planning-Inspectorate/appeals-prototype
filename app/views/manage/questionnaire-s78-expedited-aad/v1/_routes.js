@@ -37,15 +37,44 @@ router.get('/task-list', function(req, res, next){
     req.session.data = {}
   }
 
+  const data = req.session.data || {}
+  const isComplete = (key) => data[key] == 'true'
+  const hasValue = (value) => {
+    if (Array.isArray(value)) return value.length > 0
+    if (typeof value === 'string') return value.trim() !== ''
+    return value !== undefined && value !== null && value !== false
+  }
+
+  // On load, show these sections as in progress unless already completed
+  if (!isComplete('constraints-completed')) {
+    data['constraints-started'] = 'true'
+  }
+  if (!isComplete('notified-completed')) {
+    data['notified-started'] = 'true'
+  }
+
+  // Mark sections as in progress when key answers exist (unless complete)
+  if (!isComplete('constraints-completed') && hasValue(data['conservation-check'])) {
+    data['constraints-started'] = 'true'
+  }
+
+  if (!isComplete('og-evidence-completed') && hasValue(data['design-access-statement-check'])) {
+    data['og-evidence-started'] = 'true'
+  }
+
+  if (!isComplete('notified-completed') && hasValue(data['notified-how'])) {
+    data['notified-started'] = 'true'
+  }
+
   let count = 0
-  if (req.session.data['constraints-completed'] == 'true') { count++ }
-  if (req.session.data['og-evidence-completed'] == 'true') { count++ }
-  if (req.session.data['env-impact-completed'] == 'true') { count++ }
-  if (req.session.data['notified-completed'] == 'true') { count++ }
-  if (req.session.data['consultation-completed'] == 'true') { count++ }
-  if (req.session.data['po-report-completed'] == 'true') { count++ }
-  if (req.session.data['site-access-completed'] == 'true') { count++ }
-  if (req.session.data['appeal-process-completed'] == 'true') { count++ }
+  if (data['constraints-completed'] == 'true') { count++ }
+  if (data['og-evidence-completed'] == 'true') { count++ }
+  if (data['env-impact-completed'] == 'true') { count++ }
+  if (data['notified-completed'] == 'true') { count++ }
+  if (data['consultation-completed'] == 'true') { count++ }
+  if (data['po-report-completed'] == 'true') { count++ }
+  if (data['site-access-completed'] == 'true') { count++ }
+  if (data['appeal-process-completed'] == 'true') { count++ }
 
   res.locals.count = count
   next()
@@ -328,6 +357,7 @@ router.post('/og-evidence/other-documents-upload', function (req, res) {
 })
 
 router.post('/og-evidence/list-of-documents', function (req, res) {
+  req.session.data['og-evidence-completed'] = 'true'
   res.redirect('complete')
 })
 
