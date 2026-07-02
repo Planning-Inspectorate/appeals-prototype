@@ -1,0 +1,212 @@
+{% set listoflpadocs %}
+  1. Planning Application Form – completed and signed by the applicant.<br>
+  2. Location Plan – showing the site in relation to surrounding area.<br>
+  3. Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.<br>
+  4. Design and Access Statement – explaining the design rationale and accessibility considerations.<br>
+  5. Planning Statement – outlining how the proposal complies with local and national planning policies.<br>
+  6. Transport Assessment – evaluating traffic impact and proposed transport infrastructure.<br>
+  7. Flood Risk Assessment – assessing potential flood risks and mitigation strategies.<br>
+  8. Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.<br>
+  9. Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.<br>
+  10. Heritage Statement – if the site affects listed buildings or conservation areas.<br>
+  11. Noise Impact Assessment – analysing potential noise issues and mitigation.<br>
+  12. Air Quality Assessment – evaluating air pollution impacts.<br>
+  13. Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable practices.
+{% endset %}
+
+
+{% set otherapplicationdocs %}
+  <ol class="govuk-list govuk-list--number">
+    <li>
+      <a href="#" class="govuk-link">fire-access-plan.pdf</a>
+    </li>
+    <li>
+      <a href="#" class="govuk-link">mining-plan.pdf</a>
+    </li>
+    <li>
+      <a href="#" class="govuk-link">sewerage-plan.pdf</a>
+    </li>
+  </ol>
+{% endset %}
+
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span>
+    Original evidence
+    {% if data['og-evidence-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['og-evidence-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9 long-answers',
+    rows: [
+      {
+        key: {
+          html: 'Design and access statement'
+        },
+        value: {
+          html: data['design-access-statement-check'] or 'No'
+        }
+        if data['design-access-statement-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/design-access-statement-check?cya=true',
+              html: 'Change'
+            }
+            if data['design-access-statement-check-complete'] else
+            {
+              href: 'og-evidence/design-access-statement-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload design and access statement'
+        },
+        value: {
+          html: data['design-access-statement-upload'] or '<a href="#" class="govuk-link">design-access-statement.pdf</a>'
+        }
+        if data['design-access-statement-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/design-access-statement-upload?cya=true',
+              html: 'Change'
+            }
+            if data['design-access-statement-upload-complete'] else
+            {
+              href: 'og-evidence/design-access-statement-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['design-access-statement-check'] == 'Yes',
+      {
+        key: {
+          html: 'Upload plans and drawings submitted with the application'
+        },
+        value: {
+          html: data['plans-and-drawings-upload'] or '<a href="#" class="govuk-link">plans-and-drawings.pdf</a>'
+        }
+        if data['plans-and-drawings-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/plans-and-drawings-upload?cya=true',
+              html: 'Change'
+            }
+            if data['plans-and-drawings-upload-complete'] else
+            {
+              href: 'og-evidence/plans-and-drawings-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          html: 'Other documents with the application'
+        },
+        value: {
+          html: data['other-documents-check'] or 'No'
+        }
+        if data['other-documents-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/other-documents-check?cya=true',
+              html: 'Change'
+            }
+            if data['other-documents-check-complete'] else
+            {
+              href: 'og-evidence/other-documents-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload other documents submitted with the application'
+        },
+        value: {
+          html: data['other-documents-upload']
+              or otherapplicationdocs
+        }
+        if data['other-documents-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/other-documents-upload?cya=true',
+              html: 'Change'
+            }
+            if data['other-documents-upload-complete'] else
+            {
+              href: 'og-evidence/other-documents-upload',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['other-documents-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Documents and plans used to make the decision'
+        },
+        value: {
+          html: data['application-documents'] or listoflpadocs | safe
+        }
+        if data['list-of-documents-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/list-of-documents?cya=true',
+              html: 'Change'
+            }
+            if data['list-of-documents-complete'] else
+            {
+              href: 'og-evidence/list-of-documents',
+              html: 'Answer'
+            }
+          ]
+        }
+      }
+
+    ]
+  }) }}
+</li>

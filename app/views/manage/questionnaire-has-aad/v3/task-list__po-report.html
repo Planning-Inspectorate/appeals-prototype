@@ -1,0 +1,349 @@
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">4. </span>
+
+      Planning officer’s report and supplementary documents
+
+    {% if data['po-report-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+   
+    {% endif %}
+  </h2>
+
+  {% set levyDate = (data['community-infrastructure-date-day'] or '1') +' '+ (data['community-infrastructure-date-month'] | formatMonth or 'July') +' '+ (data['community-infrastructure-date-year'] or '2024') %}
+  {% set supplementaryCheck = data['supplementary-check'] or 'No' %}
+  {% set policiesCheck = data['policies-check'] or 'Yes' %}
+  {% set reportUploadHtml %}
+    {% if data['report-upload'] %}
+      {% if data['report-upload'] is iterable and data['report-upload'] is not string %}
+          {% if data['report-upload'] | length == 1 %}
+            <a href="#">{{ data['report-upload'][0].name or data['report-upload'][0] }}</a>
+          {% else %}
+            <ol class="govuk-list govuk-list--number">
+              {% for file in data['report-upload'] | sort %}
+                {% set fileName = file.name or file %}
+                <li><a href="#">{{ fileName }}</a></li>
+              {% endfor %}
+            </ol>
+          {% endif %}
+      {% else %}
+          <a href="#">{{ data['report-upload'] }}</a>
+      {% endif %}
+    {% else %}
+      <span class="govuk-hint">Not started</span>
+    {% endif %}
+  {% endset %}
+
+
+  <!-- in-line tags for auto-populated files -->
+  {% set initialFiles = [
+  'location-plan-a4-size-drawing-001-rev-a.pdf',
+  'proposed-block-plan-a3-size-drawing-002-rev-b.pdf',
+  'existing-floor-plans-a3-size-drawing-100-1-march-2026.pdf',
+  'proposed-floor-plans-a3-size-drawing-101-rev-c.pdf',
+  'existing-elevations-a3-size-drawing-200-1-march-2026.pdf',
+  'proposed-rear-and-side-elevations-a3-size-drawing-201-rev-c.pdf',
+  'proposed-section-drawing-aa-a3-size-drawing-301.pdf'
+] %}
+ 
+{% set plansAndDrawingsData = data['plans-or-drawings'] or initialFiles %}
+
+
+
+
+{% set plansAndDrawingsHtml %}
+  {% if plansAndDrawingsData %}
+    {% if plansAndDrawingsData is iterable and plansAndDrawingsData is not string %}
+        {% if plansAndDrawingsData | length == 1 %}
+          {% set fileName = plansAndDrawingsData[0].name or plansAndDrawingsData[0] %}
+          {% set isAuto = fileName in initialFiles %}
+          <a href="#">{{ fileName }}</a>
+          {% if isAuto %}
+            <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+          {% endif %}
+        {% else %}
+          <ol class="govuk-list govuk-list--number">
+
+            {% for file in plansAndDrawingsData | sort %}
+              {% set fileName = file.name or file %}
+              {% set isAuto = fileName in initialFiles %}
+
+              <li>
+                <a href="#">{{ fileName }}</a>
+
+                {% if isAuto %}
+                  <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+                {% endif %}
+              </li>
+
+            {% endfor %}
+
+          </ol>
+        {% endif %}
+    {% else %}
+        <a href="#">{{ plansAndDrawingsData }}</a>
+    {% endif %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% set supplementaryUploadHtml %}
+    {% if data['supplementary-upload'] %}
+      {% if data['supplementary-upload'] is iterable and data['supplementary-upload'] is not string %}
+          {% if data['supplementary-upload'] | length == 1 %}
+            <a href="#">{{ data['supplementary-upload'][0].name or data['supplementary-upload'][0] }}</a>
+          {% else %}
+            <ol class="govuk-list govuk-list--number">
+              {% for file in data['supplementary-upload'] | sort %}
+                {% set fileName = file.name or file %}
+                <li><a href="#">{{ fileName }}</a></li>
+              {% endfor %}
+            </ol>
+          {% endif %}
+      {% else %}
+          <a href="#">{{ data['supplementary-upload'] }}</a>
+      {% endif %}
+    {% else %}
+      <span class="govuk-hint">Not started</span>
+    {% endif %}
+  {% endset %}
+
+
+<!-- in-line tags for auto-populated files -->
+  {% set policiesInitialFiles = [
+  'Affordable Housing Policy.docx',
+  'Air Quality Management Policy.docx',
+  'Biodiversity and Geodiversity Policy.docx',
+  'Climate Change Mitigation Policy.docx',
+  'Community Infrastructure Policy.docx'
+] %}
+
+
+ 
+{% set policiesUploadData = data['policies-upload'] or policiesInitialFiles %}
+
+
+
+
+{% set policiesUploadHtml %}
+  {% if policiesUploadData %}
+    {% if policiesUploadData is iterable and policiesUploadData is not string %}
+        {% if policiesUploadData | length == 1 %}
+          {% set fileName = policiesUploadData[0].name or policiesUploadData[0] %}
+          {% set isAuto = fileName in policiesInitialFiles %}
+          <a href="#">{{ fileName }}</a>
+          {% if isAuto %}
+            <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+          {% endif %}
+        {% else %}
+          <ol class="govuk-list govuk-list--number">
+
+            {% for file in policiesUploadData | sort %}
+              {% set fileName = file.name or file %}
+              {% set isAuto = fileName in policiesInitialFiles %}
+
+              <li>
+                <a href="#">{{ fileName }}</a>
+
+                {% if isAuto %}
+                  <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+                {% endif %}
+              </li>
+
+            {% endfor %}
+
+          </ol>
+        {% endif %}
+    {% else %}
+        <a href="#">{{ policiesUploadData }}</a>
+    {% endif %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files -->
+
+
+
+
+  
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Upload what your decision notice would have said' if data['non-determination'] == 'true' else 'Upload planning officer’s report'
+        },
+        value: {
+          html: reportUploadHtml
+        }
+        if data['report-upload'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/report-upload?cya=true',
+              html: 'Change'
+            }
+            if data['report-upload'] else
+            {
+              href: 'po-report/report-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+            {
+        key: {
+          html: 'Plans drawings and list of plans'
+        },
+        value: {
+                html: plansAndDrawingsHtml
+        }
+              if plansAndDrawingsData else
+              {
+                html: plansAndDrawingsHtml
+              },
+        actions: {
+          items: [
+            {
+                    href: 'po-report/plans-or-drawings?cya=true',
+                    html: 'Change'
+            }
+                  if plansAndDrawingsData else
+            {
+                    href: 'po-report/plans-or-drawings',
+                    html: 'Upload'
+            }
+          ]
+        }
+      },
+
+           {
+        key: {
+          html: 'Do you have any relevant policies from your statutory development plan?'
+        },
+        value: {
+          html: data['policiesCheck'] or 'Yes'+ '</span>' +
+      '<strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>'},
+        actions: {
+          items: [
+            {
+              href: 'po-report/policies-check?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      },
+  
+
+
+
+
+      
+      {
+        key: {
+          html: ' Policies from statutory development plan'
+        },
+        value: {
+          html: policiesUploadHtml
+        }
+        if policiesUploadData else
+        {
+          html: policiesUploadHtml
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/policies-upload?cya=true',
+              html: 'Change'
+            }
+            if policiesUploadData else
+            {
+              href: 'po-report/policies-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if policiesCheck == 'Yes',
+
+                {
+        key: {
+          html: 'Supplementary planning documents'
+        },
+        value: {
+          html: data['supplementaryCheck'] or 'No'+ '</span>' +
+      '<strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>'},
+        actions: {
+          items: [
+            {
+              href: 'po-report/supplementary-check?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          html: ' Upload supplementary planning documents '
+        },
+         value: {
+          html: supplementaryUploadHtml
+        }
+        if data['supplementary-upload'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/supplementary-upload?cya=true',
+              html: 'Change'
+            }
+            if data['supplementary-upload'] else
+            {
+              href: 'po-report/supplementary-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      }if (data['supplementary-check']) == 'Yes'
+
+     
+
+    ]
+  }) }}
+</li>
+
+
+
+  

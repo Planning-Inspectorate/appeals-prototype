@@ -1,0 +1,105 @@
+<li>
+
+
+<!-- in-line tags for auto-populated files -->
+  {% set otherPartiesInitialFiles = [
+  'IP-representation-1'
+] %}
+
+
+ 
+{% set otherPartiesUploadData = data['other-parties-upload'] or otherPartiesInitialFiles %}
+
+
+
+
+{% set otherPartiesUploadHtml %}
+  {% if otherPartiesUploadData %}
+    {% if otherPartiesUploadData is iterable and otherPartiesUploadData is not string %}
+        {% if otherPartiesUploadData | length == 1 %}
+          {% set fileName = otherPartiesUploadData[0].name or otherPartiesUploadData[0] %}
+          {% set isAuto = fileName in otherPartiesInitialFiles %}
+          <a href="#">{{ fileName }}</a>
+          {% if isAuto %}
+            <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+          {% endif %}
+        {% else %}
+          <ol class="govuk-list govuk-list--number">
+
+            {% for file in otherPartiesUploadData | sort %}
+              {% set fileName = file.name or file %}
+              {% set isAuto = fileName in otherPartiesInitialFiles %}
+
+              <li>
+                <a href="#">{{ fileName }}</a>
+
+                {% if isAuto %}
+                  <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+                {% endif %}
+              </li>
+
+            {% endfor %}
+
+          </ol>
+        {% endif %}
+    {% else %}
+        <a href="#">{{ otherPartiesUploadData }}</a>
+    {% endif %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files -->
+
+  
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">3. </span> Consultation responses and representations
+    
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+      {
+        key: {
+          html: 'Representations from other parties'
+        },
+        value: {
+          html: data['other-parties-check'] or 'Yes'+ '</span>' +
+      '<strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>'},
+        actions: {
+          items: [
+            {
+              href: 'consultation/other-parties-check?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload representations from other parties'
+        },
+        value: {
+        html: otherPartiesUploadHtml
+        },
+        
+        actions: {
+          items: [
+            {
+              href: 'consultation/other-parties-upload?cya=true',
+              html: 'Change'
+            }
+          ]
+        }
+      } if (data['other-parties-check'] or 'Yes') == 'Yes'
+    ]
+  }) }}
+</li>

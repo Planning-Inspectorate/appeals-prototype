@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Is the community infrastructure levy formally adopted?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'community-infrastructure-adopted',
+    name: 'community-infrastructure-adopted',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('community-infrastructure-adopted','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('community-infrastructure-adopted','No')
+      }
+    ]
+  }) }}
+{% endblock %}

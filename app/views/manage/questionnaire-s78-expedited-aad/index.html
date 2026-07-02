@@ -1,0 +1,111 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = true %}
+{% set title = 'Appeals as Data - Householder questionnaire' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#manage'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Manage appeals
+    </span>
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {# --- VERSION 3 --- #}
+    {% set v3HTML %}
+
+      {% set version = "3" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Moving the warning that the questionnaires are prefilled to the questionnaire page to make the banner more actionable and relevant (on the manage appeals list it wasn't clear which questionnaires the banner related to and there could be too many to list)
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/manage/questionnaire-has-aad/v3/appeals-list?clear=true',
+        isStartButton: true
+      }) }}
+
+    {% endset %}
+
+    {# --- VERSION 2 --- #}
+    {% set v2HTML %}
+
+      {% set version = "2" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Labelling each answer that has been pulled through from BOPS using a tag
+        </li>
+        <li>
+          Moving the warning that the questionnaires are prefilled to the appeals list page to reduce the instances of the message
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/manage/questionnaire-has-aad/v2/appeals-list?clear=true',
+        isStartButton: true
+      }) }}
+
+    {% endset %}
+
+    {# --- VERSION 1 --- #}
+    {% set v1HTML %}
+
+      {% set version = "1" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li> Banner announcing that some fields have been pre-filled</li>
+        <li> Auto label added to pre-filled data items</li>
+        <li> Data included is a blend of an annonymised Camden BOPS output for a particular case and example data made up based on file types that can be stored in BOPS</li>
+        <li>Alphabetising &amp; numbering uploaded documents</li>
+      </ul>
+
+      
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/manage/questionnaire-s78-aad/v1/task-list?clear=true',
+        isStartButton: true
+      }) }}
+
+    {% endset %}
+
+    {{ govukAccordion({
+      id: 'versions',
+      items: [
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+{% endblock %}
+``

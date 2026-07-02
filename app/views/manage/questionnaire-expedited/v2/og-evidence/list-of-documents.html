@@ -1,0 +1,26 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "What documents and plans did you use to make your decision?" %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Original evidence
+  </span>
+
+  {{ govukTextarea({
+    name: "application-documents",
+    id: "application-documents",
+    rows: "8",
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    hint: {
+      text: "Only include the most up-to-date versions of the documents you received"
+    }
+
+  }) }}
+
+{% endblock %}

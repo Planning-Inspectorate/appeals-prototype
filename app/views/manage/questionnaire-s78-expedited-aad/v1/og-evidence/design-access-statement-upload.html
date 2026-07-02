@@ -1,0 +1,21 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Upload the design and access statement submitted for the application" %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'design-access-statement-upload' %}
+{% set initialFiles = ['20261286NEW_DAS_rev1.pdf',
+'20261286NEW_DAS_rev2.pdf'
+] %}
+
+
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Original evidence</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+  <p class="govuk-hint">The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

@@ -1,0 +1,292 @@
+<!-- <p class="govuk-body-l">
+Report {{ data['report-upload-complete'] }} <br>
+Policies {{ data['policies-complete'] }} <br>
+Emerging plan {{ data['emerging-plan-complete'] }} <br>
+Supplemetary docs {{ data['supplementary-documents-complete'] }} <br>
+Community infrastructure {{ data['community-infrastructure-complete'] }} <br>
+PO report done = {{ data['po-report-completed'] }}
+</p> -->
+
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">6. </span>
+    {% if data['non-determination'] == 'true' %}
+      What your decision notice would have said and relevant policies
+    {% else %}
+      Planning officer’s report and supporting documents
+    {% endif %}
+
+    {% if data['po-report-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['po-report-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {% set levyDate = (data['community-infrastructure-date-day'] or '1') +' '+ (data['community-infrastructure-date-month'] | formatMonth or 'July') +' '+ (data['community-infrastructure-date-year'] or '2024') %}
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+      {
+        key: {
+          html: 'Upload what your decision notice would have said' if data['non-determination'] == 'true' else 'Upload planning officer’s report'
+        },
+        value: {
+          html: data['report-upload'] or 'report.pdf'
+        }
+        if data['report-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/report-upload?cya=true',
+              html: 'Change'
+            }
+            if data['report-upload-complete'] else
+            {
+              href: 'po-report/report-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload policies from statutory development plan'
+        },
+        value: {
+          html: data['policies-upload'] or 'policies.pdf'
+        }
+        if data['policies-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/policies-upload?cya=true',
+              html: 'Change'
+            }
+            if data['policies-upload-complete'] else
+            {
+              href: 'po-report/policies-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Emerging plan'
+        },
+        value: {
+          html: data['emerging-plan-check'] or 'No'
+        }
+        if data['emerging-plan-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/emerging-plan-check?cya=true',
+              html: 'Change'
+            }
+            if data['emerging-plan-check-complete'] else
+            {
+              href: 'po-report/emerging-plan-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload emerging plan and supporting information'
+        },
+        value: {
+          html: data['emerging-plan-upload'] or 'emerging-plan.pdf'
+        }
+        if data['emerging-plan-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/emerging-plan-upload?cya=true',
+              html: 'Change'
+            }
+            if data['emerging-plan-upload-complete'] else
+            {
+              href: 'po-report/emerging-plan-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['emerging-plan-check'] == 'Yes',
+      {
+        key: {
+          html: 'Supplementary planning documents'
+        },
+        value: {
+          html: data['supplementary-check'] or 'No'
+        }
+        if data['supplementary-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/supplementary-check?cya=true',
+              html: 'Change'
+            }
+            if data['supplementary-check-complete'] else
+            {
+              href: 'po-report/supplementary-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload supplementary planning documents'
+        },
+        value: {
+          html: data['supplementary-upload'] or 'supplementary.pdf'
+        }
+        if data['supplementary-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/supplementary-upload?cya=true',
+              html: 'Change'
+            }
+            if data['supplementary-upload-complete'] else
+            {
+              href: 'po-report/supplementary-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['supplementary-check'] == 'Yes',
+      {
+        key: {
+          html: 'Community infrastructure levy'
+        },
+        value: {
+          html: data['community-infrastructure-check'] or 'No'
+        }
+        if data['community-infrastructure-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/community-infrastructure-check?cya=true',
+              html: 'Change'
+            }
+            if data['community-infrastructure-check-complete'] else
+            {
+              href: 'po-report/community-infrastructure-check',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          html: 'Upload community infrastructure levy'
+        },
+        value: {
+          html: data['community-infrastructure-upload'] or 'community-infrastructure.pdf'
+        }
+        if data['community-infrastructure-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/community-infrastructure-upload?cya=true',
+              html: 'Change'
+            }
+            if data['community-infrastructure-upload-complete'] else
+            {
+              href: 'po-report/community-infrastructure-upload',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['community-infrastructure-check'] == 'Yes',
+      {
+        key: {
+          html: 'Community infrastructure levy formally adopted'
+        },
+        value: {
+          html: data['community-infrastructure-adopted'] or 'No'
+        }
+        if data['community-infrastructure-adopted-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/community-infrastructure-adopted?cya=true',
+              html: 'Change'
+            }
+            if data['community-infrastructure-adopted-complete'] else
+            {
+              href: 'po-report/community-infrastructure-adopted',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['community-infrastructure-check'] == 'Yes',
+      {
+        key: {
+          html: 'Date community infrastructure levy '+('expected to be ' if data['community-infrastructure-adopted'] != 'Yes')+'adopted'
+        },
+        value: {
+          html: levyDate
+        }
+        if data['community-infrastructure-date-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'po-report/community-infrastructure-date?cya=true',
+              html: 'Change'
+            }
+            if data['community-infrastructure-date-complete'] else
+            {
+              href: 'po-report/community-infrastructure-date',
+              html: 'Upload'
+            }
+          ]
+        }
+      } if data['community-infrastructure-check'] == 'Yes'
+    ]
+  }) }}
+</li>

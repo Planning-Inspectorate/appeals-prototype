@@ -1,0 +1,74 @@
+{% if data['current-appeals'] == 'no' %}
+
+  <h2 class="govuk-heading-l">
+    To do
+  </h2>
+
+  <p class="govuk-body">
+    There are currently no appeals in progress.
+  </p>
+
+{% else %}
+
+  {% set venuelink %}
+    {% if data['venue-address'] != "complete" %}
+      <a href="venue-address">Add venue</a>
+    {% endif %}
+  {% endset %}
+
+  {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Active',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Address'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Deadline'
+      },
+      {
+        html: 'Due in',
+        format: 'numeric'
+      },
+      {
+        html: 'To do',
+        format: 'numeric'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="#">1345301</a>'
+        },
+        {
+          html: 'Spital House, Lensfield Rd, Cambridge CB2 1ER'
+        },
+        {
+          html: 'Householder'
+        },
+        {
+          html: '1' | daysAgo
+        },
+        {
+          html: "<strong class='govuk-tag govuk-tag--red'>Overdue</strong>",
+          format: 'numeric'
+        },
+        {
+          html: '<a href="/manage/questionnaire-has-aad/v2/task-list.html"><span class="govuk-visually-hidden">Submit </span>Questionnaire</a>',
+          format: 'numeric'
+        }
+      ]]
+  }) }}
+
+{% endif %}

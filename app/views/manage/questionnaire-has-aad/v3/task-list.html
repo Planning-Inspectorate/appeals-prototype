@@ -1,0 +1,88 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Appeal questionnaire' %}
+{% set prototypeLinks = [
+  {
+    href: 'confirmation',
+    text: 'Skip to confirmation'
+  }]
+%}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to your planning appeals',
+    href: 'https://appeals-prototype.herokuapp.com/manage/appeals/v5?action='
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
+{% call govukNotificationBanner() %}
+  <p class="govuk-notification-banner__heading">
+ Check the questionnaire answers we've prefilled for you.
+  </p>
+{% endcall %}
+</div>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+      
+
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% include "_includes/appeal-content/lpa-has-appeal-meta.html" %}
+
+    </div>
+
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <h2 class="govuk-heading-s">
+        Complete the questionnaire
+      </h2>
+      <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 7 sections.</p>
+
+      {# Tweak the task list so we can merge the CYA in #}
+      <style>
+        .app-task-list>li {
+          position: relative;
+        }
+        .app-task-list__section .govuk-tag {
+          position: absolute;
+          top: 3px;
+          right: 0;
+        }
+        .app-task-list .govuk-summary-list {
+          border-top: 1px solid #b1b4b6;
+        }
+      </style>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      <ol class="app-task-list">
+
+        {% include "./task-list__constraints.html" %}
+        {% include "./task-list__notified.html" %}
+        {% include "./task-list__consultation.html" %}
+        {% include "./task-list__po-report.html" %}
+        {% include "./task-list__site-access.html" %}
+        {% include "./task-list__appeal-process.html" %}
+        {% include "./task-list__submit.html" %}
+
+      </ol>
+    </div>
+  </div>
+{% endblock %}

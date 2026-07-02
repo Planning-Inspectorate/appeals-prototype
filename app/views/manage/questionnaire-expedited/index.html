@@ -1,0 +1,91 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set nav = false %}
+{% set title = 'S78 questionnaire - expedited' %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to all prototypes',
+    href: '/#manage'
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      Manage LPA appeals
+    </span>
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+ {% set version = "2" %}
+
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
+      }) }}
+    </h2>
+
+    <p class="govuk-!-margin-bottom-2">Changes:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        added a question ‘is <span style="font-style: italic;">this</span> the right type of appeal?’
+      </li>
+      <li>
+        added code to fix the actions behaviour when on the task list
+      </li>
+    </ul>
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/manage/questionnaire-expedited/v'+version+'/task-list?clear=true',
+      isStartButton: true
+    }) }}
+
+    {% set v1HTML %}
+
+      {% set version = "1" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          S78 expedited variant
+        </li>
+        <li>
+          extra question for ‘other documents’ in the Original evidence section
+        </li>
+        <li>
+          additional question for ‘list of documents’ in the Original evidence section
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/manage/questionnaire-expedited/v'+version+'/task-list?clear=true',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+    {{ govukAccordion({
+      id: 'versions',
+      items: [
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

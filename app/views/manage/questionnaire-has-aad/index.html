@@ -11,67 +11,75 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">
-        Manage appeals
-      </span>
-      <h1 class="govuk-heading-l">
-        {{ title }}
-      </h1>
+    <span class="govuk-caption-l">
+      Manage appeals
+    </span>
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    {# --- VERSION 3 --- #}
+    {% set v3HTML %}
+
+      {% set version = "3" %}
+
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          Moving the warning that the questionnaires are prefilled to the questionnaire page to make the banner more actionable and relevant (on the manage appeals list it wasn't clear which questionnaires the banner related to and there could be too many to list)
+        </li>
+      </ul>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: '/manage/questionnaire-has-aad/v3/appeals-list?clear=true',
+        isStartButton: true
+      }) }}
+
+    {% endset %}
+
+    {# --- VERSION 2 --- #}
+    {% set v2HTML %}
 
       {% set version = "2" %}
 
-      <h2 class="govuk-heading-m">
-        Version {{version}}
-        {{ govukTag({
-          classes: 'govuk-tag--green govuk-!-margin-left-2',
-          text: 'Ready for research'
-        }) }}
-      </h2>
-
-      <p class="govuk-!-margin-bottom-2">
-        Changes: 
-      </p>
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
           Labelling each answer that has been pulled through from BOPS using a tag
         </li>
         <li>
-          Moving the warning that the questionnaires are prefilled to the appeals list page to reduce the instances of the message e.g. one message on the appeals list versus one on every questionnaire page
+          Moving the warning that the questionnaires are prefilled to the appeals list page to reduce the instances of the message
         </li>
       </ul>
-  
+
       {{ govukButton({
         html: 'View prototype',
         href: '/manage/questionnaire-has-aad/v2/appeals-list?clear=true',
         isStartButton: true
       }) }}
 
-    
+    {% endset %}
+
+    {# --- VERSION 1 --- #}
+    {% set v1HTML %}
 
       {% set version = "1" %}
 
-      <h2 class="govuk-heading-m">
-        Version {{version}}
-        {{ govukTag({
-          classes: 'govuk-tag--green govuk-!-margin-left-2',
-          text: 'Ready for research'
-        }) }}
-      </h2>
-
-      <p class="govuk-!-margin-bottom-2">
-        Changes:
-      </p>
+      <p class="govuk-!-margin-bottom-2">Changes:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          Creating a version of the LPAQ which features pre-filled data, from the appellants appeal form, taken from the BOPS API
+          Creating a version of the LPAQ which features pre-filled data from the appellants appeal form via the BOPS API
         </li>
         <li>
-          Alphabetising & numbering uploaded documents 
+          Alphabetising &amp; numbering uploaded documents
         </li>
       </ul>
 
@@ -79,8 +87,8 @@
         summaryText: "Related research",
         html: '<ul class="govuk-list govuk-list--bullet">
           <li>Possibly order documents alphabetically <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/94798110/User+Research+-+LPA+Sessions">Wednesday 24 June 2020 - 11am Bracknell Forest</a></li>
-          <li>Order alphabetically or by date - beneficial to CO and Insp <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1777297437934/aa561c5cd03f20266aa08685fd5a88e6ad994402">Personal list - Case officers and inspectors like aplhabetical document order</a></li>
-          <li>Could you (Planning Insp) send us information when you receive it? So that what you\'ve got, we\'ve got? That would be a much better process. <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/94798110/User+Research+-+LPA+Sessions">Thursday 02 July 2020 - 10am Herefordshire</a></li>
+          <li>Order alphabetically or by date - beneficial to CO and Insp <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1777297437934/aa561c5cd03f20266aa08685fd5a88e6ad994402">Personal list</a></li>
+          <li>Could you send us information when you receive it? <a href="https://pins-ds.atlassian.net/wiki/spaces/AAPDS/pages/94798110/User+Research+-+LPA+Sessions">Thursday 02 July 2020 - 10am Herefordshire</a></li>
         </ul>'
       }) }}
 
@@ -90,7 +98,39 @@
         isStartButton: true
       }) }}
 
-    </div>
-  </div>
+    {% endset %}
 
+    {{ govukAccordion({
+      id: 'versions',
+      items: [
+        {
+          heading: {
+            html: 'Version 3 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v3HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 2 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v2HTML
+          }
+        },
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
 {% endblock %}
+``

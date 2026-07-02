@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Will the inspector need to enter a neighbour’s land or property?' %}
+
+<!-- Will the reasons for refusal / grounds of appeal require the Inspector to access a neighbour’s land? -->
+
+{% block questions %}
+  <span class="govuk-caption-l">
+    Site access
+  </span>
+
+  {% set detailsHTML %}
+    {{ govukTextarea({
+      name: 'neighbours-land__details',
+      id: 'neighbours-land__details',
+      value: data['neighbours-land__details'],
+      rows: '3',
+      label: {
+        html: 'Enter the reason'
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    idPrefix: 'neighbours-land',
+    name: 'neighbours-land',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('neighbours-land','Yes'),
+        conditional: {
+          html: detailsHTML
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('neighbours-land','No')
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block pageScripts %}{% endblock %}

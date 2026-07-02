@@ -24,12 +24,17 @@
  {% set version = "17" %}
 
     <h2 class="govuk-heading-m">
-      Version {{version}}
+      Version {{version}} 
       {{ govukTag({
         classes: 'govuk-tag--green govuk-!-margin-left-2',
         text: 'Ready for research'
       }) }}
     </h2>
+    {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% call govukInsetText() %}
+    This expedited appeal flow has been moved to questionnaire-expedited v2. Version 15 is the most recent non-expedited S78 questionnaire
+{% endcall %}
 
     <p class="govuk-!-margin-bottom-2">Changes:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -43,13 +48,16 @@
 
     {{ govukButton({
       html: 'View prototype',
-      href: '/manage/questionnaire/v'+version+'/task-list?clear=true',
+      href: '/manage/questionnaire-expedited/v2/task-list?clear=true',
       isStartButton: true
     }) }}
 
     {% set v16HTML %}
 
       {% set version = "16" %}
+{% call govukInsetText() %}
+    This expedited appeal flow has been moved to questionnaire-expedited v1. Version 15 is the most recent non-expedited S78 questionnaire
+{% endcall %}
 
       <p class="govuk-!-margin-bottom-2">Changes:</p>
       <ul class="govuk-list govuk-list--bullet">
@@ -66,7 +74,7 @@
 
       {{ govukButton({
         html: 'View prototype',
-        href: '/manage/questionnaire/v'+version+'/task-list?clear=true',
+      href: '/manage/questionnaire-expedited/v1/task-list?clear=true',
         isStartButton: true
       }) }}
 

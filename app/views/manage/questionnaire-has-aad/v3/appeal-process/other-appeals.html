@@ -1,0 +1,110 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Nearby appeal added to the case' %}
+
+{% set prototypeLinks = [
+  {
+    href: '?extraotherappeal=yes',
+    text: 'Add another appeal'
+  },
+  {
+    href: '?extraotherappeal=',
+    text: 'One other appeal'
+  }
+] %}
+
+{% set otherAppealReferences = data['other-appeal-references'] %}
+{% set otherAppealReferencesHtml %}
+  {% if otherAppealReferences %}
+    {% if otherAppealReferences is iterable and otherAppealReferences is not string %}
+      <ol class="govuk-list govuk-list--number">
+        {% for reference in otherAppealReferences %}
+          <li>{{ reference }}</li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      <ol class="govuk-list govuk-list--number">
+        <li>{{ otherAppealReferences }}</li>
+      </ol>
+    {% endif %}
+  {% elif data['other-appeal-reference'] %}
+    <ol class="govuk-list govuk-list--number">
+      <li>{{ data['other-appeal-reference'] }}</li>
+    </ol>
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+{% block content %}
+
+  <form method="post">
+
+    <!-- appeal metadata -->
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">
+          Appeal process
+        </span>
+        <h1 class="govuk-heading-l">
+          {{ title }}
+        </h1>
+
+      </div>
+      <div class="govuk-grid-column-one-half">
+
+        {{ govukSummaryList({
+          classes: 'appeal-details govuk-!-margin-bottom-0 govuk-!-margin-top-0',
+          rows: [
+
+            {
+              key: {
+                text: 'Other appeals'
+              },
+              value: {
+                html: otherAppealReferencesHtml
+              }
+            }
+
+          ]
+        }) }}
+
+      </div>
+    </div>
+
+    {{ govukRadios({
+      idPrefix: 'other-appeals',
+      name: 'other-appeals',
+      fieldset: {
+        legend: {
+          html: 'Add another appeal?',
+          classes: 'govuk-fieldset__legend--m',
+          isPageHeading: false
+        }
+      },
+      items: [
+        {
+          html: 'Yes',
+          value: 'Yes'
+        },
+        {
+          html: 'No',
+          value: 'No',
+          checked: checked('other-appeals', 'No') or not data['other-appeals']
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      html: 'Continue'
+    }) }}
+
+  </form>
+
+  <p class="govuk-body">
+    <a href="../task-list" class="govuk-link--no-visited-state">
+      Return to questionnaire homepage
+    </a>
+  </p>
+
+{% endblock %}

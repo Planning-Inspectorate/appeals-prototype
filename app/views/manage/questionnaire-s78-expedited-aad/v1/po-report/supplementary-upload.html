@@ -1,0 +1,19 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload relevant policy extracts and supplementary planning documents' %}
+{% set uploadDataKey = 'supplementary-upload' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Planning officer’s report and supporting documents
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

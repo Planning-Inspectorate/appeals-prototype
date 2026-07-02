@@ -21,15 +21,17 @@
   {% set conservationUploadHtml %}
     {% if data['conservation-upload'] %}
       {% if data['conservation-upload'] is iterable and data['conservation-upload'] is not string %}
-        <ol class="govuk-list govuk-list--number">
-          {% for file in data['conservation-upload'] | sort %}
-            <li><a href="#" class="govuk-link">{{ file }}</a></li>
-          {% endfor %}
-        </ol>
+          {% if data['conservation-upload'] | length == 1 %}
+            <a href="#" class="govuk-link">{{ data['conservation-upload'][0] }}</a>
+          {% else %}
+            <ol class="govuk-list govuk-list--number">
+              {% for file in data['conservation-upload'] | sort %}
+                <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              {% endfor %}
+            </ol>
+          {% endif %}
       {% else %}
-        <ol class="govuk-list govuk-list--number">
-          <li><a href="#" class="govuk-link">{{ data['conservation-upload'] }}</a></li>
-        </ol>
+          <a href="#" class="govuk-link">{{ data['conservation-upload'] }}</a>
       {% endif %}
     {% else %}
       <span class="govuk-hint">Not started</span>

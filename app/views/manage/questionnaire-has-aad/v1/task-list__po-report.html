@@ -23,20 +23,20 @@
   {% set reportUploadHtml %}
     {% if data['report-upload'] %}
       {% if data['report-upload'] is iterable and data['report-upload'] is not string %}
-        <ol class="govuk-list govuk-list--number">
-          {% for file in data['report-upload'] | sort %}
-            <li><a href="#" class="govuk-link">{{ file }}</a></li>
-          {% endfor %}
-        </ol>
+          {% if data['report-upload'] | length == 1 %}
+            <a href="#" class="govuk-link">{{ data['report-upload'][0] }}</a>
+          {% else %}
+            <ol class="govuk-list govuk-list--number">
+              {% for file in data['report-upload'] | sort %}
+                <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              {% endfor %}
+            </ol>
+          {% endif %}
       {% else %}
-        <ol class="govuk-list govuk-list--number">
-          <li><a href="#" class="govuk-link">{{ data['report-upload'] }}</a></li>
-        </ol>
+          <a href="#" class="govuk-link">{{ data['report-upload'] }}</a>
       {% endif %}
     {% else %}
-      <ol class="govuk-list govuk-list--number">
-        <li><a href="#" class="govuk-link">report.pdf</a></li>
-      </ol>
+        <a href="#" class="govuk-link">report.pdf</a>
     {% endif %}
   {% endset %}
   {% set plansAndDrawingsData = data['plans-or-drawings'] or [
