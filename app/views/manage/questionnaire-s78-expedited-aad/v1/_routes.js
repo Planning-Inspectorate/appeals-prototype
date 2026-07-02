@@ -39,6 +39,7 @@ router.get('/task-list', function(req, res, next){
 
   let count = 0
   if (req.session.data['constraints-completed'] == 'true') { count++ }
+  if (req.session.data['og-evidence-completed'] == 'true') { count++ }
   if (req.session.data['env-impact-completed'] == 'true') { count++ }
   if (req.session.data['notified-completed'] == 'true') { count++ }
   if (req.session.data['consultation-completed'] == 'true') { count++ }
