@@ -37,7 +37,8 @@ router.get('/task-list', function(req, res, next){
     req.session.data = {}
   }
 
-  const data = req.session.data || {}
+  req.session.data ||= {}
+  const data = req.session.data
   const isComplete = (key) => data[key] == 'true'
   const hasValue = (value) => {
     if (Array.isArray(value)) return value.length > 0
@@ -51,6 +52,9 @@ router.get('/task-list', function(req, res, next){
   }
   if (!isComplete('notified-completed')) {
     data['notified-started'] = 'true'
+  }
+  if (!isComplete('og-evidence-completed')) {
+    data['og-evidence-started'] = 'true'
   }
 
   // Mark sections as in progress when key answers exist (unless complete)
