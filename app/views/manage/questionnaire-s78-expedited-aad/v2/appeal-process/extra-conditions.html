@@ -1,0 +1,69 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Add new planning conditions to this appeal' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Appeal process
+  </span>
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    These are additional to the standard planning conditions we would expect to see.
+  </p>
+
+  {% set standardConditions %}
+    <p class="govuk-body">The development hereby permitted shall begin not later than 3 years from the date of this decision.</p>
+
+    <p class="govuk-body">The materials to be used in the construction of the external surfaces of the development hereby permitted shall match those used in the existing building.</p>
+
+    <p class="govuk-body">The development hereby permitted shall be carried out in accordance with the approved plans.</p>
+  {% endset -%}
+
+  {{ govukDetails({
+    summaryHtml: 'The standard conditions',
+    html: standardConditions
+  }) }}
+
+  {% set extraConditions %}
+    {{ govukTextarea({
+      name: 'extra-conditions',
+      id: 'extra-conditions',
+      value: data['extra-conditions'],
+      rows: '3',
+      label: {
+        html: 'Tell us about the new conditions'
+      }
+    }) }}
+  {% endset -%}
+
+  {{ govukRadios({
+    idPrefix: 'extra-conditions-check',
+    name: 'extra-conditions-check',
+    fieldset: {
+      legend: {
+        html: 'Are there any new conditions?',
+        classes: 'govuk-fieldset__legend--m'
+      }
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('extra-conditions','Yes'),
+        conditional: {
+          html: extraConditions
+        }
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('extra-conditions','No')
+      }
+    ]
+  }) }}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = "Upload any other documents submitted with the application" %}
+{% set pageName = title + ' - Planning Inspectorate'%}
+{% set uploadDataKey = 'other-documents-upload' %}
+{% set initialFiles = [
+'27_Maple_Close_Arboricultural_Report.pdf',
+'27_Maple_Close_Energy_Statement.pdf',
+'27_Maple_Close_Flood_Risk_Assessment.pdf',
+'27_Maple_Close_Noise_Assessment.pdf',
+'27_Maple_Close_Planning_Statement.pdf',
+'27_Maple_Close_Structural_Engineers_Report.pdf',
+'Planning_Application_5_Gayton_Road_BS7_v5.pdf'
+] %}
+
+
+
+{% block questions %}
+
+  <span class="govuk-caption-l">Original evidence</span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+    <p class="govuk-body">
+    Upload any additional documents, excluding the design and access statement and any plans and drawings.
+  </p>
+
+  <p class="govuk-body">
+    This should include any documents that were considered when determining the application and any additional evidence that you took into account.
+  </p>
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

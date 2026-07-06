@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% if data['procedure'] == 'Inquiry' %}
+  {% set title = 'Why would you prefer an inquiry?' %}
+{% else %}
+  {% set title = 'Why would you prefer a hearing?' %}
+{% endif %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Appeal process
+  </span>
+
+  {{ govukTextarea({
+    name: 'procedure-reason',
+    id: 'procedure-reason',
+    value: data['procedure-reason'],
+    rows: '5',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    }
+  }) }}
+
+{% endblock %}

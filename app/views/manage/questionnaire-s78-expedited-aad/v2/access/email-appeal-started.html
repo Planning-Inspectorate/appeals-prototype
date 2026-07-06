@@ -1,0 +1,97 @@
+{% extends '_layouts/layout-email.html' %}
+
+{% block pageTitle %}
+  Invitation to your new account
+{% endblock %}
+
+{% block emailHeader %}
+  <h1 class="govuk-heading-m">
+    21 Cheers Drive, Speedwell, Bristol BS5 7FQ  – full appeal started
+  </h1>
+  <p class="govuk-body">
+    To: planning.appeals{{ data['lpa-email']}}
+    <br>
+    From: enquiries@planninginspectorate.gov.uk
+  </p>
+{% endblock %}
+
+{% block emailContent %}
+  <p class="govuk-body">
+    Appeal site: 21 Cheers Drive, Speedwell, Bristol BS5 7FQ<br>
+    Planning appeal reference: 0123456
+  </p>
+
+  <p class="govuk-body">
+    Dear {{ data['dashboard-lpa'] }},
+  </p>
+
+  <p class="govuk-body">
+    We’ve started a full appeal against the refusal of planning application 0123456.
+  </p>
+
+  <p class="govuk-body">
+    We’ll decide the appeal by written representations.
+  </p>
+
+  <h2 class="govuk-heading-m">
+    Appeal timeline
+  </h2>
+
+  <p class="govuk-body">
+    Appeal start date: 28 September 2023<br>
+    Questionnaire deadline: 5 October 2023<br>
+    Statement of case deadline: 25 October 2023<br>
+    Final comment deadline: 25 Novermber 2023
+  </p>
+
+  <h2 class="govuk-heading-m">
+    Case officer
+  </h2>
+
+  <p class="govuk-body">
+    Jan Hobbs<br>
+    enquiries@planninginspectorate.gov.uk
+  </p>
+
+  <h2 class="govuk-heading-m">
+    What to do next
+  </h2>
+
+  <h3 class="govuk-heading-s">
+    Submit your questionnaire
+  </h3>
+
+  <p class="govuk-body">
+    Your deadline is 5 October 2023.
+  </p>
+
+  <ol class="govuk-list govuk-list--number">
+    <li>
+      Complete the questionnaire by following this link:<br>
+      <a href="enter-code" class="govuk-link">https://manage-appeals.planninginspectorate.gov.uk/questionnaire?appealref=121653&lpa=1vW7td12</a>
+    </li>
+    <li>
+      A code will be sent to your email address
+    </li>
+    <li>
+      We will tell you how to use this code to verify your account for the service
+    </li>
+  </ol>
+
+  <p class="govuk-body">
+    Once you’ve submitted your questionnaire, you need to email a copy to the appellant.
+  </p>
+
+  <h3 class="govuk-heading-s">
+    Notify interested parties about the appeal
+  </h3>
+
+  <p class="govuk-body">
+    You must do this as soon as possible. Interested parties have until 25 October 2023 to submit their comments.
+  </p>
+
+  <!-- <p class="govuk-body">
+    They should email their comment to enquiries@planninginspectorate.gov.uk.
+  </p> -->
+
+{% endblock %}

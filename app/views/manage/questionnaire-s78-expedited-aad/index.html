@@ -22,26 +22,6 @@
       {{ title }}
     </h1>
 
-    {# --- VERSION 3 --- #}
-    {% set v3HTML %}
-
-      {% set version = "3" %}
-
-      <p class="govuk-!-margin-bottom-2">Changes:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          Moving the warning that the questionnaires are prefilled to the questionnaire page to make the banner more actionable and relevant (on the manage appeals list it wasn't clear which questionnaires the banner related to and there could be too many to list)
-        </li>
-      </ul>
-
-      {{ govukButton({
-        html: 'View prototype',
-        href: '/manage/questionnaire-s78-expedited-aad/v1/task-list?clear=true',
-        isStartButton: true
-      }) }}
-
-    {% endset %}
 
     {# --- VERSION 2 --- #}
     {% set v2HTML %}
@@ -52,16 +32,16 @@
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          Labelling each answer that has been pulled through from BOPS using a tag
-        </li>
-        <li>
-          Moving the warning that the questionnaires are prefilled to the appeals list page to reduce the instances of the message
-        </li>
+          Add page for manage files
+          </li>
+          <li>Change button to say Manage | Add if there are files already otherwise it says 'answer'
+          </li>
+          <li>Remove the inital files (auto filled) from the upload pages summary lists</li>
       </ul>
 
       {{ govukButton({
         html: 'View prototype',
-        href: '/manage/questionnaire-has-aad/v2/appeals-list?clear=true',
+        href: '/manage/questionnaire-s78-expedited-aad/v2/task-list?clear=true',
         isStartButton: true
       }) }}
 

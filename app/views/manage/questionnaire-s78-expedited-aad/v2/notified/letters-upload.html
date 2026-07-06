@@ -1,0 +1,23 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload letters or emails sent to interested parties with their addresses' %}
+{% set uploadDataKey = 'letters-upload' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Notifying people about the application
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <p class="govuk-body">
+    We need a copy of what you sent to notify neighbours about the appeal.
+  </p>
+
+  <h2 class="govuk-heading-m">Upload files</h2>
+  <p class="govuk-hint">The files must be a DOC, DOCX, PDF, TIF, JPG or PNG and be smaller than 25MB</p>
+  {% include '_includes/common/multiple-document-upload.html' %}
+{% endblock %}

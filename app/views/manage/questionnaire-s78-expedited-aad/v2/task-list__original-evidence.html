@@ -1,0 +1,433 @@
+<!-- in-line tags for auto-populated files for Design and access statement -->
+  {% set designAccessStatementInitialFiles = [
+'20261286NEW_DAS_rev1.pdf',
+'20261286NEW_DAS_rev2.pdf'
+] %}
+ 
+{% set designAccessStatementData = data['design-access-statement-upload'] or designAccessStatementInitialFiles %}
+
+
+
+
+{% set designAccessStatementHtml %}
+  {% if designAccessStatementData %}
+    {% if designAccessStatementData is iterable and designAccessStatementData is not string %}
+      {% if designAccessStatementData | length == 1 %}
+        {% set fileName = designAccessStatementData[0].name or designAccessStatementData[0] %}
+        {% set isAuto = fileName in designAccessStatementInitialFiles %}
+        <a href="#">{{ fileName }}</a>
+        {% if isAuto %}
+          <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+        {% endif %}
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+
+          {% for file in designAccessStatementData | sort %}
+            {% set fileName = file.name or file %}
+            {% set isAuto = fileName in designAccessStatementInitialFiles %}
+
+            <li>
+              <a href="#">{{ fileName }}</a>
+
+              {% if isAuto %}
+                <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+              {% endif %}
+            </li>
+
+          {% endfor %}
+
+        </ol>
+      {% endif %}
+    {% else %}
+      <a href="#">{{ designAccessStatementData }}</a>
+    {% endif %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files for Design and access statement -->
+
+
+<!-- in-line tags for auto-populated files for other documents submitted with the application -->
+  {% set otherDocsInitialFiles = [
+'27_Maple_Close_Arboricultural_Report.pdf',
+'27_Maple_Close_Energy_Statement.pdf',
+'27_Maple_Close_Flood_Risk_Assessment.pdf',
+'27_Maple_Close_Noise_Assessment.pdf',
+'27_Maple_Close_Planning_Statement.pdf',
+'27_Maple_Close_Structural_Engineers_Report.pdf',
+'Planning_Application_5_Gayton_Road_BS7_v5.pdf'
+] %}
+ 
+{% set otherDocsData = data['other-documents-upload'] or otherDocsInitialFiles %}
+
+
+
+
+{% set otherDocsHtml %}
+  {% if otherDocsData %}
+    {% if otherDocsData is iterable and otherDocsData is not string %}
+      {% if otherDocsData | length == 1 %}
+        {% set fileName = otherDocsData[0].name or otherDocsData[0] %}
+        {% set isAuto = fileName in otherDocsInitialFiles %}
+        <a href="#">{{ fileName }}</a>
+        {% if isAuto %}
+          <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+        {% endif %}
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+
+          {% for file in otherDocsData | sort %}
+            {% set fileName = file.name or file %}
+            {% set isAuto = fileName in otherDocsInitialFiles %}
+
+            <li>
+              <a href="#">{{ fileName }}</a>
+
+              {% if isAuto %}
+                <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+              {% endif %}
+            </li>
+
+          {% endfor %}
+
+        </ol>
+      {% endif %}
+    {% else %}
+      <a href="#">{{ otherDocsData }}</a>
+    {% endif %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files for other documents submitted with the application -->
+
+<!-- in-line tags for auto-populated files for plans drawings and list of plans -->
+  {% set plansInitialFiles = [
+    '27_Maple_Close_3D_Visualisation_Front.pdf',
+'27_Maple_Close_3D_Visualisation_Rear.pdf',
+'27_Maple_Close_Cycle_Storage_Drawing.pdf',
+'27_Maple_Close_Elevations_Proposed_Rev_B.pdf',
+'27_Maple_Close_Floor_Plan_Existing_Loft.pdf',
+'27_Maple_Close_Floor_Plan_Proposed_Loft_Rev_A.pdf',
+'27_Maple_Close_Landscape_Strategy.pdf',
+'27_Maple_Close_Location_Plan.pdf',
+'27_Maple_Close_Photographs_Existing_Front.pdf',
+'27_Maple_Close_Photographs_Existing_Rear.pdf',
+'27_Maple_Close_Roof_Plan_Existing.pdf',
+'27_Maple_Close_Roof_Plan_Proposed_Rev_A.pdf',
+'27_Maple_Close_Sections_Existing_AA.pdf',
+'27_Maple_Close_Sections_Proposed_CC_Rev_A.pdf',
+'27_Maple_Close_Site_Plan_Proposed_Rev_A.pdf',
+'27_Maple_Close_Street_Scene.pdf',
+'BS7 1TX r3-P.ELEVR-PR.B.pdf',
+'BS7-201TX-2000-20GRL.DWG-LIST.pdf',
+'BS7-201TX-2001-20PHOTO.pdf',
+'BS7-201TX-2003-20P.P.PLANS.100.pdf',
+'BS7-201TX-2005-20EP.P.GF.pdf',
+'BS7-201TX-2006-20EP.P.1F.pdf',
+'BS7-201TX-2007-20EP.P.2F.pdf',
+'BS7-201TX-2008-20E.P.S.AA.100.pdf',
+'BS7-201TX-2009-20E.P.S.BB.100.pdf',
+'BS7-201TX-2010-20E.P.FF.pdf',
+'BS7-201TX-2012-20E.P.S.FSP.pdf',
+'BS7-201TX-2014-20EP.P.SLATE.pdf',
+'BS7-201TX-2015-20P.SEDUM.pdf'
+] %}
+ 
+{% set plansAndDrawingsData = data['plans-or-drawings'] or plansInitialFiles %}
+
+
+
+
+{% set plansAndDrawingsHtml %}
+  {% if plansAndDrawingsData %}
+    {% if plansAndDrawingsData is iterable and plansAndDrawingsData is not string %}
+      {% if plansAndDrawingsData | length == 1 %}
+        {% set fileName = plansAndDrawingsData[0].name or plansAndDrawingsData[0] %}
+        {% set isAuto = fileName in plansInitialFiles %}
+        <a href="#">{{ fileName }}</a>
+        {% if isAuto %}
+          <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+        {% endif %}
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+
+          {% for file in plansAndDrawingsData | sort %}
+            {% set fileName = file.name or file %}
+            {% set isAuto = fileName in plansInitialFiles %}
+
+            <li>
+              <a href="#">{{ fileName }}</a>
+
+              {% if isAuto %}
+                <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+              {% endif %}
+            </li>
+
+          {% endfor %}
+
+        </ol>
+      {% endif %}
+    {% else %}
+      <a href="#">{{ plansAndDrawingsData }}</a>
+    {% endif %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+
+<!-- end of in-line tags for auto-populated files for plans drawings and list of plans -->
+
+{% set listoflpadocs %}
+  1. Planning Application Form – completed and signed by the applicant.<br>
+  2. Location Plan – showing the site in relation to surrounding area.<br>
+  3. Site Plan – detailed layout of proposed dwellings, access roads, and landscaping.<br>
+  4. Design and Access Statement – explaining the design rationale and accessibility considerations.<br>
+  5. Planning Statement – outlining how the proposal complies with local and national planning policies.<br>
+  6. Transport Assessment – evaluating traffic impact and proposed transport infrastructure.<br>
+  7. Flood Risk Assessment – assessing potential flood risks and mitigation strategies.<br>
+  8. Ecological Survey Report – detailing biodiversity impacts and proposed enhancements.<br>
+  9. Environmental Impact Assessment (EIA) – if required, covering broader environmental implications.<br>
+  10. Heritage Statement – if the site affects listed buildings or conservation areas.<br>
+  11. Noise Impact Assessment – analysing potential noise issues and mitigation.<br>
+  12. Air Quality Assessment – evaluating air pollution impacts.<br>
+  13. Sustainability Statement – describing energy efficiency, renewable energy use, and sustainable practices.
+{% endset %}
+
+
+{% set otherapplicationdocs %}
+  <ol class="govuk-list govuk-list--number">
+    <li>
+      <a href="#" class="govuk-link">fire-access-plan.pdf</a>
+    </li>
+    <li>
+      <a href="#" class="govuk-link">mining-plan.pdf</a>
+    </li>
+    <li>
+      <a href="#" class="govuk-link">sewerage-plan.pdf</a>
+    </li>
+  </ol>
+{% endset %}
+
+{% set otherDocumentsSubmittedUploadHtml %}
+  {% if data['other-documents-upload'] %}
+    {% if data['other-documents-upload'] is iterable and data['other-documents-upload'] is not string %}
+      {% if data['other-documents-upload'] | length == 1 %}
+        <a href="#" class="govuk-link">{{ data['other-documents-upload'][0] }}</a>
+      {% else %}
+        <ol class="govuk-list govuk-list--number">
+          {% for file in data['other-documents-upload'] | sort %}
+            <li><a href="#" class="govuk-link">{{ file }}</a></li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    {% else %}
+      <a href="#" class="govuk-link">{{ data['other-documents-upload'] }}</a>
+    {% endif %}
+  {% else %}
+    {{ otherapplicationdocs }}
+  {% endif %}
+{% endset %}
+
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span>
+    Original evidence
+    {% if data['og-evidence-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['og-evidence-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9 long-answers',
+    rows: [
+      {
+        key: {
+          html: 'Design and access statement'
+        },
+       value: {
+         html: 'Yes <strong class="govuk-tag govuk-tag--purple govuk-!-margin-left-1">Auto</strong>'
+       }
+       if data['design-access-statement-check'] == 'Yes' or not data['design-access-statement-check'] else
+       {
+         html: 'No'
+       },
+       
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/design-access-statement-check?cya=true',
+              html: 'Change'
+            }
+            if data['design-access-statement-check-complete'] else
+            {
+              href: 'og-evidence/design-access-statement-check?cya=',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
+       {
+        key: {
+          html: 'Design and access statement'
+        },
+        value: {
+                html: designAccessStatementHtml
+        },
+        actions: {
+          items: [
+            {
+              href: '#',
+              html: 'Manage'
+            },
+            {
+                    href: 'og-evidence/design-access-statement-upload?cya=true',
+                    html: 'Change'
+            }
+                  if designAccessStatementData else
+            {
+                    href: 'og-evidence/design-access-statement-upload',
+                    html: 'Upload'
+            }
+          ]
+        }
+      } if data['design-access-statement-check'] == 'Yes' or not data['design-access-statement-check'],
+
+
+                 {
+        key: {
+          html: 'Plans drawings and list of plans'
+        },
+        value: {
+                html: plansAndDrawingsHtml
+        }
+              if plansAndDrawingsData else
+              {
+                html: plansAndDrawingsHtml
+              },
+        actions: {
+          items: [
+           {
+              href: '#',
+              html: 'Manage'
+            },
+            {
+                    href: 'og-evidence/plans-and-drawings-upload?cya=true',
+                    html: 'Change'
+            }
+                  if plansAndDrawingsData else
+            {
+                    href: 'og-evidence/plans-and-drawings-upload',
+                    html: 'Upload'
+            }
+          ]
+        }
+      },
+
+                   {
+        key: {
+          html: 'Other documents with the application'
+        },
+        value: {
+                html: otherDocsHtml
+        }
+              if otherDocsData else
+              {
+                html: otherDocsHtml
+              },
+        actions: {
+          items: [
+            {
+              href: '#',
+              html: 'Manage'
+            },
+            {
+                    href: 'og-evidence/other-documents-upload?cya=true',
+                    html: 'Change'
+            }
+                  if otherDocsData else
+            {
+                    href: 'og-evidence/other-documents-upload',
+                    html: 'Upload'
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          html: 'Upload other documents submitted with the application'
+        },
+        value: {
+          html: otherDocumentsSubmittedUploadHtml
+        }
+        if data['other-documents-upload-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+           {
+              href: '#',
+              html: 'Manage'
+            },
+            {
+              href: 'og-evidence/other-documents-upload?cya=true',
+              html: 'Change'
+            }
+            if data['other-documents-upload-complete'] else
+            {
+              href: 'og-evidence/other-documents-upload?cya=',
+              html: 'Answer'
+            }
+          ]
+        }
+      } if data['other-documents-check'] == 'Yes',
+
+      {
+        key: {
+          html: 'Documents and plans used to make the decision'
+        },
+        value: {
+          html: data['list-of-documents'] or listoflpadocs | safe
+        }
+        if data['list-of-documents-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
+        },
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/list-of-documents?cya=true',
+              html: 'Change'
+            }
+            if data['list-of-documents-complete'] else
+            {
+              href: 'og-evidence/list-of-documents?cya=',
+              html: 'Answer'
+            }
+          ]
+        }
+      }
+
+    ]
+  }) }}
+</li>
