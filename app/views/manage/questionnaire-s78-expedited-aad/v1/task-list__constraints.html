@@ -50,23 +50,48 @@
 
 <!-- end of in-line tags for auto-populated files for conservation uploads submitted with the application -->
  <!-- html for non-auto answers so that they are presented as a numbered alphabetised list of links  -->
-    {% set treeOrderUploadHtml %}
-    {% if data['tree-order-upload'] %}
-      {% if data['tree-order-upload'] is iterable and data['tree-order-upload'] is not string %}
-        <ol class="govuk-list govuk-list--number">
-          {% for file in data['tree-order-upload'] | sort %}
-            <li><a href="#" class="govuk-link">{{ file }}</a></li>
-          {% endfor %}
-        </ol>
+  {% set treeOrderUploadInitialFiles = [
+'27_Maple_Close_Arboricultural_Report.pdf','27_Maple_Close_DSC_0001.png'
+] %}   
+{% set treeOrderUploadData = data['tree-order-upload'] or treeOrderUploadInitialFiles %}
+
+ {% set treeOrderUploadHtml %}
+  {% if treeOrderUploadData %}
+    {% if treeOrderUploadData is iterable and treeOrderUploadData is not string %}
+      {% if treeOrderUploadData | length == 1 %}
+        {% set fileName = treeOrderUploadData[0].name or treeOrderUploadData[0] %}
+        {% set isAuto = fileName in treeOrderUploadInitialFiles %}
+        <a href="#">{{ fileName }}</a>
+        {% if isAuto %}
+          <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+        {% endif %}
       {% else %}
         <ol class="govuk-list govuk-list--number">
-          <li><a href="#" class="govuk-link">{{ data['tree-order-upload'] }}</a></li>
+
+          {% for file in treeOrderUploadData | sort %}
+            {% set fileName = file.name or file %}
+            {% set isAuto = fileName in treeOrderUploadInitialFiles %}
+
+            <li>
+              <a href="#">{{ fileName }}</a>
+
+              {% if isAuto %}
+                <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+              {% endif %}
+            </li>
+
+          {% endfor %}
+
         </ol>
       {% endif %}
     {% else %}
-      <span class="govuk-hint">Not started</span>
+      <a href="#">{{ conservationUploadData }}</a>
     {% endif %}
-  {% endset %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
 
     {% set rightOfWayUploadHtml %}
       {% if data['right-of-way-upload'] %}
@@ -416,19 +441,11 @@
           html: 'Tree Preservation Order'
         },
         value: {
-          html: data['tree-order-check'] or 'No'
-        }
-        if data['tree-order-check-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
+          html: data['tree-order-check'] or 'Yes <strong class="govuk-tag govuk-tag--purple govuk-!-margin-left-1">Auto</strong>'
+
         },
         actions: {
           items: [
-            {
-              href: 'constraints/tree-order-check?cya=true',
-              html: 'Change'
-            }
-            if data['tree-order-check-complete'] else
             {
               href: 'constraints/tree-order-check?cya=',
               html: 'Answer'
@@ -443,10 +460,6 @@
         },
         value: {
           html: treeOrderUploadHtml
-        }
-        if data['tree-order-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
@@ -454,14 +467,9 @@
               href: 'constraints/tree-order-upload?cya=true',
               html: 'Change'
             }
-            if data['tree-order-upload-complete'] else
-            {
-              href: 'constraints/tree-order-upload',
-              html: 'Upload'
-            }
           ]
         }
-      } if data['tree-order-check'] == 'Yes',
+      },
 
 
       {
