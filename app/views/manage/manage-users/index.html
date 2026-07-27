@@ -11,6 +11,8 @@
 {% endblock %}
 
 {% block content %}
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
@@ -23,18 +25,40 @@
       {{ title }}
     </h1>
 
-    {% set version = "7" %}
+     {% set version = "9" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--green govuk-!-margin-left-2',
+         classes: 'govuk-tag--green govuk-!-margin-left-2',
         text: 'Ready for research'
+      }) }}
+    </h2>
+    <p class="govuk-!-margin-bottom-2">The previous version was shown to LPA users for feedback. <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1779892624050/d0aa4c03e2298e46d05f85ff3669edc787387cce?sender=u2eab90d0c98defd15d888770">Notes and synthesis available here</a></p>
+     <p class="govuk-!-margin-bottom-2"><strong>Changes from previous version</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>changing H1's (with help from Jenny) to make it clearer that you are setting notification preferences (not access)</li>
+      <li>deprioitising notification by appeal stage and removing that feature from the v9 prototype</li>
+      <li>including notification by appeal type (we hadn't decided whether to include every type or just split planning/enforcement) - I propose we start with planning/ enforcement because it is simpler and well evidenced and see if more flexibility/complexity is needed later</li>
+    </ul>
+ {{ govukButton({
+      html: 'View prototype',
+      href: '/manage/manage-users/v9/index.html',
+      isStartButton: true
+    }) }}
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    {% set version = "8" %}
+    <h2 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--blue govuk-!-margin-left-2',
+        text: 'Researched'
       }) }}
     </h2>
     <p class><a href="https://pins-ds.atlassian.net/browse/A2-6547?assignee=712020%3Ad36fa912-ad66-40d6-be7d-7d66f418d034&selectedIssue=A2-6544">Related ticket</a></p>
     <p class><a href="https://pins-ds.atlassian.net/browse/A2-6544?atlOrigin=eyJpIjoiMzBiMmM5ZDRhODJiNDYzZTgxNGQzYmIyZjk4YWQ1NTMiLCJwIjoiaiJ9">Related ticket</a></p>
 
-    <p class="govuk-!-margin-bottom-2"><strong>What changed in v7</strong></p>
+    <p class="govuk-!-margin-bottom-2"><strong>What changed in v8</strong></p>
     <ul class="govuk-list govuk-list--bullet">
     <li>Updating user management to allow LPAs to add multiple users and set email subscription preferences per user or email address.</li>
     <li>Removing the ability to subscribe to emails for particular appeals based on research findings.</li>
@@ -46,7 +70,7 @@
   text: "To prevent the issues with 'select all' relying on Javascript to check/uncheck all boxes, I have removed this option and instead added a 'select all appeal types/stages' radio option on separate pages"
 }) }}
 
-    {% set v7ResearchAndFeedback %}
+    {% set v8ResearchAndFeedback %}
           <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Research summary</h3>
 
       <p class="govuk-body-hint">Users need clearer and more relevant notifications. They prefer 'receive notifications' to 'subscribe' - although they understood both terms. Shared mailboxes are used. Findings also suggest notifications should support communication between LPA and case officer roles.</p>
@@ -68,7 +92,7 @@
 
     {{ govukDetails({
       summaryText: 'Related research',
-      html: v7ResearchAndFeedback
+      html: v8ResearchAndFeedback
     }) }}
 
     {{ govukButton({

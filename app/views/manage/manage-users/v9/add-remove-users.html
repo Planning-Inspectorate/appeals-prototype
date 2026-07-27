@@ -1,0 +1,109 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Add and remove users' %}
+
+
+
+
+<!-- creating new user as an item in the table -->
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['success'] == 'true' %}
+      {% call govukNotificationBanner({
+        type: "success"
+      }) %}
+        <h3 class="govuk-notification-banner__heading">
+          {{ data['add-user-email'] + '@cambridgeshirepeterborough-ca.gov.uk' }} has been added to the account
+        </h3>
+        <p class="govuk-body">
+          They will get an email with a link to the service.
+        </p>
+      {% endcall %}
+    {% endif %}
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      All users can add information to appeals. They will receive email notifications when a new appeal is added or when a task is submitted.
+    </p>
+
+    {{ govukButton({
+      text: "Add a user",
+      href: "/manage/manage-users/v9/add-user"
+    }) }}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h2 class="govuk-heading-m app-border-top-big govuk-!-padding-top-6 govuk-!-margin-top-6">
+      Current users
+    </h2>
+
+    <table class="govuk-table govuk-!-width-full">
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Email</th>
+          <th scope="col" class="govuk-table__header">Appeal type notifications</th>
+          <th scope="col" class="govuk-table__header">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+        <!-- Existing default user -->
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            appeals@cambridgeshirepeterborough-ca.gov.uk
+          </td>
+
+          <td class="govuk-table__cell">
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+              <li>Enforcement appeals</li>
+              <li>Planning appeals</li>
+            </ul>
+          </td>
+
+          <td class="govuk-table__cell">
+            <a class="govuk-link" href="/manage/manage-users/v9/manage-user-perm">
+              Manage
+            </a>
+          </td>
+        </tr>
+<!-- new user row -->
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+           {{ data['add-user-email'] + '@cambridgeshirepeterborough-ca.gov.uk' }} </td>
+            </td>
+            <td class="govuk-table__cell">
+            <p>All appeals</p>
+            </td>
+            <td class="govuk-table__cell">
+            <a class="govuk-link" href="/manage/manage-users/v9/manage-user">
+              Manage 
+            </a>
+            <a class="govuk-link" href="/manage/manage-users/v9/remove-user">
+               Remove
+            </a>
+          </td>
+          </tr>
+                  
+
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}

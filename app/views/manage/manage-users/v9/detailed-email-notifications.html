@@ -1,0 +1,58 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Email notifications' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+<h1 class="govuk-heading-l"> Select appeal type notification preferences</h1>
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<form method="post" action="detailed-email-notifications">
+{{ govukCheckboxes({
+  name: "planning-type",
+  fieldset: {
+    legend: {
+      text: " ",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      html: 'Enforcement appeals',
+      value: 'Enforcement-appeals',
+      checked: checked('planning-type','Enforcement appeals')
+    },
+    {
+      html: 'Planning appeals',
+      value: 'Planning-appeals',
+      checked: checked('planning-type',' Planning appeals')
+    }
+  ]
+}) }}
+
+      {% block buttons %}
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      {% endblock %}
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,159 @@
+
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Add and remove users' %}
+
+router.get('/manage/manage-users/v9', function (req, res, next) {
+  console.log('INDEX USERS:')
+  console.log(JSON.stringify(req.session.data.users, null, 2))
+  next()
+})
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['success'] == 'true' %}
+      {% call govukNotificationBanner({
+        type: "success"
+      }) %}
+        <h3 class="govuk-notification-banner__heading">
+          {{ data['add-user-email'] + '@cambridgeshirepeterborough-ca.gov.uk' }} has been removed
+        </h3>
+        <p class="govuk-body">
+          They will no longer have access to the service.
+        </p>
+      {% endcall %}
+    {% endif %}
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">
+      All users can add information to appeals. They will receive email notifications when a new appeal is added or when a task is submitted.
+    </p>
+
+    {{ govukButton({
+      text: "Add a user",
+      href: "/manage/manage-users/v9/add-user"
+    }) }}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h2 class="govuk-heading-m app-border-top-big govuk-!-padding-top-6 govuk-!-margin-top-6">
+      Current users
+    </h2>
+
+    <table class="govuk-table govuk-!-width-full">
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Email</th>
+          <th scope="col" class="govuk-table__header">Appeal type notifications</th>
+          <th scope="col" class="govuk-table__header">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            appeals@cambridgeshirepeterborough-ca.gov.uk
+          </td>
+
+          <td class="govuk-table__cell">
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+              <li>Enforcement appeals</li>
+              <li>Planning appeals</li>
+            </ul>
+          </td>
+
+          <td class="govuk-table__cell">
+          <a class="govuk-link" href="/manage/manage-users/v9/manage-user">
+              Manage 
+            </a>
+          </td>
+        </tr>
+
+        {% for user in (data['users'] or []) %}
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              {{ user.email }}
+            </td>
+
+            <td class="govuk-table__cell">
+
+              {% if user.notificationType == 'all-appeals' %}
+
+                All appeals
+
+              {% elif user.notificationType == 'none' %}
+
+                None
+
+              {% elif (user.appealTypes or []).length > 1 %}
+
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+                  {% for type in user.appealTypes %}
+                    <li>
+                      {% if type == 'enforcement-appeals' %}
+                        Enforcement appeals
+                      {% elif type == 'planning-appeals' %}
+                        Planning appeals
+                      {% else %}
+                        {{ type }}
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+
+              {% elif (user.appealTypes or []).length == 1 %}
+
+                {% if user.appealTypes[0] == 'enforcement-appeals' %}
+                  Enforcement appeals
+                {% elif user.appealTypes[0] == 'planning-appeals' %}
+                  Planning appeals
+                {% else %}
+                  {{ user.appealTypes[0] }}
+                {% endif %}
+
+              {% else %}
+
+                None
+
+              {% endif %}
+
+            </td>
+
+            <td class="govuk-table__cell">
+              /manage/manage-users/v9/manage-user-perm
+                Manage
+              </a>
+            </td>
+
+          </tr>
+
+        {% endfor %}
+
+      </tbody>
+
+    </table>
+
+    <pre>{{ data['users'] | dump }}</pre>
+
+  </div>
+</div>
+
+{% endblock %}
+

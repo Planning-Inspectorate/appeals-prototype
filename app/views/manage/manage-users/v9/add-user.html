@@ -1,0 +1,44 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Tell us their email address' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="add-user">
+        <div style="display: flex-verticle; gap: 1rem;align-items: flex-end;">
+
+  {% block questions %}
+  {{ govukInput({
+    id: 'add-user-email',
+    name: 'add-user-email',
+    classes: 'govuk-!-width-two-thirds',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    suffix: {
+      text: "@cambridgeshirepeterborough-ca.gov.uk"
+    },
+    spellcheck: false
+  }) }}
+
+{% endblock %}
+        {% block buttons %}
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+        {% endblock %}
+
+      </form>
+
+  </div>
+{% endblock %}

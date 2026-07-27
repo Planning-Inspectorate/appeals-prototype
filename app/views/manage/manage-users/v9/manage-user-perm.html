@@ -1,0 +1,149 @@
+{% extends "_layouts/layout-pins-manage-users.html" %}
+
+{% set pageName="Appellant Case" %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+		href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<script>
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has('reloaded')) {
+    url.searchParams.set('reloaded', '1');
+    window.location.replace(url.toString());
+  }
+</script>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+
+	<span class="govuk-caption-l">Manage users</span>
+	<h1 class="govuk-heading-l">Notification preferences</h1>
+  <pre>{{ data.users | dump }}</pre>
+
+
+
+  {% set tableRows = [] %}
+  {% if data['manage-user'] %}
+    {% set user = data['manage-user'] %}
+    {% set appealTypes = user.appealTypes or user.appeal_types or [] %}
+    {% set appealReferences = user.appealReferences or user.appeal_references or [] %}
+
+    {% set appealTypesClean = [] %}
+    {% for appealType in appealTypes %}
+      {% if appealType and appealType != '_unchecked' %}
+        {% set appealTypesClean = (appealTypesClean.push(appealType), appealTypesClean) %}
+      {% endif %}
+    {% endfor %}
+
+    {% if appealTypesClean.length > 1 %}
+      {% set appealTypesHtml %}
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-0">
+          {% for appealType in appealTypesClean %}
+            <li>{{ appealType }}</li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+    {% elif appealTypesClean.length == 1 %}
+      {% set appealTypesHtml %}<p class="govuk-body govuk-!-margin-0">{{ appealTypesClean[0] }}</p>{% endset %}
+    {% else %}
+      {% set appealTypesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
+    {% endif %}
+
+    {% if appealReferences.length > 1 %}
+      {% set appealReferencesHtml %}
+        <p class="govuk-body govuk-!-margin-0">
+          {% for appealReference in appealReferences %}
+            <a class="govuk-link" href="#">{{ appealReference }}</a>{% if not loop.last %}<br>{% endif %}
+          {% endfor %}
+        </p>
+      {% endset %}
+    {% elif appealReferences.length == 1 %}
+      {% set appealReferencesHtml %}<p class="govuk-body govuk-!-margin-0"><a class="govuk-link" href="#">{{ appealReferences[0] }}</a></p>{% endset %}
+    {% else %}
+      {% set appealReferencesHtml %}<p class="govuk-body govuk-!-margin-0">None</p>{% endset %}
+    {% endif %}
+
+   
+
+    {% set tableRows = (tableRows.push([
+      {
+        text: user.email
+      },
+      {
+        html: appealReferencesHtml
+      },
+      {
+        html: appealTypesHtml
+      }
+    ]), tableRows) %}
+  {% else %}
+    {% set tableRows = (tableRows.push([
+      {
+        html: "<p>No user selected</p>"
+      },
+      {
+        text: "-"
+      },
+      {
+        text: "-"
+      }
+    ]), tableRows) %}
+  {% endif %}
+
+ 
+
+  {{ govukSummaryList({
+    classes: 'govuk-summary-list govuk-!-margin-bottom-6',
+    rows: [
+      {
+        key: {
+          text: 'Email'
+        },
+        value: {
+          text: user.email if data['manage-user'] else 'No user selected'
+        },
+        actions: {
+          items: [
+            {
+              href: '/manage/manage-users/v9/edit-user?id=' ~ (user.id if data['manage-user'] else '') ~ '&from=manage-user',
+              text: 'Change',
+              visuallyHiddenText: 'user email'
+            }
+          ]
+        } if data['manage-user'] and user.id != 'permanent-user'
+      },
+      {
+        key: {
+          text: 'Appeal type notifications'
+        },
+        value: {
+          html: appealTypeNotificationsValue
+        },
+        actions: {
+          items: [
+            {
+              href: '/manage/manage-users/v9/type-notifications?from=manage-user&id=' ~ (user.id if data['manage-user'] else ''),
+              text: 'Change',
+              visuallyHiddenText: 'appeal types'
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: 'Confirm',
+    href: '/manage/manage-users/v9/add-remove-users',
+    classes: 'govuk-button'
+  }) }}
+
+  </div>
+</div>
+{% endblock %}

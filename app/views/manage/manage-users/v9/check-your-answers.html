@@ -1,0 +1,75 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Check your answers' %}
+
+{% set back = true %}    
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+      {{ govukSummaryList({
+        classes: "long-answers govuk-!-margin-bottom-9",
+        rows: [
+        {
+  key: {
+    text: "Email"
+  },
+  value: {
+    html: (data['add-user-email'] or 'appeals') + '@cambridgeshirepeterborough-ca.gov.uk'
+  },
+  actions: {
+    items: [
+      {
+        href: "add-user?cya=true",
+        text: "Change",
+        visuallyHiddenText: "email"
+      }
+    ]
+  }
+},
+         {
+  key: {
+    text: "Appeal type notifications"
+  },
+  value: {
+  html: (
+  (data['planning-type'] | join(', '))
+    | replace(', _unchecked', '')
+    | replace('_unchecked', '')
+    | replace('-', ' ')
+)
+  }if data['type-notifications']=='select-appeal-types' 
+  else {
+    html: data['type-notifications'] | replace('-', ' ')
+  },
+  actions: {
+    items: [
+      {
+        href: "type-notifications?cya=true",
+        text: "Change",
+        visuallyHiddenText: "email-type-notifications"
+      }
+    ]
+  }
+}
+
+          
+        ]
+      }) }}
+
+   
+
+      {{ govukButton({
+        html: 'Accept and submit',
+          href: '/manage/manage-users/v9/add-remove-users.html?success=true'
+
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

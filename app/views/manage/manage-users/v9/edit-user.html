@@ -1,0 +1,64 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Tell us their email address' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+
+
+<form method="post" action="edit-user">
+  <input type="hidden" name="edit-user-id" value="{{ data['id'] }}">
+  <div style="display: flex; gap: 1rem; align-items: flex-end;">
+
+  
+
+  {{ govukInput({
+    id: 'add-user-email',
+    name: 'add-user-email',
+    classes: 'govuk-!-width-two-thirds',
+    label: {
+      html: title,
+      classes: 'govuk-label--l',
+      isPageHeading: true
+    },
+    suffix: {
+      text: "@cambridgeshirepeterborough-ca.gov.uk"
+    },
+    spellcheck: false
+  }) }}
+  </div>
+
+      {% block buttons %}
+       {{ govukButton({
+  text: 'Continue',
+  href: '/manage/manage-users/v9/manage-user.html'
+}) }}
+      {% endblock %}
+
+  </form>
+
+  <script>
+    (function () {
+      const url = new URL(window.location.href)
+      if (!url.searchParams.has('reloaded')) {
+        url.searchParams.set('reloaded', 'true')
+        window.location.replace(url.toString())
+      }
+    })()
+  </script>
+
+{% endblock %}

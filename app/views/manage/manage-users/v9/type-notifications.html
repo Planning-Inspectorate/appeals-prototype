@@ -1,0 +1,50 @@
+{% extends '_layouts/layout-pins-manage-users.html' %}
+
+{% set title = 'Email notifications' %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    html: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block questions %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "type-notifications",
+  fieldset: {
+    legend: {
+      text: "Appeal type notification preferences",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "all-appeals",
+      text: "All appeal types",
+      checked: data['type-notifications'] == 'all-appeals'
+    },
+    {
+      value: "select-appeal-types",
+      text: "Select appeal types",
+      checked: data['type-notifications'] == 'select-appeal-types'
+    },
+    {
+      value: "none",
+      text: "None",
+      checked: data['type-notifications'] == 'none'
+    }
+  ]
+}) }}
+{% endblock %}

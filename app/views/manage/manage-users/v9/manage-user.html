@@ -1,0 +1,75 @@
+{% extends "_layouts/layout-pins-manage-users.html" %}
+
+{% set pageName="Appellant Case" %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+		href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<script>
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has('reloaded')) {
+    url.searchParams.set('reloaded', '1');
+    window.location.replace(url.toString());
+  }
+</script>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+
+	<span class="govuk-caption-l">Manage users</span>
+	<h1 class="govuk-heading-l">Notification preferences</h1>
+ 
+
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Month you apply",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  rows: [
+    [
+      {
+        text: "Email"
+      },
+      
+      {
+      text: data['add-user-email'] + '@cambridgeshirepeterborough-ca.gov.uk'
+      },      
+      {
+        html: '<a href="/manage/manage-users/v9/add-user?cya=true">Change</a>'
+      }
+    ],
+    [
+      {
+        text: " Appeal type notifications"
+      },
+      {
+        text: "All appeals"
+      },
+      {
+        html: '<a href="/manage/manage-users/v9/type-notifications?cya=true">Change</a>'
+      }
+    ]
+    
+  ]
+}) }}
+ 
+
+ 
+
+  {{ govukButton({
+    text: 'Confirm',
+    href: '/manage/manage-users/v9/add-remove-users',
+    classes: 'govuk-button'
+  }) }}
+
+  </div>
+</div>
+{% endblock %}
