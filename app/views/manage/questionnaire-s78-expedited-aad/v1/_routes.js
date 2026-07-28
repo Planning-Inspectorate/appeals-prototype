@@ -78,18 +78,7 @@ router.get('/task-list', function(req, res, next){
     data['og-evidence-started'] = 'true'
   }
 
-  // Mark sections as in progress when key answers exist (unless complete)
-  if (!isComplete('constraints-completed') && hasValue(data['conservation-check'])) {
-    data['constraints-started'] = 'true'
-  }
-
-  if (!isComplete('og-evidence-completed') && hasValue(data['design-access-statement-check'])) {
-    data['og-evidence-started'] = 'true'
-  }
-
-  if (!isComplete('notified-completed') && hasValue(data['notified-how'])) {
-    data['notified-started'] = 'true'
-  }
+  
 
   let count = 0
   if (data['constraints-completed'] == 'true') { count++ }
