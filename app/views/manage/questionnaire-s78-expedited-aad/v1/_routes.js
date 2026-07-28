@@ -1,6 +1,12 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+// testing azure node version
+
+router.get('/node-version', function(req, res) {
+  res.send(process.version)
+})
+// testing azure node version
 router.get('*', function(req, res, next){
 
   // Change the service name for this feature
