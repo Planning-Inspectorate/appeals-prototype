@@ -7,6 +7,13 @@ router.get('/node-version', function(req, res) {
   res.send(process.version)
 })
 // testing azure node version
+
+// checking if session data is being stored correctly
+router.get('/debug-session', function(req, res) {
+  res.json(req.session.data)
+})
+// checking if session data is being stored correctly
+
 router.get('*', function(req, res, next){
 
   // Change the service name for this feature
