@@ -16,15 +16,23 @@ router.post('/access/enter-code', function (req, res) {
   res.redirect('../task-list')
 })
 
+
+// setting complete tags before CYA
+
 router.post('*', function(req, res, next){
+  const page = req.path.split('/').filter(Boolean).pop()
+  if (page) {
+    req.session.data[`${page}-complete`] = 'true'
+  }
+
   if (req.session.data['cya']) {
     delete req.session.data['cya']
-    
+
     // If screening-env-statement-check is 'No', mark section as complete
     if (req.session.data['screening-env-statement-check'] == 'No') {
       req.session.data['env-impact-completed'] = 'true'
     }
-    
+
     res.redirect('../task-list');
   } else {
     next()
@@ -544,7 +552,7 @@ router.post('/env-impact/env-statement-check', function (req, res) {
     res.redirect('env-statement-upload');
   } else {
     req.session.data['env-statement-check'] = 'No'
-    // If it’s Schedule 2 and screening-check in schedule 2 route = Yes
+    // If it's Schedule 2 and screening-check in schedule 2 route = Yes
     if (req.session.data['schedule'] == 'Schedule 2' && req.session.data['screening-check'] == 'Yes') {
       // go to negative-screening-upload
       res.redirect('negative-screening-upload');
