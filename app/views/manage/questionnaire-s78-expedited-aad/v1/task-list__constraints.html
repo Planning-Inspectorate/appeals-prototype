@@ -1,5 +1,6 @@
 
 <!-- in-line tags for auto-populated files for conservation uploads submitted with the application -->
+
   {% set conservationUploadInitialFiles = [
 '27_Maple_Close_Heritage_Statement.pdf',
 '27_Maple_Close_Heritage_Statement-part-2.pdf'
@@ -45,7 +46,7 @@
   {% else %}
     <span class="govuk-hint">Not started</span>
   {% endif %}
-{% endset %}
+{% endset %} 
 
 
 <!-- end of in-line tags for auto-populated files for conservation uploads submitted with the application -->
@@ -335,7 +336,7 @@
             }
           ]
         }
-      } if data['conservation-check'] == 'Yes' or [],
+      } if data['conservation-check'] != 'No',
       {
         key: {
           html: 'Protected species'
@@ -469,7 +470,7 @@
             }
           ]
         }
-      },
+      }if data['tree-order-check'] != 'No',
 
 
       {
