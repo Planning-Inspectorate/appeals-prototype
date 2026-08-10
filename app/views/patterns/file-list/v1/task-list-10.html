@@ -1,0 +1,85 @@
+{% extends '_layouts/layout-local-planning-authority.html' %}
+
+{% set title = 'Appeal questionnaire' %}
+{% set prototypeLinks = [
+  {
+    href: 'confirmation',
+    text: 'Skip to confirmation'
+  }]
+%}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to your planning appeals',
+    href: '/manage/appeals/v6?action='
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+ 
+<div class="govuk-inset-text">
+  This shows 10 files in the preview well under the 25th percentile of the median number of files uploaded per field (24 files)
+  <p class="govuk-!-margin-top-2">
+  <a href="./task-list-5.html" class="govuk-link">5</a> &nbsp;
+  <a href="./task-list-10.html" class="govuk-link">10</a> &nbsp;
+  <a href="./task-list-15.html" class="govuk-link">15</a> &nbsp;
+  <a href="./task-list-20.html" class="govuk-link">20</a> &nbsp;
+  <a href="./task-list-30.html" class="govuk-link">30</a> &nbsp;
+  <a href="./task-list-40.html" class="govuk-link">40</a> &nbsp;
+  <a href="./task-list-50.html" class="govuk-link">50</a> &nbsp;
+  <a href="./task-list-60.html" class="govuk-link">60</a> &nbsp;
+  </p>
+</div>
+<!-- banner for chosing number of files -->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+    </div>
+
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <h2 class="govuk-heading-m">
+        Complete the questionnaire
+      </h2>
+      <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 8 sections.</p>
+
+      {# Tweak the task list so we can merge the CYA in #}
+      <style>
+        .app-task-list>li {
+          position: relative;
+        }
+        .app-task-list__section .govuk-tag {
+          position: absolute;
+          top: 3px;
+          right: 0;
+        }
+        .app-task-list .govuk-summary-list {
+          border-top: 1px solid #b1b4b6;
+        }
+      </style>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      <ol class="app-task-list">
+
+        {% include "./task-list__constraints-10.html" %}
+        {% include "./task-list__submit.html" %}
+
+      </ol>
+    </div>
+  </div>
+{% endblock %}
