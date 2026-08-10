@@ -38,11 +38,375 @@
     {{ govukButton({
       html: 'View prototype',
       href: '/patterns/file-list/v'+version+'/task-list-5.html',
-      isStartButton: true
+      isStartButton: false
     }) }}
 
-   
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      How many files to show in the preview?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+  
+    <!-- percentile counts in html -->
+     I've used AI to aid the visualisation of the disrtibution of file counts - the raw data has not been uploaded anywhere. I did not have access to any of the files and I used Excel to calculate the percentile positions based only on doc count data.
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File count percentile positions</title>
+<style>
+  :root {
+    --ink: #0b0c0c;
+    --ink-light: #505a5f;
+    --line: #b1b4b6;
+    --bg: #ffffff;
+    --panel: #f3f2f1;
+    --blue: #1d70b8;
+    --blue-dark: #003078;
+    --amber: #ffb000;
+    --red: #d4351c;
+    --green: #00703c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  header {
+    border-bottom: 4px solid var(--blue-dark);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 0 0 8px;
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    color: var(--ink-light);
+    font-size: 17px;
+    max-width: 640px;
+    margin: 0;
+  }
+  .panel {
+    background: var(--panel);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 19px;
+    margin: 0 0 4px;
+  }
+  .panel-note {
+    color: var(--ink-light);
+    font-size: 14px;
+    margin: 0 0 20px;
+  }
+  svg { display: block; width: 100%; height: auto; }
+  .axis-line { stroke: var(--ink); stroke-width: 1; }
+  .grid-line { stroke: var(--line); stroke-width: 1; }
+  .curve { fill: none; stroke: var(--blue); stroke-width: 2.5; }
+  .curve-fill { fill: var(--blue); opacity: 0.06; }
+  .anchor-dot { fill: var(--blue-dark); }
+  .axis-label { fill: var(--ink); font-size: 12px; }
+  .axis-title { fill: var(--ink-light); font-size: 12px; font-weight: 600; }
+  .threshold-line { stroke: var(--red); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.7; }
+  .threshold-dot { fill: var(--red); stroke: #fff; stroke-width: 1.5; }
+  .threshold-label {
+    fill: var(--red);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .anchor-label { fill: var(--blue-dark); font-size: 11px; }
 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin-top: 8px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-light);
+    font-weight: 700;
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.highlight td { background: #fff3f0; }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .tag-low { background: #e4f5ea; color: var(--green); }
+  .tag-mid { background: #fff3d6; color: #7a5b00; }
+  .tag-high { background: #fde9e5; color: var(--red); }
+
+  .callout {
+    border-left: 4px solid var(--amber);
+    background: #fffaf0;
+    padding: 14px 18px;
+    font-size: 15px;
+    margin-top: 24px;
+  }
+  .callout strong { color: var(--ink); }
+
+  footer {
+    margin-top: 40px;
+    color: var(--ink-light);
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 26px; }
+    .wrap { padding: 24px 16px 60px; }
+    th, td { padding: 8px 6px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Document upload analysis · 199,182 rows</p>
+    <h1>Where each file count sits in the distribution</h1>
+    <p class="lede">Comparing candidate pagination thresholds (5, 10, 15, 20, 30, 40, 50, 60 files) against the actual percentile curve of files uploaded per appeal.</p>
+  </header>
+
+  <div class="panel">
+    <h2>Percentile curve, with thresholds plotted</h2>
+    <p class="panel-note">Value axis uses a log scale, because the data is heavily right-skewed: the 90th percentile is 7 files, but the maximum is 2,177.</p>
+    <svg id="chart" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+
+  <div class="panel">
+    <h2>Known percentile values</h2>
+    <p class="panel-note">The values for the upload count distribution.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Percentile</th>
+          <th class="num">File count</th>
+        </tr>
+      </thead>
+      <tbody id="anchor-table"></tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Where each threshold lands</h2>
+    <p class="panel-note">Estimated percentile position for each candidate pagination size, interpolated between the known percentile values above.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Threshold (files)</th>
+          <th class="num">Approx. percentile</th>
+          <th>Coverage</th>
+        </tr>
+      </thead>
+      <tbody id="threshold-table"></tbody>
+    </table>
+
+    <div class="callout">
+      <strong>What this means:</strong> almost every threshold from 10 to 60 lands between the 90th and 90.3rd percentile. The jump from the 90th percentile (7 files) to the 100th (2,177 files) is so steep that raising a pagination limit from 10 to 60 files barely moves how many appeals it fully covers. A limit of 10 already captures roughly 90% of appeals; only the long tail of outliers needs 60 or more.
+    </div>
+  </div>
+
+  
+
+</div>
+
+<script>
+const anchors = [
+  {p: 0,   v: 1},
+  {p: 5,   v: 1},
+  {p: 10,  v: 1},
+  {p: 25,  v: 1},
+  {p: 50,  v: 1},
+  {p: 55,  v: 1},
+  {p: 60,  v: 2},
+  {p: 75,  v: 3},
+  {p: 80,  v: 3},
+  {p: 90,  v: 7},
+  {p: 100, v: 2177}
+];
+
+const thresholds = [5, 10, 15, 20, 30, 40, 50, 60];
+
+function percentileForValue(v) {
+  for (let i = 0; i < anchors.length - 1; i++) {
+    const a = anchors[i], b = anchors[i+1];
+    if (v >= a.v && v <= b.v) {
+      if (b.v === a.v) return a.p;
+      const frac = (v - a.v) / (b.v - a.v);
+      return a.p + frac * (b.p - a.p);
+    }
+  }
+  return 100;
+}
+
+// dedupe thresholds while preserving order, and compute percentile + coverage tag
+const seen = new Set();
+const thresholdResults = [];
+thresholds.forEach(t => {
+  if (seen.has(t)) return;
+  seen.add(t);
+  const pct = percentileForValue(t);
+  let tag = 'tag-high', tagText = 'Narrow';
+  if (pct >= 90) { tag = 'tag-mid'; tagText = 'Covers ~90%'; }
+  if (pct < 90 && pct >= 80) { tag = 'tag-low'; tagText = 'Covers most'; }
+  thresholdResults.push({ t, pct, tag, tagText });
+});
+
+// ---- Populate anchor table ----
+const anchorTable = document.getElementById('anchor-table');
+anchors.filter(a => a.p !== 0).forEach(a => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${a.p}th</td><td class="num">${a.v.toLocaleString()}</td>`;
+  anchorTable.appendChild(tr);
+});
+
+// ---- Populate threshold table ----
+const threshTable = document.getElementById('threshold-table');
+thresholdResults.forEach(r => {
+  const tr = document.createElement('tr');
+  if (r.pct >= 90) tr.classList.add('highlight');
+  tr.innerHTML = `
+    <td>${r.t} files</td>
+    <td class="num">${r.pct.toFixed(1)}th</td>
+    <td><span class="tag ${r.tag}">${r.tagText}</span></td>
+  `;
+  threshTable.appendChild(tr);
+});
+
+// ---- Draw chart ----
+const svgNS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById('chart');
+const W = 900, H = 460;
+const margin = { top: 20, right: 30, bottom: 50, left: 60 };
+const plotW = W - margin.left - margin.right;
+const plotH = H - margin.top - margin.bottom;
+
+// log scale for value axis (min 1, max slightly above 2177)
+const vMin = 1, vMax = 2177;
+function yForValue(v) {
+  const logMin = Math.log10(vMin);
+  const logMax = Math.log10(vMax);
+  const logV = Math.log10(Math.max(v, vMin));
+  const frac = (logV - logMin) / (logMax - logMin);
+  return margin.top + plotH - frac * plotH;
+}
+function xForPercentile(p) {
+  return margin.left + (p / 100) * plotW;
+}
+
+function el(tag, attrs) {
+  const e = document.createElementNS(svgNS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+// gridlines (x: every 10th percentile)
+for (let p = 0; p <= 100; p += 10) {
+  const x = xForPercentile(p);
+  svg.appendChild(el('line', { x1: x, y1: margin.top, x2: x, y2: margin.top + plotH, class: 'grid-line' }));
+  svg.appendChild(el('text', { x: x, y: margin.top + plotH + 20, class: 'axis-label', 'text-anchor': 'middle' })).textContent = p;
+}
+
+// y gridlines (log ticks)
+const yTicks = [1, 2, 5, 10, 50, 100, 500, 2177];
+yTicks.forEach(v => {
+  const y = yForValue(v);
+  svg.appendChild(el('line', { x1: margin.left, y1: y, x2: margin.left + plotW, y2: y, class: 'grid-line' }));
+  const t = el('text', { x: margin.left - 10, y: y + 4, class: 'axis-label', 'text-anchor': 'end' });
+  t.textContent = v.toLocaleString();
+  svg.appendChild(t);
+});
+
+// axes
+svg.appendChild(el('line', { x1: margin.left, y1: margin.top, x2: margin.left, y2: margin.top + plotH, class: 'axis-line' }));
+svg.appendChild(el('line', { x1: margin.left, y1: margin.top + plotH, x2: margin.left + plotW, y2: margin.top + plotH, class: 'axis-line' }));
+
+// axis titles
+const xTitle = el('text', { x: margin.left + plotW / 2, y: H - 6, class: 'axis-title', 'text-anchor': 'middle' });
+xTitle.textContent = 'Percentile of appeals';
+svg.appendChild(xTitle);
+
+const yTitle = el('text', { x: -( margin.top + plotH / 2), y: 16, class: 'axis-title', 'text-anchor': 'middle', transform: 'rotate(-90)' });
+yTitle.textContent = 'File count (log scale)';
+svg.appendChild(yTitle);
+
+// curve path through anchors
+let d = '';
+anchors.forEach((a, i) => {
+  const x = xForPercentile(a.p);
+  const y = yForValue(a.v);
+  d += (i === 0 ? 'M' : 'L') + x + ',' + y + ' ';
+});
+svg.appendChild(el('path', { d: d.trim(), class: 'curve' }));
+
+// filled area under curve
+let areaD = 'M' + xForPercentile(0) + ',' + (margin.top + plotH) + ' ';
+anchors.forEach(a => {
+  areaD += 'L' + xForPercentile(a.p) + ',' + yForValue(a.v) + ' ';
+});
+areaD += 'L' + xForPercentile(100) + ',' + (margin.top + plotH) + ' Z';
+svg.insertBefore(el('path', { d: areaD, class: 'curve-fill' }), svg.querySelector('.curve'));
+
+// anchor dots + labels
+anchors.filter(a => a.p !== 0).forEach(a => {
+  const x = xForPercentile(a.p);
+  const y = yForValue(a.v);
+  svg.appendChild(el('circle', { cx: x, cy: y, r: 3.5, class: 'anchor-dot' }));
+});
+
+// threshold markers
+thresholdResults.forEach((r, i) => {
+  const x = xForPercentile(r.pct);
+  const y = yForValue(r.t);
+  svg.appendChild(el('line', { x1: x, y1: y, x2: x, y2: margin.top + plotH, class: 'threshold-line' }));
+  svg.appendChild(el('circle', { cx: x, cy: y, r: 5, class: 'threshold-dot' }));
+  // stagger labels vertically to reduce overlap since many cluster near 90th percentile
+  const labelY = margin.top + 14 + (i % 4) * 14;
+  const label = el('text', { x: x, y: labelY, class: 'threshold-label', 'text-anchor': 'middle' });
+  label.textContent = r.t;
+  svg.appendChild(label);
+});
+</script>
+
+</body>
+</html>
+<!-- percentile counts in -->
   </div>
 </div>
+</div>
+</details>
 {% endblock %}
