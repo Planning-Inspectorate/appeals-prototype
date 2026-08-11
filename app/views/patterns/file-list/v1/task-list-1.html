@@ -17,10 +17,11 @@
 
 {% block content %}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
- 
+
+<!-- banner for chosing number of files -->
 <div class="govuk-inset-text">
-<h3>Number of documents in each preview</h3>  
-<p class="govuk-!-margin-top-2">
+  <h3>Number of documents in each preview</h3>
+  <p class="govuk-!-margin-top-2">
   <a href="./task-list-1.html" class="govuk-link">1</a> &nbsp;
   <a href="./task-list-5.html" class="govuk-link">5</a> &nbsp;
   <a href="./task-list-10.html" class="govuk-link">10</a> &nbsp;
@@ -32,8 +33,10 @@
   <a href="./task-list-60.html" class="govuk-link">60</a> &nbsp;
   </p>
 <!-- banner for chosing number of files -->
-   <!-- percentile marker -->
- <div style="font-family: Arial, sans-serif; max-width: 600px;">
+<!-- percentile marker -->
+
+
+<div style="font-family: Arial, sans-serif; max-width: 600px;">
     <h4>Document Count Percentile</h4>
 
     <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
@@ -48,18 +51,20 @@
         background:#e5e7eb;
         border-radius:12px;
         overflow:hidden;">
-
+        
+        <!-- Percentile marker -->
         <div style="
             position:absolute;
-            left:90%;
+            left:55%;
             top:-8px;
             width:2px;
             height:40px;
             background:#2563eb;">
         </div>
 
+        <!-- Filled portion -->
         <div style="
-            width:90%;
+            width:55%;
             height:100%;
             background:#60a5fa;">
         </div>
@@ -71,14 +76,15 @@
         background:#eff6ff;
         border-left:4px solid #2563eb;
         border-radius:4px;">
-        <strong>60 files</strong><br>
-        Approximately the <strong>90.2nd percentile</strong><br>
-        Meaning roughly 90.2% of cases have 60 files or fewer.
+        <strong>1 file</strong><br>
+        Approximately the <strong>55th percentile</strong><br>
+        Meaning roughly 55% of cases have 1 file or fewer.
     </div>
 </div>
 </div>
 <!-- percentile marker -->
 
+ 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
       <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
@@ -122,7 +128,7 @@
 
       <ol class="app-task-list">
 
-        {% include "./task-list__constraints-60.html" %}
+        {% include "./task-list__constraints-1.html" %}
         {% include "./task-list__submit.html" %}
 
       </ol>
