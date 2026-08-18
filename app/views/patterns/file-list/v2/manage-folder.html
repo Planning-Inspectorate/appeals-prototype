@@ -1,0 +1,85 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = ' Conservation area map and guidance' %}
+   
+
+
+{% block content %}
+<span class="govuk-caption-l">Manage folder</span>
+<h1 class="govuk-heading-l">{{ title }}</h1>
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Add document",
+  href: "/patterns/file-list/v1/constraints/conservation-upload.html?cya=true",
+  classes: "govuk-button--secondary"
+}) }}
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Documents</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    
+      <th scope="col" class="govuk-table__header govuk-!-width-one-half">Name</th>
+    
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Action</th>
+    
+    </tr>
+  </thead>
+
+
+<!-- table row repeater -->
+<tbody class="govuk-table__body">
+  {% for i in range(0, 100) %}
+<tr class="govuk-table__row">
+<td class="govuk-table__cell">
+      <a href="#" class="govuk-link">dummy-file-0293{{ i + 1 }}282.pdf&nbsp;(10KB)</a>
+        
+</td>
+<td class="govuk-table__cell govuk-table__cell--numeric">
+<a href="remove-file" class="govuk-link">
+  Remove
+  <span class="govuk-visually-hidden">dummy-file-0293{{ i + 1 }}282</span>
+</a>
+</td>
+</tr>
+  {% endfor %}
+</tbody>
+</table>
+<!-- table row repeater -->
+
+
+<!-- pagination -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div style="display: flex; justify-content: center;">
+      {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{{ govukPagination({
+  previous: {
+    href: "#"
+  },
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    }
+  ]
+}) }}
+</div>
+</div>
+</div>
+<!-- pagination -->
+
+
+
+{% endblock %}

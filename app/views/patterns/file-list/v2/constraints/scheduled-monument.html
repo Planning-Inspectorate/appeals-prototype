@@ -1,0 +1,37 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Would the development affect a scheduled monument?' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+    Constraints, designations and other issues
+  </span>
+
+  {{ govukRadios({
+    idPrefix: 'scheduled-monument',
+    name: 'scheduled-monument',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: "A scheduled monument is also known as an ‘ancient monument’."
+    },
+    items: [
+      {
+        html: 'Yes',
+        value: 'Yes',
+        checked: checked('scheduled-monument','Yes')
+      },
+      {
+        html: 'No',
+        value: 'No',
+        checked: checked('scheduled-monument','No')
+      }
+    ]
+  }) }}
+{% endblock %}

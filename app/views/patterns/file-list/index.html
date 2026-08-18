@@ -24,6 +24,24 @@
     <p class="govuk-body">
       Formatting lists of documents so that they do not slow load times or take up too much space vertically on the screen.</p>
 
+ {% set version = "2" %}
+    <h3 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h3>
+
+    
+
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/patterns/file-list/v'+version+'/task-list-1.html',
+      isStartButton: false
+    }) }}
+
+
     {% set version = "1" %}
     <h3 class="govuk-heading-m">
       Version {{version}}
@@ -37,7 +55,7 @@
 
     {{ govukButton({
       html: 'View prototype',
-      href: '/patterns/file-list/v'+version+'/task-list-5.html',
+      href: '/patterns/file-list/v'+version+'/task-list-1.html',
       isStartButton: false
     }) }}
 

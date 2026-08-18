@@ -1,0 +1,130 @@
+{% extends '_layouts/layout-local-planning-authority.html' %}
+
+{% set title = 'Appeal questionnaire' %}
+{% set prototypeLinks = [
+  {
+    href: 'confirmation',
+    text: 'Skip to confirmation'
+  }]
+%}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: 'Back to your planning appeals',
+    href: '/manage/appeals/v6?action='
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+ 
+<div class="govuk-inset-text">
+  <h3>Number of documents in each preview</h3>
+  <p class="govuk-!-margin-top-2">
+  <a href="./task-list-1.html" class="govuk-link">1</a> &nbsp;
+  <a href="./task-list-10.html" class="govuk-link">10</a> &nbsp;
+  <a href="./task-list-11.html" class="govuk-link">11</a> &nbsp;
+  </p>
+
+<!-- banner for chosing number of files -->
+ <!-- percentile marker -->
+
+
+<div style="font-family: Arial, sans-serif; max-width: 600px;">
+    <h4>Document Count Percentile</h4>
+
+    <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+        <span>0%</span>
+        <span>50%</span>
+        <span>100%</span>
+    </div>
+
+    <div style="
+        position:relative;
+        height:24px;
+        background:#e5e7eb;
+        border-radius:12px;
+        overflow:hidden;">
+        
+        <!-- Percentile marker -->
+        <div style="
+            position:absolute;
+            left:90%;
+            top:-8px;
+            width:2px;
+            height:40px;
+            background:#2563eb;">
+        </div>
+
+        <!-- Filled portion -->
+        <div style="
+            width:90%;
+            height:100%;
+            background:#60a5fa;">
+        </div>
+    </div>
+
+    <div style="
+        margin-top:12px;
+        padding:10px;
+        background:#eff6ff;
+        border-left:4px solid #2563eb;
+        border-radius:4px;">
+        <strong>10 files</strong><br>
+        Approximately the <strong>90th percentile</strong><br>
+        Meaning roughly 90% of cases have 5 files or fewer.
+    </div>
+</div>
+</div>
+<!-- percentile marker -->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
+      <span class="govuk-caption-l">Appeal {{ data['appealCode'] or '1345264' }}</span>
+      <h1 class="govuk-heading-l">
+        {{ title }}
+      </h1>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+      {% include "_includes/appeal-content/lpa-full-appeal-meta.html" %}
+    </div>
+
+    <div class="govuk-grid-column-three-quarters-from-desktop">
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+      <h2 class="govuk-heading-m">
+        Complete the questionnaire
+      </h2>
+      <p class="govuk-!-margin-bottom-7">You have completed {{count}} of 8 sections.</p>
+
+      {# Tweak the task list so we can merge the CYA in #}
+      <style>
+        .app-task-list>li {
+          position: relative;
+        }
+        .app-task-list__section .govuk-tag {
+          position: absolute;
+          top: 3px;
+          right: 0;
+        }
+        .app-task-list .govuk-summary-list {
+          border-top: 1px solid #b1b4b6;
+        }
+      </style>
+
+    </div>
+
+    <div class="govuk-grid-column-full">
+
+      <ol class="app-task-list">
+
+        {% include "./task-list__constraints-10.html" %}
+        {% include "./task-list__submit.html" %}
+
+      </ol>
+    </div>
+  </div>
+{% endblock %}
