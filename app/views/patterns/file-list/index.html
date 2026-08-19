@@ -32,15 +32,36 @@
         text: 'In progress'
       }) }}
     </h3>
+    <h4 class="govuk-heading-s">Changes</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Removed the preview of a subset of files and the 'Showing 10 of 106 files' text. This was because the choice to show a subset didn't have a clear use case. For example, why would the user want to see some uploaded files and not others?</li>
+      <li>Removing the previews had an additonal benefit of reducing the content on the screen for screen reader and keyboard users</li>
+      <li>Added two H3 headings to the manage folder page to allow screenreader and keyboard users to navigate more easily</li>
+      <li>Moved the file size information into the document links to cater to users who use screen readers and have low internet speeds</li>
+      <li>Confirmed with Bryn Thomas that displaying 100 files would not have a significant impact on performance</li>
+    </ul>
 
-    
-
+    <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+    Related documents
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p class="govuk-body">
+    I presented the file list pattern at the Interaction design community of practice for feedback from the team  <a href="https://pins-ds.atlassian.net/wiki/spaces/UCD/pages/2733146121/19+August" class="govuk-link">here are the notes.</a> </p>
+  <p class="govuk-body">
+    I also made a log of the decisions made on the pattern and the reasoning behind them, which can be found <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1755591245239/899b764e498d6963e0381c2ad1237cd3670ce1ca" class="govuk-link">here.</a> </p>
+  </div>
+</details>
     {{ govukButton({
       html: 'View prototype',
       href: '/patterns/file-list/v'+version+'/task-list-1.html',
       isStartButton: false
     }) }}
 
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
     {% set version = "1" %}
     <h3 class="govuk-heading-m">

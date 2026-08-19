@@ -15,7 +15,7 @@
     {% if conservationUploadData is iterable and conservationUploadData is not string %}
       {% if conservationUploadData | length == 1 %}
         {% set fileName = conservationUploadData[0].name or conservationUploadData[0] %}
-        <a href="#">{{ fileName }}</a>
+        <a href="#">{{ fileName }}&nbsp;(10MB)</a>
         
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
@@ -25,7 +25,7 @@
          
 
             <li>
-              <a href="#">{{ fileName }}</a>
+              <a href="#">{{ fileName }}&nbsp;(10MB)</a>
 
           
             </li>
@@ -55,7 +55,7 @@
     {% if treeOrderUploadData is iterable and treeOrderUploadData is not string %}
       {% if treeOrderUploadData | length == 1 %}
         {% set fileName = treeOrderUploadData[0].name or treeOrderUploadData[0] %}
-        <a href="#">{{ fileName }}</a>
+                      <a href="#">{{ fileName }}&nbsp;(10MB)</a>
         
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
@@ -65,7 +65,7 @@
          
 
             <li>
-              <a href="#">{{ fileName }}</a>
+              <a href="#">{{ fileName }}&nbsp;(10MB)</a>
 
           
             </li>
@@ -98,7 +98,7 @@
     {% if rightOfWayUploadData is iterable and rightOfWayUploadData is not string %}
       {% if rightOfWayUploadData | length == 1 %}
         {% set fileName = rightOfWayUploadData[0].name or rightOfWayUploadData[0] %}
-        <a href="#">{{ fileName }}</a>
+        <a href="#">{{ fileName }}&nbsp;(10MB)</a>
         
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
@@ -108,7 +108,7 @@
          
 
             <li>
-              <a href="#">{{ fileName }}</a>
+              <a href="#">{{ fileName }}&nbsp;(10MB)</a>
 
           
             </li>
@@ -144,7 +144,7 @@
     {% if conservationUploadData is iterable and conservationUploadData is not string %}
       {% if conservationUploadData | length == 1 %}
         {% set fileName = conservationUploadData[0].name or conservationUploadData[0] %}
-        <a href="#">{{ fileName }}</a>
+        <a href="#">{{ fileName }}&nbsp;(10MB)</a>
         
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
@@ -154,7 +154,7 @@
          
 
             <li>
-              <a href="#">{{ fileName }}</a>
+              <a href="#">{{ fileName }}&nbsp;(10MB)</a>
 
           
             </li>
