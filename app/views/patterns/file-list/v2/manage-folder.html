@@ -8,16 +8,18 @@
 <span class="govuk-caption-l">Manage folder</span>
 <h1 class="govuk-heading-l">{{ title }}</h1>
 {% from "govuk/components/button/macro.njk" import govukButton %}
+<h2 class="govuk-heading-m">Add a document</h2>
+<div class="govuk-!-margin-bottom-6">
+  {{ govukButton({
+    text: "Add document",
+    href: "/patterns/file-list/v1/constraints/conservation-upload.html?cya=true",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
 
-{{ govukButton({
-  text: "Add document",
-  href: "/patterns/file-list/v1/constraints/conservation-upload.html?cya=true",
-  classes: "govuk-button--secondary"
-}) }}
-
+<h2 class="govuk-heading-m">Added documents</h2>
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Documents</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
     
@@ -35,7 +37,6 @@
 <tr class="govuk-table__row">
 <td class="govuk-table__cell">
       <a href="#" class="govuk-link">dummy-file-0293{{ i + 1 }}282.pdf&nbsp;(10KB)</a>
-        
 </td>
 <td class="govuk-table__cell govuk-table__cell--numeric">
 <a href="remove-file" class="govuk-link">

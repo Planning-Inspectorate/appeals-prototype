@@ -29,13 +29,16 @@
     <h1 class="govuk-heading-l">
       {{ title }}
     </h1>
+<h2 class="govuk-heading-m">Add a document</h2>
+<div class="govuk-!-margin-bottom-6">
+  {{ govukButton({
+    text: "Add document",
+    href: "/patterns/file-list/v1/constraints/conservation-upload.html",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
 
-    {{ govukButton({
-      text: "Add document",
-      href: "/patterns/file-list/v1/constraints/conservation-upload.html",
-      classes: "govuk-button--secondary"
-    }) }}
-
+<h2 class="govuk-heading-m">Added documents</h2>
     <p class="govuk-body">
       There are no documents in this folder.
     </p>
