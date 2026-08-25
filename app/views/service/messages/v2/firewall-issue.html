@@ -1,0 +1,27 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'There is a problem' %}
+{% set back = true %}
+
+{% block questions %}
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+
+  <p class="govuk-body">
+    Try again using letters a to z and numbers 0 to 9. Do not use any special characters, such as hyphens or apostrophes.
+  </p>
+{% endblock %}
+
+{% block buttons %}
+
+  {{ govukButton({
+    text: 'Try again',
+    href: '#'
+  }) }}
+
+  <!--
+  <p class="govuk-body">
+    <a href="#0" class="govuk-link--no-visited-state">Enter a different email address</a>
+  </p> -->
+{% endblock %}

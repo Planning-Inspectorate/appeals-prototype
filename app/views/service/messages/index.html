@@ -23,20 +23,9 @@
 
     <section class="govuk-!-margin-bottom-6">
 
+    {% set v1HTML %}
+
       {% set version = "1" %}
-      <h2 class="govuk-heading-m">
-        Version {{version}}
-        {{ govukTag({
-          classes: 'govuk-tag--green govuk-!-margin-left-2',
-          text: 'Ready for research'
-        }) }}
-      </h2>
-
-      <!-- <p class="govuk-!-margin-bottom-2">
-        Changes:
-      </p>
-      -->
-
       <ul class="govuk-list govuk-list--bullet">
         <li>
           <a href="v1/planned-maintenance-soon" class="govuk-link">
@@ -60,6 +49,55 @@
         </li>
       </ul>
 
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/govuk-start',
+        isStartButton: true
+      }) }}
+
+    {% endset -%}
+
+      {% set version = "2" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--green govuk-!-margin-left-2',
+          text: 'Ready for research'
+        }) }}
+      </h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="v2/planned-maintenance-soon.html" class="govuk-link">
+            planned maintenance
+          </a>
+          <p>
+            Notification banner when will be an upcoming outage
+          </p>
+        </li>
+        <li>
+          <a href="v2/service-unavailable-planned" class="govuk-link">
+            service is unavailable (planned)
+          </a>
+          <p>
+            Service outage page for planned maintenance
+          </p>
+        </li>
+        <li>
+          <a href="v2/service-unavailable" class="govuk-link">
+            service is unavailable (unexpected)
+          </a>
+          <p>
+            Service outage page for unexpected outages
+          </p>
+        </li>
+      </ul>
+
+      <!-- <p class="govuk-!-margin-bottom-2">
+        Changes:
+      </p>
+      -->
+
       <!-- {{ govukButton({
         html: 'View prototype',
         href: 'v'+version+'/planned-maintenance-soon',
@@ -70,4 +108,21 @@
 
   </div>
 </div>
+
+{{ govukAccordion({
+      id: 'previous',
+      classes: 'govuk-!-margin-top-9',
+      items: [
+
+        {
+          heading: {
+            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+          },
+          content: {
+            html: v1HTML
+          }
+        }
+        ]
+    }) }}
+
 {% endblock %}

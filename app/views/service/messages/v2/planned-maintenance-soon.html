@@ -1,0 +1,36 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Before you start' %}
+
+{% set prototypeLinks = [
+  {
+    href: 'service-unavailable-planned',
+    text: 'Service is unavailable (planned)'
+  },
+  {
+    href: 'service-unavailable',
+    text: 'Service is unavailable (unexpected)'
+  }
+] %}
+
+{% block questions %}
+
+  {% set html %}
+    <h3 class="govuk-notification-banner__heading">
+      Upcoming planned maintenance
+    </h3>
+    <p class="govuk-body">
+      On Tuesday 13 December between 6-8pm, this service will be unavailable due to planned maintenance.
+    </p>
+  {% endset %}
+  {{ govukNotificationBanner({
+    html: html
+  }) }}
+
+  <h1 class="govuk-heading-l">
+    {{title}}
+  </h1>
+  <p class="govuk-body">This is a new service. Before you start, we&rsquo;ll check if you can use this service by asking some questions about your appeal.</p>
+
+  <p class="govuk-body">If you cannot use this service, you can still appeal using the existing service.</p>
+{% endblock %}
