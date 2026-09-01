@@ -24,14 +24,14 @@
         {% if data['consultation-responses-upload'] | length == 1 %}
           <a href="#" class="govuk-link">{{ data['consultation-responses-upload'][0] }}</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['consultation-responses-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['consultation-responses-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['consultation-responses-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">consultation-responses.pdf</a>
@@ -44,14 +44,14 @@
         {% if data['other-parties-upload'] | length == 1 %}
           <a href="#" class="govuk-link">{{ data['other-parties-upload'][0] }}</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['other-parties-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['other-parties-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['other-parties-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">other-parties.pdf</a>
@@ -124,9 +124,13 @@
         },
         actions: {
           items: [
+             {
+              href: '#',
+              html: 'Manage'
+            },
             {
-              href: 'consultation/consultation-responses-upload?cya=true',
-              html: 'Change'
+              href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=consultationResponses',
+              html: 'Add'
             }
             if data['consultation-responses-upload-complete'] else
             {
@@ -136,6 +140,12 @@
           ]
         }
       } if data['consultation-responses-check'] == 'Yes',
+
+
+
+
+      
+
       {
         key: {
           html: 'Representations from other parties about the application'
@@ -174,9 +184,13 @@
         },
         actions: {
           items: [
+             {
+              href: '#',
+              html: 'Manage'
+            },
             {
-              href: 'consultation/other-parties-upload?cya=true',
-              html: 'Change'
+              href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=otherParties',
+              html: 'Add'
             }
             if data['other-parties-upload-complete'] else
             {

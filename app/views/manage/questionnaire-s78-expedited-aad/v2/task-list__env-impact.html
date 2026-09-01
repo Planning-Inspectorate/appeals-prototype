@@ -35,14 +35,14 @@
         {% if data['env-statement-upload'] | length == 1 %}
           <a href="#" class="govuk-link">{{ data['env-statement-upload'][0] }}</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['env-statement-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['env-statement-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['env-statement-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">env-statement.pdf</a>
@@ -58,9 +58,7 @@
         },
         value: {
           html: data['schedule'] or 'No'
-        }
-        if data['schedule-complete'] else
-        {
+        } if data['schedule-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -68,9 +66,7 @@
             {
               href: 'env-impact/schedule?cya=true',
               html: 'Change'
-            }
-            if data['schedule-complete'] else
-            {
+            } if data['schedule-complete'] else {
               href: 'env-impact/schedule?cya=',
               html: 'Answer'
             }
@@ -83,9 +79,7 @@
         },
         value: {
           html: data['development-desc'] or 'Agriculture and aquaculture'
-        }
-        if data['development-desc-complete'] else
-        {
+        } if data['development-desc-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -93,9 +87,7 @@
             {
               href: 'env-impact/development-desc?cya=true',
               html: 'Change'
-            }
-            if data['development-desc-complete'] else
-            {
+            } if data['development-desc-complete'] else {
               href: 'env-impact/development-desc?cya=',
               html: 'Answer'
             }
@@ -107,10 +99,8 @@
           html: 'In, partly in, or likely to affect a sensitive area'
         },
         value: {
-          html: (data['sensitive-area'] or 'No')+('<br>'+data['sensitive-area-details'] if data['sensitive-area'] == 'Yes')
-        }
-        if data['sensitive-area-complete'] else
-        {
+          html: (data['sensitive-area'] or 'No') + ('<br>' + data['sensitive-area-details'] if data['sensitive-area'] == 'Yes' else '')
+        } if data['sensitive-area-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -118,9 +108,7 @@
             {
               href: 'env-impact/sensitive-area?cya=true',
               html: 'Change'
-            }
-            if data['sensitive-area-complete'] else
-            {
+            } if data['sensitive-area-complete'] else {
               href: 'env-impact/sensitive-area?cya=',
               html: 'Answer'
             }
@@ -133,9 +121,7 @@
         },
         value: {
           html: data['column-two'] or 'No'
-        }
-        if data['column-two-complete'] else
-        {
+        } if data['column-two-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -143,9 +129,7 @@
             {
               href: 'env-impact/column-two?cya=true',
               html: 'Change'
-            }
-            if data['column-two-complete'] else
-            {
+            } if data['column-two-complete'] else {
               href: 'env-impact/column-two?cya=',
               html: 'Answer'
             }
@@ -158,9 +142,7 @@
         },
         value: {
           html: data['screening-check'] or 'No'
-        }
-        if data['screening-check-complete'] else
-        {
+        } if data['screening-check-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -168,9 +150,7 @@
             {
               href: 'env-impact/screening-check?cya=true',
               html: 'Change'
-            }
-            if data['screening-check-complete'] else
-            {
+            } if data['screening-check-complete'] else {
               href: 'env-impact/screening-check?cya=',
               html: 'Answer'
             }
@@ -183,19 +163,15 @@
         },
         value: {
           html: data['screening-upload'] or 'screening opinion.pdf'
-        }
-        if data['screening-upload-complete'] else
-        {
+        } if data['screening-upload-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
               href: 'env-impact/screening-upload?cya=true',
-              html: 'Change'
-            }
-            if data['screening-upload-complete'] else
-            {
+              html: 'Add'
+            } if data['screening-upload-complete'] else {
               href: 'env-impact/screening-upload',
               html: 'Upload'
             }
@@ -208,9 +184,7 @@
         },
         value: {
           html: data['screening-env-statement-check'] or 'No'
-        }
-        if data['screening-env-statement-check-complete'] else
-        {
+        } if data['screening-env-statement-check-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -218,25 +192,20 @@
             {
               href: 'env-impact/screening-env-statement-check?cya=true',
               html: 'Change'
-            }
-            if data['screening-env-statement-check-complete'] else
-            {
+            } if data['screening-env-statement-check-complete'] else {
               href: 'env-impact/screening-env-statement-check?cya=',
               html: 'Answer'
             }
           ]
         }
       } if data['screening-check'] == 'Yes',
-
       {
         key: {
           html: 'Scoping opinion received'
         },
         value: {
           html: data['scoping-check'] or 'No'
-        }
-        if data['scoping-check-complete'] else
-        {
+        } if data['scoping-check-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -244,25 +213,20 @@
             {
               href: 'env-impact/scoping-check?cya=true',
               html: 'Change'
-            }
-            if data['scoping-check-complete'] else
-            {
+            } if data['scoping-check-complete'] else {
               href: 'env-impact/scoping-check?cya=',
               html: 'Answer'
             }
           ]
         }
       } if data['screening-env-statement-check'] == 'Yes',
-
       {
         key: {
           html: 'Upload scoping opinion'
         },
         value: {
           html: data['scoping-upload'] or 'scoping-opinion.pdf'
-        }
-        if data['scoping-upload-complete'] else
-        {
+        } if data['scoping-upload-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -270,32 +234,20 @@
             {
               href: 'env-impact/scoping-upload?cya=true',
               html: 'Change'
-            }
-            if data['scoping-upload-complete'] else
-            {
+            } if data['scoping-upload-complete'] else {
               href: 'env-impact/scoping-upload?cya=',
               html: 'Answer'
             }
           ]
         }
       } if data['scoping-check'] == 'Yes',
-
-
-
-
-
-
-
-
       {
         key: {
           html: 'Applicant did environmental statement'
         },
         value: {
           html: data['applicant-env-statement-check'] or 'No'
-        }
-        if data['applicant-env-statement-check-complete'] else
-        {
+        } if data['applicant-env-statement-check-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -303,9 +255,7 @@
             {
               href: 'env-impact/applicant-env-statement-check?cya=true',
               html: 'Change'
-            }
-            if data['applicant-env-statement-check-complete'] else
-            {
+            } if data['applicant-env-statement-check-complete'] else {
               href: 'env-impact/applicant-env-statement-check?cya=',
               html: 'Answer'
             }
@@ -318,9 +268,7 @@
         },
         value: {
           html: data['env-statement-check'] or 'No'
-        }
-        if data['env-statement-check-complete'] else
-        {
+        } if data['env-statement-check-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -328,9 +276,7 @@
             {
               href: 'env-impact/env-statement-check?cya=true',
               html: 'Change'
-            }
-            if data['env-statement-check-complete'] else
-            {
+            } if data['env-statement-check-complete'] else {
               href: 'env-impact/env-statement-check?cya=',
               html: 'Answer'
             }
@@ -343,34 +289,37 @@
         },
         value: {
           html: envStatementUploadHtml
-        }
-        if data['env-statement-upload-complete'] else
-        {
+        } if data['env-statement-upload-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
+             {
+              href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=environmentalStatement',
+              html: 'Manage'
+            },
             {
               href: 'env-impact/env-statement-upload?cya=true',
-              html: 'Change'
-            }
-            if data['env-statement-upload-complete'] else
-            {
+              html: 'Add'
+            } if data['env-statement-upload-complete'] else {
               href: 'env-impact/env-statement-upload',
               html: 'Upload'
             }
           ]
         }
       } if data['env-statement-check'] == 'Yes',
+
+
+
+
+
       {
         key: {
           html: 'Screening direction'
         },
         value: {
           html: data['negative-screening-upload'] or 'screening-direction.pdf'
-        }
-        if data['negative-screening-upload-complete'] else
-        {
+        } if data['negative-screening-upload-complete'] else {
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
@@ -378,16 +327,13 @@
             {
               href: 'env-impact/negative-screening-upload?cya=true',
               html: 'Change'
-            }
-            if data['negative-screening-upload-complete'] else
-            {
+            } if data['negative-screening-upload-complete'] else {
               href: 'env-impact/negative-screening-upload',
               html: 'Upload'
             }
           ]
         }
       } if data['env-statement-check'] == 'No'
-
     ]
   }) }}
 </li>

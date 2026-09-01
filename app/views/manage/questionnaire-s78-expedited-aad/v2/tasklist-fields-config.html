@@ -1,0 +1,24 @@
+
+{% macro fieldTitle(fieldKey) %}
+{% set fields = {
+  conservation: {
+    name: "Conservation area map and guidance"
+  },
+  policies: {
+    name: "Relevant policies"
+  },
+  treeOrder: {
+    name: "Tree Preservation Order extent"
+  }
+} %}
+{{- fields[conservation].name if fields[conservation] else "" -}}
+{{- fields[policies].name if fields[policies] else "" -}}
+{{- fields[treeOrder].name if fields[treeOrder] else "" -}}
+
+{% endmacro %}
+
+
+
+
+
+

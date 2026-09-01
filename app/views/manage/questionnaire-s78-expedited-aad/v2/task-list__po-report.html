@@ -39,16 +39,16 @@ PO report done = {{ data['po-report-completed'] }}
     {% if data['report-upload'] %}
       {% if data['report-upload'] is iterable and data['report-upload'] is not string %}
         {% if data['report-upload'] | length == 1 %}
-          <a href="#" class="govuk-link">{{ data['report-upload'][0] }}</a>
+          <a href="#" class="govuk-link">{{ data['report-upload'][0] }}&nbsp;(10MB)</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['report-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['report-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['report-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">report.pdf</a>
@@ -61,14 +61,14 @@ PO report done = {{ data['po-report-completed'] }}
         {% if data['policies-upload'] | length == 1 %}
           <a href="#" class="govuk-link">{{ data['policies-upload'][0] }}</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['policies-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['policies-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['policies-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">policies.pdf</a>
@@ -79,16 +79,16 @@ PO report done = {{ data['po-report-completed'] }}
     {% if data['emerging-plan-upload'] %}
       {% if data['emerging-plan-upload'] is iterable and data['emerging-plan-upload'] is not string %}
         {% if data['emerging-plan-upload'] | length == 1 %}
-          <a href="#" class="govuk-link">{{ data['emerging-plan-upload'][0] }}</a>
+          <a href="#" class="govuk-link">{{ data['emerging-plan-upload'][0] }}&nbsp;(10MB)</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['emerging-plan-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['emerging-plan-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['emerging-plan-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">emerging-plan.pdf</a>
@@ -101,14 +101,14 @@ PO report done = {{ data['po-report-completed'] }}
         {% if data['supplementary-upload'] | length == 1 %}
           <a href="#" class="govuk-link">{{ data['supplementary-upload'][0] }}</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['supplementary-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['supplementary-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['supplementary-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">supplementary.pdf</a>
@@ -121,14 +121,14 @@ PO report done = {{ data['po-report-completed'] }}
         {% if data['community-infrastructure-upload'] | length == 1 %}
           <a href="#" class="govuk-link">{{ data['community-infrastructure-upload'][0] }}</a>
         {% else %}
-          <ol class="govuk-list govuk-list--number">
+          <ul class="govuk-list govuk-list--bullet">
             {% for file in data['community-infrastructure-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}</a></li>
+              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
             {% endfor %}
-          </ol>
+          </ul>
         {% endif %}
       {% else %}
-        <a href="#" class="govuk-link">{{ data['community-infrastructure-upload'] }}</a>
+        <a href="#" class="govuk-link">{{ data['community-infrastructure-upload'] }}&nbsp;(10MB)</a>
       {% endif %}
     {% else %}
       <a href="#" class="govuk-link">community-infrastructure.pdf</a>
@@ -151,9 +151,13 @@ PO report done = {{ data['po-report-completed'] }}
         },
         actions: {
           items: [
+             {
+              href: '#',
+              html: 'Manage'
+            },
             {
               href: 'po-report/report-upload?cya=true',
-              html: 'Change'
+              html: 'Add'
             }
             if data['report-upload-complete'] else
             {
@@ -175,10 +179,13 @@ PO report done = {{ data['po-report-completed'] }}
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
-          items: [
+          items: [   {
+              href: '#',
+              html: 'Manage'
+            },
             {
               href: 'po-report/policies-upload?cya=true',
-              html: 'Change'
+              html: 'Add'
             }
             if data['policies-upload-complete'] else
             {
@@ -225,10 +232,13 @@ PO report done = {{ data['po-report-completed'] }}
           html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
-          items: [
+          items: [   {
+              href: '#',
+              html: 'Manage'
+            },
             {
               href: 'po-report/emerging-plan-upload?cya=true',
-              html: 'Change'
+              html: 'Add'
             }
             if data['emerging-plan-upload-complete'] else
             {
@@ -276,9 +286,13 @@ PO report done = {{ data['po-report-completed'] }}
         },
         actions: {
           items: [
+             {
+              href: '#',
+              html: 'Manage'
+            },
             {
               href: 'po-report/supplementary-upload?cya=true',
-              html: 'Change'
+              html: 'Add'
             }
             if data['supplementary-upload-complete'] else
             {
@@ -326,9 +340,13 @@ PO report done = {{ data['po-report-completed'] }}
         },
         actions: {
           items: [
+             {
+              href: '#',
+              html: 'Manage'
+            },
             {
               href: 'po-report/community-infrastructure-upload?cya=true',
-              html: 'Change'
+              html: 'Add'
             }
             if data['community-infrastructure-upload-complete'] else
             {

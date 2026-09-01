@@ -1,0 +1,85 @@
+
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "/manage/questionnaire-s78-expedited-aad/v2/tasklist-fields-config.html" import fieldTitle %}
+
+<!-- Back link -->
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "/manage/questionnaire-s78-expedited-aad/v2/task-list"
+}) }}
+<!-- back link end -->
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
+{% if manageFolderShowBanner %}
+  {% call govukNotificationBanner({
+    type: "success"
+  }) %}
+<h3 class="govuk-notification-banner__heading">
+      {{ manageFolderBannerText }}
+</h3>
+  {% endcall %}
+{% endif %}
+</div>
+</div>
+
+<span class="govuk-caption-l">Manage documents</span>
+<h1 class="govuk-heading-l">{{ manageFolderTitle }}</h1>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<h2 class="govuk-heading-m">Add a document</h2>
+<div class="govuk-!-margin-bottom-6">
+{{ govukButton({
+  text: "Add document",
+  href: manageFolderAddHref + "?field=" + manageFolderField + "&returnTo=manage-folder",
+  classes: "govuk-button--secondary"
+}) }}
+</div>
+
+<h2 class="govuk-heading-m">Documents added</h2>
+
+<table class="govuk-table">
+<thead class="govuk-table__head">
+<tr class="govuk-table__row">
+<th scope="col" class="govuk-table__header govuk-!-width-one-half">Name</th>
+<th scope="col" class="govuk-table__header govuk-table__header--numeric">Action</th>
+</tr>
+</thead>
+
+<tbody class="govuk-table__body">
+    {% for file in manageFolderData %}
+<tr class="govuk-table__row">
+<td class="govuk-table__cell">
+<a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a>
+</td>
+<td class="govuk-table__cell govuk-table__cell--numeric">
+<a href="{{ manageFolderRemoveHref }}?id={{ file }}" class="govuk-link">
+          Remove
+<span class="govuk-visually-hidden">{{ file }}</span>
+</a>
+</td>
+</tr>
+    {% endfor %}
+</tbody>
+</table>
+
+{% if manageFolderData.length > 100 %}
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+<div style="display: flex; justify-content: center;">
+      {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+      {{ govukPagination({
+        previous: { href: "#" },
+        next: { href: "#" },
+        items: [
+          { number: 1, current: true, href: "#" },
+          { number: 2, href: "#" }
+        ]
+      }) }}
+</div>
+</div>
+</div>
+{% endif %}

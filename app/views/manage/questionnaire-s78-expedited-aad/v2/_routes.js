@@ -170,8 +170,19 @@ router.post('/constraints/conservation-check', function (req, res) {
 })
 
 router.post('/constraints/conservation-upload', function (req, res) {
-  res.redirect('protected-species')
-})
+  const returnTo = req.session.data['returnTo']
+  delete req.session.data['returnTo']
+
+  if (req.body.cya === 'true') {
+    return res.redirect('task-list');
+  }
+
+   if (returnTo === 'manage-folder') {
+     return res.redirect('../manage-folder?field=' + req.session.data['field']);
+   }
+
+  res.redirect('protected-species');
+});
 
 router.post('/constraints/protected-species', function (req, res) {
   res.redirect('green-belt')

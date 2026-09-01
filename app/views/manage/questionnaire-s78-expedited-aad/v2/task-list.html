@@ -14,7 +14,14 @@
     href: '/manage/appeals/v6?action='
   }) }}
 {% endblock %}
+{% set fieldNames = {
+  conservation: "Conservation area map and guidance",
+  consultation: "Consultation responses",
+  siteAccess: "Site access plan"
+} %}
 
+
+<!-- banner -->
 {% block content %}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
@@ -24,6 +31,24 @@
   </p>
 {% endcall %}
 </div>
+<!-- banner end -->
+
+<!-- banner for updating user about fields added -->
+ {% if data['taskListBanner'] %}
+
+  {% call govukNotificationBanner({
+    type: "success"
+  }) %}
+    <h3 class="govuk-notification-banner__heading">
+      We've added documents to
+      {{ fields[data['taskListBanner']].name }}
+      for you.
+    </h3>
+  {% endcall %}
+
+{% endif %}
+<!-- banner end -->
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-bottom-3">
