@@ -352,6 +352,10 @@ router.post('/og-evidence/design-access-statement-check', function (req, res) {
 })
 
 router.post('/og-evidence/design-access-statement-upload', function (req, res) {
+  res.redirect('plans-and-drawings-check')
+})
+
+router.post('/og-evidence/design-access-statement-upload', function (req, res) {
   res.redirect('plans-and-drawings-upload')
 })
 
