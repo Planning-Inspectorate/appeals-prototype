@@ -37,6 +37,8 @@
           <li>Change button to say Manage | Add if there are files already otherwise it says 'answer'
           </li>
           <li>Remove the inital files (auto filled) from the upload pages summary lists</li>
+          <li>Removing CYA linking to reflect the live environment flow</li>
+
       </ul>
 
       {{ govukButton({
@@ -71,19 +73,27 @@
 
     {% endset %}
 
-    {{ govukAccordion({
-      id: 'versions',
-      items: [
-        {
-          heading: {
-            html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
-          },
-          content: {
-            html: v1HTML
-          }
-        }
-      ]
-    }) }}
+{{ govukAccordion({
+  id: 'versions',
+  items: [
+    {
+      heading: {
+        html: 'Version 2 <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-2">In progress</strong>'
+      },
+      content: {
+        html: v2HTML
+      }
+    },
+    {
+      heading: {
+        html: 'Version 1 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-2">Ready for research</strong>'
+      },
+      content: {
+        html: v1HTML
+      }
+    }
+  ]
+}) }}
 
   </div>
 </div>

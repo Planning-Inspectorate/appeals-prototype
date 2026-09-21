@@ -172,7 +172,7 @@
     rows: [
       {
         key: {
-          html: 'Design and access statement'
+          html: 'Did the applicant submit a design and access statement with the application?'
         },
         value: {
           html: 'Yes <strong class="govuk-tag govuk-tag--purple govuk-!-margin-left-1">Auto</strong>'
@@ -206,7 +206,7 @@
         actions: {
           items: [
             {
-              href: '#',
+              href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=designAccessStatement',
               html: 'Manage'
             },
             {
@@ -221,10 +221,36 @@
           ]
         }
       } if data['design-access-statement-check'] == 'Yes' or not data['design-access-statement-check'],
+       {
+        key: {
+          html: 'Did the applicant submit plans and drawings with the application?'
+        },
+          value: {
+          html: 'Yes <strong class="govuk-tag govuk-tag--purple govuk-!-margin-left-1">Auto</strong>'
+        }
+        if data['plans-and-drawings-check'] == 'Yes' or not data['plans-and-drawings-check'] else
+        {
+          html: 'No'
+        },
+
+        actions: {
+          items: [
+            {
+              href: 'og-evidence/plans-and-drawings-check?cya=true',
+              html: 'Add'
+            }
+            if data['plans-and-drawings-check-complete'] else
+            {
+              href: 'og-evidence/plans-and-drawings-check?cya=',
+              html: 'Answer'
+            }
+          ]
+        }
+      },
 
       {
         key: {
-          html: 'Plans drawings and list of plans'
+          html: ' Upload the plans and drawings submitted with the application '
         },
         value: {
           html: plansAndDrawingsHtml
@@ -232,7 +258,7 @@
         actions: {
           items: [
             {
-              href: '#',
+              href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=plansAndDrawings',
               html: 'Manage'
             },
             {
@@ -253,22 +279,22 @@
           html: 'Other documents with the application'
         },
         value: {
-          html: otherDocsHtml
+          html: data['other-documents-check'] or 'No'
+        }
+        if data['other-documents-check'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
             {
-              href: '#',
-              html: 'Manage'
-            },
-            {
-              href: 'og-evidence/other-documents-upload?cya=true',
-              html: 'Add'
+              href: 'og-evidence/other-documents-check',
+              html: 'Change'
             }
-            if otherDocsData else
+            if data['other-documents-check'] else
             {
-              href: 'og-evidence/other-documents-upload',
-              html: 'Upload'
+              href: 'og-evidence/other-documents-check',
+              html: 'Answer'
             }
           ]
         }
@@ -288,7 +314,7 @@
         actions: {
           items: [
             {
-              href: '#',
+            href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=otherDocuments',
               html: 'Manage'
             },
             {
