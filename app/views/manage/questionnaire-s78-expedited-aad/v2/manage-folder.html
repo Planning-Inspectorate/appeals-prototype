@@ -144,8 +144,10 @@
 {% set manageFolderField = data['field'] %}
 {% set fieldConfig = fieldsConfig[manageFolderField] %}
 
+{% set rawFolderData = (data[fieldConfig.dataKey] if fieldConfig else none) or (fieldConfig.initialFiles if fieldConfig else []) or [] %}
+{% set manageFolderData = rawFolderData if rawFolderData is iterable and rawFolderData is not string else [rawFolderData] %}
+
 {% set manageFolderTitle = fieldConfig.title if fieldConfig else "Manage documents" %}
-{% set manageFolderData = (data[fieldConfig.dataKey] if fieldConfig else none) or (fieldConfig.initialFiles if fieldConfig else []) or [] %}
 {% set manageFolderAddHref = (fieldConfig.addHref if fieldConfig else "") + "?field=" + manageFolderField + "&returnTo=manage-folder" %}
 {% set manageFolderRemoveHref = "/manage/questionnaire-s78-expedited-aad/v2/remove-file" %}
 
