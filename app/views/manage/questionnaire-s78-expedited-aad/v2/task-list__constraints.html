@@ -49,7 +49,7 @@
     {% if fileCount == 1 %}
       {% set fileName = files[0].name or files[0] %}
       {% set isAuto = fileName in initialFiles %}
-      <a href="#" class="govuk-link">{{ fileName }}</a>&nbsp;(10MB)
+      <a href="#" class="govuk-link">{{ fileName }}&nbsp;(10MB)</a>
       {% if isAuto %}
         <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
       {% endif %}

@@ -7,6 +7,54 @@ Community infrastructure {{ data['community-infrastructure-complete'] }} <br>
 PO report done = {{ data['po-report-completed'] }}
 </p> -->
 
+<!-- in-line tags for auto-populated files for report upload -->
+  {% set reportUploadInitialFiles = [
+'OFFICER REPORT.pdf'
+] %}
+ 
+{% set reportUploadData = data['report-upload'] or reportUploadInitialFiles %}
+{% set reportUploadComplete = data['report-upload-complete'] or (reportUploadInitialFiles | length) %}
+
+
+{% set reportUploadHtml %}
+  {% if reportUploadData %}
+    {% if reportUploadData is iterable and reportUploadData is not string %}
+      {% if reportUploadData | length == 1 %}
+        {% set fileName = reportUploadData[0].name or reportUploadData[0] %}
+        {% set isAuto = fileName in reportUploadInitialFiles %}
+        <a href="#">{{ fileName }}&nbsp;(10MB)</a>
+        {% if isAuto %}
+          <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+        {% endif %}
+      {% else %}
+        <ul class="govuk-list govuk-list--bullet">
+
+          {% for file in reportUploadData | sort %}
+            {% set fileName = file.name or file %}
+            {% set isAuto = fileName in reportUploadInitialFiles %}
+
+            <li>
+              <a href="#">{{ fileName }}&nbsp;(10MB)</a>
+
+              {% if isAuto %}
+                <strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>
+              {% endif %}
+            </li>
+
+          {% endfor %}
+
+        </ul>
+      {% endif %}
+    {% else %}
+      <a href="#">{{ reportUploadData }}</a>
+    {% endif %}
+  {% else %}
+    <span class="govuk-hint">Not started</span>
+  {% endif %}
+{% endset %}
+
+<!-- initial files display -->
+
 <li>
   <h2 class="app-task-list__section">
     <span class="app-task-list__section-number">6. </span>
@@ -35,25 +83,7 @@ PO report done = {{ data['po-report-completed'] }}
 
   {% set levyDate = (data['community-infrastructure-date-day'] or '1') +' '+ (data['community-infrastructure-date-month'] | formatMonth or 'July') +' '+ (data['community-infrastructure-date-year'] or '2024') %}
 
-  {% set reportUploadHtml %}
-    {% if data['report-upload'] %}
-      {% if data['report-upload'] is iterable and data['report-upload'] is not string %}
-        {% if data['report-upload'] | length == 1 %}
-          <a href="#" class="govuk-link">{{ data['report-upload'][0] }}&nbsp;(10MB)</a>
-        {% else %}
-          <ul class="govuk-list govuk-list--bullet">
-            {% for file in data['report-upload'] | sort %}
-              <li><a href="#" class="govuk-link">{{ file }}&nbsp;(10MB)</a></li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      {% else %}
-        <a href="#" class="govuk-link">{{ data['report-upload'] }}&nbsp;(10MB)</a>
-      {% endif %}
-    {% else %}
-      <a href="#" class="govuk-link">report.pdf</a>
-    {% endif %}
-  {% endset %}
+
 
   {% set policiesUploadHtml %}
     {% if data['policies-upload'] %}
@@ -143,29 +173,20 @@ PO report done = {{ data['po-report-completed'] }}
           html: 'Upload what your decision notice would have said' if data['non-determination'] == 'true' else 'Upload planning officer’s report'
         },
         value: {
-          html: reportUploadHtml
-        }
-        if data['report-upload-complete'] else
-        {
-          html: '<span class="govuk-hint">Not started</span>'
-        },
-        actions: {
-          items: [
-             {
-              href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=reportUpload',
-              html: 'Manage'
-            } and
-            {
-              href: 'po-report/report-upload?cya=true',
-              html: 'Add'
-            }
-            if data['report-upload-complete'] else
-            {
-              href: 'po-report/report-upload?cya=',
-              html: 'Upload'
-            }
-          ]
-        }
+  html: reportUploadHtml
+}
+if reportUploadComplete else
+{
+  html: '<span class="govuk-hint">Not started</span>'
+},
+actions: {
+  items: [
+    { href: '/manage/questionnaire-s78-expedited-aad/v2/manage-folder?field=reportUpload', html: 'Manage' },
+    { href: 'po-report/report-upload', html: 'Add' }
+  ] if reportUploadComplete else [
+    { href: 'po-report/report-upload', html: 'Upload' }
+  ]
+}
       },
       {
         key: {

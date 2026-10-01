@@ -86,14 +86,21 @@
   never rendered as rows. This is deliberately unconditional (not gated
   by uploadError) so the cumulative record is preserved on every submit,
   not just error redisplays.
+
+  If the session has no value for this field yet (first visit), fall
+  back to the page's `initialFiles` so they're kept when new files are
+  uploaded. If the session value has been set - even to an empty array
+  after removals - it wins.
 #}
 {% set existingFiles = [] %}
-{% if uploadDataKey and data and data[uploadDataKey] %}
+{% if uploadDataKey and data and data[uploadDataKey] is defined %}
   {% if data[uploadDataKey] is iterable and data[uploadDataKey] is not string %}
     {% set existingFiles = data[uploadDataKey] %}
   {% else %}
     {% set existingFiles = [data[uploadDataKey]] %}
   {% endif %}
+{% elif initialFiles and initialFiles.length > 0 %}
+  {% set existingFiles = initialFiles %}
 {% endif %}
 <script type="application/json" id="documents-existing-files">{{ existingFiles | dump | safe }}</script>
 

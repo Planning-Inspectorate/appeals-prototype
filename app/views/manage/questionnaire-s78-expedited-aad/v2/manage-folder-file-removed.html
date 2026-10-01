@@ -1,18 +1,19 @@
 {% extends '_layouts/layout-pins.html' %}
 {% set back = false %}
 
-{% set title = 'Conservation area map and guidance' %}
-{% block content %}
-  {% set conservationUploadData = data['conservation-upload'] or conservationUploadInitialFiles %}
+{% set manageFolderField = data['field'] %}
+{% set fieldConfig = fieldsConfig[manageFolderField] %}
 
-  {% set manageFolderTitle = title %}
-  {% set manageFolderData = conservationUploadData %}
-  {% set manageFolderAddHref = "/manage/questionnaire-s78-expedited-aad/v2/constraints/conservation-upload.html?cya=true" %}
-  {% set manageFolderRemoveHref = "/manage/questionnaire-s78-expedited-aad/v2/remove-file.html" %}
+{% set rawFolderData = (data[fieldConfig.dataKey] if fieldConfig else none) or (fieldConfig.initialFiles if fieldConfig else []) or [] %}
+{% set manageFolderData = rawFolderData if rawFolderData is iterable and rawFolderData is not string else [rawFolderData] %}
+
+{% set manageFolderTitle = fieldConfig.title if fieldConfig else "Manage documents" %}
+{% set manageFolderAddHref = (fieldConfig.addHref if fieldConfig else "") + "?field=" + manageFolderField + "&returnTo=manage-folder" %}
+{% set manageFolderRemoveHref = "/manage/questionnaire-s78-expedited-aad/v2/remove-file" %}
 
 {% set manageFolderShowBanner = true %}
-{% set manageFolderBannerText = "We have removed dummy-file-02934282" %}
+{% set manageFolderBannerText = "We have removed " ~ (data['id'] or "the file") %}
 
-
+{% block content %}
   {% include "/_includes/common/manage-folder.html" %}
 {% endblock %}

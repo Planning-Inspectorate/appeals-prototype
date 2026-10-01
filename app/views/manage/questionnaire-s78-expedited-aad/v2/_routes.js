@@ -1,5 +1,20 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
+// debug
+router.get('*', function(req, res, next){
+
+  // Change the service name for this feature
+  res.locals['serviceName'] = 'Manage your appeals'
+
+  // Add return to task list
+  res.locals['return'] = true
+
+  // Make the fields config available to templates
+  res.locals['fieldsConfig'] = fieldsConfig
+
+  next()
+})
+// debug
 
 router.get('*', function(req, res, next){
 
@@ -15,12 +30,6 @@ router.get('*', function(req, res, next){
 router.post('/access/enter-code', function (req, res) {
   res.redirect('../task-list')
 })
-
-
-    
- 
-    
-  
 
 router.get('/task-list', function(req, res, next){
   // Clear session data if coming from index page
@@ -693,6 +702,14 @@ router.post('/po-report/:page', function (req, res, next) {
 
 router.post('/po-report/report-upload', function (req, res) {
   req.session.data['report-upload-complete'] = 'true'
+
+  const returnTo = req.session.data['returnTo']
+  delete req.session.data['returnTo']
+
+  if (returnTo === 'manage-folder') {
+    return res.redirect('../manage-folder?field=' + req.session.data['field'])
+  }
+
   res.redirect('policies-upload')
 })
 
@@ -912,7 +929,26 @@ router.get('/save-and-return/', function (req, res) {
   }
 })
 
+// Remove fields
 
+const fieldsConfig = require('./_fields-config.js')
+
+router.get('/questionnaire-s78-expedited-aad/v2/remove-file', function (req, res) {
+  const { id, field } = req.query
+  const fieldConfig = fieldsConfig[field]
+
+  if (fieldConfig) {
+    const dataKey = fieldConfig.dataKey
+    // Seed from initialFiles the first time this field's data is touched,
+    // so the removal is remembered even if session data never had this key yet
+    const currentFiles = req.session.data[dataKey] || fieldConfig.initialFiles || []
+    req.session.data[dataKey] = currentFiles.filter(file => file !== id)
+  }
+
+  res.redirect(
+    `/manage/questionnaire-s78-expedited-aad/v2/manage-folder-file-removed?id=${encodeURIComponent(id)}&field=${encodeURIComponent(field)}`
+  )
+})
 
 
 // Add your routes above the module.exports line

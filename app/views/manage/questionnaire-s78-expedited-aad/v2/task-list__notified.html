@@ -47,12 +47,14 @@
   {% endif %}
 {% endset %}
 
+<!-- initial files display -->
+
 
 {% set notifiedWhoUploadHtml %}
   {% if data['notified-who'] %}
     {% if data['notified-who'] is iterable and data['notified-who'] is not string %}
       {% if data['notified-who'] | length == 1 %}
-        <a href="#" class="govuk-link">{{ data['notified-who'][0] }}</a>
+        <a href="#" class="govuk-link">{{ data['notified-who'][0] }}&nbsp;(10MB)</a>
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
           {% for file in data['notified-who'] | sort %}
@@ -61,7 +63,7 @@
         </ul>
       {% endif %}
     {% else %}
-      <a href="#" class="govuk-link">{{ data['notified-who'] }}</a>
+      <a href="#" class="govuk-link">{{ data['notified-who'] }}&nbsp;(10MB)</a>
     {% endif %}
   {% else %}
     <a href="#" class="govuk-link">Notified list.pdf</a>
@@ -92,7 +94,7 @@
   {% if data['press-advert-upload'] %}
     {% if data['press-advert-upload'] is iterable and data['press-advert-upload'] is not string %}
       {% if data['press-advert-upload'] | length == 1 %}
-        <a href="#" class="govuk-link">{{ data['press-advert-upload'][0] }}</a>
+        <a href="#" class="govuk-link">{{ data['press-advert-upload'][0] }}&nbsp;(10MB)</a>
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
           {% for file in data['press-advert-upload'] | sort %}
@@ -104,7 +106,7 @@
       <a href="#" class="govuk-link">{{ data['press-advert-upload'] }}&nbsp;(10MB)</a>
     {% endif %}
   {% else %}
-    <a href="#" class="govuk-link">press-advert.pdf</a>
+    <a href="#" class="govuk-link">press-advert.pdf&nbsp;(10MB)</a>
   {% endif %}
 {% endset %}
 
