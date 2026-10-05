@@ -1,0 +1,42 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Add an appellant name' %}
+
+{% block questions %}
+
+  {% call govukFieldset({
+    legend: {
+    html: title,
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+
+
+  {{ govukInput({
+    id: 'new-appellant-first-name',
+    name: 'new-appellant-first-name',
+    value: data['new-appellant-first-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'First name'
+    },
+    autocomplete: 'given-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'new-appellant-last-name',
+    name: 'new-appellant-last-name',
+    value: data['new-appellant-last-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Last name'
+    },
+    autocomplete: 'family-name',
+    spellcheck: false
+  }) }}
+
+  {% endcall %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '_layouts/layout-main.html' %}
+
+{% set title = 'Was the planning application made in your name?' %}
+
+{% block questions %}
+
+  {{ govukRadios({
+    idPrefix: 'who-applied',
+    name: 'who-applied',
+    classes: '',
+    fieldset: {
+      legend: {
+        html: title,
+        classes: 'govuk-fieldset__legend--l',
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: 'If you are not the applicant, you must have their permission to submit an appeal on their behalf.'
+    },
+    items: [
+      {
+        html: 'Yes, the planning application was made in my name',
+        value: 'You',
+        checked: checked('who-applied','You')
+      },
+      {
+        html: 'No, I’m acting on behalf of the applicant',
+        value: 'Another individual',
+        checked: checked('who-applied','Another individual')
+      }
+    ]
+  }) }}
+
+{% endblock %}
