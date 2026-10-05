@@ -21,19 +21,9 @@
 } %}
 
 
-<!-- banner -->
 {% block content %}
-{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-3">
-{% call govukNotificationBanner() %}
-  <p class="govuk-notification-banner__heading">
- Check the questionnaire answers we've prefilled for you.
-  </p>
-{% endcall %}
-</div>
-<!-- banner end -->
 
-<!-- banner for updating user about fields added -->
+
  {% if data['taskListBanner'] %}
 
   {% call govukNotificationBanner({

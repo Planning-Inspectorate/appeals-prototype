@@ -7,6 +7,17 @@
 @import "pins/pins_tables";
 @import "pins/pins_print-styles";
 
+// styling for interruption panel
+.govuk-panel.app-panel--interruption {
+  text-align: left;
+  color: govuk-colour("white");
+  background: govuk-colour("blue");
+}
+
+.app-panel--interruption .govuk-body {
+  color: inherit;
+}
+
 // Top border for headers to draw attention to areas
 .app-border-top-big {
 	border-top: 5px solid $govuk-brand-colour;

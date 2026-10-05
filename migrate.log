@@ -1,0 +1,6 @@
+2026-10-05T08:55:41.804Z
+cwd: ~/Documents/GitHub/appeals-prototype
+package: govuk-prototype-kit@13.20.5
+argv: /usr/local/bin/node ~/.npm/_npx/751a68202a4807b7/node_modules/.bin/govuk-prototype-kit migrate
+Started [Check migration is being applied to a pre v13 prototype]
+Failed [Check migration is being applied to a pre v13 prototype]

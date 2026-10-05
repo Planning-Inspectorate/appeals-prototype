@@ -1,0 +1,24 @@
+{% extends '_layouts/layout-pins.html' %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  {% call govukPanel({
+  titleText: "Check the questionnaire answers we've prefilled for you.",
+  classes: "app-panel--interruption"
+}) %}
+  <p class="govuk-body">We've pulled data from your council's records via the back office planning system called 'BOPS'.</p>
+{{ govukButton({
+  text: "Continue",
+  href: "/manage/questionnaire-s78-expedited-aad/v2/task-list",
+  classes: "govuk-button--inverse"
+}) }}
+{% endcall %}
+{% endblock %}
