@@ -226,9 +226,12 @@
         key: {
           html: 'Conservation area'
         },
-        value: {
-          html: data['conservation-check'] or 'Yes' + '</span>' +
-            '<strong class="govuk-tag govuk-tag--purple govuk-!-margin-1">Auto</strong>'
+           value: {
+          html: data['conservation-check'] or 'No'
+        }
+        if data['conservation-check-complete'] else
+        {
+          html: '<span class="govuk-hint">Not started</span>'
         },
         actions: {
           items: [
