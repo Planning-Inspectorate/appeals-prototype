@@ -1,35 +1,31 @@
-{% extends '_layouts/layout-appellant-main.html' %}
+{% extends '_layouts/layout-pins.html' %}
 
 {% set back = true %}
 {% set return = true %}
 
 
-{% extends '_layouts/layout-appellant-main.html' %}
 
 {% block questions %}
 
-  {% if data['appellant-check'] == 'A person' %}
-    <h1 class="govuk-heading-l">
-      Complete the appeal on behalf of {{ data['appellant-first-name'] or 'Jan' }} {{ data['appellant-last-name'] or 'Fisher' }}
-    </h1>
-  {% else %}
-    <h1 class="govuk-heading-l">
-      Complete the appeal on behalf of {{ data['new-appellant-first-name'] or 'Jan' }} {{ data['new-appellant-last-name'] or 'Fisher' }} and Robin Fisher
-    </h1>
-  {% endif %}
+ {% if data['appellant-check'] == 'A person' %}
+<h1 class="govuk-heading-l">Continue the appeal for {{ data['appellant-full-name'] or 'Jan Fisher' }}</h1>
+<p class="govuk-body">We will ask you questions to complete the appeal. For example, 'What is your interest in the appeal site?'</p>
+<p class="govuk-body">You must answer these questions on behalf of {{ data['organisation-name'] or 'Riverside Holdings co.' }}.</p>
 
-  <p class="govuk-body">
-    We will ask you questions to complete the appeal. For example, ‘Do you own all the land involved in the appeal?’.
-  </p>
+  
 
-  {% if data['appellant-check'] == 'A person' %}
-    <p class="govuk-body">
-      You must answer these questions on behalf of {{ data['appellant-full-name'] or 'Jan Fisher' }}.
-    </p>
-  {% else %}
-    <p class="govuk-body">
-      You must answer these questions on behalf of {{ data['new-appellant-full-name']  or 'Jan Fisher' }} and Robin Fisher.
-    </p>
-  {% endif %}
+{% elif data['appellant-check'] == 'organisation' %}
+<H1 class="govuk-heading-l">Continue the appeal for {{ data['organisation-name'] or 'Riverside Holdings co.' }}.</h1>
+  <p class="govuk-body">We will ask you questions to complete the appeal. For example, 'What is your interest in the appeal site?'</p>
+<p class="govuk-body">You must answer these questions on behalf of {{ data['appellant-full-name'] or 'Jan Fisher' }}.</p>
+
+ 
+
+{% else %}
+<h1 class="govuk-heading-l">Continue the appeal for all appellants</h1>
+<p class="govuk-body">We will ask you questions to complete the appeal. For example, 'What is your interest in the appeal site?'</p>
+<p class="govuk-body">You must answer these questions on behalf of the appellant.</p>
+{% endif %}
 
 {% endblock %}
+

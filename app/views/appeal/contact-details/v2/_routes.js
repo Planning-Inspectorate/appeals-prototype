@@ -16,16 +16,52 @@ router.get('*', function(req, res, next){
 
 
 // page routes
+router.post('/appellant-check', function (req, res) {
 
+  let appellantCheck = req.session.data['appellant-check']
+
+  if (appellantCheck === 'individuals') {
+    res.redirect('appellant-name')
+  } else {
+    res.redirect('organisation-name')
+  }
+})
+
+router.post('/organisation-name', function (req, res) {
+  res.redirect('your-contact-details');
+})
 
 router.post('/appellant-name', function (req, res) {
-  res.redirect('agent-contact-details');
+  res.redirect('appellant-names');
 })
 
 
+router.post('/appellant-names', function (req, res) {
 
-router.post('/appellant-name', function (req, res) {
-  res.redirect('agent-contact-details');
+  let appellantNames = req.session.data['add-more-names']
+
+  if (appellantNames === 'Yes') {
+    res.redirect('appellant-name?multiplenames=yes')
+  } else {
+    res.redirect('agent-check-joint-application')
+  }
+})
+
+router.post('/agent-check-joint-application', function (req, res) {
+ if (req.session.data['agent-check-joint-application'] == 'other') {
+  res.redirect('your-contact-details')
+ } else {
+   res.redirect('contact-phone-number')
+ }
+})
+
+
+router.post('/your-contact-details', function (req, res) {
+  res.redirect('contact-phone-number')
+})
+
+router.post('/contact-phone-number', function (req, res) {
+  res.redirect('agent-notice')
 })
 
 // page routes

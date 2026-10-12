@@ -1,0 +1,53 @@
+{% extends '_layouts/layout-appellant-main.html' %}
+
+{% set title = 'Your contact details' %}
+
+{% block questions %}
+
+  {% call govukFieldset({
+    legend: {
+    html: title,
+    classes: 'govuk-fieldset__legend--l',
+    isPageHeading: true
+    }
+  }) %}
+
+  {{ govukInput({
+    id: 'appellant-first-name',
+    name: 'appellant-first-name',
+    value: data['appellant-first-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'First name'
+    },
+    autocomplete: 'given-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'appellant-last-name',
+    name: 'appellant-last-name',
+    value: data['appellant-last-name'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Last name'
+    },
+    autocomplete: 'family-name',
+    spellcheck: false
+  }) }}
+
+  {{ govukInput({
+    id: 'organisation-name',
+    name: 'organisation-nam',
+    value: data['organisation-nam'],
+    classes: 'govuk-!-width-three-quarters',
+    label: {
+      html: 'Organisation name (optional)'
+    },
+    autocomplete: 'org-name',
+    spellcheck: false
+  }) }}
+
+  {% endcall %}
+
+{% endblock %}

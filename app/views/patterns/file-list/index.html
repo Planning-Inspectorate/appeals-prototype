@@ -24,6 +24,43 @@
     <p class="govuk-body">
       Formatting lists of documents so that they do not slow load times or take up too much space vertically on the screen.</p>
 
+ 
+ {% set version = "3" %}
+    <h3 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h3>
+    <h4 class="govuk-heading-s">Changes</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Removed the option to preview different numbers of files</li>
+      <li>Updated the flow so that it reflects real-uploading and file managing behaviour</li>
+    </ul>
+
+    <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+    Related documents
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p class="govuk-body">
+    I presented the file list pattern at the Interaction design community of practice for feedback from the team  <a href="https://pins-ds.atlassian.net/wiki/spaces/UCD/pages/2733146121/19+August" class="govuk-link">here are the notes.</a> </p>
+  <p class="govuk-body">
+    I also made a log of the decisions made on the pattern and the reasoning behind them, which can be found <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1755591245239/899b764e498d6963e0381c2ad1237cd3670ce1ca" class="govuk-link">here.</a> </p>
+  </div>
+</details>
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/patterns/file-list/v'+version+'/task-list.html',
+      isStartButton: false
+    }) }}
+
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">     
+
  {% set version = "2" %}
     <h3 class="govuk-heading-m">
       Version {{version}}

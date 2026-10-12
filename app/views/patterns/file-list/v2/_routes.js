@@ -1,6 +1,36 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+//
+// HELPERS
+//
+
+// Where this prototype is mounted
+const BASE = '/patterns/file-list/v2'
+
+// If the user came from the manage folder page, send them back there.
+// Returns true if a redirect happened, so the caller can stop.
+function returnToManageFolder(req, res) {
+  const returnTo = req.session.data['returnTo']
+  const field = req.session.data['field']
+
+  // Clear the flag so later uploads don't bounce back by mistake
+  delete req.session.data['returnTo']
+
+  if (returnTo === 'manage-folder') {
+    const query = field ? '?field=' + encodeURIComponent(field) : ''
+    res.redirect(BASE + '/manage-folder' + query)
+    return true
+  }
+  return false
+}
+
+// Send the user to the task list variant (1, 10 or 11 documents)
+// they were last on. Falls back to the 1 document task list.
+function redirectToTaskList(req, res) {
+  res.redirect(req.session.data['lastTaskList'] || BASE + '/task-list-1.html')
+}
+
 router.get('*', function(req, res, next){
 
   // Change the service name for this feature
@@ -9,29 +39,40 @@ router.get('*', function(req, res, next){
   // Add return to task list
   res.locals['return'] = true
 
+  req.session.data ||= {}
+  const data = req.session.data
+
+  // Upload pages only return to manage folder if the link that got the
+  // user there says so (?returnTo=manage-folder&field=...). Otherwise clear
+  // any stale flag so the normal journey isn't hijacked.
+  if (/-upload(\.html)?$/.test(req.path)) {
+    if (req.query.returnTo === 'manage-folder') {
+      data['returnTo'] = 'manage-folder'
+      if (req.query.field) data['field'] = req.query.field
+    } else {
+      delete data['returnTo']
+    }
+  }
+
+  // Use these in templates instead of hard-coded links
+  res.locals['taskListUrl'] = data['lastTaskList'] || BASE + '/task-list-1.html'
+
   next()
 })
 
 router.post('/access/enter-code', function (req, res) {
-  res.redirect('../task-list')
+  redirectToTaskList(req, res)
 })
 
-router.post('*', function(req, res, next){
-  if (req.session.data['cya']) {
-    delete req.session.data['cya']
-    
-    // If screening-env-statement-check is 'No', mark section as complete
-    if (req.session.data['screening-env-statement-check'] == 'No') {
-      req.session.data['env-impact-completed'] = 'true'
-    }
-    
-    res.redirect('../task-list');
-  } else {
-    next()
-  }
+//
+// TASK LIST (task-list-1, task-list-10, task-list-11)
+//
+// The bare /task-list page doesn't exist, so send people to the last variant
+router.get(/^\/task-list(\.html)?$/, function (req, res) {
+  redirectToTaskList(req, res)
 })
 
-router.get('/task-list', function(req, res, next){
+router.get(/^\/task-list-(1|10|11)(\.html)?$/, function(req, res, next){
   // Clear session data if coming from index page
   if (req.query.clear === 'true') {
     req.session.data = {}
@@ -39,48 +80,19 @@ router.get('/task-list', function(req, res, next){
 
   req.session.data ||= {}
   const data = req.session.data
-  const isComplete = (key) => data[key] == 'true'
-  const hasValue = (value) => {
-    if (Array.isArray(value)) return value.length > 0
-    if (typeof value === 'string') return value.trim() !== ''
-    return value !== undefined && value !== null && value !== false
-  }
 
-  // On load, show these sections as in progress unless already completed
-  if (!isComplete('constraints-completed')) {
-    data['constraints-started'] = 'true'
-  }
-  if (!isComplete('notified-completed')) {
-    data['notified-started'] = 'true'
-  }
-  if (!isComplete('og-evidence-completed')) {
-    data['og-evidence-started'] = 'true'
-  }
+  // Remember which task list variant the user was last on.
+  // Done after the clear so it isn't wiped, and the query string is
+  // stripped so ?clear=true isn't stored.
+  data['lastTaskList'] = req.originalUrl.split('?')[0]
 
-  // Mark sections as in progress when key answers exist (unless complete)
-  if (!isComplete('constraints-completed') && hasValue(data['conservation-check'])) {
+  // On load, show constraints as in progress unless already completed
+  if (data['constraints-completed'] != 'true') {
     data['constraints-started'] = 'true'
   }
 
-  if (!isComplete('og-evidence-completed') && hasValue(data['design-access-statement-check'])) {
-    data['og-evidence-started'] = 'true'
-  }
-
-  if (!isComplete('notified-completed') && hasValue(data['notified-how'])) {
-    data['notified-started'] = 'true'
-  }
-
-  let count = 0
-  if (data['constraints-completed'] == 'true') { count++ }
-  if (data['og-evidence-completed'] == 'true') { count++ }
-  if (data['env-impact-completed'] == 'true') { count++ }
-  if (data['notified-completed'] == 'true') { count++ }
-  if (data['consultation-completed'] == 'true') { count++ }
-  if (data['po-report-completed'] == 'true') { count++ }
-  if (data['site-access-completed'] == 'true') { count++ }
-  if (data['appeal-process-completed'] == 'true') { count++ }
-
-  res.locals.count = count
+  // Constraints is the only section, so the count is 0 or 1
+  res.locals.count = data['constraints-completed'] == 'true' ? 1 : 0
   next()
 })
 
@@ -170,6 +182,7 @@ router.post('/constraints/conservation-check', function (req, res) {
 })
 
 router.post('/constraints/conservation-upload', function (req, res) {
+  if (returnToManageFolder(req, res)) return
   res.redirect('protected-species')
 })
 
@@ -198,6 +211,7 @@ router.post('/constraints/tree-order-check', function (req, res) {
 })
 
 router.post('/constraints/tree-order-upload', function (req, res) {
+  if (returnToManageFolder(req, res)) return
   res.redirect('traveller')
 })
 
@@ -215,755 +229,13 @@ router.post('/constraints/right-of-way-check', function (req, res) {
 })
 
 router.post('/constraints/right-of-way-upload', function (req, res) {
+  if (returnToManageFolder(req, res)) return
   res.redirect('complete')
 })
 
+// Constraints is the only section, so finishing it goes back to the task list
 router.get('/constraints/complete', function (req, res) {
-  if (!req.session.data['og-evidence-completed']) {
-    res.redirect('../og-evidence/design-access-statement-check')
-  } else if (!req.session.data['env-impact-completed']) {
-    res.redirect('../env-impact/schedule')
-  } else if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/notified-who')
-  } else if (!req.session.data['consultation-completed']) {
-    res.redirect('../consultation/consulted')
-  } else if (!req.session.data['po-report-completed']) {
-    res.redirect('../po-report/report-upload')
-  } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
-  } else if (!req.session.data['appeal-process-completed']) {
-    res.redirect('../appeal-process/procedure')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
-//
-// ORIGINAL EVIDENCE
-//
-
-router.post('/og-evidence/:page', function (req, res, next) {
-  req.session.data['og-evidence-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  // if all 6 questions are complete
-  // (because you only get to the uploads, if you answer Yes to the check)
-
-  if (
-    // design access check is Yes
-    // and upload is complete
-    // plans and drawings is complete
-    // other docs is Yes
-    // and upload is complete
-    // list of documents is complete
-    req.session.data['design-access-statement-check-complete']
-    && req.session.data['design-access-statement-upload-complete']
-    && req.session.data['plans-and-drawings-upload-complete']
-    && req.session.data['other-documents-check-complete']
-    && req.session.data['other-documents-upload-complete']
-    && req.session.data['list-of-documents-complete']
-  ){
-    // then make the section complete
-    req.session.data['og-evidence-completed'] = 'true'
-
-  } else if (
-    // design access check is No
-    // plans and drawings is complete
-    // other docs is Yes
-    // and upload is complete
-    // list of documents is complete
-    req.session.data['design-access-statement-check-complete']
-    && req.session.data['design-access-statement-check'] == 'No'
-    && req.session.data['plans-and-drawings-upload-complete']
-    && req.session.data['other-documents-check-complete']
-    && req.session.data['other-documents-upload-complete']
-    && req.session.data['list-of-documents-complete']
-  ){
-    // then make the section complete
-    req.session.data['og-evidence-completed'] = 'true'
-
-  } else if (
-    // design access check is Yes
-    // and upload is complete
-    // plans and drawings is complete
-    // other docs is No
-    // list of documents is complete
-
-    req.session.data['design-access-statement-check-complete']
-    && req.session.data['design-access-statement-upload-complete']
-
-    && req.session.data['plans-and-drawings-upload-complete']
-
-    && req.session.data['other-documents-check-complete']
-    && req.session.data['other-documents-check'] == 'No'
-
-    && req.session.data['list-of-documents-complete']
-  ){
-    // then make the section complete
-    req.session.data['og-evidence-completed'] = 'true'
-
-  } else if (
-    // design access check is No
-    // plans and drawings is complete
-    // other docs is No
-    // list of documents is complete
-
-    req.session.data['design-access-statement-check-complete']
-    && req.session.data['design-access-statement-check'] == 'No'
-
-    && req.session.data['plans-and-drawings-upload-complete']
-
-    && req.session.data['other-documents-check-complete']
-    && req.session.data['other-documents-check'] == 'No'
-
-    && req.session.data['list-of-documents-complete']
-  ){
-    // then make the section complete
-    req.session.data['og-evidence-completed'] = 'true'
-
-  } else {
-    // section is not complete
-    req.session.data['og-evidence-completed'] = 'false'
-  }
-
-  next()
-})
-
-
-router.post('/og-evidence/design-access-statement-check', function (req, res) {
-  if (req.session.data['design-access-statement-check'] == 'Yes') {
-    res.redirect('design-access-statement-upload');
-    req.session.data['og-evidence-in-progress'] = 'true'
-  } else {
-    res.redirect('plans-and-drawings-upload')
-  }
-})
-
-router.post('/og-evidence/design-access-statement-upload', function (req, res) {
-  res.redirect('plans-and-drawings-upload')
-})
-
-router.post('/og-evidence/plans-and-drawings-upload', function (req, res) {
-  res.redirect('other-documents-check')
-})
-
-router.post('/og-evidence/other-documents-check', function (req, res) {
-  if (req.session.data['other-documents-check'] == 'Yes') {
-    res.redirect('other-documents-upload');
-  } else {
-    res.redirect('list-of-documents')
-  }
-})
-
-router.post('/og-evidence/other-documents-upload', function (req, res) {
-  res.redirect('list-of-documents')
-})
-
-router.post('/og-evidence/list-of-documents', function (req, res) {
-  req.session.data['og-evidence-completed'] = 'true'
-  res.redirect('complete')
-})
-
-router.get('/og-evidence/complete', function (req, res) {
-  if (!req.session.data['env-impact-completed']) {
-    res.redirect('../env-impact/schedule')
-  } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
-  } else if (!req.session.data['appeal-process-completed']) {
-    res.redirect('../appeal-process/procedure')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
-
-//
-// ENVIRONMENTAL IMPACT
-//
-router.post('/env-impact/:page', function (req, res, next) {
-  req.session.data['env-impact-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  // If screening-env-statement-check is 'No', section is complete
-  if (req.session.data['screening-env-statement-check'] == 'No') {
-    req.session.data['env-impact-completed'] = 'true'
-    return next()
-  }
-
-  if (req.session.data['schedule'] == 'Schedule 1') {
-    if (req.session.data['env-statement-check'] == 'Yes') {
-      if (
-        req.session.data['env-statement-upload-complete']
-        && req.session.data['env-statement-responses-upload-complete']
-        && req.session.data['site-notice-upload-complete']
-      ){
-        req.session.data['env-impact-completed'] = 'true'
-      }
-    } else if (req.session.data['env-statement-check'] == 'No') {
-      if (req.session.data['negative-screening-upload-complete']) {
-        req.session.data['env-impact-completed'] = 'true'
-      }
-    }
-  }
-
-  if (
-    req.session.data['schedule'] == 'Schedule 2'
-    && req.session.data['development-desc-complete']
-    && req.session.data['sensitive-area-complete']
-    && req.session.data['column-two-complete']
-  ) {
-    if (req.session.data['screening-check'] == 'Yes') {
-      if (req.session.data['screening-upload'] == 'Yes') {
-        if (req.session.data['screening-env-statement-check'] == 'Yes') {
-          if (req.session.data['env-statement-check'] == 'Yes') {
-            if (
-              req.session.data['env-statement-upload-complete']
-              && req.session.data['env-statement-responses-upload-complete']
-              && req.session.data['site-notice-upload-complete']
-            ){
-              req.session.data['env-impact-completed'] = 'true'
-            }
-          } else if (req.session.data['env-statement-check'] == 'No') {
-            if (req.session.data['negative-screening-upload-complete']) {
-              req.session.data['env-impact-completed'] = 'true'
-            }
-          }
-        } else if (req.session.data['screening-env-statement-check'] == 'No') {
-          req.session.data['env-impact-completed'] = 'true'
-        }
-      }
-    } else if (req.session.data['screening-check'] == 'No') {
-      if (req.session.data['applicant-env-statement-check'] == 'Yes') {
-        if (req.session.data['env-statement-responses-upload-complete']) {
-          req.session.data['env-impact-completed'] = 'true'
-        }
-      } else if (req.session.data['applicant-env-statement-check-complete']) {
-        req.session.data['env-impact-completed'] = 'true'
-      }
-    }
-  }
-
-  if (req.session.data['schedule'] == 'No') {
-    if (req.session.data['screening-check'] == 'Yes') {
-      if (req.session.data['screening-upload'] == 'Yes') {
-        if (req.session.data['screening-env-statement-check'] == 'Yes') {
-          if (req.session.data['env-statement-check'] == 'Yes') {
-            if (
-              req.session.data['env-statement-upload-complete']
-              && req.session.data['env-statement-responses-upload-complete']
-              && req.session.data['site-notice-upload-complete']
-            ){
-              req.session.data['env-impact-completed'] = 'true'
-            }
-          } else if (req.session.data['env-statement-check'] == 'No') {
-            if (req.session.data['negative-screening-upload-complete']) {
-              req.session.data['env-impact-completed'] = 'true'
-            }
-          }
-        } else if (req.session.data['screening-env-statement-check'] == 'No') {
-          req.session.data['env-impact-completed'] = 'true'
-        }
-      }
-    } else if (req.session.data['screening-check'] == 'No') {
-      if (req.session.data['applicant-env-statement-check'] == 'Yes') {
-        if (req.session.data['env-statement-responses-upload-complete']) {
-          req.session.data['env-impact-completed'] = 'true'
-        }
-      } else if (req.session.data['applicant-env-statement-check-complete']) {
-        req.session.data['env-impact-completed'] = 'true'
-      }
-    }
-  }
-
-  next()
-})
-
-router.post('/env-impact/schedule', function (req, res) {
-  if (req.session.data['schedule'] == 'Schedule 1') {
-    res.redirect('env-statement-check');
-  } else if (req.session.data['schedule'] == 'Schedule 2') {
-    res.redirect('development-desc');
-  } else {
-    req.session.data['schedule'] = 'No'
-    res.redirect('screening-check');
-  }
-})
-
-router.post('/env-impact/development-desc', function (req, res) {
-  res.redirect('sensitive-area')
-})
-
-router.post('/env-impact/sensitive-area', function (req, res) {
-  res.redirect('column-two')
-})
-
-router.post('/env-impact/column-two', function (req, res) {
-  res.redirect('screening-check')
-})
-
-router.post('/env-impact/screening-check', function (req, res) {
-  if (req.session.data['screening-check'] == 'Yes') {
-    res.redirect('screening-upload');
-  } else {
-    req.session.data['screening-check'] = 'No'
-    res.redirect('applicant-env-statement-check');
-  }
-})
-
-router.post('/env-impact/screening-upload', function (req, res) {
-  req.session.data['screening-upload'] = 'Yes'
-  res.redirect('screening-env-statement-check')
-})
-
-router.post('/env-impact/screening-env-statement-check', function (req, res) {
-  if (req.session.data['screening-env-statement-check'] == 'Yes') {
-    res.redirect('scoping-check');
-  } else {
-    req.session.data['screening-env-statement-check'] = 'No'
-    res.redirect('applicant-env-statement-check');
-  }
-})
-
-router.post('/env-impact/scoping-check', function (req, res) {
-  if (req.session.data['scoping-check'] == 'Yes') {
-    res.redirect('scoping-upload');
-  } else {
-    req.session.data['scoping-check'] = 'No'
-    res.redirect('env-statement-check');
-  }
-})
-
-router.post('/env-impact/scoping-upload', function (req, res) {
-  res.redirect('env-statement-check');
-})
-
-router.post('/env-impact/env-statement-check', function (req, res) {
-  if (req.session.data['env-statement-check'] == 'Yes') {
-    res.redirect('env-statement-upload');
-  } else {
-    req.session.data['env-statement-check'] = 'No'
-    // If it’s Schedule 2 and screening-check in schedule 2 route = Yes
-    if (req.session.data['schedule'] == 'Schedule 2' && req.session.data['screening-check'] == 'Yes') {
-      // go to negative-screening-upload
-      res.redirect('negative-screening-upload');
-    } else {
-      // go to next section
-      res.redirect('complete')
-    }
-  }
-})
-
-router.post('/env-impact/env-statement-upload', function (req, res) {
-  res.redirect('complete')
-})
-
-router.post('/env-impact/negative-screening-upload', function (req, res) {
-  res.redirect('complete')
-})
-
-router.post('/env-impact/applicant-env-statement-check', function (req, res) {
-  if (req.session.data['applicant-env-statement-check'] == 'Yes') {
-    res.redirect('site-notice-upload')
-  } else {
-    req.session.data['applicant-env-statement-check'] = 'No'
-    res.redirect('complete');
-  }
-})
-
-router.get('/env-impact/complete', function (req, res) {
-  if (!req.session.data['notified-completed']) {
-    res.redirect('../notified/notified-who')
-  } else if (!req.session.data['consultation-completed']) {
-    res.redirect('../consultation/consulted')
-  } else if (!req.session.data['po-report-completed']) {
-    res.redirect('../po-report/report-upload')
-  } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
-  } else if (!req.session.data['appeal-process-completed']) {
-    res.redirect('../appeal-process/procedure')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
-
-//
-// NOTIFIED
-//
-router.post('/notified/:page', function (req, res, next) {
-  req.session.data['notified-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  next()
-})
-
-router.post('/notified/notified-who', function (req, res) {
-  req.session.data['notified-who-complete'] = 'true'
-  res.redirect('notified-how');
-})
-
-router.post('/notified/notified-how', function (req, res) {
-  if (req.session.data['notified-how']?.includes('A site notice')) {
-    res.redirect('site-notice-upload');
-  } else if (req.session.data['notified-how']?.includes('Letters to the neighbours')) {
-    res.redirect('letters-upload');
-  } else {
-    req.session.data['notified-how'] = 'A press advert'
-    res.redirect('press-advert-upload');
-  }
-})
-
-router.post('/notified/site-notice-upload', function (req, res) {
-  if (req.session.data['notified-how']?.includes('Letters to the neighbours')) {
-    res.redirect('letters-upload');
-  } else if (req.session.data['notified-how']?.includes('A press advert')) {
-    res.redirect('press-advert-upload');
-  } else {
-    req.session.data['notified-completed'] = 'true'
-    res.redirect('complete');
-  }
-})
-
-router.post('/notified/letters-upload', function (req, res) {
-  if (req.session.data['notified-how']?.includes('A press advert')) {
-    res.redirect('press-advert-upload');
-  } else {
-    req.session.data['notified-completed'] = 'true'
-    res.redirect('complete');
-  }
-})
-
-router.post('/notified/press-advert-upload', function (req, res) {
-  req.session.data['notified-completed'] = 'true'
-  res.redirect('complete');
-})
-
-router.get('/notified/complete', function (req, res) {
-  if (!req.session.data['consultation-completed']) {
-    res.redirect('../consultation/consulted')
-  } else if (!req.session.data['po-report-completed']) {
-    res.redirect('../po-report/report-upload')
-  } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
-  } else if (!req.session.data['appeal-process-completed']) {
-    res.redirect('../appeal-process/procedure')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
-
-//
-// CONSULTATION
-//
-router.post('/consultation/:page', function (req, res, next) {
-  req.session.data['consultation-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (
-    req.session.data['consulted-complete']
-    && req.session.data['consultation-responses-check-complete']
-    && req.session.data['other-parties-check-complete']
-  ){
-    if (
-      req.session.data['consultation-responses-check'] == 'Yes'
-      && req.session.data['consultation-responses-upload-complete']
-      && req.session.data['other-parties-check'] == 'Yes'
-      && req.session.data['other-parties-upload-complete']
-    ){
-      req.session.data['consultation-completed'] = 'true'
-    } else if (
-      req.session.data['consultation-responses-check'] == 'Yes'
-      && req.session.data['consultation-responses-upload-complete']
-      && req.session.data['other-parties-check'] == 'No'
-    ){
-      req.session.data['consultation-completed'] = 'true'
-    } else if (
-      req.session.data['consultation-responses-check'] == 'No'
-      && req.session.data['other-parties-check'] == 'Yes'
-      && req.session.data['other-parties-upload-complete']
-    ){
-      req.session.data['consultation-completed'] = 'true'
-    } else if (
-      req.session.data['consultation-responses-check'] == 'No'
-    ){
-      req.session.data['consultation-completed'] = 'true'
-    }
-  }
-
-  next()
-})
-
-router.post('/consultation/consulted', function (req, res) {
-  res.redirect('consultation-responses-check')
-})
-
-router.post('/consultation/consultation-responses-check', function (req, res) {
-  if (req.session.data['consultation-responses-check'] == 'Yes') {
-    res.redirect('consultation-responses-upload');
-  } else {
-    req.session.data['consultation-responses-check'] = 'No'
-    res.redirect('other-parties-check');
-  }
-})
-
-router.post('/consultation/consultation-responses-upload', function (req, res) {
-  res.redirect('other-parties-check');
-})
-
-router.post('/consultation/other-parties-check', function (req, res) {
-  if (req.session.data['other-parties-check'] == 'Yes') {
-    req.session.data['consultation-completed'] = 'false'
-    res.redirect('other-parties-upload');
-  } else {
-    res.redirect('complete');
-  }
-})
-
-router.post('/consultation/other-parties-upload', function (req, res) {
-  res.redirect('complete');
-})
-
-router.get('/consultation/complete', function (req, res) {
-  if (!req.session.data['po-report-completed']) {
-    res.redirect('../po-report/report-upload')
-  } else if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-visibility')
-  } else if (!req.session.data['appeal-process-completed']) {
-    res.redirect('../appeal-process/procedure')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
-
-//
-// PO REPORT
-//
-router.post('/po-report/:page', function (req, res, next) {
-  req.session.data['po-report-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (
-    req.session.data['report-upload-complete'] == 'true'
-    && req.session.data['policies-complete'] == 'true'
-    && req.session.data['emerging-plan-complete'] == 'true'
-    && req.session.data['supplementary-documents-complete'] == 'true'
-    && req.session.data['community-infrastructure-complete'] == 'true'
-  ){
-    req.session.data['po-report-completed'] = 'true'
-  }
-
-  next()
-})
-
-router.post('/po-report/report-upload', function (req, res) {
-  req.session.data['report-upload-complete'] = 'true'
-  res.redirect('policies-upload')
-})
-
-router.post('/po-report/policies-upload', function (req, res) {
-  req.session.data['policies-complete'] = 'true'
-  res.redirect('emerging-plan-check')
-})
-
-router.post('/po-report/emerging-plan-check', function (req, res) {
-  if (req.session.data['emerging-plan-check'] == 'Yes') {
-    res.redirect('emerging-plan-upload');
-  } else {
-    req.session.data['emerging-plan-complete'] = 'true'
-    res.redirect('supplementary-check')
-  }
-})
-
-router.post('/po-report/emerging-plan-upload', function (req, res) {
-  req.session.data['emerging-plan-complete'] = 'true'
-  res.redirect('supplementary-check')
-})
-
-router.post('/po-report/supplementary-check', function (req, res) {
-  if (req.session.data['supplementary-check'] == 'Yes') {
-    res.redirect('supplementary-upload');
-  } else {
-    req.session.data['supplementary-documents-complete'] = 'true'
-    res.redirect('community-infrastructure-check')
-  }
-})
-
-router.post('/po-report/supplementary-upload', function (req, res) {
-  req.session.data['supplementary-documents-complete'] = 'true'
-  res.redirect('community-infrastructure-check')
-})
-
-router.post('/po-report/community-infrastructure-check', function (req, res) {
-  if (req.session.data['community-infrastructure-check'] == 'Yes') {
-    res.redirect('community-infrastructure-upload');
-  } else {
-    req.session.data['community-infrastructure-complete'] = 'true'
-    req.session.data['po-report-completed'] = 'true'
-    res.redirect('complete')
-  }
-})
-
-router.post('/po-report/community-infrastructure-upload', function (req, res) {
-  res.redirect('community-infrastructure-adopted')
-})
-
-router.post('/po-report/community-infrastructure-adopted', function (req, res) {
-  res.redirect('community-infrastructure-date')
-})
-
-router.post('/po-report/community-infrastructure-date', function (req, res) {
-  req.session.data['community-infrastructure-complete'] = 'true'
-  req.session.data['po-report-completed'] = 'true'
-  res.redirect('complete')
-})
-
-router.get('/po-report/complete', function (req, res) {
-  if (!req.session.data['site-access-completed']) {
-    res.redirect('../site-access/site-entry')
-  } else if (!req.session.data['appeal-process-completed']) {
-    res.redirect('../appeal-process/procedure')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
-
-
-
-//
-// SITE ACCESS
-//
-router.post('/site-access/:page', function (req, res, next) {
-  req.session.data['site-access-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (
-    req.session.data['site-entry-complete']
-    && req.session.data['neighbours-complete']
-    && req.session.data['health-and-safety-complete']
-  ){
-    req.session.data['site-access-completed'] = 'true'
-  }
-
-  next()
-})
-
-router.post('/site-access/site-entry', function (req, res) {
-  res.redirect('neighbours-land')
-})
-
-router.post('/site-access/neighbours-land', function (req, res) {
-  if (req.session.data['neighbours-land'] == "Yes") {
-    res.redirect('neighbours-address')
-  } else {
-    req.session.data['neighbours-complete'] = 'true'
-    res.redirect('health-and-safety')
-  }
-})
-
-router.post('/site-access/neighbours-address', function (req, res) {
-  res.redirect('neighbours')
-})
-
-router.post('/site-access/neighbours', function (req, res) {
-  if (req.session.data['add-neighbours'] == 'Yes') {
-    res.redirect('neighbours-address?addedneighbours=yes');
-  } else {
-    res.redirect('health-and-safety')
-  }
-})
-
-router.post('/site-access/health-and-safety', function (req, res) {
-  res.redirect('complete')
-})
-
-router.get('/site-access/complete', function (req, res) {
-  if (!req.session.data['appeal-process-completed']) {
-    res.redirect('../appeal-process/procedure')
-  } else {
-    res.redirect('../task-list')
-  }
-})
-
-
-
-
-
-
-
-
-//
-// APPEAL PROCESS
-//
-router.post('/appeal-process/:page', function (req, res, next) {
-  req.session.data['appeal-process-started'] = 'true'
-  req.session.data[`${req.params.page}-complete`] = 'true'
-
-  if (
-    req.session.data['procedure-complete']
-    && req.session.data['other-appeals-complete']
-    && req.session.data['significant-changes-complete']
-    && req.session.data['extra-conditions-complete']
-  ){
-    req.session.data['appeal-process-completed'] = 'true'
-  }
-
-  next()
-})
-
-router.post('/appeal-process/procedure', function (req, res) {
-  if (req.session.data['procedure'] != 'Written representations') {
-    res.redirect('procedure-reason');
-  } else {
-    req.session.data['procedure-complete'] = 'true'
-    res.redirect('other-appeals-check')
-  }
-})
-
-router.post('/appeal-process/procedure-reason', function (req, res) {
-  req.session.data['procedure-complete'] = 'true'
-  res.redirect('other-appeals-check')
-})
-
-router.post('/appeal-process/other-appeals-check', function (req, res) {
-  req.session.data['other-appeals-check-complete'] = 'true'
-  if (req.session.data['other-appeals-radio'] == 'Yes') {
-    res.redirect('other-appeal-reference');
-  } else {
-    req.session.data['other-appeals-complete'] = 'true'
-    res.redirect('significant-changes');
-  }
-})
-
-router.post('/appeal-process/other-appeal-reference', function (req, res) {
-  req.session.data['other-appeal-reference-complete'] = 'true'
-  res.redirect('other-appeals');
-})
-
-router.post('/appeal-process/other-appeals', function (req, res) {
-  req.session.data['other-appeals-complete'] = 'true'
-  if (req.session.data['other-appeals'] == 'Yes') {
-    res.redirect('other-appeal-reference?extraotherappeal=yes');
-  } else {
-    res.redirect('significant-changes');
-  }
-})
-
-router.post('/appeal-process/significant-changes', function (req, res) {
-  req.session.data['significant-changes-complete'] = 'true'
-  res.redirect('extra-conditions');
-})
-
-router.post('/appeal-process/extra-conditions', function (req, res) {
-  res.redirect('../task-list');
+  redirectToTaskList(req, res)
 })
 
 //
@@ -982,8 +254,6 @@ router.get('/save-and-return/', function (req, res) {
     res.redirect('confirm')
   }
 })
-
-
 
 
 // Add your routes above the module.exports line

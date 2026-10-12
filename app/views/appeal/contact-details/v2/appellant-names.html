@@ -1,9 +1,9 @@
 {% extends '_layouts/layout-appellant-main.html' %}
 
 {% if data['multiplenames'] != 'yes' %}
-  {% set title = 'You have added an individual' %}
+  {% set title = 'You have added an appellant' %}
 {% else %}
-  {% set title = 'You have added 2 individuals' %}
+  {% set title = 'You have added 2 appellants' %}
 {% endif %}
 
 {% set prototypeLinks = [
@@ -73,14 +73,12 @@
     name: 'add-more-names',
     fieldset: {
       legend: {
-        html: 'Do you need to add another individual?',
+        html: 'Do you need to add another appellant?',
         classes: 'govuk-fieldset__legend--m',
         isPageHeading: false
       }
     },
-    hint: {
-      text: 'You must tell us about all of the individuals appealing against the enforcement notice.'
-    },
+   
     items: [
       {
         html: 'Yes',

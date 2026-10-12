@@ -1,7 +1,16 @@
 {% extends '_layouts/layout-pins.html' %}
 
 {% set title = ' Conservation area map and guidance' %}
-   
+
+{% block beforeContent %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: taskListUrl
+  }) }}
+{% endblock %}
+
+
 
 
 {% block content %}
@@ -13,7 +22,7 @@
 <div class="govuk-!-margin-bottom-6">
   {{ govukButton({
     text: "Add document",
-    href: "/patterns/file-list/v1/constraints/conservation-upload.html",
+    href: "/patterns/file-list/v2/constraints/conservation-upload?returnTo=manage-folder&field=conservation.html",
     classes: "govuk-button--secondary"
   }) }}
 </div>
