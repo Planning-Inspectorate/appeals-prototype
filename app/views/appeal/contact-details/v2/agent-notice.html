@@ -7,24 +7,23 @@
 
 {% block questions %}
 
- {% if data['appellant-check'] == 'A person' %}
-<h1 class="govuk-heading-l">Continue the appeal for {{ data['appellant-full-name'] or 'Jan Fisher' }}</h1>
+{% if data['appellant-check'] == 'individuals' and data['multiplenames'] != 'yes' %}
+<h1 class="govuk-heading-l">Continue the appeal as {{ data['appellant-full-name'] or 'Jan Fisher' }}</h1>
 <p class="govuk-body">We will ask you questions to complete the appeal. For example, 'What is your interest in the appeal site?'</p>
-<p class="govuk-body">You must answer these questions on behalf of {{ data['organisation-name'] or 'Riverside Holdings co.' }}.</p>
 
   
 
 {% elif data['appellant-check'] == 'organisation' %}
 <H1 class="govuk-heading-l">Continue the appeal for {{ data['organisation-name'] or 'Riverside Holdings co.' }}.</h1>
   <p class="govuk-body">We will ask you questions to complete the appeal. For example, 'What is your interest in the appeal site?'</p>
-<p class="govuk-body">You must answer these questions on behalf of {{ data['appellant-full-name'] or 'Jan Fisher' }}.</p>
+<p class="govuk-body">You must answer these questions on behalf of {{ data['organisation-name'] or 'Riverside Holdings co.' }}.</p>
 
- 
+
 
 {% else %}
 <h1 class="govuk-heading-l">Continue the appeal for all appellants</h1>
 <p class="govuk-body">We will ask you questions to complete the appeal. For example, 'What is your interest in the appeal site?'</p>
-<p class="govuk-body">You must answer these questions on behalf of the appellant.</p>
+<p class="govuk-body">You must answer these questions on behalf of the appellants.</p>
 {% endif %}
 
 {% endblock %}

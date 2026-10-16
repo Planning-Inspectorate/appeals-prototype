@@ -4,15 +4,18 @@
 
 {% block questions %}
 
-  {% call govukFieldset({
+   {% call govukFieldset({
     legend: {
     html: title,
     classes: 'govuk-fieldset__legend--l',
     isPageHeading: true
     }
   }) %}
+   
 
-
+  <p class="govuk-hint">
+    Enter the name each individual apealing against the enforcement notice. You can add more names later.
+  </p>
 
   {{ govukInput({
     id: 'new-appellant-first-name',

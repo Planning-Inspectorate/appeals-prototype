@@ -43,12 +43,12 @@ router.post('/appellant-names', function (req, res) {
   if (appellantNames === 'Yes') {
     res.redirect('appellant-name?multiplenames=yes')
   } else {
-    res.redirect('agent-check-joint-application')
+    res.redirect('agent-check')
   }
 })
 
-router.post('/agent-check-joint-application', function (req, res) {
- if (req.session.data['agent-check-joint-application'] == 'other') {
+router.post('/agent-check', function (req, res) {
+ if (req.session.data['agent-check'] == 'other') {
   res.redirect('your-contact-details')
  } else {
    res.redirect('contact-phone-number')
@@ -61,7 +61,13 @@ router.post('/your-contact-details', function (req, res) {
 })
 
 router.post('/contact-phone-number', function (req, res) {
-  res.redirect('agent-notice')
+  if (
+    req.session.data['agent-check'] === 'other' ||
+    req.session.data['multiplenames'] == 'yes' ||
+    req.session.data['appellant-check'] === 'organisation'
+  ) {
+    res.redirect('agent-notice')
+  }
 })
 
 // page routes
