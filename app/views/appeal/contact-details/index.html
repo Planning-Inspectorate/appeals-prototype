@@ -21,6 +21,30 @@
       {{ title }}
     </h1>
 
+      <section class="govuk-!-margin-bottom-6">
+
+      {% set version = "2" %}
+      <h2 class="govuk-heading-m">
+        Version {{version}}
+        {{ govukTag({
+          classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+          text: 'Work in progress'
+        }) }}
+      </h2>
+
+      <p>
+      <ul>Updating copy to reflect Jenny's changes <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1786442812489/491a53449a2d8a9caf8a72f5597033e03f62b9d3">Mural with changes listed</a></ul>
+      <ul>Fixing routing for the agent notice</ul>
+    </p>
+
+      {{ govukButton({
+        html: 'View prototype',
+        href: 'v'+version+'/appellant-check',
+        isStartButton: true
+      }) }}
+
+    </section>
+
     <section class="govuk-!-margin-bottom-6">
 
       {% set version = "1" %}

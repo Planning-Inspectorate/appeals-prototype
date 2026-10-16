@@ -61,9 +61,11 @@ router.post('/your-contact-details', function (req, res) {
 })
 
 router.post('/contact-phone-number', function (req, res) {
+    console.log(req.session.data)
+
   if (
     req.session.data['agent-check'] === 'other' ||
-    req.session.data['multiplenames'] == 'yes' ||
+    req.session.data['multiplenames'] === 'yes' ||
     req.session.data['appellant-check'] === 'organisation'
   ) {
     res.redirect('agent-notice')
