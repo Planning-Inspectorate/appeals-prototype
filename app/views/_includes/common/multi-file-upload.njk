@@ -1,4 +1,3 @@
-{# Nunjucks macro for reusable multi-file upload component #}
 {% macro uploadArea(params) %}
   {% set id = params.id or "documents" %}
   {% set name = params.name or "documents" %}
@@ -24,13 +23,18 @@
     <div
       class="multi-file-dropzone"
       data-upload-key="{{ dataKey }}"
-      style="border: 2px dashed #b1b4b6; padding: 60px 0 60px 16px; align-items: center; background-color: #fff; margin-bottom: 15px; display: flex;"
+      tabindex="0"
+      role="button"
+      aria-label="Choose files to upload"
+      aria-controls="{{ id }}"
+      style="border: 2px dashed #b1b4b6; padding: 60px 0 60px 16px; align-items: center; background-color: #fff; margin-bottom: 15px; display: flex; cursor: pointer;"
     >
       <div class="govuk-form-group" style="margin-bottom: 0; display: flex; align-items: center;">
         <button
           type="button"
           class="govuk-button govuk-button--secondary"
           id="{{ id }}-choose-button"
+          aria-controls="{{ id }}"
           style="margin-bottom: 0;"
         >
           Choose files
@@ -47,6 +51,7 @@
           type="file"
           accept="{{ accept }}"
           multiple
+          tabindex="-1"
           style="position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; border: 0; opacity: 0; overflow: hidden; clip: rect(0 0 0 0);"
         >
       </div>
@@ -109,6 +114,7 @@
       const maxFileSizeBytes = {{ maxFileSizeMB }} * 1024 * 1024;
       let fileErrors = [];
       let showUploadingWarning = false;
+      let dragActive = false;
 
       const existingFilesEl = document.getElementById('{{ id }}-existing-files');
       let previousFiles = [];
@@ -160,6 +166,31 @@
       function resetDropzoneBaseStyles() {
         uploadArea.style.borderColor = '#b1b4b6';
         uploadArea.style.backgroundColor = '#ffffff';
+      }
+
+      function syncDropzoneVisualState(forceActive) {
+        const shouldBeActive =
+          forceActive !== undefined ? forceActive :
+          dragActive ||
+          uploadArea.matches(':hover') ||
+          chooseFilesButton.matches(':hover') ||
+          chooseFilesButton.matches(':focus') ||
+          chooseFilesButton.matches(':focus-visible') ||
+          uploadArea.matches(':focus') ||
+          uploadArea.matches(':focus-visible');
+
+        uploadArea.style.borderColor = shouldBeActive ? '#1d70b8' : '#b1b4b6';
+        uploadArea.style.backgroundColor = shouldBeActive ? '#f3f2f1' : '#ffffff';
+
+        if (shouldBeActive) {
+          setChooseFilesHoverState();
+        } else {
+          resetChooseFilesHoverState();
+        }
+      }
+
+      function triggerFilePicker() {
+        fileInput.click();
       }
 
       function getUploadingCount() {
@@ -347,49 +378,133 @@
         renderTopErrorSummary(false);
       }
 
-      function animateUpload(row, index) {
-        let percent = 0;
-        const progressEl = row.querySelector('.progress-percent');
+     function animateUpload(row, index) {
+  let percent = 0;
+  const progressEl = row.querySelector('.progress-percent');
 
-        const interval = setInterval(() => {
-          percent++;
-          progressEl.textContent = percent + '%';
+  const tickDelay = 30 + Math.random() * 70 + index * 8;
+  const stepSize = 1 + Math.random() * 2.5;
 
-          if (percent >= 100) {
-            clearInterval(interval);
+  const interval = setInterval(() => {
+    percent += stepSize;
 
-            const fileName = row.dataset.file;
-            uploadedFiles.add(fileName);
-            allSubmittedFiles.add(fileName);
+    if (percent >= 100) {
+      percent = 100;
+    }
 
-            row.innerHTML = `
-              <td class="govuk-table__cell" style="white-space: normal; overflow-wrap: anywhere; word-break: break-word;">
-                <a href="#" class="govuk-link" style="overflow-wrap: anywhere; word-break: break-word;">${fileName}</a>
-              </td>
-              <td class="govuk-table__cell">
-                <strong class="govuk-tag govuk-tag--green">Uploaded</strong>
-              </td>
-              <td class="govuk-table__cell">
-               <a href="#" class="govuk-link remove-file">Remove<span class="govuk-visually-hidden">${fileName}</span></a>
-              </td>
-            `;
+    progressEl.textContent = Math.round(percent) + '%';
 
-            const uploadingRows = tableBody.querySelectorAll('.uploading-row');
-            const stillUploading = Array.from(uploadingRows).some(r => {
-              const currentProgress = r.querySelector('.progress-percent');
-              return currentProgress && parseInt(currentProgress.textContent, 10) < 100;
-            });
+    if (percent >= 100) {
+      clearInterval(interval);
 
-            if (!stillUploading) {
-              hideUploadingError();
-              announceUploadStatus('Upload complete');
-            }
-          }
-        }, 40 + index * 20);
+      const fileName = row.dataset.file;
+      uploadedFiles.add(fileName);
+      allSubmittedFiles.add(fileName);
+
+      row.innerHTML = `
+        <td class="govuk-table__cell" style="white-space: normal; overflow-wrap: anywhere; word-break: break-word;">
+          <a href="#" class="govuk-link" style="overflow-wrap: anywhere; word-break: break-word;">${fileName}</a>
+        </td>
+        <td class="govuk-table__cell">
+          <strong class="govuk-tag govuk-tag--green">Uploaded</strong>
+        </td>
+        <td class="govuk-table__cell">
+          <a href="#" class="govuk-link remove-file">Remove<span class="govuk-visually-hidden">${fileName}</span></a>
+        </td>
+      `;
+
+      const uploadingRows = tableBody.querySelectorAll('.uploading-row');
+      const stillUploading = Array.from(uploadingRows).some(r => {
+        const currentProgress = r.querySelector('.progress-percent');
+        return currentProgress && parseInt(currentProgress.textContent, 10) < 100;
+      });
+
+      if (!stillUploading) {
+        hideUploadingError();
+        announceUploadStatus('Upload complete');
       }
+    }
+  }, tickDelay);
+}
 
-      chooseFilesButton.addEventListener('click', function () {
-        fileInput.click();
+      chooseFilesButton.addEventListener('click', function (e) {
+        e.stopPropagation();
+        triggerFilePicker();
+      });
+
+      uploadArea.addEventListener('click', function (e) {
+        if (e.target.closest('.remove-file')) return;
+        triggerFilePicker();
+      });
+
+      uploadArea.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          triggerFilePicker();
+        }
+      });
+
+      uploadArea.addEventListener('mouseenter', function () {
+        syncDropzoneVisualState(true);
+      });
+
+      uploadArea.addEventListener('mouseleave', function () {
+        syncDropzoneVisualState(false);
+      });
+
+      chooseFilesButton.addEventListener('mouseenter', function () {
+        syncDropzoneVisualState(true);
+      });
+
+      chooseFilesButton.addEventListener('mouseleave', function () {
+        syncDropzoneVisualState(false);
+      });
+
+      chooseFilesButton.addEventListener('focus', function () {
+        syncDropzoneVisualState(true);
+      });
+
+      chooseFilesButton.addEventListener('blur', function () {
+        syncDropzoneVisualState(false);
+      });
+
+      uploadArea.addEventListener('focus', function () {
+        syncDropzoneVisualState(true);
+      });
+
+      uploadArea.addEventListener('blur', function () {
+        syncDropzoneVisualState(false);
+      });
+
+      ['dragenter', 'dragover'].forEach((eventName) => {
+        uploadArea.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          dragActive = true;
+          syncDropzoneVisualState(true);
+        });
+      });
+
+      ['dragleave', 'drop'].forEach((eventName) => {
+        uploadArea.addEventListener(eventName, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (eventName === 'dragleave') {
+            const related = e.relatedTarget;
+            if (related && uploadArea.contains(related)) return;
+          }
+
+          dragActive = false;
+          syncDropzoneVisualState(false);
+        });
+      });
+
+      uploadArea.addEventListener('drop', function (e) {
+        const droppedFiles = Array.from(e.dataTransfer ? e.dataTransfer.files || [] : []);
+        if (droppedFiles.length > 0) {
+          processSelectedFiles(droppedFiles);
+        }
       });
 
       fileInput.addEventListener('change', function () {
@@ -398,38 +513,38 @@
         fileInput.value = '';
       });
 
-document.addEventListener('click', function (e) {
-  const removeLink = e.target.closest('.remove-file');
-  if (!removeLink || !tableBody.contains(removeLink)) return;
+      document.addEventListener('click', function (e) {
+        const removeLink = e.target.closest('.remove-file');
+        if (!removeLink || !tableBody.contains(removeLink)) return;
 
-  e.preventDefault();
+        e.preventDefault();
 
-  const row = removeLink.closest('.govuk-table__row');
-  if (!row) return;
+        const row = removeLink.closest('.govuk-table__row');
+        if (!row) return;
 
-  const fileName = row.dataset.file;
+        const fileName = row.dataset.file;
 
-  uploadedFiles.delete(fileName);
-  allSubmittedFiles.delete(fileName);
+        uploadedFiles.delete(fileName);
+        allSubmittedFiles.delete(fileName);
 
-  if (previousFiles.includes(fileName)) {
-    previousFiles = previousFiles.filter((name) => name !== fileName);
-  }
+        if (previousFiles.includes(fileName)) {
+          previousFiles = previousFiles.filter((name) => name !== fileName);
+        }
 
-  row.remove();
-  updateFilesSummaryVisibility();
-  renderTopErrorSummary(false);
+        row.remove();
+        updateFilesSummaryVisibility();
+        renderTopErrorSummary(false);
 
-  const uploadingRows = tableBody.querySelectorAll('.uploading-row');
-  const stillUploading = Array.from(uploadingRows).some(r => {
-    const progressEl = r.querySelector('.progress-percent');
-    return progressEl && parseInt(progressEl.textContent, 10) < 100;
-  });
+        const uploadingRows = tableBody.querySelectorAll('.uploading-row');
+        const stillUploading = Array.from(uploadingRows).some(r => {
+          const progressEl = r.querySelector('.progress-percent');
+          return progressEl && parseInt(progressEl.textContent, 10) < 100;
+        });
 
-  if (!stillUploading) {
-    hideUploadingError();
-  }
-});
+        if (!stillUploading) {
+          hideUploadingError();
+        }
+      });
 
       if (form) {
         form.addEventListener('submit', function (e) {
@@ -455,6 +570,7 @@ document.addEventListener('click', function (e) {
 
       updateFilesSummaryVisibility();
       updateFileTypeErrorUi(false);
+      syncDropzoneVisualState(false);
     })();
   </script>
 {% endmacro %}
