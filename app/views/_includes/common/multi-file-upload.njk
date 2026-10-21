@@ -1,3 +1,4 @@
+njk name=upload-area.njk
 {% macro uploadArea(params) %}
   {% set id = params.id or "documents" %}
   {% set name = params.name or "documents" %}
@@ -25,8 +26,8 @@
       data-upload-key="{{ dataKey }}"
       tabindex="0"
       role="button"
-      aria-label="Choose files to upload"
-      aria-controls="{{ id }}"
+      aria-label="{{ label or 'Upload files' }}"
+      aria-labelledby="{{ id }}-upload-title"
       style="border: 2px dashed #b1b4b6; padding: 60px 0 60px 16px; align-items: center; background-color: #fff; margin-bottom: 15px; display: flex; cursor: pointer;"
     >
       <div class="govuk-form-group" style="margin-bottom: 0; display: flex; align-items: center;">
@@ -41,7 +42,7 @@
         </button>
 
         <p class="govuk-body" style="margin: 0 0 0 10px;">
-          or drop files
+        or drop files
         </p>
 
         <input
@@ -101,6 +102,7 @@
       const tableBody = document.querySelector('#{{ id }}-files-table tbody');
       const form = uploadArea.closest('form') || document.querySelector('form');
       const uploadStatus = document.getElementById('{{ id }}-upload-status');
+      const uploadTitle = document.getElementById('{{ id }}-upload-title');
 
       const uploadedFiles = new Set();
       const allSubmittedFiles = new Set();
@@ -189,7 +191,7 @@
         }
       }
 
-      function triggerFilePicker() {
+      function openFilePicker() {
         fileInput.click();
       }
 
@@ -378,69 +380,84 @@
         renderTopErrorSummary(false);
       }
 
-     function animateUpload(row, index) {
-  let percent = 0;
-  const progressEl = row.querySelector('.progress-percent');
+      function animateUpload(row, index) {
+        let percent = 0;
+        const progressEl = row.querySelector('.progress-percent');
 
-  const tickDelay = 30 + Math.random() * 70 + index * 8;
-  const stepSize = 1 + Math.random() * 2.5;
+        const tickDelay = 30 + Math.random() * 70 + index * 8;
+        const stepSize = 1 + Math.random() * 2.5;
 
-  const interval = setInterval(() => {
-    percent += stepSize;
+        const interval = setInterval(() => {
+          percent += stepSize;
 
-    if (percent >= 100) {
-      percent = 100;
-    }
+          if (percent >= 100) {
+            percent = 100;
+          }
 
-    progressEl.textContent = Math.round(percent) + '%';
+          progressEl.textContent = Math.round(percent) + '%';
 
-    if (percent >= 100) {
-      clearInterval(interval);
+          if (percent >= 100) {
+            clearInterval(interval);
 
-      const fileName = row.dataset.file;
-      uploadedFiles.add(fileName);
-      allSubmittedFiles.add(fileName);
+            const fileName = row.dataset.file;
+            uploadedFiles.add(fileName);
+            allSubmittedFiles.add(fileName);
 
-      row.innerHTML = `
-        <td class="govuk-table__cell" style="white-space: normal; overflow-wrap: anywhere; word-break: break-word;">
-          <a href="#" class="govuk-link" style="overflow-wrap: anywhere; word-break: break-word;">${fileName}</a>
-        </td>
-        <td class="govuk-table__cell">
-          <strong class="govuk-tag govuk-tag--green">Uploaded</strong>
-        </td>
-        <td class="govuk-table__cell">
-          <a href="#" class="govuk-link remove-file">Remove<span class="govuk-visually-hidden">${fileName}</span></a>
-        </td>
-      `;
+            row.innerHTML = `
+              <td class="govuk-table__cell" style="white-space: normal; overflow-wrap: anywhere; word-break: break-word;">
+                <a href="#" class="govuk-link" style="overflow-wrap: anywhere; word-break: break-word;">${fileName}</a>
+              </td>
+              <td class="govuk-table__cell">
+                <strong class="govuk-tag govuk-tag--green">Uploaded</strong>
+              </td>
+              <td class="govuk-table__cell">
+               <a href="#" class="govuk-link remove-file">Remove<span class="govuk-visually-hidden">${fileName}</span></a>
+              </td>
+            `;
 
-      const uploadingRows = tableBody.querySelectorAll('.uploading-row');
-      const stillUploading = Array.from(uploadingRows).some(r => {
-        const currentProgress = r.querySelector('.progress-percent');
-        return currentProgress && parseInt(currentProgress.textContent, 10) < 100;
-      });
+            const uploadingRows = tableBody.querySelectorAll('.uploading-row');
+            const stillUploading = Array.from(uploadingRows).some(r => {
+              const currentProgress = r.querySelector('.progress-percent');
+              return currentProgress && parseInt(currentProgress.textContent, 10) < 100;
+            });
 
-      if (!stillUploading) {
-        hideUploadingError();
-        announceUploadStatus('Upload complete');
+            if (!stillUploading) {
+              hideUploadingError();
+              announceUploadStatus('Upload complete');
+            }
+          }
+        }, tickDelay);
       }
-    }
-  }, tickDelay);
-}
 
       chooseFilesButton.addEventListener('click', function (e) {
         e.stopPropagation();
-        triggerFilePicker();
+        openFilePicker();
       });
+
+      if (uploadTitle) {
+        uploadTitle.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openFilePicker();
+        });
+
+        uploadTitle.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openFilePicker();
+          }
+        });
+      }
 
       uploadArea.addEventListener('click', function (e) {
         if (e.target.closest('.remove-file')) return;
-        triggerFilePicker();
+        openFilePicker();
       });
 
       uploadArea.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          triggerFilePicker();
+          openFilePicker();
         }
       });
 
@@ -568,9 +585,13 @@
         });
       }
 
+      const uploadTitleText = '{{ label or "Upload files" }}';
+      announceUploadStatus(uploadTitleText);
+
       updateFilesSummaryVisibility();
       updateFileTypeErrorUi(false);
       syncDropzoneVisualState(false);
     })();
   </script>
 {% endmacro %}
+
