@@ -155,6 +155,22 @@ router.post('/constraints/conservation-check', function (req, res) {
 })
 
 router.post('/constraints/conservation-upload', function (req, res) {
+  const key = 'conservation-upload'
+  const existingFiles = req.body[key]
+  const existingList = Array.isArray(existingFiles)
+    ? existingFiles.filter(Boolean)
+    : [existingFiles].filter(Boolean)
+
+  req.session.data[key + '-existing'] = existingList
+
+  const saved = req.session.data[key] || []
+  const merged = Array.from(new Set([
+    ...(Array.isArray(saved) ? saved : [saved].filter(Boolean)),
+    ...existingList
+  ]))
+
+  req.session.data[key] = merged
+
   if (returnToManageFolder(req, res)) return
   res.redirect('protected-species')
 })
@@ -183,7 +199,24 @@ router.post('/constraints/tree-order-check', function (req, res) {
   }
 })
 
+
 router.post('/constraints/tree-order-upload', function (req, res) {
+  const key = 'tree-order-upload'
+  const existingFiles = req.body[key]
+  const existingList = Array.isArray(existingFiles)
+    ? existingFiles.filter(Boolean)
+    : [existingFiles].filter(Boolean)
+
+  req.session.data[key + '-existing'] = existingList
+
+  const saved = req.session.data[key] || []
+  const merged = Array.from(new Set([
+    ...(Array.isArray(saved) ? saved : [saved].filter(Boolean)),
+    ...existingList
+  ]))
+
+  req.session.data[key] = merged
+
   if (returnToManageFolder(req, res)) return
   res.redirect('traveller')
 })
@@ -202,6 +235,22 @@ router.post('/constraints/right-of-way-check', function (req, res) {
 })
 
 router.post('/constraints/right-of-way-upload', function (req, res) {
+  const key = 'right-of-way-upload'
+  const existingFiles = req.body[key]
+  const existingList = Array.isArray(existingFiles)
+    ? existingFiles.filter(Boolean)
+    : [existingFiles].filter(Boolean)
+
+  req.session.data[key + '-existing'] = existingList
+
+  const saved = req.session.data[key] || []
+  const merged = Array.from(new Set([
+    ...(Array.isArray(saved) ? saved : [saved].filter(Boolean)),
+    ...existingList
+  ]))
+
+  req.session.data[key] = merged
+
   if (returnToManageFolder(req, res)) return
   res.redirect('complete')
 })

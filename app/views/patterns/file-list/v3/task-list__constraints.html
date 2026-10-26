@@ -4,47 +4,76 @@
    11+ files   -> count only
    none        -> "Not started" #}
 {% macro fileList(uploadData) %}
-  {% if not uploadData %}
-    <span class="govuk-hint">Not started</span>
-  {% else %}
-    {# Treat a single string as a one-item list #}
-    {% set files = [uploadData] if uploadData is string else uploadData %}
-
-    {# Build a list of names (items can be strings or objects with .name) #}
-    {% set names = [] %}
-    {% for file in files %}
-      {% set _ = names.push(file.name or file) %}
-    {% endfor %}
-    {% set count = names | length %}
- 
-    {% if count == 1 %}
-      <a class="govuk-link" href="#">{{ names[0] }}</a>
-
-    {% elif count >= 2 and count <= 10 %}
-      <ul class="govuk-list govuk-list--bullet">
-        {% for name in names | sort %}
-          <li><a class="govuk-link" href="#">{{ name }}</a></li>
-        {% endfor %}
-      </ul>
-
-    {% elif count >= 11 %}
-      <p class="govuk-body">{{ count }} files</p>
+  {% set files = [] %}
+  {% if uploadData %}
+    {% if uploadData is string %}
+      {% set files = [uploadData] %}
+    {% else %}
+      {% set files = uploadData %}
     {% endif %}
+  {% endif %}
+
+  {% set names = [] %}
+  {% for file in files %}
+    {% set _ = names.push(file.name if file is mapping else file) %}
+  {% endfor %}
+
+  {% if names | length == 0 %}
+    <span class="govuk-hint">Not started</span>
+  {% elif names | length == 1 %}
+    <a class="govuk-link" href="#">{{ names[0] }}</a>
+  {% elif names | length <= 10 %}
+    <ul class="govuk-list govuk-list--bullet">
+      {% for name in names | sort %}
+        <li><a class="govuk-link" href="#">{{ name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="govuk-body">{{ names | length }} files</p>
   {% endif %}
 {% endmacro %}
 
-{% set conservationUploadData = data['conservation-upload'] %}
-{% set treeOrderUploadData = data['tree-order-upload'] %}
-{% set rightOfWayUploadData = data['right-of-way-upload'] %}
+{% set conservationUploadData = data['conservation-upload'] | default([], true) %}
+{% set treeOrderUploadData = data['tree-order-upload'] | default([], true) %}
+{% set rightOfWayUploadData = data['right-of-way-upload'] | default([], true) %}
+
+{% if conservationUploadData is string %}
+  {% set conservationUploadData = [conservationUploadData] %}
+{% elif conservationUploadData is mapping and conservationUploadData.name is defined %}
+  {% set conservationUploadData = [conservationUploadData] %}
+{% endif %}
+
+{% if treeOrderUploadData is string %}
+  {% set treeOrderUploadData = [treeOrderUploadData] %}
+{% elif treeOrderUploadData is mapping and treeOrderUploadData.name is defined %}
+  {% set treeOrderUploadData = [treeOrderUploadData] %}
+{% endif %}
+
+{% if rightOfWayUploadData is string %}
+  {% set rightOfWayUploadData = [rightOfWayUploadData] %}
+{% elif rightOfWayUploadData is mapping and rightOfWayUploadData.name is defined %}
+  {% set rightOfWayUploadData = [rightOfWayUploadData] %}
+{% endif %}
 
 {% set conservationUploadHtml %}{{ fileList(conservationUploadData) }}{% endset %}
 {% set treeOrderUploadHtml %}{{ fileList(treeOrderUploadData) }}{% endset %}
 {% set rightOfWayUploadHtml %}{{ fileList(rightOfWayUploadData) }}{% endset %}
 
-{# True when files have been added. Controls whether Manage + Add show, or just Upload #}
-{% set conservationHasFiles = (conservationUploadData | length) > 0 %}
-{% set treeOrderHasFiles = (treeOrderUploadData | length) > 0 %}
-{% set rightOfWayHasFiles = (rightOfWayUploadData | length) > 0 %}
+{% set conservationHasFiles =
+  conservationUploadData is iterable
+  and conservationUploadData is not string
+  and (conservationUploadData | length) > 0
+%}
+{% set treeOrderHasFiles =
+  treeOrderUploadData is iterable
+  and treeOrderUploadData is not string
+  and (treeOrderUploadData | length) > 0
+%}
+{% set rightOfWayHasFiles =
+  rightOfWayUploadData is iterable
+  and rightOfWayUploadData is not string
+  and (rightOfWayUploadData | length) > 0
+%}
 
 <li>
   <h2 class="app-task-list__section">
@@ -65,6 +94,7 @@
       }) }}
     {% endif %}
   </h2>
+
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-9',
     rows: [
@@ -86,7 +116,7 @@
               html: 'Change'
             }
             if data['correct-type-of-appeal-check-complete'] else
-             {
+            {
               href: 'constraints/correct-type-of-appeal-check',
               html: 'Answer'
             }
@@ -226,7 +256,7 @@
         key: {
           html: 'Conservation area'
         },
-           value: {
+        value: {
           html: data['conservation-check'] or 'No'
         }
         if data['conservation-check-complete'] else
@@ -257,8 +287,8 @@
         actions: {
           items: [
             {
-            href: '/patterns/file-list/v3/manage-folder?field=conservation.html',
-                html: 'Manage'
+              href: '/patterns/file-list/v3/manage-folder?field=conservation.html',
+              html: 'Manage'
             },
             {
               href: 'constraints/conservation-upload?',
@@ -407,8 +437,8 @@
         actions: {
           items: [
             {
-           href: '/patterns/file-list/v3/manage-folder?field=tree-order.html',
-                html: 'Manage'
+              href: '/patterns/file-list/v3/manage-folder?field=tree-order.html',
+              html: 'Manage'
             },
             {
               href: 'constraints/tree-order-upload?',
@@ -482,8 +512,8 @@
         actions: {
           items: [
             {
-            href: '/patterns/file-list/v3/manage-folder?field=right-of-way.html',
-                html: 'Manage'
+              href: '/patterns/file-list/v3/manage-folder?field=right-of-way.html',
+              html: 'Manage'
             },
             {
               href: 'constraints/right-of-way-upload?',

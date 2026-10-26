@@ -1,6 +1,6 @@
 {% extends '_layouts/layout-pins.html' %}
 
-{% set title = ' Upload conservation map and guidance' %}
+{% set title = 'Upload conservation map and guidance' %}
 {% set uploadDataKey = 'conservation-upload' %}
 
 {% block questions %}
@@ -13,7 +13,22 @@
     {{ title }}
   </h1>
 
+  {% from "/_includes/common/multi-file-upload.njk.njk" import uploadArea %}
 
-  {% include '_includes/common/multiple-document-upload-clear-summary.html' %}
+  {{ uploadArea({
+    id: "documents",
+    name: "documents",
+    label: "Upload files",
+    hint: "The file must be a DOC, DOCX, PDF, TIF, JPG, PNG or XLSX and be smaller than 50MB",
+    allowedExtensions: ["doc", "docx", "pdf", "tif", "tiff", "jpg", "jpeg", "png", "xlsx"],
+    maxFileSizeMB: 50,
+    dataKey: uploadDataKey
+  }) }}
+
+  <script type="application/json" id="documents-existing-files">
+  {{ data[uploadDataKey] | default([]) | dump | safe }}
+</script>
+
+ 
+
 {% endblock %}
-

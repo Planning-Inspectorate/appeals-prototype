@@ -1,28 +1,12 @@
 {% from "/_includes/common/multi-file-upload.njk.njk" import uploadArea %}
 
-
-    {{ uploadArea({
-      id: "documents",
-      name: "documents",
-      label: "Upload files",
-      hint: "The file must be a DOC, DOCX, PDF, TIF, JPG, PNG or XLSX and be smaller than 50MB",
-      allowedExtensions: ["doc", "docx", "pdf", "tif", "tiff", "jpg", "jpeg", "png", "xlsx"],
-      maxFileSizeMB: 50,
-      dataKey: "uploadedFiles"
-    }) }}
-
-    {% set existingFiles = [] %}
-    {% if uploadDataKey and data and data[uploadDataKey] is defined %}
-      {% if data[uploadDataKey] is iterable and data[uploadDataKey] is not string %}
-        {% set existingFiles = data[uploadDataKey] %}
-      {% else %}
-        {% set existingFiles = [data[uploadDataKey]] %}
-      {% endif %}
-    {% elif initialFiles and initialFiles.length > 0 %}
-      {% set existingFiles = initialFiles %}
-    {% endif %}
-
-    <script type="application/json" id="documents-existing-files">
-      {{ existingFiles | dump | safe }}
-    </script>
+{{ uploadArea({
+  id: "documents",
+  name: "documents",
+  label: "Upload files",
+  hint: "The file must be a DOC, DOCX, PDF, TIF, JPG, PNG or XLSX and be smaller than 50MB",
+  allowedExtensions: ["doc", "docx", "pdf", "tif", "tiff", "jpg", "jpeg", "png", "xlsx"],
+  maxFileSizeMB: 50,
+  dataKey: uploadDataKey
+}) }}
 
