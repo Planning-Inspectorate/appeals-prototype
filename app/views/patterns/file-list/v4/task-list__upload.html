@@ -1,0 +1,224 @@
+{# File list display rules:
+   1 file      -> name as a link, no bullet
+   2-10 files  -> bulleted list of links, alphabetical
+   11+ files   -> count only
+   none        -> "Not started" #}
+{% macro fileList(uploadData) %}
+  {% set files = [] %}
+  {% if uploadData %}
+    {% if uploadData is string %}
+      {% set files = [uploadData] %}
+    {% else %}
+      {% set files = uploadData %}
+    {% endif %}
+  {% endif %}
+
+  {% set names = [] %}
+  {% for file in files %}
+    {% set _ = names.push(file.name if file is mapping else file) %}
+  {% endfor %}
+
+  {% if names | length == 0 %}
+    <span class="govuk-hint">Not started</span>
+  {% elif names | length == 1 %}
+    <a class="govuk-link" href="#">{{ names[0] }}</a>
+  {% elif names | length <= 10 %}
+    <ul class="govuk-list govuk-list--bullet">
+      {% for name in names | sort %}
+        <li><a class="govuk-link" href="#">{{ name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="govuk-body">{{ names | length }} files</p>
+  {% endif %}
+{% endmacro %}
+
+{% set costsUploadData = data['costs-upload'] | default([], true) %}
+
+
+
+{% if costsUploadData is string %}
+  {% set costsUploadData = [costsUploadData] %}
+{% elif costsUploadData is mapping and costsUploadData.name is defined %}
+  {% set costsUploadData = [costsUploadData] %}
+{% endif %}
+
+
+
+{% set costsUploadHtml %}{{ fileList(costsUploadData) }}{% endset %}
+
+
+{% set costsHasFiles =
+  costsUploadData is iterable
+  and costsUploadData is not string
+  and (costsUploadData | length) > 0
+%}
+
+
+{% set rows = [
+{
+  key: {
+    html: 'Application form'
+  },
+  value: {
+  html: '<a class="govuk-link" href="#">221B-baker-street-planning-application-form.docx</a>' },
+  actions: {
+    items: [
+      {
+        href: '',
+        html: 'Manage'
+      },
+      {
+        href: '',
+        html: 'Add'
+      }
+    ]
+  }
+},
+  {
+    key: {
+      html: 'Did you submit an environmental statement with the application?'
+    },
+    value: {
+      html: 'No'
+    },
+    actions: {
+      items: [
+        {
+          href: 'upload-documents/environment-statement-check?',
+          html: 'Change'
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      html: 'Decision letter'
+    },
+   value: {
+  html: '<a class="govuk-link" href="#">Westminster-City-Council-Planning-Application-Decision-Letter.docx</a>' },
+  actions: {
+    items: [
+      {
+        href: '',
+        html: 'Manage'
+      },
+      {
+        href: '',
+        html: 'Add'
+      }
+    ]
+  }
+},
+  {
+    key: {
+      html: 'Do you have a planning obligation to support your appeal?'
+    },
+    value: {
+      html: 'No'
+    },
+    actions: {
+      items: [
+        {
+          href: 'upload-documents/planning-obligation-check?',
+          html: 'Change'
+        }
+        
+      ]
+    }
+  },
+  {
+    key: {
+      html: 'Did you submit a separate ownership certificate and agricultural land declaration with your application?'
+    },
+    value: {
+      html: 'No'
+    },
+    actions: {
+      items: [
+        {
+          href: 'upload-documents/ownership-certificate-check?',
+          html: 'Change'
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      html: 'Do you want to apply for an award of appeal costs?'
+    },
+    value: {
+      html:'Yes'
+    },
+    actions: {
+      items: [
+        {
+          href: 'upload-documents/costs-check?',
+          html: 'Change'
+        }
+        if data['costs-check-complete'] else
+        {
+          href: 'upload-documents/costs-check',
+          html: 'Answer'
+        }
+      ]
+    }
+  }
+] %}
+  {% set rows = rows.concat([
+    {
+      key: {
+        html: 'Application for an award of appeal costs'
+      },
+      value: {
+        html: costsUploadHtml
+      },
+      actions: {
+        items: [
+          {
+            href: '/patterns/file-list/v4/manage-folder?field=costs.html',
+            html: 'Manage'
+          },
+          {
+            href: 'upload-documents/costs?',
+            html: 'Add'
+          }
+        ] if costsHasFiles else [
+          {
+            href: 'upload-documents/costs',
+            html: 'Upload'
+          }
+        ]
+      }
+    }
+  ]) %}
+
+
+
+
+
+<li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2. </span> Upload documents
+    {% if data['upload-documents-completed'] == 'true' %}
+      {{ govukTag({
+        html: 'Completed'
+      }) }}
+    {% elif data['upload-documents-started'] == 'true' %}
+      {{ govukTag({
+        html: 'In progress',
+        classes: 'govuk-tag--blue'
+      }) }}
+    {% else %}
+      {{ govukTag({
+        html: 'Not started',
+        classes: 'govuk-tag--grey'
+      }) }}
+    {% endif %}
+  </h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: rows
+  }) }}
+</li>

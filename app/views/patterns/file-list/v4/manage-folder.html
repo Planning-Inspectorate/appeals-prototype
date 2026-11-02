@@ -1,0 +1,113 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{# Which upload field this page is managing, from ?field=... #}
+{% set fieldConfig = {
+  'conservation.html': {
+    title: 'Conservation area map and guidance',
+    key: 'conservation-upload'
+  },
+  'tree-order.html': {
+    title: 'Tree Preservation Order extent',
+    key: 'tree-order-upload'
+  },
+  'right-of-way.html': {
+    title: 'Definitive map and statement extract',
+    key: 'right-of-way-upload'
+  }
+} %}
+
+{% set currentField = fieldConfig[manageField] or fieldConfig['conservation.html'] %}
+{% set currentFieldName = manageField if fieldConfig[manageField] else 'conservation.html' %}
+{% set title = currentField.title %}
+
+{# Files for this field. A single string is treated as a one-item list #}
+{% set uploadData = data[currentField.key] %}
+{% set files = [uploadData] if uploadData is string else (uploadData or []) %}
+
+{% block beforeContent %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: '/patterns/file-list/v3/task-list'
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+<span class="govuk-caption-l">Manage folder</span>
+<h1 class="govuk-heading-l">{{ title }}</h1>
+{% from "govuk/components/button/macro.njk" import govukButton %}
+<h2 class="govuk-heading-m">Add a document</h2>
+<div class="govuk-!-margin-bottom-6">
+  {{ govukButton({
+    text: "Add document",
+    href: "/patterns/file-list/v3/constraints/" + currentField.key + "?returnTo=manage-folder&field=" + currentFieldName,
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+<h2 class="govuk-heading-m">Documents added</h2>
+
+{% if files | length %}
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header govuk-!-width-one-half">Name</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Action</th>
+    </tr>
+  </thead>
+
+  <tbody class="govuk-table__body">
+    {% for file in files %}
+      {% set fileName = file.name or file %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <a href="#" class="govuk-link">{{ fileName }}{% if file.size %}&nbsp;({{ file.size }}){% endif %}</a>
+        </td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">
+          <a href="remove-file" class="govuk-link">
+            Remove
+            <span class="govuk-visually-hidden">{{ fileName }}</span>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="govuk-body">No documents added.</p>
+{% endif %}
+
+
+{# Pagination (placeholder links, only shown for longer lists) #}
+{% if files | length > 100 %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div style="display: flex;">
+      {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+      {{ govukPagination({
+        previous: {
+          href: "#"
+        },
+        next: {
+          href: "#"
+        },
+        items: [
+          {
+            number: 1,
+            current: true,
+            href: "#"
+          },
+          {
+            number: 2,
+            href: "#"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

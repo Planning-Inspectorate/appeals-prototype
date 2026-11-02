@@ -23,7 +23,31 @@
 
     <p class="govuk-body">
       Formatting lists of documents so that they do not slow load times or take up too much space vertically on the screen.</p>
+{% set version = "4" %}
+    <h3 class="govuk-heading-m">
+      Version {{version}}
+      {{ govukTag({
+        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
+        text: 'In progress'
+      }) }}
+    </h3>
+    <h4 class="govuk-heading-s">Changes</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>move the file upload and file list management functionality into an appeal form</li>
+      <li>prefill the answers to the start of the appeal form</li>
+      <li>present the old uploader and the new uploader in the same prototype</li>
+      <li>add pagination to the manage page for large numbers (+100) files</li>
+      <li>make it so that some users see the old uploader first some users use the new uploader first</li>
+    </ul>
 
+    {{ govukButton({
+      html: 'View prototype',
+      href: '/patterns/file-list/v'+version+'/task-list.html',
+      isStartButton: false
+    }) }}
+
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">   
  
  {% set version = "3" %}
     <h3 class="govuk-heading-m">

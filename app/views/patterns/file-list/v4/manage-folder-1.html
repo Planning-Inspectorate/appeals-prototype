@@ -1,0 +1,68 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = ' Conservation area map and guidance' %}
+
+{% block beforeContent %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: taskListUrl
+  }) }}
+{% endblock %}
+
+
+
+
+{% block content %}
+<span class="govuk-caption-l">Manage folder</span>
+<h1 class="govuk-heading-l">{{ title }}</h1>
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<h2 class="govuk-heading-m">Add a document</h2>
+<div class="govuk-!-margin-bottom-6">
+  {{ govukButton({
+    text: "Add document",
+    href: "/patterns/file-list/v2/constraints/conservation-upload?returnTo=manage-folder&field=conservation.html",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+<h2 class="govuk-heading-m">Documents added</h2>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    
+      <th scope="col" class="govuk-table__header govuk-!-width-one-half">Name</th>
+    
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Action</th>
+    
+    </tr>
+  </thead>
+
+
+<!-- table row repeater -->
+<tbody class="govuk-table__body">
+  {% for i in range(0, 1) %}
+<tr class="govuk-table__row">
+<td class="govuk-table__cell">
+      <a href="#" class="govuk-link">dummy-file-0293{{ i + 1 }}282&nbsp;(10KB)</a>
+        
+</td>
+<td class="govuk-table__cell govuk-table__cell--numeric">
+<a href="remove-file-1" class="govuk-link">
+  Remove
+  <span class="govuk-visually-hidden">dummy-file-0293{{ i + 1 }}282</span>
+</a>
+</td>
+</tr>
+  {% endfor %}
+</tbody>
+</table>
+<!-- table row repeater -->
+
+
+
+
+
+{% endblock %}
