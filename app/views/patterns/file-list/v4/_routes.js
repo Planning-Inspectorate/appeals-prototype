@@ -7,7 +7,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Send the user to the task list
 function redirectToTaskList(req, res) {
-  res.redirect('/patterns/file-list/v3/task-list.html')
+  res.redirect('/patterns/file-list/v4/task-list.html')
 }
 
 // If the user came from the manage folder page, send them back there.
@@ -21,13 +21,13 @@ function returnToManageFolder(req, res) {
 
   if (returnTo === 'manage-folder') {
     const query = field ? '?field=' + encodeURIComponent(field) : ''
-    res.redirect('/patterns/file-list/v3/manage-folder' + query)
+    res.redirect('/patterns/file-list/v4/manage-folder' + query)
     return true
   }
   return false
 }
 
-// Reusable upload helper based on the v3 logic
+// Reusable upload helper based on the v4 logic
 function saveUploadedFiles(req, res, key, redirectPath) {
   const existingFiles = req.body[key]
   const existingList = Array.isArray(existingFiles)
@@ -46,6 +46,47 @@ function saveUploadedFiles(req, res, key, redirectPath) {
 
   if (returnToManageFolder(req, res)) return
   res.redirect(redirectPath)
+}
+
+// Manage-folder specific helpers
+const manageFolderFieldConfig = {
+  'costs-upload.html': {
+    title: 'Appeal costs application',
+    key: 'costs-upload'
+  }
+}
+
+function normaliseFiles(value) {
+  if (value === undefined || value === null || value === '') {
+    return []
+  }
+
+  if (Array.isArray(value)) {
+    return value.filter(Boolean)
+  }
+
+  return [value].filter(Boolean)
+}
+
+function getManageFolderField(fieldName) {
+  return manageFolderFieldConfig[fieldName] || manageFolderFieldConfig['costs-upload.html']
+}
+
+function removeFileFromFieldData(data, fieldName, fileName) {
+  const field = getManageFolderField(fieldName)
+  const key = field.key
+
+  const files = normaliseFiles(data[key]).filter(file => {
+    if (typeof file === 'string') {
+      return file !== fileName
+    }
+
+    const savedName = file && file.name ? file.name : ''
+    return savedName !== fileName
+  })
+
+  data[key] = files
+  return files
 }
 
 //
@@ -454,7 +495,7 @@ router.post('/upload-documents/costs-check', function (req, res) {
   }
 })
 
-router.post('/upload-documents/costs', function (req, res) {
+router.post('/upload-documents/costs-upload', function (req, res) {
   res.redirect('../task-list?appeal-documents-complete=true')
 })
 
@@ -497,6 +538,54 @@ router.post('/upload-documents/other-check', function (req, res) {
 
 router.post('/upload-documents/other', function (req, res) {
   saveUploadedFiles(req, res, 'other-upload', '../task-list?upload-plans-complete=true')
+})
+
+//
+// MANAGE FOLDER / REMOVE FILE
+//
+
+router.get('/patterns/file-list/v4/manage-folder', function (req, res) {
+  const field = req.query.field || 'costs-upload.html'
+  const removedFile = req.query.removedFile || ''
+
+  const currentField = getManageFolderField(field)
+  const uploadData = req.session.data[currentField.key]
+  const files = normaliseFiles(uploadData)
+
+  res.render('patterns/file-list/v4/manage-folder', {
+    data: req.session.data,
+    manageField: field,
+    removedFile: removedFile,
+    files: files
+  })
+})
+
+router.get('/patterns/file-list/v4/remove-file', function (req, res) {
+  const field = req.query.field || 'costs-upload.html'
+  const fileName = req.query.file || ''
+
+  res.render('patterns/file-list/v4/remove-file', {
+    field: field,
+    fileName: fileName
+  })
+})
+
+router.post('/patterns/file-list/v4/remove-file', function (req, res) {
+  const field = req.body.field || 'costs-upload.html'
+  const fileName = req.body.fileName || ''
+
+  if (!fileName) {
+    return res.redirect('/patterns/file-list/v4/manage-folder?field=' + encodeURIComponent(field))
+  }
+
+  removeFileFromFieldData(req.session.data, field, fileName)
+
+  return res.redirect(
+    '/patterns/file-list/v4/manage-folder?field=' +
+    encodeURIComponent(field) +
+    '&removedFile=' +
+    encodeURIComponent(fileName)
+  )
 })
 
 // Add your routes above the module.exports line
