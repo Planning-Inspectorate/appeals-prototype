@@ -13,7 +13,6 @@
 
 {% set uploadData = data[currentField.key] %}
 {% set files = [uploadData] if uploadData is string else (uploadData or []) %}
-
 {% set removedFile = removedFile or '' %}
 
 {% block beforeContent %}
@@ -25,17 +24,18 @@
 {% endblock %}
 
 {% block content %}
-
   {% if removedFile %}
-    <div class="govuk-grid-column-two-thirds">
-      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-      {% call govukNotificationBanner({
-        type: "success"
-      }) %}
-        <h3 class="govuk-notification-banner__heading">
-          We have removed {{ removedFile }}
-        </h3>
-      {% endcall %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+        {% call govukNotificationBanner({
+          type: "success"
+        }) %}
+          <h3 class="govuk-notification-banner__heading">
+            We have removed {{ removedFile }}
+          </h3>
+        {% endcall %}
+      </div>
     </div>
   {% endif %}
 
@@ -47,7 +47,7 @@
   <div class="govuk-!-margin-bottom-6">
     {{ govukButton({
       text: "Add document",
-      href: "/patterns/file-list/v4/upload-documents/" + currentField.key + "?returnTo=manage-folder&field=" + currentFieldName,
+      href: "/patterns/file-list/v4/upload-documents/costs-upload-to-manage-folder.html",
       classes: "govuk-button--secondary"
     }) }}
   </div>
@@ -66,23 +66,24 @@
       <tbody class="govuk-table__body">
         {% for file in files %}
           {% set fileName = file.name or file %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              <a href="#" class="govuk-link">{{ fileName }}{% if file.size %}&nbsp;({{ file.size }}){% endif %}</a>
-            </td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">
-              <a href="/patterns/file-list/v4/remove-file?field={{ currentFieldName }}&file={{ fileName | urlencode }}"
-                 class="govuk-link">
-                Remove
-                <span class="govuk-visually-hidden">{{ fileName }}</span>
-              </a>
-            </td>
-          </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a href="#" class="govuk-link">
+                  {{ fileName }}{% if file.size %}&nbsp;({{ file.size }}){% endif %}
+                </a>
+              </td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a href="/patterns/file-list/v4/remove-file-costs.html"
+                   class="govuk-link">
+                  Remove
+                  <span class="govuk-visually-hidden">{{ fileName }}</span>
+                </a>
+              </td>
+            </tr>
         {% endfor %}
       </tbody>
     </table>
   {% else %}
     <p class="govuk-body">No documents added.</p>
   {% endif %}
-
 {% endblock %}

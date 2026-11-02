@@ -1,0 +1,34 @@
+{% extends '_layouts/layout-pins.html' %}
+
+{% set title = 'Upload your application for an award of appeal costs' %}
+{% set uploadDataKey = 'costs-upload' %}
+
+{% block questions %}
+
+  <span class="govuk-caption-l">
+  Upload documents 
+  </span>
+
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {% from "/_includes/common/multi-file-upload.njk.njk" import uploadArea %}
+
+  {{ uploadArea({
+    id: "documents",
+    name: "documents",
+    label: "Upload files",
+    hint: "The file must be a DOC, DOCX, PDF, TIF, JPG, PNG or XLSX and be smaller than 50MB",
+    allowedExtensions: ["doc", "docx", "pdf", "tif", "tiff", "jpg", "jpeg", "png", "xlsx"],
+    maxFileSizeMB: 50,
+    dataKey: uploadDataKey
+  }) }}
+
+  <script type="application/json" id="documents-existing-files">
+  {{ data[uploadDataKey] | default([]) | dump | safe }}
+</script>
+
+ 
+
+{% endblock %}

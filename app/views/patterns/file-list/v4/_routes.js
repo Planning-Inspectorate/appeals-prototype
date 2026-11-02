@@ -62,10 +62,28 @@ function normaliseFiles(value) {
   }
 
   if (Array.isArray(value)) {
-    return value.filter(Boolean)
+    return value.filter(v => v !== undefined && v !== null && v !== '')
   }
 
-  return [value].filter(Boolean)
+  return [value].filter(v => v !== undefined && v !== null && v !== '')
+}
+
+function getFileName(file) {
+  if (typeof file === 'string') return file
+  if (file && typeof file === 'object') return file.name || ''
+  return ''
+}
+
+function removeFileFromFieldData(data, fieldName, fileName) {
+  const field = getManageFolderField(fieldName)
+  const key = field.key
+  const safeFileName = decodeURIComponent(String(fileName || ''))
+
+  data[key] = normaliseFiles(data[key]).filter(file => {
+    return getFileName(file) !== safeFileName
+  })
+
+  return data[key]
 }
 
 function getManageFolderField(fieldName) {
@@ -499,6 +517,10 @@ router.post('/upload-documents/costs-upload', function (req, res) {
   res.redirect('../task-list?appeal-documents-complete=true')
 })
 
+router.post('/upload-documents/costs-upload-to-manage-folder', function (req, res) {
+  res.redirect('../manage-folder')
+})
+
 // PLANS, DRAWINGS AND SUPPORTING DOCUMENTS
 router.post('/upload-documents/design-access-check', function (req, res) {
   if (req.session.data['design-access-check'] == 'Yes') {
@@ -540,53 +562,7 @@ router.post('/upload-documents/other', function (req, res) {
   saveUploadedFiles(req, res, 'other-upload', '../task-list?upload-plans-complete=true')
 })
 
-//
-// MANAGE FOLDER / REMOVE FILE
-//
 
-router.get('/patterns/file-list/v4/manage-folder', function (req, res) {
-  const field = req.query.field || 'costs-upload.html'
-  const removedFile = req.query.removedFile || ''
-
-  const currentField = getManageFolderField(field)
-  const uploadData = req.session.data[currentField.key]
-  const files = normaliseFiles(uploadData)
-
-  res.render('patterns/file-list/v4/manage-folder', {
-    data: req.session.data,
-    manageField: field,
-    removedFile: removedFile,
-    files: files
-  })
-})
-
-router.get('/patterns/file-list/v4/remove-file', function (req, res) {
-  const field = req.query.field || 'costs-upload.html'
-  const fileName = req.query.file || ''
-
-  res.render('patterns/file-list/v4/remove-file', {
-    field: field,
-    fileName: fileName
-  })
-})
-
-router.post('/patterns/file-list/v4/remove-file', function (req, res) {
-  const field = req.body.field || 'costs-upload.html'
-  const fileName = req.body.fileName || ''
-
-  if (!fileName) {
-    return res.redirect('/patterns/file-list/v4/manage-folder?field=' + encodeURIComponent(field))
-  }
-
-  removeFileFromFieldData(req.session.data, field, fileName)
-
-  return res.redirect(
-    '/patterns/file-list/v4/manage-folder?field=' +
-    encodeURIComponent(field) +
-    '&removedFile=' +
-    encodeURIComponent(fileName)
-  )
-})
 
 // Add your routes above the module.exports line
 module.exports = router
