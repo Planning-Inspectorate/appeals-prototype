@@ -21,27 +21,30 @@
       {{ title }}
     </h1>
 
-    {% set version = "5" %}
+    {% set version = "6" %}
     <h2 class="govuk-heading-m">
       Version {{version}}
       {{ govukTag({
-        classes: 'govuk-tag--yellow govuk-!-margin-left-2',
-        text: 'In progress'
+        classes: 'govuk-tag--green govuk-!-margin-left-2',
+        text: 'Ready for research'
       }) }}
     </h2>
 
-    <p class="govuk-!-margin-bottom-2">List of proposed changes:</p>
+    <p class="govuk-!-margin-bottom-2">CST gets a lot of queries about site visit and issue decision timelines. We are testing different approaches to improve communication around this.</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        alignment with LPA dashboard
+         Option 1 would be to show the site visit and issue decision details on the appeal details page itself in inset text. This would be a simple change to the current design.
       </li>
       <li>
-        link to make a new appeal
+        Option 2 would be to show the time-line of the appeal stages on a separate page. This would be a more significant change to the current design.
+      </li>
+      <li>
+        <a href="https://pins-ds.atlassian.net/browse/A2-9578" class="govuk-body">Jira ticket A2-9578</a>
       </li>
     </ul>
 
     <p class="govuk-body govuk-!-margin-bottom-6">
-      <a href="https://miro.com/app/board/uXjVPi74MOw=/?moveToWidget=3458764549839563837&cot=14" class="govuk-body">Miro board</a>
+      <a href="https://app.mural.co/t/allpins6990/m/allpins6990/1791801011389/32030bc5b922480129f7048d31a19bdd6046c9f6?sender=u8175296f4baa5e902c2a3030" class="govuk-body">Mural board</a>
     </p>
 
     {{ govukButton({

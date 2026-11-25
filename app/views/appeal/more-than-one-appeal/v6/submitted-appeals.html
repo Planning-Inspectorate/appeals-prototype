@@ -1,0 +1,161 @@
+{% if data['submitted-appeals'] == 'no' %}
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-3">
+    Waiting for review
+  </h2>
+
+  <p class="govuk-body">
+    There are currently no submitted appeals.
+  </p>
+
+{% elseif data['linked-appeals'] == 'Draft' %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Waiting for review',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Site address',
+        classes: 'govuk-!-width-one-third'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Status',
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="#">1322700</a>'
+        },
+        {
+          html: '36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY'
+        },
+        {
+          html: 'Householder appeal'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--yellow">
+                   Queued for checking
+                 </strong>'
+        }
+      ]
+    ]
+  }) }}
+
+{% else %}
+
+  {{ govukTable({
+    classes: 'govuk-!-margin-top-3',
+    caption: 'Waiting for review',
+    captionClasses: 'govuk-table__caption--l',
+    firstCellIsHeader: false,
+    head: [
+      {
+        html: 'Appeal number'
+      },
+      {
+        html: 'Site address',
+        classes: 'govuk-!-width-one-third'
+      },
+      {
+        html: 'Appeal type'
+      },
+      {
+        html: 'Status',
+        classes: 'govuk-!-width-one-quarter'
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="/appeal/more-than-one-appeal/v6/appeal-details?appealNumber=1322700">1322700</a>'
+        },
+        {
+          html: '36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY'
+        },
+        {
+          html: 'Householder appeal'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ],
+      [
+        {
+          html: '<a href="/appeal/more-than-one-appeal/v6/appeal-details?appealNumber=1322701">1322701</a>'
+        },
+        {
+          html: '28 Buxton Rd, Hazel Grove, Stockport SK7 6AF'
+        },
+        {
+          html: 'Lawful Development Certificate'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ],
+      [
+        {
+          html: '<a href="/appeal/more-than-one-appeal/v6/appeal-details?appealNumber=1322702">1322702</a>'
+        },
+        {
+          html: '32 Buxton Rd, Hazel Grove, Stockport SK7 6AF'
+        },
+        {
+          html: 'Lawful Development Certificate'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ],
+      [
+        {
+          html: '<a href="/appeal/more-than-one-appeal/v6/appeal-details?appealNumber=1322703">1322703</a>'
+        },
+        {
+          html: '27 Buxton Rd, Hazel Grove, Stockport SK7 6AF'
+        },
+        {
+          html: 'Lawful Development Certificate'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ],
+      [
+        {
+          html: '<a href="/appeal/more-than-one-appeal/v6/appeal-details?appealNumber=1322704">1322704</a>'
+        },
+        {
+          html: 'Oasis Academy Media City, Prestwood Road M6 8GG'
+        },
+        {
+          html: 'Full appeal'
+        },
+        {
+          html: '<strong class="govuk-tag govuk-tag--blue">
+                   With case officer
+                 </strong>'
+        }
+      ]
+    ]
+  }) }}
+
+{% endif %}

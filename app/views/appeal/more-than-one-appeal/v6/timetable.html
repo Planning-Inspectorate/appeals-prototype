@@ -1,0 +1,251 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set appealNumber = data['appealNumber'] or '1322700' %}
+{% set title = "Appeal " + appealNumber %}
+
+{% block pageTitle %}
+  Appeal {{ appealNumber }} - Appeal a planning decision - GOV.UK
+{% endblock %}
+
+{% block back %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/appeal-details"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .govuk-summary-list__key,
+  .govuk-summary-list__value {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div>
+      <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Appeal {{ appealNumber }}
+      </h2>
+    </div>
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Appeal type
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Planning
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Appeal procedure
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Written
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Appeal site
+        </dt>
+        <dd class="govuk-summary-list__value">
+          36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Applicant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          John Smith
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Local planning authority
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Manchester City Council
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Application number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1787589438758
+        </dd>
+      </div>
+
+    </dl>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-6">
+
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+      Timetable
+    </h2>
+
+    <p class="govuk-body">
+      The dates show when we expect each stage of your appeal to happen. Some of these dates may change. We will notify you about any changes.
+    </p>
+
+    <table class="govuk-table govuk-!-margin-top-2">
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-width-one-half">
+            Appeal validated date
+          </th>
+          <td class="govuk-table__cell" id="valid-date">
+            {{ validDate | date("D MMM YYYY") }}
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Appeal start date
+          </th>
+          <td class="govuk-table__cell" id="start-date">
+            {{ startDate | date("D MMM YYYY") }}
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            LPA questionnaire due
+          </th>
+          <td class="govuk-table__cell" id="questionnaire-date">
+            {{ questionnaireDate | date("D MMM YYYY") }}
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Statement due
+          </th>
+          <td class="govuk-table__cell" id="statement-date">
+            {{ statementDate | date("D MMM YYYY") }}
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Interested party comments<br>
+            due
+          </th>
+          <td class="govuk-table__cell" id="interested-party-date">
+            {{ statementDate | date("D MMM YYYY") }}
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Final comments due
+          </th>
+          <td class="govuk-table__cell" id="final-comments-date">
+            {{ finalCommentsDate | date("D MMM YYYY") }}
+          </td>
+        </tr>
+        
+        {% if appealNumber == '1322702' or appealNumber == '1322703' %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Site visit date
+          </th>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0">
+              We have arranged your site visit. You do not need to attend 
+            </p>
+          </td>
+        </tr>
+        {% endif %}
+        
+        {% if appealNumber == '1322703' %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Decision date
+          </th>
+          <td class="govuk-table__cell">
+            <span id="decision-date"></span>
+            <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0">
+              We aim to issue the appeal decision within 21 January 2024.
+            </p>
+          </td>
+        </tr>
+
+        {% endif %}
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    // Use today's date whenever the page is opened
+    const today = new Date();
+
+    // Create a date relative to today
+    function addDays(days) {
+      const date = new Date(today);
+      date.setDate(date.getDate() + days);
+      return date;
+    }
+
+    // Format dates like "18 Nov 2026"
+    function formatDate(date) {
+      return date.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    // First 2 stages are in the past
+    document.getElementById("valid-date").textContent =
+      formatDate(addDays(-8));
+
+    document.getElementById("start-date").textContent =
+      formatDate(addDays(-7));
+
+
+    // Remaining stages are in the future
+    document.getElementById("questionnaire-date").textContent =
+      formatDate(addDays(7));
+
+    document.getElementById("statement-date").textContent =
+      formatDate(addDays(35));
+
+    document.getElementById("interested-party-date").textContent =
+      formatDate(addDays(35));
+
+    document.getElementById("final-comments-date").textContent =
+      formatDate(addDays(49));
+
+    document.getElementById("site-visit-date").textContent =
+      formatDate(addDays(55));
+
+    document.getElementById("decision-date").textContent =
+      formatDate(addDays(84));
+
+  });
+</script>
+
+{% endblock %}

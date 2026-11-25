@@ -1,0 +1,166 @@
+{% extends "_layouts/layout-main.html" %}
+
+{% set appealNumber = data['appealNumber'] or '1322700' %}
+{% set title = "Appeal " + appealNumber %}
+
+{% block pageTitle %}
+  Appeal {{ appealNumber }} - Appeal a planning decision - GOV.UK
+{% endblock %}
+
+{% block back %}
+  {{ govukBackLink({
+    text: "Return to your appeals",
+    href: "/your-appeals#submitted-appeals"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<style>
+  .govuk-summary-list__key,
+  .govuk-summary-list__value {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+</style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      
+      <div>
+       <h2 class="govuk-heading-l govuk-!-margin-bottom-2">
+        Appeal {{ appealNumber }}
+       </h2>
+      </div>
+      
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Planning
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal procedure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Written
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Appeal site
+          </dt>
+          <dd class="govuk-summary-list__value">
+            36 Beverley Rd, Swinton, Pendlebury, Manchester M27 4HY
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Applicant
+          </dt>
+          <dd class="govuk-summary-list__value">
+            John Smith
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Local planning authority
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Manchester City Council
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Application number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1787589438758
+          </dd>
+        </div>
+      </dl>
+
+      {% if appealNumber == '1322700' %}
+
+         <div class="govuk-inset-text">
+             We have arranged your site visit. You do not need to attend.
+         </div>
+
+      {% elseif appealNumber == '1322701' %}
+
+         <div class="govuk-inset-text">
+             We aim to issue the appeal decision within 21 January 2024.
+        </div>
+
+      {% endif %}
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-grid-column-two-thirds">
+    </div>
+    
+    <div class="govuk-grid-column-two-thirds">
+    {% if appealNumber != '1322700' and appealNumber != '1322701' %}
+
+      <h2 class="govuk-heading-l">
+        Timetable
+      </h2>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="timetable">
+          View your appeal timetable
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    {% endif %}
+
+      <h2 class="govuk-heading-l">
+        Appeal details
+      </h2>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="appellant-submission-full">
+          View your appeal details
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <h2 class="govuk-heading-l">
+        Questionnaire
+      </h2>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="lpa-questionnaire-full">
+          View questionnaire
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <h2 class="govuk-heading-l">
+        Costs
+      </h2>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="costs-applications">
+          View your costs applications
+        </a>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+     </div>
+    </div>
+    </div>
+
+{% endblock %}
